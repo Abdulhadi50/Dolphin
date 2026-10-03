@@ -13,7 +13,6 @@
 <style>
 /* ═══════════ THEME VARIABLES ═══════════ */
 :root{
-  /* Light Theme (Default) */
   --ink:#0A0F1E;--ink-2:#111827;--ink-3:#1F2937;
   --sea:#0891B2;--sea-2:#06B6D4;--sea-l:#67E8F9;--sea-wash:#ECFEFF;--sea-pale:#CFFAFE;
   --amber:#F59E0B;--amber-l:#FCD34D;--amber-pale:#FEF3C7;
@@ -33,22 +32,11 @@
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 
-/* Dark Theme */
 .dark-theme {
-  --bg:#0F172A;
-  --card:#1E293B;
-  --fill:#334155;
-  --fill-2:#475569;
-  --text:#F1F5F9;
-  --text-2:#CBD5E1;
-  --text-3:#94A3B8;
-  --line:#334155;
-  --line-2:#475569;
-  --paper:#0F172A;
-  --white:#1E293B;
-  --sea-wash:#0C4A6E;
-  --sea-pale:#0E7490;
-  --amber-pale:#78350F;
+  --bg:#0F172A;--card:#1E293B;--fill:#334155;--fill-2:#475569;
+  --text:#F1F5F9;--text-2:#CBD5E1;--text-3:#94A3B8;
+  --line:#334155;--line-2:#475569;--paper:#0F172A;--white:#1E293B;
+  --sea-wash:#0C4A6E;--sea-pale:#0E7490;--amber-pale:#78350F;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -57,8 +45,7 @@ body{
   font-family:'IBM Plex Sans Arabic',-apple-system,sans-serif;
   background:var(--bg);color:var(--text);font-size:var(--f-base);line-height:1.5;
   min-height:100vh;overflow-x:hidden;direction:rtl;-webkit-font-smoothing:antialiased;
-  overscroll-behavior-y:none;
-  transition: background-color .3s, color .3s;
+  overscroll-behavior-y:none;transition: background-color .3s, color .3s;
 }
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;font-size:inherit}
 input{font-family:inherit;color:inherit;font-size:inherit}
@@ -71,7 +58,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   background:linear-gradient(135deg,var(--sea),var(--sea-2));
   display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;
   color:#fff;font-size:var(--f-lg);cursor:pointer;transition:transform .15s;
-  
 }
 .avatar:active{transform:scale(.95)}
 .avatar img{width:100%;height:100%;object-fit:cover}
@@ -97,7 +83,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   border:2px solid var(--sea-pale);
   display:flex;align-items:center;justify-content:center;
   font-size:30px;line-height:1;position:relative;
-  
 }
 .plan-header__icon span{animation:planIconFloat 3s ease-in-out infinite;display:block}
 @keyframes planIconFloat{
@@ -152,7 +137,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   position:absolute;inset:22px;border-radius:50%;
   background:linear-gradient(180deg, #F0F9FF 0%, #E0F2FE 100%);
   overflow:hidden;
-  
 }
 .stage__water{
   position:absolute;bottom:0;left:0;right:0;height:0%;
@@ -177,7 +161,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .stage__icon{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   z-index:5;font-size:64px;line-height:1;
-  
   pointer-events:none;user-select:none;transition:transform .4s;
 }
 .stage__icon.idle{animation:iconFloat 3s ease-in-out infinite}
@@ -202,7 +185,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   font-size:var(--f-sm);font-weight:800;font-variant-numeric:tabular-nums;
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   direction:ltr;pointer-events:none;
-  
 }
 .status-bar{
   display:flex;align-items:center;justify-content:center;gap:8px;
@@ -253,7 +235,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .action--stop{
   background:linear-gradient(135deg,#FEF2F2 0%, #FEE2E2 100%);
   color:var(--coral-2);border:1.5px solid #FECACA;
-  
 }
 .action--collect{
   background:linear-gradient(135deg,var(--amber) 0%,var(--amber-l) 100%);
@@ -274,7 +255,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .tamper-box{
   background:#fff;border-radius:24px;padding:28px 22px;
   max-width:380px;width:100%;text-align:center;
-  
 }
 .tamper-box__icon{
   width:72px;height:72px;border-radius:50%;
@@ -323,7 +303,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   background:linear-gradient(135deg,var(--sea),var(--sea-2));
   display:flex;align-items:center;justify-content:center;font-size:48px;
   margin-bottom:var(--sp-5);color:#fff;
-  
 }
 .outside-tg h1{font-size:var(--f-xl);font-weight:800;color:var(--text);margin-bottom:10px}
 .outside-tg p{font-size:var(--f-sm);color:var(--text-2);line-height:1.75;margin-bottom:var(--sp-6);max-width:300px}
@@ -332,7 +311,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   text-decoration:none;font-weight:700;font-size:var(--f-md);
   display:inline-flex;align-items:center;gap:9px;
 }
-@keyframes progressShine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 :root{
   --mkA:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 90' preserveAspectRatio='none'%3E%3Cpath d='M0 45C150 5 150 5 300 45S450 85 600 45V90H0Z'/%3E%3C/svg%3E");
   --mkB:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 90' preserveAspectRatio='none'%3E%3Cpath d='M0 45C100 20 200 70 300 45S500 70 600 45V90H0Z'/%3E%3C/svg%3E");
@@ -378,10 +356,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .timer-bar__ic{background:#fff;color:var(--sea)}
 .timer-bar__lbl{color:var(--text-2)}
 
-/* ═══════════════════════════════════════════════════════════
-   v5 · نظام تصميم جديد — مسطّح بالكامل، بدون ظلال
-   خلفية رمادية-مزرقة هادئة + بطاقات بيضاء بلا حدود
-   ═══════════════════════════════════════════════════════════ */
 :root{
   --bg:#FFFFFF;--card:#fff;--fill:#F1F6F9;--fill-2:#E6EEF3;
   --text:#0D2733;--text-2:#4A6372;--text-3:#869CA9;
@@ -393,7 +367,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 html,body{height:100%}
 body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 
-/* ── الهيكل: القائمة السفلية جزء من التخطيط، فلا يمكن أن تغطي المحتوى ── */
 .app{max-width:480px;margin:0 auto;height:100vh;height:100dvh;min-height:0;background:var(--bg);
   display:flex;flex-direction:column;position:relative;overflow:hidden}
 .main{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
@@ -409,7 +382,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .nav__btn--active{color:var(--deep-2)}
 .nav__btn--active i{background:#DDF6FB;color:var(--sea)}
 
-/* ── شريط علوي ── */
 .topbar{display:flex;align-items:center;gap:12px;padding:4px 0 16px}
 .topbar__meta{flex:1;min-width:0}
 .topbar__hello{font-size:12px;color:var(--text-3);font-weight:600;margin-bottom:2px}
@@ -426,10 +398,8 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .sec-head__title i{width:28px;height:28px;border-radius:9px;background:#DDF6FB;color:var(--sea);display:grid;place-items:center;font-size:12px}
 .sec-head__meta{background:var(--card);padding:4px 12px;border-radius:20px;font-size:11.5px;color:var(--text-2);font-weight:700}
 
-/* ── بطاقة التعدين ── */
 .mining-card{border:0;background:var(--card);margin-bottom:14px}
 
-/* ═══ حالة الامتلاء: خزّان ذهبي بأشعّة وعملات ═══ */
 .stage__fx{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .6s}
 .stage.is-ready .stage__fx{opacity:1}
 .stage__fx .rays{position:absolute;left:50%;top:50%;width:170%;aspect-ratio:1;border-radius:50%;
@@ -470,7 +440,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:btnShine 2.4s ease-in-out infinite}
 .action--collect i{font-size:18px}
 
-/* ── بطاقات الرئيسية ── */
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tile{position:relative;overflow:hidden;isolation:isolate;text-align:start;border-radius:22px;padding:14px;min-height:134px;
   display:flex;flex-direction:column;gap:3px;transition:transform .15s}
@@ -488,7 +457,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .tile__go{position:absolute!important;top:14px;left:14px;width:28px;height:28px;border-radius:50%;background:var(--card);color:var(--text-2);
   display:grid;place-items:center;font-size:11px}
 
-/* ── عناصر مشتركة ── */
 .card{background:var(--card);border-radius:24px;padding:16px;margin-bottom:12px}
 .card__title{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:800;margin-bottom:12px}
 .card__title i{width:28px;height:28px;border-radius:9px;background:#DDF6FB;color:var(--sea);display:grid;place-items:center;font-size:12px}
@@ -508,7 +476,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .wavy::after{bottom:-14px;height:54px;background:rgba(255,255,255,.12);-webkit-mask-image:var(--mkA);mask-image:var(--mkA);-webkit-mask-size:380px 100%;mask-size:380px 100%}
 .wavy::before{bottom:-26px;height:54px;background:rgba(255,255,255,.07);-webkit-mask-image:var(--mkB);mask-image:var(--mkB);-webkit-mask-size:280px 100%;mask-size:280px 100%}
 
-/* ── حلقة التقدّم ── */
 .ring{position:relative;width:76px;height:76px;flex-shrink:0;--rb:#D6EEF5;--rf:#0891B2}
 .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
 .ring circle{fill:none;stroke-width:8;stroke-linecap:round}
@@ -520,7 +487,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .ring--lg{width:96px;height:96px}
 .ring--lg .ring__n b{font-size:26px}
 
-/* ── المهمات ── */
 .qb{display:flex;align-items:center;gap:16px;padding:18px 16px 26px;border-radius:26px;color:#fff;margin-bottom:18px;
   background:linear-gradient(135deg,#0B4A5E 0%,#0E7490 60%,#1CA7C4 135%)}
 .qb .ring{--rb:rgba(255,255,255,.2);--rf:#FCD34D}
@@ -579,7 +545,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .qrow--lock .rwd{background:var(--fill);color:var(--text-3)}
 .qrow--lock .rwd i{color:var(--text-3)}
 
-/* ── الخطط ── */
 .plans-grid{display:flex;flex-direction:column;gap:12px}
 .plan{background:var(--card);border:0;border-radius:24px;padding:16px;position:relative;overflow:hidden}
 .plan--current{background:linear-gradient(160deg,#D3F3FA 0%,var(--card) 72%);outline:2px solid var(--sea);outline-offset:-2px}
@@ -626,7 +591,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .plan__cancel:active{transform:scale(.98)}
 .plan__cancel-note{font-size:11px;color:var(--text-3);text-align:center;margin-top:7px;font-weight:600}
 
-/* ── النماذج والأزرار ── */
 .field{margin-bottom:14px}
 .field__label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;margin-bottom:8px}
 .field__label i{width:22px;height:22px;border-radius:7px;background:#DDF6FB;color:var(--sea);display:grid;place-items:center;font-size:10.5px}
@@ -684,7 +648,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .id-box{background:#E8F7FB;border:1.5px dashed var(--sea);border-radius:14px;padding:14px;text-align:center;font-family:var(--mono);font-size:15px;font-weight:800;
   color:var(--text);direction:ltr;letter-spacing:3px;word-break:break-all;margin-bottom:10px}
 
-/* ── الإحالة ── */
 .rf-hero{border-radius:26px;padding:20px 16px 30px;margin-bottom:12px;color:#fff;background:linear-gradient(135deg,#0B4A5E 0%,#0E7490 60%,#1CA7C4 135%)}
 .rf-hero__top{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
 .rf-hero__ic{width:48px;height:48px;border-radius:16px;background:rgba(255,255,255,.16);display:grid;place-items:center;font-size:21px;flex-shrink:0}
@@ -713,7 +676,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .how__t{font-size:13.5px;font-weight:800;line-height:1.5}
 .how__d{font-size:12px;color:var(--text-3);font-weight:500;line-height:1.6;margin-top:1px}
 
-/* ── المتصدّرون ── */
 .lb{background:var(--card);border-radius:26px;overflow:hidden;margin-bottom:12px}
 .lb__head{padding:16px 16px 0;display:flex;align-items:center;justify-content:space-between}
 .lb__title{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800}
@@ -753,7 +715,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .lb__empty p{font-size:13px;font-weight:600}
 .vbadge-fb{color:var(--sea);font-size:13px;flex-shrink:0}
 
-/* ── الملف الشخصي ── */
 .pf-hero{border-radius:28px;padding:26px 16px 34px;text-align:center;color:#fff;margin-bottom:12px;
   background:linear-gradient(150deg,#0B4A5E 0%,#0E7490 62%,#22B6D4 140%)}
 .pf-av{width:96px;height:96px;border-radius:32px;margin:0 auto 12px;background:rgba(255,255,255,.18);border:3px solid rgba(255,255,255,.55);
@@ -781,7 +742,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .pf-row--green{--tb:#DDF7EA;--tc:#059669}
 .pf-row--sea{--tb:#DDF6FB;--tc:#0891B2}
 
-/* ── إشعارات ── */
 .toast{border:0;border-radius:16px}
 
 @media (max-width:360px){
@@ -801,7 +761,7 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
   .plan-header__icon{width:52px;height:52px;font-size:24px}.plan__icon{width:54px;height:54px;font-size:28px}
 }
 
-/* Dark theme overrides for specific elements */
+/* Dark theme overrides */
 .dark-theme .mining-card::before{background:radial-gradient(circle, rgba(6,182,212,.06), transparent 65%)}
 .dark-theme .chip__coin{background:var(--amber-pale)}
 .dark-theme .tile__ic{background:var(--fill)}
@@ -829,36 +789,14 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
 .dark-theme .mining-card.is-ready .status-bar{background:#78350F;border-color:#92400E;color:#FDE68A}
 .dark-theme .mining-card.is-ready .timer-bar{background:linear-gradient(135deg,#78350F 0%,#92400E 100%);border-color:#92400E;color:#FDE68A}
 .dark-theme .mining-card.is-ready .timer-bar__lbl{color:#FDE68A}
-.dark-theme .plan__stat-lbl i{color:var(--sea-l)}
 .dark-theme .stage__icon{filter: drop-shadow(0 0 4px rgba(0,0,0,0.4))}
 .dark-theme .avatar{box-shadow: 0 0 0 1px var(--line)}
 .dark-theme .toast{background:var(--card);color:var(--text);border-color:var(--line)}
 .dark-theme .tamper-box{background:var(--card)}
-.dark-theme .tamper-box h3{color:var(--text)}
-.dark-theme .tamper-box p{color:var(--text-2)}
-.dark-theme .tamper-box button{background:var(--card);color:var(--text);border:1px solid var(--line)}
-.dark-theme .outside-tg{background:var(--paper)}
-.dark-theme .outside-tg h1{color:var(--text)}
-.dark-theme .outside-tg p{color:var(--text-2)}
-.dark-theme .outside-tg a{background:var(--sea)}
 .dark-theme .id-box{background:#0C4A6E;border-color:var(--sea)}
 .dark-theme .code-row{background:#0C4A6E;border-color:var(--sea)}
-.dark-theme .info-rows{background:var(--fill)}
-.dark-theme .ref-link{background:var(--fill)}
-.dark-theme .seg__b.active{background:var(--card);color:var(--text)}
-.dark-theme .seg__b.active i{color:var(--sea-l)}
-.dark-theme .field__input{background:var(--fill)}
-.dark-theme .field__input:focus{background:var(--card)}
-.dark-theme .btn--outline{background:var(--fill);color:var(--text)}
-.dark-theme .plan__timer{background:var(--card)}
-.dark-theme .step{background:var(--card)}
-.dark-theme .lb{background:var(--card)}
 .dark-theme .lrow--me{background:#0C4A6E}
 .dark-theme .lrow--me .lrow__cnt{background:var(--card);color:var(--sea-l)}
-.dark-theme .pf-list{background:var(--card)}
-.dark-theme .pf-sum{background:var(--card)}
-.dark-theme .pf-sum>div:first-child b{color:#FCD34D}
-.dark-theme .profile-theme-btn{background:var(--fill);border-color:var(--line)}
 </style>
 </head>
 <body>
@@ -975,7 +913,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
       </div>
     </div>
 
-    <!-- صفحة المهمات -->
     <div class="view" id="view-tasks">
       <div class="topbar">
         <div class="topbar__meta">
@@ -994,11 +931,11 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
       <div class="qb wavy">
         <div class="ring">
           <svg viewBox="0 0 80 80"><circle class="ring__bg" cx="40" cy="40" r="34"/><circle class="ring__fg" id="qbRingFg" cx="40" cy="40" r="34" style="stroke-dashoffset:213.63"/></svg>
-          <div class="ring__n"><b id="qbNum">0</b><small id="qbOf">/ 5</small></div>
+          <div class="ring__n"><b id="qbNum">0</b><small id="qbOf">/ 7</small></div>
         </div>
         <div>
           <div class="qb__t">لوحة المهمات</div>
-          <div class="qb__s" id="questSummary">0 من 5 مهمات مكتملة</div>
+          <div class="qb__s" id="questSummary">0 من 7 مهمات مكتملة</div>
           <div class="qb__left"><i class="fas fa-coins"></i> متبقي لك <b id="questLeft">0</b> ل.س</div>
         </div>
       </div>
@@ -1014,8 +951,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
         <button class="cq__btn cq__btn--join" id="taskChannelBtn"><i class="fab fa-telegram-plane"></i> انضم</button>
       </div>
 
-      <div class="grp"><span>مهمات الدعوات</span><small id="inviteGrpMeta"></small></div>
-      <div class="hint"><i class="fas fa-info-circle"></i><div>المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>.</div></div>
       <div id="inviteTasksContainer"></div>
     </div>
 
@@ -1281,7 +1216,6 @@ body{background:var(--bg);color:var(--text);overflow:hidden;min-height:0}
         </div>
       </div>
 
-      <!-- ✅ زر تغيير الثيم -->
       <button class="btn btn--outline" id="themeToggleBtn" style="margin-bottom:12px">
         <i class="fas fa-moon" id="themeIcon"></i> <span id="themeText">الوضع الداكن</span>
       </button>
@@ -1390,13 +1324,29 @@ const CONFIG = {
     clockCheckIntervalMs: 2000
   },
 
-  // ✅ تعريفات المهمات
   inviteTasks: [
     { id: 'invite5',  count: 5,  reward: 50,  title: 'دعوة 5 أصدقاء', desc: 'اربح 50 ل.س عند دعوة 5 أشخاص' },
     { id: 'invite20', count: 20, reward: 300, title: 'دعوة 20 صديق', desc: 'اربح 300 ل.س عند دعوة 20 شخص' },
     { id: 'invite30', count: 30, reward: 500, title: 'دعوة 30 صديق', desc: 'اربح 500 ل.س عند دعوة 30 شخص' },
     { id: 'invite50', count: 50, reward: 700, title: 'دعوة 50 صديق', desc: 'اربح 700 ل.س عند دعوة 50 شخص' }
   ],
+
+  // ✅ المهمات الخاصة الجديدة
+  specialTasks: {
+    collect5: {
+      id: 'collect5',
+      target: 5,
+      reward: 50,
+      title: 'اجمع التعدين 5 مرات',
+      desc: 'اربح 50 ل.س عند جمع التعدين 5 مرات بأي خطة'
+    },
+    firstBuy: {
+      id: 'firstBuy',
+      reward: 200,
+      title: 'اشترِ أول خطة مدفوعة',
+      desc: 'اربح 200 ل.س عند شراء أول خطة مدفوعة'
+    }
+  },
 
   channelTask: { reward: 10 },
   api: { verifyChannel: '' },
@@ -1490,11 +1440,6 @@ function initTelegram(){
   STATE.tgUser = tg.initDataUnsafe.user;
   STATE.tgId = String(tg.initDataUnsafe.user.id);
   STATE.startParam = tg.initDataUnsafe.start_param || null;
-  
-  console.log('=== Telegram Data ===');
-  console.log('User ID:', STATE.tgId);
-  console.log('start_param:', STATE.startParam);
-  console.log('===================');
   
   return true;
 }
@@ -1598,64 +1543,39 @@ function renderLocked(){
   btn.innerHTML = '<i class="fas fa-lock"></i><span>التعدين مجمّد</span>';
 }
 
-/* ═══════════ LOAD USER (مع تحديث بيانات التيليجرام) ═══════════ */
+/* ═══════════ LOAD USER — تحديث بيانات تيليجرام فقط إذا تغيرت ═══════════ */
 async function loadOrCreateUser(){
   await syncServerTime();
   const ref = db.collection('users').doc(STATE.tgId);
   const fullName = ((STATE.tgUser.first_name || '') + ' ' + (STATE.tgUser.last_name || '')).trim() || 'مستخدم';
   const username = STATE.tgUser.username || null;
+  const photoUrl = safeUrl(STATE.tgUser.photo_url) || null;
   const snap = await ref.get();
 
   if (snap.exists){
     STATE.user = snap.data();
     const oldData = STATE.user;
     
-    // ✅ تحديث بيانات المستخدم من تيليجرام فقط إذا تغيرت
     const updates = {};
     let hasChanges = false;
     
-    // تحديث الاسم
-    if (oldData.name !== fullName) {
-      updates.name = fullName;
-      hasChanges = true;
-    }
-    // تحديث اسم المستخدم (المعرف)
-    if (oldData.username !== username) {
-      updates.username = username;
-      hasChanges = true;
-    }
+    if (oldData.name !== fullName) { updates.name = fullName; hasChanges = true; }
+    if (oldData.username !== username) { updates.username = username; hasChanges = true; }
+    if (oldData.photoUrl !== photoUrl) { updates.photoUrl = photoUrl; hasChanges = true; }
+    if (oldData.referralCode !== STATE.tgId) { updates.referralCode = STATE.tgId; hasChanges = true; }
+    if (oldData.uniqueId !== STATE.tgId) { updates.uniqueId = STATE.tgId; hasChanges = true; }
     
-    const currentPhoto = safeUrl(STATE.tgUser.photo_url) || null;
-    // تحديث صورة الملف الشخصي
-    if (oldData.photoUrl !== currentPhoto) {
-      updates.photoUrl = currentPhoto;
-      hasChanges = true;
-    }
-    
-    // تصحيح referralCode و uniqueId إذا لزم الأمر
-    if (oldData.referralCode !== STATE.tgId) {
-      updates.referralCode = STATE.tgId;
-      hasChanges = true;
-    }
-    if (oldData.uniqueId !== STATE.tgId) {
-      updates.uniqueId = STATE.tgId;
-      hasChanges = true;
-    }
-    
-    // تحديث lastSeen دائماً
     updates.lastSeen = firebase.firestore.FieldValue.serverTimestamp();
     
     if (hasChanges) {
       await ref.set(updates, { merge:true }).catch(()=>{});
-      // تحديث كائن STATE.user بالبيانات الجديدة
       Object.assign(STATE.user, updates);
     }
     
-    // تحديث لوحة الصدارة
     db.collection('referralLeaderboard').doc(STATE.tgId).set({ 
       name: fullName, 
       username, 
-      photoUrl: currentPhoto,
+      photoUrl,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp() 
     }, { merge:true }).catch(()=>{});
     
@@ -1675,7 +1595,7 @@ async function loadOrCreateUser(){
   }
   const SV = firebase.firestore.FieldValue.serverTimestamp();
   const base = {
-    telegramId: STATE.tgId, name: fullName, username,
+    telegramId: STATE.tgId, name: fullName, username, photoUrl,
     uniqueId: STATE.tgId, referralCode: STATE.tgId,
     balance_sy: 0, totalEarned: 0, totalWithdrawn: 0,
     referralUsed: false, referralCodeUsed: null, referredBy: null,
@@ -1683,9 +1603,13 @@ async function loadOrCreateUser(){
     activePlanId: 'basic', planStartedAt: null, planExpiresAt: null,
     planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
     hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
+    miningCollectCount: 0,
     tamperFlag: false, verified: false,
     channelJoined: false, channelRewardClaimed: false,
-    inviteTaskProgress: 0, inviteRewardClaimed: {},
+    hasPurchasedPlan: false,
+    collect5RewardClaimed: false,
+    firstBuyRewardClaimed: false,
+    inviteRewardClaimed: {},
     createdAt: SV, updatedAt: SV, lastSeen: SV
   };
   let rewarded = false;
@@ -1717,7 +1641,7 @@ async function loadOrCreateUser(){
     }
     trx.set(ref, data);
     trx.set(db.collection('referralLeaderboard').doc(STATE.tgId), {
-      name: fullName, username, photoUrl: safeUrl(STATE.tgUser.photo_url) || null, referralCount: firebase.firestore.FieldValue.increment(0), updatedAt: SV
+      name: fullName, username, photoUrl, referralCount: firebase.firestore.FieldValue.increment(0), updatedAt: SV
     }, { merge:true });
   });
   STATE.user = (await ref.get()).data();
@@ -1816,7 +1740,7 @@ function updateUI(){
   }
 
   renderPlans();
-  renderTasks(); // ✅ تحديث المهام
+  renderTasks();
 }
 
 function addVerifiedBadge(containerId, isVerified){
@@ -2054,9 +1978,7 @@ async function stopMining(){
   }finally{ STATE.isSubmitting = false; }
 }
 
-// ✅ متغير لتتبع عدد عمليات الجمع
-const MINING_COLLECT_COUNT_KEY = 'mining_collect_count';
-
+/* ✅ جمع التعدين — زيادة العداد فقط، بدون مكافأة مباشرة */
 async function collectMining(){
   if (STATE.isSubmitting || !STATE.user) return;
   if (!STATE.user.miningCollectable) { toast('لا يوجد ما يُجمع', 'info'); return; }
@@ -2081,9 +2003,10 @@ async function collectMining(){
       const plan = getPlan(data.activePlanId || 'basic');
       const r = (data.miningProgress > 0 && data.miningProgress <= 250) ? data.miningProgress : plan.reward;
 
-      // ✅ حساب عدد مرات الجمع
+      // ✅ زيادة عداد الجمع — المكافأة تُستلم من صفحة المهام
       const collectCount = (data.miningCollectCount || 0) + 1;
-      const updates = {
+
+      trx.update(userRef, {
         balance_sy: firebase.firestore.FieldValue.increment(r),
         totalEarned: firebase.firestore.FieldValue.increment(r),
         planTotalEarned: firebase.firestore.FieldValue.increment(r),
@@ -2093,28 +2016,13 @@ async function collectMining(){
         hasStartedMining: false,
         miningCollectCount: collectCount,
         updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-      };
-
-      // ✅ فحص مهمة الجمع (5 مرات)
-      if (collectCount >= 5 && !data.miningCollectRewardClaimed) {
-        updates.balance_sy = firebase.firestore.FieldValue.increment(r + 50);
-        updates.totalEarned = firebase.firestore.FieldValue.increment(r + 50);
-        updates.miningCollectRewardClaimed = true;
-      }
-
-      trx.update(userRef, updates);
-      return { reward: r, gotBonus: collectCount >= 5 && !data.miningCollectRewardClaimed };
+      });
+      return r;
     });
-
     const snap2 = await userRef.get();
     STATE.user = snap2.data();
     updateUI(); renderMining(); stopLiveTimer();
-    
-    if (reward.gotBonus) {
-      toast('🎉 جمعت ' + fmt(reward.reward) + ' ل.س + 50 ل.س مكافأة الجمع 5 مرات!', 'ok');
-    } else {
-      toast('✅ تم جمع ' + fmt(reward.reward) + ' ل.س! اضغط "ابدأ التعدين" لدورة جديدة', 'ok');
-    }
+    toast('✅ تم جمع ' + fmt(reward) + ' ل.س! اضغط "ابدأ التعدين" لدورة جديدة', 'ok');
   }catch(e){
     toast(e.message || 'فشل الجمع', 'err');
     renderMining();
@@ -2167,7 +2075,6 @@ function renderPlans(){
   list.innerHTML = CONFIG.plans.map(plan => {
     const idx = getPlanIndex(plan.id);
     const isCur = plan.id === current;
-    const isHigher = idx > curIdx;
     const isLower = idx < curIdx;
     const colors = getPlanColors(plan);
 
@@ -2291,6 +2198,7 @@ async function cancelPlan(){
   finally{ STATE.isSubmitting = false; }
 }
 
+/* ✅ شراء خطة — بدون مكافأة مباشرة */
 async function buyPlan(planId){
   if (STATE.isSubmitting || !STATE.user) return;
   const plan = getPlan(planId);
@@ -2338,10 +2246,8 @@ async function buyPlan(planId){
         updatedAt: firebase.firestore.FieldValue.serverTimestamp()
       };
 
-      // ✅ فحص مهمة الشراء الأول
-      if (!data.hasPurchasedPlan) {
-        updateData.balance_sy = firebase.firestore.FieldValue.increment(-plan.price + 200);
-        updateData.totalEarned = firebase.firestore.FieldValue.increment(200);
+      // ✅ تسجيل الشراء الأول فقط — المكافأة تُستلم من صفحة المهام
+      if (!data.hasPurchasedPlan && plan.price > 0) {
         updateData.hasPurchasedPlan = true;
       }
 
@@ -2360,12 +2266,7 @@ async function buyPlan(planId){
     STATE.user = snap2.data();
     updateUI(); renderMining(); renderPlans();
     await checkPlanExpiry();
-    
-    if (!STATE.user.hasPurchasedPlan) {
-      toast('✅ تم ترقيتك إلى خطة ' + plan.name + '!', 'ok');
-    } else {
-      toast('✅ تم ترقيتك إلى خطة ' + plan.name + ' وحصلت على 200 ل.س مكافأة الشراء الأول!', 'ok');
-    }
+    toast('✅ تم ترقيتك إلى خطة ' + plan.name + '!', 'ok');
   }catch(e){
     toast(e.message || 'فشل الشراء', 'err');
   }finally{ STATE.isSubmitting = false; }
@@ -2683,14 +2584,8 @@ async function loadLeaderboard(){
   }
 }
 
-/* ═══════════ ✅ TASKS LOGIC ═══════════ */
+/* ═══════════ TASKS LOGIC ═══════════ */
 
-function getInviteProgress(u) {
-  const totalInvites = u.referralCount || (u.referredUsers || []).length || 0;
-  return totalInvites;
-}
-
-// دالة التحقق من الانضمام للقناة
 async function verifyChannelJoin(){
   if (!STATE.user || STATE.isSubmitting) return;
   const btn = $('taskChannelBtn');
@@ -2719,14 +2614,8 @@ async function verifyChannelJoin(){
 
 async function collectChannelReward() {
   if (!STATE.user || STATE.isSubmitting) return;
-  if (!STATE.user.channelJoined) {
-    toast('يجب الانضمام للقناة أولاً', 'err');
-    return;
-  }
-  if (STATE.user.channelRewardClaimed) {
-    toast('تم استلام المكافأة مسبقاً', 'info');
-    return;
-  }
+  if (!STATE.user.channelJoined) { toast('يجب الانضمام للقناة أولاً', 'err'); return; }
+  if (STATE.user.channelRewardClaimed) { toast('تم استلام المكافأة مسبقاً', 'info'); return; }
   
   STATE.isSubmitting = true;
   const btn = $('taskChannelBtn');
@@ -2753,27 +2642,73 @@ async function collectChannelReward() {
     updateUI();
     renderTasks();
     toast('🎉 +' + CONFIG.channelTask.reward + ' ل.س من مهمة القناة!', 'ok');
-    
   } catch(e) {
     toast(e.message || 'فشل استلام المكافأة', 'err');
   } finally {
     STATE.isSubmitting = false;
-    if (btn) {
-      btn.disabled = false;
-    }
+    if (btn) btn.disabled = false;
   }
 }
 
-/* ── مهمات الدعوات: تسلسلية، كل مهمة جديدة تبدأ من 0 بعد استلام السابقة ──
-   النقطة المرجعية (_base) تُحفظ داخل inviteRewardClaimed عند كل استلام. */
+/* ✅ استلام مكافأة المهمات الخاصة (جمع 5 مرات / شراء أول خطة) */
+async function collectSpecialReward(taskId) {
+  if (!STATE.user || STATE.isSubmitting) return;
+  const task = CONFIG.specialTasks[taskId];
+  if (!task) return;
+  const u = STATE.user;
+
+  if (taskId === 'collect5') {
+    if ((u.miningCollectCount || 0) < 5) return toast('لم تجمع 5 مرات بعد', 'err');
+    if (u.collect5RewardClaimed) return toast('تم الاستلام مسبقاً', 'info');
+  } else if (taskId === 'firstBuy') {
+    if (!u.hasPurchasedPlan) return toast('لم تشترِ خطة مدفوعة بعد', 'err');
+    if (u.firstBuyRewardClaimed) return toast('تم الاستلام مسبقاً', 'info');
+  }
+
+  STATE.isSubmitting = true;
+  try {
+    const userRef = db.collection('users').doc(STATE.tgId);
+    await db.runTransaction(async (trx) => {
+      const snap = await trx.get(userRef);
+      const data = snap.data();
+      const flagKey = taskId === 'collect5' ? 'collect5RewardClaimed' : 'firstBuyRewardClaimed';
+      
+      if (data[flagKey]) throw new Error('تم الاستلام مسبقاً');
+      
+      if (taskId === 'collect5' && (data.miningCollectCount || 0) < 5) {
+        throw new Error('لم تجمع 5 مرات بعد');
+      }
+      if (taskId === 'firstBuy' && !data.hasPurchasedPlan) {
+        throw new Error('لم تشترِ خطة مدفوعة بعد');
+      }
+
+      trx.update(userRef, {
+        balance_sy: firebase.firestore.FieldValue.increment(task.reward),
+        totalEarned: firebase.firestore.FieldValue.increment(task.reward),
+        [flagKey]: true,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    });
+    
+    STATE.user = (await userRef.get()).data();
+    updateUI();
+    renderTasks();
+    toast('🎉 +' + task.reward + ' ل.س من ' + task.title + '!', 'ok');
+  } catch(e) {
+    toast(e.message || 'فشل الاستلام', 'err');
+  } finally {
+    STATE.isSubmitting = false;
+  }
+}
+
 function inviteState(u){
   const total = u.referralCount || (u.referredUsers || []).length || 0;
   const claimed = u.inviteRewardClaimed || {};
   let base = typeof claimed._base === 'number'
     ? claimed._base
-    : CONFIG.inviteTasks.filter(t => claimed[t.id]).reduce((s, t) => s + t.count, 0); // توافق مع الحسابات القديمة
+    : CONFIG.inviteTasks.filter(t => claimed[t.id]).reduce((s, t) => s + t.count, 0);
   base = Math.min(Math.max(0, base), total);
-  const idx = CONFIG.inviteTasks.findIndex(t => !claimed[t.id]);   // المهمة الحالية (-1 = اكتملت كلها)
+  const idx = CONFIG.inviteTasks.findIndex(t => !claimed[t.id]);
   return { total, claimed, base, idx, progress: total - base };
 }
 
@@ -2793,7 +2728,7 @@ async function collectInviteReward(taskId){
       trx.update(userRef, {
         balance_sy: firebase.firestore.FieldValue.increment(task.reward),
         totalEarned: firebase.firestore.FieldValue.increment(task.reward),
-        inviteRewardClaimed: { ...s.claimed, [taskId]: true, _base: s.total },   // المهمة التالية تبدأ من 0
+        inviteRewardClaimed: { ...s.claimed, [taskId]: true, _base: s.total },
         updatedAt: firebase.firestore.FieldValue.serverTimestamp()
       });
     });
@@ -2812,15 +2747,91 @@ function ringSvg(frac){
     '<circle class="ring__fg" cx="40" cy="40" r="34" style="stroke-dashoffset:' + (c * (1 - f)) + '"/></svg>';
 }
 
+/* ✅ عرض جميع المهمات: الخاصة + الدعوات */
 function renderTasks(){
   const container = $('inviteTasksContainer');
   if (!container || !STATE.user) return;
   const u = STATE.user;
   const s = inviteState(u);
   const T = CONFIG.inviteTasks, N = T.length;
+  const ST = CONFIG.specialTasks;
   let html = '';
 
-  // 1) المهمة الحالية (بطاقة رئيسية)
+  // ═══ المهمات الخاصة ═══
+  html += '<div class="grp"><span>مهمات خاصة</span><small>2</small></div>';
+
+  // 1) مهمة الجمع 5 مرات
+  const collectCount = u.miningCollectCount || 0;
+  const collect5Done = !!u.collect5RewardClaimed;
+  const collect5Ready = collectCount >= 5 && !collect5Done;
+  const collect5Progress = Math.min(collectCount, 5);
+
+  if (collect5Done) {
+    html += '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
+      '<div class="qrow__info"><div class="qrow__t">' + ST.collect5.title + '</div>' +
+      '<div class="qrow__d">تم استلام المكافأة</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ل.س</span></div>';
+  } else if (collect5Ready) {
+    html += '<div class="fq fq--ready">' +
+      '<div class="fq__top"><span class="fq__badge">جاهزة للاستلام</span>' +
+        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ل.س</span></div>' +
+      '<div class="fq__body">' +
+        '<div class="ring ring--lg">' + ringSvg(1) +
+          '<div class="ring__n"><b>5</b><small>/ 5</small></div></div>' +
+        '<div class="fq__txt"><div class="fq__t">' + ST.collect5.title + '</div>' +
+          '<div class="fq__d">' + ST.collect5.desc + '</div>' +
+          '<span class="fq__left">اكتملت — استلم مكافأتك</span></div>' +
+      '</div>' +
+      '<button class="fq__btn fq__btn--collect" data-special="collect5"><i class="fas fa-hand-holding-usd"></i> استلام ' + ST.collect5.reward + ' ل.س</button>' +
+    '</div>';
+  } else {
+    html += '<div class="fq">' +
+      '<div class="fq__top"><span class="fq__badge">قيد التقدم</span>' +
+        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ل.س</span></div>' +
+      '<div class="fq__body">' +
+        '<div class="ring ring--lg">' + ringSvg(collect5Progress / 5) +
+          '<div class="ring__n"><b>' + collect5Progress + '</b><small>/ 5</small></div></div>' +
+        '<div class="fq__txt"><div class="fq__t">' + ST.collect5.title + '</div>' +
+          '<div class="fq__d">' + ST.collect5.desc + '</div>' +
+          '<span class="fq__left">باقي ' + Math.max(0, 5 - collectCount) + ' جمع</span></div>' +
+      '</div>' +
+      '<button class="fq__btn fq__btn--go" data-go="home"><i class="fas fa-water"></i> اذهب للتعدين</button>' +
+    '</div>';
+  }
+
+  // 2) مهمة الشراء الأول
+  const firstBuyDone = !!u.firstBuyRewardClaimed;
+  const firstBuyReady = u.hasPurchasedPlan && !firstBuyDone;
+
+  if (firstBuyDone) {
+    html += '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
+      '<div class="qrow__info"><div class="qrow__t">' + ST.firstBuy.title + '</div>' +
+      '<div class="qrow__d">تم استلام المكافأة</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>';
+  } else if (firstBuyReady) {
+    html += '<div class="fq fq--ready">' +
+      '<div class="fq__top"><span class="fq__badge">جاهزة للاستلام</span>' +
+        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>' +
+      '<div class="fq__body">' +
+        '<div class="ring ring--lg">' + ringSvg(1) +
+          '<div class="ring__n"><b><i class="fas fa-check"></i></b></div></div>' +
+        '<div class="fq__txt"><div class="fq__t">' + ST.firstBuy.title + '</div>' +
+          '<div class="fq__d">' + ST.firstBuy.desc + '</div>' +
+          '<span class="fq__left">اكتملت — استلم مكافأتك</span></div>' +
+      '</div>' +
+      '<button class="fq__btn fq__btn--collect" data-special="firstBuy"><i class="fas fa-hand-holding-usd"></i> استلام ' + ST.firstBuy.reward + ' ل.س</button>' +
+    '</div>';
+  } else {
+    html += '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
+      '<div class="qrow__info"><div class="qrow__t">' + ST.firstBuy.title + '</div>' +
+      '<div class="qrow__d">' + ST.firstBuy.desc + '</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>';
+  }
+
+  // ═══ مهمات الدعوات ═══
+  html += '<div class="grp"><span>مهمات الدعوات</span><small>' + T.filter(t => s.claimed[t.id]).length + ' / ' + N + '</small></div>';
+  html += '<div class="hint"><i class="fas fa-info-circle"></i><div>المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>.</div></div>';
+
   if (s.idx >= 0){
     const task = T[s.idx];
     const progress = Math.min(Math.max(s.progress, 0), task.count);
@@ -2844,29 +2855,31 @@ function renderTasks(){
       '<div class="fq__t">أنهيت كل مهمات الدعوة</div><div class="fq__d">أحسنت! استمر بدعوة أصدقائك لتكسب مكافأة 10 ل.س عن كل صديق.</div></div>';
   }
 
-  // 2) القادمة
+  // القادمة من الدعوات
   const upcoming = T.map((t, i) => ({ t, i })).filter(x => !s.claimed[x.t.id] && x.i !== s.idx);
   if (upcoming.length){
-    html += '<div class="grp"><span>المهمات القادمة</span><small>' + upcoming.length + '</small></div>' +
-      upcoming.map(x => '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
-        '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(x.t.title) + '</div>' +
-        '<div class="qrow__d">تُفتح بعد استلام مكافأة المهمة السابقة</div></div>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + x.t.reward + ' ل.س</span></div>').join('');
+    html += upcoming.map(x => '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
+      '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(x.t.title) + '</div>' +
+      '<div class="qrow__d">تُفتح بعد استلام مكافأة المهمة السابقة</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + x.t.reward + ' ل.س</span></div>').join('');
   }
 
-  // 3) المكتملة
+  // المكتملة من الدعوات
   const done = T.filter(t => s.claimed[t.id]);
   if (done.length){
-    html += '<div class="grp"><span>المهمات المكتملة</span><small>' + done.length + '</small></div>' +
-      done.map(t => '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
-        '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(t.title) + '</div>' +
-        '<div class="qrow__d">تم استلام المكافأة</div></div>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + t.reward + ' ل.س</span></div>').join('');
+    html += done.map(t => '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
+      '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(t.title) + '</div>' +
+      '<div class="qrow__d">تم استلام المكافأة</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + t.reward + ' ل.س</span></div>').join('');
   }
 
   container.innerHTML = html;
-  container.querySelectorAll('.fq__btn--collect').forEach(b =>
+  
+  // ربط الأحداث
+  container.querySelectorAll('.fq__btn--collect[data-task]').forEach(b =>
     b.addEventListener('click', () => collectInviteReward(b.dataset.task)));
+  container.querySelectorAll('.fq__btn--collect[data-special]').forEach(b =>
+    b.addEventListener('click', () => collectSpecialReward(b.dataset.special)));
   container.querySelectorAll('[data-go]').forEach(b =>
     b.addEventListener('click', () => navigate(b.dataset.go)));
 
@@ -2875,17 +2888,27 @@ function renderTasks(){
   // ملخص اللوحة
   const doneInvites = T.filter(t => s.claimed[t.id]).length;
   const chDone = u.channelRewardClaimed ? 1 : 0;
-  const doneAll = doneInvites + chDone;
-  const totalAll = N + 1;
-  const left = T.filter(t => !s.claimed[t.id]).reduce((a, t) => a + t.reward, 0) + (chDone ? 0 : CONFIG.channelTask.reward);
-  const totalReward = T.reduce((a, t) => a + t.reward, 0) + CONFIG.channelTask.reward;
+  const c5Done = u.collect5RewardClaimed ? 1 : 0;
+  const fbDone = u.firstBuyRewardClaimed ? 1 : 0;
+  const doneAll = doneInvites + chDone + c5Done + fbDone;
+  const totalAll = N + 1 + 2;
+  const left =
+    T.filter(t => !s.claimed[t.id]).reduce((a, t) => a + t.reward, 0) +
+    (chDone ? 0 : CONFIG.channelTask.reward) +
+    (c5Done ? 0 : ST.collect5.reward) +
+    (fbDone ? 0 : ST.firstBuy.reward);
+  const totalReward =
+    T.reduce((a, t) => a + t.reward, 0) +
+    CONFIG.channelTask.reward +
+    ST.collect5.reward +
+    ST.firstBuy.reward;
+    
   setText('qbNum', doneAll);
   setText('qbOf', '/ ' + totalAll);
   setText('questSummary', doneAll + ' من ' + totalAll + ' مهمات مكتملة');
   setText('questLeft', fmt(left));
   setText('tileTaskTotal', fmt(totalReward));
   setText('chReward', CONFIG.channelTask.reward);
-  setText('inviteGrpMeta', doneInvites + ' / ' + N);
   const fg = $('qbRingFg'); if (fg) fg.style.strokeDashoffset = 213.63 * (1 - doneAll / totalAll);
 }
 
@@ -2937,7 +2960,7 @@ function navigate(view){
   if (view === 'store') renderPlans();
   if (view === 'referral') loadLeaderboard();
   if (view === 'profile') updateAvatar('profAvatar');
-  if (view === 'tasks') renderTasks(); // ✅ عرض المهام
+  if (view === 'tasks') renderTasks();
 }
 
 function bindUI(){
@@ -2952,7 +2975,6 @@ function bindUI(){
     else window.open(url, '_blank');
   });
   
-  // ✅ زر تغيير الثيم
   const themeBtn = $('themeToggleBtn');
   if (themeBtn) {
     themeBtn.addEventListener('click', () => ThemeManager.toggle());
@@ -2969,7 +2991,6 @@ async function bootstrap(){
   if (!initTelegram()) return;
   $('app').style.display = 'flex';
   
-  // ✅ تهيئة الثيم
   ThemeManager.init();
   
   try{ await loadOrCreateUser(); }
@@ -3016,9 +3037,10 @@ async function bootstrap(){
           fresh.referralCount !== STATE.user.referralCount ||
           fresh.channelRewardClaimed !== STATE.user.channelRewardClaimed ||
           fresh.channelJoined !== STATE.user.channelJoined ||
-          fresh.inviteTaskProgress !== STATE.user.inviteTaskProgress ||
+          fresh.miningCollectCount !== STATE.user.miningCollectCount ||
           fresh.hasPurchasedPlan !== STATE.user.hasPurchasedPlan ||
-          fresh.miningCollectRewardClaimed !== STATE.user.miningCollectRewardClaimed;
+          fresh.collect5RewardClaimed !== STATE.user.collect5RewardClaimed ||
+          fresh.firstBuyRewardClaimed !== STATE.user.firstBuyRewardClaimed;
         if (changed) {
           STATE.user = fresh;
           updateUI(); renderMining(); renderPlans(); renderTasks();
