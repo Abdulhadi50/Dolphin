@@ -29,7 +29,7 @@
   --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-8:32px;
   --safe:env(safe-area-inset-bottom,0px);
   --dock-h:68px;--dock-gap:12px;
-  --f-xs:11px;--f-sm:12.5px;--f-base:14px;--f-md:15px;--f-lg:17px;--f-xl:20px;--f-2xl:26px;--f-3xl:36px;--f-4xl:44px;
+  --f-xs:11px;--f-sm:12.5px;--f-base:14px;--f-md:15px;--f-lg:17px;--f-xl:20px;--f-2xl:26px;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --mkA:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 90' preserveAspectRatio='none'%3E%3Cpath d='M0 45C150 5 150 5 300 45S450 85 600 45V90H0Z'/%3E%3C/svg%3E");
   --mkB:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 90' preserveAspectRatio='none'%3E%3Cpath d='M0 45C100 20 200 70 300 45S500 70 600 45V90H0Z'/%3E%3C/svg%3E");
@@ -122,73 +122,147 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .plan-header__lvl-num{font-size:var(--f-xl);font-weight:800;line-height:1;color:var(--yellow);direction:ltr;font-variant-numeric:tabular-nums}
 .plan-header__lvl-lbl{font-size:9px;color:rgba(255,255,255,.75);font-weight:700}
 
-.stage{position:relative;width:100%;max-width:330px;aspect-ratio:1/1;margin:var(--sp-4) auto var(--sp-3)}
-.stage__outer{display:none}
-.stage__glow{position:absolute;inset:-8px;border-radius:36px;background:radial-gradient(circle,rgba(255,255,255,.28),transparent 70%);opacity:0;transition:opacity .5s}
-.stage__glow.on{opacity:1}
-.stage__glow.ready{background:radial-gradient(circle,rgba(0,122,255,.55),transparent 70%);animation:readyGlow 2s ease-in-out infinite}
-@keyframes readyGlow{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.06);opacity:1}}
-.stage__tank{position:absolute;inset:0;border-radius:30px;overflow:hidden;contain:paint;background:linear-gradient(180deg,#001634 0%,#002E66 100%);border:3px solid rgba(255,255,255,.9)}
-.stage__tank::before{content:'';position:absolute;inset:0;border:2px solid rgba(255,255,255,.18);border-radius:26px;z-index:3;pointer-events:none}
-.stage__water{position:absolute;bottom:0;left:0;right:0;height:0%;
-  --c1:rgba(160,215,255,.55);--c2:rgba(90,185,255,.7);--c3:rgba(200,232,255,.55);
-  background:linear-gradient(180deg,#8CCBFF 0%,#3DA5FF 24%,#1A8CFF 66%,#0A5FD0 100%);
-  transition:height .9s cubic-bezier(.4,0,.2,1);will-change:height}
-.stage__water.ready{--c1:rgba(160,215,255,.65);--c2:rgba(90,185,255,.75);--c3:rgba(200,232,255,.65);
-  background:linear-gradient(180deg,#8CCBFF 0%,#3DA5FF 24%,#1A8CFF 68%,#0A5FD0 100%)}
-.wave{position:absolute;left:0;height:90px;width:calc(100% + var(--w));background:var(--wc);
-  -webkit-mask-image:var(--mkA);mask-image:var(--mkA);-webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;-webkit-mask-size:var(--w) 100%;mask-size:var(--w) 100%;
-  animation:waveX var(--t) linear infinite,waveBob 4.5s ease-in-out infinite;will-change:transform}
-.wave--1{--w:720px;--t:12s;--wc:var(--c1);top:-56px}
-.wave--2{--w:520px;--t:8s;--wc:var(--c2);top:-46px;animation-direction:reverse,normal;-webkit-mask-image:var(--mkB);mask-image:var(--mkB)}
-.wave--3{--w:600px;--t:5.5s;--wc:var(--c3);top:-38px}
-@keyframes waveX{to{transform:translateX(calc(-1 * var(--w)))}}
-@keyframes waveBob{0%,100%{translate:0 0}50%{translate:0 -7px}}
-.stage__shine{position:absolute;inset:0;border-radius:30px;pointer-events:none;z-index:4;background:linear-gradient(135deg,rgba(255,255,255,.3) 0%,rgba(255,255,255,0) 34%)}
-.stage__icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;font-size:68px;line-height:1;pointer-events:none;user-select:none}
-.stage__icon.idle{animation:iconFloat 3s ease-in-out infinite}
-.stage__icon.swim{animation:iconSwim 2.5s ease-in-out infinite}
-.stage__icon.ready{animation:iconJump 1.1s ease-in-out infinite}
-@keyframes iconFloat{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 6px))}}
-@keyframes iconSwim{0%,100%{transform:translate(-50%,-50%) rotate(-6deg) scale(1)}50%{transform:translate(-50%,calc(-50% - 12px)) rotate(6deg) scale(1.05)}}
-@keyframes iconJump{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-16px)}}
-.stage__pct{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:6;background:rgba(0,0,0,.55);color:#fff;
-  border:1px solid rgba(255,255,255,.22);padding:6px 16px;border-radius:20px;font-size:var(--f-sm);font-weight:800;font-variant-numeric:tabular-nums;
-  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);direction:ltr;pointer-events:none;white-space:nowrap}
+/* ═══ Aquarium 2.0 ═══ */
+.aquarium{
+  position:relative;width:100%;aspect-ratio:1.1/1;
+  margin:14px auto;perspective:800px;
+  z-index:1;
+}
+.tank{
+  position:absolute;inset:0;border-radius:24px;overflow:hidden;
+  transform:rotateX(6deg);
+  background:linear-gradient(180deg,#0a3d5c 0%,#001d33 60%,#000a14 100%);
+  border:4px solid rgba(180,230,255,.85);
+  box-shadow:
+    inset 0 0 80px rgba(0,150,255,.3),
+    inset 0 -40px 60px rgba(0,0,0,.6),
+    0 20px 50px rgba(0,0,0,.5);
+}
 
-.stage__fx{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
-.stage__fx .coin,.stage__fx .spark,.stage__fx .rays{display:none}
-.stage.is-running .stage__fx .coin,.stage.is-running .stage__fx .spark{display:block}
-.stage.is-ready .stage__fx .rays{display:block}
-.stage__fx .rays{position:absolute;left:50%;top:50%;width:170%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);animation:raysSpin 26s linear infinite;
-  background:repeating-conic-gradient(rgba(255,255,255,.38) 0 9deg,rgba(255,255,255,0) 9deg 22.5deg);
-  -webkit-mask-image:radial-gradient(circle,#000 8%,transparent 62%);mask-image:radial-gradient(circle,#000 8%,transparent 62%)}
-@keyframes raysSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-.stage__fx .coin{position:absolute;bottom:-26px;left:var(--x);width:var(--s);aspect-ratio:1;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#E0F2FE 0,#7DB9FF 55%,#007AFF 100%);border:2px solid #B8DDFF;opacity:0;animation:coinRise var(--t) ease-in infinite;animation-delay:var(--d)}
-@keyframes coinRise{0%{transform:translateY(0) scale(.6);opacity:0}12%{opacity:1}80%{opacity:.9}100%{transform:translateY(-300px) scale(1.05);opacity:0}}
-.stage__fx .spark{position:absolute;left:var(--x);top:var(--y);width:var(--s);aspect-ratio:1;background:#fff;opacity:0;
-  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:sparkTwinkle var(--t) ease-in-out infinite;animation-delay:var(--d)}
-@keyframes sparkTwinkle{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+/* سطح الماء */
+.water-surface{
+  position:absolute;top:0;left:0;right:0;height:8px;
+  background:linear-gradient(180deg,rgba(140,220,255,.6),transparent);
+  animation:waterSurface 3s ease-in-out infinite;
+}
+@keyframes waterSurface{0%,100%{transform:translateY(0)}50%{transform:translateY(2px)}}
 
-.status-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;background:rgba(0,0,0,.28);border-radius:16px;margin-bottom:var(--sp-3);font-size:var(--f-sm);font-weight:700;color:#fff}
+/* أشعة الشمس */
+.sun-rays{
+  position:absolute;top:-20%;left:30%;width:40%;height:100%;
+  background:linear-gradient(180deg,rgba(180,230,255,.4),transparent 70%);
+  filter:blur(20px);animation:sunMove 8s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes sunMove{0%,100%{transform:rotate(-8deg) translateX(0)}50%{transform:rotate(8deg) translateX(30px)}}
+
+/* الرمل والصخور */
+.sand{
+  position:absolute;bottom:0;left:0;right:0;height:22%;
+  background:linear-gradient(180deg,#B8935A 0%,#8B6B3F 100%);
+  border-radius:50% 50% 0 0 / 20% 20% 0 0;
+  z-index:2;
+}
+.rock{position:absolute;bottom:8%;width:40px;height:30px;border-radius:50% 50% 20% 20%;
+  background:linear-gradient(160deg,#4A5568,#2D3748);filter:blur(.3px);z-index:3}
+.rock--1{right:15%}
+.rock--2{left:20%;width:30px;height:22px}
+.rock--3{left:45%;width:25px;height:18px;bottom:6%}
+
+/* النباتات */
+.plant{position:absolute;bottom:15%;width:8px;background:linear-gradient(180deg,#4ADE80,#166534);
+  border-radius:50% 50% 0 0;transform-origin:bottom center;
+  animation:sway 3s ease-in-out infinite;z-index:4}
+.plant::before,.plant::after{content:'';position:absolute;bottom:50%;width:100%;height:60%;
+  background:inherit;border-radius:50%;transform-origin:bottom}
+.plant::before{transform:rotate(-30deg) translateX(-6px)}
+.plant::after{transform:rotate(30deg) translateX(6px)}
+.plant--1{right:25%;height:50px;animation-delay:0s}
+.plant--2{right:28%;height:40px;animation-delay:.5s}
+.plant--3{left:15%;height:45px;animation-delay:1s}
+.plant--4{left:18%;height:35px;animation-delay:1.5s}
+@keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+
+/* الأسماك */
+.fish{position:absolute;font-size:28px;line-height:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));
+  transition:opacity .5s;z-index:5;pointer-events:none}
+.fish--1{top:25%;animation:swimRight 14s linear infinite}
+.fish--2{top:45%;font-size:22px;animation:swimLeft 18s linear infinite;animation-delay:-3s}
+.fish--3{top:65%;font-size:24px;animation:swimRight 22s linear infinite;animation-delay:-7s}
+.fish--4{top:35%;font-size:18px;animation:swimLeft 16s linear infinite;animation-delay:-11s}
+.fish--5{top:55%;font-size:26px;animation:swimRight 20s linear infinite;animation-delay:-15s;opacity:0}
+.fish--6{top:75%;font-size:20px;animation:swimLeft 15s linear infinite;animation-delay:-8s;opacity:0}
+@keyframes swimRight{0%{left:-10%;transform:scaleX(-1)}100%{left:110%;transform:scaleX(-1)}}
+@keyframes swimLeft{0%{left:110%}100%{left:-10%}}
+
+/* الفقاعات */
+.bubble{position:absolute;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.8),rgba(180,230,255,.2));
+  border:1px solid rgba(255,255,255,.3);pointer-events:none;z-index:6;
+  animation:bubbleUp var(--t) linear infinite;animation-delay:var(--d)}
+@keyframes bubbleUp{
+  0%{transform:translateY(0) scale(.6);opacity:0}
+  10%{opacity:.9}
+  100%{transform:translateY(-350px) scale(1.1);opacity:0}
+}
+
+/* 💰 صندوق الكنز */
+.treasure{
+  position:absolute;bottom:5%;left:50%;transform:translateX(-50%) scale(0);
+  font-size:48px;z-index:8;
+  filter:drop-shadow(0 0 20px gold);
+  transition:transform .8s cubic-bezier(.34,1.56,.64,1);opacity:0;
+}
+.treasure.show{
+  transform:translateX(-50%) scale(1);opacity:1;
+  animation:treasurePop 1.5s ease-in-out infinite;
+}
+@keyframes treasurePop{
+  0%,100%{filter:drop-shadow(0 0 20px gold)}
+  50%{filter:drop-shadow(0 0 40px gold) drop-shadow(0 0 60px orange)}
+}
+
+/* 💎 ماسات تتصاعد */
+.gem{position:absolute;bottom:20%;left:50%;font-size:22px;z-index:7;
+  animation:gemFloat 3s ease-out infinite;opacity:0;animation-delay:var(--d);
+  filter:drop-shadow(0 0 6px rgba(100,220,255,.8))}
+@keyframes gemFloat{
+  0%{transform:translate(-50%,0) scale(.5) rotate(0);opacity:0}
+  20%{opacity:1}
+  100%{transform:translate(calc(-50% + var(--x)),-180px) scale(1) rotate(360deg);opacity:0}
+}
+.scene.running .gem{opacity:1}
+
+/* نص النسبة */
+.pct{position:absolute;top:14px;left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,.6);backdrop-filter:blur(8px);
+  padding:6px 16px;border-radius:20px;font-size:12px;font-weight:800;
+  border:1px solid rgba(255,255,255,.2);z-index:10;
+  color:#fff;font-variant-numeric:tabular-nums}
+.pct.ready{background:#007AFF;border-color:#4DA3FF;display:flex;align-items:center;gap:6px}
+.pct.ready::before{content:'\f51e';font-family:'Font Awesome 6 Free';font-weight:900;font-size:11px}
+
+/* ═══ نهاية Aquarium ═══ */
+
+.status-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;background:rgba(0,0,0,.28);border-radius:16px;margin-bottom:var(--sp-3);font-size:var(--f-sm);font-weight:700;color:#fff;position:relative;z-index:2}
 .status-bar__dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);flex-shrink:0}
 .status-bar__dot.active{background:#fff;animation:dotPulse 1.5s ease-in-out infinite}
 .status-bar__dot.ready{background:#007AFF;animation:dotPulse 1.2s ease-in-out infinite}
 @keyframes dotPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.45}}
-.timer-bar{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;background:rgba(0,0,0,.28);border-radius:18px;margin-bottom:var(--sp-3);color:#fff}
+.timer-bar{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;background:rgba(0,0,0,.28);border-radius:18px;margin-bottom:var(--sp-3);color:#fff;z-index:2}
 .timer-bar>*{position:relative;z-index:2}
 .timer-bar::before,.timer-bar::after{content:'';position:absolute;left:0;height:75%;width:calc(100% + var(--w));background:var(--wc);
   -webkit-mask-image:var(--mkA);mask-image:var(--mkA);-webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;-webkit-mask-size:var(--w) 100%;mask-size:var(--w) 100%;
   animation:waveX var(--t) linear infinite;z-index:1;bottom:-30%}
 .timer-bar::before{--w:520px;--t:9s;--wc:rgba(255,255,255,.08)}
 .timer-bar::after{--w:380px;--t:6s;--wc:rgba(255,255,255,.06)}
+@keyframes waveX{to{transform:translateX(calc(-1 * var(--w)))}}
 .timer-bar__ic{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
 .timer-bar__text{font-size:var(--f-xl);font-weight:800;font-variant-numeric:tabular-nums;direction:ltr}
 .timer-bar__lbl{font-size:var(--f-xs);color:rgba(255,255,255,.75);font-weight:600;margin-right:2px}
 
 .action{width:100%;padding:16px;border-radius:20px;font-size:var(--f-md);font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;min-height:60px;
-  transition:transform .15s,background .2s;position:relative;overflow:hidden}
+  transition:transform .15s,background .2s;position:relative;overflow:hidden;z-index:2}
 .action:active:not([disabled]){transform:scale(.98)}
 .action[disabled]{cursor:not-allowed;opacity:.7}
 .action--start{background:#fff;color:#311D96}
@@ -207,11 +281,8 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .mining-card.is-ready .timer-bar__lbl{color:#7DB9FF}
 .mining-card.is-ready .plan-header__lvl{background:rgba(0,122,255,.28)}
 .mining-card.is-ready .plan-header__lvl-num{color:#7DB9FF}
-.stage.is-ready .stage__tank{background:linear-gradient(180deg,#001634 0%,#002E66 100%)}
-.stage.is-ready .stage__tank::before{border-color:rgba(125,185,255,.6)}
-.stage.is-ready .stage__pct{direction:rtl;background:#007AFF;color:#fff;border-color:#4DA3FF;font-size:15px;padding:8px 20px;display:flex;align-items:center;gap:7px}
-.stage.is-ready .stage__pct::before{content:'\f51e';font-family:'Font Awesome 6 Free';font-weight:900;font-size:13px}
 
+/* باقي الأنماط كما هي */
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tile{position:relative;overflow:hidden;isolation:isolate;text-align:start;border-radius:24px;padding:14px;min-height:140px;background:var(--blue);
   display:flex;flex-direction:column;gap:3px;transition:transform .15s}
@@ -531,12 +602,14 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   :root{--dock-h:62px}
   .ref-actions{grid-template-columns:1fr}
   .cq{flex-wrap:wrap}.cq__btn{width:100%;justify-content:center}
-  .stage__icon{font-size:52px}.stage__pct{font-size:12px}.avatar{width:42px;height:42px}
+  .aquarium .fish{font-size:22px}
+  .avatar{width:42px;height:42px}
   .plan-header__icon{width:52px;height:52px;font-size:24px}.plan__icon{width:54px;height:54px;font-size:28px}
   .pf-bal__val{font-size:28px}
 }
 @media (prefers-reduced-motion:reduce){
-  .stage__fx .rays,.stage__fx .coin,.stage__fx .spark,.view.active{animation:none}
+  .view.active{animation:none}
+  .fish{animation:none}
 }
 </style>
 </head>
@@ -607,21 +680,42 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
           </div>
         </div>
 
-        <div class="stage" id="stage">
-          <div class="stage__outer"></div>
-          <div class="stage__glow" id="stageGlow"></div>
-          <div class="stage__tank">
-            <div class="stage__water" id="stageWater"><div class="wave wave--1"></div><div class="wave wave--2"></div><div class="wave wave--3"></div></div>
-            <div class="stage__fx"><i class="rays"></i><i class="coin" style="--x:8%;--s:14px;--t:4.6s;--d:0s"></i><i class="coin" style="--x:20%;--s:10px;--t:5.4s;--d:1.2s"></i><i class="coin" style="--x:33%;--s:18px;--t:4.2s;--d:2.4s"></i><i class="coin" style="--x:46%;--s:12px;--t:5.8s;--d:0.6s"></i><i class="coin" style="--x:58%;--s:16px;--t:4.8s;--d:1.8s"></i><i class="coin" style="--x:70%;--s:10px;--t:5.2s;--d:3.0s"></i><i class="coin" style="--x:82%;--s:15px;--t:4.4s;--d:0.3s"></i><i class="coin" style="--x:90%;--s:11px;--t:5.6s;--d:2.1s"></i><i class="coin" style="--x:14%;--s:12px;--t:6.0s;--d:3.6s"></i><i class="spark" style="--x:18%;--y:20%;--s:14px;--t:2.8s;--d:0.2s"></i><i class="spark" style="--x:78%;--y:16%;--s:12px;--t:3.2s;--d:1.0s"></i><i class="spark" style="--x:30%;--y:44%;--s:10px;--t:2.6s;--d:1.8s"></i><i class="spark" style="--x:70%;--y:40%;--s:14px;--t:3.4s;--d:0.6s"></i><i class="spark" style="--x:50%;--y:12%;--s:12px;--t:3.0s;--d:2.2s"></i><i class="spark" style="--x:88%;--y:52%;--s:10px;--t:2.8s;--d:1.4s"></i></div>
-            <div class="stage__shine"></div>
+        <!-- ═══ Aquarium 2.0 ═══ -->
+        <div class="aquarium scene" id="aquariumScene">
+          <div class="tank" id="tank">
+            <div class="sun-rays"></div>
+            <div class="water-surface"></div>
+            <div class="sand"></div>
+            <div class="rock rock--1"></div>
+            <div class="rock rock--2"></div>
+            <div class="rock rock--3"></div>
+            <div class="plant plant--1"></div>
+            <div class="plant plant--2"></div>
+            <div class="plant plant--3"></div>
+            <div class="plant plant--4"></div>
+
+            <div class="fish fish--1">🐟</div>
+            <div class="fish fish--2">🐠</div>
+            <div class="fish fish--3">🐡</div>
+            <div class="fish fish--4">🐟</div>
+            <div class="fish fish--5" id="fish5">🪼</div>
+            <div class="fish fish--6" id="fish6">🐠</div>
+
+            <div class="treasure" id="treasure">💰</div>
+
+            <div class="gem" style="--x:-40px;--d:0s">💎</div>
+            <div class="gem" style="--x:20px;--d:.6s">💎</div>
+            <div class="gem" style="--x:-10px;--d:1.2s">💎</div>
+            <div class="gem" style="--x:40px;--d:1.8s">💎</div>
+
+            <div class="pct" id="stagePct">0%</div>
           </div>
-          <div class="stage__icon idle" id="stageIcon"><span>🐟</span></div>
-          <div class="stage__pct" id="stagePct">0%</div>
         </div>
+        <!-- ═══ نهاية Aquarium ═══ -->
 
         <div class="status-bar">
           <span class="status-bar__dot" id="statusDot"></span>
-          <span id="statusText">جاهز لبدء التعدين</span>
+          <span id="statusText">الحوض هادئ — ابدأ التعدين!</span>
         </div>
 
         <div class="timer-bar">
@@ -825,7 +919,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
             </div>
             <div id="depBinanceInfo" style="display:none">
               <div class="id-box" style="font-size:18px;letter-spacing:4px;border-color:var(--amber)">1121748571</div>
-              <button class="btn btn--sea" style="background:linear-gradient(135deg,#F59E0B,#FCD34D);color:#78350F" id="depCopyBinance"><i class="fas fa-copy"></i> نسخ معرف Binance</button>
+              <button class="btn btn--sea" style="background:#007AFF;color:#fff" id="depCopyBinance"><i class="fas fa-copy"></i> نسخ معرف Binance</button>
             </div>
           </div>
         </div>
@@ -1252,8 +1346,6 @@ function renderLocked(){
   setText('miningStatusMeta', 'مجمّد');
   setText('timerText', '--:--:--');
   setText('timerLbl', 'مجمّد');
-  $('stageIcon').className = 'stage__icon idle';
-  $('stageGlow').className = 'stage__glow';
   const btn = $('mineAction');
   btn.className = 'action action--stop';
   btn.disabled = true;
@@ -1493,6 +1585,31 @@ function getPlanCycleMs(){
   return plan.cycleHours * 60 * 60 * 1000;
 }
 
+/* ═══ التعدين ═══ */
+const aquariumScene = document.getElementById('aquariumScene');
+const fish5 = document.getElementById('fish5');
+const fish6 = document.getElementById('fish6');
+const treasure = document.getElementById('treasure');
+const tank = document.getElementById('tank');
+
+let _bubbleInt = null;
+
+function createBubbles(count){
+  document.querySelectorAll('.bubble').forEach(b => b.remove());
+  for(let i = 0; i < count; i++){
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.style.left = Math.random() * 100 + '%';
+    b.style.bottom = '-20px';
+    const size = 4 + Math.random() * 12;
+    b.style.width = size + 'px';
+    b.style.height = size + 'px';
+    b.style.setProperty('--t', (3 + Math.random() * 4) + 's');
+    b.style.setProperty('--d', (Math.random() * 3) + 's');
+    tank.appendChild(b);
+  }
+}
+
 function renderMining(){
   if (!STATE.user) return;
   const u = STATE.user;
@@ -1500,8 +1617,9 @@ function renderMining(){
 
   const readyNow = !STATE.timeLocked && !!u.hasStartedMining && !!u.miningCollectable;
   const runningNow = !STATE.timeLocked && !!u.hasStartedMining && !u.miningCollectable && !!u.miningStartTime;
-  $('stage').classList.toggle('is-ready', readyNow);
-  $('stage').classList.toggle('is-running', runningNow);
+
+  aquariumScene.classList.toggle('ready', readyNow);
+  aquariumScene.classList.toggle('running', runningNow);
   $('miningCard').classList.toggle('is-ready', readyNow);
 
   if (STATE.timeLocked) { renderLocked(); return; }
@@ -1513,15 +1631,15 @@ function renderMining(){
 
 function renderIdle(){
   const plan = getPlan((STATE.user && STATE.user.activePlanId) || 'basic');
-  setText('statusText', 'جاهز لبدء التعدين');
+  setText('statusText', 'الحوض هادئ — ابدأ التعدين!');
   $('statusText').style.color = '';
   $('statusDot').className = 'status-bar__dot';
   setText('stagePct', '0%');
-  $('stageWater').style.height = '0%';
-  $('stageWater').className = 'stage__water';
-  $('stageGlow').className = 'stage__glow';
-  $('stageIcon').className = 'stage__icon idle';
-  $('stageIcon').innerHTML = '<span>' + plan.emoji + '</span>';
+  $('stagePct').className = 'pct';
+  treasure.classList.remove('show');
+  if (fish5) fish5.style.opacity = '0';
+  if (fish6) fish6.style.opacity = '0';
+  createBubbles(8);
 
   setText('timerText', String(plan.cycleHours).padStart(2,'0') + ':00:00');
   setText('timerLbl', 'مدة الدورة');
@@ -1542,22 +1660,24 @@ function renderRunning(u, plan){
 
   if (remaining <= 0) { markMiningComplete(); return; }
 
-  setText('statusText', 'جاري التعدين...');
+  setText('statusText', 'الأسماك تسبح وتعمل...');
   $('statusText').style.color = '';
   $('statusDot').className = 'status-bar__dot active';
   setText('miningStatusMeta', 'نشط');
-  $('stageIcon').className = 'stage__icon swim';
-  $('stageIcon').innerHTML = '<span>' + plan.emoji + '</span>';
-  $('stageGlow').className = 'stage__glow on';
+  treasure.classList.remove('show');
+  createBubbles(20);
+
+  const pctNum = Math.min(100, (elapsed / durMs) * 100);
+  setText('stagePct', Math.floor(pctNum) + '%');
+  $('stagePct').className = 'pct';
+
+  if (pctNum > 40 && fish5) fish5.style.opacity = '1';
+  if (pctNum > 70 && fish6) fish6.style.opacity = '1';
 
   const btn = $('mineAction');
   btn.className = 'action action--stop';
   btn.disabled = false;
   btn.innerHTML = '<i class="fas fa-stop-circle"></i><span>إيقاف التعدين</span>';
-
-  const pct = Math.min(100, (elapsed / durMs) * 100);
-  setText('stagePct', Math.floor(pct) + '%');
-  $('stageWater').style.height = pct + '%';
 
   const sec = Math.floor(remaining / 1000);
   const h = Math.floor(sec / 3600);
@@ -1568,16 +1688,17 @@ function renderRunning(u, plan){
 }
 
 function renderReady(plan){
-  setText('statusText', 'اكتمل التعدين — جاهز للجمع!');
+  setText('statusText', 'اكتمل التعدين — الحوض مليء بالكنوز!');
   $('statusText').style.color = '#7DB9FF';
   $('statusDot').className = 'status-bar__dot ready';
   setText('miningStatusMeta', 'جاهز');
-  $('stageIcon').className = 'stage__icon ready';
-  $('stageIcon').innerHTML = '<span>' + plan.emoji + '</span>';
+  $('stagePct').className = 'pct ready';
   $('stagePct').innerHTML = '<bdi dir="ltr">+' + fmt(STATE.user.miningProgress > 0 ? STATE.user.miningProgress : plan.reward) + '</bdi> ل.س';
-  $('stageWater').style.height = '100%';
-  $('stageWater').className = 'stage__water ready';
-  $('stageGlow').className = 'stage__glow ready';
+  treasure.classList.add('show');
+  createBubbles(35);
+  if (fish5) fish5.style.opacity = '1';
+  if (fish6) fish6.style.opacity = '1';
+
   setText('timerText', '00:00:00');
   setText('timerLbl', 'اكتمل');
 
@@ -1756,6 +1877,7 @@ function onMineClick(){
   else startMining();
 }
 
+/* ═══ الخطط ═══ */
 function getPlanColors(plan){
   const t = 'rgba(0,0,0,.28)';
   const map = {
@@ -1983,6 +2105,7 @@ async function buyPlan(planId){
   }finally{ STATE.isSubmitting = false; }
 }
 
+/* ═══ Wallet ═══ */
 function initWalletTabs(){
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -2106,6 +2229,7 @@ function initDeposit(){
   $('depCopyBinance').addEventListener('click', () => copyText(CONFIG.deposit.binance, 'تم نسخ معرف Binance'));
 }
 
+/* ═══ Referral ═══ */
 function setRefPane(p){
   document.querySelectorAll('#refSeg .seg__b').forEach(b => b.classList.toggle('active', b.dataset.pane === p));
   $('refPaneInvite').style.display = p === 'invite' ? 'block' : 'none';
@@ -2293,6 +2417,7 @@ async function loadLeaderboard(){
   }
 }
 
+/* ═══ Tasks ═══ */
 async function verifyChannelJoin(){
   if (!STATE.user || STATE.isSubmitting) return;
   const btn = $('taskChannelBtn');
@@ -2642,6 +2767,7 @@ function renderChannelTask() {
   }
 }
 
+/* ═══ Navigation ═══ */
 const VIEWS = ['home','store','wallet','referral','tasks','profile'];
 function navigate(view){
   if (!VIEWS.includes(view)) view = 'home';
