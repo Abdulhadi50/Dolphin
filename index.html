@@ -11,9 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* ═══════════════════════════════════════════════════════════
-   Dark theme · خلفية #000000 · بطاقات #141414 · نصوص بيضاء
-   ═══════════════════════════════════════════════════════════ */
 :root{
   --blue:#007AFF;--blue-l:#4DA3FF;--blue-d:#0062CC;--blue-dd:#003F8A;
   --yellow:#FFD60A;--green:#30D158;--red:#FF453A;
@@ -28,7 +25,6 @@
   --amber:#FFD60A;--amber-l:#FFE66D;--amber-pale:rgba(255,214,10,.18);
   --coral:#FF6B63;--coral-2:#FF453A;--emerald:#30D158;
   --paper:#000;--white:#fff;--deep:#003F8A;--deep-2:#007AFF;
-  --dark-card:#141414;--dark-card-2:#0B0B0B;--dark-btn:#18252E;
   --r-xs:8px;--r-sm:12px;--r-md:16px;--r-lg:22px;--r-xl:28px;
   --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-8:32px;
   --safe:env(safe-area-inset-bottom,0px);
@@ -49,7 +45,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 ::-webkit-scrollbar{display:none}
 .main{scrollbar-width:none}
 
-/* ── الهيكل + القائمة العائمة ── */
 .app{position:relative;max-width:480px;margin:0 auto;height:100vh;height:100dvh;background:#000;overflow:hidden;display:flex;flex-direction:column}
 .main{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
   padding:16px 16px calc(var(--dock-h) + var(--dock-gap) + var(--safe) + 30px)}
@@ -73,14 +68,12 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .nav__av{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;overflow:hidden;color:#fff;font-size:24px;background:rgba(255,255,255,.1)}
 .nav__av img{width:100%;height:100%;object-fit:cover}
 
-/* ── الانتقال بين الصفحات ── */
 .view{display:none}
 .view.active{display:block;animation:viewIn .3s cubic-bezier(.2,.8,.2,1) both}
 .view.leaving{display:block;animation:viewOut .13s ease-in both;pointer-events:none}
 @keyframes viewIn{from{opacity:0;filter:blur(14px);transform:scale(.985)}to{opacity:1;filter:none;transform:none}}
 @keyframes viewOut{from{opacity:1;filter:none}to{opacity:0;filter:blur(10px)}}
 
-/* ── الشريط العلوي ── */
 .avatar{width:46px;height:46px;border-radius:50%;background:var(--blue);border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;
   overflow:hidden;flex-shrink:0;color:#fff;font-size:var(--f-lg);cursor:pointer;transition:transform .15s}
 .avatar:active{transform:scale(.94)}
@@ -108,7 +101,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .sec-head__title i{width:30px;height:30px;border-radius:50%;background:var(--sea-wash);color:var(--blue);display:grid;place-items:center;font-size:12.5px}
 .sec-head__meta{background:var(--glass);border:1px solid var(--glass-line);padding:4px 12px;border-radius:20px;font-size:11.5px;color:#fff;font-weight:700}
 
-/* ═══ بطاقة التعدين — تدرج بنفسجي جديد ═══ */
+/* ═══ بطاقة التعدين ═══ */
 .mining-card{position:relative;overflow:hidden;
   background:linear-gradient(160deg,#7769D8 0%,#311D96 100%);
   border:0;border-radius:var(--r-xl);padding:var(--sp-5) var(--sp-4);margin-bottom:14px}
@@ -133,7 +126,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .stage__outer{display:none}
 .stage__glow{position:absolute;inset:-8px;border-radius:36px;background:radial-gradient(circle,rgba(255,255,255,.28),transparent 70%);opacity:0;transition:opacity .5s}
 .stage__glow.on{opacity:1}
-.stage__glow.ready{background:radial-gradient(circle,rgba(255,214,10,.5),transparent 70%);animation:readyGlow 2s ease-in-out infinite}
+.stage__glow.ready{background:radial-gradient(circle,rgba(0,122,255,.55),transparent 70%);animation:readyGlow 2s ease-in-out infinite}
 @keyframes readyGlow{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.06);opacity:1}}
 .stage__tank{position:absolute;inset:0;border-radius:30px;overflow:hidden;contain:paint;background:linear-gradient(180deg,#001634 0%,#002E66 100%);border:3px solid rgba(255,255,255,.9)}
 .stage__tank::before{content:'';position:absolute;inset:0;border:2px solid rgba(255,255,255,.18);border-radius:26px;z-index:3;pointer-events:none}
@@ -141,8 +134,8 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   --c1:rgba(160,215,255,.55);--c2:rgba(90,185,255,.7);--c3:rgba(200,232,255,.55);
   background:linear-gradient(180deg,#8CCBFF 0%,#3DA5FF 24%,#1A8CFF 66%,#0A5FD0 100%);
   transition:height .9s cubic-bezier(.4,0,.2,1);will-change:height}
-.stage__water.ready{--c1:rgba(255,236,150,.65);--c2:rgba(255,214,10,.75);--c3:rgba(255,246,200,.65);
-  background:linear-gradient(180deg,#FFE680 0%,#FFD60A 24%,#FF9F0A 68%,#D97706 100%)}
+.stage__water.ready{--c1:rgba(160,215,255,.65);--c2:rgba(90,185,255,.75);--c3:rgba(200,232,255,.65);
+  background:linear-gradient(180deg,#8CCBFF 0%,#3DA5FF 24%,#1A8CFF 68%,#0A5FD0 100%)}
 .wave{position:absolute;left:0;height:90px;width:calc(100% + var(--w));background:var(--wc);
   -webkit-mask-image:var(--mkA);mask-image:var(--mkA);-webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;-webkit-mask-size:var(--w) 100%;mask-size:var(--w) 100%;
   animation:waveX var(--t) linear infinite,waveBob 4.5s ease-in-out infinite;will-change:transform}
@@ -172,7 +165,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   -webkit-mask-image:radial-gradient(circle,#000 8%,transparent 62%);mask-image:radial-gradient(circle,#000 8%,transparent 62%)}
 @keyframes raysSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
 .stage__fx .coin{position:absolute;bottom:-26px;left:var(--x);width:var(--s);aspect-ratio:1;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#FFF6CC 0,#FFD60A 55%,#FF9F0A 100%);border:2px solid #FFE680;opacity:0;animation:coinRise var(--t) ease-in infinite;animation-delay:var(--d)}
+  background:radial-gradient(circle at 35% 30%,#E0F2FE 0,#7DB9FF 55%,#007AFF 100%);border:2px solid #B8DDFF;opacity:0;animation:coinRise var(--t) ease-in infinite;animation-delay:var(--d)}
 @keyframes coinRise{0%{transform:translateY(0) scale(.6);opacity:0}12%{opacity:1}80%{opacity:.9}100%{transform:translateY(-300px) scale(1.05);opacity:0}}
 .stage__fx .spark{position:absolute;left:var(--x);top:var(--y);width:var(--s);aspect-ratio:1;background:#fff;opacity:0;
   clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:sparkTwinkle var(--t) ease-in-out infinite;animation-delay:var(--d)}
@@ -181,7 +174,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .status-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;background:rgba(0,0,0,.28);border-radius:16px;margin-bottom:var(--sp-3);font-size:var(--f-sm);font-weight:700;color:#fff}
 .status-bar__dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);flex-shrink:0}
 .status-bar__dot.active{background:#fff;animation:dotPulse 1.5s ease-in-out infinite}
-.status-bar__dot.ready{background:var(--yellow);animation:dotPulse 1.2s ease-in-out infinite}
+.status-bar__dot.ready{background:#007AFF;animation:dotPulse 1.2s ease-in-out infinite}
 @keyframes dotPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.45}}
 .timer-bar{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;background:rgba(0,0,0,.28);border-radius:18px;margin-bottom:var(--sp-3);color:#fff}
 .timer-bar>*{position:relative;z-index:2}
@@ -202,16 +195,23 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .action--start::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(119,105,216,.25),transparent);transform:skewX(-20deg);animation:btnShine 3s ease-in-out infinite}
 @keyframes btnShine{0%,60%{left:-100%}100%{left:150%}}
 .action--stop{background:rgba(0,0,0,.38);color:#FF8A82;border:1.5px solid rgba(255,69,58,.5)}
-.action--collect{background:var(--yellow);color:#3A2A00;font-size:16.5px;min-height:62px;animation:collectPulse 1.6s ease-in-out infinite}
+.action--collect{background:linear-gradient(135deg,#4DA3FF 0%,#007AFF 100%);color:#fff;font-size:16.5px;min-height:62px;animation:collectPulse 1.6s ease-in-out infinite}
 .action--collect::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:btnShine 2.4s ease-in-out infinite}
 @keyframes collectPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
-.mining-card.is-ready .status-bar{background:rgba(255,214,10,.2);color:#FFE66D}
-.mining-card.is-ready .timer-bar{background:rgba(255,214,10,.16)}
-.stage.is-ready .stage__tank{border-color:rgba(255,214,10,.9)}
-.stage.is-ready .stage__pct{direction:rtl;background:var(--yellow);color:#3A2A00;border-color:#FFE680;font-size:15px;padding:8px 20px;display:flex;align-items:center;gap:7px}
+
+.mining-card.is-ready .status-bar{background:rgba(0,122,255,.22);color:#7DB9FF}
+.mining-card.is-ready .timer-bar{background:rgba(0,122,255,.18)}
+.mining-card.is-ready .timer-bar::before{--wc:rgba(0,122,255,.2)}
+.mining-card.is-ready .timer-bar::after{--wc:rgba(0,122,255,.12)}
+.mining-card.is-ready .timer-bar__ic{color:#7DB9FF}
+.mining-card.is-ready .timer-bar__lbl{color:#7DB9FF}
+.mining-card.is-ready .plan-header__lvl{background:rgba(0,122,255,.28)}
+.mining-card.is-ready .plan-header__lvl-num{color:#7DB9FF}
+.stage.is-ready .stage__tank{background:linear-gradient(180deg,#001634 0%,#002E66 100%)}
+.stage.is-ready .stage__tank::before{border-color:rgba(125,185,255,.6)}
+.stage.is-ready .stage__pct{direction:rtl;background:#007AFF;color:#fff;border-color:#4DA3FF;font-size:15px;padding:8px 20px;display:flex;align-items:center;gap:7px}
 .stage.is-ready .stage__pct::before{content:'\f51e';font-family:'Font Awesome 6 Free';font-weight:900;font-size:13px}
 
-/* ── بطاقات الرئيسية (تبقى زرقاء) ── */
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tile{position:relative;overflow:hidden;isolation:isolate;text-align:start;border-radius:24px;padding:14px;min-height:140px;background:var(--blue);
   display:flex;flex-direction:column;gap:3px;transition:transform .15s}
@@ -225,7 +225,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .tile__d b{font-weight:800;color:var(--yellow)}
 .tile__go{position:absolute!important;top:14px;left:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;display:grid;place-items:center;font-size:11px}
 
-/* ── عناصر مشتركة ── */
 .card{background:#141414;border:1px solid #18252E;border-radius:26px;padding:16px;margin-bottom:12px}
 .card__title{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:800;margin-bottom:12px;color:#fff}
 .card__title i{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center;font-size:12px}
@@ -254,7 +253,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .ring--lg{width:96px;height:96px}
 .ring--lg .ring__n b{font-size:26px}
 
-/* ── المهمات ── */
 .qb{display:flex;align-items:center;gap:16px;padding:18px 16px 26px;border-radius:28px;color:#fff;margin-bottom:18px;background:var(--blue)}
 .qb__t{font-size:16px;font-weight:800}
 .qb__s{font-size:12.5px;font-weight:600;color:var(--text-2);margin:3px 0 10px}
@@ -316,31 +314,30 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .qrow--lock .rwd{background:var(--sea-wash);color:var(--blue)}
 .qrow--lock .rwd i{color:var(--blue)}
 
-/* ── الخطط (بطاقات داكنة) ── */
 .plans-grid{display:flex;flex-direction:column;gap:12px}
 .plan{background:#141414;border:1px solid #18252E;border-radius:28px;padding:16px;position:relative;overflow:hidden}
 .plan--current{outline:2.5px solid #007AFF;outline-offset:-2.5px}
 .plan--locked{opacity:.55}
 .plan__top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.plan__icon{width:60px;height:60px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:32px;line-height:1}
+.plan__icon{width:60px;height:60px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:32px;line-height:1;border:1.5px solid #007AFF !important}
 .plan__icon span{animation:planIconFloat 3s ease-in-out infinite;display:block}
 .plan__head{flex:1;min-width:0}
 .plan__name{font-size:15.5px;font-weight:800;display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px;color:#fff}
 .plan__badge{font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px}
 .plan__badge--current{background:#007AFF;color:#fff}
-.plan__badge--next{background:rgba(255,214,10,.2);color:#FFD60A}
+.plan__badge--next{background:rgba(0,122,255,.22);color:#4DA3FF}
 .plan__badge--locked{background:#18252E;color:#fff}
 .plan__desc{font-size:12px;color:var(--text-2);font-weight:600}
 .plan__stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
 .plan__stat{background:#0B0B0B;border:1px solid #18252E;border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
 .plan__stat-lbl{font-size:11px;color:var(--text-2);font-weight:700;display:flex;align-items:center;gap:5px}
 .plan__stat-lbl i{font-size:10.5px}
-.plan__stat-val{font-size:15px;font-weight:800;direction:ltr;font-variant-numeric:tabular-nums;text-align:right;color:#fff}
-.plan__stat-val.amber{color:var(--yellow)}
+.plan__stat-val{font-size:15px;font-weight:800;direction:ltr;font-variant-numeric:tabular-nums;text-align:right;color:#4DA3FF}
+.plan__stat-val.amber{color:#4DA3FF}
 .plan__bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid #18252E}
 .plan__price{display:flex;flex-direction:column;gap:2px}
 .plan__price-lbl{font-size:10.5px;color:var(--text-2);font-weight:700}
-.plan__price-val{font-size:15.5px;font-weight:800;direction:ltr;font-variant-numeric:tabular-nums;color:#fff}
+.plan__price-val{font-size:15.5px;font-weight:800;direction:ltr;font-variant-numeric:tabular-nums;color:#4DA3FF}
 .plan__btn{min-height:46px;padding:0 20px;border-radius:16px;font-size:13px;font-weight:800;display:flex;align-items:center;gap:7px;white-space:nowrap;transition:transform .15s}
 .plan__btn--buy{background:#007AFF;color:#fff}
 .plan__btn--buy:active{transform:scale(.96)}
@@ -348,18 +345,17 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .plan__btn--locked{background:#18252E;color:rgba(255,255,255,.6);cursor:not-allowed}
 .plan__timer{background:#0B0B0B;border:1px solid #18252E;border-radius:18px;padding:12px;margin-bottom:14px}
 .plan__timer-head{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:700;color:var(--text-2);margin-bottom:10px}
-.plan__timer-head i{margin-left:4px}
+.plan__timer-head i{margin-left:4px;color:#007AFF}
 .plan__timer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .tbox{background:#18252E;border-radius:14px;padding:8px 4px;text-align:center}
-.tbox b{display:block;font-size:20px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums;line-height:1.1;direction:ltr}
+.tbox b{display:block;font-size:20px;font-weight:800;color:#4DA3FF;font-variant-numeric:tabular-nums;line-height:1.1;direction:ltr}
 .tbox small{font-size:10.5px;color:var(--text-2);font-weight:700}
 .plan__timer-bar{height:6px;background:#18252E;border-radius:6px;overflow:hidden;margin-top:10px}
-.plan__timer-bar i{display:block;height:100%;width:0;background:var(--yellow);border-radius:6px;transition:width .6s}
+.plan__timer-bar i{display:block;height:100%;width:0;background:#007AFF;border-radius:6px;transition:width .6s}
 .plan__cancel{width:100%;margin-top:12px;min-height:46px;border-radius:16px;background:#18252E;color:#FF8A82;border:1px solid rgba(255,69,58,.5);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px}
 .plan__cancel:active{transform:scale(.98)}
 .plan__cancel-note{font-size:11px;color:var(--text-2);text-align:center;margin-top:7px;font-weight:600}
 
-/* ── النماذج والأزرار ── */
 .field{margin-bottom:14px}
 .field__label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;margin-bottom:8px;color:#fff}
 .field__label i{width:24px;height:24px;border-radius:50%;background:#18252E;color:#fff;display:grid;place-items:center;font-size:10.5px}
@@ -385,7 +381,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .alert--danger i{color:var(--red)}
 .alert b{font-weight:800}
 
-/* ── المحفظة (بطاقات داكنة) ── */
 .tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#141414;border:1px solid #18252E;border-radius:20px;padding:4px;margin-bottom:14px}
 .tab{padding:12px 10px;border-radius:16px;font-size:13px;font-weight:800;color:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;gap:7px;transition:background .25s,color .25s}
 .tab.active{background:#007AFF;color:#fff}
@@ -414,7 +409,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .step__desc{font-size:12.5px;color:var(--text-2);line-height:1.7;margin-bottom:12px;font-weight:500}
 .id-box{background:#0B0B0B;border:1.5px dashed rgba(255,255,255,.35);border-radius:16px;padding:14px;text-align:center;font-family:var(--mono);font-size:15px;font-weight:800;color:#fff;direction:ltr;letter-spacing:3px;word-break:break-all;margin-bottom:10px}
 
-/* ── الإحالة (بطاقات داكنة) ── */
 .rf-hero{border-radius:28px;padding:20px 16px 30px;margin-bottom:12px;color:#fff;background:#141414;border:1px solid #18252E}
 .rf-hero__top{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
 .rf-hero__ic{width:48px;height:48px;border-radius:50%;background:#18252E;display:grid;place-items:center;font-size:21px;flex-shrink:0}
@@ -441,7 +435,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .how__t{font-size:13.5px;font-weight:800;line-height:1.5;color:#fff}
 .how__d{font-size:12px;color:var(--text-2);font-weight:500;line-height:1.6;margin-top:1px}
 
-/* ── المتصدّرون ── */
 .lb{background:#141414;border:1px solid #18252E;border-radius:28px;overflow:hidden;margin-bottom:12px}
 .lb__head{padding:16px 16px 0;display:flex;align-items:center;justify-content:space-between}
 .lb__title{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;color:#fff}
@@ -479,7 +472,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .lb__empty p{font-size:13px;font-weight:600}
 .vbadge-fb{color:#fff;font-size:13px;flex-shrink:0}
 
-/* ── الملف الشخصي ── */
 .pf-top{display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 0 20px}
 .pf-av{width:124px;height:124px;border-radius:50%;border:3px solid var(--blue);padding:5px;display:grid;place-items:center;overflow:hidden;margin-bottom:14px;color:var(--blue);font-size:46px}
 .pf-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
@@ -506,7 +498,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .pf-row__lbl{flex:1;font-size:13.5px;font-weight:600;color:var(--text-2)}
 .pf-row__val{font-size:14px;font-weight:800}
 
-/* ── إشعارات ونوافذ ── */
 .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-140%);opacity:0;background:rgba(28,28,32,.88);
   -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:#fff;border:1px solid var(--glass-line);padding:12px 18px;border-radius:30px;
   font-size:var(--f-sm);font-weight:700;z-index:9000;max-width:92%;display:flex;align-items:center;gap:10px;
@@ -606,7 +597,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
               <div class="plan-header__name" id="planName">خطة أساسي</div>
               <div class="plan-header__reward">
                 <i class="fas fa-coins"></i>
-                <span id="planReward">5</span> ل.س / دورة
+                <span id="planReward">3</span> ل.س / دورة
               </div>
             </div>
           </div>
@@ -635,7 +626,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 
         <div class="timer-bar">
           <div class="timer-bar__ic"><i class="fas fa-hourglass-half"></i></div>
-          <div class="timer-bar__text" id="timerText">05:00:00</div>
+          <div class="timer-bar__text" id="timerText">03:00:00</div>
           <div class="timer-bar__lbl" id="timerLbl">متبقي</div>
         </div>
 
@@ -739,6 +730,13 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
         <div class="topbar__meta">
           <div class="topbar__hello">المحفظة</div>
           <div class="topbar__name">إيداع وسحب</div>
+        </div>
+        <div class="chip">
+          <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
+          <div class="chip__body">
+            <div class="chip__num" id="walletBalance">0</div>
+            <div class="chip__cur">ل.س</div>
+          </div>
         </div>
       </div>
 
@@ -1014,7 +1012,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 <script>
 'use strict';
 
-/* ═══════════ CONFIG ═══════════ */
 const CONFIG = {
   firebase: {
     apiKey: "AIzaSyDRwkZOjYvqevk9yeHuyUPFDf361AVwAfg",
@@ -1036,12 +1033,12 @@ const CONFIG = {
   channel: 'https://t.me/DolphinMinerchannel',
 
   plans: [
-    { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:5,   cycleHours:5, planDays:0,  price:0,     color:'sea',    label:'دائمة' },
-    { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:15,  cycleHours:5, planDays:7,  price:1000,  color:'slate',  label:'أسبوع' },
-    { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:30,  cycleHours:5, planDays:14, price:2500,  color:'amber',  label:'أسبوعان' },
-    { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:60,  cycleHours:5, planDays:21, price:5000,  color:'purple', label:'3 أسابيع' },
-    { id:'whale',  name:'حوت',    emoji:'🐋', level:5, reward:120, cycleHours:5, planDays:30, price:10000, color:'coral',  label:'شهر' },
-    { id:'dolphin',name:'دولفين', emoji:'🐬', level:6, reward:250, cycleHours:5, planDays:45, price:20000, color:'ink',    label:'45 يوم' }
+    { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:3,  cycleHours:3, planDays:0,  price:0,     color:'sea',    label:'دائمة' },
+    { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:7,  cycleHours:3, planDays:7,  price:700,   color:'slate',  label:'أسبوع' },
+    { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:15, cycleHours:3, planDays:14, price:2500,  color:'amber',  label:'أسبوعان' },
+    { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:25, cycleHours:3, planDays:21, price:5000,  color:'purple', label:'3 أسابيع' },
+    { id:'whale',  name:'حوت',    emoji:'🐋', level:5, reward:35, cycleHours:3, planDays:30, price:10000, color:'coral',  label:'شهر' },
+    { id:'dolphin',name:'دولفين', emoji:'🐬', level:6, reward:50, cycleHours:3, planDays:45, price:20000, color:'ink',    label:'45 يوم' }
   ],
 
   security: {
@@ -1078,12 +1075,10 @@ const CONFIG = {
   refundPlanProfit: false
 };
 
-/* ═══════════ FIREBASE ═══════════ */
 if (!firebase.apps.length) firebase.initializeApp(CONFIG.firebase);
 const db = firebase.firestore();
 db.enablePersistence({ synchronizeTabs: true }).catch(()=>{});
 
-/* ═══════════ STATE ═══════════ */
 const STATE = {
   user: null,
   tgUser: null,
@@ -1099,7 +1094,6 @@ const STATE = {
   channelVerified: false
 };
 
-/* ═══════════ HELPERS ═══════════ */
 const $ = (id) => document.getElementById(id);
 const setText = (id, txt) => { const el = $(id); if (el) el.textContent = txt; };
 
@@ -1147,7 +1141,6 @@ function fallbackCopy(text, done){
   document.body.removeChild(ta);
 }
 
-/* ═══════════ TELEGRAM INIT ═══════════ */
 const tg = window.Telegram && window.Telegram.WebApp;
 
 function initTelegram(){
@@ -1169,7 +1162,6 @@ function initTelegram(){
   return true;
 }
 
-/* ═══════════ TIME SECURITY ═══════════ */
 Object.assign(STATE, { timeSynced:false, timeLocked:true, tamperHold:false,
   serverBase:0, perfBase:0, syncing:false, completing:false });
 
@@ -1268,7 +1260,6 @@ function renderLocked(){
   btn.innerHTML = '<i class="fas fa-lock"></i><span>التعدين مجمّد</span>';
 }
 
-/* ═══════════ LOAD USER ═══════════ */
 async function loadOrCreateUser(){
   await syncServerTime();
   const ref = db.collection('users').doc(STATE.tgId);
@@ -1373,7 +1364,6 @@ async function loadOrCreateUser(){
   toast(rewarded ? '🎉 مرحباً! ربحت ' + CONFIG.referral.newUserReward + ' ل.س' : '🎉 مرحباً بك!', 'ok');
 }
 
-/* ═══════════ PLAN EXPIRY ═══════════ */
 async function checkPlanExpiry(){
   if (!STATE.user || STATE.timeLocked || !STATE.timeSynced) return;
   if (getPlan(STATE.user.activePlanId || 'basic').planDays === 0 || !STATE.user.planExpiresAt) return;
@@ -1408,7 +1398,6 @@ async function checkPlanExpiry(){
   }catch(e){ console.warn(e); }
 }
 
-/* ═══════════ UI UPDATE ═══════════ */
 function updateUI(){
   if (!STATE.user) return;
   const u = STATE.user;
@@ -1428,6 +1417,7 @@ function updateUI(){
   setText('headerBalance', fmt(bal));
   setText('storeBalance', fmt(bal));
   setText('tasksBalance', fmt(bal));
+  setText('walletBalance', fmt(bal));
 
   setText('planName', 'خطة ' + plan.name);
   setText('planLevel', plan.level);
@@ -1498,7 +1488,6 @@ function updateAvatar(elId){
   img.src = url;
 }
 
-/* ═══════════ MINING ═══════════ */
 function getPlanCycleMs(){
   const plan = getPlan((STATE.user && STATE.user.activePlanId) || 'basic');
   return plan.cycleHours * 60 * 60 * 1000;
@@ -1525,6 +1514,7 @@ function renderMining(){
 function renderIdle(){
   const plan = getPlan((STATE.user && STATE.user.activePlanId) || 'basic');
   setText('statusText', 'جاهز لبدء التعدين');
+  $('statusText').style.color = '';
   $('statusDot').className = 'status-bar__dot';
   setText('stagePct', '0%');
   $('stageWater').style.height = '0%';
@@ -1553,6 +1543,7 @@ function renderRunning(u, plan){
   if (remaining <= 0) { markMiningComplete(); return; }
 
   setText('statusText', 'جاري التعدين...');
+  $('statusText').style.color = '';
   $('statusDot').className = 'status-bar__dot active';
   setText('miningStatusMeta', 'نشط');
   $('stageIcon').className = 'stage__icon swim';
@@ -1578,6 +1569,7 @@ function renderRunning(u, plan){
 
 function renderReady(plan){
   setText('statusText', 'اكتمل التعدين — جاهز للجمع!');
+  $('statusText').style.color = '#7DB9FF';
   $('statusDot').className = 'status-bar__dot ready';
   setText('miningStatusMeta', 'جاهز');
   $('stageIcon').className = 'stage__icon ready';
@@ -1630,7 +1622,6 @@ async function markMiningComplete(){
   finally{ STATE.completing = false; }
 }
 
-/* ═══════════ MINING ACTIONS ═══════════ */
 async function startMining(){
   if (STATE.isSubmitting || !STATE.user) return;
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) {
@@ -1765,16 +1756,15 @@ function onMineClick(){
   else startMining();
 }
 
-/* ═══════════ PLANS ═══════════ */
 function getPlanColors(plan){
   const t = 'rgba(0,0,0,.28)';
   const map = {
-    sea:    { bg:t, color:'#fff', border:'#7DD3FF' },
-    slate:  { bg:t, color:'#fff', border:'#D1D1D6' },
-    amber:  { bg:t, color:'#fff', border:'#FFD60A' },
-    purple: { bg:t, color:'#fff', border:'#BF5AF2' },
-    coral:  { bg:t, color:'#fff', border:'#FF6482' },
-    ink:    { bg:t, color:'#fff', border:'#FFFFFF' }
+    sea:    { bg:t, color:'#fff', border:'#007AFF' },
+    slate:  { bg:t, color:'#fff', border:'#007AFF' },
+    amber:  { bg:t, color:'#fff', border:'#007AFF' },
+    purple: { bg:t, color:'#fff', border:'#007AFF' },
+    coral:  { bg:t, color:'#fff', border:'#007AFF' },
+    ink:    { bg:t, color:'#fff', border:'#007AFF' }
   };
   return map[plan.color] || map.sea;
 }
@@ -1804,16 +1794,12 @@ function renderPlans(){
   list.innerHTML = CONFIG.plans.map(plan => {
     const idx = getPlanIndex(plan.id);
     const isCur = plan.id === current;
-    const isLower = idx < curIdx;
     const colors = getPlanColors(plan);
 
     let btnClass = 'plan__btn', btnText = '', btnIcon = '', disabled = '';
     if (isCur) {
       btnClass += ' plan__btn--current';
       btnText = 'الحالية'; btnIcon = '<i class="fas fa-check"></i>'; disabled = 'disabled';
-    } else if (isLower) {
-      btnClass += ' plan__btn--locked';
-      btnText = 'أقل من خطتك'; btnIcon = '<i class="fas fa-lock"></i>'; disabled = 'disabled';
     } else if (balance < plan.price) {
       btnClass += ' plan__btn--locked';
       btnText = 'رصيد ناقص'; btnIcon = '<i class="fas fa-lock"></i>'; disabled = 'disabled';
@@ -1822,7 +1808,7 @@ function renderPlans(){
       btnText = 'أثناء التعدين'; btnIcon = '<i class="fas fa-hourglass-half"></i>'; disabled = 'disabled';
     } else {
       btnClass += ' plan__btn--buy';
-      btnText = 'ترقية'; btnIcon = '<i class="fas fa-arrow-up"></i>';
+      btnText = 'اختيار'; btnIcon = '<i class="fas fa-arrow-up"></i>';
     }
 
     let badge = '';
@@ -1830,7 +1816,7 @@ function renderPlans(){
     else if (idx === curIdx + 1) badge = '<span class="plan__badge plan__badge--next">التالية</span>';
 
     return [
-      '<div class="plan ' + (isCur ? 'plan--current' : '') + ' ' + (isLower ? 'plan--locked' : '') + '">',
+      '<div class="plan ' + (isCur ? 'plan--current' : '') + '">',
         '<div class="plan__top">',
           '<div class="plan__icon" style="background:' + colors.bg + ';color:' + colors.color + ';border:1.5px solid ' + colors.border + '">',
             '<span>' + plan.emoji + '</span>',
@@ -1846,11 +1832,11 @@ function renderPlans(){
         '</div>',
         '<div class="plan__stats">',
           '<div class="plan__stat">',
-            '<div class="plan__stat-lbl"><i class="fas fa-coins" style="color:#FFD60A"></i> الربح / دورة</div>',
+            '<div class="plan__stat-lbl"><i class="fas fa-coins" style="color:#4DA3FF"></i> الربح / دورة</div>',
             '<div class="plan__stat-val amber">' + fmt(plan.reward) + ' ل.س</div>',
           '</div>',
           '<div class="plan__stat">',
-            '<div class="plan__stat-lbl"><i class="fas fa-clock" style="color:#fff"></i> مدة الدورة</div>',
+            '<div class="plan__stat-lbl"><i class="fas fa-clock" style="color:#4DA3FF"></i> مدة الدورة</div>',
             '<div class="plan__stat-val sea">' + plan.cycleHours + ' ساعات</div>',
           '</div>',
         '</div>',
@@ -1934,7 +1920,6 @@ async function buyPlan(planId){
 
   if (planId === cur) return toast('هذه خطتك الحالية', 'info');
   if (STATE.timeLocked) return toast('الوقت غير موثوق', 'err');
-  if (getPlanIndex(planId) < getPlanIndex(cur)) return toast('لا يمكن الرجوع لخطة أدنى', 'err');
   if ((STATE.user.balance_sy || 0) < plan.price) return toast('الرصيد غير كافٍ', 'err');
   if (STATE.user.miningStartTime && !STATE.user.miningCollectable) return toast('لا يمكن الترقية أثناء التعدين', 'info');
   if (STATE.user.miningCollectable) return toast('اجمع أرباحك أولاً', 'info');
@@ -1958,7 +1943,6 @@ async function buyPlan(planId){
       if (!snap.exists) throw new Error('المستخدم غير موجود');
       const data = snap.data();
       if ((data.balance_sy || 0) < plan.price) throw new Error('رصيد غير كافٍ');
-      if (getPlanIndex(data.activePlanId || 'basic') >= getPlanIndex(planId)) throw new Error('ترقية غير صالحة');
       if (data.miningStartTime && !data.miningCollectable) throw new Error('لا يمكن الترقية أثناء التعدين');
       if (data.miningCollectable) throw new Error('اجمع أرباحك أولاً');
 
@@ -1999,7 +1983,6 @@ async function buyPlan(planId){
   }finally{ STATE.isSubmitting = false; }
 }
 
-/* ═══════════ WALLET ═══════════ */
 function initWalletTabs(){
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -2123,7 +2106,6 @@ function initDeposit(){
   $('depCopyBinance').addEventListener('click', () => copyText(CONFIG.deposit.binance, 'تم نسخ معرف Binance'));
 }
 
-/* ═══════════ REFERRAL ═══════════ */
 function setRefPane(p){
   document.querySelectorAll('#refSeg .seg__b').forEach(b => b.classList.toggle('active', b.dataset.pane === p));
   $('refPaneInvite').style.display = p === 'invite' ? 'block' : 'none';
@@ -2310,8 +2292,6 @@ async function loadLeaderboard(){
     list.innerHTML = empty('تعذر تحميل القائمة');
   }
 }
-
-/* ═══════════ TASKS LOGIC ═══════════ */
 
 async function verifyChannelJoin(){
   if (!STATE.user || STATE.isSubmitting) return;
@@ -2662,7 +2642,6 @@ function renderChannelTask() {
   }
 }
 
-/* ═══════════ NAVIGATION ═══════════ */
 const VIEWS = ['home','store','wallet','referral','tasks','profile'];
 function navigate(view){
   if (!VIEWS.includes(view)) view = 'home';
@@ -2709,7 +2688,6 @@ function bindUI(){
   initReferral();
 }
 
-/* ═══════════ BOOTSTRAP ═══════════ */
 async function bootstrap(){
   if (!initTelegram()) return;
   $('app').style.display = 'flex';
