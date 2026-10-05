@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>كازينو دولفين</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --blue:#007AFF;--blue-l:#4DA3FF;--blue-d:#0062CC;
+  --yellow:#FFD60A;--green:#30D158;--red:#FF453A;
+  --glass:rgba(255,255,255,.08);--glass-line:rgba(255,255,255,.12);
+  --inset:rgba(0,0,0,.3);--inset-2:rgba(0,0,0,.45);
+  --text-2:rgba(255,255,255,.8);--text-3:rgba(255,255,255,.55);
+  --safe:env(safe-area-inset-bottom,0px);
+  --st:env(safe-area-inset-top,0px);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#000;color:#fff;color-scheme:dark}
+body{font-family:'IBM Plex Sans Arabic',-apple-system,sans-serif;font-size:14px;line-height:1.5;
+  overflow:hidden;direction:rtl;-webkit-font-smoothing:antialiased;overscroll-behavior:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;font-size:inherit}
+img{max-width:100%;display:block;-webkit-user-drag:none}
+::-webkit-scrollbar{display:none}
+
+.app{position:relative;max-width:480px;margin:0 auto;height:100dvh;overflow:hidden;
+  background:
+    radial-gradient(420px 300px at 85% -5%,rgba(0,122,255,.35),transparent 70%),
+    radial-gradient(380px 300px at 0% 40%,rgba(123,92,255,.18),transparent 70%),
+    #000}
+
+/* ═══ Glass ═══ */
+.glass{background:var(--glass);border:1px solid var(--glass-line);border-radius:22px;
+  -webkit-backdrop-filter:blur(16px) saturate(1.7);backdrop-filter:blur(16px) saturate(1.7);
+  box-shadow:0 10px 30px rgba(0,0,0,.35)}
+
+/* ═══ Main ═══ */
+.main{height:100%;overflow-y:auto;padding:calc(var(--st) + 16px) 16px calc(30px + var(--safe));scrollbar-width:none}
+
+/* ═══ Topbar (نفس التصميم الأصلي) ═══ */
+.topbar{display:flex;align-items:center;gap:12px;padding-bottom:16px}
+.avatar{width:46px;height:46px;border-radius:50%;background:var(--blue);border:2px solid var(--blue);
+  display:grid;place-items:center;overflow:hidden;flex-shrink:0;font-size:17px;color:#fff}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.meta{flex:1;min-width:0}
+.hello{font-size:12px;color:var(--blue);font-weight:700}
+.name{font-size:18px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.chip{display:flex;align-items:center;gap:9px;padding:5px 14px 5px 6px;background:var(--glass);
+  border:1px solid var(--glass-line);border-radius:30px;flex-shrink:0;
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.star3d{position:relative;flex-shrink:0;width:34px;height:34px;border-radius:12px;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(160deg,#6B53F2 0%,#3A24AD 52%,#2A1783 100%);
+  border:1px solid rgba(255,255,255,.3);border-top-color:rgba(255,255,255,.5);border-bottom:3px solid #1E0E6A}
+.star3d::before{content:'';position:absolute;left:0;right:0;top:0;height:48%;background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,0))}
+.star3d img{position:relative;z-index:1;width:21px;height:21px}
+.chip__body{display:flex;flex-direction:column;line-height:1.1}
+.chip__num{font-size:14.5px;font-weight:800;font-variant-numeric:tabular-nums;color:#fff}
+.chip__cur{font-size:10px;color:var(--yellow);font-weight:800;margin-top:2px}
+
+/* ═══ Note ═══ */
+.note{display:flex;gap:8px;align-items:center;padding:10px 14px;margin-bottom:14px;
+  font-size:12px;color:var(--text-2);border-radius:16px}
+.note i{color:var(--yellow)}
+
+/* ═══ Hero ═══ */
+.hero{padding:18px;margin-bottom:18px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(0,122,255,.55),rgba(123,92,255,.35))}
+.hero h1{font-size:22px;font-weight:800;color:#fff}
+.hero p{color:var(--text-2);font-size:12.5px;margin-top:2px}
+.hero img.bg{position:absolute;left:-20px;bottom:-20px;width:120px;height:120px;opacity:.15;transform:rotate(-14deg);pointer-events:none}
+
+/* ═══ Section ═══ */
+.sec{display:flex;justify-content:space-between;align-items:center;margin:0 2px 12px;font-weight:800;font-size:16px}
+.sec span{font-size:11px;color:var(--text-3);font-weight:600}
+
+/* ═══ Grid ═══ */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* ═══ Game Card ═══ */
+.gc{padding:12px;display:flex;flex-direction:column;gap:8px;animation:up .5s both;transition:transform .15s}
+.gc:active{transform:scale(.98)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+.gc .art{height:96px;border-radius:16px;display:grid;place-items:center;position:relative;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.gc .art::after{content:'';position:absolute;inset:0 0 50%;background:linear-gradient(180deg,rgba(255,255,255,.3),transparent)}
+.gc .art img{width:56px;height:56px;position:relative;z-index:1;filter:drop-shadow(0 6px 12px rgba(0,0,0,.5))}
+.gc h3{font-size:15px;font-weight:800;line-height:1.2;color:#fff}
+.gc p{font-size:11.5px;color:var(--text-3);line-height:1.45;min-height:34px}
+.lim{display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-2);
+  background:var(--inset);padding:5px 8px;border-radius:10px;font-variant-numeric:tabular-nums}
+
+/* ═══ Buttons ═══ */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:46px;
+  border-radius:18px;font-weight:800;font-size:14px;background:var(--blue);color:#fff;
+  transition:transform .15s,opacity .2s,filter .2s;box-shadow:0 6px 18px rgba(0,122,255,.35)}
+.btn:active{transform:scale(.96)}
+.btn:disabled{opacity:.4;pointer-events:none;filter:grayscale(.5)}
+.btn.sm{min-height:38px;border-radius:14px;font-size:12.5px}
+.btn.gold{background:var(--yellow);color:#000;box-shadow:0 6px 18px rgba(255,214,10,.3)}
+.btn.green{background:var(--green);color:#000;box-shadow:0 6px 18px rgba(48,209,88,.3)}
+.btn.red{background:var(--red);color:#fff}
+
+/* ═══ Loader ═══ */
+#loader{position:absolute;inset:0;z-index:99;background:#000;display:grid;place-items:center;transition:opacity .4s}
+#loader.off{opacity:0;pointer-events:none}
+.ld{text-align:center}
+.ld .logo{width:88px;height:88px;margin:0 auto 16px;border-radius:26px;display:grid;place-items:center;
+  background:linear-gradient(160deg,#4DA3FF,#007AFF 55%,#003F8A);
+  box-shadow:0 0 50px rgba(0,122,255,.5);animation:pulse 1.6s infinite;font-size:44px;color:#fff}
+@keyframes pulse{50%{transform:scale(1.07)}}
+.ld b{font-size:18px;font-weight:800;color:#fff}
+.ld .sub{font-size:12px;color:var(--text-3);margin-top:4px}
+.bar{width:140px;height:4px;border-radius:4px;background:var(--glass);margin:14px auto 0;overflow:hidden}
+.bar i{display:block;height:100%;width:40%;background:var(--blue);border-radius:4px;animation:slide 1.1s infinite}
+@keyframes slide{from{transform:translateX(250%)}to{transform:translateX(-120%)}}
+
+/* ═══ Game Overlay ═══ */
+.game{position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;
+  background:radial-gradient(420px 300px at 85% -5%,rgba(0,122,255,.3),transparent 70%),#000;
+  transform:translateY(100%);visibility:hidden;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility .35s}
+.game.open{transform:none;visibility:visible}
+.gh{display:flex;align-items:center;gap:10px;padding:calc(var(--st) + 12px) 14px 10px}
+.ib{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  background:var(--glass);border:1px solid var(--glass-line);font-size:16px;flex-shrink:0;
+  transition:opacity .2s,transform .15s;color:#fff}
+.ib:active{transform:scale(.92)}
+.ib:disabled{opacity:.35}
+.gh h2{flex:1;font-size:17px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ═══ Stage ═══ */
+.stage{flex:1;min-height:0;overflow-y:auto;padding:4px 14px 10px;display:flex;flex-direction:column;gap:12px;position:relative}
+
+/* ═══ Footer ═══ */
+.foot{padding:12px 14px calc(14px + var(--safe));display:flex;flex-direction:column;gap:10px;
+  background:rgba(28,28,32,.5);
+  -webkit-backdrop-filter:blur(16px) saturate(1.7);backdrop-filter:blur(16px) saturate(1.7);
+  border-top:1px solid var(--glass-line);border-radius:26px 26px 0 0}
+.bets{display:flex;gap:6px}
+.bets button{flex:1;height:40px;border-radius:14px;background:var(--inset);border:1px solid var(--glass-line);
+  font-weight:800;font-variant-numeric:tabular-nums;transition:.2s;color:#fff;font-size:12px}
+.bets button.on{background:var(--blue);border-color:var(--blue-l);box-shadow:0 0 16px rgba(0,122,255,.5)}
+.bets button:disabled{opacity:.4}
+.row{display:flex;gap:8px}
+.row>*{flex:1}
+.opt{min-height:42px;border-radius:14px;background:var(--inset);border:1px solid var(--glass-line);
+  font-weight:700;font-size:13px;transition:.2s;padding:0 6px;color:#fff}
+.opt.on{background:var(--blue);border-color:var(--blue-l)}
+.opt:disabled{opacity:.5}
+.lab{font-size:12px;color:var(--text-3);font-weight:600;margin-bottom:6px;display:flex;justify-content:space-between}
+.stat{display:flex;justify-content:space-around;text-align:center;padding:12px}
+.stat>div{flex:1}
+.stat span{font-size:11px;color:var(--text-3);display:block;margin-bottom:2px}
+.stat b{font-size:16px;font-variant-numeric:tabular-nums;color:#fff}
+
+/* ═══ Result overlay ═══ */
+.res{position:absolute;left:14px;right:14px;top:35%;z-index:5;padding:20px;text-align:center;
+  border-radius:26px;pointer-events:none;opacity:0;transform:scale(.8);transition:.3s;
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.res.show{opacity:1;transform:none}
+.res b{display:block;font-size:30px;font-weight:800}
+.res span{font-size:13px;color:var(--text-2)}
+.res.win{background:rgba(48,209,88,.25);border:1px solid var(--green);box-shadow:0 0 50px rgba(48,209,88,.4)}
+.res.lose{background:rgba(255,69,58,.22);border:1px solid var(--red)}
+.res.draw{background:var(--glass);border:1px solid var(--glass-line)}
+.shake{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ═══ Toast ═══ */
+.toast{position:absolute;left:50%;bottom:calc(90px + var(--safe));transform:translate(-50%,20px);z-index:90;
+  background:rgba(28,28,32,.9);border:1px solid var(--glass-line);padding:10px 18px;border-radius:30px;
+  font-size:13px;font-weight:600;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap;color:#fff}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ═══ Mines grid ═══ */
+.tiles{display:grid;gap:8px;padding:12px}
+.tiles.g4{grid-template-columns:repeat(4,1fr)}
+.tiles.g5{grid-template-columns:repeat(5,1fr)}
+.tile{aspect-ratio:1;border-radius:14px;background:var(--glass);border:1px solid var(--glass-line);
+  font-size:22px;display:grid;place-items:center;transition:.25s;color:#fff}
+.tile:active:not(:disabled){transform:scale(.92)}
+.tile img{width:60%;height:60%;object-fit:contain}
+.tile.ok{background:rgba(48,209,88,.25);border-color:var(--green);animation:pop .3s}
+.tile.bad{background:rgba(255,69,58,.3);border-color:var(--red);animation:shake .4s}
+.tile.dim{opacity:.4}
+.tile.reveal-bomb{background:rgba(255,69,58,.15);border-color:rgba(255,69,58,.5)}
+@keyframes pop{50%{transform:scale(1.12)}}
+
+/* ═══ Big number ═══ */
+.big{font-size:56px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums;line-height:1.1;color:#fff}
+.big.g{color:var(--green)}
+.big.r{color:var(--red)}
+
+/* ═══ Crash sky ═══ */
+.sky{height:150px;position:relative;overflow:hidden;border-radius:22px;background:linear-gradient(180deg,rgba(0,122,255,.12),rgba(123,92,255,.08))}
+.sky img{position:absolute;width:38px;height:38px;transition:none;z-index:2}
+.sky .grid-line{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px;opacity:.5}
+
+/* ═══ Slots reels ═══ */
+.reels{display:flex;gap:10px;justify-content:center;padding:18px}
+.reel{width:30%;aspect-ratio:.85;border-radius:18px;background:var(--inset);border:1px solid var(--glass-line);
+  display:grid;place-items:center;font-size:48px;box-shadow:inset 0 0 20px rgba(0,0,0,.6)}
+.reel img{width:60%;height:60%;object-fit:contain}
+.reel.spin{filter:blur(1.5px)}
+
+/* ═══ Dice ═══ */
+.dice-visual{display:grid;place-items:center;padding:20px;min-height:180px}
+.dice-visual img{width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 10px 24px rgba(0,0,0,.6))}
+.dice-visual.spin img{animation:spinDice .3s linear infinite}
+@keyframes spinDice{to{transform:rotate(360deg)}}
+
+/* ═══ History pills ═══ */
+.hist{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:0 12px 12px}
+.hist span{padding:3px 9px;border-radius:10px;font-size:11px;font-weight:700;background:var(--inset);color:#fff}
+.hist span.g{color:#30D158}
+.hist span.r{color:#FF6B63}
+
+/* ═══ Range ═══ */
+input[type=range]{width:100%;accent-color:var(--blue);height:30px}
+
+/* ═══ State ═══ */
+.state{text-align:center;padding:40px 20px;color:var(--text-2)}
+.state i{font-size:40px;color:var(--blue-l);margin-bottom:10px}
+
+/* ═══ Bomb select ═══ */
+.bomb-sel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}
+.bomb-sel button{height:46px;border-radius:14px;background:var(--inset);border:1px solid var(--glass-line);
+  font-weight:800;transition:.2s;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px}
+.bomb-sel button img{width:20px;height:20px}
+.bomb-sel button.on{background:var(--red);border-color:rgba(255,69,58,.6);box-shadow:0 0 16px rgba(255,69,58,.4)}
+.bomb-sel button:disabled{opacity:.5}
+
+@media (max-width:360px){
+  .gc .art{height:80px}
+  .gc .art img{width:46px;height:46px}
+  .big{font-size:42px}
+  .bets button{font-size:11px;padding:0 4px}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Loader -->
+  <div id="loader">
+    <div class="ld">
+      <div class="logo"><i class="fa-solid fa-dice"></i></div>
+      <b>كازينو دولفين</b>
+      <div class="sub">جاري الاتصال...</div>
+      <div class="bar"><i></i></div>
+    </div>
+  </div>
+
+  <!-- Home -->
+  <main class="main" id="home">
+    <div class="topbar">
+      <div class="avatar" id="av"><i class="fa-solid fa-user"></i></div>
+      <div class="meta">
+        <div class="hello">أهلاً بك</div>
+        <div class="name" id="uname">لاعب</div>
+      </div>
+      <div class="chip">
+        <span class="star3d"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt=""></span>
+        <div class="chip__body">
+          <div class="chip__num" id="headerBalance">0</div>
+          <div class="chip__cur">ل.س</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass note" id="note" hidden>
+      <i class="fa-solid fa-circle-info"></i>
+      <span id="notetx"></span>
+    </div>
+
+    <div class="glass hero">
+      <img class="bg" src="https://img.icons8.com/liquid-glass-color/999/slot-machine.png" alt="">
+      <h1>ألعاب المراهنة</h1>
+      <p>راهن برصيدك الحقيقي — اربح أو اخسر فوراً.</p>
+    </div>
+
+    <div class="sec">اختر لعبتك <span id="cnt"></span></div>
+    <div class="grid" id="grid"></div>
+    <div class="state" id="state" hidden></div>
+  </main>
+
+  <!-- Game overlay -->
+  <section class="game" id="game" aria-hidden="true">
+    <div class="gh">
+      <button class="ib" id="back" aria-label="رجوع"><i class="fa-solid fa-chevron-right"></i></button>
+      <h2 id="gt"></h2>
+      <button class="ib" id="snd" aria-label="الصوت"><i class="fa-solid fa-volume-high"></i></button>
+      <div class="chip">
+        <span class="star3d"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt=""></span>
+        <div class="chip__body">
+          <div class="chip__num bal">0</div>
+          <div class="chip__cur">ل.س</div>
+        </div>
+      </div>
+    </div>
+    <div class="stage" id="stage"></div>
+    <div class="foot">
+      <div class="lab" style="margin:0"><span>مبلغ الرهان</span><span id="lim"></span></div>
+      <div class="bets" id="bets"></div>
+      <button class="btn" id="act"></button>
+    </div>
+  </section>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore-compat.js"></script>
+
+<script>
+'use strict';
+
+/* ═══════════════════════════════════════════════════
+   CONFIG — نفس مشروع Firebase الأصلي
+   ═══════════════════════════════════════════════════ */
+const CFG = {
+  firebase: {
+    apiKey: "AIzaSyDRwkZOjYvqevk9yeHuyUPFDf361AVwAfg",
+    authDomain: "sy-bet.firebaseapp.com",
+    projectId: "sy-bet",
+    storageBucket: "sy-bet.firebasestorage.app",
+    messagingSenderId: "550639040893",
+    appId: "1:550639040893:web:6680eee90047fd23363414"
+  },
+  usersCol: 'users',           // نفس مجموعة المستخدمين الأصلية
+  balanceField: 'balance_sy',  // نفس حقل الرصيد الأصلي
+  historyCol: 'gameHistory',   // سجل الألعاب
+  bets: [10, 25, 50, 100, 250],
+  maxMult: 50,
+  minBalance: 10
+};
+
+if (!firebase.apps.length) firebase.initializeApp(CFG.firebase);
+const db = firebase.firestore();
+
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const rnd = () => { const a = new Uint32Array(1); crypto.getRandomValues(a); return a[0] / 4294967296; };
+const int = n => Math.floor(rnd() * n);
+const fmt = n => Math.round(n).toLocaleString('en-US');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const tg = window.Telegram && window.Telegram.WebApp;
+
+/* ═══════════════════════════════════════════════════
+   منطق الألعاب (RTP ~ 97%)
+   ═══════════════════════════════════════════════════ */
+const Logic = {
+  // قنابل: 5x5 مع خيارات عدد القنابل
+  mines: {
+    total: 25,
+    bombOptions: [1, 3, 5, 8, 12, 20],
+    // مضاعف بعد كشف k خلايا آمنة (B قنابل)
+    mult(k, B) {
+      if (k === 0) return 1;
+      const safe = this.total - B;
+      if (k > safe) return 0;
+      let m = 0.97; // house edge 3%
+      for (let i = 0; i < k; i++) {
+        m *= (this.total - i) / (safe - i);
+      }
+      return Math.min(Math.round(m * 100) / 100, CFG.maxMult);
+    },
+    layout(B) {
+      const a = [...Array(this.total).keys()];
+      for (let i = this.total - 1; i > 0; i--) {
+        const j = int(i + 1);
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return new Set(a.slice(0, B));
+    }
+  },
+  // Dice: نسبة فوز اختيارية
+  dice: {
+    mult: ch => Math.min(Math.floor(97 / ch * 100) / 100, CFG.maxMult),
+    roll: () => Math.floor(rnd() * 10000) / 100,
+    win: (r, over, ch) => over ? r >= (100 - ch) : r < ch
+  },
+  // Crash: عامل نمو
+  crash: {
+    rate: 0.14,
+    cap: 10,
+    point() { return Math.min(this.cap, Math.max(1, Math.floor(97 / (1 - rnd())) / 100)); },
+    at: t => Math.floor(Math.exp(this.rate * t) * 100) / 100
+  },
+  // Slots: 3 بكرات
+  slots: {
+    sym: ['cherry', 'lemon', 'bell', 'star', 'diamond', 'seven'],
+    w: [30, 25, 20, 15, 7, 3],
+    pay: [6, 9, 12, 15, 20, 20],
+    pick() { let r = int(100); for (let i = 0; i < 6; i++) { if (r < this.w[i]) return i; r -= this.w[i]; } return 0; },
+    spin() {
+      const r = [this.pick(), this.pick(), this.pick()];
+      let m = 0;
+      if (r[0] === r[1] && r[1] === r[2]) m = this.pay[r[0]];
+      else if (r[0] === r[1] || r[1] === r[2] || r[0] === r[2]) m = 1;
+      return { reels: r, mult: m };
+    }
+  }
+};
+
+/* ═══════════════════════════════════════════════════
+   الأصوات + الاهتزاز
+   ═══════════════════════════════════════════════════ */
+const Snd = {
+  on: true, c: null,
+  t(f, d = .08, ty = 'sine', v = .05) {
+    if (!this.on) return;
+    try {
+      this.c = this.c || new (window.AudioContext || window.webkitAudioContext)();
+      const o = this.c.createOscillator(), g = this.c.createGain();
+      o.type = ty; o.frequency.value = f; g.gain.value = v;
+      o.connect(g); g.connect(this.c.destination);
+      o.start(); g.gain.exponentialRampToValueAtTime(.0001, this.c.currentTime + d);
+      o.stop(this.c.currentTime + d);
+    } catch (e) {}
+  },
+  tick() { this.t(700, .04, 'square', .02); },
+  win() { [523, 659, 784, 1046].forEach((f, i) => setTimeout(() => this.t(f, .16), i * 90)); },
+  lose() { this.t(170, .35, 'sawtooth', .04); },
+  hap(t) {
+    try {
+      if (!tg) return;
+      if (t === 'win') tg.HapticFeedback.notificationOccurred('success');
+      else if (t === 'lose') tg.HapticFeedback.notificationOccurred('error');
+      else tg.HapticFeedback.impactOccurred('light');
+    } catch (e) {}
+  }
+};
+
+/* ═══════════════════════════════════════════════════
+   Wallet — الرصيد الحقيقي من users/balance_sy
+   ═══════════════════════════════════════════════════ */
+const Wallet = {
+  bal: 0,
+  id: null,
+  ref: null,
+  ready: false,
+  q: Promise.resolve(),
+
+  async init(user) {
+    if (!user) return 'no-user';
+    this.id = String(user.id);
+    try {
+      this.ref = db.collection(CFG.usersCol).doc(this.id);
+      const snap = await Promise.race([
+        this.ref.get(),
+        sleep(8000).then(() => { throw new Error('timeout'); })
+      ]);
+      if (!snap.exists) return 'no-doc';
+      const data = snap.data();
+      this.bal = Number(data[CFG.balanceField]) || 0;
+      this.ready = true;
+      // تحديث lastSeen
+      this.ref.set({ lastSeen: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true }).catch(() => {});
+      return 'ok';
+    } catch (e) {
+      console.warn('Wallet init', e);
+      return 'error';
+    }
+  },
+
+  paint() {
+    $$('.bal, #headerBalance').forEach(e => { if (e) e.textContent = fmt(this.bal); });
+  },
+
+  /**
+   * تغيير الرصيد بشكل آمن (Transaction)
+   * @param {number} delta - سالب للخصم، موجب للإضافة
+   * @param {string} gameId
+   * @param {object} extra
+   * @returns {Promise<number>} الرصيد الجديد
+   */
+  async change(delta, gameId, extra = {}) {
+    if (!this.ready || !this.id) throw new Error('المستخدم غير محمّل');
+    const userRef = db.collection(CFG.usersCol).doc(this.id);
+    const logRef = db.collection(CFG.historyCol).doc();
+    let newBal = 0;
+
+    await db.runTransaction(async (trx) => {
+      const snap = await trx.get(userRef);
+      if (!snap.exists) throw new Error('المستخدم غير موجود');
+      const data = snap.data();
+      const bal = Number(data[CFG.balanceField]) || 0;
+      newBal = bal + delta;
+      if (newBal < 0) throw new Error('رصيد غير كافٍ');
+
+      const upd = {
+        [CFG.balanceField]: newBal,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+      if (delta > 0) {
+        upd.totalEarned = firebase.firestore.FieldValue.increment(delta);
+      }
+      trx.update(userRef, upd);
+
+      trx.set(logRef, {
+        id: logRef.id,
+        userId: this.id,
+        userName: data.name || '',
+        gameId,
+        delta,
+        balanceAfter: newBal,
+        ...extra,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    });
+
+    this.bal = newBal;
+    this.paint();
+    return newBal;
+  }
+};
+
+/* ═══════════════════════════════════════════════════
+   GAMES REGISTRY — كل لعبة كائن مستقل
+   ═══════════════════════════════════════════════════ */
+const IMG = n => `https://img.icons8.com/liquid-glass-color/999/${n}.png`;
+
+const GAMES = [];
+
+/* ─── 1) Mines ─── */
+GAMES.push({
+  id: 'mines',
+  name: 'Mines',
+  desc: 'اختر عدد القنابل والمبلغ — اكشف الخلايا الآمنة واسحب أرباحك.',
+  img: IMG('bomb'),
+  c: ['#FF6B63', '#FF8A00'],
+  min: 10, max: 250,
+  mount(el, x) {
+    let B = 3, mines, open, live = false;
+
+    el.innerHTML = `
+      <div class="glass">
+        <div class="lab" style="padding:12px 12px 0;margin:0">
+          <span><i class="fa-solid fa-bomb" style="color:#FF6B63"></i> عدد القنابل</span>
+          <span id="mm">1.00x</span>
+        </div>
+        <div class="bomb-sel" id="bs"></div>
+      </div>
+      <div class="glass stat">
+        <div><span>آمنة</span><b id="mk">0/22</b></div>
+        <div><span>المضاعف</span><b id="mmx">1.00x</b></div>
+        <div><span>الربح المتوقع</span><b id="mp" style="color:#FFD60A">0</b></div>
+      </div>
+      <div class="glass pad">
+        <div class="tiles g5" id="tl"></div>
+      </div>`;
+
+    const bs = el.querySelector('#bs');
+    Logic.mines.bombOptions.forEach(n => {
+      const b = document.createElement('button');
+      b.innerHTML = `<img src="${IMG('bomb')}" alt=""><span>${n}</span>`;
+      if (n === B) b.classList.add('on');
+      b.onclick = () => {
+        if (x.locked()) return;
+        B = n;
+        bs.querySelectorAll('button').forEach(o => o.classList.remove('on'));
+        b.classList.add('on');
+      };
+      bs.appendChild(b);
+    });
+
+    const tl = el.querySelector('#tl');
+
+    const build = () => {
+      tl.innerHTML = '';
+      for (let i = 0; i < Logic.mines.total; i++) {
+        const b = document.createElement('button');
+        b.className = 'tile';
+        b.dataset.i = i;
+        b.disabled = true;
+        b.innerHTML = '<i class="fa-solid fa-question" style="opacity:.3;font-size:18px"></i>';
+        tl.appendChild(b);
+      }
+    };
+
+    const safe = () => Logic.mines.total - B;
+
+    const info = () => {
+      const m = Logic.mines.mult(open, B);
+      el.querySelector('#mk').textContent = open + '/' + safe();
+      el.querySelector('#mmx').textContent = m.toFixed(2) + 'x';
+      el.querySelector('#mp').textContent = fmt(x.bet() * m);
+      el.querySelector('#mm').textContent = m.toFixed(2) + 'x';
+      if (live) x.act('اسحب ' + fmt(Math.floor(x.bet() * m)), cash, open === 0);
+    };
+
+    const reveal = (lost) => {
+      tl.querySelectorAll('.tile').forEach(b => {
+        const i = +b.dataset.i;
+        b.disabled = true;
+        if (!b.classList.contains('ok') && !b.classList.contains('bad')) {
+          b.classList.add(mines.has(i) ? 'reveal-bomb' : 'dim');
+          b.innerHTML = mines.has(i)
+            ? `<img src="${IMG('bomb')}" alt="">`
+            : `<img src="${IMG('diamond')}" alt="" style="opacity:.5">`;
+        }
+      });
+    };
+
+    const cash = () => {
+      if (!live || open === 0) return;
+      live = false;
+      reveal();
+      x.end(Logic.mines.mult(open, B));
+      x.act('جولة جديدة', start);
+    };
+
+    const start = () => {
+      if (!x.start()) return;
+      build();
+      mines = Logic.mines.layout(B);
+      open = 0;
+      live = true;
+      tl.querySelectorAll('.tile').forEach(b => b.disabled = false);
+      bs.querySelectorAll('button').forEach(o => o.disabled = true);
+      info();
+      x.act('اسحب', cash, true);
+    };
+
+    tl.onclick = e => {
+      const b = e.target.closest('.tile');
+      if (!b || !live || b.disabled) return;
+      const i = +b.dataset.i;
+      b.disabled = true;
+
+      if (mines.has(i)) {
+        live = false;
+        b.classList.add('bad');
+        b.innerHTML = `<img src="${IMG('bomb')}" alt="">`;
+        reveal(true);
+        x.end(0);
+        bs.querySelectorAll('button').forEach(o => o.disabled = false);
+        x.act('جولة جديدة', start);
+      } else {
+        open++;
+        b.classList.add('ok');
+        b.innerHTML = `<img src="${IMG('diamond')}" alt="">`;
+        Snd.tick(); Snd.hap();
+        info();
+        if (open >= safe()) cash();
+      }
+    };
+
+    build();
+    x.act('ابدأ الجولة', start);
+  }
+});
+
+/* ─── 2) Dice ─── */
+GAMES.push({
+  id: 'dice',
+  name: 'Dice',
+  desc: 'اختر فرصتك — الرقم العشوائي يحدد الفوز أو الخسارة.',
+  img: IMG('dice'),
+  c: ['#30D158', '#00A3A3'],
+  min: 10, max: 250,
+  mount(el, x) {
+    let over = false, ch = 50;
+
+    el.innerHTML = `
+      <div class="glass dice-visual" id="dv">
+        <img src="${IMG('dice')}" alt="">
+      </div>
+      <div class="glass pad">
+        <div class="big" id="dr" style="font-size:38px">--.--</div>
+      </div>
+      <div class="glass pad">
+        <div class="row" style="margin-bottom:12px">
+          <button class="opt on" id="du">تحت (أقل)</button>
+          <button class="opt" id="do">فوق (أكثر)</button>
+        </div>
+        <div class="lab">
+          <span>فرصة الفوز: <b id="dc" style="color:#4DA3FF">50</b>%</span>
+          <span>المضاعف: <b id="dm" style="color:#FFD60A"></b>x</span>
+        </div>
+        <input type="range" id="ds" min="13" max="90" value="50">
+      </div>`;
+
+    const upd = () => {
+      el.querySelector('#dc').textContent = ch;
+      el.querySelector('#dm').textContent = Logic.dice.mult(ch).toFixed(2);
+    };
+
+    el.querySelector('#ds').oninput = e => {
+      if (x.locked()) { e.target.value = ch; return; }
+      ch = +e.target.value;
+      upd();
+    };
+
+    const sel = o => {
+      if (x.locked()) return;
+      over = o;
+      el.querySelector('#do').classList.toggle('on', o);
+      el.querySelector('#du').classList.toggle('on', !o);
+    };
+    el.querySelector('#du').onclick = () => sel(false);
+    el.querySelector('#do').onclick = () => sel(true);
+
+    upd();
+
+    x.act('ارمِ النرد', async () => {
+      if (!x.start()) return;
+      const r = Logic.dice.roll();
+      const n = el.querySelector('#dr');
+      const dv = el.querySelector('#dv');
+      n.className = 'big';
+      dv.classList.add('spin');
+      for (let i = 0; i < 14; i++) {
+        n.textContent = (rnd() * 100).toFixed(2);
+        Snd.tick();
+        await sleep(50 + i * 9);
+      }
+      dv.classList.remove('spin');
+      n.textContent = r.toFixed(2);
+      const w = Logic.dice.win(r, over, ch);
+      n.classList.add(w ? 'g' : 'r');
+      x.end(w ? Logic.dice.mult(ch) : 0);
+    });
+  }
+});
+
+/* ─── 3) Crash ─── */
+GAMES.push({
+  id: 'crash',
+  name: 'Crash',
+  desc: 'المضاعف يرتفع... اسحب قبل أن ينفجر!',
+  img: IMG('rocket'),
+  c: ['#FFD60A', '#FF8A00'],
+  min: 10, max: 250,
+  mount(el, x) {
+    el.innerHTML = `
+      <div class="glass pad">
+        <div class="sky" id="sk">
+          <div class="grid-line"></div>
+          <img src="${IMG('rocket')}" id="rk" alt="">
+        </div>
+        <div class="big" id="cm" style="margin-top:12px">1.00x</div>
+      </div>
+      <div class="glass note" style="margin:0">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>الحد الأقصى 10x — يُسحب تلقائياً عند الوصول إليه.</span>
+      </div>
+      <div class="hist" id="ch"></div>`;
+
+    const m = el.querySelector('#cm');
+    const rk = el.querySelector('#rk');
+    let live = false, cur = 1, raf, hist = [];
+
+    const pos = v => {
+      const p = Math.min(1, Math.log(v) / Math.log(10));
+      rk.style.left = (8 + p * 72) + '%';
+      rk.style.bottom = (8 + p * 65) + '%';
+      rk.style.transform = 'rotate(-40deg)';
+    };
+
+    const stop = (mult) => {
+      live = false;
+      cancelAnimationFrame(raf);
+      hist.unshift(mult);
+      el.querySelector('#ch').innerHTML = hist.slice(0, 8)
+        .map(v => `<span class="${v >= 2 ? 'g' : 'r'}">${v.toFixed(2)}x</span>`).join('');
+      x.act('ابدأ', start);
+    };
+
+    const cash = () => {
+      if (!live) return;
+      const v = cur;
+      live = false;
+      m.className = 'big g';
+      stop(v);
+      x.end(v);
+    };
+
+    const start = () => {
+      if (!x.start()) return;
+      const cp = Logic.crash.point();
+      const t0 = performance.now();
+      live = true;
+      cur = 1;
+      m.className = 'big';
+      m.textContent = '1.00x';
+      pos(1);
+      rk.src = IMG('rocket');
+      x.act('اسحب الآن', cash);
+
+      const f = n => {
+        if (!live) return;
+        const v = Logic.crash.at((n - t0) / 1000);
+        if (v >= cp) {
+          cur = cp;
+          m.textContent = cp.toFixed(2) + 'x';
+          m.className = 'big r';
+          live = false;
+          rk.src = IMG('explosion');
+          stop(cp);
+          x.end(0);
+          setTimeout(() => { rk.src = IMG('rocket'); }, 900);
+          return;
+        }
+        if (v >= Logic.crash.cap) {
+          cur = Logic.crash.cap;
+          m.textContent = cur.toFixed(2) + 'x';
+          cash();
+          return;
+        }
+        cur = v;
+        m.textContent = v.toFixed(2) + 'x';
+        pos(v);
+        raf = requestAnimationFrame(f);
+      };
+      raf = requestAnimationFrame(f);
+    };
+    x.act('ابدأ', start);
+  }
+});
+
+/* ─── 4) Slots ─── */
+GAMES.push({
+  id: 'slots',
+  name: 'Lucky Slots',
+  desc: 'ثلاث بكرات — طابق الرموز واربح حتى ×20 رهانك.',
+  img: IMG('slot-machine'),
+  c: ['#FFD60A', '#30D158'],
+  min: 10, max: 250,
+  mount(el, x) {
+    const L = Logic.slots;
+    const icons = { cherry: 'cherry', lemon: 'lemon', bell: 'bell', star: 'star', diamond: 'diamond', seven: 'seven' };
+
+    el.innerHTML = `
+      <div class="glass reels">
+        <div class="reel"><img src="${IMG(icons.cherry)}" alt=""></div>
+        <div class="reel"><img src="${IMG(icons.star)}" alt=""></div>
+        <div class="reel"><img src="${IMG(icons.diamond)}" alt=""></div>
+      </div>
+      <div class="glass pad">
+        <div class="lab" style="justify-content:center">جدول الأرباح</div>
+        <div class="hist">
+          <span>🍒🍒🍒 6x</span>
+          <span>🔔🔔🔔 9x</span>
+          <span>⭐⭐⭐ 15x</span>
+          <span>💎💎💎 20x</span>
+          <span>رمزان متطابقان 1x</span>
+        </div>
+      </div>`;
+
+    const rs = [...el.querySelectorAll('.reel')];
+
+    x.act('دوّر', async () => {
+      if (!x.start()) return;
+      const r = L.spin();
+      rs.forEach(e => e.classList.add('spin'));
+      for (let k = 0; k < 3; k++) {
+        for (let t = 0; t < 8 + k * 6; t++) {
+          rs.slice(k).forEach(e => {
+            const s = L.sym[int(6)];
+            e.innerHTML = `<img src="${IMG(icons[s])}" alt="">`;
+          });
+          Snd.tick();
+          await sleep(70);
+        }
+        rs[k].innerHTML = `<img src="${IMG(icons[L.sym[r.reels[k]]])}" alt="">`;
+        rs[k].classList.remove('spin');
+        Snd.t(440 + k * 120, .1);
+      }
+      x.end(r.mult);
+    });
+  }
+});
+
+/* ─── 5) Limbo ─── */
+GAMES.push({
+  id: 'limbo',
+  name: 'Limbo',
+  desc: 'اختر مضاعف الهدف — إن وصل إليه الرقم تربح فوراً.',
+  img: IMG('target'),
+  c: ['#7B5CFF', '#007AFF'],
+  min: 10, max: 250,
+  mount(el, x) {
+    let target = 2;
+
+    el.innerHTML = `
+      <div class="glass dice-visual">
+        <img src="${IMG('target')}" alt="">
+      </div>
+      <div class="glass pad">
+        <div class="big" id="lr" style="font-size:42px;color:#4DA3FF">--.--x</div>
+        <div class="lab" style="margin-top:8px">
+          <span>الهدف: <b id="lt" style="color:#FFD60A">${target.toFixed(2)}x</b></span>
+          <span>فرصة الفوز: <b id="lw" style="color:#30D158">${(97 / target).toFixed(1)}%</b></span>
+        </div>
+      </div>
+      <div class="glass pad">
+        <div class="lab"><span>اضبط الهدف</span><span id="lv">${target.toFixed(2)}x</span></div>
+        <input type="range" id="ls" min="110" max="1000" value="200" step="10">
+      </div>`;
+
+    const upd = () => {
+      el.querySelector('#lt').textContent = target.toFixed(2) + 'x';
+      el.querySelector('#lw').textContent = Math.min(97, 97 / target).toFixed(1) + '%';
+      el.querySelector('#lv').textContent = target.toFixed(2) + 'x';
+    };
+
+    el.querySelector('#ls').oninput = e => {
+      if (x.locked()) { e.target.value = target * 100; return; }
+      target = +e.target.value / 100;
+      upd();
+    };
+
+    x.act('العب', async () => {
+      if (!x.start()) return;
+      const r = el.querySelector('#lr');
+      r.className = 'big';
+      r.style.color = '#4DA3FF';
+      const result = Math.floor((97 / rnd()) * 100) / 100;
+      r.textContent = '...';
+      for (let i = 0; i < 10; i++) {
+        r.textContent = (rnd() * 10).toFixed(2) + 'x';
+        Snd.tick();
+        await sleep(60);
+      }
+      r.textContent = result.toFixed(2) + 'x';
+      const win = result >= target;
+      r.style.color = win ? '#30D158' : '#FF453A';
+      x.end(win ? target : 0);
+    });
+  }
+});
+
+/* ─── 6) Plinko ─── */
+GAMES.push({
+  id: 'plinko',
+  name: 'Plinko',
+  desc: 'أسقط الكرة بين المسامير واربح حسب المضاعف في النهاية.',
+  img: IMG('coins'),
+  c: ['#4DA3FF', '#007AFF'],
+  min: 10, max: 250,
+  mount(el, x) {
+    el.innerHTML = `<div class="glass pad"><canvas id="pc" style="width:100%;height:auto"></canvas></div>`;
+
+    const cv = el.querySelector('#pc');
+    const W = 320, H = 340, d = devicePixelRatio || 1;
+    cv.width = W * d; cv.height = H * d;
+    cv.style.height = '340px';
+    const c = cv.getContext('2d');
+    c.scale(d, d);
+
+    const M = [5, 2, 1.4, .9, .4, .9, 1.4, 2, 5];
+    const sp = 32, rh = 29, top = 30, cx = W / 2;
+    let hl = -1;
+
+    const col = m => m >= 2 ? '#FFD60A' : m >= 1 ? '#4DA3FF' : '#FF6B63';
+
+    const draw = (bx, by) => {
+      c.clearRect(0, 0, W, H);
+      c.fillStyle = 'rgba(255,255,255,.7)';
+      for (let r = 0; r < 8; r++) {
+        for (let j = 0; j <= r; j++) {
+          c.beginPath();
+          c.arc(cx + (j - r / 2) * sp, top + r * rh, 3.2, 0, 7);
+          c.fill();
+        }
+      }
+      M.forEach((m, k) => {
+        const sx = cx + (k - 4) * sp;
+        c.fillStyle = k === hl ? col(m) : 'rgba(255,255,255,.1)';
+        c.beginPath();
+        c.roundRect(sx - 14, H - 34, 28, 24, 7);
+        c.fill();
+        c.fillStyle = k === hl ? '#000' : col(m);
+        c.font = '700 11px IBM Plex Sans Arabic';
+        c.textAlign = 'center';
+        c.fillText(m + 'x', sx, H - 18);
+      });
+      if (bx != null) {
+        c.shadowColor = '#007AFF';
+        c.shadowBlur = 14;
+        c.fillStyle = '#fff';
+        c.beginPath();
+        c.arc(bx, by, 6.5, 0, 7);
+        c.fill();
+        c.shadowBlur = 0;
+      }
+    };
+    draw();
+
+    const tween = (a, b, ms) => new Promise(res => {
+      const t0 = performance.now();
+      (function f(n) {
+        const t = Math.min(1, (n - t0) / ms);
+        draw(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t - Math.sin(Math.PI * t) * 7);
+        t < 1 ? requestAnimationFrame(f) : res();
+      })(t0);
+    });
+
+    x.act('أسقط الكرة', async () => {
+      if (!x.start()) return;
+      hl = -1;
+      let k = 0, p = [cx, top - 24];
+      for (let i = 0; i < 8; i++) {
+        const go = rnd() < .5 ? 0 : 1;
+        k += go;
+        const n = [cx + (k - (i + 1) / 2) * sp, top + i * rh + rh * .55];
+        await tween(p, n, 150);
+        Snd.tick();
+        p = n;
+      }
+      await tween(p, [p[0], H - 48], 150);
+      hl = k;
+      draw();
+      x.end(M[k]);
+    });
+  }
+});
+
+/* ═══════════════════════════════════════════════════
+   UI SHELL
+   ═══════════════════════════════════════════════════ */
+const UI = {
+  cur: null, bet: CFG.bets[0], busy: false,
+
+  toast(t) {
+    const e = $('#toast');
+    e.textContent = t;
+    e.classList.add('show');
+    clearTimeout(this.tt);
+    this.tt = setTimeout(() => e.classList.remove('show'), 2200);
+  },
+
+  renderHome() {
+    const g = $('#grid'), s = $('#state');
+    g.innerHTML = '';
+    if (!GAMES.length) {
+      s.hidden = false;
+      s.innerHTML = '<i class="fa-solid fa-ghost"></i><div>لا توجد ألعاب</div>';
+      return;
+    }
+    s.hidden = true;
+    $('#cnt').textContent = GAMES.length + ' ألعاب';
+    GAMES.forEach((G, i) => {
+      const d = document.createElement('div');
+      d.className = 'glass gc';
+      d.style.animationDelay = i * .06 + 's';
+      d.innerHTML = `
+        <div class="art" style="background:linear-gradient(135deg,${G.c[0]},${G.c[1]})">
+          <img src="${G.img}" alt="" onerror="this.style.display='none'">
+        </div>
+        <h3>${esc(G.name)}</h3>
+        <p>${esc(G.desc)}</p>
+        <div class="lim"><span>${G.min} – ${G.max}</span><span>رهان (ل.س)</span></div>
+        <button class="btn sm"><i class="fa-solid fa-play"></i> العب الآن</button>`;
+      d.querySelector('button').onclick = () => this.open(G);
+      g.appendChild(d);
+    });
+  },
+
+  open(G) {
+    try {
+      if (!Wallet.ready) { this.toast('جاري تحميل البيانات...'); return; }
+      this.cur = G;
+      this.busy = false;
+      $('#gt').textContent = G.name;
+      $('#lim').textContent = G.min + ' – ' + G.max;
+
+      const b = $('#bets');
+      b.innerHTML = '';
+      CFG.bets.filter(v => v >= G.min && v <= G.max).forEach(v => {
+        const e = document.createElement('button');
+        e.textContent = v;
+        e.className = v === this.bet ? 'on' : '';
+        e.onclick = () => {
+          if (this.busy) return;
+          this.bet = v;
+          b.querySelectorAll('button').forEach(z => z.classList.toggle('on', z === e));
+          Snd.hap();
+        };
+        b.appendChild(e);
+      });
+      if (![...b.children].some(e => e.classList.contains('on')) && b.children[0]) {
+        this.bet = +b.children[0].textContent;
+        b.children[0].classList.add('on');
+      }
+
+      const st = $('#stage');
+      st.innerHTML = '<div class="res" id="res"></div>';
+      const host = document.createElement('div');
+      host.style.cssText = 'display:flex;flex-direction:column;gap:12px';
+      st.appendChild(host);
+
+      G.mount(host, this.api);
+      $('#game').classList.add('open');
+      $('#game').setAttribute('aria-hidden', 'false');
+    } catch (e) {
+      console.error(e);
+      this.toast('حدث خطأ في تحميل اللعبة');
+      this.close(true);
+    }
+  },
+
+  close(force) {
+    if (this.busy && !force) { this.toast('انتظر انتهاء الجولة'); return; }
+    this.busy = false;
+    $('#game').classList.remove('open');
+    $('#game').setAttribute('aria-hidden', 'true');
+    this.cur = null;
+    $('#stage').innerHTML = '';
+  },
+
+  setBusy(v) {
+    this.busy = v;
+    $('#back').disabled = v;
+    $$('#bets button').forEach(b => b.disabled = v);
+  },
+
+  api: {
+    bet: () => UI.bet,
+    locked: () => UI.busy,
+
+    act(label, fn, dis) {
+      const a = $('#act');
+      a.textContent = label;
+      a.disabled = !!dis;
+      a.onclick = async () => {
+        if (a.dataset.l) return;
+        a.dataset.l = 1;
+        try {
+          await fn();
+        } catch (e) {
+          console.error(e);
+          UI.toast(e.message || 'حدث خطأ');
+          if (UI.busy) {
+            await Wallet.change(UI.bet, UI.cur?.id || 'unknown', { type: 'rollback' });
+            UI.setBusy(false);
+          }
+        } finally {
+          delete a.dataset.l;
+        }
+      };
+    },
+
+    start() {
+      if (UI.busy) return false;
+      if (Wallet.bal < UI.bet) {
+        UI.toast('❌ رصيدك لا يكفي لهذا الرهان');
+        return false;
+      }
+      const r = document.querySelector('#res');
+      if (r) r.classList.remove('show');
+      UI.setBusy(true);
+      Snd.hap();
+      // خصم الرهان أولاً
+      Wallet.change(-UI.bet, UI.cur.id, { type: 'bet' })
+        .catch(e => { UI.toast('فشل خصم الرهان'); UI.setBusy(false); throw e; });
+      return true;
+    },
+
+    end(mult) {
+      if (!UI.busy) return;
+      const bet = UI.bet;
+      const m = Math.min(mult, CFG.maxMult);
+      const pay = Math.floor(bet * m);
+      const net = pay - bet;
+
+      // إضافة الأرباح
+      const finalize = () => {
+        UI.setBusy(false);
+        const r = document.querySelector('#res');
+        const cls = net > 0 ? 'win' : net === 0 ? 'draw' : 'lose';
+        r.className = 'res ' + cls;
+        if (net > 0) {
+          r.innerHTML = `<b style="color:#30D158">+${fmt(net)}</b><span>🎉 فوز! ×${m.toFixed(2)}</span>`;
+        } else if (net === 0) {
+          r.innerHTML = `<b>0</b><span>تعادل — استرجعت رهانك</span>`;
+        } else if (pay > 0) {
+          r.innerHTML = `<b style="color:#FF453A">${fmt(net)}</b><span>استرجعت ${fmt(pay)} فقط</span>`;
+        } else {
+          r.innerHTML = `<b style="color:#FF453A">${fmt(net)}</b><span>حظ أوفر في الجولة القادمة</span>`;
+        }
+        requestAnimationFrame(() => r.classList.add('show'));
+        if (net < 0) $('#stage').classList.add('shake');
+        setTimeout(() => $('#stage').classList.remove('shake'), 400);
+        if (net > 0) { Snd.win(); Snd.hap('win'); }
+        else if (net < 0) { Snd.lose(); Snd.hap('lose'); }
+        setTimeout(() => r.classList.remove('show'), 2600);
+      };
+
+      if (pay > 0) {
+        Wallet.change(pay, UI.cur.id, { type: 'win', mult: m, net })
+          .then(finalize)
+          .catch(e => { console.error(e); UI.toast('فشل إضافة الأرباح'); finalize(); });
+      } else {
+        // خسارة كاملة — سجّل فقط
+        db.collection(CFG.historyCol).add({
+          userId: Wallet.id,
+          gameId: UI.cur.id,
+          type: 'loss',
+          delta: -bet,
+          mult: 0,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        }).catch(() => {});
+        finalize();
+      }
+    }
+  }
+};
+
+/* ═══════════════════════════════════════════════════
+   BOOT
+   ═══════════════════════════════════════════════════ */
+async function boot() {
+  const done = () => $('#loader').classList.add('off');
+  try {
+    let user = null;
+    if (tg) {
+      try {
+        tg.ready(); tg.expand();
+        tg.setHeaderColor && tg.setHeaderColor('#000000');
+        tg.setBackgroundColor && tg.setBackgroundColor('#000000');
+        if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
+      } catch (e) {}
+      user = tg.initDataUnsafe && tg.initDataUnsafe.user || null;
+    }
+
+    if (!user) {
+      $('#notetx').textContent = '⚠️ افتح هذه الصفحة من داخل تيليجرام للعب برصيدك الحقيقي.';
+      $('#note').hidden = false;
+      $('#state').hidden = false;
+      $('#state').innerHTML = '<i class="fa-solid fa-lock"></i><div>التطبيق يعمل فقط داخل تيليجرام</div>';
+      setTimeout(done, 400);
+      return;
+    }
+
+    // عرض بيانات المستخدم
+    const n = ((user.first_name || '') + ' ' + (user.last_name || '')).trim();
+    $('#uname').textContent = n || 'لاعب';
+    if (/^https:\/\//.test(user.photo_url || '')) {
+      const im = new Image();
+      im.src = user.photo_url; im.alt = '';
+      im.onload = () => { $('#av').innerHTML = ''; $('#av').appendChild(im); };
+    }
+
+    // تهيئة المحفظة
+    const st = await Wallet.init(user);
+    if (st === 'no-doc') {
+      $('#notetx').textContent = '⚠️ لم يتم العثور على حسابك — افتح التطبيق الرئيسي أولاً.';
+      $('#note').hidden = false;
+      $('#state').hidden = false;
+      $('#state').innerHTML = '<i class="fa-solid fa-user-xmark"></i><div>الحساب غير مسجل</div>';
+      setTimeout(done, 400);
+      return;
+    }
+    if (st === 'error') {
+      $('#notetx').textContent = '⚠️ تعذّر الاتصال بـ Firebase — حاول لاحقاً.';
+      $('#note').hidden = false;
+    }
+
+    Wallet.paint();
+    UI.renderHome();
+
+    $('#back').onclick = () => UI.close();
+    $('#snd').onclick = () => {
+      Snd.on = !Snd.on;
+      $('#snd i').className = 'fa-solid ' + (Snd.on ? 'fa-volume-high' : 'fa-volume-xmark');
+    };
+
+    if (tg && tg.BackButton) {
+      tg.BackButton.onClick(() => UI.close());
+    }
+
+    // تحديث الرصيد كل 30 ثانية
+    setInterval(async () => {
+      if (!Wallet.ready || document.hidden) return;
+      try {
+        const snap = await Wallet.ref.get();
+        if (snap.exists) {
+          const fresh = Number(snap.data()[CFG.balanceField]) || 0;
+          if (fresh !== Wallet.bal) {
+            Wallet.bal = fresh;
+            Wallet.paint();
+          }
+        }
+      } catch (e) {}
+    }, 30000);
+
+  } catch (e) {
+    console.error(e);
+    const s = $('#state');
+    s.hidden = false;
+    s.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i><div style="margin-bottom:14px">حدث خطأ أثناء التحميل</div><button class="btn sm" style="max-width:180px;margin:auto" onclick="location.reload()">إعادة المحاولة</button>';
+  }
+  setTimeout(done, 350);
+}
+
+window.addEventListener('unhandledrejection', e => console.warn(e.reason));
+boot();
+</script>
+</body>
+</html>
