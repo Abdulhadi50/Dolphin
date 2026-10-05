@@ -296,6 +296,34 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .tile__d b{font-weight:800;color:var(--yellow)}
 .tile__go{position:absolute!important;top:14px;left:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;display:grid;place-items:center;font-size:11px}
 
+/* ═══ بطاقة الألعاب (مستطيل بعرض كامل) ═══ */
+.tile--full{
+  grid-column: 1 / -1;
+  min-height: 120px;
+  background: linear-gradient(135deg, #7769D8 0%, #311D96 100%);
+}
+.tile--full .tile__bg{
+  font-size: 140px;
+  left: -30px;
+  bottom: -50px;
+  opacity: .18;
+  transform: rotate(-12deg);
+}
+.tile--full .tile__ic{
+  background: rgba(0,0,0,.32);
+  color: #FFD60A;
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+}
+.tile--full .tile__t{
+  font-size: 17px;
+}
+.tile--full .tile__d{
+  font-size: 12.5px;
+  max-width: 78%;
+}
+
 .card{background:#141414;border:1px solid #18252E;border-radius:26px;padding:16px;margin-bottom:12px}
 .card__title{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:800;margin-bottom:12px;color:#fff}
 .card__title i{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center;font-size:12px}
@@ -731,22 +759,30 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
       </div>
 
       <div class="tiles">
-        <button class="tile tile--sea" onclick="navigate('referral')">
-          <i class="fas fa-users tile__bg"></i>
-          <span class="tile__ic"><i class="fas fa-user-plus"></i></span>
-          <span class="tile__t">دعوة الأصدقاء</span>
-          <span class="tile__d">اربح <b>10 ل.س</b> عن كل صديق ينضم عبر رابطك</span>
-          <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
-        </button>
-        <button class="tile tile--amber" onclick="navigate('tasks')">
-          <i class="fas fa-trophy tile__bg"></i>
-          <span class="tile__ic"><i class="fas fa-tasks"></i></span>
-          <span class="tile__t">المهمات</span>
-          <span class="tile__d">اربح حتى <b id="tileTaskTotal">0</b> ل.س من إكمال المهمات</span>
-          <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
-        </button>
-      </div>
-    </div>
+  <button class="tile tile--sea" onclick="navigate('referral')">
+    <i class="fas fa-users tile__bg"></i>
+    <span class="tile__ic"><i class="fas fa-user-plus"></i></span>
+    <span class="tile__t">دعوة الأصدقاء</span>
+    <span class="tile__d">اربح <b>10 ل.س</b> عن كل صديق ينضم عبر رابطك</span>
+    <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
+  </button>
+  <button class="tile tile--amber" onclick="navigate('tasks')">
+    <i class="fas fa-trophy tile__bg"></i>
+    <span class="tile__ic"><i class="fas fa-tasks"></i></span>
+    <span class="tile__t">المهمات</span>
+    <span class="tile__d">اربح حتى <b id="tileTaskTotal">0</b> ل.س من إكمال المهمات</span>
+    <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
+  </button>
+  
+  <!-- 🎮 بطاقة الألعاب (مستطيل بعرض كامل) -->
+  <button class="tile tile--full" onclick="location.href='game.html'">
+    <i class="fas fa-dice tile__bg"></i>
+    <span class="tile__ic"><i class="fas fa-gamepad"></i></span>
+    <span class="tile__t">ألعاب المراهنة</span>
+    <span class="tile__d">راهن برصيدك واربح حتى <b>×50</b> — Mines، Dice، Crash والمزيد</span>
+    <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
+  </button>
+</div>
 
     <div class="view" id="view-tasks">
       <div class="topbar">
