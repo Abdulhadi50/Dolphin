@@ -24,6 +24,7 @@
   --sea:#007AFF;--sea-2:#3395FF;--sea-l:#7DB9FF;--sea-wash:rgba(0,122,255,.16);--sea-pale:rgba(0,122,255,.4);
   --amber:#FFD60A;--amber-l:#FFE66D;--amber-pale:rgba(255,214,10,.18);
   --coral:#FF6B63;--coral-2:#FF453A;--emerald:#30D158;
+  --gold:#FFD60A;--gold-2:#FF9F0A;
   --paper:#000;--white:#fff;--deep:#003F8A;--deep-2:#007AFF;
   --r-xs:8px;--r-sm:12px;--r-md:16px;--r-lg:22px;--r-xl:28px;
   --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-8:32px;
@@ -206,7 +207,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   100%{transform:translateY(-350px) scale(1.1);opacity:0}
 }
 
-/* 💰 صندوق الكنز */
+/* صندوق الكنز */
 .treasure{
   position:absolute;bottom:5%;left:50%;transform:translateX(-50%) scale(0);
   font-size:48px;z-index:8;
@@ -222,7 +223,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   50%{filter:drop-shadow(0 0 40px gold) drop-shadow(0 0 60px orange)}
 }
 
-/* 💎 ماسات تتصاعد */
+/* ماسات تتصاعد */
 .gem{position:absolute;bottom:20%;left:50%;font-size:22px;z-index:7;
   animation:gemFloat 3s ease-out infinite;opacity:0;animation-delay:var(--d);
   filter:drop-shadow(0 0 6px rgba(100,220,255,.8))}
@@ -241,8 +242,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   color:#fff;font-variant-numeric:tabular-nums}
 .pct.ready{background:#007AFF;border-color:#4DA3FF;display:flex;align-items:center;gap:6px}
 .pct.ready::before{content:'\f51e';font-family:'Font Awesome 6 Free';font-weight:900;font-size:11px}
-
-/* ═══ نهاية Aquarium ═══ */
 
 .status-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;background:rgba(0,0,0,.28);border-radius:16px;margin-bottom:var(--sp-3);font-size:var(--f-sm);font-weight:700;color:#fff;position:relative;z-index:2}
 .status-bar__dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);flex-shrink:0}
@@ -543,7 +542,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .vbadge-fb{color:#fff;font-size:13px;flex-shrink:0}
 
 .pf-top{display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 0 20px}
-.pf-av{width:124px;height:124px;border-radius:50%;border:3px solid var(--blue);padding:5px;display:grid;place-items:center;overflow:hidden;margin-bottom:14px;color:var(--blue);font-size:46px}
+.pf-av{width:124px;height:124px;border-radius:50%;border:3px solid var(--blue);padding:5px;display:grid;place-items:center;overflow:hidden;margin-bottom:14px;color:var(--blue);font-size:46px;position:relative}
 .pf-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .pf-name{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-size:22px;font-weight:800;color:#fff;word-break:break-word;margin-bottom:3px}
 .pf-user{font-size:13px;color:var(--blue);direction:ltr;font-weight:700;margin-bottom:14px}
@@ -568,9 +567,132 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .pf-row__lbl{flex:1;font-size:13.5px;font-weight:600;color:var(--text-2)}
 .pf-row__val{font-size:14px;font-weight:800}
 
+/* ═══ شارة التحقق ═══ */
+.vf-check{width:22px;height:22px;flex-shrink:0;display:inline-block;vertical-align:middle}
+.vf-check--inline{width:18px;height:18px}
+.name--verified{color:#FFD60A;font-weight:800}
+.avatar--verified,
+.pf-av--verified,
+.nav__av--verified,
+.pod__av--verified,
+.lrow__av--verified{
+  border:2.5px solid #FFD60A!important;
+  box-shadow:0 0 10px rgba(255,214,10,.45)}
+.pf-av--verified{padding:4px;border-width:3px!important}
+.lrow__av--verified{border-width:2px!important}
+.pod__av--verified{border-width:3px!important}
+
+/* زر التحقق داخل الملف */
+.vf-verify-row{
+  display:flex;align-items:center;gap:12px;
+  padding:14px;background:#141414;
+  border:1px solid #18252E;border-radius:24px;
+  margin-bottom:12px;width:100%;text-align:start;
+  transition:transform .15s,background .2s;
+  position:relative;overflow:hidden}
+.vf-verify-row:active{transform:scale(.98)}
+.vf-verify-row__ic{
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,214,10,.15);color:#FFD60A;
+  display:grid;place-items:center;font-size:15px;flex-shrink:0;
+  border:1.5px solid rgba(255,214,10,.35)}
+.vf-verify-row__info{flex:1;min-width:0}
+.vf-verify-row__t{font-size:13.5px;font-weight:800;color:#fff;display:flex;align-items:center;gap:6px}
+.vf-verify-row__d{font-size:11.5px;color:var(--text-2);font-weight:600;margin-top:2px}
+.vf-verify-row__go{
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(255,214,10,.15);color:#FFD60A;
+  display:grid;place-items:center;font-size:11px;flex-shrink:0}
+
+/* ═══ نافذة التوثيق المنبثقة ═══ */
+.vf-modal-overlay{
+  position:fixed;inset:0;z-index:9500;
+  background:rgba(0,0,0,.78);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  display:none;align-items:center;justify-content:center;padding:20px;
+  overflow-y:auto}
+.vf-modal-overlay.show{display:flex;animation:vfFadeIn .25s ease}
+@keyframes vfFadeIn{from{opacity:0}to{opacity:1}}
+.vf-modal{
+  background:#0B0B0D;border:1px solid #18252E;
+  border-radius:28px;padding:22px 20px;
+  max-width:420px;width:100%;
+  position:relative;
+  animation:vfSlideIn .35s cubic-bezier(.34,1.3,.64,1)}
+@keyframes vfSlideIn{from{opacity:0;transform:translateY(30px) scale(.96)}to{opacity:1;transform:none}}
+.vf-modal__close{
+  position:absolute;top:14px;left:14px;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);
+  display:grid;place-items:center;font-size:13px;
+  transition:background .2s,transform .15s}
+.vf-modal__close:active{transform:scale(.92);background:rgba(255,255,255,.14)}
+.vf-modal__head{text-align:center;padding:6px 0 16px}
+.vf-modal__crown{
+  width:66px;height:66px;border-radius:50%;
+  background:linear-gradient(135deg,#FFD60A 0%,#FF9F0A 100%);
+  display:grid;place-items:center;margin:0 auto 12px;
+  font-size:28px;color:#3A2A00;
+  box-shadow:0 8px 24px rgba(255,214,10,.35)}
+.vf-modal__title{font-size:19px;font-weight:800;color:#fff;margin-bottom:4px}
+.vf-modal__sub{font-size:12.5px;color:var(--text-2);font-weight:600;line-height:1.6}
+
+.vf-modal__price{
+  display:flex;align-items:baseline;justify-content:center;
+  gap:12px;margin:16px 0 20px;
+  padding:14px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(255,214,10,.12) 0%,rgba(255,159,10,.06) 100%);
+  border:1px solid rgba(255,214,10,.25)}
+.vf-modal__price-old{
+  font-size:15px;color:rgba(255,255,255,.45);
+  text-decoration:line-through;font-weight:700;direction:ltr}
+.vf-modal__price-new{
+  font-size:30px;font-weight:800;color:#FFD60A;
+  direction:ltr;line-height:1;
+  text-shadow:0 0 16px rgba(255,214,10,.4);
+  font-variant-numeric:tabular-nums}
+.vf-modal__price-cur{
+  font-size:13px;color:#FFD60A;font-weight:800;margin-right:2px}
+
+.vf-modal__perks{
+  display:flex;flex-direction:column;gap:8px;
+  margin-bottom:20px}
+.vf-modal__perk{
+  display:flex;align-items:center;gap:11px;
+  padding:11px 13px;
+  background:#141416;border:1px solid #18252E;
+  border-radius:16px}
+.vf-modal__perk-ic{
+  width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;font-size:14px;flex-shrink:0}
+.vf-modal__perk-ic--gold{background:rgba(255,214,10,.15);color:#FFD60A}
+.vf-modal__perk-ic--blue{background:rgba(0,122,255,.18);color:#4DA3FF}
+.vf-modal__perk-ic--purple{background:rgba(119,105,216,.2);color:#B0A3FF}
+.vf-modal__perk-t{flex:1;font-size:13px;font-weight:700;color:#fff}
+.vf-modal__perk-v{font-size:11.5px;font-weight:800;color:#4DA3FF;
+  background:rgba(0,122,255,.15);padding:4px 10px;border-radius:20px;flex-shrink:0}
+
+.vf-modal__btn{
+  width:100%;padding:16px;border-radius:18px;
+  background:linear-gradient(135deg,#FFD60A 0%,#FF9F0A 100%);
+  color:#3A2A00;font-size:15px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  transition:transform .15s;min-height:56px;
+  box-shadow:0 6px 18px rgba(255,214,10,.28)}
+.vf-modal__btn:active:not([disabled]){transform:scale(.98)}
+.vf-modal__btn[disabled]{
+  background:#18252E;color:rgba(255,255,255,.5);
+  box-shadow:none;cursor:not-allowed}
+
+.vf-modal__note{
+  text-align:center;font-size:11px;color:var(--text-2);
+  margin-top:10px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;gap:6px}
+.vf-modal__note i{color:#4DA3FF}
+
 .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-140%);opacity:0;background:rgba(28,28,32,.88);
   -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:#fff;border:1px solid var(--glass-line);padding:12px 18px;border-radius:30px;
-  font-size:var(--f-sm);font-weight:700;z-index:9000;max-width:92%;display:flex;align-items:center;gap:10px;
+  font-size:var(--f-sm);font-weight:700;z-index:9999;max-width:92%;display:flex;align-items:center;gap:10px;
   transition:transform .35s cubic-bezier(.34,1.4,.64,1),opacity .3s;pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .toast__ic{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
@@ -595,107 +717,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .outside-tg p{font-size:var(--f-sm);color:var(--text-2);line-height:1.75;margin-bottom:var(--sp-6);max-width:300px}
 .outside-tg a{padding:15px 34px;border-radius:30px;text-decoration:none;font-weight:700;font-size:var(--f-md);display:inline-flex;align-items:center;gap:9px}
 
-/* ═══ صفحة التوثيق ═══ */
-.vf-hero{
-  position:relative;overflow:hidden;border-radius:28px;padding:24px 18px 20px;margin-bottom:16px;
-  background:linear-gradient(160deg,#7769D8 0%,#311D96 100%);
-  text-align:center;color:#fff}
-.vf-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,214,10,.25),transparent 65%);pointer-events:none}
-.vf-hero__crown{font-size:44px;line-height:1;margin-bottom:8px;filter:drop-shadow(0 0 20px rgba(255,214,10,.6));
-  animation:crownFloat 3s ease-in-out infinite}
-@keyframes crownFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.vf-hero__title{font-size:20px;font-weight:800;margin-bottom:4px}
-.vf-hero__sub{font-size:12.5px;color:rgba(255,255,255,.78);font-weight:600;margin-bottom:18px}
-
-.vf-price{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:14px;position:relative;z-index:1}
-.vf-price__old{font-size:15px;color:rgba(255,255,255,.55);text-decoration:line-through;font-weight:700;direction:ltr}
-.vf-price__old span{font-size:17px}
-.vf-price__new{font-size:36px;font-weight:800;color:#FFD60A;direction:ltr;line-height:1;
-  text-shadow:0 0 20px rgba(255,214,10,.5);font-variant-numeric:tabular-nums}
-.vf-price__new span{font-size:36px}
-.vf-price__badge{position:absolute;top:-8px;left:12px;background:#FF453A;color:#fff;font-size:10px;font-weight:800;
-  padding:4px 10px;border-radius:20px;transform:rotate(-8deg)}
-
-.vf-offer-timer{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:20px;
-  background:rgba(0,0,0,.32);font-size:12.5px;font-weight:700;position:relative;z-index:1}
-.vf-offer-timer i{color:#FFD60A;font-size:12px}
-.vf-offer-timer b{color:#FFD60A;direction:ltr;font-variant-numeric:tabular-nums}
-
-.vf-perks{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
-.vf-perk{display:flex;align-items:center;gap:12px;padding:14px;background:#141414;border:1px solid #18252E;border-radius:22px}
-.vf-perk__ic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:16px;flex-shrink:0}
-.vf-perk__ic--gold{background:rgba(255,214,10,.15);color:#FFD60A}
-.vf-perk__ic--blue{background:rgba(0,122,255,.18);color:#4DA3FF}
-.vf-perk__ic--green{background:rgba(48,209,88,.15);color:#30D158}
-.vf-perk__ic--purple{background:rgba(119,105,216,.2);color:#B0A3FF}
-.vf-perk__body{flex:1;min-width:0}
-.vf-perk__t{font-size:14px;font-weight:800;color:#fff}
-.vf-perk__d{font-size:11.5px;color:var(--text-2);font-weight:600;margin-top:2px}
-.vf-perk__val{font-size:12.5px;font-weight:800;color:#4DA3FF;background:rgba(0,122,255,.15);
-  padding:5px 12px;border-radius:20px;flex-shrink:0}
-
-.vf-buy-btn{width:100%;padding:18px;border-radius:20px;background:linear-gradient(135deg,#FFD60A 0%,#FF9F0A 100%);
-  color:#3A2A00;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;
-  transition:transform .15s;min-height:62px;box-shadow:0 8px 24px rgba(255,214,10,.3)}
-.vf-buy-btn:active{transform:scale(.98)}
-.vf-buy-btn[disabled]{opacity:.6;cursor:not-allowed}
-.vf-note{text-align:center;font-size:11.5px;color:var(--text-2);margin-top:10px;font-weight:600;
-  display:flex;align-items:center;justify-content:center;gap:6px}
-.vf-note i{color:#4DA3FF}
-
-.vf-active{background:linear-gradient(160deg,#30D158 0%,#0A5E2A 100%);border-radius:28px;padding:26px 18px;text-align:center;color:#fff}
-.vf-active__crown{font-size:52px;margin-bottom:8px;filter:drop-shadow(0 0 24px rgba(255,214,10,.7));
-  animation:crownFloat 3s ease-in-out infinite}
-.vf-active__title{font-size:22px;font-weight:800;margin-bottom:4px}
-.vf-active__sub{font-size:13px;color:rgba(255,255,255,.85);font-weight:600;margin-bottom:12px}
-.vf-active__date{display:inline-block;padding:6px 14px;border-radius:20px;background:rgba(0,0,0,.28);font-size:12px;font-weight:700}
-.vf-active__date b{color:#FFD60A}
-
-/* إطار ذهبي للموثق */
-.avatar--verified,
-.pf-av--verified,
-.nav__av--verified{
-  border:2.5px solid transparent!important;
-  background:linear-gradient(#000,#000) padding-box,
-             linear-gradient(135deg,#FFD60A 0%,#FF9F0A 50%,#FFD60A 100%) border-box!important;
-  box-shadow:0 0 12px rgba(255,214,10,.45)}
-.pf-av--verified{padding:5px;background:linear-gradient(#000,#000) padding-box,
-             linear-gradient(135deg,#FFD60A 0%,#FF9F0A 50%,#FFD60A 100%) border-box!important}
-
-/* اسم مميز للموثق */
-.name--verified{
-  background:linear-gradient(90deg,#FFD60A 0%,#FF9F0A 50%,#FFD60A 100%);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:#FFD60A;
-  text-shadow:0 0 20px rgba(255,214,10,.3)}
-
-/* بطاقة CTA في الرئيسية */
-.verified-cta{position:relative;overflow:hidden;isolation:isolate;
-  background:linear-gradient(135deg,#7769D8 0%,#311D96 100%);
-  border-radius:24px;padding:16px;margin-bottom:14px;color:#fff;
-  display:flex;align-items:center;gap:14px;transition:transform .15s;width:100%;text-align:start}
-.verified-cta:active{transform:scale(.98)}
-.verified-cta::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,214,10,.25),transparent 65%)}
-.verified-cta__ic{width:52px;height:52px;border-radius:50%;background:rgba(255,214,10,.15);
-  display:grid;place-items:center;font-size:24px;flex-shrink:0;position:relative;z-index:1;
-  border:2px solid rgba(255,214,10,.4)}
-.verified-cta__body{flex:1;min-width:0;position:relative;z-index:1}
-.verified-cta__t{font-size:15px;font-weight:800;margin-bottom:2px}
-.verified-cta__d{font-size:11.5px;color:rgba(255,255,255,.78);font-weight:600;line-height:1.5}
-.verified-cta__badge{position:relative;z-index:1;padding:6px 12px;border-radius:20px;background:#FFD60A;
-  color:#3A2A00;font-size:12.5px;font-weight:800;flex-shrink:0;direction:ltr}
-
-/* زر توثيق داخل الملف */
-.vf-profile-row{display:flex;align-items:center;gap:12px;padding:14px;background:linear-gradient(135deg,#7769D8 0%,#311D96 100%);
-  border-radius:24px;margin-bottom:12px;width:100%;text-align:start;transition:transform .15s;position:relative;overflow:hidden}
-.vf-profile-row:active{transform:scale(.98)}
-.vf-profile-row__ic{width:38px;height:38px;border-radius:50%;background:rgba(255,214,10,.15);
-  display:grid;place-items:center;font-size:15px;flex-shrink:0;color:#FFD60A;border:1.5px solid rgba(255,214,10,.4)}
-.vf-profile-row__lbl{flex:1;font-size:14px;font-weight:800;color:#fff}
-.vf-profile-row__val{font-size:12px;font-weight:800;color:#FFD60A;background:rgba(0,0,0,.3);padding:5px 12px;border-radius:20px}
-
 @media (max-width:360px){
   .nav .nav__btn span{font-size:9.5px}
   .nav .nav__btn i{font-size:21px}
@@ -706,7 +727,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   .avatar{width:42px;height:42px}
   .plan-header__icon{width:52px;height:52px;font-size:24px}.plan__icon{width:54px;height:54px;font-size:28px}
   .pf-bal__val{font-size:28px}
-  .vf-price__new{font-size:30px}.vf-price__new span{font-size:30px}
 }
 @media (prefers-reduced-motion:reduce){
   .view.active{animation:none}
@@ -734,6 +754,60 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   </div>
 </div>
 
+<!-- ═══ نافذة التوثيق المنبثقة ═══ -->
+<div class="vf-modal-overlay" id="vfModal">
+  <div class="vf-modal">
+    <button class="vf-modal__close" id="vfModalClose" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+
+    <div class="vf-modal__head">
+      <div class="vf-modal__crown"><i class="fas fa-crown"></i></div>
+      <div class="vf-modal__title">توثيق الحساب</div>
+      <div class="vf-modal__sub">احصل على شارة التوثيق ومزايا حصرية</div>
+    </div>
+
+    <div class="vf-modal__price">
+      <div class="vf-modal__price-old">700</div>
+      <div class="vf-modal__price-new">399<span class="vf-modal__price-cur"> ل.س</span></div>
+    </div>
+
+    <div class="vf-modal__perks">
+      <div class="vf-modal__perk">
+        <div class="vf-modal__perk-ic vf-modal__perk-ic--blue"><i class="fas fa-percent"></i></div>
+        <div class="vf-modal__perk-t">عمولة سحب مخفضة</div>
+        <div class="vf-modal__perk-v">0.75%</div>
+      </div>
+
+      <div class="vf-modal__perk">
+        <div class="vf-modal__perk-ic vf-modal__perk-ic--gold"><i class="fas fa-coins"></i></div>
+        <div class="vf-modal__perk-t">زيادة أرباح التعدين</div>
+        <div class="vf-modal__perk-v">+5%</div>
+      </div>
+
+      <div class="vf-modal__perk">
+        <div class="vf-modal__perk-ic vf-modal__perk-ic--gold"><i class="fas fa-circle-check"></i></div>
+        <div class="vf-modal__perk-t">شارة + اسم ذهبي</div>
+        <div class="vf-modal__perk-v">حصري</div>
+      </div>
+
+      <div class="vf-modal__perk">
+        <div class="vf-modal__perk-ic vf-modal__perk-ic--purple"><i class="fas fa-headset"></i></div>
+        <div class="vf-modal__perk-t">دعم فني مباشر</div>
+        <div class="vf-modal__perk-v">فوري</div>
+      </div>
+    </div>
+
+    <button class="vf-modal__btn" id="vfBuyBtn">
+      <i class="fas fa-crown"></i>
+      <span>تفعيل التوثيق — 399 ل.س</span>
+    </button>
+
+    <div class="vf-modal__note">
+      <i class="fas fa-shield-halved"></i>
+      يُخصم المبلغ من رصيدك مباشرة
+    </div>
+  </div>
+</div>
+
 <div class="app" id="app" style="display:none">
   <div class="main" id="mainScroll">
 
@@ -757,16 +831,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
           </div>
         </div>
       </div>
-
-      <!-- بطاقة التوثيق (تظهر فقط لغير الموثقين) -->
-      <button class="verified-cta" id="verifiedCta" onclick="navigate('verified')" style="display:none">
-        <div class="verified-cta__ic">👑</div>
-        <div class="verified-cta__body">
-          <div class="verified-cta__t">وثّق حسابك الآن</div>
-          <div class="verified-cta__d">مزايا حصرية + شارة زرقاء + عمولة أقل</div>
-        </div>
-        <div class="verified-cta__badge">499 ل.س</div>
-      </button>
 
       <div class="sec-head">
         <div class="sec-head__title"><i class="fas fa-water"></i> التعدين</div>
@@ -987,7 +1051,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
         </div>
         <div class="alert alert--warn">
           <i class="fas fa-info-circle"></i>
-          <div id="wdMinAlert">الحد الأدنى للسحب <b>500 ل.س</b>.</div>
+          <div>الحد الأدنى للسحب <b>500 ل.س</b>.</div>
         </div>
         <button class="btn btn--primary" id="wdSubmit"><i class="fas fa-paper-plane"></i><span>تقديم طلب السحب</span></button>
       </div>
@@ -1138,134 +1202,13 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
       </div>
     </div>
 
-    <!-- ═══ صفحة التوثيق ═══ -->
-    <div class="view" id="view-verified">
-      <div class="topbar">
-        <div class="topbar__meta">
-          <div class="topbar__hello">التوثيق</div>
-          <div class="topbar__name">صفحة الموثوقين</div>
-        </div>
-        <div class="chip">
-          <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
-          <div class="chip__body">
-            <div class="chip__num" id="verifiedBalance">0</div>
-            <div class="chip__cur">ل.س</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- بطاقة العرض (لغير الموثقين) -->
-      <div class="vf-hero wavy" id="vfHero">
-        <div class="vf-hero__crown">👑</div>
-        <div class="vf-hero__title">شارة التوثيق الزرقاء</div>
-        <div class="vf-hero__sub">تميز عن الآخرين واحصل على مزايا حصرية</div>
-
-        <div class="vf-price">
-          <div class="vf-price__old"><span>700</span> ل.س</div>
-          <div class="vf-price__new"><span>499</span> ل.س</div>
-          <div class="vf-price__badge">خصم 29%</div>
-        </div>
-
-        <div class="vf-offer-timer">
-          <i class="fas fa-hourglass-half"></i>
-          <span>ينتهي العرض بعد</span>
-          <b id="vfTimer">--:--:--</b>
-        </div>
-      </div>
-
-      <!-- المزايا -->
-      <div class="sec-head">
-        <div class="sec-head__title"><i class="fas fa-crown"></i> المزايا الحصرية</div>
-        <div class="sec-head__meta">6 مزايا</div>
-      </div>
-
-      <div class="vf-perks">
-        <div class="vf-perk">
-          <div class="vf-perk__ic vf-perk__ic--gold"><i class="fas fa-bolt"></i></div>
-          <div class="vf-perk__body">
-            <div class="vf-perk__t">مضاعفة التعدين</div>
-            <div class="vf-perk__d">+10% على كل دورة تعدين</div>
-          </div>
-          <span class="vf-perk__val">+10%</span>
-        </div>
-
-        <div class="vf-perk">
-          <div class="vf-perk__ic vf-perk__ic--blue"><i class="fas fa-percent"></i></div>
-          <div class="vf-perk__body">
-            <div class="vf-perk__t">عمولة سحب مخفضة</div>
-            <div class="vf-perk__d">من 1.5% إلى 0.75%</div>
-          </div>
-          <span class="vf-perk__val">-50%</span>
-        </div>
-
-        <div class="vf-perk">
-          <div class="vf-perk__ic vf-perk__ic--green"><i class="fas fa-arrow-up"></i></div>
-          <div class="vf-perk__body">
-            <div class="vf-perk__t">حد سحب أعلى</div>
-            <div class="vf-perk__d">من 500 إلى 5,000 ل.س</div>
-          </div>
-          <span class="vf-perk__val">×10</span>
-        </div>
-
-        <div class="vf-perk">
-          <div class="vf-perk__ic vf-perk__ic--gold"><i class="fas fa-circle-check"></i></div>
-          <div class="vf-perk__body">
-            <div class="vf-perk__t">شارة زرقاء + إطار ذهبي</div>
-            <div class="vf-perk__d">اسمك مميز في كل مكان</div>
-          </div>
-          <span class="vf-perk__val">✅</span>
-        </div>
-
-        <div class="vf-perk">
-          <div class="vf-perk__ic vf-perk__ic--purple"><i class="fas fa-headset"></i></div>
-          <div class="vf-perk__body">
-            <div class="vf-perk__t">تواصل مباشر مع الدعم</div>
-            <div class="vf-perk__d">محادثة فورية بدون انتظار</div>
-          </div>
-          <span class="vf-perk__val">حصري</span>
-        </div>
-
-        <div class="vf-perk">
-          <div class="vf-perk__ic vf-perk__ic--blue"><i class="fas fa-infinity"></i></div>
-          <div class="vf-perk__body">
-            <div class="vf-perk__t">توثيق دائم</div>
-            <div class="vf-perk__d">تدفع مرة واحدة فقط</div>
-          </div>
-          <span class="vf-perk__val">∞</span>
-        </div>
-      </div>
-
-      <!-- زر الشراء -->
-      <div id="vfActionBox">
-        <button class="vf-buy-btn" id="vfBuyBtn">
-          <i class="fas fa-crown"></i>
-          <span>فعّل التوثيق — 499 ل.س</span>
-        </button>
-        <div class="vf-note">
-          <i class="fas fa-shield-halved"></i>
-          الدفع يُخصم من رصيدك مباشرة — بدون رسوم إضافية
-        </div>
-      </div>
-
-      <!-- حالة موثق -->
-      <div id="vfActiveBox" style="display:none">
-        <div class="vf-active">
-          <div class="vf-active__crown">👑</div>
-          <div class="vf-active__title">حسابك موثق!</div>
-          <div class="vf-active__sub">استمتع بكل المزايا الحصرية</div>
-          <div class="vf-active__date">التوثيق منذ <b id="vfSinceDate">-</b></div>
-        </div>
-        <button class="btn btn--primary" id="vfSupportBtn" style="margin-top:12px">
-          <i class="fab fa-telegram-plane"></i> تواصل مع الدعم المباشر
-        </button>
-      </div>
-    </div>
-
     <!-- ═══ الملف الشخصي ═══ -->
     <div class="view" id="view-profile">
       <div class="pf-top">
         <div class="pf-av" id="profAvatar"><i class="fas fa-user"></i></div>
-        <div class="pf-name" id="profName"><span id="profNameText">...</span></div>
+        <div class="pf-name" id="profName">
+          <span id="profNameText">...</span>
+        </div>
         <div class="pf-user" id="profUsername">@username</div>
         <button class="pf-id" id="profCopyId" aria-label="نسخ المعرف">
           <i class="fas fa-fingerprint"></i><span id="profId">--------</span><i class="fas fa-copy"></i>
@@ -1313,11 +1256,14 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
         <div class="pf-row__val" id="pJoined">-</div>
       </div>
 
-      <!-- زر التوثيق في الملف (لغير الموثقين) -->
-      <button class="vf-profile-row" id="vfProfileRow" onclick="navigate('verified')" style="display:none">
-        <div class="vf-profile-row__ic"><i class="fas fa-crown"></i></div>
-        <div class="vf-profile-row__lbl">وثّق حسابك الآن</div>
-        <div class="vf-profile-row__val">499 ل.س</div>
+      <!-- زر التوثيق (يظهر لغير الموثقين) -->
+      <button class="vf-verify-row" id="vfOpenBtn" style="display:none">
+        <div class="vf-verify-row__ic"><i class="fas fa-crown"></i></div>
+        <div class="vf-verify-row__info">
+          <div class="vf-verify-row__t">تحقق من حسابك</div>
+          <div class="vf-verify-row__d">احصل على مزايا حصرية وشارة التوثيق</div>
+        </div>
+        <div class="vf-verify-row__go"><i class="fas fa-chevron-left"></i></div>
       </button>
 
       <!-- زر الدعم (يظهر فقط للموثقين) -->
@@ -1368,21 +1314,14 @@ const CONFIG = {
   },
   admin: { telegram: 'qo_ij2' },
   referral: { newUserReward: 5, referrerReward: 10 },
-  withdraw: { 
-    minAmount: 500,          // الحد العادي
-    minAmountVerified: 5000, // الحد للموثقين
-    feeRate: 0.015,          // العمولة العادية
-    feeRateVerified: 0.0075, // العمولة للموثقين
-    usdRate: 140 
-  },
+  withdraw: { minAmount: 500, feeRate: 0.015, feeRateVerified: 0.0075, usdRate: 140 },
   deposit: { shamCash: '334a08ea2d1bbed05f214a7f08e37ae4', binance: '1121748571' },
   channel: 'https://t.me/DolphinMinerchannel',
 
   verification: {
-    price: 499,
+    price: 399,
     oldPrice: 700,
-    miningBonus: 0.10,      // +10% مضاعف التعدين
-    offerHours: 24
+    miningBonus: 0.05  // +5% على التعدين
   },
 
   plans: [
@@ -1444,8 +1383,7 @@ const STATE = {
   depositMethod: 'sham_cash',
   tamperDetected: false,
   planExpiryTimer: null,
-  channelVerified: false,
-  verifyTimerInt: null
+  channelVerified: false
 };
 
 const $ = (id) => document.getElementById(id);
@@ -1673,8 +1611,7 @@ async function loadOrCreateUser(){
     planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
     hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
     miningCollectCount: 0,
-    tamperFlag: false, verified: false,
-    verifiedAt: null,
+    tamperFlag: false, verified: false, verifiedAt: null,
     channelJoined: false, channelRewardClaimed: false,
     hasPurchasedPlan: false,
     collect5RewardClaimed: false,
@@ -1752,19 +1689,20 @@ async function checkPlanExpiry(){
   }catch(e){ console.warn(e); }
 }
 
-function updateAvatarClasses(){
+function updateVerifiedStyles(){
   const v = isVerified();
-  ['homeAvatar','profAvatar'].forEach(id => {
+  const ids = ['homeAvatar','profAvatar'];
+  ids.forEach(id => {
     const el = $(id); if (!el) return;
-    el.classList.toggle('avatar--verified', v);
+    el.classList.toggle('avatar--verified', v && id === 'homeAvatar');
     el.classList.toggle('pf-av--verified', v && id === 'profAvatar');
   });
   const nav = $('navAvatar');
   if (nav) nav.classList.toggle('nav__av--verified', v);
-  const nameEl = $('homeNameText');
-  if (nameEl) nameEl.classList.toggle('name--verified', v);
-  const profNameEl = $('profNameText');
-  if (profNameEl) profNameEl.classList.toggle('name--verified', v);
+  const hn = $('homeNameText');
+  if (hn) hn.classList.toggle('name--verified', v);
+  const pn = $('profNameText');
+  if (pn) pn.classList.toggle('name--verified', v);
 }
 
 function updateUI(){
@@ -1777,9 +1715,6 @@ function updateUI(){
   updateAvatar('profAvatar');
   updateAvatar('navAvatar');
 
-  addVerifiedBadge('homeName', u.verified === true);
-  addVerifiedBadge('profName', u.verified === true);
-
   const bal = u.balance_sy || 0;
   const refCount = u.referralCount || (u.referredUsers || []).length || 0;
 
@@ -1787,7 +1722,6 @@ function updateUI(){
   setText('storeBalance', fmt(bal));
   setText('tasksBalance', fmt(bal));
   setText('walletBalance', fmt(bal));
-  setText('verifiedBalance', fmt(bal));
 
   setText('planName', 'خطة ' + plan.name);
   setText('planLevel', plan.level);
@@ -1825,57 +1759,63 @@ function updateUI(){
     setText('pJoined', dt.toLocaleDateString('ar-EG', { year:'numeric', month:'short', day:'numeric' }));
   }
 
-  // تحديث مظهر التحقق (إطار ذهبي + الاسم المميز)
-  updateAvatarClasses();
+  // إضافة شارة التحقق بجانب الاسم إن وُجد
+  renderVerifyBadge();
 
-  // تحديث زر الدعم (يظهر فقط للموثقين)
-  const supportBtn = $('profSupport');
-  if (supportBtn) supportBtn.style.display = u.verified === true ? 'flex' : 'none';
+  // إظهار/إخفاء زر التحقق وزر الدعم
+  const vfBtn = $('vfOpenBtn');
+  if (vfBtn) vfBtn.style.display = u.verified === true ? 'none' : 'flex';
+  const sup = $('profSupport');
+  if (sup) sup.style.display = u.verified === true ? 'flex' : 'none';
 
-  // زر التوثيق داخل الملف (يظهر فقط لغير الموثقين)
-  const vfRow = $('vfProfileRow');
-  if (vfRow) vfRow.style.display = u.verified === true ? 'none' : 'flex';
+  // تحديث الألوان والإطار الذهبي
+  updateVerifiedStyles();
 
-  // بطاقة CTA في الرئيسية (تظهر فقط لغير الموثقين)
-  const vfCta = $('verifiedCta');
-  if (vfCta) vfCta.style.display = u.verified === true ? 'none' : 'flex';
-
-  // تحديث صفحة التوثيق
-  renderVerifiedPage();
-
-  // تحديث خيارات السحب
-  updateWithdrawFee();
-  updateWithdrawLimits();
+  // تحديث العمولة
+  updateWithdrawFeeLabel();
 
   renderPlans();
   renderTasks();
 }
 
-function addVerifiedBadge(containerId, isVerified){
-  const el = $(containerId);
-  if (!el) return;
-  const old = el.querySelector('.vbadge');
-  if (old) old.remove();
-  if (isVerified === true) {
-    const b = document.createElement('img');
-    b.src = 'https://img.icons8.com/liquid-glass-color/999/verified-badge.png';
-    b.className = 'vbadge';
-    b.alt = 'موثق';
-    el.appendChild(b);
+function renderVerifyBadge(){
+  const v = isVerified();
+  // زر التحقق داخل الملف (بطاقة)
+  const vfBtn = $('vfOpenBtn');
+  if (vfBtn) {
+    if (v) {
+      vfBtn.style.display = 'none';
+    } else {
+      vfBtn.style.display = 'flex';
+    }
   }
+  // إضافة شارة صغيرة بجانب الاسم
+  ['homeName','profName'].forEach(id => {
+    const el = $(id);
+    if (!el) return;
+    const oldBadge = el.querySelector('.vf-check');
+    if (oldBadge) oldBadge.remove();
+    if (v) {
+      const badge = document.createElement('img');
+      badge.src = 'https://img.icons8.com/liquid-glass-color/999/verified-badge.png';
+      badge.className = 'vf-check';
+      badge.alt = 'موثق';
+      el.appendChild(badge);
+    }
+  });
 }
 
 function updateAvatar(elId){
   const el = $(elId);
   if (!el) return;
   const url = safeUrl(STATE.tgUser && STATE.tgUser.photo_url);
-  const fallback = () => { el.innerHTML = '<i class="fas fa-user"></i>'; updateAvatarClasses(); };
+  const fallback = () => { el.innerHTML = '<i class="fas fa-user"></i>'; updateVerifiedStyles(); };
   if (!url) return fallback();
   const cur = el.querySelector('img');
-  if (cur && cur.getAttribute('src') === url) return;
+  if (cur && cur.getAttribute('src') === url) { updateVerifiedStyles(); return; }
   const img = new Image();
   img.alt = ''; img.referrerPolicy = 'no-referrer';
-  img.onload = () => { el.textContent = ''; el.appendChild(img); updateAvatarClasses(); };
+  img.onload = () => { el.textContent = ''; el.appendChild(img); updateVerifiedStyles(); };
   img.onerror = fallback;
   img.src = url;
 }
@@ -1953,7 +1893,7 @@ function renderIdle(){
   const btn = $('mineAction');
   btn.className = 'action action--start';
   btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-play"></i><span id="mineActionText">ابدأ التعدين (+' + fmt(reward) + ' ل.س)</span>';
+  btn.innerHTML = '<i class="fas fa-play"></i><span id="mineActionText">ابدأ التعدين (' + fmt(reward) + ' ل.س)</span>';
 }
 
 function renderRunning(u, plan){
@@ -2149,7 +2089,6 @@ async function collectMining(){
       }
       const plan = getPlan(data.activePlanId || 'basic');
       let r = (data.miningProgress > 0 && data.miningProgress <= 250) ? data.miningProgress : plan.reward;
-      // مضاعف الموثق
       if (data.verified === true) r = r * (1 + CONFIG.verification.miningBonus);
       r = Math.round(r * 100) / 100;
 
@@ -2186,67 +2125,30 @@ function onMineClick(){
   else startMining();
 }
 
-/* ═══ التوثيق ═══ */
-function getOfferEndTime(){
-  const dayMs = 24 * 3600 * 1000;
-  const now = getTrustedNow();
-  const cycle = Math.floor(now / dayMs);
-  return (cycle + 1) * dayMs - (12 * 3600 * 1000);
-}
-
-function updateVerifyTimer(){
-  const el = $('vfTimer');
-  if (!el) return;
-  const left = Math.max(0, getOfferEndTime() - getTrustedNow());
-  const s = Math.floor(left / 1000);
-  const h = Math.floor(s / 3600);
-  const m = Math.floor((s % 3600) / 60);
-  const sec = s % 60;
-  el.textContent = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
-}
-
-function renderVerifiedPage(){
+/* ═══ نافذة التوثيق ═══ */
+function openVfModal(){
   if (!STATE.user) return;
-  const u = STATE.user;
+  if (isVerified()) { toast('حسابك موثق مسبقاً', 'info'); return; }
+  // تحديث حالة الزر
+  const btn = $('vfBuyBtn');
   const v = CONFIG.verification;
-  setText('verifiedBalance', fmt(u.balance_sy || 0));
-
-  const activeBox = $('vfActiveBox');
-  const actionBox = $('vfActionBox');
-  const hero = $('vfHero');
-
-  if (u.verified === true) {
-    if (hero) hero.style.display = 'none';
-    if (actionBox) actionBox.style.display = 'none';
-    if (activeBox) activeBox.style.display = 'block';
-    if (u.verifiedAt) {
-      const dt = u.verifiedAt.toDate ? u.verifiedAt.toDate() : new Date(u.verifiedAt);
-      setText('vfSinceDate', dt.toLocaleDateString('ar-EG', { year:'numeric', month:'short', day:'numeric' }));
-    }
-  } else {
-    if (hero) hero.style.display = 'block';
-    if (actionBox) actionBox.style.display = 'block';
-    if (activeBox) activeBox.style.display = 'none';
-    const btn = $('vfBuyBtn');
-    if (btn) {
-      const canAfford = (u.balance_sy || 0) >= v.price;
-      btn.disabled = !canAfford;
-      btn.innerHTML = canAfford
-        ? '<i class="fas fa-crown"></i><span>فعّل التوثيق — ' + v.price + ' ل.س</span>'
-        : '<i class="fas fa-lock"></i><span>رصيد غير كافٍ (' + v.price + ' ل.س)</span>';
-    }
-    updateVerifyTimer();
-  }
+  const canAfford = (STATE.user.balance_sy || 0) >= v.price;
+  btn.disabled = !canAfford;
+  btn.innerHTML = canAfford
+    ? '<i class="fas fa-crown"></i><span>تفعيل التوثيق — ' + v.price + ' ل.س</span>'
+    : '<i class="fas fa-lock"></i><span>رصيد غير كافٍ (' + v.price + ' ل.س)</span>';
+  $('vfModal').classList.add('show');
+}
+function closeVfModal(){
+  $('vfModal').classList.remove('show');
 }
 
 async function buyVerification(){
   if (STATE.isSubmitting || !STATE.user) return;
-  if (STATE.user.verified === true) return toast('أنت موثق مسبقاً', 'info');
+  if (isVerified()) return toast('أنت موثق مسبقاً', 'info');
   if (STATE.timeLocked) return toast('الوقت غير موثوق', 'err');
   const v = CONFIG.verification;
   if ((STATE.user.balance_sy || 0) < v.price) return toast('رصيد غير كافٍ', 'err');
-
-  if (!confirm('سيتم خصم ' + v.price + ' ل.س من رصيدك لتفعيل التوثيق.\nهل أنت متأكد؟')) return;
 
   STATE.isSubmitting = true;
   const btn = $('vfBuyBtn');
@@ -2269,7 +2171,7 @@ async function buyVerification(){
         updatedAt: firebase.firestore.FieldValue.serverTimestamp()
       });
 
-      // سجل الإيراد
+      // تسجيل الإيراد
       const revRef = db.collection('revenue').doc();
       trx.set(revRef, {
         type: 'verification',
@@ -2283,10 +2185,13 @@ async function buyVerification(){
 
     STATE.user = (await userRef.get()).data();
     updateUI();
-    toast('👑 مبروك! تم توثيق حسابك بنجاح', 'ok');
+    renderMining();
+    closeVfModal();
+    toast('مبروك! تم توثيق حسابك بنجاح', 'ok');
   }catch(e){
     toast(e.message || 'فشل التوثيق', 'err');
-    renderVerifiedPage();
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-crown"></i><span>تفعيل التوثيق — ' + v.price + ' ل.س</span>';
   }finally{ STATE.isSubmitting = false; }
 }
 
@@ -2352,7 +2257,7 @@ function renderPlans(){
     else if (idx === curIdx + 1) badge = '<span class="plan__badge plan__badge--next">التالية</span>';
 
     const bonusHtml = isVerified() && plan.reward > 0
-      ? ' <span style="color:#FFD60A;font-size:10px">(+10%)</span>' : '';
+      ? ' <span style="color:#FFD60A;font-size:10px">(+5%)</span>' : '';
 
     return [
       '<div class="plan ' + (isCur ? 'plan--current' : '') + '">',
@@ -2558,14 +2463,14 @@ function initWithdraw(){
   $('wdSubmit').addEventListener('click', submitWithdraw);
 }
 
-function updateWithdrawLimits(){
+function updateWithdrawFeeLabel(){
   const v = isVerified();
-  const min = v ? CONFIG.withdraw.minAmountVerified : CONFIG.withdraw.minAmount;
   const rate = v ? CONFIG.withdraw.feeRateVerified : CONFIG.withdraw.feeRate;
   const pct = (rate * 100).toFixed(2).replace(/\.?0+$/, '');
-  $('wdAmount').placeholder = 'الحد الأدنى ' + fmt(min);
-  $('wdMinAlert').innerHTML = 'الحد الأدنى للسحب <b>' + fmt(min) + ' ل.س</b>' + (v ? ' <span style="color:#FFD60A">(ميزة موثق)</span>' : '');
-  $('wdFeeLbl').innerHTML = 'العمولة (' + pct + '%)' + (v ? ' <span style="color:#FFD60A">✓</span>' : '');
+  const lbl = $('wdFeeLbl');
+  if (lbl) {
+    lbl.innerHTML = 'العمولة (' + pct + '%)' + (v ? ' <span style="color:#FFD60A">•</span>' : '');
+  }
 }
 
 function updateWithdrawFee(){
@@ -2583,7 +2488,7 @@ function updateWithdrawFee(){
 async function submitWithdraw(){
   if (STATE.isSubmitting || !STATE.user) return;
   const v = isVerified();
-  const minAmount = v ? CONFIG.withdraw.minAmountVerified : CONFIG.withdraw.minAmount;
+  const minAmount = CONFIG.withdraw.minAmount;
   const feeRate = v ? CONFIG.withdraw.feeRateVerified : CONFIG.withdraw.feeRate;
 
   const amount = parseFloat($('wdAmount').value);
@@ -2821,7 +2726,7 @@ async function loadLeaderboard(){
       return pu ? '<img data-av src="' + escapeHtml(pu) + '" alt="" referrerpolicy="no-referrer">' : '<i class="fas fa-user"></i>';
     };
     const nameHtml = (it) => '<span' + (it.v ? ' class="name--verified"' : '') + '>' + escapeHtml(it.d.name || 'مستخدم') + '</span>' +
-      (it.v ? '<img class="vbadge" data-vb src="' + VB_URL + '" alt="موثق">' : '') +
+      (it.v ? '<img class="vf-check vf-check--inline" data-vb src="' + VB_URL + '" alt="موثق">' : '') +
       (it.me ? '<em class="me-tag">أنت</em>' : '');
 
     const slot = (rank) => {
@@ -2830,7 +2735,7 @@ async function loadLeaderboard(){
         '<div class="pod__name"><span>—</span></div><div class="pod__cnt">&nbsp;</div><div class="pod__base">' + rank + '</div></div>';
       return '<div class="pod pod--' + rank + '">' +
         '<div class="pod__crown">' + (rank === 1 ? '<i class="fas fa-crown"></i>' : '') + '</div>' +
-        '<div class="pod__av' + (it.v ? ' avatar--verified' : '') + '">' + avatar(it) + '</div>' +
+        '<div class="pod__av' + (it.v ? ' pod__av--verified' : '') + '">' + avatar(it) + '</div>' +
         '<div class="pod__name">' + nameHtml(it) + '</div>' +
         '<div class="pod__cnt"><b>' + it.cnt + '</b> دعوة</div>' +
         '<div class="pod__base">' + rank + '</div></div>';
@@ -2841,7 +2746,7 @@ async function loadLeaderboard(){
       html += '<div class="lb__list">' + items.slice(3).map((it, i) =>
         '<div class="lrow' + (it.me ? ' lrow--me' : '') + '">' +
           '<div class="lrow__rank">' + (i + 4) + '</div>' +
-          '<div class="lrow__av' + (it.v ? ' avatar--verified' : '') + '">' + avatar(it) + '</div>' +
+          '<div class="lrow__av' + (it.v ? ' lrow__av--verified' : '') + '">' + avatar(it) + '</div>' +
           '<div class="lrow__info"><div class="lrow__name">' + nameHtml(it) + '</div></div>' +
           '<div class="lrow__cnt">' + it.cnt + ' دعوة</div>' +
         '</div>').join('') + '</div>';
@@ -3205,7 +3110,7 @@ function renderChannelTask() {
 }
 
 /* ═══ Navigation ═══ */
-const VIEWS = ['home','store','wallet','referral','tasks','profile','verified'];
+const VIEWS = ['home','store','wallet','referral','tasks','profile'];
 function navigate(view){
   if (!VIEWS.includes(view)) view = 'home';
   const target = $('view-' + view);
@@ -3231,7 +3136,6 @@ function navigate(view){
   if (view === 'referral') loadLeaderboard();
   if (view === 'profile') updateAvatar('profAvatar');
   if (view === 'tasks') renderTasks();
-  if (view === 'verified') renderVerifiedPage();
 }
 
 function bindUI(){
@@ -3245,11 +3149,13 @@ function bindUI(){
     if (tg && tg.openTelegramLink) tg.openTelegramLink(url);
     else window.open(url, '_blank');
   });
+  // زر التوثيق
+  $('vfOpenBtn').addEventListener('click', openVfModal);
+  $('vfModalClose').addEventListener('click', closeVfModal);
   $('vfBuyBtn').addEventListener('click', buyVerification);
-  $('vfSupportBtn').addEventListener('click', () => {
-    const url = 'https://t.me/' + CONFIG.admin.telegram;
-    if (tg && tg.openTelegramLink) tg.openTelegramLink(url);
-    else window.open(url, '_blank');
+  // إغلاق المودال عند الضغط على الخلفية
+  $('vfModal').addEventListener('click', (e) => {
+    if (e.target.id === 'vfModal') closeVfModal();
   });
 
   initWalletTabs();
@@ -3270,19 +3176,12 @@ async function bootstrap(){
   renderMining();
   renderPlans();
   renderTasks();
-  renderVerifiedPage();
 
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) {
     startLiveTimer();
   }
   initClockMonitor();
   setInterval(updatePlanTimer, 1000);
-  if (STATE.verifyTimerInt) clearInterval(STATE.verifyTimerInt);
-  STATE.verifyTimerInt = setInterval(() => {
-    if (document.getElementById('view-verified')?.classList.contains('active')) {
-      updateVerifyTimer();
-    }
-  }, 1000);
 
   document.addEventListener('visibilitychange', async () => {
     if (!document.hidden && STATE.user) {
@@ -3292,7 +3191,7 @@ async function bootstrap(){
         const snap = await db.collection('users').doc(STATE.tgId).get();
         if (snap.exists) {
           STATE.user = snap.data();
-          updateUI(); renderMining(); renderPlans(); renderTasks(); renderVerifiedPage();
+          updateUI(); renderMining(); renderPlans(); renderTasks();
         }
       }catch(e){}
     }
@@ -3319,7 +3218,7 @@ async function bootstrap(){
           fresh.firstBuyRewardClaimed !== STATE.user.firstBuyRewardClaimed;
         if (changed) {
           STATE.user = fresh;
-          updateUI(); renderMining(); renderPlans(); renderTasks(); renderVerifiedPage();
+          updateUI(); renderMining(); renderPlans(); renderTasks();
         }
       }
     }catch(e){}
