@@ -28,6 +28,7 @@
   --r-xs:8px;--r-sm:12px;--r-md:16px;--r-lg:22px;--r-xl:28px;
   --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-8:32px;
   --safe:env(safe-area-inset-bottom,0px);
+  --st:env(safe-area-inset-top,0px);
   --dock-h:68px;--dock-gap:12px;
   --f-xs:11px;--f-sm:12.5px;--f-base:14px;--f-md:15px;--f-lg:17px;--f-xl:20px;--f-2xl:26px;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -624,6 +625,116 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .outside-tg p{font-size:var(--f-sm);color:var(--text-2);line-height:1.75;margin-bottom:var(--sp-6);max-width:300px}
 .outside-tg a{padding:15px 34px;border-radius:30px;text-decoration:none;font-weight:700;font-size:var(--f-md);display:inline-flex;align-items:center;gap:9px}
 
+/* ═══════════════════════════════════════════════
+   🎮 كازينو دولفين — أنماط القسم الداخلي
+   ═══════════════════════════════════════════════ */
+.casino-app{padding:0}
+.casino-top{display:flex;align-items:center;gap:12px;padding:2px 0 16px}
+.casino-back{width:42px;height:42px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-line);display:grid;place-items:center;font-size:15px;color:#fff;flex-shrink:0;transition:transform .15s}
+.casino-back:active{transform:scale(.92)}
+.casino-meta{flex:1;min-width:0}
+.casino-hello{font-size:12px;color:var(--blue);font-weight:700}
+.casino-name{font-size:17px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.casino-chip{display:flex;align-items:center;gap:9px;padding:5px 14px 5px 6px;background:var(--glass);border:1px solid var(--glass-line);border-radius:30px;flex-shrink:0}
+.casino-note{display:flex;gap:8px;align-items:center;padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--text-2);border-radius:16px;background:var(--glass);border:1px solid var(--glass-line)}
+.casino-note i{color:var(--yellow)}
+.casino-hero{padding:18px;margin-bottom:18px;position:relative;overflow:hidden;border-radius:22px;background:linear-gradient(135deg,rgba(0,122,255,.55),rgba(123,92,255,.35))}
+.casino-hero h1{font-size:22px;font-weight:800;color:#fff}
+.casino-hero p{color:var(--text-2);font-size:12.5px;margin-top:2px}
+.casino-hero img.bg{position:absolute;left:-20px;bottom:-20px;width:120px;height:120px;opacity:.15;transform:rotate(-14deg);pointer-events:none}
+.casino-sec{display:flex;justify-content:space-between;align-items:center;margin:0 2px 12px;font-weight:800;font-size:16px;color:#fff}
+.casino-sec span{font-size:11px;color:var(--text-3);font-weight:600}
+.casino-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.casino-gc{padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--glass);border:1px solid var(--glass-line);border-radius:22px;animation:viewIn .5s both;transition:transform .15s}
+.casino-gc:active{transform:scale(.98)}
+.casino-gc .art{height:96px;border-radius:16px;display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.casino-gc .art::after{content:'';position:absolute;inset:0 0 50%;background:linear-gradient(180deg,rgba(255,255,255,.3),transparent)}
+.casino-gc .art img{width:56px;height:56px;position:relative;z-index:1;filter:drop-shadow(0 6px 12px rgba(0,0,0,.5))}
+.casino-gc h3{font-size:15px;font-weight:800;line-height:1.2;color:#fff}
+.casino-gc p{font-size:11.5px;color:var(--text-3);line-height:1.45;min-height:34px}
+.casino-lim{display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-2);background:var(--inset);padding:5px 8px;border-radius:10px;font-variant-numeric:tabular-nums}
+.casino-state{text-align:center;padding:40px 20px;color:var(--text-2)}
+.casino-state i{font-size:40px;color:var(--blue-l);margin-bottom:10px}
+
+/* Game overlay داخلي */
+.casino-game{position:fixed;inset:0;z-index:100;max-width:480px;margin:0 auto;display:flex;flex-direction:column;background:radial-gradient(420px 300px at 85% -5%,rgba(0,122,255,.3),transparent 70%),#000;transform:translateY(100%);visibility:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility .35s}
+.casino-game.open{transform:none;visibility:visible}
+.casino-gh{display:flex;align-items:center;gap:10px;padding:calc(var(--st) + 12px) 14px 10px}
+.casino-ib{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--glass);border:1px solid var(--glass-line);font-size:16px;flex-shrink:0;color:#fff;transition:opacity .2s,transform .15s}
+.casino-ib:active{transform:scale(.92)}
+.casino-ib:disabled{opacity:.35}
+.casino-gh h2{flex:1;font-size:17px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.casino-stage{flex:1;min-height:0;overflow-y:auto;padding:4px 14px 10px;display:flex;flex-direction:column;gap:12px;position:relative}
+.casino-foot{padding:12px 14px calc(14px + var(--safe));display:flex;flex-direction:column;gap:10px;background:rgba(28,28,32,.5);-webkit-backdrop-filter:blur(16px) saturate(1.7);backdrop-filter:blur(16px) saturate(1.7);border-top:1px solid var(--glass-line);border-radius:26px 26px 0 0}
+.casino-bets{display:flex;gap:6px}
+.casino-bets button{flex:1;height:40px;border-radius:14px;background:var(--inset);border:1px solid var(--glass-line);font-weight:800;font-variant-numeric:tabular-nums;transition:.2s;color:#fff;font-size:12px;cursor:pointer}
+.casino-bets button.on{background:var(--blue);border-color:var(--blue-l);box-shadow:0 0 16px rgba(0,122,255,.5)}
+.casino-bets button:disabled{opacity:.4}
+.casino-lab{font-size:12px;color:var(--text-3);font-weight:600;margin-bottom:6px;display:flex;justify-content:space-between}
+.casino-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:46px;border-radius:18px;font-weight:800;font-size:14px;background:var(--blue);color:#fff;transition:transform .15s,opacity .2s;box-shadow:0 6px 18px rgba(0,122,255,.35);cursor:pointer}
+.casino-btn:active{transform:scale(.96)}
+.casino-btn:disabled{opacity:.4;pointer-events:none;filter:grayscale(.5)}
+.casino-toast{position:fixed;left:50%;bottom:calc(90px + var(--safe));transform:translate(-50%,20px);z-index:200;background:rgba(28,28,32,.92);border:1px solid var(--glass-line);padding:10px 18px;border-radius:30px;font-size:13px;font-weight:600;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap;color:#fff;max-width:92%}
+.casino-toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Glass داخل الكازينو */
+.casino-game .glass,.casino-app .glass{background:var(--glass);border:1px solid var(--glass-line);border-radius:22px;-webkit-backdrop-filter:blur(16px) saturate(1.7);backdrop-filter:blur(16px) saturate(1.7);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.casino-game .pad{padding:14px}
+.casino-game .row{display:flex;gap:8px}
+.casino-game .row>*{flex:1}
+.casino-game .opt{min-height:42px;border-radius:14px;background:var(--inset);border:1px solid var(--glass-line);font-weight:700;font-size:13px;transition:.2s;padding:0 6px;color:#fff;cursor:pointer}
+.casino-game .opt.on{background:var(--blue);border-color:var(--blue-l)}
+.casino-game .opt:disabled{opacity:.5}
+.casino-game .lab{font-size:12px;color:var(--text-3);font-weight:600;margin-bottom:6px;display:flex;justify-content:space-between}
+.casino-game .stat{display:flex;justify-content:space-around;text-align:center;padding:12px}
+.casino-game .stat>div{flex:1}
+.casino-game .stat span{font-size:11px;color:var(--text-3);display:block;margin-bottom:2px}
+.casino-game .stat b{font-size:16px;font-variant-numeric:tabular-nums;color:#fff}
+.casino-game .big{font-size:56px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums;line-height:1.1;color:#fff}
+.casino-game .big.g{color:var(--green)}
+.casino-game .big.r{color:var(--red)}
+.casino-game .tiles{display:grid;gap:8px;padding:12px}
+.casino-game .tiles.g4{grid-template-columns:repeat(4,1fr)}
+.casino-game .tiles.g5{grid-template-columns:repeat(5,1fr)}
+.casino-game .tile{aspect-ratio:1;border-radius:14px;background:var(--glass);border:1px solid var(--glass-line);display:grid;place-items:center;transition:.25s;color:#fff;cursor:pointer}
+.casino-game .tile:active:not(:disabled){transform:scale(.92)}
+.casino-game .tile img{width:60%;height:60%;object-fit:contain}
+.casino-game .tile.ok{background:rgba(48,209,88,.25);border-color:var(--green);animation:casinoPop .3s}
+.casino-game .tile.bad{background:rgba(255,69,58,.3);border-color:var(--red);animation:casinoShake .4s}
+.casino-game .tile.dim{opacity:.4}
+.casino-game .tile.reveal-bomb{background:rgba(255,69,58,.15);border-color:rgba(255,69,58,.5)}
+@keyframes casinoPop{50%{transform:scale(1.12)}}
+@keyframes casinoShake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.casino-game .sky{height:150px;position:relative;overflow:hidden;border-radius:22px;background:linear-gradient(180deg,rgba(0,122,255,.12),rgba(123,92,255,.08))}
+.casino-game .sky img{position:absolute;width:38px;height:38px;transition:none;z-index:2}
+.casino-game .sky .grid-line{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px;opacity:.5}
+.casino-game .reels{display:flex;gap:10px;justify-content:center;padding:18px}
+.casino-game .reel{width:30%;aspect-ratio:.85;border-radius:18px;background:var(--inset);border:1px solid var(--glass-line);display:grid;place-items:center;box-shadow:inset 0 0 20px rgba(0,0,0,.6)}
+.casino-game .reel img{width:60%;height:60%;object-fit:contain}
+.casino-game .reel.spin{filter:blur(1.5px)}
+.casino-game .dice-visual{display:grid;place-items:center;padding:20px;min-height:180px}
+.casino-game .dice-visual img{width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 10px 24px rgba(0,0,0,.6))}
+.casino-game .dice-visual.spin img{animation:casinoSpinDice .3s linear infinite}
+@keyframes casinoSpinDice{to{transform:rotate(360deg)}}
+.casino-game .hist{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:0 12px 12px}
+.casino-game .hist span{padding:3px 9px;border-radius:10px;font-size:11px;font-weight:700;background:var(--inset);color:#fff}
+.casino-game .hist span.g{color:#30D158}
+.casino-game .hist span.r{color:#FF6B63}
+.casino-game input[type=range]{width:100%;accent-color:var(--blue);height:30px}
+.casino-game .bomb-sel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}
+.casino-game .bomb-sel button{height:46px;border-radius:14px;background:var(--inset);border:1px solid var(--glass-line);font-weight:800;transition:.2s;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer}
+.casino-game .bomb-sel button img{width:20px;height:20px}
+.casino-game .bomb-sel button.on{background:var(--red);border-color:rgba(255,69,58,.6);box-shadow:0 0 16px rgba(255,69,58,.4)}
+.casino-game .bomb-sel button:disabled{opacity:.5}
+.casino-game .res{position:absolute;left:14px;right:14px;top:35%;z-index:5;padding:20px;text-align:center;border-radius:26px;pointer-events:none;opacity:0;transform:scale(.8);transition:.3s;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.casino-game .res.show{opacity:1;transform:none}
+.casino-game .res b{display:block;font-size:30px;font-weight:800}
+.casino-game .res span{font-size:13px;color:var(--text-2)}
+.casino-game .res.win{background:rgba(48,209,88,.25);border:1px solid var(--green);box-shadow:0 0 50px rgba(48,209,88,.4)}
+.casino-game .res.lose{background:rgba(255,69,58,.22);border:1px solid var(--red)}
+.casino-game .res.draw{background:var(--glass);border:1px solid var(--glass-line)}
+.casino-game canvas{display:block;margin:0 auto;max-width:100%}
+
 @media (max-width:360px){
   .nav .nav__btn span{font-size:9.5px}
   .nav .nav__btn i{font-size:21px}
@@ -634,6 +745,10 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   .avatar{width:42px;height:42px}
   .plan-header__icon{width:52px;height:52px;font-size:24px}.plan__icon{width:54px;height:54px;font-size:28px}
   .pf-bal__val{font-size:28px}
+  .casino-gc .art{height:80px}
+  .casino-gc .art img{width:46px;height:46px}
+  .casino-game .big{font-size:42px}
+  .casino-bets button{font-size:11px;padding:0 4px}
 }
 @media (prefers-reduced-motion:reduce){
   .view.active{animation:none}
@@ -759,30 +874,31 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
       </div>
 
       <div class="tiles">
-  <button class="tile tile--sea" onclick="navigate('referral')">
-    <i class="fas fa-users tile__bg"></i>
-    <span class="tile__ic"><i class="fas fa-user-plus"></i></span>
-    <span class="tile__t">دعوة الأصدقاء</span>
-    <span class="tile__d">اربح <b>10 ل.س</b> عن كل صديق ينضم عبر رابطك</span>
-    <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
-  </button>
-  <button class="tile tile--amber" onclick="navigate('tasks')">
-    <i class="fas fa-trophy tile__bg"></i>
-    <span class="tile__ic"><i class="fas fa-tasks"></i></span>
-    <span class="tile__t">المهمات</span>
-    <span class="tile__d">اربح حتى <b id="tileTaskTotal">0</b> ل.س من إكمال المهمات</span>
-    <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
-  </button>
-  
-  <!-- 🎮 بطاقة الألعاب (مستطيل بعرض كامل) -->
-  <button class="tile tile--full" onclick="location.href='game.html'">
-    <i class="fas fa-dice tile__bg"></i>
-    <span class="tile__ic"><i class="fas fa-gamepad"></i></span>
-    <span class="tile__t">ألعاب المراهنة</span>
-    <span class="tile__d">راهن برصيدك واربح حتى <b>×50</b> — Mines، Dice، Crash والمزيد</span>
-    <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
-  </button>
-</div>
+        <button class="tile tile--sea" onclick="navigate('referral')">
+          <i class="fas fa-users tile__bg"></i>
+          <span class="tile__ic"><i class="fas fa-user-plus"></i></span>
+          <span class="tile__t">دعوة الأصدقاء</span>
+          <span class="tile__d">اربح <b>10 ل.س</b> عن كل صديق ينضم عبر رابطك</span>
+          <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
+        </button>
+        <button class="tile tile--amber" onclick="navigate('tasks')">
+          <i class="fas fa-trophy tile__bg"></i>
+          <span class="tile__ic"><i class="fas fa-tasks"></i></span>
+          <span class="tile__t">المهمات</span>
+          <span class="tile__d">اربح حتى <b id="tileTaskTotal">0</b> ل.س من إكمال المهمات</span>
+          <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
+        </button>
+
+        <!-- 🎮 بطاقة الألعاب -->
+        <button class="tile tile--full" onclick="navigate('casino')">
+          <i class="fas fa-dice tile__bg"></i>
+          <span class="tile__ic"><i class="fas fa-gamepad"></i></span>
+          <span class="tile__t">ألعاب المراهنة</span>
+          <span class="tile__d">راهن برصيدك واربح حتى <b>×50</b> — Mines، Dice، Crash والمزيد</span>
+          <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
+        </button>
+      </div>
+    </div>
 
     <div class="view" id="view-tasks">
       <div class="topbar">
@@ -1115,6 +1231,74 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
         <i class="fab fa-telegram-plane" style="color:#4DA3FF"></i> تواصل مع الدعم
       </button>
     </div>
+
+    <!-- ═══════════════════════════════════════════════
+         🎮 قسم الألعاب (كازينو دولفين) — داخلي
+         ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-casino">
+      <div class="casino-app">
+
+        <div class="casino-top">
+          <button class="casino-back" onclick="navigate('home')" aria-label="رجوع">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <div class="casino-meta">
+            <div class="casino-hello">كازينو دولفين</div>
+            <div class="casino-name" id="casinoName">لاعب</div>
+          </div>
+          <div class="casino-chip">
+            <span class="star3d"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt=""></span>
+            <div class="chip__body">
+              <div class="chip__num casino-bal">0</div>
+              <div class="chip__cur">ل.س</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="casino-note" id="casinoNote" hidden>
+          <i class="fa-solid fa-circle-info"></i>
+          <span id="casinoNotetx"></span>
+        </div>
+
+        <div class="casino-hero">
+          <img class="bg" src="https://img.icons8.com/liquid-glass-color/999/slot-machine.png" alt="">
+          <h1>ألعاب المراهنة</h1>
+          <p>راهن برصيدك الحقيقي — اربح أو اخسر فوراً.</p>
+        </div>
+
+        <div class="casino-sec">اختر لعبتك <span id="casinoCnt"></span></div>
+        <div class="casino-grid" id="casinoGrid"></div>
+        <div class="casino-state" id="casinoState" hidden></div>
+      </div>
+
+      <section class="casino-game" id="casinoGame" aria-hidden="true">
+        <div class="casino-gh">
+          <button class="casino-ib" id="casinoBackGame" aria-label="رجوع">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <h2 id="casinoGt"></h2>
+          <button class="casino-ib" id="casinoSnd" aria-label="الصوت">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+          <div class="casino-chip">
+            <span class="star3d"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt=""></span>
+            <div class="chip__body">
+              <div class="chip__num casino-bal">0</div>
+              <div class="chip__cur">ل.س</div>
+            </div>
+          </div>
+        </div>
+        <div class="casino-stage" id="casinoStage"></div>
+        <div class="casino-foot">
+          <div class="casino-lab" style="margin:0"><span>مبلغ الرهان</span><span id="casinoLim"></span></div>
+          <div class="casino-bets" id="casinoBets"></div>
+          <button class="casino-btn" id="casinoAct"></button>
+        </div>
+      </section>
+
+      <div class="casino-toast" id="casinoToast"></div>
+    </div>
+
   </div>
 
   <div class="dock">
@@ -1546,6 +1730,11 @@ function updateUI(){
   setText('storeBalance', fmt(bal));
   setText('tasksBalance', fmt(bal));
   setText('walletBalance', fmt(bal));
+
+  // كازينو
+  const cn = $('casinoName');
+  if (cn) cn.textContent = u.name || 'لاعب';
+  document.querySelectorAll('.casino-bal').forEach(e => { e.textContent = fmt(bal); });
 
   setText('planName', 'خطة ' + plan.name);
   setText('planLevel', plan.level);
@@ -2804,7 +2993,7 @@ function renderChannelTask() {
 }
 
 /* ═══ Navigation ═══ */
-const VIEWS = ['home','store','wallet','referral','tasks','profile'];
+const VIEWS = ['home','store','wallet','referral','tasks','profile','casino'];
 function navigate(view){
   if (!VIEWS.includes(view)) view = 'home';
   const target = $('view-' + view);
@@ -2830,6 +3019,15 @@ function navigate(view){
   if (view === 'referral') loadLeaderboard();
   if (view === 'profile') updateAvatar('profAvatar');
   if (view === 'tasks') renderTasks();
+  if (view === 'casino') {
+    // تحديث اسم اللاعب والرصيد
+    if (STATE.user) {
+      const cn = $('casinoName'); if (cn) cn.textContent = STATE.user.name || 'لاعب';
+      document.querySelectorAll('.casino-bal').forEach(e => e.textContent = fmt(STATE.user.balance_sy || 0));
+    }
+    // عرض شبكة الألعاب
+    if (window.Casino && window.Casino.render) window.Casino.render();
+  }
 }
 
 function bindUI(){
@@ -2850,6 +3048,784 @@ function bindUI(){
   initReferral();
 }
 
+/* ═══════════════════════════════════════════════════
+   🎮 كازينو دولفين — مربوط بنفس Firebase والرصيد
+   ═══════════════════════════════════════════════════ */
+(function initCasino(){
+
+const $c = s => document.querySelector(s);
+const $$c = s => document.querySelectorAll(s);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const rnd = () => { const a = new Uint32Array(1); crypto.getRandomValues(a); return a[0] / 4294967296; };
+const int = n => Math.floor(rnd() * n);
+
+const CCFG = {
+  bets: [10, 25, 50, 100, 250],
+  maxMult: 50,
+  historyCol: 'gameHistory'
+};
+
+const IMG = n => `https://img.icons8.com/liquid-glass-color/999/${n}.png`;
+
+/* ─── منطق الألعاب ─── */
+const CLogic = {
+  mines: {
+    total: 25,
+    bombOptions: [1, 3, 5, 8, 12, 20],
+    mult(k, B) {
+      if (k === 0) return 1;
+      const safe = this.total - B;
+      if (k > safe) return 0;
+      let m = 0.97;
+      for (let i = 0; i < k; i++) m *= (this.total - i) / (safe - i);
+      return Math.min(Math.round(m * 100) / 100, CCFG.maxMult);
+    },
+    layout(B) {
+      const a = [...Array(this.total).keys()];
+      for (let i = this.total - 1; i > 0; i--) {
+        const j = int(i + 1);
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return new Set(a.slice(0, B));
+    }
+  },
+  dice: {
+    mult: ch => Math.min(Math.floor(97 / ch * 100) / 100, CCFG.maxMult),
+    roll: () => Math.floor(rnd() * 10000) / 100,
+    win: (r, over, ch) => over ? r >= (100 - ch) : r < ch
+  },
+  crash: {
+    rate: 0.14, cap: 10,
+    point() { return Math.min(this.cap, Math.max(1, Math.floor(97 / (1 - rnd())) / 100)); },
+    at: t => Math.floor(Math.exp(this.rate * t) * 100) / 100
+  },
+  slots: {
+    sym: ['cherry', 'lemon', 'bell', 'star', 'diamond', 'seven'],
+    w: [30, 25, 20, 15, 7, 3],
+    pay: [6, 9, 12, 15, 20, 20],
+    pick() { let r = int(100); for (let i = 0; i < 6; i++) { if (r < this.w[i]) return i; r -= this.w[i]; } return 0; },
+    spin() {
+      const r = [this.pick(), this.pick(), this.pick()];
+      let m = 0;
+      if (r[0] === r[1] && r[1] === r[2]) m = this.pay[r[0]];
+      else if (r[0] === r[1] || r[1] === r[2] || r[0] === r[2]) m = 1;
+      return { reels: r, mult: m };
+    }
+  }
+};
+
+/* ─── الأصوات ─── */
+const CSnd = {
+  on: true, c: null,
+  t(f, d = .08, ty = 'sine', v = .05) {
+    if (!this.on) return;
+    try {
+      this.c = this.c || new (window.AudioContext || window.webkitAudioContext)();
+      const o = this.c.createOscillator(), g = this.c.createGain();
+      o.type = ty; o.frequency.value = f; g.gain.value = v;
+      o.connect(g); g.connect(this.c.destination);
+      o.start(); g.gain.exponentialRampToValueAtTime(.0001, this.c.currentTime + d);
+      o.stop(this.c.currentTime + d);
+    } catch (e) {}
+  },
+  tick() { this.t(700, .04, 'square', .02); },
+  win() { [523, 659, 784, 1046].forEach((f, i) => setTimeout(() => this.t(f, .16), i * 90)); },
+  lose() { this.t(170, .35, 'sawtooth', .04); },
+  hap(t) {
+    try {
+      if (!tg) return;
+      if (t === 'win') tg.HapticFeedback.notificationOccurred('success');
+      else if (t === 'lose') tg.HapticFeedback.notificationOccurred('error');
+      else tg.HapticFeedback.impactOccurred('light');
+    } catch (e) {}
+  }
+};
+
+/* ─── Wallet — يستخدم نفس المستخدم ونفس الرصيد ─── */
+const CWallet = {
+  get bal() { return Number(STATE.user?.balance_sy) || 0; },
+  get ready() { return !!(STATE.user && STATE.tgId); },
+
+  paint() {
+    $$c('.casino-bal').forEach(e => { if (e) e.textContent = fmt(this.bal); });
+  },
+
+  async change(delta, gameId, extra = {}) {
+    if (!this.ready) throw new Error('المستخدم غير محمّل');
+    const userRef = db.collection('users').doc(STATE.tgId);
+    const logRef = db.collection(CCFG.historyCol).doc();
+    let newBal = 0;
+
+    await db.runTransaction(async (trx) => {
+      const snap = await trx.get(userRef);
+      if (!snap.exists) throw new Error('المستخدم غير موجود');
+      const data = snap.data();
+      const bal = Number(data.balance_sy) || 0;
+      newBal = bal + delta;
+      if (newBal < 0) throw new Error('رصيد غير كافٍ');
+
+      const upd = {
+        balance_sy: newBal,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+      if (delta > 0) upd.totalEarned = firebase.firestore.FieldValue.increment(delta);
+      trx.update(userRef, upd);
+
+      trx.set(logRef, {
+        id: logRef.id,
+        userId: STATE.tgId,
+        userName: data.name || '',
+        gameId,
+        delta,
+        balanceAfter: newBal,
+        ...extra,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    });
+
+    STATE.user.balance_sy = newBal;
+    updateUI();
+    this.paint();
+    return newBal;
+  }
+};
+
+/* ─── GAMES ─── */
+const CGAMES = [];
+
+CGAMES.push({
+  id: 'mines', name: 'Mines',
+  desc: 'اختر عدد القنابل والمبلغ — اكشف الخلايا الآمنة واسحب أرباحك.',
+  img: IMG('bomb'), c: ['#FF6B63', '#FF8A00'], min: 10, max: 250,
+  mount(el, x) {
+    let B = 3, mines, open, live = false;
+    el.innerHTML = `
+      <div class="glass">
+        <div class="lab" style="padding:12px 12px 0;margin:0">
+          <span><i class="fa-solid fa-bomb" style="color:#FF6B63"></i> عدد القنابل</span>
+          <span id="mm">1.00x</span>
+        </div>
+        <div class="bomb-sel" id="bs"></div>
+      </div>
+      <div class="glass stat">
+        <div><span>آمنة</span><b id="mk">0/22</b></div>
+        <div><span>المضاعف</span><b id="mmx">1.00x</b></div>
+        <div><span>الربح المتوقع</span><b id="mp" style="color:#FFD60A">0</b></div>
+      </div>
+      <div class="glass pad"><div class="tiles g5" id="tl"></div></div>`;
+    const bs = el.querySelector('#bs');
+    CLogic.mines.bombOptions.forEach(n => {
+      const b = document.createElement('button');
+      b.innerHTML = `<img src="${IMG('bomb')}" alt=""><span>${n}</span>`;
+      if (n === B) b.classList.add('on');
+      b.onclick = () => {
+        if (x.locked()) return;
+        B = n;
+        bs.querySelectorAll('button').forEach(o => o.classList.remove('on'));
+        b.classList.add('on');
+      };
+      bs.appendChild(b);
+    });
+    const tl = el.querySelector('#tl');
+    const build = () => {
+      tl.innerHTML = '';
+      for (let i = 0; i < CLogic.mines.total; i++) {
+        const b = document.createElement('button');
+        b.className = 'tile';
+        b.dataset.i = i;
+        b.disabled = true;
+        b.innerHTML = '<i class="fa-solid fa-question" style="opacity:.3;font-size:18px"></i>';
+        tl.appendChild(b);
+      }
+    };
+    const safe = () => CLogic.mines.total - B;
+    const info = () => {
+      const m = CLogic.mines.mult(open, B);
+      el.querySelector('#mk').textContent = open + '/' + safe();
+      el.querySelector('#mmx').textContent = m.toFixed(2) + 'x';
+      el.querySelector('#mp').textContent = fmt(x.bet() * m);
+      el.querySelector('#mm').textContent = m.toFixed(2) + 'x';
+      if (live) x.act('اسحب ' + fmt(Math.floor(x.bet() * m)), cash, open === 0);
+    };
+    const reveal = () => {
+      tl.querySelectorAll('.tile').forEach(b => {
+        const i = +b.dataset.i;
+        b.disabled = true;
+        if (!b.classList.contains('ok') && !b.classList.contains('bad')) {
+          b.classList.add(mines.has(i) ? 'reveal-bomb' : 'dim');
+          b.innerHTML = mines.has(i) ? `<img src="${IMG('bomb')}" alt="">` : `<img src="${IMG('diamond')}" alt="" style="opacity:.5">`;
+        }
+      });
+    };
+    const cash = () => {
+      if (!live || open === 0) return;
+      live = false;
+      reveal();
+      x.end(CLogic.mines.mult(open, B));
+      x.act('جولة جديدة', start);
+    };
+    const start = () => {
+      if (!x.start()) return;
+      build();
+      mines = CLogic.mines.layout(B);
+      open = 0; live = true;
+      tl.querySelectorAll('.tile').forEach(b => b.disabled = false);
+      bs.querySelectorAll('button').forEach(o => o.disabled = true);
+      info();
+      x.act('اسحب', cash, true);
+    };
+    tl.onclick = e => {
+      const b = e.target.closest('.tile');
+      if (!b || !live || b.disabled) return;
+      const i = +b.dataset.i;
+      b.disabled = true;
+      if (mines.has(i)) {
+        live = false;
+        b.classList.add('bad');
+        b.innerHTML = `<img src="${IMG('bomb')}" alt="">`;
+        reveal();
+        x.end(0);
+        bs.querySelectorAll('button').forEach(o => o.disabled = false);
+        x.act('جولة جديدة', start);
+      } else {
+        open++;
+        b.classList.add('ok');
+        b.innerHTML = `<img src="${IMG('diamond')}" alt="">`;
+        CSnd.tick(); CSnd.hap();
+        info();
+        if (open >= safe()) cash();
+      }
+    };
+    build();
+    x.act('ابدأ الجولة', start);
+  }
+});
+
+CGAMES.push({
+  id: 'dice', name: 'Dice',
+  desc: 'اختر فرصتك — الرقم العشوائي يحدد الفوز أو الخسارة.',
+  img: IMG('dice'), c: ['#30D158', '#00A3A3'], min: 10, max: 250,
+  mount(el, x) {
+    let over = false, ch = 50;
+    el.innerHTML = `
+      <div class="glass dice-visual" id="dv"><img src="${IMG('dice')}" alt=""></div>
+      <div class="glass pad"><div class="big" id="dr" style="font-size:38px">--.--</div></div>
+      <div class="glass pad">
+        <div class="row" style="margin-bottom:12px">
+          <button class="opt on" id="du">تحت (أقل)</button>
+          <button class="opt" id="do">فوق (أكثر)</button>
+        </div>
+        <div class="lab">
+          <span>فرصة الفوز: <b id="dc" style="color:#4DA3FF">50</b>%</span>
+          <span>المضاعف: <b id="dm" style="color:#FFD60A"></b>x</span>
+        </div>
+        <input type="range" id="ds" min="13" max="90" value="50">
+      </div>`;
+    const upd = () => {
+      el.querySelector('#dc').textContent = ch;
+      el.querySelector('#dm').textContent = CLogic.dice.mult(ch).toFixed(2);
+    };
+    el.querySelector('#ds').oninput = e => {
+      if (x.locked()) { e.target.value = ch; return; }
+      ch = +e.target.value;
+      upd();
+    };
+    const sel = o => {
+      if (x.locked()) return;
+      over = o;
+      el.querySelector('#do').classList.toggle('on', o);
+      el.querySelector('#du').classList.toggle('on', !o);
+    };
+    el.querySelector('#du').onclick = () => sel(false);
+    el.querySelector('#do').onclick = () => sel(true);
+    upd();
+    x.act('ارمِ النرد', async () => {
+      if (!x.start()) return;
+      const r = CLogic.dice.roll();
+      const n = el.querySelector('#dr');
+      const dv = el.querySelector('#dv');
+      n.className = 'big';
+      dv.classList.add('spin');
+      for (let i = 0; i < 14; i++) {
+        n.textContent = (rnd() * 100).toFixed(2);
+        CSnd.tick();
+        await sleep(50 + i * 9);
+      }
+      dv.classList.remove('spin');
+      n.textContent = r.toFixed(2);
+      const w = CLogic.dice.win(r, over, ch);
+      n.classList.add(w ? 'g' : 'r');
+      x.end(w ? CLogic.dice.mult(ch) : 0);
+    });
+  }
+});
+
+CGAMES.push({
+  id: 'crash', name: 'Crash',
+  desc: 'المضاعف يرتفع... اسحب قبل أن ينفجر!',
+  img: IMG('rocket'), c: ['#FFD60A', '#FF8A00'], min: 10, max: 250,
+  mount(el, x) {
+    el.innerHTML = `
+      <div class="glass pad">
+        <div class="sky" id="sk">
+          <div class="grid-line"></div>
+          <img src="${IMG('rocket')}" id="rk" alt="">
+        </div>
+        <div class="big" id="cm" style="margin-top:12px">1.00x</div>
+      </div>
+      <div class="glass note" style="margin:0">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>الحد الأقصى 10x — يُسحب تلقائياً عند الوصول إليه.</span>
+      </div>
+      <div class="hist" id="ch"></div>`;
+    const m = el.querySelector('#cm');
+    const rk = el.querySelector('#rk');
+    let live = false, cur = 1, raf, hist = [];
+    const pos = v => {
+      const p = Math.min(1, Math.log(v) / Math.log(10));
+      rk.style.left = (8 + p * 72) + '%';
+      rk.style.bottom = (8 + p * 65) + '%';
+      rk.style.transform = 'rotate(-40deg)';
+    };
+    const stop = (mult) => {
+      live = false;
+      cancelAnimationFrame(raf);
+      hist.unshift(mult);
+      el.querySelector('#ch').innerHTML = hist.slice(0, 8)
+        .map(v => `<span class="${v >= 2 ? 'g' : 'r'}">${v.toFixed(2)}x</span>`).join('');
+      x.act('ابدأ', start);
+    };
+    const cash = () => {
+      if (!live) return;
+      const v = cur;
+      live = false;
+      m.className = 'big g';
+      stop(v);
+      x.end(v);
+    };
+    const start = () => {
+      if (!x.start()) return;
+      const cp = CLogic.crash.point();
+      const t0 = performance.now();
+      live = true;
+      cur = 1;
+      m.className = 'big';
+      m.textContent = '1.00x';
+      pos(1);
+      rk.src = IMG('rocket');
+      x.act('اسحب الآن', cash);
+      const f = n => {
+        if (!live) return;
+        const v = CLogic.crash.at((n - t0) / 1000);
+        if (v >= cp) {
+          cur = cp;
+          m.textContent = cp.toFixed(2) + 'x';
+          m.className = 'big r';
+          live = false;
+          rk.src = IMG('explosion');
+          stop(cp);
+          x.end(0);
+          setTimeout(() => { rk.src = IMG('rocket'); }, 900);
+          return;
+        }
+        if (v >= CLogic.crash.cap) {
+          cur = CLogic.crash.cap;
+          m.textContent = cur.toFixed(2) + 'x';
+          cash();
+          return;
+        }
+        cur = v;
+        m.textContent = v.toFixed(2) + 'x';
+        pos(v);
+        raf = requestAnimationFrame(f);
+      };
+      raf = requestAnimationFrame(f);
+    };
+    x.act('ابدأ', start);
+  }
+});
+
+CGAMES.push({
+  id: 'slots', name: 'Lucky Slots',
+  desc: 'ثلاث بكرات — طابق الرموز واربح حتى ×20 رهانك.',
+  img: IMG('slot-machine'), c: ['#FFD60A', '#30D158'], min: 10, max: 250,
+  mount(el, x) {
+    const L = CLogic.slots;
+    const icons = { cherry: 'cherry', lemon: 'lemon', bell: 'bell', star: 'star', diamond: 'diamond', seven: 'seven' };
+    el.innerHTML = `
+      <div class="glass reels">
+        <div class="reel"><img src="${IMG(icons.cherry)}" alt=""></div>
+        <div class="reel"><img src="${IMG(icons.star)}" alt=""></div>
+        <div class="reel"><img src="${IMG(icons.diamond)}" alt=""></div>
+      </div>
+      <div class="glass pad">
+        <div class="lab" style="justify-content:center">جدول الأرباح</div>
+        <div class="hist">
+          <span>🍒🍒🍒 6x</span>
+          <span>🔔🔔🔔 9x</span>
+          <span>⭐⭐⭐ 15x</span>
+          <span>💎💎💎 20x</span>
+          <span>رمزان متطابقان 1x</span>
+        </div>
+      </div>`;
+    const rs = [...el.querySelectorAll('.reel')];
+    x.act('دوّر', async () => {
+      if (!x.start()) return;
+      const r = L.spin();
+      rs.forEach(e => e.classList.add('spin'));
+      for (let k = 0; k < 3; k++) {
+        for (let t = 0; t < 8 + k * 6; t++) {
+          rs.slice(k).forEach(e => {
+            const s = L.sym[int(6)];
+            e.innerHTML = `<img src="${IMG(icons[s])}" alt="">`;
+          });
+          CSnd.tick();
+          await sleep(70);
+        }
+        rs[k].innerHTML = `<img src="${IMG(icons[L.sym[r.reels[k]]])}" alt="">`;
+        rs[k].classList.remove('spin');
+        CSnd.t(440 + k * 120, .1);
+      }
+      x.end(r.mult);
+    });
+  }
+});
+
+CGAMES.push({
+  id: 'limbo', name: 'Limbo',
+  desc: 'اختر مضاعف الهدف — إن وصل إليه الرقم تربح فوراً.',
+  img: IMG('target'), c: ['#7B5CFF', '#007AFF'], min: 10, max: 250,
+  mount(el, x) {
+    let target = 2;
+    el.innerHTML = `
+      <div class="glass dice-visual"><img src="${IMG('target')}" alt=""></div>
+      <div class="glass pad">
+        <div class="big" id="lr" style="font-size:42px;color:#4DA3FF">--.--x</div>
+        <div class="lab" style="margin-top:8px">
+          <span>الهدف: <b id="lt" style="color:#FFD60A">${target.toFixed(2)}x</b></span>
+          <span>فرصة الفوز: <b id="lw" style="color:#30D158">${(97 / target).toFixed(1)}%</b></span>
+        </div>
+      </div>
+      <div class="glass pad">
+        <div class="lab"><span>اضبط الهدف</span><span id="lv">${target.toFixed(2)}x</span></div>
+        <input type="range" id="ls" min="110" max="1000" value="200" step="10">
+      </div>`;
+    const upd = () => {
+      el.querySelector('#lt').textContent = target.toFixed(2) + 'x';
+      el.querySelector('#lw').textContent = Math.min(97, 97 / target).toFixed(1) + '%';
+      el.querySelector('#lv').textContent = target.toFixed(2) + 'x';
+    };
+    el.querySelector('#ls').oninput = e => {
+      if (x.locked()) { e.target.value = target * 100; return; }
+      target = +e.target.value / 100;
+      upd();
+    };
+    x.act('العب', async () => {
+      if (!x.start()) return;
+      const r = el.querySelector('#lr');
+      r.className = 'big';
+      r.style.color = '#4DA3FF';
+      const result = Math.floor((97 / rnd()) * 100) / 100;
+      r.textContent = '...';
+      for (let i = 0; i < 10; i++) {
+        r.textContent = (rnd() * 10).toFixed(2) + 'x';
+        CSnd.tick();
+        await sleep(60);
+      }
+      r.textContent = result.toFixed(2) + 'x';
+      const win = result >= target;
+      r.style.color = win ? '#30D158' : '#FF453A';
+      x.end(win ? target : 0);
+    });
+  }
+});
+
+CGAMES.push({
+  id: 'plinko', name: 'Plinko',
+  desc: 'أسقط الكرة بين المسامير واربح حسب المضاعف في النهاية.',
+  img: IMG('coins'), c: ['#4DA3FF', '#007AFF'], min: 10, max: 250,
+  mount(el, x) {
+    el.innerHTML = `<div class="glass pad"><canvas id="pc" style="width:100%;height:auto"></canvas></div>`;
+    const cv = el.querySelector('#pc');
+    const W = 320, H = 340, d = devicePixelRatio || 1;
+    cv.width = W * d; cv.height = H * d;
+    cv.style.height = '340px';
+    const c = cv.getContext('2d');
+    c.scale(d, d);
+    const M = [5, 2, 1.4, .9, .4, .9, 1.4, 2, 5];
+    const sp = 32, rh = 29, top = 30, cx = W / 2;
+    let hl = -1;
+    const col = m => m >= 2 ? '#FFD60A' : m >= 1 ? '#4DA3FF' : '#FF6B63';
+    const draw = (bx, by) => {
+      c.clearRect(0, 0, W, H);
+      c.fillStyle = 'rgba(255,255,255,.7)';
+      for (let r = 0; r < 8; r++) {
+        for (let j = 0; j <= r; j++) {
+          c.beginPath();
+          c.arc(cx + (j - r / 2) * sp, top + r * rh, 3.2, 0, 7);
+          c.fill();
+        }
+      }
+      M.forEach((m, k) => {
+        const sx = cx + (k - 4) * sp;
+        c.fillStyle = k === hl ? col(m) : 'rgba(255,255,255,.1)';
+        c.beginPath();
+        c.roundRect(sx - 14, H - 34, 28, 24, 7);
+        c.fill();
+        c.fillStyle = k === hl ? '#000' : col(m);
+        c.font = '700 11px IBM Plex Sans Arabic';
+        c.textAlign = 'center';
+        c.fillText(m + 'x', sx, H - 18);
+      });
+      if (bx != null) {
+        c.shadowColor = '#007AFF';
+        c.shadowBlur = 14;
+        c.fillStyle = '#fff';
+        c.beginPath();
+        c.arc(bx, by, 6.5, 0, 7);
+        c.fill();
+        c.shadowBlur = 0;
+      }
+    };
+    draw();
+    const tween = (a, b, ms) => new Promise(res => {
+      const t0 = performance.now();
+      (function f(n) {
+        const t = Math.min(1, (n - t0) / ms);
+        draw(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t - Math.sin(Math.PI * t) * 7);
+        t < 1 ? requestAnimationFrame(f) : res();
+      })(t0);
+    });
+    x.act('أسقط الكرة', async () => {
+      if (!x.start()) return;
+      hl = -1;
+      let k = 0, p = [cx, top - 24];
+      for (let i = 0; i < 8; i++) {
+        const go = rnd() < .5 ? 0 : 1;
+        k += go;
+        const n = [cx + (k - (i + 1) / 2) * sp, top + i * rh + rh * .55];
+        await tween(p, n, 150);
+        CSnd.tick();
+        p = n;
+      }
+      await tween(p, [p[0], H - 48], 150);
+      hl = k;
+      draw();
+      x.end(M[k]);
+    });
+  }
+});
+
+/* ─── UI SHELL ─── */
+const CUI = {
+  cur: null, bet: CCFG.bets[0], busy: false,
+
+  toast(t) {
+    const e = $c('#casinoToast');
+    e.textContent = t;
+    e.classList.add('show');
+    clearTimeout(this.tt);
+    this.tt = setTimeout(() => e.classList.remove('show'), 2200);
+  },
+
+  render() {
+    const g = $c('#casinoGrid'), s = $c('#casinoState');
+    if (!g) return;
+    g.innerHTML = '';
+    if (!CGAMES.length) {
+      s.hidden = false;
+      s.innerHTML = '<i class="fa-solid fa-ghost"></i><div>لا توجد ألعاب</div>';
+      return;
+    }
+    s.hidden = true;
+    $c('#casinoCnt').textContent = CGAMES.length + ' ألعاب';
+    CGAMES.forEach((G, i) => {
+      const d = document.createElement('div');
+      d.className = 'casino-gc';
+      d.style.animationDelay = i * .06 + 's';
+      d.innerHTML = `
+        <div class="art" style="background:linear-gradient(135deg,${G.c[0]},${G.c[1]})">
+          <img src="${G.img}" alt="" onerror="this.style.display='none'">
+        </div>
+        <h3>${escapeHtml(G.name)}</h3>
+        <p>${escapeHtml(G.desc)}</p>
+        <div class="casino-lim"><span>${G.min} – ${G.max}</span><span>رهان (ل.س)</span></div>
+        <button class="casino-btn" style="min-height:38px;border-radius:14px;font-size:12.5px"><i class="fa-solid fa-play"></i> العب الآن</button>`;
+      d.querySelector('button').onclick = () => this.open(G);
+      g.appendChild(d);
+    });
+  },
+
+  open(G) {
+    try {
+      if (!CWallet.ready) { this.toast('جاري تحميل البيانات...'); return; }
+      this.cur = G;
+      this.busy = false;
+      $c('#casinoGt').textContent = G.name;
+      $c('#casinoLim').textContent = G.min + ' – ' + G.max;
+
+      const b = $c('#casinoBets');
+      b.innerHTML = '';
+      CCFG.bets.filter(v => v >= G.min && v <= G.max).forEach(v => {
+        const e = document.createElement('button');
+        e.textContent = v;
+        e.className = v === this.bet ? 'on' : '';
+        e.onclick = () => {
+          if (this.busy) return;
+          this.bet = v;
+          b.querySelectorAll('button').forEach(z => z.classList.toggle('on', z === e));
+          CSnd.hap();
+        };
+        b.appendChild(e);
+      });
+      if (![...b.children].some(e => e.classList.contains('on')) && b.children[0]) {
+        this.bet = +b.children[0].textContent;
+        b.children[0].classList.add('on');
+      }
+
+      const st = $c('#casinoStage');
+      st.innerHTML = '<div class="res" id="casinoRes"></div>';
+      const host = document.createElement('div');
+      host.style.cssText = 'display:flex;flex-direction:column;gap:12px';
+      st.appendChild(host);
+
+      G.mount(host, this.api);
+      $c('#casinoGame').classList.add('open');
+      $c('#casinoGame').setAttribute('aria-hidden', 'false');
+    } catch (e) {
+      console.error(e);
+      this.toast('حدث خطأ في تحميل اللعبة');
+      this.close(true);
+    }
+  },
+
+  close(force) {
+    if (this.busy && !force) { this.toast('انتظر انتهاء الجولة'); return; }
+    this.busy = false;
+    $c('#casinoGame').classList.remove('open');
+    $c('#casinoGame').setAttribute('aria-hidden', 'true');
+    this.cur = null;
+    $c('#casinoStage').innerHTML = '';
+  },
+
+  setBusy(v) {
+    this.busy = v;
+    $c('#casinoBackGame').disabled = v;
+    $$c('#casinoBets button').forEach(b => b.disabled = v);
+  },
+
+  api: {
+    bet: () => CUI.bet,
+    locked: () => CUI.busy,
+
+    act(label, fn, dis) {
+      const a = $c('#casinoAct');
+      a.textContent = label;
+      a.disabled = !!dis;
+      a.onclick = async () => {
+        if (a.dataset.l) return;
+        a.dataset.l = 1;
+        try {
+          await fn();
+        } catch (e) {
+          console.error(e);
+          CUI.toast(e.message || 'حدث خطأ');
+          if (CUI.busy) {
+            await CWallet.change(CUI.bet, CUI.cur?.id || 'unknown', { type: 'rollback' });
+            CUI.setBusy(false);
+          }
+        } finally {
+          delete a.dataset.l;
+        }
+      };
+    },
+
+    start() {
+      if (CUI.busy) return false;
+      if (CWallet.bal < CUI.bet) {
+        CUI.toast('❌ رصيدك لا يكفي لهذا الرهان');
+        return false;
+      }
+      const r = $c('#casinoRes');
+      if (r) r.classList.remove('show');
+      CUI.setBusy(true);
+      CSnd.hap();
+      CWallet.change(-CUI.bet, CUI.cur.id, { type: 'bet' })
+        .catch(e => { CUI.toast('فشل خصم الرهان'); CUI.setBusy(false); throw e; });
+      return true;
+    },
+
+    end(mult) {
+      if (!CUI.busy) return;
+      const bet = CUI.bet;
+      const m = Math.min(mult, CCFG.maxMult);
+      const pay = Math.floor(bet * m);
+      const net = pay - bet;
+
+      const finalize = () => {
+        CUI.setBusy(false);
+        const r = $c('#casinoRes');
+        const cls = net > 0 ? 'win' : net === 0 ? 'draw' : 'lose';
+        r.className = 'res ' + cls;
+        if (net > 0) {
+          r.innerHTML = `<b style="color:#30D158">+${fmt(net)}</b><span>🎉 فوز! ×${m.toFixed(2)}</span>`;
+        } else if (net === 0) {
+          r.innerHTML = `<b>0</b><span>تعادل — استرجعت رهانك</span>`;
+        } else if (pay > 0) {
+          r.innerHTML = `<b style="color:#FF453A">${fmt(net)}</b><span>استرجعت ${fmt(pay)} فقط</span>`;
+        } else {
+          r.innerHTML = `<b style="color:#FF453A">${fmt(net)}</b><span>حظ أوفر في الجولة القادمة</span>`;
+        }
+        requestAnimationFrame(() => r.classList.add('show'));
+        if (net < 0) $c('#casinoStage').classList.add('shake');
+        setTimeout(() => $c('#casinoStage').classList.remove('shake'), 400);
+        if (net > 0) { CSnd.win(); CSnd.hap('win'); }
+        else if (net < 0) { CSnd.lose(); CSnd.hap('lose'); }
+        setTimeout(() => r.classList.remove('show'), 2600);
+      };
+
+      if (pay > 0) {
+        CWallet.change(pay, CUI.cur.id, { type: 'win', mult: m, net })
+          .then(finalize)
+          .catch(e => { console.error(e); CUI.toast('فشل إضافة الأرباح'); finalize(); });
+      } else {
+        db.collection(CCFG.historyCol).add({
+          userId: STATE.tgId,
+          gameId: CUI.cur.id,
+          type: 'loss',
+          delta: -bet,
+          mult: 0,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        }).catch(() => {});
+        finalize();
+      }
+    }
+  }
+};
+
+/* ─── Bind casino events ─── */
+function bindCasino() {
+  const back = $c('#casinoBackGame');
+  if (back) back.onclick = () => CUI.close();
+  const snd = $c('#casinoSnd');
+  if (snd) snd.onclick = () => {
+    CSnd.on = !CSnd.on;
+    snd.querySelector('i').className = 'fa-solid ' + (CSnd.on ? 'fa-volume-high' : 'fa-volume-xmark');
+  };
+}
+
+document.addEventListener('DOMContentLoaded', bindCasino);
+if (document.readyState !== 'loading') bindCasino();
+
+/* Expose */
+window.Casino = CUI;
+window.CWalletCasino = CWallet;
+
+})();
+
+/* ═══════════════════════════════════════════════════
+   BOOT
+   ═══════════════════════════════════════════════════ */
 async function bootstrap(){
   if (!initTelegram()) return;
   $('app').style.display = 'flex';
@@ -2862,6 +3838,7 @@ async function bootstrap(){
   renderMining();
   renderPlans();
   renderTasks();
+  if (window.Casino && window.Casino.render) window.Casino.render();
 
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) {
     startLiveTimer();
@@ -2878,6 +3855,7 @@ async function bootstrap(){
         if (snap.exists) {
           STATE.user = snap.data();
           updateUI(); renderMining(); renderPlans(); renderTasks();
+          if (window.Casino && window.Casino.render) window.Casino.render();
         }
       }catch(e){}
     }
