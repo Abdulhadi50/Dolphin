@@ -39,8 +39,7 @@ html{background:#000;color-scheme:dark}
 html,body{height:100%}
 body{font-family:'IBM Plex Sans Arabic',-apple-system,sans-serif;background:#000;color:#fff;font-size:var(--f-base);line-height:1.5;
   overflow:hidden;direction:rtl;-webkit-font-smoothing:antialiased;overscroll-behavior:none}
-/* ✨ عند التبديل للإنجليزية: الاتجاه يتغير لكن الخط العربي يبقى */
-body.lang-en{direction:ltr}
+body.lang-en{font-family:'Inter',-apple-system,sans-serif;direction:ltr}
 body.lang-en .main{direction:ltr}
 body.lang-en .dock{flex-direction:row-reverse}
 body.lang-en .nav__inner{flex-direction:row-reverse}
@@ -530,7 +529,7 @@ body.lang-en .pod{direction:ltr}
 }
 .pf-id i{font-size:13px;color:var(--blue)}
 
-/* ═══ محدد اللغة ═══ */
+/* ═══ محدد اللغة - تصميم صغير مضغوط ═══ */
 .pf-lang{
   width:100%;margin-top:14px;
   background:rgba(255,255,255,.05);
@@ -593,6 +592,7 @@ body.lang-en .pod{direction:ltr}
   .lang-opt{padding:8px 6px;gap:6px}
 }
 
+/* شارة "موثق" في الملف */
 .pf-verified-badge{
   display:inline-flex;align-items:center;gap:5px;
   font-size:10.5px;font-weight:800;
@@ -601,6 +601,7 @@ body.lang-en .pod{direction:ltr}
   border:1px solid rgba(0,122,255,.35);
 }
 
+/* زر الاشتراك */
 .pf-sub-btn{
   display:flex;align-items:center;justify-content:center;gap:8px;
   width:100%;min-height:50px;margin-top:12px;padding:0 16px;
@@ -635,6 +636,7 @@ body.lang-en .pf-cell__val--txt{direction:ltr}
 .pf-row__lbl{flex:1;font-size:13.5px;font-weight:600;color:var(--text-2)}
 .pf-row__val{font-size:14px;font-weight:800}
 
+/* مودال الاشتراك */
 .sub-modal{
   position:fixed;inset:0;z-index:9500;
   background:rgba(0,0,0,.82);
@@ -806,6 +808,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
   .plans-table thead th{font-size:9px;padding:7px 2px}
   .pt-plan__name{font-size:10px}
   .pf-av{width:100px;height:100px;font-size:38px}
+  .lang-opt__flag{width:40px;height:30px}
 }
 @media (prefers-reduced-motion:reduce){
   .view.active{animation:none}
@@ -817,19 +820,19 @@ body.lang-en .sub-box__close{left:auto;right:12px}
 
 <div class="outside-tg" id="outsideTg" style="display:none">
   <div class="outside-tg__ic">🐬</div>
-  <h1 data-i18n="outsideTgTitle">دولفين مينر</h1>
-  <p data-i18n="outsideTgDesc">هذا التطبيق يعمل فقط داخل تطبيق Telegram. افتح البوت من الأسفل للبدء.</p>
+  <h1>دولفين مينر</h1>
+  <p>هذا التطبيق يعمل فقط داخل تطبيق Telegram. افتح البوت من الأسفل للبدء.</p>
   <a href="https://t.me/DolphinMiner_bot/Dolphin">
-    <i class="fab fa-telegram-plane"></i> <span data-i18n="openBot">افتح البوت</span>
+    <i class="fab fa-telegram-plane"></i> افتح البوت
   </a>
 </div>
 
 <div class="tamper-overlay" id="tamperModal">
   <div class="tamper-box">
     <div class="tamper-box__icon"><i class="fas fa-exclamation-triangle"></i></div>
-    <h3 data-i18n="miningFrozenTitle">تم إيقاف التعدين</h3>
-    <p data-i18n="miningFrozenDesc">تم اكتشاف تغيير في وقت الجهاز. للحفاظ على نزاهة التعدين، تم إيقاف جلستك الحالية. يرجى إعادة ضبط وقت الجهاز والمحاولة مرة أخرى.</p>
-    <button onclick="closeTamperModal()" data-i18n="okGotIt">حسناً، فهمت</button>
+    <h3>تم إيقاف التعدين</h3>
+    <p>تم اكتشاف تغيير في وقت الجهاز. للحفاظ على نزاهة التعدين، تم إيقاف جلستك الحالية. يرجى إعادة ضبط وقت الجهاز والمحاولة مرة أخرى.</p>
+    <button onclick="closeTamperModal()">حسناً، فهمت</button>
   </div>
 </div>
 
@@ -840,59 +843,59 @@ body.lang-en .sub-box__close{left:auto;right:12px}
 
     <div class="sub-hero">
       <div class="sub-hero__icon"><i class="fas fa-crown"></i></div>
-      <div class="sub-hero__title" data-i18n="premiumTitle">الاشتراك المميز</div>
-      <div class="sub-hero__desc" data-i18n="premiumDesc">احصل على ميزات حصرية وامتيازات خاصة بمستخدمي دولفين مينر الموثقين.</div>
+      <div class="sub-hero__title">الاشتراك المميز</div>
+      <div class="sub-hero__desc">احصل على ميزات حصرية وامتيازات خاصة بمستخدمي دولفين مينر الموثقين.</div>
     </div>
 
     <div class="sub-features">
       <div class="sub-feat">
         <div class="sub-feat__ic sub-feat__ic--green"><i class="fas fa-circle-check"></i></div>
         <div class="sub-feat__body">
-          <div class="sub-feat__t" data-i18n="feat1T">شارة توثيق بجانب اسمك</div>
-          <div class="sub-feat__d" data-i18n="feat1D">تظهر علامة التوثيق بجانب اسمك في كل مكان بالتطبيق</div>
+          <div class="sub-feat__t">شارة توثيق بجانب اسمك</div>
+          <div class="sub-feat__d">تظهر علامة التوثيق بجانب اسمك في كل مكان بالتطبيق</div>
         </div>
       </div>
       <div class="sub-feat">
         <div class="sub-feat__ic"><i class="fas fa-headset"></i></div>
         <div class="sub-feat__body">
-          <div class="sub-feat__t" data-i18n="feat2T">تواصل مباشر مع الدعم</div>
-          <div class="sub-feat__d" data-i18n="feat2D">تحدث مع فريق الدعم مباشرة دون أي وسيط</div>
+          <div class="sub-feat__t">تواصل مباشر مع الدعم</div>
+          <div class="sub-feat__d">تحدث مع فريق الدعم مباشرة دون أي وسيط</div>
         </div>
       </div>
       <div class="sub-feat">
         <div class="sub-feat__ic sub-feat__ic--amber"><i class="fas fa-hand-holding-usd"></i></div>
         <div class="sub-feat__body">
-          <div class="sub-feat__t" data-i18n="feat3T">الحد الأدنى للسحب 400 ل.س</div>
-          <div class="sub-feat__d" data-i18n="feat3D">بدل 500 ل.س للمستخدمين العاديين</div>
+          <div class="sub-feat__t">الحد الأدنى للسحب 400 ل.س</div>
+          <div class="sub-feat__d">بدل 500 ل.س للمستخدمين العاديين</div>
         </div>
       </div>
       <div class="sub-feat">
         <div class="sub-feat__ic sub-feat__ic--green"><i class="fas fa-percent"></i></div>
         <div class="sub-feat__body">
-          <div class="sub-feat__t" data-i18n="feat4T">عمولة سحب 0%</div>
-          <div class="sub-feat__d" data-i18n="feat4D">بدون أي خصومات على عمليات السحب</div>
+          <div class="sub-feat__t">عمولة سحب 0%</div>
+          <div class="sub-feat__d">بدون أي خصومات على عمليات السحب</div>
         </div>
       </div>
     </div>
 
     <div class="sub-price">
-      <div class="sub-price__lbl" data-i18n="subPriceLabel">سعر الاشتراك</div>
-      <div class="sub-price__val">299 <small data-i18n="syUnit">ل.س</small></div>
+      <div class="sub-price__lbl">سعر الاشتراك</div>
+      <div class="sub-price__val">299 <small>ل.س</small></div>
     </div>
 
     <div class="sub-wallet">
-      <div class="sub-wallet__lbl"><i class="fas fa-wallet" style="color:#4DA3FF"></i> <span data-i18n="yourBalance">رصيدك</span></div>
+      <div class="sub-wallet__lbl"><i class="fas fa-wallet" style="color:#4DA3FF"></i> رصيدك</div>
       <div class="sub-wallet__val" id="subWalletVal">0 ل.س</div>
     </div>
 
     <div class="sub-alert">
       <i class="fas fa-info-circle"></i>
-      <div data-i18n="subAlert">الاشتراك <b>دائم</b> ولا ينتهي. عند التوثيق، يتم خصم <b>299 ل.س</b> من رصيدك مباشرةً.</div>
+      <div>الاشتراك <b>دائم</b> ولا ينتهي. عند التوثيق، يتم خصم <b>299 ل.س</b> من رصيدك مباشرةً.</div>
     </div>
 
     <button class="btn-sub" id="subPayBtn">
       <i class="fas fa-crown"></i>
-      <span id="subPayText" data-i18n="confirmSub">تأكيد الاشتراك — 299 ل.س</span>
+      <span id="subPayText">تأكيد الاشتراك — 299 ل.س</span>
     </button>
   </div>
 </div>
@@ -915,7 +918,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
           <div class="chip__body">
             <div class="chip__num" id="headerBalance">0</div>
-            <div class="chip__cur" data-i18n="syUnit">ل.س</div>
+            <div class="chip__cur">ل.س</div>
           </div>
         </div>
       </div>
@@ -1020,7 +1023,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
           <div class="chip__body">
             <div class="chip__num" id="tasksBalance">0</div>
-            <div class="chip__cur" data-i18n="syUnit">ل.س</div>
+            <div class="chip__cur">ل.س</div>
           </div>
         </div>
       </div>
@@ -1033,7 +1036,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
         <div>
           <div class="qb__t" data-i18n="questBoard">لوحة المهمات</div>
           <div class="qb__s" id="questSummary">0 من 7 مهمات مكتملة</div>
-          <div class="qb__left"><i class="fas fa-coins"></i> <span data-i18n="remainingForYou">متبقي لك</span> <b id="questLeft">0</b> <span data-i18n="syUnit">ل.س</span></div>
+          <div class="qb__left"><i class="fas fa-coins"></i> <span data-i18n="remainingForYou">متبقي لك</span> <b id="questLeft">0</b> ل.س</div>
         </div>
       </div>
 
@@ -1043,7 +1046,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
         <div class="cq__info">
           <div class="cq__t" data-i18n="joinChannel">انضم لقناة دولفين مينر</div>
           <div class="cq__d" id="taskChannelStatus" data-i18n="joinChannelDesc">انضم لقناتنا على تيليجرام لتبقى على اطلاع</div>
-          <span class="rwd"><i class="fas fa-coins"></i> <span id="chReward">10</span> <span data-i18n="syUnit">ل.س</span></span>
+          <span class="rwd"><i class="fas fa-coins"></i> <span id="chReward">10</span> ل.س</span>
         </div>
         <button class="cq__btn cq__btn--join" id="taskChannelBtn"><i class="fab fa-telegram-plane"></i> <span data-i18n="join">انضم</span></button>
       </div>
@@ -1061,7 +1064,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
           <div class="chip__body">
             <div class="chip__num" id="storeBalance">0</div>
-            <div class="chip__cur" data-i18n="syUnit">ل.س</div>
+            <div class="chip__cur">ل.س</div>
           </div>
         </div>
       </div>
@@ -1111,7 +1114,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
           <div class="chip__body">
             <div class="chip__num" id="walletBalance">0</div>
-            <div class="chip__cur" data-i18n="syUnit">ل.س</div>
+            <div class="chip__cur">ل.س</div>
           </div>
         </div>
       </div>
@@ -1307,6 +1310,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
     </div>
 
     <div class="view" id="view-profile">
+      <!-- ═══ بطاقة الملف الشخصي ═══ -->
       <div class="pf-top">
         <div class="pf-av" id="profAvatar"><i class="fas fa-user"></i></div>
         <div class="pf-name" id="profName"><span id="profNameText">...</span></div>
@@ -1314,59 +1318,77 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           <i class="fas fa-fingerprint"></i><span id="profId">--------</span><i class="fas fa-copy"></i>
         </button>
 
-        <!-- ═══ محدد اللغة ═══ -->
-        <div class="pf-lang">
-          <div class="pf-lang__head">
-            <i class="fas fa-globe"></i>
-            <span data-i18n="appLanguage">لغة التطبيق</span>
-          </div>
-          <div class="pf-lang__opts">
-            <button class="lang-opt" data-lang="ar" aria-label="العربية">
-              <div class="lang-opt__flag">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513 357.071" preserveAspectRatio="none">
-                  <path fill-rule="nonzero" d="M28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v300.111c0 15.488-12.671 28.16-28.159 28.16H28.477c-15.486 0-28.157-12.672-28.157-28.16V28.48C.32 12.992 12.991.32 28.477.32z" fill="#007A3D"/>
-                  <path fill="#fff" fill-rule="nonzero" d="M512.68 234.625H.32V28.48C.32 12.992 12.991.32 28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v206.145z" />
-                  <path fill="#007A3D" fill-rule="nonzero" d="M512.68 119.129H.32V28.48C.32 12.992 12.991.32 28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v90.649z" />
-                  <path fill="#CE1126" fill-rule="nonzero" d="M228.751 217.327l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776zm-128.085 0l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776zm256.178 0l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776z" />
-                </svg>
-              </div>
-              <div class="lang-opt__name">العربية</div>
-            </button>
-            <button class="lang-opt" data-lang="en" aria-label="English">
-              <div class="lang-opt__flag">
-                <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                  <rect width="60" height="40" fill="#FFFFFF" />
-                  <g fill="#B22234">
-                    <rect y="0" width="60" height="3.08" />
-                    <rect y="6.15" width="60" height="3.08" />
-                    <rect y="12.31" width="60" height="3.08" />
-                    <rect y="18.46" width="60" height="3.08" />
-                    <rect y="24.62" width="60" height="3.08" />
-                    <rect y="30.77" width="60" height="3.08" />
-                    <rect y="36.92" width="60" height="3.08" />
-                  </g>
-                  <rect width="24" height="21.54" fill="#3C3B6E" />
-                  <g fill="#FFFFFF">
-                    <circle cx="3" cy="3" r="1" /><circle cx="9" cy="3" r="1" /><circle cx="15" cy="3" r="1" /><circle cx="21" cy="3" r="1" />
-                    <circle cx="6" cy="6.5" r="1" /><circle cx="12" cy="6.5" r="1" /><circle cx="18" cy="6.5" r="1" />
-                    <circle cx="3" cy="10" r="1" /><circle cx="9" cy="10" r="1" /><circle cx="15" cy="10" r="1" /><circle cx="21" cy="10" r="1" />
-                    <circle cx="6" cy="13.5" r="1" /><circle cx="12" cy="13.5" r="1" /><circle cx="18" cy="13.5" r="1" />
-                    <circle cx="3" cy="17" r="1" /><circle cx="9" cy="17" r="1" /><circle cx="15" cy="17" r="1" /><circle cx="21" cy="17" r="1" />
-                    <circle cx="6" cy="20.5" r="1" /><circle cx="12" cy="20.5" r="1" /><circle cx="18" cy="20.5" r="1" />
-                  </g>
-                </svg>
-              </div>
-              <div class="lang-opt__name">English</div>
-            </button>
-          </div>
-        </div>
+<!-- ═══ محدد اللغة (داخل .pf-top بعد pf-id) ═══ -->
+<div class="pf-lang">
+  <div class="pf-lang__head">
+    <i class="fas fa-globe"></i>
+    <span data-i18n="appLanguage">لغة التطبيق</span>
+  </div>
+  <div class="pf-lang__opts">
+    <button class="lang-opt" data-lang="ar" aria-label="العربية">
+      <div class="lang-opt__flag">
+        <!-- علم سوريا الجديد 2026 -->
+        <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 513 357.071" preserveAspectRatio="none">
+          <path fill-rule="nonzero" d="M28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v300.111c0 15.488-12.671 28.16-28.159 28.16H28.477c-15.486 0-28.157-12.672-28.157-28.16V28.48C.32 12.992 12.991.32 28.477.32z" />
+          <path fill="#fff" fill-rule="nonzero" d="M512.68 234.625H.32V28.48C.32 12.992 12.991.32 28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v206.145z" />
+          <path fill="#007A3D" fill-rule="nonzero" d="M512.68 119.129H.32V28.48C.32 12.992 12.991.32 28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v90.649z" />
+          <path fill="#CE1126" fill-rule="nonzero" d="M228.751 217.327l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776zm-128.085 0l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776zm256.178 0l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776z" />
+          <rect fill="none" stroke="#CCC" stroke-width=".64" stroke-miterlimit="22.926" x=".32" y=".319" width="512.359" height="356.43" rx="27.231" ry="28.159" />
+        </svg>
+      </div>
+      <div class="lang-opt__name">العربية</div>
+    </button>
+    <button class="lang-opt" data-lang="en" aria-label="English">
+      <div class="lang-opt__flag">
+        <!-- علم الولايات المتحدة -->
+        <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <rect width="60" height="40" fill="#FFFFFF" />
+          <g fill="#B22234">
+            <rect y="0" width="60" height="3.08" />
+            <rect y="6.15" width="60" height="3.08" />
+            <rect y="12.31" width="60" height="3.08" />
+            <rect y="18.46" width="60" height="3.08" />
+            <rect y="24.62" width="60" height="3.08" />
+            <rect y="30.77" width="60" height="3.08" />
+            <rect y="36.92" width="60" height="3.08" />
+          </g>
+          <rect width="24" height="21.54" fill="#3C3B6E" />
+          <g fill="#FFFFFF">
+            <circle cx="3" cy="3" r="1" />
+            <circle cx="9" cy="3" r="1" />
+            <circle cx="15" cy="3" r="1" />
+            <circle cx="21" cy="3" r="1" />
+            <circle cx="6" cy="6.5" r="1" />
+            <circle cx="12" cy="6.5" r="1" />
+            <circle cx="18" cy="6.5" r="1" />
+            <circle cx="3" cy="10" r="1" />
+            <circle cx="9" cy="10" r="1" />
+            <circle cx="15" cy="10" r="1" />
+            <circle cx="21" cy="10" r="1" />
+            <circle cx="6" cy="13.5" r="1" />
+            <circle cx="12" cy="13.5" r="1" />
+            <circle cx="18" cy="13.5" r="1" />
+            <circle cx="3" cy="17" r="1" />
+            <circle cx="9" cy="17" r="1" />
+            <circle cx="15" cy="17" r="1" />
+            <circle cx="21" cy="17" r="1" />
+            <circle cx="6" cy="20.5" r="1" />
+            <circle cx="12" cy="20.5" r="1" />
+            <circle cx="18" cy="20.5" r="1" />
+          </g>
+        </svg>
+      </div>
+      <div class="lang-opt__name">English</div>
+    </button>
+  </div>
+</div>
       </div>
 
       <div class="pf-bal wavy">
         <span class="star3d star3d--lg" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
         <div>
           <div class="pf-bal__lbl" data-i18n="currentBalance">الرصيد الحالي</div>
-          <div class="pf-bal__row"><span class="pf-bal__val" id="pBalance">0</span><span class="pf-bal__cur" data-i18n="syUnit">ل.س</span></div>
+          <div class="pf-bal__row"><span class="pf-bal__val" id="pBalance">0</span><span class="pf-bal__cur">ل.س</span></div>
         </div>
       </div>
 
@@ -1403,9 +1425,10 @@ body.lang-en .sub-box__close{left:auto;right:12px}
         <div class="pf-row__val" id="pJoined">-</div>
       </div>
 
+      <!-- زر الاشتراك -->
       <button class="pf-sub-btn" id="pfSubBtn">
         <i class="fas fa-crown"></i>
-        <span id="pfSubBtnText" data-i18n="premiumSub">اشتراك مميز — 299 ل.س</span>
+        <span id="pfSubBtnText">اشتراك مميز — 299 ل.س</span>
       </button>
 
       <button class="btn btn--outline" id="profSupport" style="margin-top:10px">
@@ -1418,7 +1441,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
     <nav class="nav">
       <div class="nav__inner">
         <button class="nav__btn nav__btn--active" data-view="home"><i class="fas fa-home"></i><span data-i18n="home">الرئيسية</span></button>
-        <button class="nav__btn" data-view="tasks"><i class="fas fa-tasks"></i><span data-i18n="tasksNav">المهام</span></button>
+        <button class="nav__btn" data-view="tasks"><i class="fas fa-tasks"></i><span data-i18n="tasks">المهام</span></button>
         <button class="nav__btn" data-view="store"><i class="fas fa-layer-group"></i><span data-i18n="plans">الخطط</span></button>
         <button class="nav__btn" data-view="wallet"><i class="fas fa-wallet"></i><span data-i18n="walletNav">المحفظة</span></button>
         <button class="nav__btn" data-view="referral"><i class="fas fa-users"></i><span data-i18n="referralNav">إحالة</span></button>
@@ -1458,10 +1481,9 @@ const I18N = {
     stopping: "جاري الإيقاف...",
     miningFrozen: "التعدين مجمّد",
     inviteFriends: "دعوة الأصدقاء",
-    inviteFriendsDesc: "اربح 10 ل.س عن كل صديق ينضم عبر رابطك",
+    inviteFriendsDesc: "اربح <b>10 ل.س</b> عن كل صديق ينضم عبر رابطك",
     tasks: "المهمات",
-    tasksDesc: "اربح حتى 0 ل.س من إكمال المهمات",
-    tasksNav: "المهام",
+    tasksDesc: "اربح حتى <b id=\"tileTaskTotal\">0</b> ل.س من إكمال المهمات",
     tasksCenter: "مركز المهمات",
     completeTasks: "أكمل المهمات واربح",
     questBoard: "لوحة المهمات",
@@ -1479,7 +1501,7 @@ const I18N = {
     price: "السعر",
     profits: "الأرباح",
     total: "الإجمالي",
-    planInfo: "عند انتهاء الخطة يُرد مبلغ الشراء فقط، والأرباح تجمعها يدوياً من التعدين. إذا ألغيت الخطة لا يتم رد أي مبلغ.",
+    planInfo: "عند انتهاء الخطة يُرد <b>مبلغ الشراء فقط</b>، والأرباح تجمعها <b>يدوياً</b> من التعدين. إذا ألغيت الخطة <b>لا يتم رد أي مبلغ</b>.",
     wallet: "المحفظة",
     depositWithdraw: "إيداع وسحب",
     withdraw: "سحب",
@@ -1503,8 +1525,8 @@ const I18N = {
     copyShamId: "نسخ معرف شام كاش",
     copyBinanceId: "نسخ معرف Binance",
     instructions: "التعليمات",
-    depositInstructions: "مهم: ضع معرفك الشخصي في ملاحظة التحويل دائماً. الحد الأدنى للإيداع 500 ل.س.",
-    depositInstructionsUsd: "مهم: ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 5$.",
+    depositInstructions: "<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل دائماً. الحد الأدنى للإيداع 500 ل.س.",
+    depositInstructionsUsd: "<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 5$.",
     referralSystem: "نظام الإحالة",
     top10Invites: "أعلى 10 دعوات",
     inviteTitle: "ادعُ أصدقاءك واربح معهم",
@@ -1566,10 +1588,10 @@ const I18N = {
     feat4D: "بدون أي خصومات على عمليات السحب",
     subPriceLabel: "سعر الاشتراك",
     yourBalance: "رصيدك",
-    subAlert: "الاشتراك دائم ولا ينتهي. عند التوثيق، يتم خصم 299 ل.س من رصيدك مباشرةً.",
+    subAlert: "الاشتراك <b>دائم</b> ولا ينتهي. عند التوثيق، يتم خصم <b>299 ل.س</b> من رصيدك مباشرةً.",
     specialTasks: "مهمات خاصة",
     inviteTasks: "مهمات الدعوات",
-    inviteTasksHint: "المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من 0.",
+    inviteTasksHint: "المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>.",
     taskNumber: "المهمة",
     from: "من",
     completed: "اكتملت — استلم مكافأتك",
@@ -1591,6 +1613,10 @@ const I18N = {
     allInvitesDone: "أنهيت كل مهمات الدعوة",
     allInvitesDoneDesc: "أحسنت! استمر بدعوة أصدقائك لتكسب مكافأة 10 ل.س عن كل صديق.",
     opensAfterPrev: "تُفتح بعد استلام مكافأة المهمة السابقة",
+    collectMining5: "اجمع التعدين 5 مرات",
+    collectMining5Desc: "اربح 50 ل.س عند جمع التعدين 5 مرات بأي خطة",
+    firstBuyTask: "اشترِ أول خطة مدفوعة",
+    firstBuyDesc: "اربح 200 ل.س عند شراء أول خطة مدفوعة",
     collectCount: "جمع",
     activeNow: "نشط",
     buy: "اختيار",
@@ -1692,11 +1718,8 @@ const I18N = {
     tankFull: "اكتمل التعدين — الحوض مليء بالكنوز!",
     completed: "اكتمل",
     timeFrozen: "مجمّد",
-    timeFrozenText: "التعدين مجمّد — وقت الجهاز غير صحيح، فعّل الوقت التلقائي",
-    timeCheckFailed: "تعذّر التحقق من الوقت — التعدين مجمّد",
-    syUnit: "ل.س",
-    minute: "دقيقة",
-    hour: "ساعة"
+    timeFrozenText: "التعدين مجمّف — وقت الجهاز غير صحيح، فعّل الوقت التلقائي",
+    timeCheckFailed: "تعذّر التحقق من الوقت — التعدين مجمّد"
   },
   en: {
     welcome: "Welcome",
@@ -1713,10 +1736,9 @@ const I18N = {
     stopping: "Stopping...",
     miningFrozen: "Mining Frozen",
     inviteFriends: "Invite Friends",
-    inviteFriendsDesc: "Earn 10 SYP for every friend who joins via your link",
+    inviteFriendsDesc: "Earn <b>10 SYP</b> for every friend who joins via your link",
     tasks: "Tasks",
-    tasksDesc: "Earn up to 0 SYP by completing tasks",
-    tasksNav: "Tasks",
+    tasksDesc: "Earn up to <b id=\"tileTaskTotal\">0</b> SYP by completing tasks",
     tasksCenter: "Tasks Center",
     completeTasks: "Complete tasks and earn",
     questBoard: "Tasks Board",
@@ -1734,7 +1756,7 @@ const I18N = {
     price: "Price",
     profits: "Profits",
     total: "Total",
-    planInfo: "When the plan ends, only the purchase amount is refunded, and profits are collected manually from mining. If you cancel the plan, no refund is given.",
+    planInfo: "When the plan ends, only the <b>purchase amount</b> is refunded, and profits are collected <b>manually</b> from mining. If you cancel the plan, <b>no refund</b> is given.",
     wallet: "Wallet",
     depositWithdraw: "Deposit & Withdraw",
     withdraw: "Withdraw",
@@ -1758,8 +1780,8 @@ const I18N = {
     copyShamId: "Copy Sham Cash ID",
     copyBinanceId: "Copy Binance ID",
     instructions: "Instructions",
-    depositInstructions: "Important: Always put your personal ID in the transfer note. Minimum deposit is 500 SYP.",
-    depositInstructionsUsd: "Important: Put your personal ID in the transfer note. Minimum deposit is $5.",
+    depositInstructions: "<b>Important:</b> Always put your personal ID in the transfer note. Minimum deposit is 500 SYP.",
+    depositInstructionsUsd: "<b>Important:</b> Put your personal ID in the transfer note. Minimum deposit is $5.",
     referralSystem: "Referral System",
     top10Invites: "Top 10 Invites",
     inviteTitle: "Invite friends and earn together",
@@ -1821,10 +1843,10 @@ const I18N = {
     feat4D: "No deductions on withdrawal operations",
     subPriceLabel: "Subscription Price",
     yourBalance: "Your Balance",
-    subAlert: "Subscription is permanent and never expires. Upon verification, 299 SYP will be deducted from your balance.",
+    subAlert: "Subscription is <b>permanent</b> and never expires. Upon verification, <b>299 SYP</b> will be deducted from your balance.",
     specialTasks: "Special Tasks",
     inviteTasks: "Invite Tasks",
-    inviteTasksHint: "Tasks unlock in order. After collecting each reward, the next task starts from 0.",
+    inviteTasksHint: "Tasks unlock in order. After collecting each reward, the next task starts from <b>0</b>.",
     taskNumber: "Task",
     from: "of",
     completed: "Completed — claim your reward",
@@ -1846,6 +1868,10 @@ const I18N = {
     allInvitesDone: "You finished all invite tasks",
     allInvitesDoneDesc: "Well done! Keep inviting friends to earn 10 SYP per friend.",
     opensAfterPrev: "Opens after claiming the previous task reward",
+    collectMining5: "Collect mining 5 times",
+    collectMining5Desc: "Earn 50 SYP when you collect mining 5 times with any plan",
+    firstBuyTask: "Buy your first paid plan",
+    firstBuyDesc: "Earn 200 SYP when you buy your first paid plan",
     collectCount: "collected",
     activeNow: "Active",
     buy: "Choose",
@@ -1948,10 +1974,7 @@ const I18N = {
     completed: "Completed",
     timeFrozen: "Frozen",
     timeFrozenText: "Mining frozen — device time incorrect, enable automatic time",
-    timeCheckFailed: "Time verification failed — mining frozen",
-    syUnit: "SYP",
-    minute: "min",
-    hour: "hour"
+    timeCheckFailed: "Time verification failed — mining frozen"
   }
 };
 
@@ -1966,7 +1989,7 @@ function applyLanguage(){
   document.documentElement.dir = LANG === 'ar' ? 'rtl' : 'ltr';
   document.body.classList.toggle('lang-en', LANG === 'en');
   
-  // ترجمة كل العناصر data-i18n
+  // Apply translations to all data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const translation = t(key);
@@ -1977,17 +2000,17 @@ function applyLanguage(){
     }
   });
 
-  // ترجمة placeholders
+  // Update placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
   });
 
-  // تحديث الأزرار النشطة
+  // Update lang option buttons
   document.querySelectorAll('.lang-opt').forEach(btn => {
     btn.classList.toggle('lang-opt--active', btn.dataset.lang === LANG);
   });
   
-  // إعادة رسم المحتوى الديناميكي
+  // Re-render dynamic content
   if (STATE.user) {
     updateUI();
     renderMining();
@@ -2379,7 +2402,7 @@ async function loadOrCreateUser(){
     }, { merge:true });
   });
   STATE.user = (await ref.get()).data();
-  toast(rewarded ? '🎉 ' + t('welcomeReward') + ' ' + CONFIG.referral.newUserReward + ' ' + t('syUnit') : '🎉 ' + t('welcome'), 'ok');
+  toast(rewarded ? '🎉 ' + t('welcomeReward') + ' ' + CONFIG.referral.newUserReward + ' ' + (LANG==='ar'?'ل.س':'SYP') : '🎉 ' + t('welcome'), 'ok');
 }
 
 async function checkPlanExpiry(){
@@ -2412,7 +2435,7 @@ async function checkPlanExpiry(){
       });
     });
     STATE.user = (await userRef.get()).data();
-    if (refund > 0) toast('⏰ ' + t('planExpired') + ' ' + fmt(refund) + ' ' + t('syUnit') + ' ' + t('toBalance'), 'ok');
+    if (refund > 0) toast('⏰ ' + t('planExpired') + ' ' + fmt(refund) + ' ' + (LANG==='ar'?'ل.س':'SYP') + ' ' + t('toBalance'), 'ok');
   }catch(e){ console.warn(e); }
 }
 
@@ -2533,7 +2556,7 @@ function updateWithdrawFeeLabels(){
   const rate = getFeeRate();
 
   const minLbl = $('wdMinLbl');
-  if (minLbl) minLbl.textContent = fmt(min) + ' ' + t('syUnit');
+  if (minLbl) minLbl.textContent = fmt(min) + ' ' + (LANG==='ar'?'ل.س':'SYP');
 
   const rateLbl = $('wdFeeRateLbl');
   if (rateLbl) rateLbl.textContent = verified ? '(0%)' : '(1.5%)';
@@ -2670,7 +2693,7 @@ function renderReady(plan){
   setText('miningStatusMeta', t('ready'));
   $('stagePct').className = 'pct ready';
   const r = (STATE.user.miningProgress > 0 ? STATE.user.miningProgress : plan.reward);
-  $('stagePct').innerHTML = '<bdi dir="ltr">+' + fmt(r) + '</bdi> ' + t('syUnit');
+  $('stagePct').innerHTML = '<bdi dir="ltr">+' + fmt(r) + '</bdi> ' + (LANG==='ar'?'ل.س':'SYP');
   treasure.classList.add('show');
   createBubbles(35);
   if (fish5) fish5.style.opacity = '1';
@@ -2682,7 +2705,7 @@ function renderReady(plan){
   const btn = $('mineAction');
   btn.className = 'action action--collect';
   btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-hand-holding-usd"></i><span>' + t('collect') + ' ' + fmt(r) + ' ' + t('syUnit') + '</span>';
+  btn.innerHTML = '<i class="fas fa-hand-holding-usd"></i><span>' + t('collect') + ' ' + fmt(r) + ' ' + (LANG==='ar'?'ل.س':'SYP') + '</span>';
 }
 
 function startLiveTimer(){
@@ -2753,7 +2776,7 @@ async function startMining(){
     STATE.user = snap2.data();
     updateUI(); renderMining(); startLiveTimer();
     const plan = getPlan(STATE.user.activePlanId);
-    toast('🚀 ' + t('miningStarted') + ' ' + plan.cycleHours + ' ' + t('hours'), 'ok');
+    toast('🚀 ' + t('miningStarted') + ' ' + plan.cycleHours + ' ' + (LANG==='ar'?'ساعات':'hours'), 'ok');
   }catch(e){
     toast(e.message || t('failedStart'), 'err');
     renderMining();
@@ -2839,7 +2862,7 @@ async function collectMining(){
     const snap2 = await userRef.get();
     STATE.user = snap2.data();
     updateUI(); renderMining(); stopLiveTimer();
-    toast('✅ ' + t('collectedSuccess') + ' ' + fmt(reward) + ' ' + t('syUnit') + '! ' + t('startNewCycle'), 'ok');
+    toast('✅ ' + t('collectedSuccess') + ' ' + fmt(reward) + ' ' + (LANG==='ar'?'ل.س':'SYP') + '! ' + t('startNewCycle'), 'ok');
   }catch(e){
     toast(e.message || t('collectFailed'), 'err');
     renderMining();
@@ -2867,19 +2890,17 @@ function getPlanColors(plan){
   return map[plan.color] || map.sea;
 }
 
-function buildPlanTimerHtml(){
-  return '<div class="plan__timer" id="planTimer">' +
-    '<div class="plan__timer-head"><span><i class="fas fa-hourglass-half"></i>' + t('timeRemaining') + '</span><span id="ptPct">--</span></div>' +
+const PLAN_TIMER_HTML =
+  '<div class="plan__timer" id="planTimer">' +
+    '<div class="plan__timer-head"><span><i class="fas fa-hourglass-half"></i>' + (LANG==='ar'?'الوقت المتبقي لانتهاء الخطة':'Time remaining for plan') + '</span><span id="ptPct">--</span></div>' +
     '<div class="plan__timer-grid">' +
-      '<div class="tbox"><b id="ptD">--</b><small>' + t('days') + '</small></div>' +
-      '<div class="tbox"><b id="ptH">--</b><small>' + t('hour') + '</small></div>' +
-      '<div class="tbox"><b id="ptM">--</b><small>' + t('minute') + '</small></div>' +
+      '<div class="tbox"><b id="ptD">--</b><small>' + (LANG==='ar'?'يوم':'day') + '</small></div>' +
+      '<div class="tbox"><b id="ptH">--</b><small>' + (LANG==='ar'?'ساعة':'hour') + '</small></div>' +
+      '<div class="tbox"><b id="ptM">--</b><small>' + (LANG==='ar'?'دقيقة':'min') + '</small></div>' +
     '</div><div class="plan__timer-bar"><i id="ptBar"></i></div></div>';
-}
-function buildPlanCancelHtml(){
-  return '<button class="plan__cancel" id="planCancelBtn"><i class="fas fa-ban"></i> ' + t('cancelPlan') + '</button>' +
+const PLAN_CANCEL_HTML =
+  '<button class="plan__cancel" id="planCancelBtn"><i class="fas fa-ban"></i> ' + t('cancelPlan') + '</button>' +
   '<div class="plan__cancel-note">' + t('cancelNote') + '</div>';
-}
 
 function renderPlans(){
   const list = $('plansGrid');
@@ -2890,7 +2911,7 @@ function renderPlans(){
   const balance = STATE.user.balance_sy || 0;
   const miningActive = !!(STATE.user.miningStartTime && !STATE.user.miningCollectable);
   const miningReady = !!STATE.user.miningCollectable;
-  const SYP = t('syUnit');
+  const SYP = LANG==='ar'?'ل.س':'SYP';
 
   list.innerHTML = CONFIG.plans.map(plan => {
     const idx = getPlanIndex(plan.id);
@@ -2941,7 +2962,7 @@ function renderPlans(){
             '<div class="plan__stat-val sea">' + plan.cycleHours + ' ' + t('hours') + '</div>',
           '</div>',
         '</div>',
-        (isCur && plan.planDays > 0 ? buildPlanTimerHtml() : ''),
+        (isCur && plan.planDays > 0 ? PLAN_TIMER_HTML : ''),
         '<div class="plan__bottom">',
           '<div class="plan__price">',
             '<div class="plan__price-lbl">' + t('cost') + '</div>',
@@ -2951,7 +2972,7 @@ function renderPlans(){
             btnIcon, ' ', btnText,
           '</button>',
         '</div>',
-        (isCur && plan.planDays > 0 ? buildPlanCancelHtml() : ''),
+        (isCur && plan.planDays > 0 ? PLAN_CANCEL_HTML : ''),
       '</div>'
     ].join('');
   }).join('');
@@ -3022,8 +3043,8 @@ async function cancelPlan(){
   if (STATE.user.miningCollectable) return toast(t('collectFirst'), 'info');
   if (STATE.user.miningStartTime) return toast(t('stopMiningFirst'), 'info');
   const msg = LANG==='ar'
-    ? 'سيتم إلغاء خطة ' + cur.name + ' والرجوع للخطة الأساسية.\nلن يتم رد أي مبلغ (' + fmt(cur.price) + ' ' + t('syUnit') + '). هل أنت متأكد؟'
-    : 'Plan ' + cur.nameEn + ' will be cancelled and returned to Basic.\nNo refund (' + fmt(cur.price) + ' ' + t('syUnit') + '). Are you sure?';
+    ? 'سيتم إلغاء خطة ' + cur.name + ' والرجوع للخطة الأساسية.\nلن يتم رد أي مبلغ (' + fmt(cur.price) + ' ل.س). هل أنت متأكد؟'
+    : 'Plan ' + cur.nameEn + ' will be cancelled and returned to Basic.\nNo refund (' + fmt(cur.price) + ' SYP). Are you sure?';
   if (!confirm(msg)) return;
   STATE.isSubmitting = true;
   try{
@@ -3063,8 +3084,8 @@ async function buyPlan(planId){
 
   if (planHasValue) {
     const msg = LANG==='ar'
-      ? 'تنبيه: لن يتم استرداد مبلغ خطتك الحالية (' + fmt(curPlan.price) + ' ' + t('syUnit') + '). هل تريد المتابعة؟'
-      : 'Warning: your current plan amount (' + fmt(curPlan.price) + ' ' + t('syUnit') + ') will not be refunded. Continue?';
+      ? 'تنبيه: لن يتم استرداد مبلغ خطتك الحالية (' + fmt(curPlan.price) + ' ل.س). هل تريد المتابعة؟'
+      : 'Warning: your current plan amount (' + fmt(curPlan.price) + ' SYP) will not be refunded. Continue?';
     if (!confirm(msg)) return;
   }
 
@@ -3136,7 +3157,7 @@ function updateSubModalWallet(){
   const bal = STATE.user.balance_sy || 0;
   const price = CONFIG.subscription.price;
   const el = $('subWalletVal');
-  const SYP = t('syUnit');
+  const SYP = LANG==='ar'?'ل.س':'SYP';
   if (!el) return;
   el.textContent = fmt(bal) + ' ' + SYP;
   el.className = 'sub-wallet__val ' + (bal >= price ? 'sub-wallet__val--ok' : 'sub-wallet__val--bad');
@@ -3240,7 +3261,7 @@ function updateWithdrawFee(){
   const rate = getFeeRate();
   const fee = v * rate;
   const net = v - fee;
-  const SYP = t('syUnit');
+  const SYP = LANG==='ar'?'ل.س':'SYP';
   setText('wdFee', fmt(fee) + ' ' + SYP);
   setText('wdNet', fmt(net) + ' ' + SYP);
   if (STATE.withdrawMethod === 'binance') {
@@ -3252,7 +3273,7 @@ async function submitWithdraw(){
   const minAmount = getWithdrawMin();
   const feeRate = getFeeRate();
   const amount = parseFloat($('wdAmount').value);
-  const SYP = t('syUnit');
+  const SYP = LANG==='ar'?'ل.س':'SYP';
   if (!isFinite(amount) || Math.round(amount * 100) / 100 !== amount || amount > 10000000 || amount < minAmount) return toast(t('invalidAmount') + ' ' + minAmount + ' ' + SYP, 'err');
   if (amount > (STATE.user.balance_sy || 0)) return toast(t('insufficientBalanceErr'), 'err');
   const account = $('wdAccount').value.trim();
@@ -3446,8 +3467,8 @@ async function submitReferral(){
     updateUI();
 
     msgEl.className = 'msg msg--ok show';
-    msgEl.textContent = '✅ ' + t('codeActivated') + ' +' + CONFIG.referral.newUserReward + ' ' + t('syUnit');
-    toast('+' + CONFIG.referral.newUserReward + ' ' + t('syUnit') + ' ' + t('fromReferral'), 'ok');
+    msgEl.textContent = '✅ ' + t('codeActivated') + ' +' + CONFIG.referral.newUserReward + ' ' + (LANG==='ar'?'ل.س':'SYP');
+    toast('+' + CONFIG.referral.newUserReward + ' ' + (LANG==='ar'?'ل.س':'SYP') + ' ' + t('fromReferral'), 'ok');
 
     setTimeout(() => {
       const block = $('refInputBlock');
@@ -3495,7 +3516,7 @@ async function loadLeaderboard(){
       (it.v ? '<img class="vbadge" data-vb src="' + VB_URL + '" alt="verified">' : '') +
       (it.me ? '<em class="me-tag">' + (LANG==='ar'?'أنت':'You') + '</em>' : '');
 
-    const inviteLabel = t('invite');
+    const inviteLabel = LANG==='ar'?'دعوة':'invites';
 
     const slot = (rank) => {
       const it = items[rank - 1];
@@ -3582,7 +3603,7 @@ async function collectChannelReward() {
     STATE.user = snap2.data();
     updateUI();
     renderTasks();
-    toast('🎉 +' + CONFIG.channelTask.reward + ' ' + t('syUnit') + ' ' + t('channelReward'), 'ok');
+    toast('🎉 +' + CONFIG.channelTask.reward + ' ' + (LANG==='ar'?'ل.س':'SYP') + ' ' + t('channelReward'), 'ok');
   } catch(e) {
     toast(e.message || t('collectFailed'), 'err');
   } finally {
@@ -3633,7 +3654,7 @@ async function collectSpecialReward(taskId) {
     STATE.user = (await userRef.get()).data();
     updateUI();
     renderTasks();
-    toast('🎉 +' + task.reward + ' ' + t('syUnit') + ' ' + t('reward') + ' ' + (LANG==='en'?task.titleEn:task.title) + '!', 'ok');
+    toast('🎉 +' + task.reward + ' ' + (LANG==='ar'?'ل.س':'SYP') + ' ' + t('reward') + ' ' + (LANG==='en'?task.titleEn:task.title) + '!', 'ok');
   } catch(e) {
     toast(e.message || t('collectFailed'), 'err');
   } finally {
@@ -3675,7 +3696,7 @@ async function collectInviteReward(taskId){
     STATE.user = (await userRef.get()).data();
     updateUI();
     const hasNext = inviteState(STATE.user).idx >= 0;
-    toast('🎉 +' + task.reward + ' ' + t('syUnit') + (hasNext ? ' — ' + t('inviteNextStarted') : ' — ' + t('inviteTaskDone')), 'ok');
+    toast('🎉 +' + task.reward + ' ' + (LANG==='ar'?'ل.س':'SYP') + (hasNext ? ' — ' + t('inviteNextStarted') : ' — ' + t('inviteTaskDone')), 'ok');
   }catch(e){ toast(e.message || t('collectFailed'), 'err'); }
   finally{ STATE.isSubmitting = false; }
 }
@@ -3694,7 +3715,7 @@ function renderTasks(){
   const s = inviteState(u);
   const T = CONFIG.inviteTasks, N = T.length;
   const ST = CONFIG.specialTasks;
-  const SYP = t('syUnit');
+  const SYP = LANG==='ar'?'ل.س':'SYP';
   let html = '';
 
   html += '<div class="grp"><span>' + t('specialTasks') + '</span><small>2</small></div>';
@@ -3953,6 +3974,7 @@ function bindUI(){
 }
 
 async function bootstrap(){
+  // Apply saved language first
   applyLanguage();
   
   if (!initTelegram()) return;
@@ -3962,7 +3984,7 @@ async function bootstrap(){
   catch(e){ console.error('bootstrap', e); toast(t('dataLoadFailed'), 'err'); return; }
 
   bindUI();
-  applyLanguage();
+  applyLanguage(); // re-apply after user loaded
   updateUI();
   renderMining();
   renderPlans();
