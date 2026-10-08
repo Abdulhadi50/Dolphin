@@ -282,7 +282,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .mining-card.is-ready .plan-header__lvl{background:rgba(0,122,255,.28)}
 .mining-card.is-ready .plan-header__lvl-num{color:#7DB9FF}
 
-/* باقي الأنماط كما هي */
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tile{position:relative;overflow:hidden;isolation:isolate;text-align:start;border-radius:24px;padding:14px;min-height:140px;background:var(--blue);
   display:flex;flex-direction:column;gap:3px;transition:transform .15s}
@@ -426,6 +425,154 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .plan__cancel{width:100%;margin-top:12px;min-height:46px;border-radius:16px;background:#18252E;color:#FF8A82;border:1px solid rgba(255,69,58,.5);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px}
 .plan__cancel:active{transform:scale(.98)}
 .plan__cancel-note{font-size:11px;color:var(--text-2);text-align:center;margin-top:7px;font-weight:600}
+
+/* ═══ تقرير الخطط ═══ */
+.plans-report{
+  margin-top:var(--sp-5);
+  background:#0B0B0B;
+  border:1px solid #18252E;
+  border-radius:28px;
+  overflow:hidden;
+}
+.plans-report__head{
+  padding:16px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border-bottom:1px solid #18252E;
+  background:linear-gradient(135deg,rgba(0,122,255,.08),transparent 70%);
+}
+.plans-report__title{
+  display:flex;align-items:center;gap:10px;
+  font-size:15px;font-weight:800;color:#fff;
+}
+.plans-report__title i{
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(0,122,255,.18);color:#4DA3FF;
+  display:grid;place-items:center;font-size:13px;
+}
+.plans-report__tag{
+  font-size:10.5px;font-weight:800;
+  padding:4px 11px;border-radius:20px;
+  background:#18252E;color:#4DA3FF;
+  letter-spacing:.5px;
+}
+
+.plans-table-wrap{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.plans-table-wrap::-webkit-scrollbar{display:none}
+
+.plans-table{
+  width:100%;
+  min-width:520px;
+  border-collapse:collapse;
+  font-size:12.5px;
+}
+.plans-table thead th{
+  padding:12px 10px;
+  font-size:11px;
+  font-weight:800;
+  color:rgba(255,255,255,.6);
+  text-align:center;
+  background:#0B0B0B;
+  border-bottom:1px solid #18252E;
+  white-space:nowrap;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+.plans-table thead th:first-child{text-align:start;padding-inline-start:16px}
+
+.plans-table tbody tr{
+  border-bottom:1px solid #18252E;
+  transition:background .2s;
+}
+.plans-table tbody tr:last-child{border-bottom:none}
+.plans-table tbody tr:hover{background:rgba(0,122,255,.06)}
+.plans-table tbody tr.is-current{
+  background:rgba(0,122,255,.1);
+  box-shadow:inset 3px 0 0 #007AFF;
+}
+
+.plans-table td{
+  padding:14px 10px;
+  text-align:center;
+  font-weight:700;
+  color:#fff;
+  font-variant-numeric:tabular-nums;
+  direction:ltr;
+  white-space:nowrap;
+}
+.plans-table td:first-child{
+  text-align:start;
+  padding-inline-start:16px;
+  direction:rtl;
+}
+
+.pt-plan{
+  display:flex;align-items:center;gap:10px;
+  min-width:130px;
+}
+.pt-plan__icon{
+  width:36px;height:36px;border-radius:50%;
+  display:grid;place-items:center;
+  font-size:20px;flex-shrink:0;
+  background:rgba(0,0,0,.3);
+  border:1.5px solid rgba(255,255,255,.15);
+}
+.pt-plan__info{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pt-plan__name{
+  font-size:13px;font-weight:800;color:#fff;
+  display:flex;align-items:center;gap:6px;
+}
+.pt-plan__lvl{
+  font-size:9.5px;font-weight:800;
+  padding:2px 7px;border-radius:10px;
+  background:#18252E;color:#4DA3FF;
+}
+.pt-plan__dur{
+  font-size:10.5px;color:rgba(255,255,255,.55);font-weight:600;
+}
+
+.pt-price{color:#FFD60A !important}
+.pt-reward{color:#4DA3FF !important}
+.pt-total{color:#30D158 !important;font-weight:800 !important}
+.pt-muted{color:rgba(255,255,255,.45) !important}
+
+.plans-report__summary{
+  padding:14px 16px;
+  background:#0B0B0B;
+  border-top:1px solid #18252E;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.pts-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(0,122,255,.06);
+  border:1px solid #18252E;
+}
+.pts-item i{
+  width:30px;height:30px;border-radius:50%;
+  display:grid;place-items:center;font-size:12px;
+  background:rgba(0,122,255,.18);color:#4DA3FF;flex-shrink:0;
+}
+.pts-item__lbl{font-size:10.5px;color:rgba(255,255,255,.6);font-weight:700}
+.pts-item__val{font-size:14px;font-weight:800;color:#fff;direction:ltr;text-align:right}
+.pts-item__val--amber{color:#FFD60A}
+
+.plans-report__note{
+  padding:12px 16px 16px;
+  font-size:11px;font-weight:600;
+  color:rgba(255,255,255,.55);
+  line-height:1.7;
+  display:flex;gap:8px;align-items:flex-start;
+  border-top:1px solid #18252E;
+}
+.plans-report__note i{color:#4DA3FF;margin-top:3px;font-size:12px;flex-shrink:0}
+.plans-report__note b{color:#fff;font-weight:800}
 
 .field{margin-bottom:14px}
 .field__label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;margin-bottom:8px;color:#fff}
@@ -606,6 +753,10 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   .avatar{width:42px;height:42px}
   .plan-header__icon{width:52px;height:52px;font-size:24px}.plan__icon{width:54px;height:54px;font-size:28px}
   .pf-bal__val{font-size:28px}
+  .plans-table{font-size:11.5px;min-width:480px}
+  .plans-table td{padding:12px 8px}
+  .pt-plan__icon{width:32px;height:32px;font-size:17px}
+  .plans-report__summary{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   .view.active{animation:none}
@@ -680,7 +831,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
           </div>
         </div>
 
-        <!-- ═══ Aquarium 2.0 ═══ -->
         <div class="aquarium scene" id="aquariumScene">
           <div class="tank" id="tank">
             <div class="sun-rays"></div>
@@ -711,7 +861,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
             <div class="pct" id="stagePct">0%</div>
           </div>
         </div>
-        <!-- ═══ نهاية Aquarium ═══ -->
 
         <div class="status-bar">
           <span class="status-bar__dot" id="statusDot"></span>
@@ -810,6 +959,42 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
       </div>
 
       <div class="plans-grid" id="plansGrid"></div>
+
+      <!-- ═══ تقرير الخطط ═══ -->
+      <div class="plans-report" id="plansReport">
+        <div class="plans-report__head">
+          <div class="plans-report__title">
+            <i class="fas fa-chart-line"></i>
+            تقرير الخطط
+          </div>
+          <span class="plans-report__tag">REPORT</span>
+        </div>
+
+        <div class="plans-table-wrap">
+          <table class="plans-table">
+            <thead>
+              <tr>
+                <th>الخطة</th>
+                <th>السعر</th>
+                <th>الربح/دورة</th>
+                <th>المدة</th>
+                <th>الدورات</th>
+                <th>إجمالي الأرباح</th>
+              </tr>
+            </thead>
+            <tbody id="plansReportBody"></tbody>
+          </table>
+        </div>
+
+        <div class="plans-report__summary" id="plansReportSummary"></div>
+
+        <div class="plans-report__note">
+          <i class="fas fa-info-circle"></i>
+          <div>
+            <b>ملاحظة:</b> عند انتهاء الخطة يُرد <b>مبلغ الشراء كاملاً</b> إلى رصيدك، والإجمالي النهائي = <b>الأرباح + مبلغ الشراء</b>. عدد الدورات محسوب على أساس <b>8 دورات يومياً</b> (دورة كل 3 ساعات).
+          </div>
+        </div>
+      </div>
 
       <div class="alert alert--info" style="margin-top:var(--sp-4)">
         <i class="fas fa-info-circle"></i>
@@ -1128,11 +1313,11 @@ const CONFIG = {
 
   plans: [
     { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:3,  cycleHours:3, planDays:0,  price:0,     color:'sea',    label:'دائمة' },
-    { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:7,  cycleHours:3, planDays:7,  price:700,   color:'slate',  label:'أسبوع' },
-    { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:15, cycleHours:3, planDays:14, price:2500,  color:'amber',  label:'أسبوعان' },
-    { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:25, cycleHours:3, planDays:21, price:5000,  color:'purple', label:'3 أسابيع' },
-    { id:'whale',  name:'حوت',    emoji:'🐋', level:5, reward:35, cycleHours:3, planDays:30, price:10000, color:'coral',  label:'شهر' },
-    { id:'dolphin',name:'دولفين', emoji:'🐬', level:6, reward:50, cycleHours:3, planDays:45, price:20000, color:'ink',    label:'45 يوم' }
+    { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:5,  cycleHours:3, planDays:7,  price:700,   color:'slate',  label:'أسبوع' },
+    { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:11, cycleHours:3, planDays:14, price:2500,  color:'amber',  label:'أسبوعان' },
+    { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:18, cycleHours:3, planDays:21, price:5000,  color:'purple', label:'3 أسابيع' },
+    { id:'whale',  name:'حوت',    emoji:'🐋', level:5, reward:25, cycleHours:3, planDays:30, price:10000, color:'coral',  label:'شهر' },
+    { id:'dolphin',name:'دولفين', emoji:'🐬', level:6, reward:36, cycleHours:3, planDays:45, price:20000, color:'ink',    label:'45 يوم' }
   ],
 
   security: {
@@ -1982,6 +2167,87 @@ function renderPlans(){
   });
   const cb = $('planCancelBtn'); if (cb) cb.addEventListener('click', cancelPlan);
   updatePlanTimer();
+  renderPlansReport();
+}
+
+/* ═══ تقرير الخطط ═══ */
+function renderPlansReport(){
+  const body = $('plansReportBody');
+  const summary = $('plansReportSummary');
+  if (!body || !summary) return;
+
+  const current = (STATE.user && STATE.user.activePlanId) || 'basic';
+  const cyclesPerDay = 24 / CONFIG.plans[0].cycleHours;
+
+  body.innerHTML = CONFIG.plans.map(plan => {
+    const isCurrent = plan.id === current;
+    const isBasic = plan.planDays === 0;
+
+    const totalCycles   = isBasic ? '∞' : plan.planDays * cyclesPerDay;
+    const totalReward   = isBasic ? '∞' : plan.reward * plan.planDays * cyclesPerDay;
+    const totalRewardTxt = isBasic ? '∞' : fmt(totalReward) + ' ل.س';
+    const cyclesTxt     = isBasic ? '∞' : fmt(totalCycles);
+    const priceTxt      = plan.price === 0 ? 'مجاني' : fmt(plan.price) + ' ل.س';
+    const durTxt        = isBasic ? 'دائمة' : plan.planDays + ' يوم';
+
+    return `
+      <tr class="${isCurrent ? 'is-current' : ''}">
+        <td>
+          <div class="pt-plan">
+            <div class="pt-plan__icon" style="color:#4DA3FF;border-color:#4DA3FF">${plan.emoji}</div>
+            <div class="pt-plan__info">
+              <div class="pt-plan__name">
+                ${plan.name}
+                <span class="pt-plan__lvl">Lv.${plan.level}</span>
+              </div>
+              <div class="pt-plan__dur">${isCurrent ? 'خطتك الحالية' : plan.label}</div>
+            </div>
+          </div>
+        </td>
+        <td class="pt-price">${priceTxt}</td>
+        <td class="pt-reward">${fmt(plan.reward)} ل.س</td>
+        <td class="pt-muted">${durTxt}</td>
+        <td class="pt-muted">${cyclesTxt}</td>
+        <td class="pt-total">${totalRewardTxt}</td>
+      </tr>
+    `;
+  }).join('');
+
+  const paidPlans = CONFIG.plans.filter(p => p.price > 0);
+  const totalInvested = paidPlans.reduce((s,p) => s + p.price, 0);
+  const totalRewards  = paidPlans.reduce((s,p) => s + p.reward * p.planDays * cyclesPerDay, 0);
+  const totalReturned = totalInvested + totalRewards;
+
+  summary.innerHTML = `
+    <div class="pts-item">
+      <i class="fas fa-wallet"></i>
+      <div style="flex:1;min-width:0">
+        <div class="pts-item__lbl">إجمالي الاستثمار</div>
+        <div class="pts-item__val">${fmt(totalInvested)} ل.س</div>
+      </div>
+    </div>
+    <div class="pts-item">
+      <i class="fas fa-coins"></i>
+      <div style="flex:1;min-width:0">
+        <div class="pts-item__lbl">إجمالي الأرباح</div>
+        <div class="pts-item__val pts-item__val--amber">${fmt(totalRewards)} ل.س</div>
+      </div>
+    </div>
+    <div class="pts-item">
+      <i class="fas fa-hand-holding-usd"></i>
+      <div style="flex:1;min-width:0">
+        <div class="pts-item__lbl">إجمالي المستلم</div>
+        <div class="pts-item__val">${fmt(totalReturned)} ل.س</div>
+      </div>
+    </div>
+    <div class="pts-item">
+      <i class="fas fa-chart-line"></i>
+      <div style="flex:1;min-width:0">
+        <div class="pts-item__lbl">متوسط العائد</div>
+        <div class="pts-item__val">${((totalRewards / totalInvested) * 100).toFixed(0)}%</div>
+      </div>
+    </div>
+  `;
 }
 
 function updatePlanTimer(){
@@ -2790,7 +3056,7 @@ function navigate(view){
     navigate._t = setTimeout(show, 120);
   } else show();
 
-  if (view === 'store') renderPlans();
+  if (view === 'store') { renderPlans(); renderPlansReport(); }
   if (view === 'referral') loadLeaderboard();
   if (view === 'profile') updateAvatar('profAvatar');
   if (view === 'tasks') renderTasks();
@@ -2825,6 +3091,7 @@ async function bootstrap(){
   updateUI();
   renderMining();
   renderPlans();
+  renderPlansReport();
   renderTasks();
 
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) {
@@ -2841,7 +3108,7 @@ async function bootstrap(){
         const snap = await db.collection('users').doc(STATE.tgId).get();
         if (snap.exists) {
           STATE.user = snap.data();
-          updateUI(); renderMining(); renderPlans(); renderTasks();
+          updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks();
         }
       }catch(e){}
     }
@@ -2868,7 +3135,7 @@ async function bootstrap(){
           fresh.firstBuyRewardClaimed !== STATE.user.firstBuyRewardClaimed;
         if (changed) {
           STATE.user = fresh;
-          updateUI(); renderMining(); renderPlans(); renderTasks();
+          updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks();
         }
       }
     }catch(e){}
