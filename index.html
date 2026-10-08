@@ -8,7 +8,7 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root{
@@ -39,11 +39,6 @@ html{background:#000;color-scheme:dark}
 html,body{height:100%}
 body{font-family:'IBM Plex Sans Arabic',-apple-system,sans-serif;background:#000;color:#fff;font-size:var(--f-base);line-height:1.5;
   overflow:hidden;direction:rtl;-webkit-font-smoothing:antialiased;overscroll-behavior:none}
-body.lang-en{font-family:'Inter',-apple-system,sans-serif;direction:ltr}
-body.lang-en .main{direction:ltr}
-body.lang-en .dock{flex-direction:row-reverse}
-body.lang-en .nav__inner{flex-direction:row-reverse}
-body.lang-en .aquarium .fish--1,body.lang-en .aquarium .fish--3,body.lang-en .aquarium .fish--5{transform:scaleX(-1)}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;font-size:inherit}
 input{font-family:inherit;color:inherit;font-size:inherit}
 img{max-width:100%;display:block;-webkit-user-drag:none}
@@ -179,7 +174,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .timer-bar__ic{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
 .timer-bar__text{font-size:var(--f-xl);font-weight:800;font-variant-numeric:tabular-nums;direction:ltr}
 .timer-bar__lbl{font-size:var(--f-xs);color:rgba(255,255,255,.75);font-weight:600;margin-right:2px}
-body.lang-en .timer-bar__lbl{margin-right:0;margin-left:2px}
 
 .action{width:100%;padding:16px;border-radius:20px;font-size:var(--f-md);font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;min-height:60px;transition:transform .15s,background .2s;position:relative;overflow:hidden;z-index:2}
 .action:active:not([disabled]){transform:scale(.98)}
@@ -202,7 +196,6 @@ body.lang-en .timer-bar__lbl{margin-right:0;margin-left:2px}
 
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tile{position:relative;overflow:hidden;isolation:isolate;text-align:start;border-radius:24px;padding:14px;min-height:140px;background:var(--blue);display:flex;flex-direction:column;gap:3px;transition:transform .15s}
-body.lang-en .tile{text-align:left}
 .tile:active{transform:scale(.98)}
 .tile>*{position:relative;z-index:1}
 .tile__bg{position:absolute!important;left:-10px;bottom:-16px;font-size:88px;opacity:.14;transform:rotate(-14deg);z-index:0!important;color:#fff}
@@ -212,7 +205,6 @@ body.lang-en .tile{text-align:left}
 .tile__d{font-size:12px;color:var(--text-2);font-weight:600;line-height:1.55}
 .tile__d b{font-weight:800;color:var(--yellow)}
 .tile__go{position:absolute!important;top:14px;left:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;display:grid;place-items:center;font-size:11px}
-body.lang-en .tile__go{left:auto;right:14px;transform:scaleX(-1)}
 
 .card{background:#141414;border:1px solid #18252E;border-radius:26px;padding:16px;margin-bottom:12px}
 .card__title{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:800;margin-bottom:12px;color:#fff}
@@ -322,7 +314,6 @@ body.lang-en .tile__go{left:auto;right:14px;transform:scaleX(-1)}
 .plan__stat-lbl{font-size:11px;color:var(--text-2);font-weight:700;display:flex;align-items:center;gap:5px}
 .plan__stat-lbl i{font-size:10.5px}
 .plan__stat-val{font-size:15px;font-weight:800;direction:ltr;font-variant-numeric:tabular-nums;text-align:right;color:#4DA3FF}
-body.lang-en .plan__stat-val{text-align:left}
 .plan__stat-val.amber{color:#4DA3FF}
 .plan__bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid #18252E}
 .plan__price{display:flex;flex-direction:column;gap:2px}
@@ -336,7 +327,6 @@ body.lang-en .plan__stat-val{text-align:left}
 .plan__timer{background:#0B0B0B;border:1px solid #18252E;border-radius:18px;padding:12px;margin-bottom:14px}
 .plan__timer-head{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:700;color:var(--text-2);margin-bottom:10px}
 .plan__timer-head i{margin-left:4px;color:#007AFF}
-body.lang-en .plan__timer-head i{margin-left:0;margin-right:4px}
 .plan__timer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .tbox{background:#18252E;border-radius:14px;padding:8px 4px;text-align:center}
 .tbox b{display:block;font-size:20px;font-weight:800;color:#4DA3FF;font-variant-numeric:tabular-nums;line-height:1.1;direction:ltr}
@@ -360,7 +350,6 @@ body.lang-en .plan__timer-head i{margin-left:0;margin-right:4px}
 .plans-table tbody tr.is-current{background:rgba(0,122,255,.09)}
 .plans-table td{padding:9px 3px;text-align:center;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;direction:ltr;white-space:nowrap;font-size:11px}
 .plans-table td:first-child{text-align:start;padding-inline-start:10px;direction:rtl}
-body.lang-en .plans-table td:first-child{direction:ltr}
 .pt-plan{display:flex;align-items:center;gap:6px}
 .pt-plan__icon{font-size:15px;flex-shrink:0;line-height:1}
 .pt-plan__name{font-size:11px;font-weight:800;color:#fff;display:flex;align-items:center;gap:4px;white-space:nowrap}
@@ -436,14 +425,12 @@ body.lang-en .plans-table td:first-child{direction:ltr}
 .rf-stat__ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:17px;flex-shrink:0;background:#18252E;color:#fff}
 .rf-stat__ic--amber{color:var(--yellow)}
 .rf-stat__num{font-size:22px;font-weight:800;line-height:1.1;direction:ltr;text-align:right;font-variant-numeric:tabular-nums;color:#fff}
-body.lang-en .rf-stat__num{text-align:left}
 .rf-stat__lbl{font-size:11.5px;color:var(--text-2);font-weight:600;margin-top:3px}
 .ref-link{background:#0B0B0B;border:1px solid #18252E;border-radius:16px;padding:12px 14px;font-family:var(--mono);font-size:12px;direction:ltr;text-align:left;word-break:break-all;margin-bottom:12px;line-height:1.6;font-weight:600;color:#fff}
 .ref-actions{display:grid;grid-template-columns:1.5fr 1fr;gap:8px}
 .code-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0B0B0B;border:1.5px dashed rgba(255,255,255,.35);border-radius:18px;padding:12px 14px}
 .code-row__lbl{font-size:11.5px;color:var(--text-2);font-weight:700;margin-bottom:2px}
 .code-row__val{font-family:var(--mono);font-size:20px;font-weight:800;direction:ltr;letter-spacing:3px;text-align:right;color:#fff}
-body.lang-en .code-row__val{text-align:left}
 .how{display:flex;flex-direction:column;gap:14px}
 .how__row{display:flex;align-items:flex-start;gap:12px}
 .how__n{width:30px;height:30px;border-radius:50%;background:#007AFF;color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0}
@@ -457,7 +444,6 @@ body.lang-en .code-row__val{text-align:left}
 .lb__tag{font-size:10.5px;font-weight:800;padding:4px 10px;border-radius:20px;background:#18252E;color:#fff}
 .podium{display:grid;grid-template-columns:1fr 1.18fr 1fr;gap:8px;align-items:end;padding:16px 12px 0;direction:ltr;background:#0B0B0B}
 .pod{display:flex;flex-direction:column;align-items:center;min-width:0;direction:rtl;--rc:#D1D1D6}
-body.lang-en .pod{direction:ltr}
 .pod--1{--rc:#FFD60A}.pod--2{--rc:#D1D1D6}.pod--3{--rc:#FF9F0A}
 .pod__crown{height:22px;color:var(--yellow);font-size:18px;line-height:22px}
 .pod__av{width:56px;height:56px;border-radius:50%;background:#18252E;border:3px solid var(--rc);display:grid;place-items:center;overflow:hidden;color:rgba(255,255,255,.7);font-size:18px}
@@ -529,69 +515,6 @@ body.lang-en .pod{direction:ltr}
 }
 .pf-id i{font-size:13px;color:var(--blue)}
 
-/* ═══ محدد اللغة - تصميم صغير مضغوط ═══ */
-.pf-lang{
-  width:100%;margin-top:14px;
-  background:rgba(255,255,255,.05);
-  border:1px solid var(--glass-line);
-  border-radius:18px;padding:12px;
-}
-.pf-lang__head{
-  display:flex;align-items:center;gap:7px;
-  font-size:11.5px;font-weight:800;color:#fff;
-  margin-bottom:10px;justify-content:center;
-  letter-spacing:.2px;
-}
-.pf-lang__head i{color:var(--blue);font-size:12px}
-.pf-lang__opts{
-  display:grid;grid-template-columns:1fr 1fr;gap:8px;
-}
-.lang-opt{
-  position:relative;
-  display:flex;flex-direction:row;align-items:center;justify-content:center;
-  gap:8px;padding:9px 10px;
-  background:rgba(0,0,0,.28);
-  border:1.5px solid rgba(255,255,255,.1);
-  border-radius:14px;cursor:pointer;
-  transition:all .25s cubic-bezier(.2,.8,.2,1);
-  overflow:hidden;
-}
-.lang-opt:active{transform:scale(.96)}
-.lang-opt__flag{
-  width:26px;height:20px;border-radius:4px;overflow:hidden;
-  box-shadow:0 1px 4px rgba(0,0,0,.4);
-  border:1px solid rgba(255,255,255,.15);
-  flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-}
-.lang-opt__flag svg{width:100%;height:100%;display:block}
-.lang-opt__name{
-  font-size:12px;font-weight:800;color:#fff;
-  letter-spacing:.2px;white-space:nowrap;
-}
-.lang-opt--active{
-  background:linear-gradient(135deg,rgba(0,122,255,.28),rgba(0,122,255,.12));
-  border-color:var(--blue);
-  box-shadow:0 0 0 2px rgba(0,122,255,.15),0 4px 12px rgba(0,122,255,.25);
-}
-.lang-opt--active::after{
-  content:'\f00c';
-  font-family:'Font Awesome 6 Free';font-weight:900;
-  position:absolute;top:-4px;left:-4px;
-  width:16px;height:16px;border-radius:50%;
-  background:var(--blue);color:#fff;
-  display:grid;place-items:center;font-size:8px;
-  animation:checkPop .3s cubic-bezier(.34,1.5,.64,1);
-  border:2px solid #000;
-}
-@keyframes checkPop{from{transform:scale(0)}to{transform:scale(1)}}
-
-@media (max-width:360px){
-  .lang-opt__flag{width:22px;height:17px}
-  .lang-opt__name{font-size:11px}
-  .lang-opt{padding:8px 6px;gap:6px}
-}
-
 /* شارة "موثق" في الملف */
 .pf-verified-badge{
   display:inline-flex;align-items:center;gap:5px;
@@ -627,9 +550,7 @@ body.lang-en .pod{direction:ltr}
 .pf-cell__ic{width:36px;height:36px;border-radius:50%;background:var(--inset);display:grid;place-items:center;font-size:14px;margin-bottom:6px}
 .pf-cell__lbl{font-size:11.5px;font-weight:600;color:var(--text-2)}
 .pf-cell__val{font-size:19px;font-weight:800;direction:ltr;text-align:right;font-variant-numeric:tabular-nums}
-body.lang-en .pf-cell__val{text-align:left}
 .pf-cell__val--txt{direction:rtl;font-size:17px}
-body.lang-en .pf-cell__val--txt{direction:ltr}
 .pf-cell__bg{position:absolute;left:-8px;bottom:-14px;font-size:70px;opacity:.12;transform:rotate(-12deg);pointer-events:none}
 .pf-row{display:flex;align-items:center;gap:12px;padding:14px;background:var(--blue);border-radius:24px;margin-bottom:12px}
 .pf-row__ic{width:38px;height:38px;border-radius:50%;background:var(--inset);display:grid;place-items:center;font-size:14px;flex-shrink:0}
@@ -663,7 +584,6 @@ body.lang-en .pf-cell__val--txt{direction:ltr}
   display:grid;place-items:center;font-size:13px;
   transition:transform .15s;
 }
-body.lang-en .sub-box__close{left:auto;right:12px}
 .sub-box__close:active{transform:scale(.9)}
 
 .sub-hero{
@@ -808,7 +728,6 @@ body.lang-en .sub-box__close{left:auto;right:12px}
   .plans-table thead th{font-size:9px;padding:7px 2px}
   .pt-plan__name{font-size:10px}
   .pf-av{width:100px;height:100px;font-size:38px}
-  .lang-opt__flag{width:40px;height:30px}
 }
 @media (prefers-reduced-motion:reduce){
   .view.active{animation:none}
@@ -909,7 +828,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           <i class="fas fa-user"></i>
         </div>
         <div class="topbar__meta">
-          <div class="topbar__hello" data-i18n="welcome">مرحباً بك</div>
+          <div class="topbar__hello">مرحباً بك</div>
           <div class="topbar__name" id="homeName">
             <span id="homeNameText">...</span>
           </div>
@@ -924,8 +843,8 @@ body.lang-en .sub-box__close{left:auto;right:12px}
       </div>
 
       <div class="sec-head">
-        <div class="sec-head__title"><i class="fas fa-water"></i> <span data-i18n="mining">التعدين</span></div>
-        <div class="sec-head__meta" id="miningStatusMeta" data-i18n="ready">جاهز</div>
+        <div class="sec-head__title"><i class="fas fa-water"></i> التعدين</div>
+        <div class="sec-head__meta" id="miningStatusMeta">جاهز</div>
       </div>
 
       <div class="mining-card" id="miningCard">
@@ -933,11 +852,11 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           <div class="plan-header__left">
             <div class="plan-header__icon" id="planIcon"><span>🐟</span></div>
             <div class="plan-header__meta">
-              <div class="plan-header__lbl" data-i18n="activePlan">الخطة النشطة</div>
+              <div class="plan-header__lbl">الخطة النشطة</div>
               <div class="plan-header__name" id="planName">خطة أساسي</div>
               <div class="plan-header__reward">
                 <i class="fas fa-coins"></i>
-                <span id="planReward">6</span> <span data-i18n="syPerCycle">ل.س / دورة</span>
+                <span id="planReward">6</span> ل.س / دورة
               </div>
             </div>
           </div>
@@ -980,18 +899,18 @@ body.lang-en .sub-box__close{left:auto;right:12px}
 
         <div class="status-bar">
           <span class="status-bar__dot" id="statusDot"></span>
-          <span id="statusText" data-i18n="tankCalm">الحوض هادئ — ابدأ التعدين!</span>
+          <span id="statusText">الحوض هادئ — ابدأ التعدين!</span>
         </div>
 
         <div class="timer-bar">
           <div class="timer-bar__ic"><i class="fas fa-hourglass-half"></i></div>
           <div class="timer-bar__text" id="timerText">06:00:00</div>
-          <div class="timer-bar__lbl" id="timerLbl" data-i18n="remaining">متبقي</div>
+          <div class="timer-bar__lbl" id="timerLbl">متبقي</div>
         </div>
 
         <button class="action action--start" id="mineAction">
           <i class="fas fa-play"></i>
-          <span id="mineActionText" data-i18n="startMining">ابدأ التعدين</span>
+          <span id="mineActionText">ابدأ التعدين</span>
         </button>
       </div>
 
@@ -999,15 +918,15 @@ body.lang-en .sub-box__close{left:auto;right:12px}
         <button class="tile tile--sea" onclick="navigate('referral')">
           <i class="fas fa-users tile__bg"></i>
           <span class="tile__ic"><i class="fas fa-user-plus"></i></span>
-          <span class="tile__t" data-i18n="inviteFriends">دعوة الأصدقاء</span>
-          <span class="tile__d" data-i18n="inviteFriendsDesc">اربح <b>10 ل.س</b> عن كل صديق ينضم عبر رابطك</span>
+          <span class="tile__t">دعوة الأصدقاء</span>
+          <span class="tile__d">اربح <b>10 ل.س</b> عن كل صديق ينضم عبر رابطك</span>
           <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
         </button>
         <button class="tile tile--amber" onclick="navigate('tasks')">
           <i class="fas fa-trophy tile__bg"></i>
           <span class="tile__ic"><i class="fas fa-tasks"></i></span>
-          <span class="tile__t" data-i18n="tasks">المهمات</span>
-          <span class="tile__d" data-i18n="tasksDesc">اربح حتى <b id="tileTaskTotal">0</b> ل.س من إكمال المهمات</span>
+          <span class="tile__t">المهمات</span>
+          <span class="tile__d">اربح حتى <b id="tileTaskTotal">0</b> ل.س من إكمال المهمات</span>
           <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
         </button>
       </div>
@@ -1016,8 +935,8 @@ body.lang-en .sub-box__close{left:auto;right:12px}
     <div class="view" id="view-tasks">
       <div class="topbar">
         <div class="topbar__meta">
-          <div class="topbar__hello" data-i18n="tasksCenter">مركز المهمات</div>
-          <div class="topbar__name" data-i18n="completeTasks">أكمل المهمات واربح</div>
+          <div class="topbar__hello">مركز المهمات</div>
+          <div class="topbar__name">أكمل المهمات واربح</div>
         </div>
         <div class="chip">
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
@@ -1034,21 +953,21 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           <div class="ring__n"><b id="qbNum">0</b><small id="qbOf">/ 7</small></div>
         </div>
         <div>
-          <div class="qb__t" data-i18n="questBoard">لوحة المهمات</div>
+          <div class="qb__t">لوحة المهمات</div>
           <div class="qb__s" id="questSummary">0 من 7 مهمات مكتملة</div>
-          <div class="qb__left"><i class="fas fa-coins"></i> <span data-i18n="remainingForYou">متبقي لك</span> <b id="questLeft">0</b> ل.س</div>
+          <div class="qb__left"><i class="fas fa-coins"></i> متبقي لك <b id="questLeft">0</b> ل.س</div>
         </div>
       </div>
 
-      <div class="grp"><span data-i18n="quickTask">مهمة سريعة</span></div>
+      <div class="grp"><span>مهمة سريعة</span></div>
       <div class="cq" id="taskChannel">
         <div class="cq__ic"><i class="fab fa-telegram-plane"></i></div>
         <div class="cq__info">
-          <div class="cq__t" data-i18n="joinChannel">انضم لقناة دولفين مينر</div>
-          <div class="cq__d" id="taskChannelStatus" data-i18n="joinChannelDesc">انضم لقناتنا على تيليجرام لتبقى على اطلاع</div>
+          <div class="cq__t">انضم لقناة دولفين مينر</div>
+          <div class="cq__d" id="taskChannelStatus">انضم لقناتنا على تيليجرام لتبقى على اطلاع</div>
           <span class="rwd"><i class="fas fa-coins"></i> <span id="chReward">10</span> ل.س</span>
         </div>
-        <button class="cq__btn cq__btn--join" id="taskChannelBtn"><i class="fab fa-telegram-plane"></i> <span data-i18n="join">انضم</span></button>
+        <button class="cq__btn cq__btn--join" id="taskChannelBtn"><i class="fab fa-telegram-plane"></i> انضم</button>
       </div>
 
       <div id="inviteTasksContainer"></div>
@@ -1057,8 +976,8 @@ body.lang-en .sub-box__close{left:auto;right:12px}
     <div class="view" id="view-store">
       <div class="topbar">
         <div class="topbar__meta">
-          <div class="topbar__hello" data-i18n="plansStore">متجر الخطط</div>
-          <div class="topbar__name" data-i18n="upgradePlan">ترقية الخطة</div>
+          <div class="topbar__hello">متجر الخطط</div>
+          <div class="topbar__name">ترقية الخطة</div>
         </div>
         <div class="chip">
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
@@ -1070,8 +989,8 @@ body.lang-en .sub-box__close{left:auto;right:12px}
       </div>
 
       <div class="sec-head">
-        <div class="sec-head__title"><i class="fas fa-arrow-up"></i> <span data-i18n="upgradePath">مسار الترقية</span></div>
-        <div class="sec-head__meta" data-i18n="sixPlans">6 خطط</div>
+        <div class="sec-head__title"><i class="fas fa-arrow-up"></i> مسار الترقية</div>
+        <div class="sec-head__meta">6 خطط</div>
       </div>
 
       <div class="plans-grid" id="plansGrid"></div>
@@ -1080,7 +999,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
         <div class="plans-report__head">
           <div class="plans-report__title">
             <i class="fas fa-chart-line"></i>
-            <span data-i18n="plansReport">تقرير الخطط</span>
+            تقرير الخطط
           </div>
           <span class="plans-report__tag">REPORT</span>
         </div>
@@ -1088,10 +1007,10 @@ body.lang-en .sub-box__close{left:auto;right:12px}
         <table class="plans-table">
           <thead>
             <tr>
-              <th data-i18n="plan">الخطة</th>
-              <th data-i18n="price">السعر</th>
-              <th data-i18n="profits">الأرباح</th>
-              <th data-i18n="total">الإجمالي</th>
+              <th>الخطة</th>
+              <th>السعر</th>
+              <th>الأرباح</th>
+              <th>الإجمالي</th>
             </tr>
           </thead>
           <tbody id="plansReportBody"></tbody>
@@ -1100,15 +1019,17 @@ body.lang-en .sub-box__close{left:auto;right:12px}
 
       <div class="alert alert--info" style="margin-top:var(--sp-4)">
         <i class="fas fa-info-circle"></i>
-        <div data-i18n="planInfo">عند انتهاء الخطة يُرد <b>مبلغ الشراء فقط</b>، والأرباح تجمعها <b>يدوياً</b> من التعدين. إذا ألغيت الخطة <b>لا يتم رد أي مبلغ</b>.</div>
+        <div>
+          عند انتهاء الخطة يُرد <b>مبلغ الشراء فقط</b>، والأرباح تجمعها <b>يدوياً</b> من التعدين. إذا ألغيت الخطة <b>لا يتم رد أي مبلغ</b>.
+        </div>
       </div>
     </div>
 
     <div class="view" id="view-wallet">
       <div class="topbar">
         <div class="topbar__meta">
-          <div class="topbar__hello" data-i18n="wallet">المحفظة</div>
-          <div class="topbar__name" data-i18n="depositWithdraw">إيداع وسحب</div>
+          <div class="topbar__hello">المحفظة</div>
+          <div class="topbar__name">إيداع وسحب</div>
         </div>
         <div class="chip">
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
@@ -1120,13 +1041,13 @@ body.lang-en .sub-box__close{left:auto;right:12px}
       </div>
 
       <div class="tabs">
-        <button class="tab active" data-tab="withdraw"><i class="fas fa-arrow-up"></i> <span data-i18n="withdraw">سحب</span></button>
-        <button class="tab" data-tab="deposit"><i class="fas fa-arrow-down"></i> <span data-i18n="deposit">إيداع</span></button>
+        <button class="tab active" data-tab="withdraw"><i class="fas fa-arrow-up"></i> سحب</button>
+        <button class="tab" data-tab="deposit"><i class="fas fa-arrow-down"></i> إيداع</button>
       </div>
 
       <div id="panelWithdraw">
         <div class="sec-head">
-          <div class="sec-head__title"><i class="fas fa-credit-card"></i> <span data-i18n="withdrawMethod">طريقة السحب</span></div>
+          <div class="sec-head__title"><i class="fas fa-credit-card"></i> طريقة السحب</div>
         </div>
         <div class="methods" id="wdMethod">
           <div class="method method--active" data-method="sham_cash">
@@ -1141,44 +1062,44 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           </div>
         </div>
         <div class="field">
-          <label class="field__label"><i class="fas fa-coins"></i> <span data-i18n="requestedAmount">المبلغ المطلوب (ل.س)</span></label>
+          <label class="field__label"><i class="fas fa-coins"></i> المبلغ المطلوب (ل.س)</label>
           <input type="text" inputmode="decimal" class="field__input field__input--ltr" id="wdAmount" placeholder="الحد الأدنى 500">
         </div>
         <div class="info-rows">
-          <div class="info-row"><div class="info-row__lbl"><span data-i18n="fee">العمولة</span> <span id="wdFeeRateLbl">(1.5%)</span></div><div class="info-row__val info-row__val--muted" id="wdFee">0.00 ل.س</div></div>
-          <div class="info-row"><div class="info-row__lbl" data-i18n="receivedAmount">المبلغ المستلم</div><div class="info-row__val info-row__val--sea" id="wdNet">0.00 ل.س</div></div>
-          <div class="info-row" id="wdUsdtRow" style="display:none"><div class="info-row__lbl"><i class="fab fa-bitcoin" style="color:#F0B90B"></i> <span data-i18n="equalsUsdt">يعادل USDT</span></div><div class="info-row__val info-row__val--amber" id="wdUsdt">0.00</div></div>
+          <div class="info-row"><div class="info-row__lbl">العمولة <span id="wdFeeRateLbl">(1.5%)</span></div><div class="info-row__val info-row__val--muted" id="wdFee">0.00 ل.س</div></div>
+          <div class="info-row"><div class="info-row__lbl">المبلغ المستلم</div><div class="info-row__val info-row__val--sea" id="wdNet">0.00 ل.س</div></div>
+          <div class="info-row" id="wdUsdtRow" style="display:none"><div class="info-row__lbl"><i class="fab fa-bitcoin" style="color:#F0B90B"></i> يعادل USDT</div><div class="info-row__val info-row__val--amber" id="wdUsdt">0.00</div></div>
         </div>
         <div class="field" id="wdPhoneGroup">
-          <label class="field__label"><i class="fas fa-phone"></i> <span data-i18n="phone">رقم الهاتف</span></label>
+          <label class="field__label"><i class="fas fa-phone"></i> رقم الهاتف</label>
           <input type="tel" inputmode="tel" class="field__input field__input--ltr" id="wdPhone" placeholder="09xxxxxxxx">
         </div>
         <div class="field">
-          <label class="field__label" id="wdAccountLabel"><i class="fas fa-wallet"></i> <span data-i18n="shamAccount">معرف حساب شام كاش</span></label>
+          <label class="field__label" id="wdAccountLabel"><i class="fas fa-wallet"></i> معرف حساب شام كاش</label>
           <input type="text" class="field__input field__input--ltr" id="wdAccount" placeholder="أدخل المعرف">
         </div>
         <div class="alert alert--warn">
           <i class="fas fa-info-circle"></i>
-          <div><span data-i18n="minWithdraw">الحد الأدنى للسحب</span> <b id="wdMinLbl">500 ل.س</b>.</div>
+          <div>الحد الأدنى للسحب <b id="wdMinLbl">500 ل.س</b>.</div>
         </div>
-        <button class="btn btn--primary" id="wdSubmit"><i class="fas fa-paper-plane"></i><span data-i18n="submitWithdraw">تقديم طلب السحب</span></button>
+        <button class="btn btn--primary" id="wdSubmit"><i class="fas fa-paper-plane"></i><span>تقديم طلب السحب</span></button>
       </div>
 
       <div id="panelDeposit" style="display:none">
         <div class="step">
           <div class="step__num">1</div>
           <div class="step__body">
-            <div class="step__title" data-i18n="yourId">معرفك الشخصي</div>
-            <div class="step__desc" data-i18n="yourIdDesc">انسخ هذا المعرف وضعه في ملاحظات التحويل لتفعيل الإيداع تلقائياً.</div>
+            <div class="step__title">معرفك الشخصي</div>
+            <div class="step__desc">انسخ هذا المعرف وضعه في ملاحظات التحويل لتفعيل الإيداع تلقائياً.</div>
             <div class="id-box" id="depUserId">--------</div>
-            <button class="btn btn--outline" id="depCopyId"><i class="fas fa-copy"></i> <span data-i18n="copyId">نسخ المعرف</span></button>
+            <button class="btn btn--outline" id="depCopyId"><i class="fas fa-copy"></i> نسخ المعرف</button>
           </div>
         </div>
         <div class="step">
           <div class="step__num">2</div>
           <div class="step__body">
-            <div class="step__title" data-i18n="chooseDeposit">اختر طريقة الإيداع</div>
-            <div class="step__desc" data-i18n="chooseDepositDesc">اختر الطريقة المناسبة لك.</div>
+            <div class="step__title">اختر طريقة الإيداع</div>
+            <div class="step__desc">اختر الطريقة المناسبة لك.</div>
             <div class="methods" id="depMethod">
               <div class="method method--active" data-method="sham_cash">
                 <div class="method__check"><i class="fas fa-check"></i></div>
@@ -1196,25 +1117,25 @@ body.lang-en .sub-box__close{left:auto;right:12px}
         <div class="step">
           <div class="step__num">3</div>
           <div class="step__body">
-            <div class="step__title" data-i18n="transferData">بيانات التحويل</div>
-            <div class="step__desc" id="depDesc" data-i18n="transferDataDesc">انسخ معرف شام كاش وقم بالتحويل.</div>
+            <div class="step__title">بيانات التحويل</div>
+            <div class="step__desc" id="depDesc">انسخ معرف شام كاش وقم بالتحويل.</div>
             <div id="depShamInfo">
               <div class="id-box" style="font-size:11px;letter-spacing:1px">334a08ea2d1bbed05f214a7f08e37ae4</div>
-              <button class="btn btn--sea" id="depCopySham"><i class="fas fa-copy"></i> <span data-i18n="copyShamId">نسخ معرف شام كاش</span></button>
+              <button class="btn btn--sea" id="depCopySham"><i class="fas fa-copy"></i> نسخ معرف شام كاش</button>
             </div>
             <div id="depBinanceInfo" style="display:none">
               <div class="id-box" style="font-size:18px;letter-spacing:4px;border-color:var(--amber)">1121748571</div>
-              <button class="btn btn--sea" style="background:#007AFF;color:#fff" id="depCopyBinance"><i class="fas fa-copy"></i> <span data-i18n="copyBinanceId">نسخ معرف Binance</span></button>
+              <button class="btn btn--sea" style="background:#007AFF;color:#fff" id="depCopyBinance"><i class="fas fa-copy"></i> نسخ معرف Binance</button>
             </div>
           </div>
         </div>
         <div class="step">
           <div class="step__num">4</div>
           <div class="step__body">
-            <div class="step__title" data-i18n="instructions">التعليمات</div>
+            <div class="step__title">التعليمات</div>
             <div class="alert alert--danger" style="margin-bottom:0">
               <i class="fas fa-exclamation-triangle"></i>
-              <div id="depInstructions" data-i18n="depositInstructions"><b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل دائماً. الحد الأدنى للإيداع 500 ل.س.</div>
+              <div id="depInstructions"><b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل دائماً. الحد الأدنى للإيداع 500 ل.س.</div>
             </div>
           </div>
         </div>
@@ -1224,14 +1145,14 @@ body.lang-en .sub-box__close{left:auto;right:12px}
     <div class="view" id="view-referral">
       <div class="topbar">
         <div class="topbar__meta">
-          <div class="topbar__hello" data-i18n="referralSystem">نظام الإحالة</div>
-          <div class="topbar__name" data-i18n="inviteFriends">دعوة الأصدقاء</div>
+          <div class="topbar__hello">نظام الإحالة</div>
+          <div class="topbar__name">دعوة الأصدقاء</div>
         </div>
       </div>
 
       <div class="seg" id="refSeg">
-        <button class="seg__b active" data-pane="invite"><i class="fas fa-user-plus"></i> <span data-i18n="inviteFriends">دعوة الأصدقاء</span></button>
-        <button class="seg__b" data-pane="top"><i class="fas fa-crown"></i> <span data-i18n="top10Invites">أعلى 10 دعوات</span></button>
+        <button class="seg__b active" data-pane="invite"><i class="fas fa-user-plus"></i> دعوة الأصدقاء</button>
+        <button class="seg__b" data-pane="top"><i class="fas fa-crown"></i> أعلى 10 دعوات</button>
       </div>
 
       <div id="refPaneInvite">
@@ -1239,38 +1160,38 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           <div class="rf-hero__top">
             <div class="rf-hero__ic"><i class="fas fa-gift"></i></div>
             <div>
-              <div class="rf-hero__title" data-i18n="inviteTitle">ادعُ أصدقاءك واربح معهم</div>
-              <div class="rf-hero__desc" data-i18n="inviteDesc">عند انضمام صديق عبر رابطك تحصل على مكافأة فورية، ويحصل صديقك على هدية ترحيبية.</div>
+              <div class="rf-hero__title">ادعُ أصدقاءك واربح معهم</div>
+              <div class="rf-hero__desc">عند انضمام صديق عبر رابطك تحصل على مكافأة فورية، ويحصل صديقك على هدية ترحيبية.</div>
             </div>
           </div>
           <div class="rf-hero__rewards">
-            <div class="rf-hero__rw"><div class="amt">+10</div><div class="lbl" data-i18n="forYou">ل.س لك</div></div>
-            <div class="rf-hero__rw"><div class="amt">+5</div><div class="lbl" data-i18n="forFriend">ل.س لصديقك</div></div>
+            <div class="rf-hero__rw"><div class="amt">+10</div><div class="lbl">ل.س لك</div></div>
+            <div class="rf-hero__rw"><div class="amt">+5</div><div class="lbl">ل.س لصديقك</div></div>
           </div>
         </div>
 
         <div class="rf-stats">
           <div class="rf-stat">
             <div class="rf-stat__ic rf-stat__ic--sea"><i class="fas fa-user-plus"></i></div>
-            <div><div class="rf-stat__num" id="refCount">0</div><div class="rf-stat__lbl" data-i18n="invitedFriends">صديق مدعو</div></div>
+            <div><div class="rf-stat__num" id="refCount">0</div><div class="rf-stat__lbl">صديق مدعو</div></div>
           </div>
           <div class="rf-stat">
             <div class="rf-stat__ic rf-stat__ic--amber"><i class="fas fa-coins"></i></div>
-            <div><div class="rf-stat__num" id="refEarn">0</div><div class="rf-stat__lbl" data-i18n="earnings">ل.س أرباح</div></div>
+            <div><div class="rf-stat__num" id="refEarn">0</div><div class="rf-stat__lbl">ل.س أرباح</div></div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card__title"><i class="fas fa-link"></i> <span data-i18n="inviteLink">رابط الدعوة</span></div>
+          <div class="card__title"><i class="fas fa-link"></i> رابط الدعوة</div>
           <div class="ref-link" id="refLink">...</div>
           <div class="ref-actions">
-            <button class="btn btn--primary" id="refShare"><i class="fas fa-paper-plane"></i> <span data-i18n="shareLink">مشاركة الرابط</span></button>
-            <button class="btn btn--outline" id="refCopyLink"><i class="fas fa-copy"></i> <span data-i18n="copy">نسخ</span></button>
+            <button class="btn btn--primary" id="refShare"><i class="fas fa-paper-plane"></i> مشاركة الرابط</button>
+            <button class="btn btn--outline" id="refCopyLink"><i class="fas fa-copy"></i> نسخ</button>
           </div>
           <div class="card__sep"></div>
           <div class="code-row">
             <div>
-              <div class="code-row__lbl" data-i18n="inviteCodeLabel">كود الدعوة (Telegram ID)</div>
+              <div class="code-row__lbl">كود الدعوة (Telegram ID)</div>
               <div class="code-row__val" id="refCode">------</div>
             </div>
             <button class="icon-btn" id="refCopyCode" aria-label="نسخ الكود"><i class="fas fa-copy"></i></button>
@@ -1278,32 +1199,32 @@ body.lang-en .sub-box__close{left:auto;right:12px}
         </div>
 
         <div class="card">
-          <div class="card__title"><i class="fas fa-route"></i> <span data-i18n="howReferralWorks">كيف تعمل الدعوة</span></div>
+          <div class="card__title"><i class="fas fa-route"></i> كيف تعمل الدعوة</div>
           <div class="how">
-            <div class="how__row"><div class="how__n">1</div><div><div class="how__t" data-i18n="how1Title">شارك رابطك</div><div class="how__d" data-i18n="how1Desc">أرسله لأصدقائك عبر تيليجرام.</div></div></div>
-            <div class="how__row"><div class="how__n">2</div><div><div class="how__t" data-i18n="how2Title">ينضم صديقك</div><div class="how__d" data-i18n="how2Desc">يفتح التطبيق من الرابط ويسجّل حسابه.</div></div></div>
-            <div class="how__row"><div class="how__n">3</div><div><div class="how__t" data-i18n="how3Title">تصل المكافأة للطرفين</div><div class="how__d" data-i18n="how3Desc">تُضاف إلى رصيدك ورصيد صديقك فوراً.</div></div></div>
+            <div class="how__row"><div class="how__n">1</div><div><div class="how__t">شارك رابطك</div><div class="how__d">أرسله لأصدقائك عبر تيليجرام.</div></div></div>
+            <div class="how__row"><div class="how__n">2</div><div><div class="how__t">ينضم صديقك</div><div class="how__d">يفتح التطبيق من الرابط ويسجّل حسابه.</div></div></div>
+            <div class="how__row"><div class="how__n">3</div><div><div class="how__t">تصل المكافأة للطرفين</div><div class="how__d">تُضاف إلى رصيدك ورصيد صديقك فوراً.</div></div></div>
           </div>
         </div>
 
         <div class="card" id="refInputBlock">
-          <div class="card__title"><i class="fas fa-ticket-alt"></i> <span data-i18n="invitedBySomeone">هل دعاك أحد؟ أدخل كوده</span></div>
+          <div class="card__title"><i class="fas fa-ticket-alt"></i> هل دعاك أحد؟ أدخل كوده</div>
           <div class="field" style="margin-bottom:0">
             <input type="text" inputmode="numeric" class="field__input field__input--ltr field__input--code" id="refInputCode" placeholder="123456789" maxlength="12">
           </div>
           <div class="msg" id="refInputMsg"></div>
-          <button class="btn btn--sea" id="refSubmitBtn" style="margin-top:12px"><i class="fas fa-check"></i> <span data-i18n="activateCode">تفعيل الكود</span></button>
+          <button class="btn btn--sea" id="refSubmitBtn" style="margin-top:12px"><i class="fas fa-check"></i> تفعيل الكود</button>
         </div>
       </div>
 
       <div id="refPaneTop" style="display:none">
         <div class="lb">
           <div class="lb__head">
-            <div class="lb__title"><i class="fas fa-crown"></i> <span data-i18n="top10Users">أعلى 10 مستخدمين دعوةً</span></div>
+            <div class="lb__title"><i class="fas fa-crown"></i> أعلى 10 مستخدمين دعوةً</div>
             <span class="lb__tag">TOP 10</span>
           </div>
           <div id="lbList">
-            <div class="lb__empty"><i class="fas fa-crown"></i><p data-i18n="loading">جاري التحميل...</p></div>
+            <div class="lb__empty"><i class="fas fa-crown"></i><p>جاري التحميل...</p></div>
           </div>
         </div>
       </div>
@@ -1317,77 +1238,12 @@ body.lang-en .sub-box__close{left:auto;right:12px}
         <button class="pf-id" id="profCopyId" aria-label="نسخ المعرف">
           <i class="fas fa-fingerprint"></i><span id="profId">--------</span><i class="fas fa-copy"></i>
         </button>
-
-<!-- ═══ محدد اللغة (داخل .pf-top بعد pf-id) ═══ -->
-<div class="pf-lang">
-  <div class="pf-lang__head">
-    <i class="fas fa-globe"></i>
-    <span data-i18n="appLanguage">لغة التطبيق</span>
-  </div>
-  <div class="pf-lang__opts">
-    <button class="lang-opt" data-lang="ar" aria-label="العربية">
-      <div class="lang-opt__flag">
-        <!-- علم سوريا الجديد 2026 -->
-        <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 513 357.071" preserveAspectRatio="none">
-          <path fill-rule="nonzero" d="M28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v300.111c0 15.488-12.671 28.16-28.159 28.16H28.477c-15.486 0-28.157-12.672-28.157-28.16V28.48C.32 12.992 12.991.32 28.477.32z" />
-          <path fill="#fff" fill-rule="nonzero" d="M512.68 234.625H.32V28.48C.32 12.992 12.991.32 28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v206.145z" />
-          <path fill="#007A3D" fill-rule="nonzero" d="M512.68 119.129H.32V28.48C.32 12.992 12.991.32 28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v90.649z" />
-          <path fill="#CE1126" fill-rule="nonzero" d="M228.751 217.327l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776zm-128.085 0l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776zm256.178 0l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776z" />
-          <rect fill="none" stroke="#CCC" stroke-width=".64" stroke-miterlimit="22.926" x=".32" y=".319" width="512.359" height="356.43" rx="27.231" ry="28.159" />
-        </svg>
-      </div>
-      <div class="lang-opt__name">العربية</div>
-    </button>
-    <button class="lang-opt" data-lang="en" aria-label="English">
-      <div class="lang-opt__flag">
-        <!-- علم الولايات المتحدة -->
-        <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <rect width="60" height="40" fill="#FFFFFF" />
-          <g fill="#B22234">
-            <rect y="0" width="60" height="3.08" />
-            <rect y="6.15" width="60" height="3.08" />
-            <rect y="12.31" width="60" height="3.08" />
-            <rect y="18.46" width="60" height="3.08" />
-            <rect y="24.62" width="60" height="3.08" />
-            <rect y="30.77" width="60" height="3.08" />
-            <rect y="36.92" width="60" height="3.08" />
-          </g>
-          <rect width="24" height="21.54" fill="#3C3B6E" />
-          <g fill="#FFFFFF">
-            <circle cx="3" cy="3" r="1" />
-            <circle cx="9" cy="3" r="1" />
-            <circle cx="15" cy="3" r="1" />
-            <circle cx="21" cy="3" r="1" />
-            <circle cx="6" cy="6.5" r="1" />
-            <circle cx="12" cy="6.5" r="1" />
-            <circle cx="18" cy="6.5" r="1" />
-            <circle cx="3" cy="10" r="1" />
-            <circle cx="9" cy="10" r="1" />
-            <circle cx="15" cy="10" r="1" />
-            <circle cx="21" cy="10" r="1" />
-            <circle cx="6" cy="13.5" r="1" />
-            <circle cx="12" cy="13.5" r="1" />
-            <circle cx="18" cy="13.5" r="1" />
-            <circle cx="3" cy="17" r="1" />
-            <circle cx="9" cy="17" r="1" />
-            <circle cx="15" cy="17" r="1" />
-            <circle cx="21" cy="17" r="1" />
-            <circle cx="6" cy="20.5" r="1" />
-            <circle cx="12" cy="20.5" r="1" />
-            <circle cx="18" cy="20.5" r="1" />
-          </g>
-        </svg>
-      </div>
-      <div class="lang-opt__name">English</div>
-    </button>
-  </div>
-</div>
       </div>
 
       <div class="pf-bal wavy">
         <span class="star3d star3d--lg" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
         <div>
-          <div class="pf-bal__lbl" data-i18n="currentBalance">الرصيد الحالي</div>
+          <div class="pf-bal__lbl">الرصيد الحالي</div>
           <div class="pf-bal__row"><span class="pf-bal__val" id="pBalance">0</span><span class="pf-bal__cur">ل.س</span></div>
         </div>
       </div>
@@ -1396,32 +1252,32 @@ body.lang-en .sub-box__close{left:auto;right:12px}
         <div class="pf-cell">
           <i class="fas fa-users pf-cell__bg"></i>
           <div class="pf-cell__ic"><i class="fas fa-user-plus"></i></div>
-          <div class="pf-cell__lbl" data-i18n="totalInvites">إجمالي الدعوات</div>
+          <div class="pf-cell__lbl">إجمالي الدعوات</div>
           <div class="pf-cell__val" id="pRefCount">0</div>
         </div>
         <div class="pf-cell">
           <i class="fas fa-hand-holding-usd pf-cell__bg"></i>
           <div class="pf-cell__ic"><i class="fas fa-hand-holding-usd"></i></div>
-          <div class="pf-cell__lbl" data-i18n="referralEarnings">أرباح الإحالة</div>
+          <div class="pf-cell__lbl">أرباح الإحالة</div>
           <div class="pf-cell__val" id="pRefEarn">0</div>
         </div>
         <div class="pf-cell">
           <i class="fas fa-arrow-up pf-cell__bg"></i>
           <div class="pf-cell__ic"><i class="fas fa-arrow-up"></i></div>
-          <div class="pf-cell__lbl" data-i18n="totalWithdrawn">إجمالي السحوبات</div>
+          <div class="pf-cell__lbl">إجمالي السحوبات</div>
           <div class="pf-cell__val" id="pTotalWithdrawn">0</div>
         </div>
         <div class="pf-cell">
           <i class="fas fa-fish pf-cell__bg"></i>
           <div class="pf-cell__ic"><i class="fas fa-fish"></i></div>
-          <div class="pf-cell__lbl" data-i18n="currentPlan">الخطة الحالية</div>
+          <div class="pf-cell__lbl">الخطة الحالية</div>
           <div class="pf-cell__val pf-cell__val--txt" id="pPlan">أساسي</div>
         </div>
       </div>
 
       <div class="pf-row">
         <div class="pf-row__ic"><i class="fas fa-calendar"></i></div>
-        <div class="pf-row__lbl" data-i18n="joinDate">تاريخ الانضمام</div>
+        <div class="pf-row__lbl">تاريخ الانضمام</div>
         <div class="pf-row__val" id="pJoined">-</div>
       </div>
 
@@ -1432,7 +1288,7 @@ body.lang-en .sub-box__close{left:auto;right:12px}
       </button>
 
       <button class="btn btn--outline" id="profSupport" style="margin-top:10px">
-        <i class="fab fa-telegram-plane" style="color:#4DA3FF"></i> <span data-i18n="contactSupport">تواصل مع الدعم</span>
+        <i class="fab fa-telegram-plane" style="color:#4DA3FF"></i> تواصل مع الدعم
       </button>
     </div>
   </div>
@@ -1440,11 +1296,11 @@ body.lang-en .sub-box__close{left:auto;right:12px}
   <div class="dock">
     <nav class="nav">
       <div class="nav__inner">
-        <button class="nav__btn nav__btn--active" data-view="home"><i class="fas fa-home"></i><span data-i18n="home">الرئيسية</span></button>
-        <button class="nav__btn" data-view="tasks"><i class="fas fa-tasks"></i><span data-i18n="tasks">المهام</span></button>
-        <button class="nav__btn" data-view="store"><i class="fas fa-layer-group"></i><span data-i18n="plans">الخطط</span></button>
-        <button class="nav__btn" data-view="wallet"><i class="fas fa-wallet"></i><span data-i18n="walletNav">المحفظة</span></button>
-        <button class="nav__btn" data-view="referral"><i class="fas fa-users"></i><span data-i18n="referralNav">إحالة</span></button>
+        <button class="nav__btn nav__btn--active" data-view="home"><i class="fas fa-home"></i><span>الرئيسية</span></button>
+        <button class="nav__btn" data-view="tasks"><i class="fas fa-tasks"></i><span>المهام</span></button>
+        <button class="nav__btn" data-view="store"><i class="fas fa-layer-group"></i><span>الخطط</span></button>
+        <button class="nav__btn" data-view="wallet"><i class="fas fa-wallet"></i><span>المحفظة</span></button>
+        <button class="nav__btn" data-view="referral"><i class="fas fa-users"></i><span>إحالة</span></button>
       </div>
     </nav>
     <button class="nav__btn nav__profile" data-view="profile" aria-label="حسابي"><span class="nav__av" id="navAvatar"><i class="fas fa-user"></i></span></button>
@@ -1462,576 +1318,6 @@ body.lang-en .sub-box__close{left:auto;right:12px}
 <script>
 'use strict';
 
-/* ═══════════════════════════════════════════
-   الترجمة — Translations
-   ═══════════════════════════════════════════ */
-const I18N = {
-  ar: {
-    welcome: "مرحباً بك",
-    mining: "التعدين",
-    ready: "جاهز",
-    activePlan: "الخطة النشطة",
-    syPerCycle: "ل.س / دورة",
-    tankCalm: "الحوض هادئ — ابدأ التعدين!",
-    remaining: "متبقي",
-    startMining: "ابدأ التعدين",
-    stopMining: "إيقاف التعدين",
-    collecting: "جاري الجمع...",
-    starting: "جاري البدء...",
-    stopping: "جاري الإيقاف...",
-    miningFrozen: "التعدين مجمّد",
-    inviteFriends: "دعوة الأصدقاء",
-    inviteFriendsDesc: "اربح <b>10 ل.س</b> عن كل صديق ينضم عبر رابطك",
-    tasks: "المهمات",
-    tasksDesc: "اربح حتى <b id=\"tileTaskTotal\">0</b> ل.س من إكمال المهمات",
-    tasksCenter: "مركز المهمات",
-    completeTasks: "أكمل المهمات واربح",
-    questBoard: "لوحة المهمات",
-    remainingForYou: "متبقي لك",
-    quickTask: "مهمة سريعة",
-    joinChannel: "انضم لقناة دولفين مينر",
-    joinChannelDesc: "انضم لقناتنا على تيليجرام لتبقى على اطلاع",
-    join: "انضم",
-    plansStore: "متجر الخطط",
-    upgradePlan: "ترقية الخطة",
-    upgradePath: "مسار الترقية",
-    sixPlans: "6 خطط",
-    plansReport: "تقرير الخطط",
-    plan: "الخطة",
-    price: "السعر",
-    profits: "الأرباح",
-    total: "الإجمالي",
-    planInfo: "عند انتهاء الخطة يُرد <b>مبلغ الشراء فقط</b>، والأرباح تجمعها <b>يدوياً</b> من التعدين. إذا ألغيت الخطة <b>لا يتم رد أي مبلغ</b>.",
-    wallet: "المحفظة",
-    depositWithdraw: "إيداع وسحب",
-    withdraw: "سحب",
-    deposit: "إيداع",
-    withdrawMethod: "طريقة السحب",
-    requestedAmount: "المبلغ المطلوب (ل.س)",
-    fee: "العمولة",
-    receivedAmount: "المبلغ المستلم",
-    equalsUsdt: "يعادل USDT",
-    phone: "رقم الهاتف",
-    shamAccount: "معرف حساب شام كاش",
-    minWithdraw: "الحد الأدنى للسحب",
-    submitWithdraw: "تقديم طلب السحب",
-    yourId: "معرفك الشخصي",
-    yourIdDesc: "انسخ هذا المعرف وضعه في ملاحظات التحويل لتفعيل الإيداع تلقائياً.",
-    copyId: "نسخ المعرف",
-    chooseDeposit: "اختر طريقة الإيداع",
-    chooseDepositDesc: "اختر الطريقة المناسبة لك.",
-    transferData: "بيانات التحويل",
-    transferDataDesc: "انسخ معرف شام كاش وقم بالتحويل.",
-    copyShamId: "نسخ معرف شام كاش",
-    copyBinanceId: "نسخ معرف Binance",
-    instructions: "التعليمات",
-    depositInstructions: "<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل دائماً. الحد الأدنى للإيداع 500 ل.س.",
-    depositInstructionsUsd: "<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 5$.",
-    referralSystem: "نظام الإحالة",
-    top10Invites: "أعلى 10 دعوات",
-    inviteTitle: "ادعُ أصدقاءك واربح معهم",
-    inviteDesc: "عند انضمام صديق عبر رابطك تحصل على مكافأة فورية، ويحصل صديقك على هدية ترحيبية.",
-    forYou: "ل.س لك",
-    forFriend: "ل.س لصديقك",
-    invitedFriends: "صديق مدعو",
-    earnings: "ل.س أرباح",
-    inviteLink: "رابط الدعوة",
-    shareLink: "مشاركة الرابط",
-    copy: "نسخ",
-    inviteCodeLabel: "كود الدعوة (Telegram ID)",
-    howReferralWorks: "كيف تعمل الدعوة",
-    how1Title: "شارك رابطك",
-    how1Desc: "أرسله لأصدقائك عبر تيليجرام.",
-    how2Title: "ينضم صديقك",
-    how2Desc: "يفتح التطبيق من الرابط ويسجّل حسابه.",
-    how3Title: "تصل المكافأة للطرفين",
-    how3Desc: "تُضاف إلى رصيدك ورصيد صديقك فوراً.",
-    invitedBySomeone: "هل دعاك أحد؟ أدخل كوده",
-    activateCode: "تفعيل الكود",
-    top10Users: "أعلى 10 مستخدمين دعوةً",
-    loading: "جاري التحميل...",
-    noInvitesYet: "لا يوجد مدعون بعد",
-    failedLoad: "تعذر تحميل القائمة",
-    appLanguage: "لغة التطبيق",
-    currentBalance: "الرصيد الحالي",
-    totalInvites: "إجمالي الدعوات",
-    referralEarnings: "أرباح الإحالة",
-    totalWithdrawn: "إجمالي السحوبات",
-    currentPlan: "الخطة الحالية",
-    joinDate: "تاريخ الانضمام",
-    contactSupport: "تواصل مع الدعم",
-    contactSupportVerified: "تواصل مع الدعم (موثق)",
-    supportVerifiedOnly: "الدعم متاح للموثقين فقط",
-    home: "الرئيسية",
-    plans: "الخطط",
-    walletNav: "المحفظة",
-    referralNav: "إحالة",
-    premiumSub: "اشتراك مميز — 299 ل.س",
-    verifiedAccount: "أنت موثق — ميزاتك نشطة",
-    verifiedAlready: "حسابك موثق بالفعل ✓",
-    insufficientBalance: "رصيد غير كافٍ",
-    needMore: "تحتاج",
-    extraSy: "ل.س إضافية",
-    confirmSub: "تأكيد الاشتراك — 299 ل.س",
-    verifying: "جاري التوثيق...",
-    subSuccess: "🎉 تم توثيق حسابك بنجاح! استمتع بميزاتك الجديدة",
-    subFailed: "فشل التوثيق",
-    premiumTitle: "الاشتراك المميز",
-    premiumDesc: "احصل على ميزات حصرية وامتيازات خاصة بمستخدمي دولفين مينر الموثقين.",
-    feat1T: "شارة توثيق بجانب اسمك",
-    feat1D: "تظهر علامة التوثيق بجانب اسمك في كل مكان بالتطبيق",
-    feat2T: "تواصل مباشر مع الدعم",
-    feat2D: "تحدث مع فريق الدعم مباشرة دون أي وسيط",
-    feat3T: "الحد الأدنى للسحب 400 ل.س",
-    feat3D: "بدل 500 ل.س للمستخدمين العاديين",
-    feat4T: "عمولة سحب 0%",
-    feat4D: "بدون أي خصومات على عمليات السحب",
-    subPriceLabel: "سعر الاشتراك",
-    yourBalance: "رصيدك",
-    subAlert: "الاشتراك <b>دائم</b> ولا ينتهي. عند التوثيق، يتم خصم <b>299 ل.س</b> من رصيدك مباشرةً.",
-    specialTasks: "مهمات خاصة",
-    inviteTasks: "مهمات الدعوات",
-    inviteTasksHint: "المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>.",
-    taskNumber: "المهمة",
-    from: "من",
-    completed: "اكتملت — استلم مكافأتك",
-    remainingInvites: "باقي",
-    invite: "دعوة",
-    inviteNow: "ادعُ أصدقاءك الآن",
-    collect: "استلام",
-    done: "مكتملة",
-    claimReward: "استلام",
-    goToMining: "اذهب للتعدين",
-    completedAlready: "تم استلام المكافأة",
-    jahizLilistilam: "جاهزة للاستلام",
-    qidTaqadum: "قيد التقدم",
-    tasksCompleted: "مهمات مكتملة",
-    ofText: "من",
-    rewardReceived: "تم الاستلام مسبقاً",
-    completePrevious: "أكمل المهمة السابقة أولاً",
-    notCompletedYet: "لم تكمل المهمة بعد",
-    allInvitesDone: "أنهيت كل مهمات الدعوة",
-    allInvitesDoneDesc: "أحسنت! استمر بدعوة أصدقائك لتكسب مكافأة 10 ل.س عن كل صديق.",
-    opensAfterPrev: "تُفتح بعد استلام مكافأة المهمة السابقة",
-    collectMining5: "اجمع التعدين 5 مرات",
-    collectMining5Desc: "اربح 50 ل.س عند جمع التعدين 5 مرات بأي خطة",
-    firstBuyTask: "اشترِ أول خطة مدفوعة",
-    firstBuyDesc: "اربح 200 ل.س عند شراء أول خطة مدفوعة",
-    collectCount: "جمع",
-    activeNow: "نشط",
-    buy: "اختيار",
-    current: "الحالية",
-    next: "التالية",
-    locked: "مقفلة",
-    notEnoughBalance: "رصيد ناقص",
-    duringMining: "أثناء التعدين",
-    free: "مجاني",
-    cost: "التكلفة",
-    profitPerCycle: "الربح / دورة",
-    cycleDuration: "مدة الدورة",
-    hours: "ساعات",
-    days: "يوم",
-    week: "أسبوع",
-    days10: "10 أيام",
-    days15: "15 يوم",
-    days21: "21 يوم",
-    month: "شهر",
-    permanent: "دائمة",
-    defaultPlan: "الخطة الافتراضية",
-    endsAfter: "تنتهي بعد",
-    day: "يوم",
-    cancelPlan: "إلغاء الخطة والرجوع للأساسية",
-    cancelNote: "عند الإلغاء لا يتم رد أي مبلغ",
-    timeRemaining: "الوقت المتبقي لانتهاء الخطة",
-    upgradePlanTitle: "ترقية الخطة",
-    confirmUpgrade: "تنبيه: لن يتم استرداد مبلغ خطتك الحالية",
-    continue: "هل تريد المتابعة؟",
-    upgradedTo: "تم ترقيتك إلى خطة",
-    buyFailed: "فشل الشراء",
-    planExpired: "انتهت خطتك! تم إرجاع",
-    toBalance: "للرصيد",
-    cancelConfirm: "سيتم إلغاء خطة",
-    cancelConfirm2: "والرجوع للخطة الأساسية.",
-    noRefund: "لن يتم رد أي مبلغ",
-    areYouSure: "هل أنت متأكد؟",
-    collectFirst: "اجمع أرباحك أولاً",
-    stopMiningFirst: "أوقف التعدين الحالي أولاً",
-    noPlanToCancel: "لا توجد خطة للإلغاء",
-    cancelFailed: "فشل الإلغاء",
-    cancelled: "تم إلغاء الخطة والرجوع للأساسية",
-    miningStarted: "بدأ التعدين! سيستغرق",
-    failedStart: "فشل بدء التعدين",
-    miningActive: "التعدين نشط حالياً",
-    collectFirstInfo: "جمع الأرباح أولاً",
-    stopConfirm: "هل أنت متأكد من إيقاف التعدين؟ سيتم فقدان التقدم الحالي ولن تحصل على أي مكافأة.",
-    stopFailed: "فشل الإيقاف",
-    miningStopped: "تم إيقاف التعدين",
-    noCollect: "لا يوجد ما يُجمع",
-    collectFailed: "فشل الجمع",
-    collectedSuccess: "تم جمع",
-    startNewCycle: "اضغط \"ابدأ التعدين\" لدورة جديدة",
-    collectInfo: "لا يوجد تعدين مكتمل",
-    cycleNotComplete: "لم تكتمل الدورة بعد",
-    miningCardFrozen: "التعدين مجمّد حتى تصحيح وقت الجهاز",
-    timeNotReliable: "الوقت غير موثوق",
-    insufficientBalanceErr: "الرصيد غير كافٍ",
-    invalidAccount: "معرف الحساب غير صحيح",
-    invalidPhone: "رقم هاتف غير صحيح (09xxxxxxxx)",
-    invalidAmount: "الحد الأدنى",
-    withdrawSent: "تم إرسال طلب السحب",
-    sendFailed: "فشل الإرسال",
-    copied: "تم النسخ",
-    copyIdDone: "تم نسخ المعرف",
-    copyShamDone: "تم نسخ معرف شام كاش",
-    copyBinanceDone: "تم نسخ معرف Binance",
-    copyLinkDone: "تم نسخ رابط الدعوة",
-    copyCodeDone: "تم نسخ كود الدعوة",
-    nothingToCopy: "لا يوجد نص للنسخ",
-    copyFailed: "فشل النسخ",
-    linkNotReady: "رابط الدعوة غير جاهز بعد",
-    codeInvalid: "الكود يجب أن يكون Telegram ID صحيح",
-    cantUseOwnCode: "لا يمكنك استخدام كودك",
-    codeInvalidShort: "كود غير صالح",
-    usedCodeBefore: "استخدمت كوداً سابقاً",
-    referrerNotFound: "صاحب الدعوة غير موجود",
-    userFromInvites: "هذا المستخدم من دعواتك",
-    codeActivated: "تم تفعيل الكود!",
-    fromReferral: "ل.س من الإحالة",
-    activateFailed: "فشل التفعيل",
-    welcomeReward: "مرحباً! ربحت",
-    welcome: "مرحباً بك!",
-    dataLoadFailed: "فشل تحميل البيانات",
-    miningFrozenTitle: "تم إيقاف التعدين",
-    miningFrozenDesc: "تم اكتشاف تغيير في وقت الجهاز. للحفاظ على نزاهة التعدين، تم إيقاف جلستك الحالية. يرجى إعادة ضبط وقت الجهاز والمحاولة مرة أخرى.",
-    okGotIt: "حسناً، فهمت",
-    outsideTgTitle: "دولفين مينر",
-    outsideTgDesc: "هذا التطبيق يعمل فقط داخل تطبيق Telegram. افتح البوت من الأسفل للبدء.",
-    openBot: "افتح البوت",
-    channelReward: "من مهمة القناة!",
-    collectedTimes: "مرة",
-    reward: "ل.س من",
-    inviteRewardFrom: "ل.س",
-    inviteTaskDone: "أنهيت كل مهمات الدعوة!",
-    inviteNextStarted: "المهمة التالية بدأت من 0",
-    waterCalm: "الحوض هادئ",
-    fishWorking: "الأسماك تسبح وتعمل...",
-    tankFull: "اكتمل التعدين — الحوض مليء بالكنوز!",
-    completed: "اكتمل",
-    timeFrozen: "مجمّد",
-    timeFrozenText: "التعدين مجمّف — وقت الجهاز غير صحيح، فعّل الوقت التلقائي",
-    timeCheckFailed: "تعذّر التحقق من الوقت — التعدين مجمّد"
-  },
-  en: {
-    welcome: "Welcome",
-    mining: "Mining",
-    ready: "Ready",
-    activePlan: "Active Plan",
-    syPerCycle: "SYP / cycle",
-    tankCalm: "Tank is calm — Start mining!",
-    remaining: "Remaining",
-    startMining: "Start Mining",
-    stopMining: "Stop Mining",
-    collecting: "Collecting...",
-    starting: "Starting...",
-    stopping: "Stopping...",
-    miningFrozen: "Mining Frozen",
-    inviteFriends: "Invite Friends",
-    inviteFriendsDesc: "Earn <b>10 SYP</b> for every friend who joins via your link",
-    tasks: "Tasks",
-    tasksDesc: "Earn up to <b id=\"tileTaskTotal\">0</b> SYP by completing tasks",
-    tasksCenter: "Tasks Center",
-    completeTasks: "Complete tasks and earn",
-    questBoard: "Tasks Board",
-    remainingForYou: "Remaining for you",
-    quickTask: "Quick Task",
-    joinChannel: "Join Dolphin Miner Channel",
-    joinChannelDesc: "Join our Telegram channel to stay updated",
-    join: "Join",
-    plansStore: "Plans Store",
-    upgradePlan: "Upgrade Plan",
-    upgradePath: "Upgrade Path",
-    sixPlans: "6 Plans",
-    plansReport: "Plans Report",
-    plan: "Plan",
-    price: "Price",
-    profits: "Profits",
-    total: "Total",
-    planInfo: "When the plan ends, only the <b>purchase amount</b> is refunded, and profits are collected <b>manually</b> from mining. If you cancel the plan, <b>no refund</b> is given.",
-    wallet: "Wallet",
-    depositWithdraw: "Deposit & Withdraw",
-    withdraw: "Withdraw",
-    deposit: "Deposit",
-    withdrawMethod: "Withdraw Method",
-    requestedAmount: "Amount (SYP)",
-    fee: "Fee",
-    receivedAmount: "Amount Received",
-    equalsUsdt: "Equals USDT",
-    phone: "Phone Number",
-    shamAccount: "Sham Cash Account ID",
-    minWithdraw: "Minimum withdrawal",
-    submitWithdraw: "Submit Withdrawal",
-    yourId: "Your ID",
-    yourIdDesc: "Copy this ID and put it in the transfer notes to activate the deposit automatically.",
-    copyId: "Copy ID",
-    chooseDeposit: "Choose Deposit Method",
-    chooseDepositDesc: "Choose the method that suits you.",
-    transferData: "Transfer Details",
-    transferDataDesc: "Copy the Sham Cash ID and transfer.",
-    copyShamId: "Copy Sham Cash ID",
-    copyBinanceId: "Copy Binance ID",
-    instructions: "Instructions",
-    depositInstructions: "<b>Important:</b> Always put your personal ID in the transfer note. Minimum deposit is 500 SYP.",
-    depositInstructionsUsd: "<b>Important:</b> Put your personal ID in the transfer note. Minimum deposit is $5.",
-    referralSystem: "Referral System",
-    top10Invites: "Top 10 Invites",
-    inviteTitle: "Invite friends and earn together",
-    inviteDesc: "When a friend joins via your link, you get an instant reward, and your friend gets a welcome gift.",
-    forYou: "SYP for you",
-    forFriend: "SYP for friend",
-    invitedFriends: "Invited Friends",
-    earnings: "SYP Earnings",
-    inviteLink: "Invite Link",
-    shareLink: "Share Link",
-    copy: "Copy",
-    inviteCodeLabel: "Invite Code (Telegram ID)",
-    howReferralWorks: "How Referral Works",
-    how1Title: "Share your link",
-    how1Desc: "Send it to your friends on Telegram.",
-    how2Title: "Your friend joins",
-    how2Desc: "They open the app from the link and register.",
-    how3Title: "Both get rewards",
-    how3Desc: "Added to your balance and your friend's instantly.",
-    invitedBySomeone: "Were you invited? Enter the code",
-    activateCode: "Activate Code",
-    top10Users: "Top 10 Users by Invites",
-    loading: "Loading...",
-    noInvitesYet: "No invites yet",
-    failedLoad: "Failed to load list",
-    appLanguage: "App Language",
-    currentBalance: "Current Balance",
-    totalInvites: "Total Invites",
-    referralEarnings: "Referral Earnings",
-    totalWithdrawn: "Total Withdrawn",
-    currentPlan: "Current Plan",
-    joinDate: "Join Date",
-    contactSupport: "Contact Support",
-    contactSupportVerified: "Contact Support (Verified)",
-    supportVerifiedOnly: "Support available for verified users only",
-    home: "Home",
-    plans: "Plans",
-    walletNav: "Wallet",
-    referralNav: "Referral",
-    premiumSub: "Premium — 299 SYP",
-    verifiedAccount: "You are verified — features active",
-    verifiedAlready: "Your account is already verified ✓",
-    insufficientBalance: "Insufficient balance",
-    needMore: "Need",
-    extraSy: "SYP more",
-    confirmSub: "Confirm Subscription — 299 SYP",
-    verifying: "Verifying...",
-    subSuccess: "🎉 Your account has been verified! Enjoy your new features",
-    subFailed: "Verification failed",
-    premiumTitle: "Premium Subscription",
-    premiumDesc: "Get exclusive features and privileges for verified Dolphin Miner users.",
-    feat1T: "Verification badge next to your name",
-    feat1D: "The verification mark appears next to your name everywhere in the app",
-    feat2T: "Direct support contact",
-    feat2D: "Talk to the support team directly with no middleman",
-    feat3T: "Minimum withdrawal 400 SYP",
-    feat3D: "Instead of 500 SYP for regular users",
-    feat4T: "0% withdrawal fee",
-    feat4D: "No deductions on withdrawal operations",
-    subPriceLabel: "Subscription Price",
-    yourBalance: "Your Balance",
-    subAlert: "Subscription is <b>permanent</b> and never expires. Upon verification, <b>299 SYP</b> will be deducted from your balance.",
-    specialTasks: "Special Tasks",
-    inviteTasks: "Invite Tasks",
-    inviteTasksHint: "Tasks unlock in order. After collecting each reward, the next task starts from <b>0</b>.",
-    taskNumber: "Task",
-    from: "of",
-    completed: "Completed — claim your reward",
-    remainingInvites: "Remaining",
-    invite: "invites",
-    inviteNow: "Invite friends now",
-    collect: "Claim",
-    done: "Done",
-    claimReward: "Claim",
-    goToMining: "Go to Mining",
-    completedAlready: "Reward already claimed",
-    jahizLilistilam: "Ready to claim",
-    qidTaqadum: "In Progress",
-    tasksCompleted: "tasks completed",
-    ofText: "of",
-    rewardReceived: "Already received",
-    completePrevious: "Complete previous task first",
-    notCompletedYet: "Task not completed yet",
-    allInvitesDone: "You finished all invite tasks",
-    allInvitesDoneDesc: "Well done! Keep inviting friends to earn 10 SYP per friend.",
-    opensAfterPrev: "Opens after claiming the previous task reward",
-    collectMining5: "Collect mining 5 times",
-    collectMining5Desc: "Earn 50 SYP when you collect mining 5 times with any plan",
-    firstBuyTask: "Buy your first paid plan",
-    firstBuyDesc: "Earn 200 SYP when you buy your first paid plan",
-    collectCount: "collected",
-    activeNow: "Active",
-    buy: "Choose",
-    current: "Current",
-    next: "Next",
-    locked: "Locked",
-    notEnoughBalance: "Not enough balance",
-    duringMining: "During mining",
-    free: "Free",
-    cost: "Cost",
-    profitPerCycle: "Profit / cycle",
-    cycleDuration: "Cycle duration",
-    hours: "hours",
-    days: "day",
-    week: "Week",
-    days10: "10 Days",
-    days15: "15 Days",
-    days21: "21 Days",
-    month: "Month",
-    permanent: "Permanent",
-    defaultPlan: "Default plan",
-    endsAfter: "Ends after",
-    day: "days",
-    cancelPlan: "Cancel plan and return to Basic",
-    cancelNote: "No refund upon cancellation",
-    timeRemaining: "Time remaining for plan",
-    upgradePlanTitle: "Upgrade Plan",
-    confirmUpgrade: "Warning: your current plan amount will not be refunded",
-    continue: "Do you want to continue?",
-    upgradedTo: "You upgraded to plan",
-    buyFailed: "Purchase failed",
-    planExpired: "Your plan expired! Refunded",
-    toBalance: "to balance",
-    cancelConfirm: "Plan will be cancelled",
-    cancelConfirm2: "and return to Basic.",
-    noRefund: "No refund will be given",
-    areYouSure: "Are you sure?",
-    collectFirst: "Collect your profits first",
-    stopMiningFirst: "Stop current mining first",
-    noPlanToCancel: "No plan to cancel",
-    cancelFailed: "Cancel failed",
-    cancelled: "Plan cancelled, back to Basic",
-    miningStarted: "Mining started! It will take",
-    failedStart: "Failed to start mining",
-    miningActive: "Mining is active now",
-    collectFirstInfo: "Collect profits first",
-    stopConfirm: "Are you sure you want to stop mining? Current progress will be lost and you won't get any reward.",
-    stopFailed: "Stop failed",
-    miningStopped: "Mining stopped",
-    noCollect: "Nothing to collect",
-    collectFailed: "Collection failed",
-    collectedSuccess: "Collected",
-    startNewCycle: "Press \"Start Mining\" for a new cycle",
-    collectInfo: "No completed mining",
-    cycleNotComplete: "Cycle not completed yet",
-    miningCardFrozen: "Mining frozen until clock is corrected",
-    timeNotReliable: "Time is not reliable",
-    insufficientBalanceErr: "Insufficient balance",
-    invalidAccount: "Invalid account ID",
-    invalidPhone: "Invalid phone number (09xxxxxxxx)",
-    invalidAmount: "Minimum",
-    withdrawSent: "Withdrawal request sent",
-    sendFailed: "Send failed",
-    copied: "Copied",
-    copyIdDone: "ID copied",
-    copyShamDone: "Sham Cash ID copied",
-    copyBinanceDone: "Binance ID copied",
-    copyLinkDone: "Invite link copied",
-    copyCodeDone: "Invite code copied",
-    nothingToCopy: "Nothing to copy",
-    copyFailed: "Copy failed",
-    linkNotReady: "Invite link not ready yet",
-    codeInvalid: "Code must be a valid Telegram ID",
-    cantUseOwnCode: "You can't use your own code",
-    codeInvalidShort: "Invalid code",
-    usedCodeBefore: "You already used a code",
-    referrerNotFound: "Referrer not found",
-    userFromInvites: "This user is from your invites",
-    codeActivated: "Code activated!",
-    fromReferral: "SYP from referral",
-    activateFailed: "Activation failed",
-    welcomeReward: "Welcome! You earned",
-    welcome: "Welcome!",
-    dataLoadFailed: "Failed to load data",
-    miningFrozenTitle: "Mining Stopped",
-    miningFrozenDesc: "A change in device time was detected. To maintain mining integrity, your session has been stopped. Please reset your device time and try again.",
-    okGotIt: "OK, got it",
-    outsideTgTitle: "Dolphin Miner",
-    outsideTgDesc: "This app only works inside Telegram. Open the bot below to start.",
-    openBot: "Open Bot",
-    channelReward: "from channel task!",
-    collectedTimes: "times",
-    reward: "SYP from",
-    inviteRewardFrom: "SYP",
-    inviteTaskDone: "You finished all invite tasks!",
-    inviteNextStarted: "Next task started from 0",
-    waterCalm: "Tank is calm",
-    fishWorking: "Fish are swimming and working...",
-    tankFull: "Mining complete — tank full of treasures!",
-    completed: "Completed",
-    timeFrozen: "Frozen",
-    timeFrozenText: "Mining frozen — device time incorrect, enable automatic time",
-    timeCheckFailed: "Time verification failed — mining frozen"
-  }
-};
-
-let LANG = localStorage.getItem('dolphin_lang') || 'ar';
-
-function t(key){
-  return (I18N[LANG] && I18N[LANG][key]) || (I18N.ar[key]) || key;
-}
-
-function applyLanguage(){
-  document.documentElement.lang = LANG;
-  document.documentElement.dir = LANG === 'ar' ? 'rtl' : 'ltr';
-  document.body.classList.toggle('lang-en', LANG === 'en');
-  
-  // Apply translations to all data-i18n elements
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    const translation = t(key);
-    if (translation.includes('<')) {
-      el.innerHTML = translation;
-    } else {
-      el.textContent = translation;
-    }
-  });
-
-  // Update placeholders
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
-  });
-
-  // Update lang option buttons
-  document.querySelectorAll('.lang-opt').forEach(btn => {
-    btn.classList.toggle('lang-opt--active', btn.dataset.lang === LANG);
-  });
-  
-  // Re-render dynamic content
-  if (STATE.user) {
-    updateUI();
-    renderMining();
-    renderPlans();
-    renderPlansReport();
-    renderTasks();
-  }
-}
-
-function setLanguage(lang){
-  if (lang !== 'ar' && lang !== 'en') return;
-  if (LANG === lang) return;
-  LANG = lang;
-  localStorage.setItem('dolphin_lang', lang);
-  applyLanguage();
-  toast(lang === 'ar' ? 'تم تغيير اللغة إلى العربية ✓' : 'Language changed to English ✓', 'ok');
-}
-
-/* ═══════════════════════════════════════════
-   App Configuration
-   ═══════════════════════════════════════════ */
 const CONFIG = {
   firebase: {
     apiKey: "AIzaSyDRwkZOjYvqevk9yeHuyUPFDf361AVwAfg",
@@ -2049,10 +1335,10 @@ const CONFIG = {
   admin: { telegram: 'qo_ij2' },
   referral: { newUserReward: 5, referrerReward: 10 },
   withdraw: {
-    minAmount: 500,
-    minAmountVerified: 400,
-    feeRate: 0.015,
-    feeRateVerified: 0,
+    minAmount: 500,           // للمستخدم العادي
+    minAmountVerified: 400,   // للموثق
+    feeRate: 0.015,           // للمستخدم العادي
+    feeRateVerified: 0,       // للموثق
     usdRate: 140
   },
   subscription: { price: 299 },
@@ -2060,12 +1346,12 @@ const CONFIG = {
   channel: 'https://t.me/DolphinMinerchannel',
 
   plans: [
-    { id:'basic',  name:'أساسي',  nameEn:'Basic',    emoji:'🐟', level:1, reward:6,  cycleHours:6, planDays:0,  price:0,     color:'sea',    label:'دائمة',    labelEn:'Permanent' },
-    { id:'silver', name:'فضي',    nameEn:'Silver',   emoji:'🐠', level:2, reward:10, cycleHours:6, planDays:7,  price:700,   color:'slate',  label:'أسبوع',    labelEn:'Week' },
-    { id:'gold',   name:'ذهبي',   nameEn:'Gold',     emoji:'🐡', level:3, reward:22, cycleHours:6, planDays:10, price:2500,  color:'amber',  label:'10 أيام',  labelEn:'10 Days' },
-    { id:'jelly',  name:'جيلي',   nameEn:'Jelly',    emoji:'🪼', level:4, reward:36, cycleHours:6, planDays:15, price:5000,  color:'purple', label:'15 يوم',   labelEn:'15 Days' },
-    { id:'whale',  name:'حوت',    nameEn:'Whale',    emoji:'🐋', level:5, reward:50, cycleHours:6, planDays:21, price:10000, color:'coral',  label:'21 يوم',   labelEn:'21 Days' },
-    { id:'dolphin',name:'دولفين', nameEn:'Dolphin',  emoji:'🐬', level:6, reward:72, cycleHours:6, planDays:30, price:20000, color:'ink',    label:'شهر',      labelEn:'Month' }
+    { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:6,  cycleHours:6, planDays:0,  price:0,     color:'sea',    label:'دائمة' },
+    { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:10, cycleHours:6, planDays:7,  price:700,   color:'slate',  label:'أسبوع' },
+    { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:22, cycleHours:6, planDays:10, price:2500,  color:'amber',  label:'10 أيام' },
+    { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:36, cycleHours:6, planDays:15, price:5000,  color:'purple', label:'15 يوم' },
+    { id:'whale',  name:'حوت',    emoji:'🐋', level:5, reward:50, cycleHours:6, planDays:21, price:10000, color:'coral',  label:'21 يوم' },
+    { id:'dolphin',name:'دولفين', emoji:'🐬', level:6, reward:72, cycleHours:6, planDays:30, price:20000, color:'ink',    label:'شهر' }
   ],
 
   security: {
@@ -2075,10 +1361,10 @@ const CONFIG = {
   },
 
   inviteTasks: [
-    { id: 'invite5',  count: 5,  reward: 50,  title: 'دعوة 5 أصدقاء',   titleEn:'Invite 5 friends',   desc: 'اربح 50 ل.س عند دعوة 5 أشخاص',   descEn:'Earn 50 SYP for inviting 5 people' },
-    { id: 'invite20', count: 20, reward: 300, title: 'دعوة 20 صديق',   titleEn:'Invite 20 friends',  desc: 'اربح 300 ل.س عند دعوة 20 شخص',  descEn:'Earn 300 SYP for inviting 20 people' },
-    { id: 'invite30', count: 30, reward: 500, title: 'دعوة 30 صديق',   titleEn:'Invite 30 friends',  desc: 'اربح 500 ل.س عند دعوة 30 شخص',  descEn:'Earn 500 SYP for inviting 30 people' },
-    { id: 'invite50', count: 50, reward: 700, title: 'دعوة 50 صديق',   titleEn:'Invite 50 friends',  desc: 'اربح 700 ل.س عند دعوة 50 شخص',  descEn:'Earn 700 SYP for inviting 50 people' }
+    { id: 'invite5',  count: 5,  reward: 50,  title: 'دعوة 5 أصدقاء', desc: 'اربح 50 ل.س عند دعوة 5 أشخاص' },
+    { id: 'invite20', count: 20, reward: 300, title: 'دعوة 20 صديق', desc: 'اربح 300 ل.س عند دعوة 20 شخص' },
+    { id: 'invite30', count: 30, reward: 500, title: 'دعوة 30 صديق', desc: 'اربح 500 ل.س عند دعوة 30 شخص' },
+    { id: 'invite50', count: 50, reward: 700, title: 'دعوة 50 صديق', desc: 'اربح 700 ل.س عند دعوة 50 شخص' }
   ],
 
   specialTasks: {
@@ -2087,17 +1373,13 @@ const CONFIG = {
       target: 5,
       reward: 50,
       title: 'اجمع التعدين 5 مرات',
-      titleEn: 'Collect mining 5 times',
-      desc: 'اربح 50 ل.س عند جمع التعدين 5 مرات بأي خطة',
-      descEn: 'Earn 50 SYP when you collect mining 5 times with any plan'
+      desc: 'اربح 50 ل.س عند جمع التعدين 5 مرات بأي خطة'
     },
     firstBuy: {
       id: 'firstBuy',
       reward: 200,
       title: 'اشترِ أول خطة مدفوعة',
-      titleEn: 'Buy your first paid plan',
-      desc: 'اربح 200 ل.س عند شراء أول خطة مدفوعة',
-      descEn: 'Earn 200 SYP when you buy your first paid plan'
+      desc: 'اربح 200 ل.س عند شراء أول خطة مدفوعة'
     }
   },
 
@@ -2105,9 +1387,6 @@ const CONFIG = {
   api: { verifyChannel: '' },
   refundPlanProfit: false
 };
-
-function planName(plan){ return LANG === 'en' ? plan.nameEn : plan.name; }
-function planLabel(plan){ return LANG === 'en' ? plan.labelEn : plan.label; }
 
 if (!firebase.apps.length) firebase.initializeApp(CONFIG.firebase);
 const db = firebase.firestore();
@@ -2143,6 +1422,7 @@ function escapeHtml(s){
 function getPlan(id){ return CONFIG.plans.find(p => p.id === id) || CONFIG.plans[0]; }
 function getPlanIndex(id){ return CONFIG.plans.findIndex(p => p.id === id); }
 
+/* ═══ دوال مساعدة للاشتراك ═══ */
 function isVerified(){
   return !!(STATE.user && STATE.user.verified === true);
 }
@@ -2169,9 +1449,8 @@ function toast(msg, type = 'ok'){
   toast._timer = setTimeout(() => el.classList.remove('show'), 3000);
 }
 
-function copyText(text, successMsg = null){
-  if (!successMsg) successMsg = t('copied');
-  if (!text || text === '...' || text.includes('-----')) { toast(t('nothingToCopy'), 'err'); return; }
+function copyText(text, successMsg = 'تم النسخ'){
+  if (!text || text === '...' || text.includes('-----')) { toast('لا يوجد نص للنسخ', 'err'); return; }
   const done = () => toast(successMsg, 'ok');
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
@@ -2182,7 +1461,7 @@ function fallbackCopy(text, done){
   ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
   document.body.appendChild(ta); ta.select();
   try { document.execCommand('copy'); done(); }
-  catch (e) { toast(t('copyFailed'), 'err'); }
+  catch (e) { toast('فشل النسخ', 'err'); }
   document.body.removeChild(ta);
 }
 
@@ -2290,21 +1569,23 @@ function closeTamperModal(){ $('tamperModal').classList.remove('show'); }
 
 function renderLocked(){
   stopLiveTimer();
-  setText('statusText', STATE.timeSynced ? t('timeFrozenText') : t('timeCheckFailed'));
+  setText('statusText', STATE.timeSynced
+    ? 'التعدين مجمّد — وقت الجهاز غير صحيح، فعّل الوقت التلقائي'
+    : 'تعذّر التحقق من الوقت — التعدين مجمّد');
   $('statusDot').className = 'status-bar__dot';
-  setText('miningStatusMeta', t('timeFrozen'));
+  setText('miningStatusMeta', 'مجمّد');
   setText('timerText', '--:--:--');
-  setText('timerLbl', t('timeFrozen'));
+  setText('timerLbl', 'مجمّد');
   const btn = $('mineAction');
   btn.className = 'action action--stop';
   btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-lock"></i><span>' + t('miningFrozen') + '</span>';
+  btn.innerHTML = '<i class="fas fa-lock"></i><span>التعدين مجمّد</span>';
 }
 
 async function loadOrCreateUser(){
   await syncServerTime();
   const ref = db.collection('users').doc(STATE.tgId);
-  const fullName = ((STATE.tgUser.first_name || '') + ' ' + (STATE.tgUser.last_name || '')).trim() || 'User';
+  const fullName = ((STATE.tgUser.first_name || '') + ' ' + (STATE.tgUser.last_name || '')).trim() || 'مستخدم';
   const username = STATE.tgUser.username || null;
   const photoUrl = safeUrl(STATE.tgUser.photo_url) || null;
   const snap = await ref.get();
@@ -2391,7 +1672,7 @@ async function loadOrCreateUser(){
         updatedAt: SV
       });
       trx.set(db.collection('referralLeaderboard').doc(referrerId), {
-        name: rSnap.data().name || 'User', username: rSnap.data().username || null,
+        name: rSnap.data().name || 'مستخدم', username: rSnap.data().username || null,
         referralCount: firebase.firestore.FieldValue.increment(1), updatedAt: SV
       }, { merge:true });
       rewarded = true;
@@ -2402,7 +1683,7 @@ async function loadOrCreateUser(){
     }, { merge:true });
   });
   STATE.user = (await ref.get()).data();
-  toast(rewarded ? '🎉 ' + t('welcomeReward') + ' ' + CONFIG.referral.newUserReward + ' ' + (LANG==='ar'?'ل.س':'SYP') : '🎉 ' + t('welcome'), 'ok');
+  toast(rewarded ? '🎉 مرحباً! ربحت ' + CONFIG.referral.newUserReward + ' ل.س' : '🎉 مرحباً بك!', 'ok');
 }
 
 async function checkPlanExpiry(){
@@ -2435,7 +1716,7 @@ async function checkPlanExpiry(){
       });
     });
     STATE.user = (await userRef.get()).data();
-    if (refund > 0) toast('⏰ ' + t('planExpired') + ' ' + fmt(refund) + ' ' + (LANG==='ar'?'ل.س':'SYP') + ' ' + t('toBalance'), 'ok');
+    if (refund > 0) toast('⏰ انتهت خطتك! تم إرجاع ' + fmt(refund) + ' ل.س للرصيد', 'ok');
   }catch(e){ console.warn(e); }
 }
 
@@ -2445,7 +1726,7 @@ function updateUI(){
   const plan = getPlan(u.activePlanId || 'basic');
   const verified = u.verified === true;
 
-  setText('homeNameText', u.name || (LANG==='ar'?'مستخدم':'User'));
+  setText('homeNameText', u.name || 'مستخدم');
   updateAvatar('homeAvatar');
   updateAvatar('profAvatar');
   updateAvatar('navAvatar');
@@ -2461,7 +1742,7 @@ function updateUI(){
   setText('tasksBalance', fmt(bal));
   setText('walletBalance', fmt(bal));
 
-  setText('planName', (LANG==='ar'?'خطة ':'Plan ') + planName(plan));
+  setText('planName', 'خطة ' + plan.name);
   setText('planLevel', plan.level);
   setText('planReward', fmt(plan.reward));
   const planIcon = $('planIcon');
@@ -2484,27 +1765,32 @@ function updateUI(){
     refInputBlock.style.display = u.referralUsed ? 'none' : 'block';
   }
 
-  setText('profNameText', u.name || (LANG==='ar'?'مستخدم':'User'));
+  setText('profNameText', u.name || 'مستخدم');
   setText('pBalance', fmt(bal));
   setText('pRefCount', fmt(refCount));
   setText('pRefEarn', fmt(u.referralEarnings || 0));
   setText('pTotalWithdrawn', fmt(u.totalWithdrawn || 0));
-  setText('pPlan', planName(plan));
+  setText('pPlan', plan.name);
 
   if (u.createdAt) {
     const dt = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
-    const locale = LANG === 'ar' ? 'ar-EG' : 'en-US';
-    setText('pJoined', dt.toLocaleDateString(locale, { year:'numeric', month:'short', day:'numeric' }));
+    setText('pJoined', dt.toLocaleDateString('ar-EG', { year:'numeric', month:'short', day:'numeric' }));
   }
 
+  // ═══ زر الاشتراك ═══
   updateSubBtn();
+
+  // ═══ تحديث عمولة السحب والحد الأدنى ═══
   updateWithdrawFeeLabels();
+
+  // ═══ زر الدعم ═══
   updateSupportBtn();
 
   renderPlans();
   renderTasks();
 }
 
+/* ═══ شارة التوثيق ═══ */
 function addVerifiedBadge(containerId, isVerified){
   const el = $(containerId);
   if (!el) return;
@@ -2514,55 +1800,59 @@ function addVerifiedBadge(containerId, isVerified){
     const b = document.createElement('img');
     b.src = 'https://img.icons8.com/liquid-glass-color/999/verified-badge.png';
     b.className = 'vbadge';
-    b.alt = 'Verified';
+    b.alt = 'موثق';
     el.appendChild(b);
   }
 }
 
+/* ═══ زر الاشتراك ═══ */
 function updateSubBtn(){
   const btn = $('pfSubBtn');
-  if (!btn || !STATE.user) return;
+  const txt = $('pfSubBtnText');
+  if (!btn || !txt || !STATE.user) return;
 
   if (STATE.user.verified === true) {
     btn.classList.add('pf-sub-btn--verified');
     btn.disabled = true;
     btn.style.cursor = 'default';
-    btn.innerHTML = '<i class="fas fa-circle-check"></i><span>' + t('verifiedAccount') + '</span>';
+    btn.innerHTML = '<i class="fas fa-circle-check"></i><span>أنت موثق — ميزاتك نشطة</span>';
   } else {
     btn.classList.remove('pf-sub-btn--verified');
     btn.disabled = false;
     btn.style.cursor = 'pointer';
-    btn.innerHTML = '<i class="fas fa-crown"></i><span>' + t('premiumSub') + '</span>';
+    btn.innerHTML = '<i class="fas fa-crown"></i><span>اشتراك مميز — ' + CONFIG.subscription.price + ' ل.س</span>';
   }
 }
 
+/* ═══ زر الدعم ═══ */
 function updateSupportBtn(){
   const btn = $('profSupport');
   if (!btn || !STATE.user) return;
   if (STATE.user.verified === true) {
     btn.style.opacity = '1';
     btn.disabled = false;
-    btn.innerHTML = '<i class="fab fa-telegram-plane" style="color:#4DA3FF"></i> <span>' + t('contactSupportVerified') + '</span>';
+    btn.innerHTML = '<i class="fab fa-telegram-plane" style="color:#4DA3FF"></i> تواصل مع الدعم (موثق)';
   } else {
     btn.style.opacity = '.55';
     btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-lock" style="color:#FF8A82"></i> <span>' + t('supportVerifiedOnly') + '</span>';
+    btn.innerHTML = '<i class="fas fa-lock" style="color:#FF8A82"></i> الدعم متاح للموثقين فقط';
   }
 }
 
+/* ═══ تحديث عمولة السحب ═══ */
 function updateWithdrawFeeLabels(){
   const verified = isVerified();
   const min = getWithdrawMin();
   const rate = getFeeRate();
 
   const minLbl = $('wdMinLbl');
-  if (minLbl) minLbl.textContent = fmt(min) + ' ' + (LANG==='ar'?'ل.س':'SYP');
+  if (minLbl) minLbl.textContent = fmt(min) + ' ل.س';
 
   const rateLbl = $('wdFeeRateLbl');
   if (rateLbl) rateLbl.textContent = verified ? '(0%)' : '(1.5%)';
 
   const wdAmount = $('wdAmount');
-  if (wdAmount) wdAmount.placeholder = (LANG==='ar'?'الحد الأدنى ':'Min ') + fmt(min);
+  if (wdAmount) wdAmount.placeholder = 'الحد الأدنى ' + fmt(min);
 
   updateWithdrawFee();
 }
@@ -2587,6 +1877,7 @@ function getPlanCycleMs(){
   return plan.cycleHours * 60 * 60 * 1000;
 }
 
+/* ═══ التعدين ═══ */
 const aquariumScene = document.getElementById('aquariumScene');
 const fish5 = document.getElementById('fish5');
 const fish6 = document.getElementById('fish6');
@@ -2630,7 +1921,7 @@ function renderMining(){
 
 function renderIdle(){
   const plan = getPlan((STATE.user && STATE.user.activePlanId) || 'basic');
-  setText('statusText', t('tankCalm'));
+  setText('statusText', 'الحوض هادئ — ابدأ التعدين!');
   $('statusText').style.color = '';
   $('statusDot').className = 'status-bar__dot';
   setText('stagePct', '0%');
@@ -2641,13 +1932,13 @@ function renderIdle(){
   createBubbles(8);
 
   setText('timerText', String(plan.cycleHours).padStart(2,'0') + ':00:00');
-  setText('timerLbl', LANG==='ar' ? 'مدة الدورة' : 'Cycle');
-  setText('miningStatusMeta', t('ready'));
+  setText('timerLbl', 'مدة الدورة');
+  setText('miningStatusMeta', 'جاهز');
 
   const btn = $('mineAction');
   btn.className = 'action action--start';
   btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-play"></i><span id="mineActionText">' + t('startMining') + '</span>';
+  btn.innerHTML = '<i class="fas fa-play"></i><span id="mineActionText">ابدأ التعدين</span>';
 }
 
 function renderRunning(u, plan){
@@ -2659,10 +1950,10 @@ function renderRunning(u, plan){
 
   if (remaining <= 0) { markMiningComplete(); return; }
 
-  setText('statusText', t('fishWorking'));
+  setText('statusText', 'الأسماك تسبح وتعمل...');
   $('statusText').style.color = '';
   $('statusDot').className = 'status-bar__dot active';
-  setText('miningStatusMeta', LANG==='ar'?'نشط':'Active');
+  setText('miningStatusMeta', 'نشط');
   treasure.classList.remove('show');
   createBubbles(20);
 
@@ -2676,36 +1967,35 @@ function renderRunning(u, plan){
   const btn = $('mineAction');
   btn.className = 'action action--stop';
   btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-stop-circle"></i><span>' + t('stopMining') + '</span>';
+  btn.innerHTML = '<i class="fas fa-stop-circle"></i><span>إيقاف التعدين</span>';
 
   const sec = Math.floor(remaining / 1000);
   const h = Math.floor(sec / 3600);
   const m = Math.floor((sec % 3600) / 60);
   const s = sec % 60;
   setText('timerText', String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0'));
-  setText('timerLbl', t('remaining'));
+  setText('timerLbl', 'متبقي');
 }
 
 function renderReady(plan){
-  setText('statusText', t('tankFull'));
+  setText('statusText', 'اكتمل التعدين — الحوض مليء بالكنوز!');
   $('statusText').style.color = '#7DB9FF';
   $('statusDot').className = 'status-bar__dot ready';
-  setText('miningStatusMeta', t('ready'));
+  setText('miningStatusMeta', 'جاهز');
   $('stagePct').className = 'pct ready';
-  const r = (STATE.user.miningProgress > 0 ? STATE.user.miningProgress : plan.reward);
-  $('stagePct').innerHTML = '<bdi dir="ltr">+' + fmt(r) + '</bdi> ' + (LANG==='ar'?'ل.س':'SYP');
+  $('stagePct').innerHTML = '<bdi dir="ltr">+' + fmt(STATE.user.miningProgress > 0 ? STATE.user.miningProgress : plan.reward) + '</bdi> ل.س';
   treasure.classList.add('show');
   createBubbles(35);
   if (fish5) fish5.style.opacity = '1';
   if (fish6) fish6.style.opacity = '1';
 
   setText('timerText', '00:00:00');
-  setText('timerLbl', t('completed'));
+  setText('timerLbl', 'اكتمل');
 
   const btn = $('mineAction');
   btn.className = 'action action--collect';
   btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-hand-holding-usd"></i><span>' + t('collect') + ' ' + fmt(r) + ' ' + (LANG==='ar'?'ل.س':'SYP') + '</span>';
+  btn.innerHTML = '<i class="fas fa-hand-holding-usd"></i><span>جمع ' + fmt((STATE.user.miningProgress > 0 ? STATE.user.miningProgress : plan.reward)) + ' ل.س</span>';
 }
 
 function startLiveTimer(){
@@ -2746,24 +2036,24 @@ async function markMiningComplete(){
 async function startMining(){
   if (STATE.isSubmitting || !STATE.user) return;
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) {
-    toast(t('miningActive'), 'info'); return;
+    toast('التعدين نشط حالياً', 'info'); return;
   }
-  if (STATE.timeLocked) { toast(t('miningCardFrozen'), 'err'); return; }
-  if (STATE.user.miningCollectable) { toast(t('collectFirstInfo'), 'info'); return; }
+  if (STATE.timeLocked) { toast('التعدين مجمّد', 'err'); return; }
+  if (STATE.user.miningCollectable) { toast('جمع الأرباح أولاً', 'info'); return; }
 
   STATE.isSubmitting = true;
   const btn = $('mineAction');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span><span>' + t('starting') + '</span>';
+  btn.innerHTML = '<span class="spinner"></span><span>جاري البدء...</span>';
 
   try{
     const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
       const snap = await trx.get(userRef);
-      if (!snap.exists) throw new Error('User not found');
+      if (!snap.exists) throw new Error('المستخدم غير موجود');
       const data = snap.data();
-      if (data.miningCollectable) throw new Error(t('collectFirstInfo'));
-      if (data.miningStartTime) throw new Error(t('miningActive'));
+      if (data.miningCollectable) throw new Error('يجب جمع الأرباح السابقة');
+      if (data.miningStartTime) throw new Error('التعدين نشط حالياً');
 
       trx.update(userRef, {
         hasStartedMining: true,
@@ -2776,9 +2066,9 @@ async function startMining(){
     STATE.user = snap2.data();
     updateUI(); renderMining(); startLiveTimer();
     const plan = getPlan(STATE.user.activePlanId);
-    toast('🚀 ' + t('miningStarted') + ' ' + plan.cycleHours + ' ' + (LANG==='ar'?'ساعات':'hours'), 'ok');
+    toast('🚀 بدأ التعدين! سيستغرق ' + plan.cycleHours + ' ساعات', 'ok');
   }catch(e){
-    toast(e.message || t('failedStart'), 'err');
+    toast(e.message || 'فشل بدء التعدين', 'err');
     renderMining();
   }finally{ STATE.isSubmitting = false; }
 }
@@ -2787,21 +2077,21 @@ async function stopMining(){
   if (STATE.isSubmitting || !STATE.user) return;
   if (!STATE.user.miningStartTime) return;
 
-  const confirmed = confirm(t('stopConfirm'));
+  const confirmed = confirm('هل أنت متأكد من إيقاف التعدين؟ سيتم فقدان التقدم الحالي ولن تحصل على أي مكافأة.');
   if (!confirmed) return;
 
   STATE.isSubmitting = true;
   const btn = $('mineAction');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span><span>' + t('stopping') + '</span>';
+  btn.innerHTML = '<span class="spinner"></span><span>جاري الإيقاف...</span>';
 
   try{
     const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
       const snap = await trx.get(userRef);
-      if (!snap.exists) throw new Error('User not found');
+      if (!snap.exists) throw new Error('المستخدم غير موجود');
       const data = snap.data();
-      if (!data.miningStartTime) throw new Error(t('noCollect'));
+      if (!data.miningStartTime) throw new Error('لا يوجد تعدين نشط');
 
       trx.update(userRef, {
         hasStartedMining: false,
@@ -2813,33 +2103,33 @@ async function stopMining(){
     const snap2 = await userRef.get();
     STATE.user = snap2.data();
     updateUI(); renderMining(); stopLiveTimer();
-    toast('⏹️ ' + t('miningStopped'), 'info');
+    toast('⏹️ تم إيقاف التعدين', 'info');
   }catch(e){
-    toast(e.message || t('stopFailed'), 'err');
+    toast(e.message || 'فشل الإيقاف', 'err');
     renderMining();
   }finally{ STATE.isSubmitting = false; }
 }
 
 async function collectMining(){
   if (STATE.isSubmitting || !STATE.user) return;
-  if (!STATE.user.miningCollectable) { toast(t('noCollect'), 'info'); return; }
+  if (!STATE.user.miningCollectable) { toast('لا يوجد ما يُجمع', 'info'); return; }
 
   STATE.isSubmitting = true;
   const btn = $('mineAction');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span><span>' + t('collecting') + '</span>';
+  btn.innerHTML = '<span class="spinner"></span><span>جاري الجمع...</span>';
 
   try{
     const userRef = db.collection('users').doc(STATE.tgId);
     const reward = await db.runTransaction(async (trx) => {
       const snap = await trx.get(userRef);
-      if (!snap.exists) throw new Error('User not found');
+      if (!snap.exists) throw new Error('المستخدم غير موجود');
       const data = snap.data();
-      if (!data.miningCollectable) throw new Error(t('collectInfo'));
-      if (STATE.timeLocked) throw new Error(t('timeNotReliable'));
+      if (!data.miningCollectable) throw new Error('لا يوجد تعدين مكتمل');
+      if (STATE.timeLocked) throw new Error('الوقت غير موثوق');
       if (data.miningStartTime){
         const need = getPlan(data.activePlanId || 'basic').cycleHours * 3600000;
-        if (getTrustedNow() - tsMs(data.miningStartTime) < need - 2000) throw new Error(t('cycleNotComplete'));
+        if (getTrustedNow() - tsMs(data.miningStartTime) < need - 2000) throw new Error('لم تكتمل الدورة بعد');
       }
       const plan = getPlan(data.activePlanId || 'basic');
       const r = (data.miningProgress > 0 && data.miningProgress <= 500) ? data.miningProgress : plan.reward;
@@ -2862,21 +2152,22 @@ async function collectMining(){
     const snap2 = await userRef.get();
     STATE.user = snap2.data();
     updateUI(); renderMining(); stopLiveTimer();
-    toast('✅ ' + t('collectedSuccess') + ' ' + fmt(reward) + ' ' + (LANG==='ar'?'ل.س':'SYP') + '! ' + t('startNewCycle'), 'ok');
+    toast('✅ تم جمع ' + fmt(reward) + ' ل.س! اضغط "ابدأ التعدين" لدورة جديدة', 'ok');
   }catch(e){
-    toast(e.message || t('collectFailed'), 'err');
+    toast(e.message || 'فشل الجمع', 'err');
     renderMining();
   }finally{ STATE.isSubmitting = false; }
 }
 
 function onMineClick(){
   if (!STATE.user) return;
-  if (STATE.timeLocked) { toast(t('miningCardFrozen'), 'err'); return; }
+  if (STATE.timeLocked) { toast('التعدين مجمّد حتى تصحيح وقت الجهاز', 'err'); return; }
   if (STATE.user.miningCollectable) collectMining();
   else if (STATE.user.miningStartTime) stopMining();
   else startMining();
 }
 
+/* ═══ الخطط ═══ */
 function getPlanColors(plan){
   const t = 'rgba(0,0,0,.28)';
   const map = {
@@ -2892,15 +2183,15 @@ function getPlanColors(plan){
 
 const PLAN_TIMER_HTML =
   '<div class="plan__timer" id="planTimer">' +
-    '<div class="plan__timer-head"><span><i class="fas fa-hourglass-half"></i>' + (LANG==='ar'?'الوقت المتبقي لانتهاء الخطة':'Time remaining for plan') + '</span><span id="ptPct">--</span></div>' +
+    '<div class="plan__timer-head"><span><i class="fas fa-hourglass-half"></i>الوقت المتبقي لانتهاء الخطة</span><span id="ptPct">--</span></div>' +
     '<div class="plan__timer-grid">' +
-      '<div class="tbox"><b id="ptD">--</b><small>' + (LANG==='ar'?'يوم':'day') + '</small></div>' +
-      '<div class="tbox"><b id="ptH">--</b><small>' + (LANG==='ar'?'ساعة':'hour') + '</small></div>' +
-      '<div class="tbox"><b id="ptM">--</b><small>' + (LANG==='ar'?'دقيقة':'min') + '</small></div>' +
+      '<div class="tbox"><b id="ptD">--</b><small>يوم</small></div>' +
+      '<div class="tbox"><b id="ptH">--</b><small>ساعة</small></div>' +
+      '<div class="tbox"><b id="ptM">--</b><small>دقيقة</small></div>' +
     '</div><div class="plan__timer-bar"><i id="ptBar"></i></div></div>';
 const PLAN_CANCEL_HTML =
-  '<button class="plan__cancel" id="planCancelBtn"><i class="fas fa-ban"></i> ' + t('cancelPlan') + '</button>' +
-  '<div class="plan__cancel-note">' + t('cancelNote') + '</div>';
+  '<button class="plan__cancel" id="planCancelBtn"><i class="fas fa-ban"></i> إلغاء الخطة والرجوع للأساسية</button>' +
+  '<div class="plan__cancel-note">عند الإلغاء لا يتم رد أي مبلغ</div>';
 
 function renderPlans(){
   const list = $('plansGrid');
@@ -2911,7 +2202,6 @@ function renderPlans(){
   const balance = STATE.user.balance_sy || 0;
   const miningActive = !!(STATE.user.miningStartTime && !STATE.user.miningCollectable);
   const miningReady = !!STATE.user.miningCollectable;
-  const SYP = LANG==='ar'?'ل.س':'SYP';
 
   list.innerHTML = CONFIG.plans.map(plan => {
     const idx = getPlanIndex(plan.id);
@@ -2921,21 +2211,21 @@ function renderPlans(){
     let btnClass = 'plan__btn', btnText = '', btnIcon = '', disabled = '';
     if (isCur) {
       btnClass += ' plan__btn--current';
-      btnText = t('current'); btnIcon = '<i class="fas fa-check"></i>'; disabled = 'disabled';
+      btnText = 'الحالية'; btnIcon = '<i class="fas fa-check"></i>'; disabled = 'disabled';
     } else if (balance < plan.price) {
       btnClass += ' plan__btn--locked';
-      btnText = t('notEnoughBalance'); btnIcon = '<i class="fas fa-lock"></i>'; disabled = 'disabled';
+      btnText = 'رصيد ناقص'; btnIcon = '<i class="fas fa-lock"></i>'; disabled = 'disabled';
     } else if (miningActive || miningReady) {
       btnClass += ' plan__btn--locked';
-      btnText = t('duringMining'); btnIcon = '<i class="fas fa-hourglass-half"></i>'; disabled = 'disabled';
+      btnText = 'أثناء التعدين'; btnIcon = '<i class="fas fa-hourglass-half"></i>'; disabled = 'disabled';
     } else {
       btnClass += ' plan__btn--buy';
-      btnText = t('buy'); btnIcon = '<i class="fas fa-arrow-up"></i>';
+      btnText = 'اختيار'; btnIcon = '<i class="fas fa-arrow-up"></i>';
     }
 
     let badge = '';
-    if (isCur) badge = '<span class="plan__badge plan__badge--current">' + (LANG==='ar'?'نشطة':'Active') + '</span>';
-    else if (idx === curIdx + 1) badge = '<span class="plan__badge plan__badge--next">' + t('next') + '</span>';
+    if (isCur) badge = '<span class="plan__badge plan__badge--current">نشطة</span>';
+    else if (idx === curIdx + 1) badge = '<span class="plan__badge plan__badge--next">التالية</span>';
 
     return [
       '<div class="plan ' + (isCur ? 'plan--current' : '') + '">',
@@ -2945,28 +2235,28 @@ function renderPlans(){
           '</div>',
           '<div class="plan__head">',
             '<div class="plan__name">',
-              (LANG==='ar'?'خطة ':'Plan ') + planName(plan),
+              'خطة ' + plan.name,
               '<span class="plan__badge plan__badge--locked">Lv.' + plan.level + '</span>',
               badge,
             '</div>',
-            '<div class="plan__desc">' + (plan.planDays === 0 ? t('defaultPlan') : t('endsAfter') + ' ' + plan.planDays + ' ' + t('day')) + '</div>',
+            '<div class="plan__desc">' + (plan.planDays === 0 ? 'الخطة الافتراضية' : 'تنتهي بعد ' + plan.planDays + ' يوم') + '</div>',
           '</div>',
         '</div>',
         '<div class="plan__stats">',
           '<div class="plan__stat">',
-            '<div class="plan__stat-lbl"><i class="fas fa-coins" style="color:#4DA3FF"></i> ' + t('profitPerCycle') + '</div>',
-            '<div class="plan__stat-val amber">' + fmt(plan.reward) + ' ' + SYP + '</div>',
+            '<div class="plan__stat-lbl"><i class="fas fa-coins" style="color:#4DA3FF"></i> الربح / دورة</div>',
+            '<div class="plan__stat-val amber">' + fmt(plan.reward) + ' ل.س</div>',
           '</div>',
           '<div class="plan__stat">',
-            '<div class="plan__stat-lbl"><i class="fas fa-clock" style="color:#4DA3FF"></i> ' + t('cycleDuration') + '</div>',
-            '<div class="plan__stat-val sea">' + plan.cycleHours + ' ' + t('hours') + '</div>',
+            '<div class="plan__stat-lbl"><i class="fas fa-clock" style="color:#4DA3FF"></i> مدة الدورة</div>',
+            '<div class="plan__stat-val sea">' + plan.cycleHours + ' ساعات</div>',
           '</div>',
         '</div>',
         (isCur && plan.planDays > 0 ? PLAN_TIMER_HTML : ''),
         '<div class="plan__bottom">',
           '<div class="plan__price">',
-            '<div class="plan__price-lbl">' + t('cost') + '</div>',
-            '<div class="plan__price-val">' + (plan.price === 0 ? t('free') : fmt(plan.price) + ' ' + SYP) + '</div>',
+            '<div class="plan__price-lbl">التكلفة</div>',
+            '<div class="plan__price-val">' + (plan.price === 0 ? 'مجاني' : fmt(plan.price) + ' ل.س') + '</div>',
           '</div>',
           '<button class="' + btnClass + '" ' + disabled + ' data-plan="' + plan.id + '">',
             btnIcon, ' ', btnText,
@@ -3003,7 +2293,7 @@ function renderPlansReport(){
         <td>
           <div class="pt-plan">
             <span class="pt-plan__icon">${plan.emoji}</span>
-            <span class="pt-plan__name">${planName(plan)}<span class="pt-plan__lvl">${plan.level}</span></span>
+            <span class="pt-plan__name">${plan.name}<span class="pt-plan__lvl">${plan.level}</span></span>
           </div>
         </td>
         <td class="pt-price">${fmt(plan.price)}</td>
@@ -3020,14 +2310,14 @@ function updatePlanTimer(){
   const u = STATE.user, plan = getPlan(u.activePlanId || 'basic');
   if (!u.planExpiresAt || !plan.planDays) return;
   const set = (id, v) => { const e = $(id); if (e) e.textContent = v; };
-  if (STATE.timeLocked || !STATE.timeSynced){ ['ptD','ptH','ptM'].forEach(k => set(k, '--')); set('ptPct', LANG==='ar'?'بانتظار الوقت':'Waiting'); return; }
+  if (STATE.timeLocked || !STATE.timeSynced){ ['ptD','ptH','ptM'].forEach(k => set(k, '--')); set('ptPct', 'بانتظار الوقت'); return; }
   const total = plan.planDays * 864e5;
   const left = Math.max(0, tsMs(u.planExpiresAt) - getTrustedNow());
   set('ptD', String(Math.floor(left / 864e5)));
   set('ptH', String(Math.floor(left % 864e5 / 36e5)).padStart(2, '0'));
   set('ptM', String(Math.floor(left % 36e5 / 6e4)).padStart(2, '0'));
   const pct = Math.min(100, left / total * 100);
-  set('ptPct', (LANG==='ar'?'متبقي ':'Left ') + Math.ceil(pct) + '%');
+  set('ptPct', 'متبقي ' + Math.ceil(pct) + '%');
   const bar = $('ptBar'); if (bar) bar.style.width = pct + '%';
   if (left <= 0 && !STATE.expiring){
     STATE.expiring = true;
@@ -3039,21 +2329,18 @@ async function cancelPlan(){
   if (STATE.isSubmitting || !STATE.user) return;
   const cur = getPlan(STATE.user.activePlanId || 'basic');
   if (cur.planDays === 0) return;
-  if (STATE.timeLocked) return toast(t('timeNotReliable'), 'err');
-  if (STATE.user.miningCollectable) return toast(t('collectFirst'), 'info');
-  if (STATE.user.miningStartTime) return toast(t('stopMiningFirst'), 'info');
-  const msg = LANG==='ar'
-    ? 'سيتم إلغاء خطة ' + cur.name + ' والرجوع للخطة الأساسية.\nلن يتم رد أي مبلغ (' + fmt(cur.price) + ' ل.س). هل أنت متأكد؟'
-    : 'Plan ' + cur.nameEn + ' will be cancelled and returned to Basic.\nNo refund (' + fmt(cur.price) + ' SYP). Are you sure?';
-  if (!confirm(msg)) return;
+  if (STATE.timeLocked) return toast('الوقت غير موثوق', 'err');
+  if (STATE.user.miningCollectable) return toast('اجمع أرباحك أولاً ثم ألغِ الخطة', 'info');
+  if (STATE.user.miningStartTime) return toast('أوقف التعدين الحالي أولاً', 'info');
+  if (!confirm('سيتم إلغاء خطة ' + cur.name + ' والرجوع للخطة الأساسية.\nلن يتم رد أي مبلغ (' + fmt(cur.price) + ' ل.س). هل أنت متأكد؟')) return;
   STATE.isSubmitting = true;
   try{
     const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
       const d = (await trx.get(userRef)).data();
-      if (!d || getPlan(d.activePlanId).planDays === 0) throw new Error(t('noPlanToCancel'));
-      if (d.miningCollectable) throw new Error(t('collectFirst'));
-      if (d.miningStartTime) throw new Error(t('stopMiningFirst'));
+      if (!d || getPlan(d.activePlanId).planDays === 0) throw new Error('لا توجد خطة للإلغاء');
+      if (d.miningCollectable) throw new Error('اجمع أرباحك أولاً');
+      if (d.miningStartTime) throw new Error('أوقف التعدين أولاً');
       trx.update(userRef, {
         activePlanId: 'basic', planStartedAt: null, planExpiresAt: null,
         planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
@@ -3063,8 +2350,8 @@ async function cancelPlan(){
     });
     STATE.user = (await userRef.get()).data();
     updateUI(); renderMining();
-    toast(t('cancelled'), 'info');
-  }catch(e){ toast(e.message || t('cancelFailed'), 'err'); }
+    toast('تم إلغاء الخطة والرجوع للأساسية', 'info');
+  }catch(e){ toast(e.message || 'فشل الإلغاء', 'err'); }
   finally{ STATE.isSubmitting = false; }
 }
 
@@ -3073,20 +2360,18 @@ async function buyPlan(planId){
   const plan = getPlan(planId);
   const cur = STATE.user.activePlanId || 'basic';
 
-  if (planId === cur) return toast(LANG==='ar'?'هذه خطتك الحالية':'This is your current plan', 'info');
-  if (STATE.timeLocked) return toast(t('timeNotReliable'), 'err');
-  if ((STATE.user.balance_sy || 0) < plan.price) return toast(t('insufficientBalanceErr'), 'err');
-  if (STATE.user.miningStartTime && !STATE.user.miningCollectable) return toast(LANG==='ar'?'لا يمكن الترقية أثناء التعدين':'Cannot upgrade during mining', 'info');
-  if (STATE.user.miningCollectable) return toast(t('collectFirst'), 'info');
+  if (planId === cur) return toast('هذه خطتك الحالية', 'info');
+  if (STATE.timeLocked) return toast('الوقت غير موثوق', 'err');
+  if ((STATE.user.balance_sy || 0) < plan.price) return toast('الرصيد غير كافٍ', 'err');
+  if (STATE.user.miningStartTime && !STATE.user.miningCollectable) return toast('لا يمكن الترقية أثناء التعدين', 'info');
+  if (STATE.user.miningCollectable) return toast('اجمع أرباحك أولاً', 'info');
 
   const curPlan = getPlan(cur);
   const planHasValue = curPlan.price > 0;
 
   if (planHasValue) {
-    const msg = LANG==='ar'
-      ? 'تنبيه: لن يتم استرداد مبلغ خطتك الحالية (' + fmt(curPlan.price) + ' ل.س). هل تريد المتابعة؟'
-      : 'Warning: your current plan amount (' + fmt(curPlan.price) + ' SYP) will not be refunded. Continue?';
-    if (!confirm(msg)) return;
+    const confirmed = confirm('تنبيه: لن يتم استرداد مبلغ خطتك الحالية (' + fmt(curPlan.price) + ' ل.س). هل تريد المتابعة؟');
+    if (!confirmed) return;
   }
 
   STATE.isSubmitting = true;
@@ -3097,11 +2382,11 @@ async function buyPlan(planId){
 
     await db.runTransaction(async (trx) => {
       const snap = await trx.get(userRef);
-      if (!snap.exists) throw new Error('User not found');
+      if (!snap.exists) throw new Error('المستخدم غير موجود');
       const data = snap.data();
-      if ((data.balance_sy || 0) < plan.price) throw new Error(t('insufficientBalanceErr'));
-      if (data.miningStartTime && !data.miningCollectable) throw new Error(LANG==='ar'?'لا يمكن الترقية أثناء التعدين':'Cannot upgrade during mining');
-      if (data.miningCollectable) throw new Error(t('collectFirst'));
+      if ((data.balance_sy || 0) < plan.price) throw new Error('رصيد غير كافٍ');
+      if (data.miningStartTime && !data.miningCollectable) throw new Error('لا يمكن الترقية أثناء التعدين');
+      if (data.miningCollectable) throw new Error('اجمع أرباحك أولاً');
 
       const updateData = {
         balance_sy: firebase.firestore.FieldValue.increment(-plan.price),
@@ -3134,16 +2419,17 @@ async function buyPlan(planId){
     STATE.user = snap2.data();
     updateUI(); renderMining(); renderPlans();
     await checkPlanExpiry();
-    toast('✅ ' + t('upgradedTo') + ' ' + planName(plan) + '!', 'ok');
+    toast('✅ تم ترقيتك إلى خطة ' + plan.name + '!', 'ok');
   }catch(e){
-    toast(e.message || t('buyFailed'), 'err');
+    toast(e.message || 'فشل الشراء', 'err');
   }finally{ STATE.isSubmitting = false; }
 }
 
+/* ═══ الاشتراك المميز ═══ */
 function openSubModal(){
   if (!STATE.user) return;
   if (STATE.user.verified === true){
-    toast(t('verifiedAlready'), 'ok');
+    toast('حسابك موثق بالفعل ✓', 'ok');
     return;
   }
   updateSubModalWallet();
@@ -3157,9 +2443,8 @@ function updateSubModalWallet(){
   const bal = STATE.user.balance_sy || 0;
   const price = CONFIG.subscription.price;
   const el = $('subWalletVal');
-  const SYP = LANG==='ar'?'ل.س':'SYP';
   if (!el) return;
-  el.textContent = fmt(bal) + ' ' + SYP;
+  el.textContent = fmt(bal) + ' ل.س';
   el.className = 'sub-wallet__val ' + (bal >= price ? 'sub-wallet__val--ok' : 'sub-wallet__val--bad');
 
   const btn = $('subPayBtn');
@@ -3167,23 +2452,23 @@ function updateSubModalWallet(){
   if (btn && txt){
     if (bal < price){
       btn.disabled = true;
-      txt.textContent = t('insufficientBalance') + ' — ' + t('needMore') + ' ' + fmt(price - bal) + ' ' + t('extraSy');
+      txt.textContent = 'رصيد غير كافٍ — تحتاج ' + fmt(price - bal) + ' ل.س إضافية';
     } else {
       btn.disabled = false;
-      txt.textContent = t('confirmSub');
+      txt.textContent = 'تأكيد الاشتراك — ' + fmt(price) + ' ل.س';
     }
   }
 }
 async function activateSubscription(){
   if (!STATE.user || STATE.isSubmitting) return;
   if (STATE.user.verified === true){
-    toast(t('verifiedAlready'), 'info');
+    toast('حسابك موثق بالفعل ✓', 'info');
     closeSubModal();
     return;
   }
   const price = CONFIG.subscription.price;
   if ((STATE.user.balance_sy || 0) < price){
-    toast(t('insufficientBalance'), 'err');
+    toast('الرصيد غير كافٍ', 'err');
     return;
   }
 
@@ -3191,16 +2476,16 @@ async function activateSubscription(){
   const txt = $('subPayText');
   STATE.isSubmitting = true;
   btn.disabled = true;
-  txt.innerHTML = '<span class="spinner"></span> ' + t('verifying');
+  txt.innerHTML = '<span class="spinner"></span> جاري التوثيق...';
 
   try{
     const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
       const snap = await trx.get(userRef);
-      if (!snap.exists) throw new Error('User not found');
+      if (!snap.exists) throw new Error('المستخدم غير موجود');
       const data = snap.data();
-      if (data.verified === true) throw new Error(t('verifiedAlready'));
-      if ((data.balance_sy || 0) < price) throw new Error(t('insufficientBalanceErr'));
+      if (data.verified === true) throw new Error('حسابك موثق بالفعل');
+      if ((data.balance_sy || 0) < price) throw new Error('رصيد غير كافٍ');
 
       trx.update(userRef, {
         balance_sy: firebase.firestore.FieldValue.increment(-price),
@@ -3213,15 +2498,16 @@ async function activateSubscription(){
     STATE.user = (await userRef.get()).data();
     updateUI();
     closeSubModal();
-    toast(t('subSuccess'), 'ok');
+    toast('🎉 تم توثيق حسابك بنجاح! استمتع بميزاتك الجديدة', 'ok');
   }catch(e){
-    toast(e.message || t('subFailed'), 'err');
+    toast(e.message || 'فشل التوثيق', 'err');
   }finally{
     STATE.isSubmitting = false;
     updateSubModalWallet();
   }
 }
 
+/* ═══ Wallet ═══ */
 function initWalletTabs(){
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -3244,9 +2530,9 @@ function initWithdraw(){
       $('wdUsdtRow').style.display = isBinance ? 'flex' : 'none';
       $('wdPhoneGroup').style.display = isBinance ? 'none' : 'block';
       $('wdAccountLabel').innerHTML = isBinance
-        ? '<i class="fab fa-bitcoin" style="color:#F0B90B"></i> <span>' + (LANG==='ar'?'معرف Binance (Pay ID)':'Binance ID (Pay ID)') + '</span>'
-        : '<i class="fas fa-wallet"></i> <span>' + t('shamAccount') + '</span>';
-      $('wdAccount').placeholder = isBinance ? (LANG==='ar'?'أدخل معرف Binance':'Enter Binance ID') : (LANG==='ar'?'أدخل معرف المحفظة':'Enter wallet ID');
+        ? '<i class="fab fa-bitcoin" style="color:#F0B90B"></i> معرف Binance (Pay ID)'
+        : '<i class="fas fa-wallet"></i> معرف حساب شام كاش';
+      $('wdAccount').placeholder = isBinance ? 'أدخل معرف Binance' : 'أدخل معرف المحفظة';
       updateWithdrawFee();
     });
   });
@@ -3261,9 +2547,8 @@ function updateWithdrawFee(){
   const rate = getFeeRate();
   const fee = v * rate;
   const net = v - fee;
-  const SYP = LANG==='ar'?'ل.س':'SYP';
-  setText('wdFee', fmt(fee) + ' ' + SYP);
-  setText('wdNet', fmt(net) + ' ' + SYP);
+  setText('wdFee', fmt(fee) + ' ل.س');
+  setText('wdNet', fmt(net) + ' ل.س');
   if (STATE.withdrawMethod === 'binance') {
     setText('wdUsdt', (net / CONFIG.withdraw.usdRate).toFixed(4) + ' USDT');
   }
@@ -3273,20 +2558,19 @@ async function submitWithdraw(){
   const minAmount = getWithdrawMin();
   const feeRate = getFeeRate();
   const amount = parseFloat($('wdAmount').value);
-  const SYP = LANG==='ar'?'ل.س':'SYP';
-  if (!isFinite(amount) || Math.round(amount * 100) / 100 !== amount || amount > 10000000 || amount < minAmount) return toast(t('invalidAmount') + ' ' + minAmount + ' ' + SYP, 'err');
-  if (amount > (STATE.user.balance_sy || 0)) return toast(t('insufficientBalanceErr'), 'err');
+  if (!isFinite(amount) || Math.round(amount * 100) / 100 !== amount || amount > 10000000 || amount < minAmount) return toast('الحد الأدنى ' + minAmount + ' ل.س', 'err');
+  if (amount > (STATE.user.balance_sy || 0)) return toast('الرصيد غير كافٍ', 'err');
   const account = $('wdAccount').value.trim();
-  if (!/^[A-Za-z0-9_\-]{4,64}$/.test(account)) return toast(t('invalidAccount'), 'err');
+  if (!/^[A-Za-z0-9_\-]{4,64}$/.test(account)) return toast('معرف الحساب غير صحيح', 'err');
   let phone = '';
   if (STATE.withdrawMethod === 'sham_cash') {
     phone = $('wdPhone').value.trim();
-    if (!/^09\d{8}$/.test(phone)) return toast(t('invalidPhone'), 'err');
+    if (!/^09\d{8}$/.test(phone)) return toast('رقم هاتف غير صحيح (09xxxxxxxx)', 'err');
   }
   STATE.isSubmitting = true;
   const btn = $('wdSubmit');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span><span>' + (LANG==='ar'?'جاري الإرسال...':'Sending...') + '</span>';
+  btn.innerHTML = '<span class="spinner"></span><span>جاري الإرسال...</span>';
   const fee = Math.round(amount * feeRate * 100) / 100;
   const net = Math.round((amount - fee) * 100) / 100;
   const usdt = STATE.withdrawMethod === 'binance' ? net / CONFIG.withdraw.usdRate : null;
@@ -3295,7 +2579,7 @@ async function submitWithdraw(){
     await db.runTransaction(async (trx) => {
       const snap = await trx.get(userRef);
       const bal = snap.data().balance_sy || 0;
-      if (bal < amount) throw new Error(t('insufficientBalanceErr'));
+      if (bal < amount) throw new Error('رصيد غير كافٍ');
       trx.update(userRef, {
         balance_sy: bal - amount,
         totalWithdrawn: firebase.firestore.FieldValue.increment(amount),
@@ -3321,13 +2605,13 @@ async function submitWithdraw(){
     updateUI();
     $('wdAmount').value = ''; $('wdPhone').value = ''; $('wdAccount').value = '';
     updateWithdrawFee();
-    toast('✅ ' + t('withdrawSent'), 'ok');
+    toast('✅ تم إرسال طلب السحب', 'ok');
   }catch(e){
-    toast(e.message || t('sendFailed'), 'err');
+    toast(e.message || 'فشل الإرسال', 'err');
   }finally{
     STATE.isSubmitting = false;
     btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-paper-plane"></i><span>' + t('submitWithdraw') + '</span>';
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i><span>تقديم طلب السحب</span>';
   }
 }
 
@@ -3340,15 +2624,18 @@ function initDeposit(){
       const isBinance = STATE.depositMethod === 'binance';
       $('depShamInfo').style.display = isBinance ? 'none' : 'block';
       $('depBinanceInfo').style.display = isBinance ? 'block' : 'none';
-      setText('depDesc', isBinance ? (LANG==='ar'?'أرسل USDT إلى معرف Binance أدناه.':'Send USDT to the Binance ID below.') : (LANG==='ar'?'انسخ معرف شام كاش وقم بالتحويل.':'Copy the Sham Cash ID and transfer.'));
-      $('depInstructions').innerHTML = isBinance ? t('depositInstructionsUsd') : t('depositInstructions');
+      setText('depDesc', isBinance ? 'أرسل USDT إلى معرف Binance أدناه.' : 'انسخ معرف شام كاش وقم بالتحويل.');
+      $('depInstructions').innerHTML = isBinance
+        ? '<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 5$.'
+        : '<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 500 ل.س.';
     });
   });
-  $('depCopyId').addEventListener('click', () => copyText($('depUserId').textContent, t('copyIdDone')));
-  $('depCopySham').addEventListener('click', () => copyText(CONFIG.deposit.shamCash, t('copyShamDone')));
-  $('depCopyBinance').addEventListener('click', () => copyText(CONFIG.deposit.binance, t('copyBinanceDone')));
+  $('depCopyId').addEventListener('click', () => copyText($('depUserId').textContent, 'تم نسخ المعرف'));
+  $('depCopySham').addEventListener('click', () => copyText(CONFIG.deposit.shamCash, 'تم نسخ معرف شام كاش'));
+  $('depCopyBinance').addEventListener('click', () => copyText(CONFIG.deposit.binance, 'تم نسخ معرف Binance'));
 }
 
+/* ═══ Referral ═══ */
 function setRefPane(p){
   document.querySelectorAll('#refSeg .seg__b').forEach(b => b.classList.toggle('active', b.dataset.pane === p));
   $('refPaneInvite').style.display = p === 'invite' ? 'block' : 'none';
@@ -3358,32 +2645,22 @@ function setRefPane(p){
 }
 function initReferral(){
   document.querySelectorAll('#refSeg .seg__b').forEach(b => b.addEventListener('click', () => setRefPane(b.dataset.pane)));
-  $('refCopyLink').addEventListener('click', () => copyText($('refLink').textContent, t('copyLinkDone')));
-  $('refCopyCode').addEventListener('click', () => copyText($('refCode').textContent, t('copyCodeDone')));
+  $('refCopyLink').addEventListener('click', () => copyText($('refLink').textContent, 'تم نسخ رابط الدعوة'));
+  $('refCopyCode').addEventListener('click', () => copyText($('refCode').textContent, 'تم نسخ كود الدعوة'));
 
   $('refShare').addEventListener('click', () => {
     const link = ($('refLink').textContent || '').trim();
-    if (!link || link === '...') { toast(t('linkNotReady'), 'err'); return; }
+    if (!link || link === '...') { toast('رابط الدعوة غير جاهز بعد', 'err'); return; }
 
-    const text = LANG==='ar'
-      ? [
-          '🐬 دولفين مينر — منصة التعدين على تيليجرام',
-          '',
-          '⛏ عدّن مجاناً كل ' + CONFIG.plans[0].cycleHours + ' ساعات واجمع أرباحك',
-          '🎁 هدية ترحيبية ' + CONFIG.referral.newUserReward + ' ل.س فور التسجيل',
-          '💸 سحب عبر شام كاش وBinance',
-          '',
-          'سجّل الآن عبر رابط الدعوة وابدأ التعدين.'
-        ].join('\n')
-      : [
-          '🐬 Dolphin Miner — Mining platform on Telegram',
-          '',
-          '⛏ Mine for free every ' + CONFIG.plans[0].cycleHours + ' hours and collect your profits',
-          '🎁 Welcome gift ' + CONFIG.referral.newUserReward + ' SYP upon registration',
-          '💸 Withdraw via Sham Cash and Binance',
-          '',
-          'Register now via the invite link and start mining.'
-        ].join('\n');
+    const text = [
+      '🐬 دولفين مينر — منصة التعدين على تيليجرام',
+      '',
+      '⛏ عدّن مجاناً كل ' + CONFIG.plans[0].cycleHours + ' ساعات واجمع أرباحك',
+      '🎁 هدية ترحيبية ' + CONFIG.referral.newUserReward + ' ل.س فور التسجيل',
+      '💸 سحب عبر شام كاش وBinance',
+      '',
+      'سجّل الآن عبر رابط الدعوة وابدأ التعدين.'
+    ].join('\n');
 
     const shareUrl = 'https://t.me/share/url?url=' + encodeURIComponent(link) + '&text=' + encodeURIComponent(text);
     if (tg && tg.openTelegramLink) tg.openTelegramLink(shareUrl);
@@ -3398,7 +2675,7 @@ function initReferral(){
 
 async function submitReferral(){
   if (STATE.isSubmitting || !STATE.user) return;
-  if (STATE.user.referralUsed) return toast(t('usedCodeBefore'), 'err');
+  if (STATE.user.referralUsed) return toast('استخدمت كوداً سابقاً', 'err');
 
   const input = $('refInputCode');
   const msgEl = $('refInputMsg');
@@ -3406,21 +2683,21 @@ async function submitReferral(){
 
   msgEl.className = 'msg';
   if (!code || !/^\d{6,12}$/.test(code)) {
-    msgEl.className = 'msg msg--err show'; msgEl.textContent = t('codeInvalid'); return;
+    msgEl.className = 'msg msg--err show'; msgEl.textContent = 'الكود يجب أن يكون Telegram ID صحيح'; return;
   }
   if (code === STATE.user.referralCode || code === STATE.tgId) {
-    msgEl.className = 'msg msg--err show'; msgEl.textContent = t('cantUseOwnCode'); return;
+    msgEl.className = 'msg msg--err show'; msgEl.textContent = 'لا يمكنك استخدام كودك'; return;
   }
 
   STATE.isSubmitting = true;
   const btn = $('refSubmitBtn');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> ' + (LANG==='ar'?'تحقق...':'Checking...');
+  btn.innerHTML = '<span class="spinner"></span> تحقق...';
 
   try{
     const q = await db.collection('users').where('referralCode', '==', code).limit(1).get();
     if (q.empty) {
-      msgEl.className = 'msg msg--err show'; msgEl.textContent = t('codeInvalidShort'); return;
+      msgEl.className = 'msg msg--err show'; msgEl.textContent = 'كود غير صالح'; return;
     }
     const referrerId = q.docs[0].id;
     const referrerRef = db.collection('users').doc(referrerId);
@@ -3428,14 +2705,14 @@ async function submitReferral(){
 
     await db.runTransaction(async (trx) => {
       const meSnap = await trx.get(userRef);
-      if (!meSnap.exists) throw new Error('User not found');
-      if (meSnap.data().referralUsed) throw new Error(t('usedCodeBefore'));
+      if (!meSnap.exists) throw new Error('المستخدم غير موجود');
+      if (meSnap.data().referralUsed) throw new Error('استخدمت كوداً سابقاً');
 
       const refSnap = await trx.get(referrerRef);
-      if (!refSnap.exists) throw new Error(t('referrerNotFound'));
+      if (!refSnap.exists) throw new Error('صاحب الدعوة غير موجود');
       const refData = refSnap.data();
-      if (referrerId === STATE.tgId) throw new Error(t('cantUseOwnCode'));
-      if ((meSnap.data().referredUsers || []).includes(referrerId)) throw new Error(t('userFromInvites'));
+      if (referrerId === STATE.tgId) throw new Error('لا يمكنك استخدام كودك');
+      if ((meSnap.data().referredUsers || []).includes(referrerId)) throw new Error('هذا المستخدم من دعواتك');
 
       trx.update(userRef, {
         balance_sy: firebase.firestore.FieldValue.increment(CONFIG.referral.newUserReward),
@@ -3455,7 +2732,7 @@ async function submitReferral(){
 
       const lbRef = db.collection('referralLeaderboard').doc(referrerId);
       trx.set(lbRef, {
-        name: refData.name || 'User',
+        name: refData.name || 'مستخدم',
         username: refData.username || null,
         referralCount: firebase.firestore.FieldValue.increment(1),
         updatedAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -3467,8 +2744,8 @@ async function submitReferral(){
     updateUI();
 
     msgEl.className = 'msg msg--ok show';
-    msgEl.textContent = '✅ ' + t('codeActivated') + ' +' + CONFIG.referral.newUserReward + ' ' + (LANG==='ar'?'ل.س':'SYP');
-    toast('+' + CONFIG.referral.newUserReward + ' ' + (LANG==='ar'?'ل.س':'SYP') + ' ' + t('fromReferral'), 'ok');
+    msgEl.textContent = '✅ تم تفعيل الكود! +' + CONFIG.referral.newUserReward + ' ل.س';
+    toast('+' + CONFIG.referral.newUserReward + ' ل.س من الإحالة', 'ok');
 
     setTimeout(() => {
       const block = $('refInputBlock');
@@ -3476,11 +2753,11 @@ async function submitReferral(){
     }, 1500);
   }catch(e){
     msgEl.className = 'msg msg--err show';
-    msgEl.textContent = e.message || t('activateFailed');
+    msgEl.textContent = e.message || 'فشل التفعيل';
   }finally{
     STATE.isSubmitting = false;
     btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-check"></i> ' + t('activateCode');
+    btn.innerHTML = '<i class="fas fa-check"></i> تفعيل الكود';
   }
 }
 
@@ -3497,7 +2774,7 @@ async function loadLeaderboard(){
       const cnt = d.referralCount || 0;
       if (cnt > 0) items.push({ id: doc.id, d, cnt, me: doc.id === STATE.tgId, v: false });
     });
-    if (!items.length){ list.innerHTML = empty(t('noInvitesYet')); return; }
+    if (!items.length){ list.innerHTML = empty('لا يوجد مدعون بعد'); return; }
 
     await Promise.all(items.map(async it => {
       if (it.me){ it.v = !!(STATE.user && STATE.user.verified === true); return; }
@@ -3512,11 +2789,9 @@ async function loadLeaderboard(){
       const pu = safeUrl(it.d.photoUrl) || (it.me ? safeUrl(STATE.tgUser && STATE.tgUser.photo_url) : '');
       return pu ? '<img data-av src="' + escapeHtml(pu) + '" alt="" referrerpolicy="no-referrer">' : '<i class="fas fa-user"></i>';
     };
-    const nameHtml = (it) => '<span>' + escapeHtml(it.d.name || (LANG==='ar'?'مستخدم':'User')) + '</span>' +
-      (it.v ? '<img class="vbadge" data-vb src="' + VB_URL + '" alt="verified">' : '') +
-      (it.me ? '<em class="me-tag">' + (LANG==='ar'?'أنت':'You') + '</em>' : '');
-
-    const inviteLabel = LANG==='ar'?'دعوة':'invites';
+    const nameHtml = (it) => '<span>' + escapeHtml(it.d.name || 'مستخدم') + '</span>' +
+      (it.v ? '<img class="vbadge" data-vb src="' + VB_URL + '" alt="موثق">' : '') +
+      (it.me ? '<em class="me-tag">أنت</em>' : '');
 
     const slot = (rank) => {
       const it = items[rank - 1];
@@ -3526,7 +2801,7 @@ async function loadLeaderboard(){
         '<div class="pod__crown">' + (rank === 1 ? '<i class="fas fa-crown"></i>' : '') + '</div>' +
         '<div class="pod__av">' + avatar(it) + '</div>' +
         '<div class="pod__name">' + nameHtml(it) + '</div>' +
-        '<div class="pod__cnt"><b>' + it.cnt + '</b> ' + inviteLabel + '</div>' +
+        '<div class="pod__cnt"><b>' + it.cnt + '</b> دعوة</div>' +
         '<div class="pod__base">' + rank + '</div></div>';
     };
     let html = '<div class="podium">' + slot(2) + slot(1) + slot(3) + '</div>';
@@ -3537,22 +2812,23 @@ async function loadLeaderboard(){
           '<div class="lrow__rank">' + (i + 4) + '</div>' +
           '<div class="lrow__av">' + avatar(it) + '</div>' +
           '<div class="lrow__info"><div class="lrow__name">' + nameHtml(it) + '</div></div>' +
-          '<div class="lrow__cnt">' + it.cnt + ' ' + inviteLabel + '</div>' +
+          '<div class="lrow__cnt">' + it.cnt + ' دعوة</div>' +
         '</div>').join('') + '</div>';
     }
     list.innerHTML = html;
     list.querySelectorAll('img[data-av]').forEach(im => { im.onerror = () => { const ic = document.createElement('i'); ic.className = 'fas fa-user'; im.replaceWith(ic); }; });
     list.querySelectorAll('img[data-vb]').forEach(im => { im.onerror = () => { const ic = document.createElement('i'); ic.className = 'fas fa-circle-check vbadge-fb'; im.replaceWith(ic); }; });
   }catch(e){
-    list.innerHTML = empty(t('failedLoad'));
+    list.innerHTML = empty('تعذر تحميل القائمة');
   }
 }
 
+/* ═══ Tasks ═══ */
 async function verifyChannelJoin(){
   if (!STATE.user || STATE.isSubmitting) return;
   const btn = $('taskChannelBtn');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> ' + (LANG==='ar'?'تحقق...':'Checking...');
+  btn.innerHTML = '<span class="spinner"></span> تحقق...';
   try{
     if (tg && tg.openTelegramLink) tg.openTelegramLink(CONFIG.channel); else window.open(CONFIG.channel, '_blank');
     await new Promise(r => setTimeout(r, 6000));
@@ -3567,17 +2843,17 @@ async function verifyChannelJoin(){
     STATE.user = (await userRef.get()).data();
     if (!STATE.user.channelJoined) throw new Error('not joined');
     updateUI();
-    toast('✅ ' + (LANG==='ar'?'تم التحقق من انضمامك للقناة!':'Channel join verified!'), 'ok');
+    toast('✅ تم التحقق من انضمامك للقناة!', 'ok');
   }catch(e){
-    toast(LANG==='ar'?'لم يتم التحقق من الانضمام، انضم ثم حاول مجدداً':'Verification failed. Join then try again', 'err');
+    toast('لم يتم التحقق من الانضمام، انضم ثم حاول مجدداً', 'err');
     renderChannelTask();
   }
 }
 
 async function collectChannelReward() {
   if (!STATE.user || STATE.isSubmitting) return;
-  if (!STATE.user.channelJoined) { toast(LANG==='ar'?'يجب الانضمام للقناة أولاً':'Join the channel first', 'err'); return; }
-  if (STATE.user.channelRewardClaimed) { toast(t('rewardReceived'), 'info'); return; }
+  if (!STATE.user.channelJoined) { toast('يجب الانضمام للقناة أولاً', 'err'); return; }
+  if (STATE.user.channelRewardClaimed) { toast('تم استلام المكافأة مسبقاً', 'info'); return; }
   
   STATE.isSubmitting = true;
   const btn = $('taskChannelBtn');
@@ -3589,7 +2865,7 @@ async function collectChannelReward() {
     await db.runTransaction(async (trx) => {
       const snap = await trx.get(userRef);
       const data = snap.data();
-      if (data.channelRewardClaimed) throw new Error(t('rewardReceived'));
+      if (data.channelRewardClaimed) throw new Error('تم الاستلام مسبقاً');
       
       trx.update(userRef, {
         balance_sy: firebase.firestore.FieldValue.increment(CONFIG.channelTask.reward),
@@ -3603,9 +2879,9 @@ async function collectChannelReward() {
     STATE.user = snap2.data();
     updateUI();
     renderTasks();
-    toast('🎉 +' + CONFIG.channelTask.reward + ' ' + (LANG==='ar'?'ل.س':'SYP') + ' ' + t('channelReward'), 'ok');
+    toast('🎉 +' + CONFIG.channelTask.reward + ' ل.س من مهمة القناة!', 'ok');
   } catch(e) {
-    toast(e.message || t('collectFailed'), 'err');
+    toast(e.message || 'فشل استلام المكافأة', 'err');
   } finally {
     STATE.isSubmitting = false;
     if (btn) btn.disabled = false;
@@ -3619,11 +2895,11 @@ async function collectSpecialReward(taskId) {
   const u = STATE.user;
 
   if (taskId === 'collect5') {
-    if ((u.miningCollectCount || 0) < 5) return toast(LANG==='ar'?'لم تجمع 5 مرات بعد':'Not collected 5 times yet', 'err');
-    if (u.collect5RewardClaimed) return toast(t('rewardReceived'), 'info');
+    if ((u.miningCollectCount || 0) < 5) return toast('لم تجمع 5 مرات بعد', 'err');
+    if (u.collect5RewardClaimed) return toast('تم الاستلام مسبقاً', 'info');
   } else if (taskId === 'firstBuy') {
-    if (!u.hasPurchasedPlan) return toast(LANG==='ar'?'لم تشترِ خطة مدفوعة بعد':'No paid plan purchased yet', 'err');
-    if (u.firstBuyRewardClaimed) return toast(t('rewardReceived'), 'info');
+    if (!u.hasPurchasedPlan) return toast('لم تشترِ خطة مدفوعة بعد', 'err');
+    if (u.firstBuyRewardClaimed) return toast('تم الاستلام مسبقاً', 'info');
   }
 
   STATE.isSubmitting = true;
@@ -3634,13 +2910,13 @@ async function collectSpecialReward(taskId) {
       const data = snap.data();
       const flagKey = taskId === 'collect5' ? 'collect5RewardClaimed' : 'firstBuyRewardClaimed';
       
-      if (data[flagKey]) throw new Error(t('rewardReceived'));
+      if (data[flagKey]) throw new Error('تم الاستلام مسبقاً');
       
       if (taskId === 'collect5' && (data.miningCollectCount || 0) < 5) {
-        throw new Error(LANG==='ar'?'لم تجمع 5 مرات بعد':'Not collected 5 times yet');
+        throw new Error('لم تجمع 5 مرات بعد');
       }
       if (taskId === 'firstBuy' && !data.hasPurchasedPlan) {
-        throw new Error(LANG==='ar'?'لم تشترِ خطة مدفوعة بعد':'No paid plan purchased yet');
+        throw new Error('لم تشترِ خطة مدفوعة بعد');
       }
 
       trx.update(userRef, {
@@ -3654,9 +2930,9 @@ async function collectSpecialReward(taskId) {
     STATE.user = (await userRef.get()).data();
     updateUI();
     renderTasks();
-    toast('🎉 +' + task.reward + ' ' + (LANG==='ar'?'ل.س':'SYP') + ' ' + t('reward') + ' ' + (LANG==='en'?task.titleEn:task.title) + '!', 'ok');
+    toast('🎉 +' + task.reward + ' ل.س من ' + task.title + '!', 'ok');
   } catch(e) {
-    toast(e.message || t('collectFailed'), 'err');
+    toast(e.message || 'فشل الاستلام', 'err');
   } finally {
     STATE.isSubmitting = false;
   }
@@ -3683,9 +2959,9 @@ async function collectInviteReward(taskId){
     await db.runTransaction(async (trx) => {
       const data = (await trx.get(userRef)).data();
       const s = inviteState(data);
-      if (s.claimed[taskId]) throw new Error(t('rewardReceived'));
-      if (s.idx < 0 || CONFIG.inviteTasks[s.idx].id !== taskId) throw new Error(t('completePrevious'));
-      if (s.progress < task.count) throw new Error(t('notCompletedYet'));
+      if (s.claimed[taskId]) throw new Error('تم الاستلام مسبقاً');
+      if (s.idx < 0 || CONFIG.inviteTasks[s.idx].id !== taskId) throw new Error('أكمل المهمة السابقة أولاً');
+      if (s.progress < task.count) throw new Error('لم تكمل المهمة بعد');
       trx.update(userRef, {
         balance_sy: firebase.firestore.FieldValue.increment(task.reward),
         totalEarned: firebase.firestore.FieldValue.increment(task.reward),
@@ -3696,8 +2972,8 @@ async function collectInviteReward(taskId){
     STATE.user = (await userRef.get()).data();
     updateUI();
     const hasNext = inviteState(STATE.user).idx >= 0;
-    toast('🎉 +' + task.reward + ' ' + (LANG==='ar'?'ل.س':'SYP') + (hasNext ? ' — ' + t('inviteNextStarted') : ' — ' + t('inviteTaskDone')), 'ok');
-  }catch(e){ toast(e.message || t('collectFailed'), 'err'); }
+    toast('🎉 +' + task.reward + ' ل.س' + (hasNext ? ' — المهمة التالية بدأت من 0' : ' — أنهيت كل مهمات الدعوة!'), 'ok');
+  }catch(e){ toast(e.message || 'فشل استلام المكافأة', 'err'); }
   finally{ STATE.isSubmitting = false; }
 }
 
@@ -3715,129 +2991,116 @@ function renderTasks(){
   const s = inviteState(u);
   const T = CONFIG.inviteTasks, N = T.length;
   const ST = CONFIG.specialTasks;
-  const SYP = LANG==='ar'?'ل.س':'SYP';
   let html = '';
 
-  html += '<div class="grp"><span>' + t('specialTasks') + '</span><small>2</small></div>';
+  html += '<div class="grp"><span>مهمات خاصة</span><small>2</small></div>';
 
   const collectCount = u.miningCollectCount || 0;
   const collect5Done = !!u.collect5RewardClaimed;
   const collect5Ready = collectCount >= 5 && !collect5Done;
   const collect5Progress = Math.min(collectCount, 5);
-  const collect5Title = LANG==='en' ? ST.collect5.titleEn : ST.collect5.title;
-  const collect5Desc = LANG==='en' ? ST.collect5.descEn : ST.collect5.desc;
 
   if (collect5Done) {
     html += '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
-      '<div class="qrow__info"><div class="qrow__t">' + collect5Title + '</div>' +
-      '<div class="qrow__d">' + t('completedAlready') + '</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ' + SYP + '</span></div>';
+      '<div class="qrow__info"><div class="qrow__t">' + ST.collect5.title + '</div>' +
+      '<div class="qrow__d">تم استلام المكافأة</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ل.س</span></div>';
   } else if (collect5Ready) {
     html += '<div class="fq fq--ready">' +
-      '<div class="fq__top"><span class="fq__badge">' + t('jahizLilistilam') + '</span>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ' + SYP + '</span></div>' +
+      '<div class="fq__top"><span class="fq__badge">جاهزة للاستلام</span>' +
+        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ل.س</span></div>' +
       '<div class="fq__body">' +
         '<div class="ring ring--lg">' + ringSvg(1) +
           '<div class="ring__n"><b>5</b><small>/ 5</small></div></div>' +
-        '<div class="fq__txt"><div class="fq__t">' + collect5Title + '</div>' +
-          '<div class="fq__d">' + collect5Desc + '</div>' +
-          '<span class="fq__left">' + t('completed') + '</span></div>' +
+        '<div class="fq__txt"><div class="fq__t">' + ST.collect5.title + '</div>' +
+          '<div class="fq__d">' + ST.collect5.desc + '</div>' +
+          '<span class="fq__left">اكتملت — استلم مكافأتك</span></div>' +
       '</div>' +
-      '<button class="fq__btn fq__btn--collect" data-special="collect5"><i class="fas fa-hand-holding-usd"></i> ' + t('claimReward') + ' ' + ST.collect5.reward + ' ' + SYP + '</button>' +
+      '<button class="fq__btn fq__btn--collect" data-special="collect5"><i class="fas fa-hand-holding-usd"></i> استلام ' + ST.collect5.reward + ' ل.س</button>' +
     '</div>';
   } else {
     html += '<div class="fq">' +
-      '<div class="fq__top"><span class="fq__badge">' + t('qidTaqadum') + '</span>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ' + SYP + '</span></div>' +
+      '<div class="fq__top"><span class="fq__badge">قيد التقدم</span>' +
+        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ل.س</span></div>' +
       '<div class="fq__body">' +
         '<div class="ring ring--lg">' + ringSvg(collect5Progress / 5) +
           '<div class="ring__n"><b>' + collect5Progress + '</b><small>/ 5</small></div></div>' +
-        '<div class="fq__txt"><div class="fq__t">' + collect5Title + '</div>' +
-          '<div class="fq__d">' + collect5Desc + '</div>' +
-          '<span class="fq__left">' + t('remainingInvites') + ' ' + Math.max(0, 5 - collectCount) + ' ' + t('collectCount') + '</span></div>' +
+        '<div class="fq__txt"><div class="fq__t">' + ST.collect5.title + '</div>' +
+          '<div class="fq__d">' + ST.collect5.desc + '</div>' +
+          '<span class="fq__left">باقي ' + Math.max(0, 5 - collectCount) + ' جمع</span></div>' +
       '</div>' +
-      '<button class="fq__btn fq__btn--go" data-go="home"><i class="fas fa-water"></i> ' + t('goToMining') + '</button>' +
+      '<button class="fq__btn fq__btn--go" data-go="home"><i class="fas fa-water"></i> اذهب للتعدين</button>' +
     '</div>';
   }
 
   const firstBuyDone = !!u.firstBuyRewardClaimed;
   const firstBuyReady = u.hasPurchasedPlan && !firstBuyDone;
-  const firstBuyTitle = LANG==='en' ? ST.firstBuy.titleEn : ST.firstBuy.title;
-  const firstBuyDesc = LANG==='en' ? ST.firstBuy.descEn : ST.firstBuy.desc;
 
   if (firstBuyDone) {
     html += '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
-      '<div class="qrow__info"><div class="qrow__t">' + firstBuyTitle + '</div>' +
-      '<div class="qrow__d">' + t('completedAlready') + '</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ' + SYP + '</span></div>';
+      '<div class="qrow__info"><div class="qrow__t">' + ST.firstBuy.title + '</div>' +
+      '<div class="qrow__d">تم استلام المكافأة</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>';
   } else if (firstBuyReady) {
     html += '<div class="fq fq--ready">' +
-      '<div class="fq__top"><span class="fq__badge">' + t('jahizLilistilam') + '</span>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ' + SYP + '</span></div>' +
+      '<div class="fq__top"><span class="fq__badge">جاهزة للاستلام</span>' +
+        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>' +
       '<div class="fq__body">' +
         '<div class="ring ring--lg">' + ringSvg(1) +
           '<div class="ring__n"><b><i class="fas fa-check"></i></b></div></div>' +
-        '<div class="fq__txt"><div class="fq__t">' + firstBuyTitle + '</div>' +
-          '<div class="fq__d">' + firstBuyDesc + '</div>' +
-          '<span class="fq__left">' + t('completed') + '</span></div>' +
+        '<div class="fq__txt"><div class="fq__t">' + ST.firstBuy.title + '</div>' +
+          '<div class="fq__d">' + ST.firstBuy.desc + '</div>' +
+          '<span class="fq__left">اكتملت — استلم مكافأتك</span></div>' +
       '</div>' +
-      '<button class="fq__btn fq__btn--collect" data-special="firstBuy"><i class="fas fa-hand-holding-usd"></i> ' + t('claimReward') + ' ' + ST.firstBuy.reward + ' ' + SYP + '</button>' +
+      '<button class="fq__btn fq__btn--collect" data-special="firstBuy"><i class="fas fa-hand-holding-usd"></i> استلام ' + ST.firstBuy.reward + ' ل.س</button>' +
     '</div>';
   } else {
     html += '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
-      '<div class="qrow__info"><div class="qrow__t">' + firstBuyTitle + '</div>' +
-      '<div class="qrow__d">' + firstBuyDesc + '</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ' + SYP + '</span></div>';
+      '<div class="qrow__info"><div class="qrow__t">' + ST.firstBuy.title + '</div>' +
+      '<div class="qrow__d">' + ST.firstBuy.desc + '</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>';
   }
 
-  html += '<div class="grp"><span>' + t('inviteTasks') + '</span><small>' + T.filter(t => s.claimed[t.id]).length + ' / ' + N + '</small></div>';
-  html += '<div class="hint"><i class="fas fa-info-circle"></i><div>' + t('inviteTasksHint') + '</div></div>';
+  html += '<div class="grp"><span>مهمات الدعوات</span><small>' + T.filter(t => s.claimed[t.id]).length + ' / ' + N + '</small></div>';
+  html += '<div class="hint"><i class="fas fa-info-circle"></i><div>المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>.</div></div>';
 
   if (s.idx >= 0){
     const task = T[s.idx];
-    const taskTitle = LANG==='en' ? task.titleEn : task.title;
-    const taskDesc = LANG==='en' ? task.descEn : task.desc;
     const progress = Math.min(Math.max(s.progress, 0), task.count);
     const ready = progress >= task.count;
     html += '<div class="fq' + (ready ? ' fq--ready' : '') + '">' +
-      '<div class="fq__top"><span class="fq__badge">' + t('taskNumber') + ' ' + (s.idx + 1) + ' ' + t('from') + ' ' + N + '</span>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + task.reward + ' ' + SYP + '</span></div>' +
+      '<div class="fq__top"><span class="fq__badge">المهمة ' + (s.idx + 1) + ' من ' + N + '</span>' +
+        '<span class="rwd"><i class="fas fa-coins"></i> ' + task.reward + ' ل.س</span></div>' +
       '<div class="fq__body">' +
         '<div class="ring ring--lg">' + ringSvg(progress / task.count) +
           '<div class="ring__n"><b>' + progress + '</b><small>/ ' + task.count + '</small></div></div>' +
-        '<div class="fq__txt"><div class="fq__t">' + escapeHtml(taskTitle) + '</div>' +
-          '<div class="fq__d">' + escapeHtml(taskDesc) + '</div>' +
-          '<span class="fq__left">' + (ready ? t('completed') : t('remainingInvites') + ' ' + (task.count - progress) + ' ' + t('invite')) + '</span></div>' +
+        '<div class="fq__txt"><div class="fq__t">' + escapeHtml(task.title) + '</div>' +
+          '<div class="fq__d">' + escapeHtml(task.desc) + '</div>' +
+          '<span class="fq__left">' + (ready ? 'اكتملت — استلم مكافأتك' : 'باقي ' + (task.count - progress) + ' دعوة') + '</span></div>' +
       '</div>' +
       (ready
-        ? '<button class="fq__btn fq__btn--collect" data-task="' + task.id + '"><i class="fas fa-hand-holding-usd"></i> ' + t('claimReward') + ' ' + task.reward + ' ' + SYP + '</button>'
-        : '<button class="fq__btn fq__btn--go" data-go="referral"><i class="fas fa-share-alt"></i> ' + t('inviteNow') + '</button>') +
+        ? '<button class="fq__btn fq__btn--collect" data-task="' + task.id + '"><i class="fas fa-hand-holding-usd"></i> استلام ' + task.reward + ' ل.س</button>'
+        : '<button class="fq__btn fq__btn--go" data-go="referral"><i class="fas fa-share-alt"></i> ادعُ أصدقاءك الآن</button>') +
     '</div>';
   } else {
     html += '<div class="fq fq--all"><div class="fq__ok"><i class="fas fa-check"></i></div>' +
-      '<div class="fq__t">' + t('allInvitesDone') + '</div><div class="fq__d">' + t('allInvitesDoneDesc') + '</div></div>';
+      '<div class="fq__t">أنهيت كل مهمات الدعوة</div><div class="fq__d">أحسنت! استمر بدعوة أصدقائك لتكسب مكافأة 10 ل.س عن كل صديق.</div></div>';
   }
 
   const upcoming = T.map((t, i) => ({ t, i })).filter(x => !s.claimed[x.t.id] && x.i !== s.idx);
   if (upcoming.length){
-    html += upcoming.map(x => {
-      const title = LANG==='en' ? x.t.titleEn : x.t.title;
-      return '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
-      '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(title) + '</div>' +
-      '<div class="qrow__d">' + t('opensAfterPrev') + '</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + x.t.reward + ' ' + SYP + '</span></div>';
-    }).join('');
+    html += upcoming.map(x => '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
+      '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(x.t.title) + '</div>' +
+      '<div class="qrow__d">تُفتح بعد استلام مكافأة المهمة السابقة</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + x.t.reward + ' ل.س</span></div>').join('');
   }
 
   const done = T.filter(t => s.claimed[t.id]);
   if (done.length){
-    html += done.map(task => {
-      const title = LANG==='en' ? task.titleEn : task.title;
-      return '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
-      '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(title) + '</div>' +
-      '<div class="qrow__d">' + t('completedAlready') + '</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + task.reward + ' ' + SYP + '</span></div>';
-    }).join('');
+    html += done.map(t => '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
+      '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(t.title) + '</div>' +
+      '<div class="qrow__d">تم استلام المكافأة</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + t.reward + ' ل.س</span></div>').join('');
   }
 
   container.innerHTML = html;
@@ -3870,7 +3133,7 @@ function renderTasks(){
     
   setText('qbNum', doneAll);
   setText('qbOf', '/ ' + totalAll);
-  setText('questSummary', doneAll + ' ' + t('ofText') + ' ' + totalAll + ' ' + t('tasksCompleted'));
+  setText('questSummary', doneAll + ' من ' + totalAll + ' مهمات مكتملة');
   setText('questLeft', fmt(left));
   setText('tileTaskTotal', fmt(totalReward));
   setText('chReward', CONFIG.channelTask.reward);
@@ -3885,31 +3148,32 @@ function renderChannelTask() {
   const u = STATE.user;
 
   if (u.channelRewardClaimed) {
-    status.textContent = t('completedAlready');
+    status.textContent = 'تم استلام المكافأة';
     status.className = 'cq__d cq__d--ok';
     btn.disabled = true;
     btn.className = 'cq__btn cq__btn--done';
-    btn.innerHTML = '<i class="fas fa-check"></i> ' + t('done');
+    btn.innerHTML = '<i class="fas fa-check"></i> مكتملة';
     if (card) card.classList.add('is-done');
   } else if (u.channelJoined) {
-    status.textContent = LANG==='ar'?'منضم — جاهز لاستلام المكافأة':'Joined — ready to claim';
+    status.textContent = 'منضم — جاهز لاستلام المكافأة';
     status.className = 'cq__d cq__d--ok';
     btn.disabled = false;
     btn.className = 'cq__btn cq__btn--collect';
-    btn.innerHTML = '<i class="fas fa-hand-holding-usd"></i> ' + t('collect');
+    btn.innerHTML = '<i class="fas fa-hand-holding-usd"></i> استلام';
     btn.onclick = collectChannelReward;
     if (card) card.classList.remove('is-done');
   } else {
-    status.textContent = t('joinChannelDesc');
+    status.textContent = 'انضم لقناتنا على تيليجرام لتبقى على اطلاع';
     status.className = 'cq__d';
     btn.disabled = false;
     btn.className = 'cq__btn cq__btn--join';
-    btn.innerHTML = '<i class="fab fa-telegram-plane"></i> ' + t('join');
+    btn.innerHTML = '<i class="fab fa-telegram-plane"></i> انضم';
     btn.onclick = verifyChannelJoin;
     if (card) card.classList.remove('is-done');
   }
 }
 
+/* ═══ Navigation ═══ */
 const VIEWS = ['home','store','wallet','referral','tasks','profile'];
 function navigate(view){
   if (!VIEWS.includes(view)) view = 'home';
@@ -3943,10 +3207,10 @@ function bindUI(){
     btn.addEventListener('click', () => navigate(btn.dataset.view));
   });
   $('mineAction').addEventListener('click', onMineClick);
-  $('profCopyId').addEventListener('click', () => copyText($('profId').textContent, t('copyIdDone')));
+  $('profCopyId').addEventListener('click', () => copyText($('profId').textContent, 'تم نسخ المعرف'));
   $('profSupport').addEventListener('click', () => {
     if (!isVerified()){
-      toast(t('supportVerifiedOnly'), 'info');
+      toast('ميزة الدعم المباشر للموثقين فقط', 'info');
       openSubModal();
       return;
     }
@@ -3955,11 +3219,7 @@ function bindUI(){
     else window.open(url, '_blank');
   });
 
-  // Language selector
-  document.querySelectorAll('.lang-opt').forEach(btn => {
-    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
-  });
-
+  // ═══ زر ومودال الاشتراك ═══
   $('pfSubBtn').addEventListener('click', openSubModal);
   $('subClose').addEventListener('click', closeSubModal);
   $('subPayBtn').addEventListener('click', activateSubscription);
@@ -3974,17 +3234,13 @@ function bindUI(){
 }
 
 async function bootstrap(){
-  // Apply saved language first
-  applyLanguage();
-  
   if (!initTelegram()) return;
   $('app').style.display = 'flex';
   
   try{ await loadOrCreateUser(); }
-  catch(e){ console.error('bootstrap', e); toast(t('dataLoadFailed'), 'err'); return; }
+  catch(e){ console.error('bootstrap', e); toast('فشل تحميل البيانات', 'err'); return; }
 
   bindUI();
-  applyLanguage(); // re-apply after user loaded
   updateUI();
   renderMining();
   renderPlans();
@@ -4042,7 +3298,6 @@ async function bootstrap(){
 document.addEventListener('DOMContentLoaded', bootstrap);
 window.navigate = navigate;
 window.closeTamperModal = closeTamperModal;
-window.setLanguage = setLanguage;
 </script>
 </body>
 </html>
