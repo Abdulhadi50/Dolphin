@@ -529,63 +529,68 @@ body.lang-en .pod{direction:ltr}
 }
 .pf-id i{font-size:13px;color:var(--blue)}
 
-/* ═══ محدد اللغة ═══ */
+/* ═══ محدد اللغة - تصميم صغير مضغوط ═══ */
 .pf-lang{
   width:100%;margin-top:14px;
   background:rgba(255,255,255,.05);
   border:1px solid var(--glass-line);
-  border-radius:22px;padding:14px;
+  border-radius:18px;padding:12px;
 }
 .pf-lang__head{
-  display:flex;align-items:center;gap:8px;
-  font-size:12.5px;font-weight:800;color:#fff;
-  margin-bottom:12px;justify-content:center;
+  display:flex;align-items:center;gap:7px;
+  font-size:11.5px;font-weight:800;color:#fff;
+  margin-bottom:10px;justify-content:center;
+  letter-spacing:.2px;
 }
-.pf-lang__head i{color:var(--blue);font-size:14px}
+.pf-lang__head i{color:var(--blue);font-size:12px}
 .pf-lang__opts{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
 }
 .lang-opt{
   position:relative;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:8px;padding:12px 8px;
+  display:flex;flex-direction:row;align-items:center;justify-content:center;
+  gap:8px;padding:9px 10px;
   background:rgba(0,0,0,.28);
-  border:2px solid rgba(255,255,255,.1);
-  border-radius:18px;cursor:pointer;
+  border:1.5px solid rgba(255,255,255,.1);
+  border-radius:14px;cursor:pointer;
   transition:all .25s cubic-bezier(.2,.8,.2,1);
   overflow:hidden;
 }
 .lang-opt:active{transform:scale(.96)}
 .lang-opt__flag{
-  width:48px;height:36px;border-radius:8px;overflow:hidden;
-  box-shadow:0 2px 8px rgba(0,0,0,.4);
+  width:26px;height:20px;border-radius:4px;overflow:hidden;
+  box-shadow:0 1px 4px rgba(0,0,0,.4);
   border:1px solid rgba(255,255,255,.15);
   flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
 }
 .lang-opt__flag svg{width:100%;height:100%;display:block}
 .lang-opt__name{
-  font-size:13px;font-weight:800;color:#fff;
-  letter-spacing:.3px;
-}
-.lang-opt__native{
-  font-size:10.5px;font-weight:600;color:var(--text-3);
-  margin-top:-4px;
+  font-size:12px;font-weight:800;color:#fff;
+  letter-spacing:.2px;white-space:nowrap;
 }
 .lang-opt--active{
   background:linear-gradient(135deg,rgba(0,122,255,.28),rgba(0,122,255,.12));
   border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(0,122,255,.15),0 8px 20px rgba(0,122,255,.25);
+  box-shadow:0 0 0 2px rgba(0,122,255,.15),0 4px 12px rgba(0,122,255,.25);
 }
 .lang-opt--active::after{
   content:'\f00c';
   font-family:'Font Awesome 6 Free';font-weight:900;
-  position:absolute;top:8px;left:8px;
-  width:20px;height:20px;border-radius:50%;
+  position:absolute;top:-4px;left:-4px;
+  width:16px;height:16px;border-radius:50%;
   background:var(--blue);color:#fff;
-  display:grid;place-items:center;font-size:9px;
+  display:grid;place-items:center;font-size:8px;
   animation:checkPop .3s cubic-bezier(.34,1.5,.64,1);
+  border:2px solid #000;
 }
 @keyframes checkPop{from{transform:scale(0)}to{transform:scale(1)}}
+
+@media (max-width:360px){
+  .lang-opt__flag{width:22px;height:17px}
+  .lang-opt__name{font-size:11px}
+  .lang-opt{padding:8px 6px;gap:6px}
+}
 
 /* شارة "موثق" في الملف */
 .pf-verified-badge{
@@ -1313,75 +1318,70 @@ body.lang-en .sub-box__close{left:auto;right:12px}
           <i class="fas fa-fingerprint"></i><span id="profId">--------</span><i class="fas fa-copy"></i>
         </button>
 
-        <!-- ═══ محدد اللغة ═══ -->
-        <div class="pf-lang">
-          <div class="pf-lang__head">
-            <i class="fas fa-globe"></i>
-            <span data-i18n="appLanguage">لغة التطبيق</span>
-          </div>
-          <div class="pf-lang__opts">
-            <button class="lang-opt" data-lang="ar" aria-label="العربية">
-              <div class="lang-opt__flag">
-                <!-- علم سوريا الجديد 2026 - الأخضر -->
-                <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                  <rect width="60" height="13.33" fill="#006400"/>
-                  <rect y="13.33" width="60" height="13.34" fill="#FFFFFF"/>
-                  <rect y="26.67" width="60" height="13.33" fill="#000000"/>
-                  <g fill="#CE1126" transform="translate(30,20)">
-                    <path d="M0,-3.2 L0.94,-0.99 L3.04,-0.99 L1.34,0.38 L1.9,2.59 L0,1.24 L-1.9,2.59 L-1.34,0.38 L-3.04,-0.99 L-0.94,-0.99 Z"/>
-                    <path d="M0,-3.2 L0.94,-0.99 L3.04,-0.99 L1.34,0.38 L1.9,2.59 L0,1.24 L-1.9,2.59 L-1.34,0.38 L-3.04,-0.99 L-0.94,-0.99 Z" transform="translate(-7,0)"/>
-                    <path d="M0,-3.2 L0.94,-0.99 L3.04,-0.99 L1.34,0.38 L1.9,2.59 L0,1.24 L-1.9,2.59 L-1.34,0.38 L-3.04,-0.99 L-0.94,-0.99 Z" transform="translate(7,0)"/>
-                  </g>
-                </svg>
-              </div>
-              <div class="lang-opt__name">العربية</div>
-              <div class="lang-opt__native">Arabic</div>
-            </button>
-            <button class="lang-opt" data-lang="en" aria-label="English">
-              <div class="lang-opt__flag">
-                <!-- علم الولايات المتحدة -->
-                <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                  <rect width="60" height="40" fill="#FFFFFF"/>
-                  <g fill="#B22234">
-                    <rect y="0" width="60" height="3.08"/>
-                    <rect y="6.15" width="60" height="3.08"/>
-                    <rect y="12.31" width="60" height="3.08"/>
-                    <rect y="18.46" width="60" height="3.08"/>
-                    <rect y="24.62" width="60" height="3.08"/>
-                    <rect y="30.77" width="60" height="3.08"/>
-                    <rect y="36.92" width="60" height="3.08"/>
-                  </g>
-                  <rect width="24" height="21.54" fill="#3C3B6E"/>
-                  <g fill="#FFFFFF">
-                    <circle cx="3" cy="3" r="1"/>
-                    <circle cx="9" cy="3" r="1"/>
-                    <circle cx="15" cy="3" r="1"/>
-                    <circle cx="21" cy="3" r="1"/>
-                    <circle cx="6" cy="6.5" r="1"/>
-                    <circle cx="12" cy="6.5" r="1"/>
-                    <circle cx="18" cy="6.5" r="1"/>
-                    <circle cx="3" cy="10" r="1"/>
-                    <circle cx="9" cy="10" r="1"/>
-                    <circle cx="15" cy="10" r="1"/>
-                    <circle cx="21" cy="10" r="1"/>
-                    <circle cx="6" cy="13.5" r="1"/>
-                    <circle cx="12" cy="13.5" r="1"/>
-                    <circle cx="18" cy="13.5" r="1"/>
-                    <circle cx="3" cy="17" r="1"/>
-                    <circle cx="9" cy="17" r="1"/>
-                    <circle cx="15" cy="17" r="1"/>
-                    <circle cx="21" cy="17" r="1"/>
-                    <circle cx="6" cy="20.5" r="1"/>
-                    <circle cx="12" cy="20.5" r="1"/>
-                    <circle cx="18" cy="20.5" r="1"/>
-                  </g>
-                </svg>
-              </div>
-              <div class="lang-opt__name">English</div>
-              <div class="lang-opt__native">الإنجليزية</div>
-            </button>
-          </div>
-        </div>
+<!-- ═══ محدد اللغة (داخل .pf-top بعد pf-id) ═══ -->
+<div class="pf-lang">
+  <div class="pf-lang__head">
+    <i class="fas fa-globe"></i>
+    <span data-i18n="appLanguage">لغة التطبيق</span>
+  </div>
+  <div class="pf-lang__opts">
+    <button class="lang-opt" data-lang="ar" aria-label="العربية">
+      <div class="lang-opt__flag">
+        <!-- علم سوريا الجديد 2026 -->
+        <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 513 357.071" preserveAspectRatio="none">
+          <path fill-rule="nonzero" d="M28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v300.111c0 15.488-12.671 28.16-28.159 28.16H28.477c-15.486 0-28.157-12.672-28.157-28.16V28.48C.32 12.992 12.991.32 28.477.32z" />
+          <path fill="#fff" fill-rule="nonzero" d="M512.68 234.625H.32V28.48C.32 12.992 12.991.32 28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v206.145z" />
+          <path fill="#007A3D" fill-rule="nonzero" d="M512.68 119.129H.32V28.48C.32 12.992 12.991.32 28.477.32h456.044c15.488 0 28.159 12.672 28.159 28.16v90.649z" />
+          <path fill="#CE1126" fill-rule="nonzero" d="M228.751 217.327l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776zm-128.085 0l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776zm256.178 0l27.746-85.393 27.746 85.393-72.641-52.776h89.788l-72.639 52.776z" />
+          <rect fill="none" stroke="#CCC" stroke-width=".64" stroke-miterlimit="22.926" x=".32" y=".319" width="512.359" height="356.43" rx="27.231" ry="28.159" />
+        </svg>
+      </div>
+      <div class="lang-opt__name">العربية</div>
+    </button>
+    <button class="lang-opt" data-lang="en" aria-label="English">
+      <div class="lang-opt__flag">
+        <!-- علم الولايات المتحدة -->
+        <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <rect width="60" height="40" fill="#FFFFFF" />
+          <g fill="#B22234">
+            <rect y="0" width="60" height="3.08" />
+            <rect y="6.15" width="60" height="3.08" />
+            <rect y="12.31" width="60" height="3.08" />
+            <rect y="18.46" width="60" height="3.08" />
+            <rect y="24.62" width="60" height="3.08" />
+            <rect y="30.77" width="60" height="3.08" />
+            <rect y="36.92" width="60" height="3.08" />
+          </g>
+          <rect width="24" height="21.54" fill="#3C3B6E" />
+          <g fill="#FFFFFF">
+            <circle cx="3" cy="3" r="1" />
+            <circle cx="9" cy="3" r="1" />
+            <circle cx="15" cy="3" r="1" />
+            <circle cx="21" cy="3" r="1" />
+            <circle cx="6" cy="6.5" r="1" />
+            <circle cx="12" cy="6.5" r="1" />
+            <circle cx="18" cy="6.5" r="1" />
+            <circle cx="3" cy="10" r="1" />
+            <circle cx="9" cy="10" r="1" />
+            <circle cx="15" cy="10" r="1" />
+            <circle cx="21" cy="10" r="1" />
+            <circle cx="6" cy="13.5" r="1" />
+            <circle cx="12" cy="13.5" r="1" />
+            <circle cx="18" cy="13.5" r="1" />
+            <circle cx="3" cy="17" r="1" />
+            <circle cx="9" cy="17" r="1" />
+            <circle cx="15" cy="17" r="1" />
+            <circle cx="21" cy="17" r="1" />
+            <circle cx="6" cy="20.5" r="1" />
+            <circle cx="12" cy="20.5" r="1" />
+            <circle cx="18" cy="20.5" r="1" />
+          </g>
+        </svg>
+      </div>
+      <div class="lang-opt__name">English</div>
+    </button>
+  </div>
+</div>
       </div>
 
       <div class="pf-bal wavy">
