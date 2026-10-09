@@ -14,22 +14,14 @@
 :root{
   --blue:#007AFF;--blue-l:#4DA3FF;--blue-d:#0062CC;--blue-dd:#003F8A;
   --yellow:#FFD60A;--green:#30D158;--red:#FF453A;
-  --bg:#000000;--card:#007AFF;
-  --inset:rgba(0,0,0,.26);--inset-2:rgba(0,0,0,.38);--hi:rgba(255,255,255,.16);
+  --inset:rgba(0,0,0,.26);--hi:rgba(255,255,255,.16);
   --glass:rgba(255,255,255,.08);--glass-line:rgba(255,255,255,.12);
-  --text:#FFFFFF;--text-2:rgba(255,255,255,.8);--text-3:rgba(255,255,255,.58);
-  --line:rgba(255,255,255,.12);--line-2:rgba(255,255,255,.08);
-  --fill:rgba(0,0,0,.26);--fill-2:rgba(0,0,0,.38);
-  --ink:#000;--ink-2:#0A0A0C;--ink-3:#141416;
-  --sea:#007AFF;--sea-2:#3395FF;--sea-l:#7DB9FF;--sea-wash:rgba(0,122,255,.16);--sea-pale:rgba(0,122,255,.4);
-  --amber:#FFD60A;--amber-l:#FFE66D;--amber-pale:rgba(255,214,10,.18);
-  --coral:#FF6B63;--coral-2:#FF453A;--emerald:#30D158;
-  --paper:#000;--white:#fff;--deep:#003F8A;--deep-2:#007AFF;
-  --r-xs:8px;--r-sm:12px;--r-md:16px;--r-lg:22px;--r-xl:28px;
-  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-8:32px;
+  --text-2:rgba(255,255,255,.8);--text-3:rgba(255,255,255,.58);
+  --sea-wash:rgba(0,122,255,.16);--sea-pale:rgba(0,122,255,.4);
+  --r-xl:28px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-8:32px;
   --safe:env(safe-area-inset-bottom,0px);
   --dock-h:68px;--dock-gap:12px;
-  --f-xs:11px;--f-sm:12.5px;--f-base:14px;--f-md:15px;--f-lg:17px;--f-xl:20px;--f-2xl:26px;
+  --f-xs:11px;--f-sm:12.5px;--f-base:14px;--f-md:15px;--f-lg:17px;--f-xl:20px;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --mkA:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 90' preserveAspectRatio='none'%3E%3Cpath d='M0 45C150 5 150 5 300 45S450 85 600 45V90H0Z'/%3E%3C/svg%3E");
   --mkB:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 90' preserveAspectRatio='none'%3E%3Cpath d='M0 45C100 20 200 70 300 45S500 70 600 45V90H0Z'/%3E%3C/svg%3E");
@@ -41,9 +33,13 @@ body{font-family:'IBM Plex Sans Arabic',-apple-system,sans-serif;background:#000
   overflow:hidden;direction:rtl;-webkit-font-smoothing:antialiased;overscroll-behavior:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;font-size:inherit}
 input{font-family:inherit;color:inherit;font-size:inherit}
-img{max-width:100%;display:block;-webkit-user-drag:none}
+img{max-width:100%;display:block;pointer-events:none;-webkit-user-drag:none;user-drag:none}
 ::-webkit-scrollbar{display:none}
 .main{scrollbar-width:none}
+
+/* منع تحديد النص والنسخ */
+body,.app,.app *{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
 
 .app{position:relative;max-width:480px;margin:0 auto;height:100vh;height:100dvh;background:#000;overflow:hidden;display:flex;flex-direction:column}
 .main{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
@@ -78,7 +74,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   overflow:hidden;flex-shrink:0;color:#fff;font-size:var(--f-lg);cursor:pointer;transition:transform .15s}
 .avatar:active{transform:scale(.94)}
 .avatar img{width:100%;height:100%;object-fit:cover}
-.vbadge{width:18px;height:18px;flex-shrink:0}
 .topbar{display:flex;align-items:center;gap:12px;padding:2px 0 18px}
 .topbar__meta{flex:1;min-width:0}
 .topbar__hello{font-size:12px;color:var(--blue);font-weight:700;margin-bottom:2px}
@@ -101,8 +96,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .sec-head__title i{width:30px;height:30px;border-radius:50%;background:var(--sea-wash);color:var(--blue);display:grid;place-items:center;font-size:12.5px}
 .sec-head__meta{background:var(--glass);border:1px solid var(--glass-line);padding:4px 12px;border-radius:20px;font-size:11.5px;color:#fff;font-weight:700}
 
-.mining-card{position:relative;overflow:hidden;
-  background:linear-gradient(160deg,#7769D8 0%,#311D96 100%);
+.mining-card{position:relative;overflow:hidden;background:linear-gradient(160deg,#7769D8 0%,#311D96 100%);
   border:0;border-radius:var(--r-xl);padding:var(--sp-5) var(--sp-4);margin-bottom:14px}
 .mining-card::before{content:'';position:absolute;top:-90px;right:-90px;width:240px;height:240px;border-radius:50%;
   background:radial-gradient(circle,rgba(255,255,255,.18),transparent 65%);pointer-events:none}
@@ -295,10 +289,23 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .qrow--lock .rwd{background:var(--sea-wash);color:var(--blue)}
 .qrow--lock .rwd i{color:var(--blue)}
 
+/* بطاقة VIP */
+.vip{position:relative;overflow:hidden;border-radius:28px;padding:18px 16px;margin-bottom:14px;background:linear-gradient(160deg,#4DA3FF 0%,#003F8A 100%);color:#fff}
+.vip--active{background:linear-gradient(160deg,#30D158 0%,#0A5C2A 100%)}
+.vip__head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.vip__ic{width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.28);display:grid;place-items:center;font-size:22px;color:var(--yellow);flex-shrink:0}
+.vip__t{font-size:17px;font-weight:800}
+.vip__s{font-size:11.5px;font-weight:600;color:rgba(255,255,255,.85)}
+.vip__list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.vip__row{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;background:rgba(0,0,0,.22);padding:9px 12px;border-radius:14px}
+.vip__row i{color:var(--yellow);width:16px;text-align:center}
+.vip__btn{width:100%;min-height:52px;border-radius:18px;font-size:14.5px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:#003F8A;transition:transform .15s}
+.vip__btn:active:not([disabled]){transform:scale(.98)}
+.vip__btn[disabled]{opacity:.7;cursor:default}
+
 .plans-grid{display:flex;flex-direction:column;gap:12px}
 .plan{background:#141414;border:1px solid #18252E;border-radius:28px;padding:16px;position:relative;overflow:hidden}
 .plan--current{outline:2.5px solid #007AFF;outline-offset:-2.5px}
-.plan--locked{opacity:.55}
 .plan__top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
 .plan__icon{width:60px;height:60px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:32px;line-height:1;border:1.5px solid #007AFF !important}
 .plan__icon span{animation:planIconFloat 3s ease-in-out infinite;display:block}
@@ -314,7 +321,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .plan__stat-lbl{font-size:11px;color:var(--text-2);font-weight:700;display:flex;align-items:center;gap:5px}
 .plan__stat-lbl i{font-size:10.5px}
 .plan__stat-val{font-size:15px;font-weight:800;direction:ltr;font-variant-numeric:tabular-nums;text-align:right;color:#4DA3FF}
-.plan__stat-val.amber{color:#4DA3FF}
 .plan__bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid #18252E}
 .plan__price{display:flex;flex-direction:column;gap:2px}
 .plan__price-lbl{font-size:10.5px;color:var(--text-2);font-weight:700}
@@ -374,7 +380,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .btn[disabled]{opacity:.55;cursor:not-allowed}
 .btn--primary,.btn--sea{background:#007AFF;color:#fff}
 .btn--outline{background:#18252E;color:#fff}
-#profSupport{background:#18252E;border:1px solid #18252E}
 .alert{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:18px;font-size:12.5px;font-weight:600;line-height:1.75;margin-bottom:14px;background:var(--sea-wash);border:1px solid var(--sea-pale);color:#fff}
 .alert i{margin-top:4px;flex-shrink:0;font-size:13px;color:var(--blue)}
 .alert--warn i{color:var(--yellow)}
@@ -403,7 +408,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .info-row__lbl{color:var(--text-2);font-weight:600;display:flex;align-items:center;gap:6px}
 .info-row__val{font-weight:800;direction:ltr;font-variant-numeric:tabular-nums}
 .info-row__val--sea{color:#fff}.info-row__val--amber{color:var(--yellow)}.info-row__val--muted{color:var(--text-2)}
-.info-row__val--green{color:#30D158}
 .step{display:flex;align-items:flex-start;gap:12px;padding:16px;background:#141414;border:1px solid #18252E;border-radius:28px;margin-bottom:12px}
 .step__num{width:34px;height:34px;border-radius:50%;background:#007AFF;color:#fff;display:grid;place-items:center;font-size:14px;font-weight:800;flex-shrink:0}
 .step__body{flex:1;min-width:0}
@@ -451,7 +455,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .pod__av img{width:100%;height:100%;object-fit:cover}
 .pod__name{display:flex;align-items:center;justify-content:center;gap:4px;max-width:100%;margin-top:8px;font-size:12.5px;font-weight:800;color:#fff}
 .pod__name span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.pod__name .vbadge{width:14px;height:14px;flex-shrink:0}
 .pod__cnt{font-size:11.5px;color:var(--text-2);font-weight:700;margin-top:1px}
 .pod__cnt b{color:#fff;font-weight:800}
 .pod__base{width:100%;margin-top:8px;border-radius:16px 16px 0 0;display:grid;place-items:center;font-size:22px;font-weight:800;color:#1A1A1A;background:var(--rc)}
@@ -466,80 +469,28 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .lrow__info{flex:1;min-width:0}
 .lrow__name{display:flex;align-items:center;gap:5px;font-size:13.5px;font-weight:700;color:#fff}
 .lrow__name span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.lrow__name .vbadge{width:16px;height:16px;flex-shrink:0}
 .lrow__cnt{font-size:12px;color:#fff;font-weight:800;background:#007AFF;padding:4px 11px;border-radius:20px;white-space:nowrap}
 .me-tag{font-size:9.5px;font-weight:800;background:#fff;color:var(--blue);padding:1px 7px;border-radius:10px;flex-shrink:0;font-style:normal}
 .lb__empty{padding:28px 16px;text-align:center;color:var(--text-2)}
 .lb__empty i{font-size:38px;display:block;margin-bottom:10px;opacity:.5}
 .lb__empty p{font-size:13px;font-weight:600}
-.vbadge-fb{color:#fff;font-size:13px;flex-shrink:0}
 
-/* ═══ الملف الشخصي ═══ */
-.pf-top{
-  position:relative;
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-  padding:26px 16px 22px;margin-bottom:14px;
-  background:#141414;border:1px solid #18252E;border-radius:28px;
-  overflow:hidden;
-}
-.pf-top::before{
-  content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
+/* الملف الشخصي */
+.pf-top{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:26px 16px 22px;margin-bottom:14px;
+  background:#141414;border:1px solid #18252E;border-radius:28px;overflow:hidden}
+.pf-top::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23007AFF' stroke-width='0.7' opacity='0.35'%3E%3Ccircle cx='30' cy='40' r='15'/%3E%3Ccircle cx='170' cy='60' r='20'/%3E%3Ccircle cx='100' cy='30' r='10'/%3E%3Ccircle cx='50' cy='150' r='18'/%3E%3Ccircle cx='150' cy='160' r='12'/%3E%3Ccircle cx='80' cy='110' r='8'/%3E%3Cpath d='M10 90 Q 50 70 90 90 T 190 90'/%3E%3Cpath d='M10 130 Q 60 110 110 130 T 190 130'/%3E%3Cpath d='M0 180 Q 40 165 80 180 T 160 180'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:180px 180px;
-  background-repeat:repeat;
-}
+  background-size:180px 180px;background-repeat:repeat}
 .pf-top>*{position:relative;z-index:1}
-.pf-av{
-  width:118px;height:118px;border-radius:50%;
-  border:3px solid var(--blue);
-  padding:5px;display:grid;place-items:center;overflow:hidden;
-  margin-bottom:14px;color:var(--blue);font-size:44px;
-  background:rgba(0,122,255,.08);
-}
+.pf-av{width:118px;height:118px;border-radius:50%;border:3px solid var(--blue);padding:5px;display:grid;place-items:center;overflow:hidden;
+  margin-bottom:14px;color:var(--blue);font-size:44px;background:rgba(0,122,255,.08)}
 .pf-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.pf-name{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  flex-wrap:wrap;font-size:22px;font-weight:800;color:#fff;
-  word-break:break-word;margin-bottom:12px;
-}
-.pf-id{
-  display:inline-flex;align-items:center;gap:10px;padding:9px 18px;
-  border-radius:30px;background:rgba(255,255,255,.06);
-  border:1px solid var(--glass-line);color:#fff;font-weight:700;
-  transition:transform .15s;
-}
+.pf-name{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-size:22px;font-weight:800;color:#fff;word-break:break-word;margin-bottom:12px}
+.pf-id{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:30px;background:rgba(255,255,255,.06);
+  border:1px solid var(--glass-line);color:#fff;font-weight:700;transition:transform .15s}
 .pf-id:active{transform:scale(.97)}
-.pf-id span{
-  font-family:var(--mono);font-size:14.5px;font-weight:800;
-  letter-spacing:2px;direction:ltr;
-}
+.pf-id span{font-family:var(--mono);font-size:14.5px;font-weight:800;letter-spacing:2px;direction:ltr}
 .pf-id i{font-size:13px;color:var(--blue)}
-
-/* شارة "موثق" في الملف */
-.pf-verified-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:10.5px;font-weight:800;
-  padding:4px 10px;border-radius:20px;
-  background:rgba(0,122,255,.16);color:#4DA3FF;
-  border:1px solid rgba(0,122,255,.35);
-}
-
-/* زر الاشتراك */
-.pf-sub-btn{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;min-height:50px;margin-top:12px;padding:0 16px;
-  border-radius:18px;font-size:14px;font-weight:800;
-  background:linear-gradient(135deg,#4DA3FF 0%,#007AFF 100%);
-  color:#fff;transition:transform .15s;
-  position:relative;overflow:hidden;
-}
-.pf-sub-btn:active{transform:scale(.98)}
-.pf-sub-btn i{font-size:15px}
-.pf-sub-btn--verified{
-  background:rgba(48,209,88,.15);color:#30D158;
-  border:1px solid rgba(48,209,88,.4);
-}
-
 .pf-bal{display:flex;align-items:center;gap:14px;background:var(--blue);border-radius:28px;padding:18px 16px 26px;margin-bottom:10px}
 .pf-bal__lbl{font-size:12px;font-weight:700;color:var(--text-2)}
 .pf-bal__row{display:flex;align-items:baseline;gap:6px}
@@ -556,135 +507,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 .pf-row__ic{width:38px;height:38px;border-radius:50%;background:var(--inset);display:grid;place-items:center;font-size:14px;flex-shrink:0}
 .pf-row__lbl{flex:1;font-size:13.5px;font-weight:600;color:var(--text-2)}
 .pf-row__val{font-size:14px;font-weight:800}
-
-/* مودال الاشتراك */
-.sub-modal{
-  position:fixed;inset:0;z-index:9500;
-  background:rgba(0,0,0,.82);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  display:none;align-items:center;justify-content:center;padding:18px;
-}
-.sub-modal.show{display:flex;animation:fadeIn .25s ease}
-.sub-box{
-  background:#0B0B0D;
-  border:1px solid var(--sea-pale);
-  border-radius:28px;
-  padding:22px 18px 20px;
-  max-width:400px;width:100%;
-  max-height:92vh;overflow-y:auto;
-  position:relative;
-  animation:subPop .35s cubic-bezier(.34,1.5,.64,1);
-}
-@keyframes subPop{from{opacity:0;transform:scale(.92) translateY(10px)}to{opacity:1;transform:none}}
-.sub-box::-webkit-scrollbar{display:none}
-.sub-box__close{
-  position:absolute;top:12px;left:12px;
-  width:34px;height:34px;border-radius:50%;
-  background:rgba(255,255,255,.08);color:#fff;
-  display:grid;place-items:center;font-size:13px;
-  transition:transform .15s;
-}
-.sub-box__close:active{transform:scale(.9)}
-
-.sub-hero{
-  text-align:center;padding:8px 0 18px;
-}
-.sub-hero__icon{
-  width:76px;height:76px;border-radius:50%;
-  background:linear-gradient(135deg,#4DA3FF 0%,#007AFF 100%);
-  display:grid;place-items:center;
-  font-size:34px;color:#fff;
-  margin:0 auto 14px;
-  box-shadow:0 8px 24px rgba(0,122,255,.45);
-  position:relative;
-}
-.sub-hero__icon::after{
-  content:'';position:absolute;inset:-6px;
-  border-radius:50%;border:2px dashed rgba(0,122,255,.4);
-  animation:subSpin 12s linear infinite;
-}
-@keyframes subSpin{to{transform:rotate(360deg)}}
-.sub-hero__title{
-  font-size:20px;font-weight:800;color:#fff;margin-bottom:5px;
-}
-.sub-hero__desc{
-  font-size:12.5px;color:var(--text-2);font-weight:500;line-height:1.7;
-  max-width:280px;margin:0 auto;
-}
-
-.sub-features{
-  display:flex;flex-direction:column;gap:9px;
-  margin-bottom:18px;
-}
-.sub-feat{
-  display:flex;align-items:center;gap:12px;
-  padding:12px 14px;
-  background:#141416;
-  border:1px solid #18252E;
-  border-radius:18px;
-}
-.sub-feat__ic{
-  width:38px;height:38px;border-radius:12px;
-  display:grid;place-items:center;
-  font-size:15px;flex-shrink:0;
-  background:rgba(0,122,255,.16);color:#4DA3FF;
-}
-.sub-feat__ic--green{background:rgba(48,209,88,.16);color:#30D158}
-.sub-feat__ic--amber{background:rgba(255,214,10,.16);color:#FFD60A}
-.sub-feat__body{flex:1;min-width:0}
-.sub-feat__t{font-size:13.5px;font-weight:800;color:#fff;margin-bottom:2px}
-.sub-feat__d{font-size:11.5px;color:var(--text-2);font-weight:500;line-height:1.55}
-
-.sub-price{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 16px;border-radius:20px;
-  background:linear-gradient(135deg,rgba(0,122,255,.15),rgba(0,122,255,.05));
-  border:1px solid rgba(0,122,255,.35);
-  margin-bottom:14px;
-}
-.sub-price__lbl{font-size:12px;color:var(--text-2);font-weight:700}
-.sub-price__val{
-  font-size:22px;font-weight:800;color:#FFD60A;
-  direction:ltr;font-variant-numeric:tabular-nums;
-}
-.sub-price__val small{font-size:12px;color:#fff;font-weight:700;margin-inline-start:4px}
-
-.sub-wallet{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:10px 14px;border-radius:16px;
-  background:#0B0B0B;border:1px solid #18252E;
-  margin-bottom:14px;
-}
-.sub-wallet__lbl{font-size:11.5px;color:var(--text-2);font-weight:700;display:flex;align-items:center;gap:6px}
-.sub-wallet__val{font-size:14px;font-weight:800;color:#fff;direction:ltr}
-.sub-wallet__val--ok{color:#30D158}
-.sub-wallet__val--bad{color:#FF453A}
-
-.sub-alert{
-  display:flex;align-items:flex-start;gap:8px;
-  padding:10px 12px;border-radius:14px;
-  background:rgba(255,214,10,.08);
-  border:1px solid rgba(255,214,10,.25);
-  color:#fff;font-size:11.5px;font-weight:600;line-height:1.65;
-  margin-bottom:14px;
-}
-.sub-alert i{color:#FFD60A;margin-top:2px;font-size:12px;flex-shrink:0}
-
-.btn-sub{
-  width:100%;min-height:56px;border-radius:20px;
-  font-size:15px;font-weight:800;
-  display:flex;align-items:center;justify-content:center;gap:9px;
-  background:linear-gradient(135deg,#4DA3FF 0%,#007AFF 100%);
-  color:#fff;transition:transform .15s;
-  position:relative;overflow:hidden;
-}
-.btn-sub:active:not([disabled]){transform:scale(.98)}
-.btn-sub[disabled]{opacity:.55;cursor:not-allowed;background:#18252E}
-.btn-sub::before{
-  content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
-  transform:skewX(-20deg);animation:btnShine 3s ease-in-out infinite;
-}
 
 .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-140%);opacity:0;background:rgba(28,28,32,.88);
   -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:#fff;border:1px solid var(--glass-line);padding:12px 18px;border-radius:30px;
@@ -705,13 +527,12 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 @keyframes shakeIcon{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
 .tamper-box h3{font-size:var(--f-lg);font-weight:800;color:#fff;margin-bottom:10px}
 .tamper-box p{font-size:var(--f-sm);color:var(--text-2);line-height:1.75;margin-bottom:20px}
-.tamper-box button,.outside-tg a{background:var(--blue);color:#fff}
-.tamper-box button{width:100%;padding:14px;border-radius:18px;font-weight:700;font-size:var(--f-md)}
+.tamper-box button{width:100%;padding:14px;border-radius:18px;font-weight:700;font-size:var(--f-md);background:var(--blue);color:#fff}
 .outside-tg{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--sp-8) var(--sp-5);text-align:center;z-index:99999}
 .outside-tg__ic{width:110px;height:110px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:48px;margin-bottom:var(--sp-5);color:#fff}
 .outside-tg h1{font-size:var(--f-xl);font-weight:800;color:#fff;margin-bottom:10px}
 .outside-tg p{font-size:var(--f-sm);color:var(--text-2);line-height:1.75;margin-bottom:var(--sp-6);max-width:300px}
-.outside-tg a{padding:15px 34px;border-radius:30px;text-decoration:none;font-weight:700;font-size:var(--f-md);display:inline-flex;align-items:center;gap:9px}
+.outside-tg a{padding:15px 34px;border-radius:30px;text-decoration:none;font-weight:700;font-size:var(--f-md);display:inline-flex;align-items:center;gap:9px;background:var(--blue);color:#fff}
 
 @media (max-width:360px){
   .nav .nav__btn span{font-size:9.5px}
@@ -719,7 +540,6 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   :root{--dock-h:62px}
   .ref-actions{grid-template-columns:1fr}
   .cq{flex-wrap:wrap}.cq__btn{width:100%;justify-content:center}
-  .aquarium .fish{font-size:22px}
   .avatar{width:42px;height:42px}
   .plan-header__icon{width:52px;height:52px;font-size:24px}.plan__icon{width:54px;height:54px;font-size:28px}
   .pf-bal__val{font-size:28px}
@@ -755,83 +575,15 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
   </div>
 </div>
 
-<!-- ═══ مودال الاشتراك ═══ -->
-<div class="sub-modal" id="subModal">
-  <div class="sub-box">
-    <button class="sub-box__close" id="subClose" aria-label="إغلاق"><i class="fas fa-times"></i></button>
-
-    <div class="sub-hero">
-      <div class="sub-hero__icon"><i class="fas fa-crown"></i></div>
-      <div class="sub-hero__title">الاشتراك المميز</div>
-      <div class="sub-hero__desc">احصل على ميزات حصرية وامتيازات خاصة بمستخدمي دولفين مينر الموثقين.</div>
-    </div>
-
-    <div class="sub-features">
-      <div class="sub-feat">
-        <div class="sub-feat__ic sub-feat__ic--green"><i class="fas fa-circle-check"></i></div>
-        <div class="sub-feat__body">
-          <div class="sub-feat__t">شارة توثيق بجانب اسمك</div>
-          <div class="sub-feat__d">تظهر علامة التوثيق بجانب اسمك في كل مكان بالتطبيق</div>
-        </div>
-      </div>
-      <div class="sub-feat">
-        <div class="sub-feat__ic"><i class="fas fa-headset"></i></div>
-        <div class="sub-feat__body">
-          <div class="sub-feat__t">تواصل مباشر مع الدعم</div>
-          <div class="sub-feat__d">تحدث مع فريق الدعم مباشرة دون أي وسيط</div>
-        </div>
-      </div>
-      <div class="sub-feat">
-        <div class="sub-feat__ic sub-feat__ic--amber"><i class="fas fa-hand-holding-usd"></i></div>
-        <div class="sub-feat__body">
-          <div class="sub-feat__t">الحد الأدنى للسحب 400 ل.س</div>
-          <div class="sub-feat__d">بدل 500 ل.س للمستخدمين العاديين</div>
-        </div>
-      </div>
-      <div class="sub-feat">
-        <div class="sub-feat__ic sub-feat__ic--green"><i class="fas fa-percent"></i></div>
-        <div class="sub-feat__body">
-          <div class="sub-feat__t">عمولة سحب 0%</div>
-          <div class="sub-feat__d">بدون أي خصومات على عمليات السحب</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sub-price">
-      <div class="sub-price__lbl">سعر الاشتراك</div>
-      <div class="sub-price__val">299 <small>ل.س</small></div>
-    </div>
-
-    <div class="sub-wallet">
-      <div class="sub-wallet__lbl"><i class="fas fa-wallet" style="color:#4DA3FF"></i> رصيدك</div>
-      <div class="sub-wallet__val" id="subWalletVal">0 ل.س</div>
-    </div>
-
-    <div class="sub-alert">
-      <i class="fas fa-info-circle"></i>
-      <div>الاشتراك <b>دائم</b> ولا ينتهي. عند التوثيق، يتم خصم <b>299 ل.س</b> من رصيدك مباشرةً.</div>
-    </div>
-
-    <button class="btn-sub" id="subPayBtn">
-      <i class="fas fa-crown"></i>
-      <span id="subPayText">تأكيد الاشتراك — 299 ل.س</span>
-    </button>
-  </div>
-</div>
-
 <div class="app" id="app" style="display:none">
   <div class="main" id="mainScroll">
 
     <div class="view active" id="view-home">
       <div class="topbar">
-        <div class="avatar" id="homeAvatar" onclick="navigate('profile')">
-          <i class="fas fa-user"></i>
-        </div>
+        <div class="avatar" id="homeAvatar" onclick="navigate('profile')"><i class="fas fa-user"></i></div>
         <div class="topbar__meta">
           <div class="topbar__hello">مرحباً بك</div>
-          <div class="topbar__name" id="homeName">
-            <span id="homeNameText">...</span>
-          </div>
+          <div class="topbar__name"><span id="homeNameText">...</span></div>
         </div>
         <div class="chip">
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
@@ -854,10 +606,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
             <div class="plan-header__meta">
               <div class="plan-header__lbl">الخطة النشطة</div>
               <div class="plan-header__name" id="planName">خطة أساسي</div>
-              <div class="plan-header__reward">
-                <i class="fas fa-coins"></i>
-                <span id="planReward">6</span> ل.س / دورة
-              </div>
+              <div class="plan-header__reward"><i class="fas fa-coins"></i><span id="planReward">6</span> ل.س / دورة</div>
             </div>
           </div>
           <div class="plan-header__lvl">
@@ -878,21 +627,17 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
             <div class="plant plant--2"></div>
             <div class="plant plant--3"></div>
             <div class="plant plant--4"></div>
-
             <div class="fish fish--1">🐟</div>
             <div class="fish fish--2">🐠</div>
             <div class="fish fish--3">🐡</div>
             <div class="fish fish--4">🐟</div>
             <div class="fish fish--5" id="fish5">🪼</div>
             <div class="fish fish--6" id="fish6">🐠</div>
-
             <div class="treasure" id="treasure">💰</div>
-
             <div class="gem" style="--x:-40px;--d:0s">💎</div>
             <div class="gem" style="--x:20px;--d:.6s">💎</div>
             <div class="gem" style="--x:-10px;--d:1.2s">💎</div>
             <div class="gem" style="--x:40px;--d:1.8s">💎</div>
-
             <div class="pct" id="stagePct">0%</div>
           </div>
         </div>
@@ -909,8 +654,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
         </div>
 
         <button class="action action--start" id="mineAction">
-          <i class="fas fa-play"></i>
-          <span id="mineActionText">ابدأ التعدين</span>
+          <i class="fas fa-play"></i><span>ابدأ التعدين</span>
         </button>
       </div>
 
@@ -988,6 +732,23 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
         </div>
       </div>
 
+      <div class="vip" id="vipCard">
+        <div class="vip__head">
+          <div class="vip__ic"><i class="fas fa-gem"></i></div>
+          <div>
+            <div class="vip__t">عضوية VIP</div>
+            <div class="vip__s" id="vipSub">دفعة واحدة · مدى الحياة</div>
+          </div>
+        </div>
+        <div class="vip__list">
+          <div class="vip__row"><i class="fas fa-hand-holding-usd"></i> حد أدنى للسحب 400 ل.س بدل 500</div>
+          <div class="vip__row"><i class="fas fa-percent"></i> عمولة سحب 0% بدل 1.5%</div>
+          <div class="vip__row"><i class="fas fa-user-plus"></i> +5 ل.س إضافية عن كل دعوة</div>
+          <div class="vip__row"><i class="fab fa-telegram-plane"></i> دعم فني مباشر</div>
+        </div>
+        <button class="vip__btn" id="vipBtn"></button>
+      </div>
+
       <div class="sec-head">
         <div class="sec-head__title"><i class="fas fa-arrow-up"></i> مسار الترقية</div>
         <div class="sec-head__meta">6 خطط</div>
@@ -997,31 +758,18 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 
       <div class="plans-report" id="plansReport">
         <div class="plans-report__head">
-          <div class="plans-report__title">
-            <i class="fas fa-chart-line"></i>
-            تقرير الخطط
-          </div>
+          <div class="plans-report__title"><i class="fas fa-chart-line"></i> تقرير الخطط</div>
           <span class="plans-report__tag">REPORT</span>
         </div>
-
         <table class="plans-table">
-          <thead>
-            <tr>
-              <th>الخطة</th>
-              <th>السعر</th>
-              <th>الأرباح</th>
-              <th>الإجمالي</th>
-            </tr>
-          </thead>
+          <thead><tr><th>الخطة</th><th>السعر</th><th>الأرباح</th><th>الإجمالي</th></tr></thead>
           <tbody id="plansReportBody"></tbody>
         </table>
       </div>
 
-      <div class="alert alert--info" style="margin-top:var(--sp-4)">
+      <div class="alert" style="margin-top:var(--sp-4)">
         <i class="fas fa-info-circle"></i>
-        <div>
-          عند انتهاء الخطة يُرد <b>مبلغ الشراء فقط</b>، والأرباح تجمعها <b>يدوياً</b> من التعدين. إذا ألغيت الخطة <b>لا يتم رد أي مبلغ</b>.
-        </div>
+        <div>عند انتهاء الخطة يُرد <b>مبلغ الشراء فقط</b>، والأرباح تجمعها <b>يدوياً</b> من التعدين. إذا ألغيت الخطة <b>لا يتم رد أي مبلغ</b>.</div>
       </div>
     </div>
 
@@ -1046,9 +794,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
       </div>
 
       <div id="panelWithdraw">
-        <div class="sec-head">
-          <div class="sec-head__title"><i class="fas fa-credit-card"></i> طريقة السحب</div>
-        </div>
+        <div class="sec-head"><div class="sec-head__title"><i class="fas fa-credit-card"></i> طريقة السحب</div></div>
         <div class="methods" id="wdMethod">
           <div class="method method--active" data-method="sham_cash">
             <div class="method__check"><i class="fas fa-check"></i></div>
@@ -1124,8 +870,8 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
               <button class="btn btn--sea" id="depCopySham"><i class="fas fa-copy"></i> نسخ معرف شام كاش</button>
             </div>
             <div id="depBinanceInfo" style="display:none">
-              <div class="id-box" style="font-size:18px;letter-spacing:4px;border-color:var(--amber)">1121748571</div>
-              <button class="btn btn--sea" style="background:#007AFF;color:#fff" id="depCopyBinance"><i class="fas fa-copy"></i> نسخ معرف Binance</button>
+              <div class="id-box" style="font-size:18px;letter-spacing:4px;border-color:var(--yellow)">1121748571</div>
+              <button class="btn btn--sea" id="depCopyBinance"><i class="fas fa-copy"></i> نسخ معرف Binance</button>
             </div>
           </div>
         </div>
@@ -1172,7 +918,7 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 
         <div class="rf-stats">
           <div class="rf-stat">
-            <div class="rf-stat__ic rf-stat__ic--sea"><i class="fas fa-user-plus"></i></div>
+            <div class="rf-stat__ic"><i class="fas fa-user-plus"></i></div>
             <div><div class="rf-stat__num" id="refCount">0</div><div class="rf-stat__lbl">صديق مدعو</div></div>
           </div>
           <div class="rf-stat">
@@ -1223,18 +969,15 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
             <div class="lb__title"><i class="fas fa-crown"></i> أعلى 10 مستخدمين دعوةً</div>
             <span class="lb__tag">TOP 10</span>
           </div>
-          <div id="lbList">
-            <div class="lb__empty"><i class="fas fa-crown"></i><p>جاري التحميل...</p></div>
-          </div>
+          <div id="lbList"><div class="lb__empty"><i class="fas fa-crown"></i><p>جاري التحميل...</p></div></div>
         </div>
       </div>
     </div>
 
     <div class="view" id="view-profile">
-      <!-- ═══ بطاقة الملف الشخصي ═══ -->
       <div class="pf-top">
         <div class="pf-av" id="profAvatar"><i class="fas fa-user"></i></div>
-        <div class="pf-name" id="profName"><span id="profNameText">...</span></div>
+        <div class="pf-name"><span id="profNameText">...</span></div>
         <button class="pf-id" id="profCopyId" aria-label="نسخ المعرف">
           <i class="fas fa-fingerprint"></i><span id="profId">--------</span><i class="fas fa-copy"></i>
         </button>
@@ -1276,20 +1019,18 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
       </div>
 
       <div class="pf-row">
+        <div class="pf-row__ic"><i class="fas fa-gem"></i></div>
+        <div class="pf-row__lbl">العضوية</div>
+        <div class="pf-row__val" id="pVip">عادية</div>
+      </div>
+
+      <div class="pf-row">
         <div class="pf-row__ic"><i class="fas fa-calendar"></i></div>
         <div class="pf-row__lbl">تاريخ الانضمام</div>
         <div class="pf-row__val" id="pJoined">-</div>
       </div>
 
-      <!-- زر الاشتراك -->
-      <button class="pf-sub-btn" id="pfSubBtn">
-        <i class="fas fa-crown"></i>
-        <span id="pfSubBtnText">اشتراك مميز — 299 ل.س</span>
-      </button>
-
-      <button class="btn btn--outline" id="profSupport" style="margin-top:10px">
-        <i class="fab fa-telegram-plane" style="color:#4DA3FF"></i> تواصل مع الدعم
-      </button>
+      <button class="btn btn--outline" id="profSupport" style="margin-top:10px"></button>
     </div>
   </div>
 
@@ -1318,79 +1059,70 @@ img{max-width:100%;display:block;-webkit-user-drag:none}
 <script>
 'use strict';
 
+/* ═══ منع النسخ وتحديد النص والسحب (حماية واجهة فقط) ═══ */
+(function protectContent(){
+  const isField = (t) => !!(t && t.closest && t.closest('input,textarea'));
+  ['copy','cut','selectstart','dragstart','contextmenu'].forEach(ev =>
+    document.addEventListener(ev, e => { if (!isField(e.target)) e.preventDefault(); }, { capture:true }));
+  document.addEventListener('keydown', e => {
+    if (isField(e.target)) return;
+    if ((e.ctrlKey || e.metaKey) && ['c','x','a','s','p','u'].includes(e.key.toLowerCase())) e.preventDefault();
+  }, { capture:true });
+  document.addEventListener('selectionchange', () => {
+    const sel = window.getSelection && window.getSelection();
+    if (sel && sel.rangeCount && sel.toString() && !isField(document.activeElement)) sel.removeAllRanges();
+  });
+})();
+
 const CONFIG = {
   firebase: {
-    apiKey: "AIzaSyDRwkZOjYvqevk9yeHuyUPFDf361AVwAfg",
-    authDomain: "sy-bet.firebaseapp.com",
-    projectId: "sy-bet",
-    storageBucket: "sy-bet.firebasestorage.app",
-    messagingSenderId: "550639040893",
-    appId: "1:550639040893:web:6680eee90047fd23363414"
-  },
-  bot: { 
-    username: 'DolphinMiner_bot',
-    appName: 'Dolphin',
-    link: 'https://t.me/DolphinMiner_bot/Dolphin'
-  },
+  apiKey: "AIzaSyCDkO_uCCiHG3HHPDeQQ9j-v43sDhyua-w",
+  authDomain: "dolphinbot-1.firebaseapp.com",
+  projectId: "dolphinbot-1",
+  storageBucket: "dolphinbot-1.firebasestorage.app",
+  messagingSenderId: "385194736167",
+  appId: "1:385194736167:web:53987f3857f5d56343ec02"
+},
+  bot: { username: 'DolphinMiner_bot', appName: 'Dolphin' },
   admin: { telegram: 'qo_ij2' },
   referral: { newUserReward: 5, referrerReward: 10 },
-  withdraw: {
-    minAmount: 500,           // للمستخدم العادي
-    minAmountVerified: 400,   // للموثق
-    feeRate: 0.015,           // للمستخدم العادي
-    feeRateVerified: 0,       // للموثق
-    usdRate: 140
-  },
-  subscription: { price: 299 },
+  withdraw: { minAmount: 500, feeRate: 0.015, usdRate: 140 },
+  vip: { price: 299, minWithdraw: 400, feeRate: 0, referralBonus: 5 },
   deposit: { shamCash: '334a08ea2d1bbed05f214a7f08e37ae4', binance: '1121748571' },
   channel: 'https://t.me/DolphinMinerchannel',
 
   plans: [
-    { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:6,  cycleHours:6, planDays:0,  price:0,     color:'sea',    label:'دائمة' },
-    { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:10, cycleHours:6, planDays:7,  price:700,   color:'slate',  label:'أسبوع' },
-    { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:22, cycleHours:6, planDays:10, price:2500,  color:'amber',  label:'10 أيام' },
-    { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:36, cycleHours:6, planDays:15, price:5000,  color:'purple', label:'15 يوم' },
-    { id:'whale',  name:'حوت',    emoji:'🐋', level:5, reward:50, cycleHours:6, planDays:21, price:10000, color:'coral',  label:'21 يوم' },
-    { id:'dolphin',name:'دولفين', emoji:'🐬', level:6, reward:72, cycleHours:6, planDays:30, price:20000, color:'ink',    label:'شهر' }
+    { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:6,  cycleHours:6, planDays:0,  price:0 },
+    { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:10, cycleHours:6, planDays:7,  price:700 },
+    { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:22, cycleHours:6, planDays:10, price:2500 },
+    { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:36, cycleHours:6, planDays:15, price:5000 },
+    { id:'whale',  name:'حوت',    emoji:'🐋', level:5, reward:50, cycleHours:6, planDays:21, price:10000 },
+    { id:'dolphin',name:'دولفين', emoji:'🐬', level:6, reward:72, cycleHours:6, planDays:30, price:20000 }
   ],
 
-  security: {
-    maxClockDriftMs: 60 * 1000,
-    syncIntervalMs: 5 * 60 * 1000,
-    clockCheckIntervalMs: 2000
-  },
+  security: { maxClockDriftMs: 60 * 1000, syncIntervalMs: 5 * 60 * 1000, syncMinGapMs: 30 * 1000, clockCheckIntervalMs: 2000 },
 
   inviteTasks: [
-    { id: 'invite5',  count: 5,  reward: 50,  title: 'دعوة 5 أصدقاء', desc: 'اربح 50 ل.س عند دعوة 5 أشخاص' },
-    { id: 'invite20', count: 20, reward: 300, title: 'دعوة 20 صديق', desc: 'اربح 300 ل.س عند دعوة 20 شخص' },
-    { id: 'invite30', count: 30, reward: 500, title: 'دعوة 30 صديق', desc: 'اربح 500 ل.س عند دعوة 30 شخص' },
-    { id: 'invite50', count: 50, reward: 700, title: 'دعوة 50 صديق', desc: 'اربح 700 ل.س عند دعوة 50 شخص' }
+    { id: 'invite5',  count: 5,  reward: 50,  title: 'دعوة 5 أصدقاء',  desc: 'اربح 50 ل.س عند دعوة 5 أشخاص' },
+    { id: 'invite20', count: 20, reward: 300, title: 'دعوة 20 صديق',   desc: 'اربح 300 ل.س عند دعوة 20 شخص' },
+    { id: 'invite30', count: 30, reward: 500, title: 'دعوة 30 صديق',   desc: 'اربح 500 ل.س عند دعوة 30 شخص' },
+    { id: 'invite50', count: 50, reward: 700, title: 'دعوة 50 صديق',   desc: 'اربح 700 ل.س عند دعوة 50 شخص' }
   ],
 
   specialTasks: {
-    collect5: {
-      id: 'collect5',
-      target: 5,
-      reward: 50,
-      title: 'اجمع التعدين 5 مرات',
-      desc: 'اربح 50 ل.س عند جمع التعدين 5 مرات بأي خطة'
-    },
-    firstBuy: {
-      id: 'firstBuy',
-      reward: 200,
-      title: 'اشترِ أول خطة مدفوعة',
-      desc: 'اربح 200 ل.س عند شراء أول خطة مدفوعة'
-    }
+    collect5: { id:'collect5', target:5, reward:50, title:'اجمع التعدين 5 مرات', desc:'اربح 50 ل.س عند جمع التعدين 5 مرات بأي خطة' },
+    firstBuy: { id:'firstBuy', reward:200, title:'اشترِ أول خطة مدفوعة', desc:'اربح 200 ل.س عند شراء أول خطة مدفوعة' }
   },
 
   channelTask: { reward: 10 },
-  api: { verifyChannel: '' },
   refundPlanProfit: false
 };
 
 if (!firebase.apps.length) firebase.initializeApp(CONFIG.firebase);
 const db = firebase.firestore();
-db.enablePersistence({ synchronizeTabs: true }).catch(()=>{});
+db.enablePersistence({ synchronizeTabs: true }).catch(() => {});
+const FV = firebase.firestore.FieldValue;
+const SV = () => FV.serverTimestamp();
 
 const STATE = {
   user: null,
@@ -1398,14 +1130,24 @@ const STATE = {
   tgId: null,
   startParam: null,
   isSubmitting: false,
-  serverOffsetMs: 0,
   liveTimer: null,
   withdrawMethod: 'sham_cash',
   depositMethod: 'sham_cash',
-  tamperDetected: false,
   planExpiryTimer: null,
-  channelVerified: false
+  expiring: false,
+  completing: false,
+  userUnsub: null,
+  lbCache: null,
+  lbCacheAt: 0,
+  timeSynced: false,
+  timeLocked: true,
+  tamperHold: false,
+  serverBase: 0,
+  perfBase: 0,
+  syncing: false,
+  lastSyncAt: 0
 };
+const UI = { btnKey: '', bubbleMode: '' };
 
 const $ = (id) => document.getElementById(id);
 const setText = (id, txt) => { const el = $(id); if (el) el.textContent = txt; };
@@ -1415,43 +1157,33 @@ function fmt(n){
 }
 function escapeHtml(s){
   if (s == null) return '';
-  const d = document.createElement('div');
-  d.textContent = String(s);
-  return d.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 function getPlan(id){ return CONFIG.plans.find(p => p.id === id) || CONFIG.plans[0]; }
 function getPlanIndex(id){ return CONFIG.plans.findIndex(p => p.id === id); }
-
-/* ═══ دوال مساعدة للاشتراك ═══ */
-function isVerified(){
-  return !!(STATE.user && STATE.user.verified === true);
+function isVip(){
+  // يُبقي العضوية للمستخدمين الذين دفعوا قبل إزالة النظام القديم
+  return !!(STATE.user && (STATE.user.vip === true || STATE.user.verified === true));
 }
-function getWithdrawMin(){
-  return isVerified() ? CONFIG.withdraw.minAmountVerified : CONFIG.withdraw.minAmount;
-}
-function getFeeRate(){
-  return isVerified() ? CONFIG.withdraw.feeRateVerified : CONFIG.withdraw.feeRate;
-}
+function getWithdrawMin(){ return isVip() ? CONFIG.vip.minWithdraw : CONFIG.withdraw.minAmount; }
+function getFeeRate(){ return isVip() ? CONFIG.vip.feeRate : CONFIG.withdraw.feeRate; }
+function tsMs(t){ return !t ? 0 : t.toMillis ? t.toMillis() : new Date(t).getTime(); }
 
 function toast(msg, type = 'ok'){
-  const el = $('toast');
-  const ic = $('toastIc');
-  const m  = $('toastMsg');
+  const el = $('toast'), ic = $('toastIc');
   el.className = 'toast toast--' + type;
-  if (type === 'err') ic.innerHTML = '<i class="fas fa-times"></i>';
-  else if (type === 'info') ic.innerHTML = '<i class="fas fa-info"></i>';
-  else ic.innerHTML = '<i class="fas fa-check"></i>';
-  m.textContent = msg;
+  ic.innerHTML = type === 'err' ? '<i class="fas fa-times"></i>' : type === 'info' ? '<i class="fas fa-info"></i>' : '<i class="fas fa-check"></i>';
+  $('toastMsg').textContent = msg;
   el.classList.remove('show');
   void el.offsetWidth;
   el.classList.add('show');
-  clearTimeout(toast._timer);
-  toast._timer = setTimeout(() => el.classList.remove('show'), 3000);
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => el.classList.remove('show'), 3000);
 }
 
-function copyText(text, successMsg = 'تم النسخ'){
+function copyText(text, msg = 'تم النسخ'){
   if (!text || text === '...' || text.includes('-----')) { toast('لا يوجد نص للنسخ', 'err'); return; }
-  const done = () => toast(successMsg, 'ok');
+  const done = () => toast(msg, 'ok');
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
   } else fallbackCopy(text, done);
@@ -1460,8 +1192,7 @@ function fallbackCopy(text, done){
   const ta = document.createElement('textarea');
   ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
   document.body.appendChild(ta); ta.select();
-  try { document.execCommand('copy'); done(); }
-  catch (e) { toast('فشل النسخ', 'err'); }
+  try { document.execCommand('copy'); done(); } catch (e) { toast('فشل النسخ', 'err'); }
   document.body.removeChild(ta);
 }
 
@@ -1472,35 +1203,32 @@ function initTelegram(){
     $('outsideTg').style.display = 'flex';
     return false;
   }
-  tg.ready(); 
+  tg.ready();
   tg.expand();
-  if (tg.setHeaderColor) tg.setHeaderColor('#000000');
-  if (tg.setBackgroundColor) tg.setBackgroundColor('#000000');
-  if (tg.setBottomBarColor) tg.setBottomBarColor('#000000');
+  [tg.setHeaderColor, tg.setBackgroundColor, tg.setBottomBarColor].forEach((fn, i) => {
+    if (fn) fn.call(tg, '#000000');
+  });
   if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
-  
   STATE.tgUser = tg.initDataUnsafe.user;
   STATE.tgId = String(tg.initDataUnsafe.user.id);
   STATE.startParam = tg.initDataUnsafe.start_param || null;
-  
   return true;
 }
 
-Object.assign(STATE, { timeSynced:false, timeLocked:true, tamperHold:false,
-  serverBase:0, perfBase:0, syncing:false, completing:false });
-
 function safeUrl(u){
-  try{ const x = new URL(u); return x.protocol === 'https:' ? x.href : ''; }catch(e){ return ''; }
+  try { const x = new URL(u); return x.protocol === 'https:' ? x.href : ''; } catch (e) { return ''; }
 }
-function tsMs(t){ return !t ? 0 : t.toMillis ? t.toMillis() : new Date(t).getTime(); }
 
-async function syncServerTime(){
+/* ═══ الوقت الموثوق ═══ */
+async function syncServerTime(force){
   if (STATE.syncing || !STATE.tgId) return;
+  if (!force && Date.now() - STATE.lastSyncAt < CONFIG.security.syncMinGapMs) return;
+  STATE.lastSyncAt = Date.now();
   STATE.syncing = true;
   try{
     const ref = db.collection('_system').doc('t_' + STATE.tgId);
     const t0 = performance.now();
-    await ref.set({ ping: firebase.firestore.FieldValue.serverTimestamp() }, { merge:true });
+    await ref.set({ ping: SV() }, { merge:true });
     const snap = await ref.get({ source:'server' });
     const t1 = performance.now();
     const ping = snap.exists && snap.data().ping;
@@ -1512,9 +1240,8 @@ async function syncServerTime(){
   }catch(e){}
   finally{ STATE.syncing = false; evaluateClock(); }
 }
-function getTrustedNow(){
-  return STATE.serverBase + (performance.now() - STATE.perfBase);
-}
+function getTrustedNow(){ return STATE.serverBase + (performance.now() - STATE.perfBase); }
+
 function evaluateClock(){
   const drift = Math.abs(Date.now() - getTrustedNow());
   const ok = STATE.timeSynced && drift <= CONFIG.security.maxClockDriftMs;
@@ -1524,8 +1251,7 @@ function evaluateClock(){
   STATE.timeLocked = locked;
   if (changed && STATE.user){
     renderMining(); renderPlans();
-    const u = STATE.user;
-    if (!locked && u.miningStartTime && !u.miningCollectable) startLiveTimer();
+    if (!locked && STATE.user.miningStartTime && !STATE.user.miningCollectable) startLiveTimer();
   }
 }
 
@@ -1539,13 +1265,13 @@ function initClockMonitor(){
     if (skipClock) { skipClock = false; rebaseClock(); return; }
     const jump = Math.abs((Date.now() - clockBaseline) - (performance.now() - perfBaseline));
     rebaseClock();
-    if (jump > 5000) detectTamper();
-    else if (STATE.timeLocked && clockTick % 5 === 0) syncServerTime();
-    else evaluateClock();
+    if (jump > 5000) { detectTamper(); return; }
+    if (STATE.timeLocked && clockTick % 5 === 0) syncServerTime(false);
+    evaluateClock();
   }, CONFIG.security.clockCheckIntervalMs);
-  setInterval(syncServerTime, CONFIG.security.syncIntervalMs / 5);
+  setInterval(() => { if (!document.hidden) syncServerTime(false); }, CONFIG.security.syncIntervalMs);
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden){ skipClock = true; syncServerTime(); }
+    if (!document.hidden){ skipClock = true; syncServerTime(true); }
   });
 }
 async function detectTamper(){
@@ -1553,37 +1279,23 @@ async function detectTamper(){
   stopLiveTimer();
   evaluateClock();
   $('tamperModal').classList.add('show');
-  syncServerTime();
+  syncServerTime(true);
   const now = Date.now();
   if (now - (detectTamper._last || 0) < 600000) return;
   detectTamper._last = now;
   try{
     await db.collection('users').doc(STATE.tgId).update({
       tamperFlag: true,
-      tamperCount: firebase.firestore.FieldValue.increment(1),
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      tamperCount: FV.increment(1),
+      updatedAt: SV()
     });
   }catch(e){}
 }
 function closeTamperModal(){ $('tamperModal').classList.remove('show'); }
 
-function renderLocked(){
-  stopLiveTimer();
-  setText('statusText', STATE.timeSynced
-    ? 'التعدين مجمّد — وقت الجهاز غير صحيح، فعّل الوقت التلقائي'
-    : 'تعذّر التحقق من الوقت — التعدين مجمّد');
-  $('statusDot').className = 'status-bar__dot';
-  setText('miningStatusMeta', 'مجمّد');
-  setText('timerText', '--:--:--');
-  setText('timerLbl', 'مجمّد');
-  const btn = $('mineAction');
-  btn.className = 'action action--stop';
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-lock"></i><span>التعدين مجمّد</span>';
-}
-
+/* ═══ تحميل المستخدم والمستمع ═══ */
 async function loadOrCreateUser(){
-  await syncServerTime();
+  await syncServerTime(true);
   const ref = db.collection('users').doc(STATE.tgId);
   const fullName = ((STATE.tgUser.first_name || '') + ' ' + (STATE.tgUser.last_name || '')).trim() || 'مستخدم';
   const username = STATE.tgUser.username || null;
@@ -1591,32 +1303,22 @@ async function loadOrCreateUser(){
   const snap = await ref.get();
 
   if (snap.exists){
-    STATE.user = snap.data();
-    const oldData = STATE.user;
-    
+    const old = snap.data();
     const updates = {};
-    let hasChanges = false;
-    
-    if (oldData.name !== fullName) { updates.name = fullName; hasChanges = true; }
-    if (oldData.username !== username) { updates.username = username; hasChanges = true; }
-    if (oldData.photoUrl !== photoUrl) { updates.photoUrl = photoUrl; hasChanges = true; }
-    if (oldData.referralCode !== STATE.tgId) { updates.referralCode = STATE.tgId; hasChanges = true; }
-    if (oldData.uniqueId !== STATE.tgId) { updates.uniqueId = STATE.tgId; hasChanges = true; }
-    
-    updates.lastSeen = firebase.firestore.FieldValue.serverTimestamp();
-    
-    if (hasChanges) {
-      await ref.set(updates, { merge:true }).catch(()=>{});
+    if (old.name !== fullName) updates.name = fullName;
+    if (old.username !== username) updates.username = username;
+    if (old.photoUrl !== photoUrl) updates.photoUrl = photoUrl;
+    if (old.referralCode !== STATE.tgId) updates.referralCode = STATE.tgId;
+    if (old.uniqueId !== STATE.tgId) updates.uniqueId = STATE.tgId;
+    STATE.user = old;
+    if (Object.keys(updates).length){
+      updates.lastSeen = SV();
+      await ref.set(updates, { merge:true }).catch(() => {});
       Object.assign(STATE.user, updates);
+      db.collection('referralLeaderboard').doc(STATE.tgId).set({
+        name: fullName, username, photoUrl, updatedAt: SV()
+      }, { merge:true }).catch(() => {});
     }
-    
-    db.collection('referralLeaderboard').doc(STATE.tgId).set({ 
-      name: fullName, 
-      username, 
-      photoUrl,
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp() 
-    }, { merge:true }).catch(()=>{});
-    
     await checkPlanExpiry();
     return;
   }
@@ -1631,7 +1333,7 @@ async function loadOrCreateUser(){
       }catch(e){}
     }
   }
-  const SV = firebase.firestore.FieldValue.serverTimestamp();
+
   const base = {
     telegramId: STATE.tgId, name: fullName, username, photoUrl,
     uniqueId: STATE.tgId, referralCode: STATE.tgId,
@@ -1642,14 +1344,14 @@ async function loadOrCreateUser(){
     planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
     hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
     miningCollectCount: 0,
-    tamperFlag: false, verified: false,
+    tamperFlag: false, vip: false, vipAt: null,
     channelJoined: false, channelRewardClaimed: false,
     hasPurchasedPlan: false,
-    collect5RewardClaimed: false,
-    firstBuyRewardClaimed: false,
+    collect5RewardClaimed: false, firstBuyRewardClaimed: false,
     inviteRewardClaimed: {},
-    createdAt: SV, updatedAt: SV, lastSeen: SV
+    createdAt: SV(), updatedAt: SV(), lastSeen: SV()
   };
+
   let rewarded = false;
   await db.runTransaction(async (trx) => {
     rewarded = false;
@@ -1657,96 +1359,100 @@ async function loadOrCreateUser(){
     if (me.exists) return;
     const data = { ...base };
     let rSnap = null;
-    const rRef = referrerId ? db.collection('users').doc(referrerId) : null;
-    if (rRef) rSnap = await trx.get(rRef);
+    if (referrerId) rSnap = await trx.get(db.collection('users').doc(referrerId));
+
     if (rSnap && rSnap.exists){
       const R = CONFIG.referral;
+      const rd = rSnap.data();
+      const bonus = (rd.vip === true || rd.verified === true) ? CONFIG.vip.referralBonus : 0;
+      const payout = R.referrerReward + bonus;
       Object.assign(data, { referralUsed:true, referralCodeUsed:referrerId, referredBy:referrerId,
         balance_sy:R.newUserReward, totalEarned:R.newUserReward });
-      trx.update(rRef, {
-        balance_sy: firebase.firestore.FieldValue.increment(R.referrerReward),
-        totalEarned: firebase.firestore.FieldValue.increment(R.referrerReward),
-        referralEarnings: firebase.firestore.FieldValue.increment(R.referrerReward),
-        referralCount: firebase.firestore.FieldValue.increment(1),
-        referredUsers: firebase.firestore.FieldValue.arrayUnion(STATE.tgId),
-        updatedAt: SV
+      trx.update(db.collection('users').doc(referrerId), {
+        balance_sy: FV.increment(payout),
+        totalEarned: FV.increment(payout),
+        referralEarnings: FV.increment(payout),
+        referralCount: FV.increment(1),
+        referredUsers: FV.arrayUnion(STATE.tgId),
+        updatedAt: SV()
       });
       trx.set(db.collection('referralLeaderboard').doc(referrerId), {
-        name: rSnap.data().name || 'مستخدم', username: rSnap.data().username || null,
-        referralCount: firebase.firestore.FieldValue.increment(1), updatedAt: SV
+        name: rd.name || 'مستخدم', username: rd.username || null,
+        referralCount: FV.increment(1), updatedAt: SV()
       }, { merge:true });
       rewarded = true;
     }
     trx.set(ref, data);
     trx.set(db.collection('referralLeaderboard').doc(STATE.tgId), {
-      name: fullName, username, photoUrl, referralCount: firebase.firestore.FieldValue.increment(0), updatedAt: SV
+      name: fullName, username, photoUrl, referralCount: FV.increment(0), updatedAt: SV()
     }, { merge:true });
   });
+
   STATE.user = (await ref.get()).data();
   toast(rewarded ? '🎉 مرحباً! ربحت ' + CONFIG.referral.newUserReward + ' ل.س' : '🎉 مرحباً بك!', 'ok');
 }
 
+function listenUser(){
+  if (STATE.userUnsub) STATE.userUnsub();
+  STATE.userUnsub = db.collection('users').doc(STATE.tgId).onSnapshot(snap => {
+    if (!snap.exists) return;
+    STATE.user = snap.data();
+    refreshAll();
+    if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime && !STATE.liveTimer) startLiveTimer();
+  }, err => console.warn('listenUser', err));
+}
+
+function refreshAll(){
+  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderVip(); renderTasks();
+}
+
 async function checkPlanExpiry(){
   if (!STATE.user || STATE.timeLocked || !STATE.timeSynced) return;
-  if (getPlan(STATE.user.activePlanId || 'basic').planDays === 0 || !STATE.user.planExpiresAt) return;
-  const expMs = tsMs(STATE.user.planExpiresAt);
-  const left = expMs - getTrustedNow();
+  const plan = getPlan(STATE.user.activePlanId || 'basic');
+  if (plan.planDays === 0 || !STATE.user.planExpiresAt) return;
+  const left = tsMs(STATE.user.planExpiresAt) - getTrustedNow();
   if (left > 0){
     clearTimeout(STATE.planExpiryTimer);
-    if (left < 24 * 3600 * 1000) STATE.planExpiryTimer = setTimeout(async () => {
-      await checkPlanExpiry(); updateUI(); renderMining(); renderPlans();
-    }, left + 1000);
+    if (left < 24 * 3600 * 1000) STATE.planExpiryTimer = setTimeout(checkPlanExpiry, left + 1000);
     return;
   }
   const userRef = db.collection('users').doc(STATE.tgId);
   let refund = 0;
   try{
     await db.runTransaction(async (trx) => {
-      const sn = await trx.get(userRef);
-      const d = sn.data();
+      const d = (await trx.get(userRef)).data();
       if (!d || !d.planExpiresAt || getPlan(d.activePlanId).planDays === 0) return;
       if (getTrustedNow() < tsMs(d.planExpiresAt)) return;
       refund = (d.planPurchaseAmount || 0) + (CONFIG.refundPlanProfit ? (d.planTotalEarned || 0) : 0);
       trx.update(userRef, {
-        balance_sy: firebase.firestore.FieldValue.increment(refund),
+        balance_sy: FV.increment(refund),
         activePlanId: 'basic', planStartedAt: null, planExpiresAt: null,
         planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
-        ...(d.miningCollectable ? {} : { hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false }),
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        ...(d.miningCollectable ? {} : { hasStartedMining: false, miningStartTime: null, miningProgress: 0 }),
+        updatedAt: SV()
       });
     });
-    STATE.user = (await userRef.get()).data();
     if (refund > 0) toast('⏰ انتهت خطتك! تم إرجاع ' + fmt(refund) + ' ل.س للرصيد', 'ok');
   }catch(e){ console.warn(e); }
 }
 
+/* ═══ تحديث الواجهة ═══ */
 function updateUI(){
   if (!STATE.user) return;
   const u = STATE.user;
   const plan = getPlan(u.activePlanId || 'basic');
-  const verified = u.verified === true;
-
-  setText('homeNameText', u.name || 'مستخدم');
-  updateAvatar('homeAvatar');
-  updateAvatar('profAvatar');
-  updateAvatar('navAvatar');
-
-  addVerifiedBadge('homeName', verified);
-  addVerifiedBadge('profName', verified);
-
   const bal = u.balance_sy || 0;
   const refCount = u.referralCount || (u.referredUsers || []).length || 0;
 
-  setText('headerBalance', fmt(bal));
-  setText('storeBalance', fmt(bal));
-  setText('tasksBalance', fmt(bal));
-  setText('walletBalance', fmt(bal));
+  setText('homeNameText', u.name || 'مستخدم');
+  ['homeAvatar','profAvatar','navAvatar'].forEach(updateAvatar);
+
+  ['headerBalance','storeBalance','tasksBalance','walletBalance'].forEach(id => setText(id, fmt(bal)));
 
   setText('planName', 'خطة ' + plan.name);
   setText('planLevel', plan.level);
   setText('planReward', fmt(plan.reward));
-  const planIcon = $('planIcon');
-  if (planIcon) planIcon.innerHTML = '<span>' + plan.emoji + '</span>';
+  $('planIcon').innerHTML = '<span>' + plan.emoji + '</span>';
 
   const uid = u.uniqueId || STATE.tgId || '--------';
   setText('depUserId', uid);
@@ -1756,14 +1462,8 @@ function updateUI(){
   setText('refCode', refCode);
   setText('refCount', fmt(refCount));
   setText('refEarn', fmt(u.referralEarnings || 0));
-  
-  const link = 'https://t.me/' + CONFIG.bot.username + '/' + CONFIG.bot.appName + '?startapp=ref_' + refCode;
-  setText('refLink', link);
-
-  const refInputBlock = $('refInputBlock');
-  if (refInputBlock) {
-    refInputBlock.style.display = u.referralUsed ? 'none' : 'block';
-  }
+  setText('refLink', 'https://t.me/' + CONFIG.bot.username + '/' + CONFIG.bot.appName + '?startapp=ref_' + refCode);
+  $('refInputBlock').style.display = u.referralUsed ? 'none' : 'block';
 
   setText('profNameText', u.name || 'مستخدم');
   setText('pBalance', fmt(bal));
@@ -1771,122 +1471,60 @@ function updateUI(){
   setText('pRefEarn', fmt(u.referralEarnings || 0));
   setText('pTotalWithdrawn', fmt(u.totalWithdrawn || 0));
   setText('pPlan', plan.name);
-
+  setText('pVip', isVip() ? 'VIP ✓' : 'عادية');
   if (u.createdAt) {
     const dt = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
     setText('pJoined', dt.toLocaleDateString('ar-EG', { year:'numeric', month:'short', day:'numeric' }));
   }
 
-  // ═══ زر الاشتراك ═══
-  updateSubBtn();
-
-  // ═══ تحديث عمولة السحب والحد الأدنى ═══
   updateWithdrawFeeLabels();
-
-  // ═══ زر الدعم ═══
   updateSupportBtn();
-
-  renderPlans();
-  renderTasks();
-}
-
-/* ═══ شارة التوثيق ═══ */
-function addVerifiedBadge(containerId, isVerified){
-  const el = $(containerId);
-  if (!el) return;
-  const old = el.querySelector('.vbadge');
-  if (old) old.remove();
-  if (isVerified === true) {
-    const b = document.createElement('img');
-    b.src = 'https://img.icons8.com/liquid-glass-color/999/verified-badge.png';
-    b.className = 'vbadge';
-    b.alt = 'موثق';
-    el.appendChild(b);
-  }
-}
-
-/* ═══ زر الاشتراك ═══ */
-function updateSubBtn(){
-  const btn = $('pfSubBtn');
-  const txt = $('pfSubBtnText');
-  if (!btn || !txt || !STATE.user) return;
-
-  if (STATE.user.verified === true) {
-    btn.classList.add('pf-sub-btn--verified');
-    btn.disabled = true;
-    btn.style.cursor = 'default';
-    btn.innerHTML = '<i class="fas fa-circle-check"></i><span>أنت موثق — ميزاتك نشطة</span>';
-  } else {
-    btn.classList.remove('pf-sub-btn--verified');
-    btn.disabled = false;
-    btn.style.cursor = 'pointer';
-    btn.innerHTML = '<i class="fas fa-crown"></i><span>اشتراك مميز — ' + CONFIG.subscription.price + ' ل.س</span>';
-  }
-}
-
-/* ═══ زر الدعم ═══ */
-function updateSupportBtn(){
-  const btn = $('profSupport');
-  if (!btn || !STATE.user) return;
-  if (STATE.user.verified === true) {
-    btn.style.opacity = '1';
-    btn.disabled = false;
-    btn.innerHTML = '<i class="fab fa-telegram-plane" style="color:#4DA3FF"></i> تواصل مع الدعم (موثق)';
-  } else {
-    btn.style.opacity = '.55';
-    btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-lock" style="color:#FF8A82"></i> الدعم متاح للموثقين فقط';
-  }
-}
-
-/* ═══ تحديث عمولة السحب ═══ */
-function updateWithdrawFeeLabels(){
-  const verified = isVerified();
-  const min = getWithdrawMin();
-  const rate = getFeeRate();
-
-  const minLbl = $('wdMinLbl');
-  if (minLbl) minLbl.textContent = fmt(min) + ' ل.س';
-
-  const rateLbl = $('wdFeeRateLbl');
-  if (rateLbl) rateLbl.textContent = verified ? '(0%)' : '(1.5%)';
-
-  const wdAmount = $('wdAmount');
-  if (wdAmount) wdAmount.placeholder = 'الحد الأدنى ' + fmt(min);
-
-  updateWithdrawFee();
 }
 
 function updateAvatar(elId){
   const el = $(elId);
   if (!el) return;
   const url = safeUrl(STATE.tgUser && STATE.tgUser.photo_url);
-  const fallback = () => { el.innerHTML = '<i class="fas fa-user"></i>'; };
-  if (!url) return fallback();
+  if (!url) { el.innerHTML = '<i class="fas fa-user"></i>'; return; }
   const cur = el.querySelector('img');
   if (cur && cur.getAttribute('src') === url) return;
   const img = new Image();
-  img.alt = ''; img.referrerPolicy = 'no-referrer';
+  img.alt = ''; img.referrerPolicy = 'no-referrer'; img.setAttribute('draggable','false');
   img.onload = () => { el.textContent = ''; el.appendChild(img); };
-  img.onerror = fallback;
+  img.onerror = () => { el.innerHTML = '<i class="fas fa-user"></i>'; };
   img.src = url;
 }
 
-function getPlanCycleMs(){
-  const plan = getPlan((STATE.user && STATE.user.activePlanId) || 'basic');
-  return plan.cycleHours * 60 * 60 * 1000;
+function updateSupportBtn(){
+  const btn = $('profSupport');
+  if (!btn) return;
+  btn.innerHTML = isVip()
+    ? '<i class="fab fa-telegram-plane" style="color:#4DA3FF"></i> تواصل مع الدعم المباشر'
+    : '<i class="fas fa-lock" style="color:#FF8A82"></i> الدعم المباشر لأعضاء VIP';
+}
+
+function updateWithdrawFeeLabels(){
+  const vip = isVip();
+  setText('wdMinLbl', fmt(getWithdrawMin()) + ' ل.س');
+  setText('wdFeeRateLbl', vip ? '(0%)' : '(1.5%)');
+  const wa = $('wdAmount');
+  if (wa) wa.placeholder = 'الحد الأدنى ' + fmt(getWithdrawMin());
+  updateWithdrawFee();
 }
 
 /* ═══ التعدين ═══ */
-const aquariumScene = document.getElementById('aquariumScene');
-const fish5 = document.getElementById('fish5');
-const fish6 = document.getElementById('fish6');
-const treasure = document.getElementById('treasure');
-const tank = document.getElementById('tank');
+const aquariumScene = $('aquariumScene');
+const fish5 = $('fish5');
+const fish6 = $('fish6');
+const treasure = $('treasure');
+const tank = $('tank');
 
-function createBubbles(count){
+/* إنشاء الفقاعات مرة واحدة عند تغيّر الحالة فقط */
+function setBubbles(mode, count){
+  if (UI.bubbleMode === mode) return;
+  UI.bubbleMode = mode;
   document.querySelectorAll('.bubble').forEach(b => b.remove());
-  for(let i = 0; i < count; i++){
+  for (let i = 0; i < count; i++){
     const b = document.createElement('div');
     b.className = 'bubble';
     b.style.left = Math.random() * 100 + '%';
@@ -1900,27 +1538,50 @@ function createBubbles(count){
   }
 }
 
+/* تحديث زر التعدين فقط عند تغيّر محتواه */
+function setMineBtn(cls, html, disabled){
+  const key = cls + '|' + html + '|' + !!disabled;
+  if (UI.btnKey === key) return;
+  UI.btnKey = key;
+  const btn = $('mineAction');
+  btn.className = cls;
+  btn.disabled = !!disabled;
+  btn.innerHTML = html;
+}
+function setMineBusy(text){
+  setMineBtn('action action--start', '<span class="spinner"></span><span>' + text + '</span>', true);
+}
+
 function renderMining(){
   if (!STATE.user) return;
   const u = STATE.user;
   const plan = getPlan(u.activePlanId || 'basic');
-
   const readyNow = !STATE.timeLocked && !!u.hasStartedMining && !!u.miningCollectable;
   const runningNow = !STATE.timeLocked && !!u.hasStartedMining && !u.miningCollectable && !!u.miningStartTime;
-
   aquariumScene.classList.toggle('ready', readyNow);
   aquariumScene.classList.toggle('running', runningNow);
   $('miningCard').classList.toggle('is-ready', readyNow);
 
-  if (STATE.timeLocked) { renderLocked(); return; }
-  if (!u.hasStartedMining) { renderIdle(); return; }
-  if (u.miningCollectable) { renderReady(plan); return; }
-  if (u.miningStartTime) { renderRunning(u, plan); }
-  else { renderIdle(); }
+  if (STATE.timeLocked) return renderLocked();
+  if (!u.hasStartedMining) return renderIdle(plan);
+  if (u.miningCollectable) return renderReady(plan);
+  if (u.miningStartTime) return renderRunning(u, plan);
+  renderIdle(plan);
 }
 
-function renderIdle(){
-  const plan = getPlan((STATE.user && STATE.user.activePlanId) || 'basic');
+function renderLocked(){
+  stopLiveTimer();
+  setText('statusText', STATE.timeSynced
+    ? 'التعدين مجمّد — وقت الجهاز غير صحيح، فعّل الوقت التلقائي'
+    : 'تعذّر التحقق من الوقت — التعدين مجمّد');
+  $('statusDot').className = 'status-bar__dot';
+  setText('miningStatusMeta', 'مجمّد');
+  setText('timerText', '--:--:--');
+  setText('timerLbl', 'مجمّد');
+  setMineBtn('action action--stop', '<i class="fas fa-lock"></i><span>التعدين مجمّد</span>', true);
+}
+
+function renderIdle(plan){
   setText('statusText', 'الحوض هادئ — ابدأ التعدين!');
   $('statusText').style.color = '';
   $('statusDot').className = 'status-bar__dot';
@@ -1929,25 +1590,18 @@ function renderIdle(){
   treasure.classList.remove('show');
   if (fish5) fish5.style.opacity = '0';
   if (fish6) fish6.style.opacity = '0';
-  createBubbles(8);
-
+  setBubbles('idle', 8);
   setText('timerText', String(plan.cycleHours).padStart(2,'0') + ':00:00');
   setText('timerLbl', 'مدة الدورة');
   setText('miningStatusMeta', 'جاهز');
-
-  const btn = $('mineAction');
-  btn.className = 'action action--start';
-  btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-play"></i><span id="mineActionText">ابدأ التعدين</span>';
+  setMineBtn('action action--start', '<i class="fas fa-play"></i><span>ابدأ التعدين</span>', false);
 }
 
 function renderRunning(u, plan){
-  const start = u.miningStartTime;
-  const startMs = start.toDate ? start.toDate().getTime() : new Date(start).getTime();
-  const durMs = getPlanCycleMs();
+  const startMs = tsMs(u.miningStartTime);
+  const durMs = plan.cycleHours * 3600000;
   const elapsed = Math.max(0, getTrustedNow() - startMs);
   const remaining = Math.max(0, durMs - elapsed);
-
   if (remaining <= 0) { markMiningComplete(); return; }
 
   setText('statusText', 'الأسماك تسبح وتعمل...');
@@ -1955,47 +1609,37 @@ function renderRunning(u, plan){
   $('statusDot').className = 'status-bar__dot active';
   setText('miningStatusMeta', 'نشط');
   treasure.classList.remove('show');
-  createBubbles(20);
+  setBubbles('run', 20);
 
-  const pctNum = Math.min(100, (elapsed / durMs) * 100);
-  setText('stagePct', Math.floor(pctNum) + '%');
+  const pct = Math.min(100, (elapsed / durMs) * 100);
+  setText('stagePct', Math.floor(pct) + '%');
   $('stagePct').className = 'pct';
+  if (pct > 40 && fish5) fish5.style.opacity = '1';
+  if (pct > 70 && fish6) fish6.style.opacity = '1';
 
-  if (pctNum > 40 && fish5) fish5.style.opacity = '1';
-  if (pctNum > 70 && fish6) fish6.style.opacity = '1';
-
-  const btn = $('mineAction');
-  btn.className = 'action action--stop';
-  btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-stop-circle"></i><span>إيقاف التعدين</span>';
+  setMineBtn('action action--stop', '<i class="fas fa-stop-circle"></i><span>إيقاف التعدين</span>', false);
 
   const sec = Math.floor(remaining / 1000);
-  const h = Math.floor(sec / 3600);
-  const m = Math.floor((sec % 3600) / 60);
-  const s = sec % 60;
-  setText('timerText', String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0'));
+  const p2 = n => String(n).padStart(2, '0');
+  setText('timerText', p2(Math.floor(sec / 3600)) + ':' + p2(Math.floor((sec % 3600) / 60)) + ':' + p2(sec % 60));
   setText('timerLbl', 'متبقي');
 }
 
 function renderReady(plan){
+  const amount = (STATE.user.miningProgress > 0 && STATE.user.miningProgress <= 500) ? STATE.user.miningProgress : plan.reward;
   setText('statusText', 'اكتمل التعدين — الحوض مليء بالكنوز!');
   $('statusText').style.color = '#7DB9FF';
   $('statusDot').className = 'status-bar__dot ready';
   setText('miningStatusMeta', 'جاهز');
   $('stagePct').className = 'pct ready';
-  $('stagePct').innerHTML = '<bdi dir="ltr">+' + fmt(STATE.user.miningProgress > 0 ? STATE.user.miningProgress : plan.reward) + '</bdi> ل.س';
+  $('stagePct').innerHTML = '<bdi dir="ltr">+' + fmt(amount) + '</bdi> ل.س';
   treasure.classList.add('show');
-  createBubbles(35);
+  setBubbles('ready', 35);
   if (fish5) fish5.style.opacity = '1';
   if (fish6) fish6.style.opacity = '1';
-
   setText('timerText', '00:00:00');
   setText('timerLbl', 'اكتمل');
-
-  const btn = $('mineAction');
-  btn.className = 'action action--collect';
-  btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-hand-holding-usd"></i><span>جمع ' + fmt((STATE.user.miningProgress > 0 ? STATE.user.miningProgress : plan.reward)) + ' ل.س</span>';
+  setMineBtn('action action--collect', '<i class="fas fa-hand-holding-usd"></i><span>جمع ' + fmt(amount) + ' ل.س</span>', false);
 }
 
 function startLiveTimer(){
@@ -2016,173 +1660,129 @@ async function markMiningComplete(){
   try{
     const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
-      const snap = await trx.get(userRef);
-      if (!snap.exists) return;
-      const d = snap.data();
-      if (!d.miningStartTime || d.miningCollectable) return;
+      const d = (await trx.get(userRef)).data();
+      if (!d || !d.miningStartTime || d.miningCollectable) return;
       const p = getPlan(d.activePlanId || 'basic');
       if (getTrustedNow() - tsMs(d.miningStartTime) < p.cycleHours * 3600000) return;
-      trx.update(userRef, {
-        miningCollectable: true, miningProgress: p.reward,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-      });
+      trx.update(userRef, { miningCollectable: true, miningProgress: p.reward, updatedAt: SV() });
     });
-    const s2 = await userRef.get();
-    if (s2.exists){ STATE.user = s2.data(); updateUI(); renderMining(); }
   }catch(e){}
   finally{ STATE.completing = false; }
 }
 
 async function startMining(){
   if (STATE.isSubmitting || !STATE.user) return;
-  if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) {
-    toast('التعدين نشط حالياً', 'info'); return;
-  }
-  if (STATE.timeLocked) { toast('التعدين مجمّد', 'err'); return; }
-  if (STATE.user.miningCollectable) { toast('جمع الأرباح أولاً', 'info'); return; }
+  if (STATE.timeLocked) return toast('التعدين مجمّد', 'err');
+  if (STATE.user.miningCollectable) return toast('جمع الأرباح أولاً', 'info');
+  if (STATE.user.miningStartTime) return toast('التعدين نشط حالياً', 'info');
 
   STATE.isSubmitting = true;
-  const btn = $('mineAction');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span><span>جاري البدء...</span>';
-
+  setMineBusy('جاري البدء...');
   try{
-    const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
-      const snap = await trx.get(userRef);
-      if (!snap.exists) throw new Error('المستخدم غير موجود');
-      const data = snap.data();
-      if (data.miningCollectable) throw new Error('يجب جمع الأرباح السابقة');
-      if (data.miningStartTime) throw new Error('التعدين نشط حالياً');
-
-      trx.update(userRef, {
+      const d = (await trx.get(db.collection('users').doc(STATE.tgId))).data();
+      if (!d) throw new Error('المستخدم غير موجود');
+      if (d.miningCollectable) throw new Error('يجب جمع الأرباح السابقة');
+      if (d.miningStartTime) throw new Error('التعدين نشط حالياً');
+      trx.update(db.collection('users').doc(STATE.tgId), {
         hasStartedMining: true,
-        miningStartTime: firebase.firestore.FieldValue.serverTimestamp(),
+        miningStartTime: SV(),
         miningProgress: 0, miningCollectable: false,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        updatedAt: SV()
       });
     });
-    const snap2 = await userRef.get();
-    STATE.user = snap2.data();
-    updateUI(); renderMining(); startLiveTimer();
-    const plan = getPlan(STATE.user.activePlanId);
-    toast('🚀 بدأ التعدين! سيستغرق ' + plan.cycleHours + ' ساعات', 'ok');
+    startLiveTimer();
+    toast('🚀 بدأ التعدين! سيستغرق ' + getPlan(STATE.user.activePlanId).cycleHours + ' ساعات', 'ok');
   }catch(e){
     toast(e.message || 'فشل بدء التعدين', 'err');
+  }finally{
+    STATE.isSubmitting = false;
+    UI.btnKey = '';
     renderMining();
-  }finally{ STATE.isSubmitting = false; }
+  }
 }
 
 async function stopMining(){
-  if (STATE.isSubmitting || !STATE.user) return;
-  if (!STATE.user.miningStartTime) return;
-
-  const confirmed = confirm('هل أنت متأكد من إيقاف التعدين؟ سيتم فقدان التقدم الحالي ولن تحصل على أي مكافأة.');
-  if (!confirmed) return;
+  if (STATE.isSubmitting || !STATE.user || !STATE.user.miningStartTime) return;
+  if (!confirm('هل أنت متأكد من إيقاف التعدين؟ سيتم فقدان التقدم الحالي ولن تحصل على أي مكافأة.')) return;
 
   STATE.isSubmitting = true;
-  const btn = $('mineAction');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span><span>جاري الإيقاف...</span>';
-
+  setMineBusy('جاري الإيقاف...');
   try{
-    const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
-      const snap = await trx.get(userRef);
-      if (!snap.exists) throw new Error('المستخدم غير موجود');
-      const data = snap.data();
-      if (!data.miningStartTime) throw new Error('لا يوجد تعدين نشط');
-
-      trx.update(userRef, {
-        hasStartedMining: false,
-        miningStartTime: null,
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
+      if (!d) throw new Error('المستخدم غير موجود');
+      if (!d.miningStartTime) throw new Error('لا يوجد تعدين نشط');
+      trx.update(ref, {
+        hasStartedMining: false, miningStartTime: null,
         miningProgress: 0, miningCollectable: false,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        updatedAt: SV()
       });
     });
-    const snap2 = await userRef.get();
-    STATE.user = snap2.data();
-    updateUI(); renderMining(); stopLiveTimer();
+    stopLiveTimer();
     toast('⏹️ تم إيقاف التعدين', 'info');
   }catch(e){
     toast(e.message || 'فشل الإيقاف', 'err');
+  }finally{
+    STATE.isSubmitting = false;
+    UI.btnKey = '';
     renderMining();
-  }finally{ STATE.isSubmitting = false; }
+  }
 }
 
 async function collectMining(){
   if (STATE.isSubmitting || !STATE.user) return;
-  if (!STATE.user.miningCollectable) { toast('لا يوجد ما يُجمع', 'info'); return; }
+  if (!STATE.user.miningCollectable) return toast('لا يوجد ما يُجمع', 'info');
 
   STATE.isSubmitting = true;
-  const btn = $('mineAction');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span><span>جاري الجمع...</span>';
-
+  setMineBusy('جاري الجمع...');
   try{
-    const userRef = db.collection('users').doc(STATE.tgId);
     const reward = await db.runTransaction(async (trx) => {
-      const snap = await trx.get(userRef);
-      if (!snap.exists) throw new Error('المستخدم غير موجود');
-      const data = snap.data();
-      if (!data.miningCollectable) throw new Error('لا يوجد تعدين مكتمل');
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
+      if (!d) throw new Error('المستخدم غير موجود');
+      if (!d.miningCollectable) throw new Error('لا يوجد تعدين مكتمل');
       if (STATE.timeLocked) throw new Error('الوقت غير موثوق');
-      if (data.miningStartTime){
-        const need = getPlan(data.activePlanId || 'basic').cycleHours * 3600000;
-        if (getTrustedNow() - tsMs(data.miningStartTime) < need - 2000) throw new Error('لم تكتمل الدورة بعد');
+      if (d.miningStartTime){
+        const need = getPlan(d.activePlanId || 'basic').cycleHours * 3600000;
+        if (getTrustedNow() - tsMs(d.miningStartTime) < need - 2000) throw new Error('لم تكتمل الدورة بعد');
       }
-      const plan = getPlan(data.activePlanId || 'basic');
-      const r = (data.miningProgress > 0 && data.miningProgress <= 500) ? data.miningProgress : plan.reward;
-
-      const collectCount = (data.miningCollectCount || 0) + 1;
-
-      trx.update(userRef, {
-        balance_sy: firebase.firestore.FieldValue.increment(r),
-        totalEarned: firebase.firestore.FieldValue.increment(r),
-        planTotalEarned: firebase.firestore.FieldValue.increment(r),
-        miningCollectable: false,
-        miningProgress: 0,
-        miningStartTime: null,
-        hasStartedMining: false,
-        miningCollectCount: collectCount,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      const plan = getPlan(d.activePlanId || 'basic');
+      const r = (d.miningProgress > 0 && d.miningProgress <= 500) ? d.miningProgress : plan.reward;
+      trx.update(ref, {
+        balance_sy: FV.increment(r),
+        totalEarned: FV.increment(r),
+        planTotalEarned: FV.increment(r),
+        miningCollectable: false, miningProgress: 0,
+        miningStartTime: null, hasStartedMining: false,
+        miningCollectCount: (d.miningCollectCount || 0) + 1,
+        updatedAt: SV()
       });
       return r;
     });
-    const snap2 = await userRef.get();
-    STATE.user = snap2.data();
-    updateUI(); renderMining(); stopLiveTimer();
+    stopLiveTimer();
     toast('✅ تم جمع ' + fmt(reward) + ' ل.س! اضغط "ابدأ التعدين" لدورة جديدة', 'ok');
   }catch(e){
     toast(e.message || 'فشل الجمع', 'err');
+  }finally{
+    STATE.isSubmitting = false;
+    UI.btnKey = '';
     renderMining();
-  }finally{ STATE.isSubmitting = false; }
+  }
 }
 
 function onMineClick(){
   if (!STATE.user) return;
-  if (STATE.timeLocked) { toast('التعدين مجمّد حتى تصحيح وقت الجهاز', 'err'); return; }
+  if (STATE.timeLocked) return toast('التعدين مجمّد حتى تصحيح وقت الجهاز', 'err');
   if (STATE.user.miningCollectable) collectMining();
   else if (STATE.user.miningStartTime) stopMining();
   else startMining();
 }
 
 /* ═══ الخطط ═══ */
-function getPlanColors(plan){
-  const t = 'rgba(0,0,0,.28)';
-  const map = {
-    sea:    { bg:t, color:'#fff', border:'#007AFF' },
-    slate:  { bg:t, color:'#fff', border:'#007AFF' },
-    amber:  { bg:t, color:'#fff', border:'#007AFF' },
-    purple: { bg:t, color:'#fff', border:'#007AFF' },
-    coral:  { bg:t, color:'#fff', border:'#007AFF' },
-    ink:    { bg:t, color:'#fff', border:'#007AFF' }
-  };
-  return map[plan.color] || map.sea;
-}
-
 const PLAN_TIMER_HTML =
-  '<div class="plan__timer" id="planTimer">' +
+  '<div class="plan__timer">' +
     '<div class="plan__timer-head"><span><i class="fas fa-hourglass-half"></i>الوقت المتبقي لانتهاء الخطة</span><span id="ptPct">--</span></div>' +
     '<div class="plan__timer-grid">' +
       '<div class="tbox"><b id="ptD">--</b><small>يوم</small></div>' +
@@ -2196,116 +1796,74 @@ const PLAN_CANCEL_HTML =
 function renderPlans(){
   const list = $('plansGrid');
   if (!list || !STATE.user) return;
-
   const current = STATE.user.activePlanId || 'basic';
   const curIdx = getPlanIndex(current);
   const balance = STATE.user.balance_sy || 0;
-  const miningActive = !!(STATE.user.miningStartTime && !STATE.user.miningCollectable);
-  const miningReady = !!STATE.user.miningCollectable;
+  const busy = !!(STATE.user.miningStartTime && !STATE.user.miningCollectable) || !!STATE.user.miningCollectable;
 
   list.innerHTML = CONFIG.plans.map(plan => {
     const idx = getPlanIndex(plan.id);
     const isCur = plan.id === current;
-    const colors = getPlanColors(plan);
-
-    let btnClass = 'plan__btn', btnText = '', btnIcon = '', disabled = '';
-    if (isCur) {
-      btnClass += ' plan__btn--current';
-      btnText = 'الحالية'; btnIcon = '<i class="fas fa-check"></i>'; disabled = 'disabled';
-    } else if (balance < plan.price) {
-      btnClass += ' plan__btn--locked';
-      btnText = 'رصيد ناقص'; btnIcon = '<i class="fas fa-lock"></i>'; disabled = 'disabled';
-    } else if (miningActive || miningReady) {
-      btnClass += ' plan__btn--locked';
-      btnText = 'أثناء التعدين'; btnIcon = '<i class="fas fa-hourglass-half"></i>'; disabled = 'disabled';
+    let btnClass = 'plan__btn', btnText, btnIcon, disabled = '';
+    if (isCur){
+      btnClass += ' plan__btn--current'; btnText = 'الحالية'; btnIcon = '<i class="fas fa-check"></i>'; disabled = 'disabled';
+    } else if (balance < plan.price){
+      btnClass += ' plan__btn--locked'; btnText = 'رصيد ناقص'; btnIcon = '<i class="fas fa-lock"></i>'; disabled = 'disabled';
+    } else if (busy){
+      btnClass += ' plan__btn--locked'; btnText = 'أثناء التعدين'; btnIcon = '<i class="fas fa-hourglass-half"></i>'; disabled = 'disabled';
     } else {
-      btnClass += ' plan__btn--buy';
-      btnText = 'اختيار'; btnIcon = '<i class="fas fa-arrow-up"></i>';
+      btnClass += ' plan__btn--buy'; btnText = 'اختيار'; btnIcon = '<i class="fas fa-arrow-up"></i>';
     }
-
     let badge = '';
     if (isCur) badge = '<span class="plan__badge plan__badge--current">نشطة</span>';
     else if (idx === curIdx + 1) badge = '<span class="plan__badge plan__badge--next">التالية</span>';
 
-    return [
-      '<div class="plan ' + (isCur ? 'plan--current' : '') + '">',
-        '<div class="plan__top">',
-          '<div class="plan__icon" style="background:' + colors.bg + ';color:' + colors.color + ';border:1.5px solid ' + colors.border + '">',
-            '<span>' + plan.emoji + '</span>',
-          '</div>',
-          '<div class="plan__head">',
-            '<div class="plan__name">',
-              'خطة ' + plan.name,
-              '<span class="plan__badge plan__badge--locked">Lv.' + plan.level + '</span>',
-              badge,
-            '</div>',
-            '<div class="plan__desc">' + (plan.planDays === 0 ? 'الخطة الافتراضية' : 'تنتهي بعد ' + plan.planDays + ' يوم') + '</div>',
-          '</div>',
-        '</div>',
-        '<div class="plan__stats">',
-          '<div class="plan__stat">',
-            '<div class="plan__stat-lbl"><i class="fas fa-coins" style="color:#4DA3FF"></i> الربح / دورة</div>',
-            '<div class="plan__stat-val amber">' + fmt(plan.reward) + ' ل.س</div>',
-          '</div>',
-          '<div class="plan__stat">',
-            '<div class="plan__stat-lbl"><i class="fas fa-clock" style="color:#4DA3FF"></i> مدة الدورة</div>',
-            '<div class="plan__stat-val sea">' + plan.cycleHours + ' ساعات</div>',
-          '</div>',
-        '</div>',
-        (isCur && plan.planDays > 0 ? PLAN_TIMER_HTML : ''),
-        '<div class="plan__bottom">',
-          '<div class="plan__price">',
-            '<div class="plan__price-lbl">التكلفة</div>',
-            '<div class="plan__price-val">' + (plan.price === 0 ? 'مجاني' : fmt(plan.price) + ' ل.س') + '</div>',
-          '</div>',
-          '<button class="' + btnClass + '" ' + disabled + ' data-plan="' + plan.id + '">',
-            btnIcon, ' ', btnText,
-          '</button>',
-        '</div>',
-        (isCur && plan.planDays > 0 ? PLAN_CANCEL_HTML : ''),
-      '</div>'
-    ].join('');
+    return '<div class="plan ' + (isCur ? 'plan--current' : '') + '">' +
+      '<div class="plan__top">' +
+        '<div class="plan__icon" style="background:rgba(0,0,0,.28);color:#fff"><span>' + plan.emoji + '</span></div>' +
+        '<div class="plan__head">' +
+          '<div class="plan__name">خطة ' + plan.name +
+            '<span class="plan__badge plan__badge--locked">Lv.' + plan.level + '</span>' + badge + '</div>' +
+          '<div class="plan__desc">' + (plan.planDays === 0 ? 'الخطة الافتراضية' : 'تنتهي بعد ' + plan.planDays + ' يوم') + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="plan__stats">' +
+        '<div class="plan__stat"><div class="plan__stat-lbl"><i class="fas fa-coins" style="color:#4DA3FF"></i> الربح / دورة</div><div class="plan__stat-val">' + fmt(plan.reward) + ' ل.س</div></div>' +
+        '<div class="plan__stat"><div class="plan__stat-lbl"><i class="fas fa-clock" style="color:#4DA3FF"></i> مدة الدورة</div><div class="plan__stat-val">' + plan.cycleHours + ' ساعات</div></div>' +
+      '</div>' +
+      (isCur && plan.planDays > 0 ? PLAN_TIMER_HTML : '') +
+      '<div class="plan__bottom">' +
+        '<div class="plan__price"><div class="plan__price-lbl">التكلفة</div><div class="plan__price-val">' + (plan.price === 0 ? 'مجاني' : fmt(plan.price) + ' ل.س') + '</div></div>' +
+        '<button class="' + btnClass + '" ' + disabled + ' data-plan="' + plan.id + '">' + btnIcon + ' ' + btnText + '</button>' +
+      '</div>' +
+      (isCur && plan.planDays > 0 ? PLAN_CANCEL_HTML : '') +
+    '</div>';
   }).join('');
 
-  list.querySelectorAll('.plan__btn--buy').forEach(btn => {
-    btn.addEventListener('click', () => buyPlan(btn.dataset.plan));
-  });
+  list.querySelectorAll('.plan__btn--buy').forEach(btn => btn.addEventListener('click', () => buyPlan(btn.dataset.plan)));
   const cb = $('planCancelBtn'); if (cb) cb.addEventListener('click', cancelPlan);
   updatePlanTimer();
-  renderPlansReport();
 }
 
 function renderPlansReport(){
   const body = $('plansReportBody');
   if (!body) return;
-
   const current = (STATE.user && STATE.user.activePlanId) || 'basic';
   const cyclesPerDay = 24 / CONFIG.plans[0].cycleHours;
-
   body.innerHTML = CONFIG.plans.filter(p => p.price > 0).map(plan => {
-    const isCurrent = plan.id === current;
-    const totalCycles = plan.planDays * cyclesPerDay;
-    const totalReward = plan.reward * totalCycles;
+    const totalReward = plan.reward * plan.planDays * cyclesPerDay;
     const totalAll = plan.price + totalReward;
-
-    return `
-      <tr class="${isCurrent ? 'is-current' : ''}">
-        <td>
-          <div class="pt-plan">
-            <span class="pt-plan__icon">${plan.emoji}</span>
-            <span class="pt-plan__name">${plan.name}<span class="pt-plan__lvl">${plan.level}</span></span>
-          </div>
-        </td>
-        <td class="pt-price">${fmt(plan.price)}</td>
-        <td style="color:#4DA3FF">${fmt(totalReward)}</td>
-        <td class="pt-total">${fmt(totalAll)}</td>
-      </tr>
-    `;
+    return '<tr class="' + (plan.id === current ? 'is-current' : '') + '">' +
+      '<td><div class="pt-plan"><span class="pt-plan__icon">' + plan.emoji + '</span>' +
+        '<span class="pt-plan__name">' + plan.name + '<span class="pt-plan__lvl">' + plan.level + '</span></span></div></td>' +
+      '<td class="pt-price">' + fmt(plan.price) + '</td>' +
+      '<td style="color:#4DA3FF">' + fmt(totalReward) + '</td>' +
+      '<td class="pt-total">' + fmt(totalAll) + '</td></tr>';
   }).join('');
 }
 
 function updatePlanTimer(){
-  const box = $('planTimer');
+  const box = $('planTimer') || document.getElementById('ptPct');
   if (!box || !STATE.user) return;
   const u = STATE.user, plan = getPlan(u.activePlanId || 'basic');
   if (!u.planExpiresAt || !plan.planDays) return;
@@ -2321,7 +1879,7 @@ function updatePlanTimer(){
   const bar = $('ptBar'); if (bar) bar.style.width = pct + '%';
   if (left <= 0 && !STATE.expiring){
     STATE.expiring = true;
-    checkPlanExpiry().finally(() => { STATE.expiring = false; updateUI(); renderMining(); });
+    checkPlanExpiry().finally(() => { STATE.expiring = false; });
   }
 }
 
@@ -2333,23 +1891,22 @@ async function cancelPlan(){
   if (STATE.user.miningCollectable) return toast('اجمع أرباحك أولاً ثم ألغِ الخطة', 'info');
   if (STATE.user.miningStartTime) return toast('أوقف التعدين الحالي أولاً', 'info');
   if (!confirm('سيتم إلغاء خطة ' + cur.name + ' والرجوع للخطة الأساسية.\nلن يتم رد أي مبلغ (' + fmt(cur.price) + ' ل.س). هل أنت متأكد؟')) return;
+
   STATE.isSubmitting = true;
   try{
-    const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
-      const d = (await trx.get(userRef)).data();
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
       if (!d || getPlan(d.activePlanId).planDays === 0) throw new Error('لا توجد خطة للإلغاء');
       if (d.miningCollectable) throw new Error('اجمع أرباحك أولاً');
       if (d.miningStartTime) throw new Error('أوقف التعدين أولاً');
-      trx.update(userRef, {
+      trx.update(ref, {
         activePlanId: 'basic', planStartedAt: null, planExpiresAt: null,
         planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
         hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        updatedAt: SV()
       });
     });
-    STATE.user = (await userRef.get()).data();
-    updateUI(); renderMining();
     toast('تم إلغاء الخطة والرجوع للأساسية', 'info');
   }catch(e){ toast(e.message || 'فشل الإلغاء', 'err'); }
   finally{ STATE.isSubmitting = false; }
@@ -2358,156 +1915,105 @@ async function cancelPlan(){
 async function buyPlan(planId){
   if (STATE.isSubmitting || !STATE.user) return;
   const plan = getPlan(planId);
-  const cur = STATE.user.activePlanId || 'basic';
-
-  if (planId === cur) return toast('هذه خطتك الحالية', 'info');
+  const cur = getPlan(STATE.user.activePlanId || 'basic');
+  if (planId === cur.id) return toast('هذه خطتك الحالية', 'info');
   if (STATE.timeLocked) return toast('الوقت غير موثوق', 'err');
   if ((STATE.user.balance_sy || 0) < plan.price) return toast('الرصيد غير كافٍ', 'err');
   if (STATE.user.miningStartTime && !STATE.user.miningCollectable) return toast('لا يمكن الترقية أثناء التعدين', 'info');
   if (STATE.user.miningCollectable) return toast('اجمع أرباحك أولاً', 'info');
-
-  const curPlan = getPlan(cur);
-  const planHasValue = curPlan.price > 0;
-
-  if (planHasValue) {
-    const confirmed = confirm('تنبيه: لن يتم استرداد مبلغ خطتك الحالية (' + fmt(curPlan.price) + ' ل.س). هل تريد المتابعة؟');
-    if (!confirmed) return;
-  }
+  if (cur.price > 0 && !confirm('تنبيه: لن يتم استرداد مبلغ خطتك الحالية (' + fmt(cur.price) + ' ل.س). هل تريد المتابعة؟')) return;
 
   STATE.isSubmitting = true;
   try{
-    const userRef = db.collection('users').doc(STATE.tgId);
-    const expiryMs = plan.planDays > 0 ? getTrustedNow() + (plan.planDays * 24 * 60 * 60 * 1000) : null;
-    const expiryDate = expiryMs ? new Date(expiryMs) : null;
-
+    const expiryDate = plan.planDays > 0 ? new Date(getTrustedNow() + plan.planDays * 864e5) : null;
     await db.runTransaction(async (trx) => {
-      const snap = await trx.get(userRef);
-      if (!snap.exists) throw new Error('المستخدم غير موجود');
-      const data = snap.data();
-      if ((data.balance_sy || 0) < plan.price) throw new Error('رصيد غير كافٍ');
-      if (data.miningStartTime && !data.miningCollectable) throw new Error('لا يمكن الترقية أثناء التعدين');
-      if (data.miningCollectable) throw new Error('اجمع أرباحك أولاً');
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
+      if (!d) throw new Error('المستخدم غير موجود');
+      if ((d.balance_sy || 0) < plan.price) throw new Error('رصيد غير كافٍ');
+      if (d.miningStartTime && !d.miningCollectable) throw new Error('لا يمكن الترقية أثناء التعدين');
+      if (d.miningCollectable) throw new Error('اجمع أرباحك أولاً');
 
-      const updateData = {
-        balance_sy: firebase.firestore.FieldValue.increment(-plan.price),
+      const upd = {
+        balance_sy: FV.increment(-plan.price),
         activePlanId: planId,
         planPurchaseAmount: plan.price,
         planTotalEarned: 0,
         level: plan.level,
-        hasStartedMining: false,
-        miningStartTime: null,
-        miningProgress: 0, miningCollectable: false,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
+        updatedAt: SV()
       };
-
-      if (!data.hasPurchasedPlan && plan.price > 0) {
-        updateData.hasPurchasedPlan = true;
-      }
-
-      if (plan.planDays > 0) {
-        updateData.planStartedAt = firebase.firestore.FieldValue.serverTimestamp();
-        updateData.planExpiresAt = firebase.firestore.Timestamp.fromDate(expiryDate);
-      } else {
-        updateData.planStartedAt = null;
-        updateData.planExpiresAt = null;
-      }
-
-      trx.update(userRef, updateData);
+      if (!d.hasPurchasedPlan && plan.price > 0) upd.hasPurchasedPlan = true;
+      upd.planStartedAt = expiryDate ? SV() : null;
+      upd.planExpiresAt = expiryDate ? firebase.firestore.Timestamp.fromDate(expiryDate) : null;
+      trx.update(ref, upd);
     });
-
-    const snap2 = await userRef.get();
-    STATE.user = snap2.data();
-    updateUI(); renderMining(); renderPlans();
-    await checkPlanExpiry();
     toast('✅ تم ترقيتك إلى خطة ' + plan.name + '!', 'ok');
   }catch(e){
     toast(e.message || 'فشل الشراء', 'err');
   }finally{ STATE.isSubmitting = false; }
 }
 
-/* ═══ الاشتراك المميز ═══ */
-function openSubModal(){
-  if (!STATE.user) return;
-  if (STATE.user.verified === true){
-    toast('حسابك موثق بالفعل ✓', 'ok');
+/* ═══ عضوية VIP ═══ */
+function renderVip(){
+  const card = $('vipCard');
+  const btn = $('vipBtn');
+  if (!card || !btn || !STATE.user) return;
+  const vip = isVip();
+  card.classList.toggle('vip--active', vip);
+  if (vip){
+    setText('vipSub', 'العضوية مفعّلة مدى الحياة ✓');
+    btn.disabled = true;
+    btn.dataset.act = '';
+    btn.innerHTML = '<i class="fas fa-check"></i> أنت عضو VIP';
     return;
   }
-  updateSubModalWallet();
-  $('subModal').classList.add('show');
-}
-function closeSubModal(){
-  $('subModal').classList.remove('show');
-}
-function updateSubModalWallet(){
-  if (!STATE.user) return;
+  setText('vipSub', 'دفعة واحدة · مدى الحياة');
   const bal = STATE.user.balance_sy || 0;
-  const price = CONFIG.subscription.price;
-  const el = $('subWalletVal');
-  if (!el) return;
-  el.textContent = fmt(bal) + ' ل.س';
-  el.className = 'sub-wallet__val ' + (bal >= price ? 'sub-wallet__val--ok' : 'sub-wallet__val--bad');
-
-  const btn = $('subPayBtn');
-  const txt = $('subPayText');
-  if (btn && txt){
-    if (bal < price){
-      btn.disabled = true;
-      txt.textContent = 'رصيد غير كافٍ — تحتاج ' + fmt(price - bal) + ' ل.س إضافية';
-    } else {
-      btn.disabled = false;
-      txt.textContent = 'تأكيد الاشتراك — ' + fmt(price) + ' ل.س';
-    }
+  const price = CONFIG.vip.price;
+  btn.disabled = false;
+  if (bal < price){
+    btn.dataset.act = 'wallet';
+    btn.innerHTML = '<i class="fas fa-wallet"></i> اشحن رصيدك (تحتاج ' + fmt(price - bal) + ' ل.س)';
+  } else {
+    btn.dataset.act = 'buy';
+    btn.innerHTML = '<i class="fas fa-crown"></i> اشترك الآن — ' + fmt(price) + ' ل.س';
   }
 }
-async function activateSubscription(){
-  if (!STATE.user || STATE.isSubmitting) return;
-  if (STATE.user.verified === true){
-    toast('حسابك موثق بالفعل ✓', 'info');
-    closeSubModal();
-    return;
-  }
-  const price = CONFIG.subscription.price;
-  if ((STATE.user.balance_sy || 0) < price){
-    toast('الرصيد غير كافٍ', 'err');
-    return;
-  }
 
-  const btn = $('subPayBtn');
-  const txt = $('subPayText');
+async function buyVip(){
+  if (STATE.isSubmitting || !STATE.user || isVip()) return;
+  const price = CONFIG.vip.price;
+  if (!confirm('تأكيد الاشتراك في عضوية VIP بـ ' + fmt(price) + ' ل.س؟ (دفعة واحدة، مدى الحياة)')) return;
+
   STATE.isSubmitting = true;
-  btn.disabled = true;
-  txt.innerHTML = '<span class="spinner"></span> جاري التوثيق...';
-
   try{
-    const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
-      const snap = await trx.get(userRef);
-      if (!snap.exists) throw new Error('المستخدم غير موجود');
-      const data = snap.data();
-      if (data.verified === true) throw new Error('حسابك موثق بالفعل');
-      if ((data.balance_sy || 0) < price) throw new Error('رصيد غير كافٍ');
-
-      trx.update(userRef, {
-        balance_sy: firebase.firestore.FieldValue.increment(-price),
-        verified: true,
-        verifiedAt: firebase.firestore.FieldValue.serverTimestamp(),
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
+      if (!d) throw new Error('المستخدم غير موجود');
+      if (d.vip === true || d.verified === true) throw new Error('أنت عضو VIP بالفعل');
+      if ((d.balance_sy || 0) < price) throw new Error('رصيد غير كافٍ');
+      trx.update(ref, {
+        balance_sy: FV.increment(-price),
+        vip: true,
+        vipAt: SV(),
+        updatedAt: SV()
       });
     });
-
-    STATE.user = (await userRef.get()).data();
-    updateUI();
-    closeSubModal();
-    toast('🎉 تم توثيق حسابك بنجاح! استمتع بميزاتك الجديدة', 'ok');
+    toast('🎉 تم تفعيل عضوية VIP! استمتع بالمزايا', 'ok');
   }catch(e){
-    toast(e.message || 'فشل التوثيق', 'err');
-  }finally{
-    STATE.isSubmitting = false;
-    updateSubModalWallet();
-  }
+    toast(e.message || 'فشل الاشتراك', 'err');
+  }finally{ STATE.isSubmitting = false; }
 }
 
-/* ═══ Wallet ═══ */
+function onVipClick(){
+  const act = $('vipBtn').dataset.act;
+  if (act === 'wallet') { navigate('wallet'); return; }
+  if (act === 'buy') buyVip();
+}
+
+/* ═══ المحفظة ═══ */
 function initWalletTabs(){
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -2542,48 +2048,51 @@ function initWithdraw(){
   });
   $('wdSubmit').addEventListener('click', submitWithdraw);
 }
+
 function updateWithdrawFee(){
   const v = parseFloat($('wdAmount').value) || 0;
-  const rate = getFeeRate();
-  const fee = v * rate;
+  const fee = v * getFeeRate();
   const net = v - fee;
   setText('wdFee', fmt(fee) + ' ل.س');
   setText('wdNet', fmt(net) + ' ل.س');
-  if (STATE.withdrawMethod === 'binance') {
-    setText('wdUsdt', (net / CONFIG.withdraw.usdRate).toFixed(4) + ' USDT');
-  }
+  if (STATE.withdrawMethod === 'binance') setText('wdUsdt', (net / CONFIG.withdraw.usdRate).toFixed(4) + ' USDT');
 }
+
 async function submitWithdraw(){
   if (STATE.isSubmitting || !STATE.user) return;
   const minAmount = getWithdrawMin();
   const feeRate = getFeeRate();
   const amount = parseFloat($('wdAmount').value);
-  if (!isFinite(amount) || Math.round(amount * 100) / 100 !== amount || amount > 10000000 || amount < minAmount) return toast('الحد الأدنى ' + minAmount + ' ل.س', 'err');
+  if (!isFinite(amount) || Math.round(amount * 100) / 100 !== amount || amount > 10000000 || amount < minAmount)
+    return toast('الحد الأدنى ' + fmt(minAmount) + ' ل.س', 'err');
   if (amount > (STATE.user.balance_sy || 0)) return toast('الرصيد غير كافٍ', 'err');
   const account = $('wdAccount').value.trim();
   if (!/^[A-Za-z0-9_\-]{4,64}$/.test(account)) return toast('معرف الحساب غير صحيح', 'err');
   let phone = '';
-  if (STATE.withdrawMethod === 'sham_cash') {
+  if (STATE.withdrawMethod === 'sham_cash'){
     phone = $('wdPhone').value.trim();
     if (!/^09\d{8}$/.test(phone)) return toast('رقم هاتف غير صحيح (09xxxxxxxx)', 'err');
   }
+
+  const fee = Math.round(amount * feeRate * 100) / 100;
+  const net = Math.round((amount - fee) * 100) / 100;
+  const usdt = STATE.withdrawMethod === 'binance' ? net / CONFIG.withdraw.usdRate : null;
+
   STATE.isSubmitting = true;
   const btn = $('wdSubmit');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span><span>جاري الإرسال...</span>';
-  const fee = Math.round(amount * feeRate * 100) / 100;
-  const net = Math.round((amount - fee) * 100) / 100;
-  const usdt = STATE.withdrawMethod === 'binance' ? net / CONFIG.withdraw.usdRate : null;
-  const userRef = db.collection('users').doc(STATE.tgId);
   try{
     await db.runTransaction(async (trx) => {
-      const snap = await trx.get(userRef);
-      const bal = snap.data().balance_sy || 0;
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
+      if (!d) throw new Error('المستخدم غير موجود');
+      const bal = d.balance_sy || 0;
       if (bal < amount) throw new Error('رصيد غير كافٍ');
-      trx.update(userRef, {
+      trx.update(ref, {
         balance_sy: bal - amount,
-        totalWithdrawn: firebase.firestore.FieldValue.increment(amount),
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        totalWithdrawn: FV.increment(amount),
+        updatedAt: SV()
       });
       const wdRef = db.collection('withdrawals').doc();
       trx.set(wdRef, {
@@ -2595,14 +2104,10 @@ async function submitWithdraw(){
         exchangeRate: STATE.withdrawMethod === 'binance' ? CONFIG.withdraw.usdRate : null,
         phone: phone || null, accountId: account,
         method: STATE.withdrawMethod, status: 'pending',
-        isVerified: isVerified(),
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        isVip: isVip(),
+        createdAt: SV(), updatedAt: SV()
       });
     });
-    const snap2 = await userRef.get();
-    STATE.user = snap2.data();
-    updateUI();
     $('wdAmount').value = ''; $('wdPhone').value = ''; $('wdAccount').value = '';
     updateWithdrawFee();
     toast('✅ تم إرسال طلب السحب', 'ok');
@@ -2635,38 +2140,32 @@ function initDeposit(){
   $('depCopyBinance').addEventListener('click', () => copyText(CONFIG.deposit.binance, 'تم نسخ معرف Binance'));
 }
 
-/* ═══ Referral ═══ */
+/* ═══ الإحالة ═══ */
 function setRefPane(p){
   document.querySelectorAll('#refSeg .seg__b').forEach(b => b.classList.toggle('active', b.dataset.pane === p));
   $('refPaneInvite').style.display = p === 'invite' ? 'block' : 'none';
   $('refPaneTop').style.display = p === 'top' ? 'block' : 'none';
   if (p === 'top') loadLeaderboard();
-  const ms = $('mainScroll'); if (ms) ms.scrollTop = 0;
+  $('mainScroll').scrollTop = 0;
 }
+
 function initReferral(){
   document.querySelectorAll('#refSeg .seg__b').forEach(b => b.addEventListener('click', () => setRefPane(b.dataset.pane)));
   $('refCopyLink').addEventListener('click', () => copyText($('refLink').textContent, 'تم نسخ رابط الدعوة'));
   $('refCopyCode').addEventListener('click', () => copyText($('refCode').textContent, 'تم نسخ كود الدعوة'));
-
   $('refShare').addEventListener('click', () => {
     const link = ($('refLink').textContent || '').trim();
-    if (!link || link === '...') { toast('رابط الدعوة غير جاهز بعد', 'err'); return; }
-
+    if (!link || link === '...') return toast('رابط الدعوة غير جاهز بعد', 'err');
     const text = [
-      '🐬 دولفين مينر — منصة التعدين على تيليجرام',
-      '',
+      '🐬 دولفين مينر — منصة التعدين على تيليجرام', '',
       '⛏ عدّن مجاناً كل ' + CONFIG.plans[0].cycleHours + ' ساعات واجمع أرباحك',
       '🎁 هدية ترحيبية ' + CONFIG.referral.newUserReward + ' ل.س فور التسجيل',
-      '💸 سحب عبر شام كاش وBinance',
-      '',
+      '💸 سحب عبر شام كاش وBinance', '',
       'سجّل الآن عبر رابط الدعوة وابدأ التعدين.'
     ].join('\n');
-
     const shareUrl = 'https://t.me/share/url?url=' + encodeURIComponent(link) + '&text=' + encodeURIComponent(text);
-    if (tg && tg.openTelegramLink) tg.openTelegramLink(shareUrl);
-    else window.open(shareUrl, '_blank');
+    if (tg && tg.openTelegramLink) tg.openTelegramLink(shareUrl); else window.open(shareUrl, '_blank');
   });
-
   $('refSubmitBtn').addEventListener('click', submitReferral);
   $('refInputCode').addEventListener('input', (e) => {
     e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 12);
@@ -2675,85 +2174,60 @@ function initReferral(){
 
 async function submitReferral(){
   if (STATE.isSubmitting || !STATE.user) return;
-  if (STATE.user.referralUsed) return toast('استخدمت كوداً سابقاً', 'err');
-
-  const input = $('refInputCode');
   const msgEl = $('refInputMsg');
-  const code = (input.value || '').trim();
+  const showMsg = (cls, text) => { msgEl.className = 'msg ' + cls + ' show'; msgEl.textContent = text; };
+  if (STATE.user.referralUsed) return showMsg('msg--err', 'استخدمت كوداً سابقاً');
 
-  msgEl.className = 'msg';
-  if (!code || !/^\d{6,12}$/.test(code)) {
-    msgEl.className = 'msg msg--err show'; msgEl.textContent = 'الكود يجب أن يكون Telegram ID صحيح'; return;
-  }
-  if (code === STATE.user.referralCode || code === STATE.tgId) {
-    msgEl.className = 'msg msg--err show'; msgEl.textContent = 'لا يمكنك استخدام كودك'; return;
-  }
+  const code = ($('refInputCode').value || '').trim();
+  if (!/^\d{6,12}$/.test(code)) return showMsg('msg--err', 'الكود يجب أن يكون Telegram ID صحيح');
+  if (code === STATE.tgId) return showMsg('msg--err', 'لا يمكنك استخدام كودك');
 
   STATE.isSubmitting = true;
   const btn = $('refSubmitBtn');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> تحقق...';
-
   try{
     const q = await db.collection('users').where('referralCode', '==', code).limit(1).get();
-    if (q.empty) {
-      msgEl.className = 'msg msg--err show'; msgEl.textContent = 'كود غير صالح'; return;
-    }
+    if (q.empty) return showMsg('msg--err', 'كود غير صالح');
     const referrerId = q.docs[0].id;
-    const referrerRef = db.collection('users').doc(referrerId);
-    const userRef = db.collection('users').doc(STATE.tgId);
+    const R = CONFIG.referral;
 
     await db.runTransaction(async (trx) => {
-      const meSnap = await trx.get(userRef);
-      if (!meSnap.exists) throw new Error('المستخدم غير موجود');
-      if (meSnap.data().referralUsed) throw new Error('استخدمت كوداً سابقاً');
-
-      const refSnap = await trx.get(referrerRef);
-      if (!refSnap.exists) throw new Error('صاحب الدعوة غير موجود');
-      const refData = refSnap.data();
-      if (referrerId === STATE.tgId) throw new Error('لا يمكنك استخدام كودك');
-      if ((meSnap.data().referredUsers || []).includes(referrerId)) throw new Error('هذا المستخدم من دعواتك');
+      const userRef = db.collection('users').doc(STATE.tgId);
+      const referrerRef = db.collection('users').doc(referrerId);
+      const me = (await trx.get(userRef)).data();
+      if (!me) throw new Error('المستخدم غير موجود');
+      if (me.referralUsed) throw new Error('استخدمت كوداً سابقاً');
+      if ((me.referredUsers || []).includes(referrerId)) throw new Error('هذا المستخدم من دعواتك');
+      const rd = (await trx.get(referrerRef)).data();
+      if (!rd) throw new Error('صاحب الدعوة غير موجود');
+      const payout = R.referrerReward + ((rd.vip === true || rd.verified === true) ? CONFIG.vip.referralBonus : 0);
 
       trx.update(userRef, {
-        balance_sy: firebase.firestore.FieldValue.increment(CONFIG.referral.newUserReward),
-        totalEarned: firebase.firestore.FieldValue.increment(CONFIG.referral.newUserReward),
+        balance_sy: FV.increment(R.newUserReward),
+        totalEarned: FV.increment(R.newUserReward),
         referralUsed: true, referralCodeUsed: code, referredBy: referrerId,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        updatedAt: SV()
       });
-
       trx.update(referrerRef, {
-        balance_sy: firebase.firestore.FieldValue.increment(CONFIG.referral.referrerReward),
-        totalEarned: firebase.firestore.FieldValue.increment(CONFIG.referral.referrerReward),
-        referralEarnings: firebase.firestore.FieldValue.increment(CONFIG.referral.referrerReward),
-        referralCount: firebase.firestore.FieldValue.increment(1),
-        referredUsers: firebase.firestore.FieldValue.arrayUnion(STATE.tgId),
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        balance_sy: FV.increment(payout),
+        totalEarned: FV.increment(payout),
+        referralEarnings: FV.increment(payout),
+        referralCount: FV.increment(1),
+        referredUsers: FV.arrayUnion(STATE.tgId),
+        updatedAt: SV()
       });
-
-      const lbRef = db.collection('referralLeaderboard').doc(referrerId);
-      trx.set(lbRef, {
-        name: refData.name || 'مستخدم',
-        username: refData.username || null,
-        referralCount: firebase.firestore.FieldValue.increment(1),
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      trx.set(db.collection('referralLeaderboard').doc(referrerId), {
+        name: rd.name || 'مستخدم', username: rd.username || null,
+        referralCount: FV.increment(1), updatedAt: SV()
       }, { merge:true });
     });
 
-    const snap2 = await userRef.get();
-    STATE.user = snap2.data();
-    updateUI();
-
-    msgEl.className = 'msg msg--ok show';
-    msgEl.textContent = '✅ تم تفعيل الكود! +' + CONFIG.referral.newUserReward + ' ل.س';
-    toast('+' + CONFIG.referral.newUserReward + ' ل.س من الإحالة', 'ok');
-
-    setTimeout(() => {
-      const block = $('refInputBlock');
-      if (block) block.style.display = 'none';
-    }, 1500);
+    showMsg('msg--ok', '✅ تم تفعيل الكود! +' + R.newUserReward + ' ل.س');
+    toast('+' + R.newUserReward + ' ل.س من الإحالة', 'ok');
+    setTimeout(() => { $('refInputBlock').style.display = 'none'; }, 1500);
   }catch(e){
-    msgEl.className = 'msg msg--err show';
-    msgEl.textContent = e.message || 'فشل التفعيل';
+    showMsg('msg--err', e.message || 'فشل التفعيل');
   }finally{
     STATE.isSubmitting = false;
     btn.disabled = false;
@@ -2761,37 +2235,31 @@ async function submitReferral(){
   }
 }
 
-const VB_URL = 'https://img.icons8.com/liquid-glass-color/999/verified-badge.png';
 async function loadLeaderboard(){
   const list = $('lbList');
   if (!list) return;
   const empty = (msg) => '<div class="lb__empty"><i class="fas fa-crown"></i><p>' + msg + '</p></div>';
+
+  if (STATE.lbCache && Date.now() - STATE.lbCacheAt < 5 * 60 * 1000){
+    list.innerHTML = STATE.lbCache;
+    wireLbImages(list);
+    return;
+  }
   try{
     const q = await db.collection('referralLeaderboard').orderBy('referralCount', 'desc').limit(10).get();
     const items = [];
     q.forEach(doc => {
       const d = doc.data();
       const cnt = d.referralCount || 0;
-      if (cnt > 0) items.push({ id: doc.id, d, cnt, me: doc.id === STATE.tgId, v: false });
+      if (cnt > 0) items.push({ id: doc.id, d, cnt, me: doc.id === STATE.tgId });
     });
     if (!items.length){ list.innerHTML = empty('لا يوجد مدعون بعد'); return; }
-
-    await Promise.all(items.map(async it => {
-      if (it.me){ it.v = !!(STATE.user && STATE.user.verified === true); return; }
-      if (it.d.verified === true){ it.v = true; return; }
-      try{
-        const s = await db.collection('users').doc(it.id).get();
-        it.v = !!(s.exists && s.data().verified === true);
-      }catch(e){ it.v = false; }
-    }));
 
     const avatar = (it) => {
       const pu = safeUrl(it.d.photoUrl) || (it.me ? safeUrl(STATE.tgUser && STATE.tgUser.photo_url) : '');
       return pu ? '<img data-av src="' + escapeHtml(pu) + '" alt="" referrerpolicy="no-referrer">' : '<i class="fas fa-user"></i>';
     };
-    const nameHtml = (it) => '<span>' + escapeHtml(it.d.name || 'مستخدم') + '</span>' +
-      (it.v ? '<img class="vbadge" data-vb src="' + VB_URL + '" alt="موثق">' : '') +
-      (it.me ? '<em class="me-tag">أنت</em>' : '');
+    const nameHtml = (it) => '<span>' + escapeHtml(it.d.name || 'مستخدم') + '</span>' + (it.me ? '<em class="me-tag">أنت</em>' : '');
 
     const slot = (rank) => {
       const it = items[rank - 1];
@@ -2804,8 +2272,8 @@ async function loadLeaderboard(){
         '<div class="pod__cnt"><b>' + it.cnt + '</b> دعوة</div>' +
         '<div class="pod__base">' + rank + '</div></div>';
     };
-    let html = '<div class="podium">' + slot(2) + slot(1) + slot(3) + '</div>';
 
+    let html = '<div class="podium">' + slot(2) + slot(1) + slot(3) + '</div>';
     if (items.length > 3){
       html += '<div class="lb__list">' + items.slice(3).map((it, i) =>
         '<div class="lrow' + (it.me ? ' lrow--me' : '') + '">' +
@@ -2815,125 +2283,92 @@ async function loadLeaderboard(){
           '<div class="lrow__cnt">' + it.cnt + ' دعوة</div>' +
         '</div>').join('') + '</div>';
     }
+    STATE.lbCache = html;
+    STATE.lbCacheAt = Date.now();
     list.innerHTML = html;
-    list.querySelectorAll('img[data-av]').forEach(im => { im.onerror = () => { const ic = document.createElement('i'); ic.className = 'fas fa-user'; im.replaceWith(ic); }; });
-    list.querySelectorAll('img[data-vb]').forEach(im => { im.onerror = () => { const ic = document.createElement('i'); ic.className = 'fas fa-circle-check vbadge-fb'; im.replaceWith(ic); }; });
+    wireLbImages(list);
   }catch(e){
     list.innerHTML = empty('تعذر تحميل القائمة');
   }
 }
+function wireLbImages(list){
+  list.querySelectorAll('img[data-av]').forEach(im => {
+    im.onerror = () => { const ic = document.createElement('i'); ic.className = 'fas fa-user'; im.replaceWith(ic); };
+  });
+}
 
-/* ═══ Tasks ═══ */
+/* ═══ المهام ═══ */
 async function verifyChannelJoin(){
   if (!STATE.user || STATE.isSubmitting) return;
   const btn = $('taskChannelBtn');
+  STATE.isSubmitting = true;
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> تحقق...';
   try{
     if (tg && tg.openTelegramLink) tg.openTelegramLink(CONFIG.channel); else window.open(CONFIG.channel, '_blank');
     await new Promise(r => setTimeout(r, 6000));
-    const userRef = db.collection('users').doc(STATE.tgId);
-    if (CONFIG.api.verifyChannel){
-      const res = await fetch(CONFIG.api.verifyChannel, { method:'POST',
-        headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ initData: tg.initData }) });
-      if (!res.ok) throw new Error('not joined');
-    } else {
-      await userRef.update({ channelJoined: true, updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
-    }
-    STATE.user = (await userRef.get()).data();
-    if (!STATE.user.channelJoined) throw new Error('not joined');
-    updateUI();
+    await db.collection('users').doc(STATE.tgId).update({ channelJoined: true, updatedAt: SV() });
     toast('✅ تم التحقق من انضمامك للقناة!', 'ok');
   }catch(e){
     toast('لم يتم التحقق من الانضمام، انضم ثم حاول مجدداً', 'err');
+  }finally{
+    STATE.isSubmitting = false;
     renderChannelTask();
   }
 }
 
-async function collectChannelReward() {
+async function collectChannelReward(){
   if (!STATE.user || STATE.isSubmitting) return;
-  if (!STATE.user.channelJoined) { toast('يجب الانضمام للقناة أولاً', 'err'); return; }
-  if (STATE.user.channelRewardClaimed) { toast('تم استلام المكافأة مسبقاً', 'info'); return; }
-  
+  if (!STATE.user.channelJoined) return toast('يجب الانضمام للقناة أولاً', 'err');
+  if (STATE.user.channelRewardClaimed) return toast('تم استلام المكافأة مسبقاً', 'info');
+
   STATE.isSubmitting = true;
-  const btn = $('taskChannelBtn');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>';
-  
-  try {
-    const userRef = db.collection('users').doc(STATE.tgId);
+  try{
     await db.runTransaction(async (trx) => {
-      const snap = await trx.get(userRef);
-      const data = snap.data();
-      if (data.channelRewardClaimed) throw new Error('تم الاستلام مسبقاً');
-      
-      trx.update(userRef, {
-        balance_sy: firebase.firestore.FieldValue.increment(CONFIG.channelTask.reward),
-        totalEarned: firebase.firestore.FieldValue.increment(CONFIG.channelTask.reward),
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
+      if (d.channelRewardClaimed) throw new Error('تم الاستلام مسبقاً');
+      trx.update(ref, {
+        balance_sy: FV.increment(CONFIG.channelTask.reward),
+        totalEarned: FV.increment(CONFIG.channelTask.reward),
         channelRewardClaimed: true,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        updatedAt: SV()
       });
     });
-    
-    const snap2 = await userRef.get();
-    STATE.user = snap2.data();
-    updateUI();
-    renderTasks();
     toast('🎉 +' + CONFIG.channelTask.reward + ' ل.س من مهمة القناة!', 'ok');
-  } catch(e) {
+  }catch(e){
     toast(e.message || 'فشل استلام المكافأة', 'err');
-  } finally {
+  }finally{
     STATE.isSubmitting = false;
-    if (btn) btn.disabled = false;
   }
 }
 
-async function collectSpecialReward(taskId) {
+async function collectSpecialReward(taskId){
   if (!STATE.user || STATE.isSubmitting) return;
   const task = CONFIG.specialTasks[taskId];
   if (!task) return;
-  const u = STATE.user;
-
-  if (taskId === 'collect5') {
-    if ((u.miningCollectCount || 0) < 5) return toast('لم تجمع 5 مرات بعد', 'err');
-    if (u.collect5RewardClaimed) return toast('تم الاستلام مسبقاً', 'info');
-  } else if (taskId === 'firstBuy') {
-    if (!u.hasPurchasedPlan) return toast('لم تشترِ خطة مدفوعة بعد', 'err');
-    if (u.firstBuyRewardClaimed) return toast('تم الاستلام مسبقاً', 'info');
-  }
+  const flagKey = taskId === 'collect5' ? 'collect5RewardClaimed' : 'firstBuyRewardClaimed';
 
   STATE.isSubmitting = true;
-  try {
-    const userRef = db.collection('users').doc(STATE.tgId);
+  try{
     await db.runTransaction(async (trx) => {
-      const snap = await trx.get(userRef);
-      const data = snap.data();
-      const flagKey = taskId === 'collect5' ? 'collect5RewardClaimed' : 'firstBuyRewardClaimed';
-      
-      if (data[flagKey]) throw new Error('تم الاستلام مسبقاً');
-      
-      if (taskId === 'collect5' && (data.miningCollectCount || 0) < 5) {
-        throw new Error('لم تجمع 5 مرات بعد');
-      }
-      if (taskId === 'firstBuy' && !data.hasPurchasedPlan) {
-        throw new Error('لم تشترِ خطة مدفوعة بعد');
-      }
-
-      trx.update(userRef, {
-        balance_sy: firebase.firestore.FieldValue.increment(task.reward),
-        totalEarned: firebase.firestore.FieldValue.increment(task.reward),
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
+      if (!d) throw new Error('المستخدم غير موجود');
+      if (d[flagKey]) throw new Error('تم الاستلام مسبقاً');
+      if (taskId === 'collect5' && (d.miningCollectCount || 0) < task.target) throw new Error('لم تجمع 5 مرات بعد');
+      if (taskId === 'firstBuy' && !d.hasPurchasedPlan) throw new Error('لم تشترِ خطة مدفوعة بعد');
+      trx.update(ref, {
+        balance_sy: FV.increment(task.reward),
+        totalEarned: FV.increment(task.reward),
         [flagKey]: true,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        updatedAt: SV()
       });
     });
-    
-    STATE.user = (await userRef.get()).data();
-    updateUI();
-    renderTasks();
     toast('🎉 +' + task.reward + ' ل.س من ' + task.title + '!', 'ok');
-  } catch(e) {
+  }catch(e){
     toast(e.message || 'فشل الاستلام', 'err');
-  } finally {
+  }finally{
     STATE.isSubmitting = false;
   }
 }
@@ -2955,26 +2390,26 @@ async function collectInviteReward(taskId){
   if (!task) return;
   STATE.isSubmitting = true;
   try{
-    const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
-      const data = (await trx.get(userRef)).data();
-      const s = inviteState(data);
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
+      const s = inviteState(d);
       if (s.claimed[taskId]) throw new Error('تم الاستلام مسبقاً');
       if (s.idx < 0 || CONFIG.inviteTasks[s.idx].id !== taskId) throw new Error('أكمل المهمة السابقة أولاً');
       if (s.progress < task.count) throw new Error('لم تكمل المهمة بعد');
-      trx.update(userRef, {
-        balance_sy: firebase.firestore.FieldValue.increment(task.reward),
-        totalEarned: firebase.firestore.FieldValue.increment(task.reward),
+      trx.update(ref, {
+        balance_sy: FV.increment(task.reward),
+        totalEarned: FV.increment(task.reward),
         inviteRewardClaimed: { ...s.claimed, [taskId]: true, _base: s.total },
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        updatedAt: SV()
       });
     });
-    STATE.user = (await userRef.get()).data();
-    updateUI();
-    const hasNext = inviteState(STATE.user).idx >= 0;
-    toast('🎉 +' + task.reward + ' ل.س' + (hasNext ? ' — المهمة التالية بدأت من 0' : ' — أنهيت كل مهمات الدعوة!'), 'ok');
-  }catch(e){ toast(e.message || 'فشل استلام المكافأة', 'err'); }
-  finally{ STATE.isSubmitting = false; }
+    toast('🎉 +' + task.reward + ' ل.س — ' + (inviteState(STATE.user).idx >= 0 ? 'المهمة التالية بدأت من 0' : 'أنهيت كل مهمات الدعوة!'), 'ok');
+  }catch(e){
+    toast(e.message || 'فشل استلام المكافأة', 'err');
+  }finally{
+    STATE.isSubmitting = false;
+  }
 }
 
 function ringSvg(frac){
@@ -2996,70 +2431,24 @@ function renderTasks(){
   html += '<div class="grp"><span>مهمات خاصة</span><small>2</small></div>';
 
   const collectCount = u.miningCollectCount || 0;
-  const collect5Done = !!u.collect5RewardClaimed;
-  const collect5Ready = collectCount >= 5 && !collect5Done;
-  const collect5Progress = Math.min(collectCount, 5);
-
-  if (collect5Done) {
-    html += '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
-      '<div class="qrow__info"><div class="qrow__t">' + ST.collect5.title + '</div>' +
-      '<div class="qrow__d">تم استلام المكافأة</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ل.س</span></div>';
-  } else if (collect5Ready) {
-    html += '<div class="fq fq--ready">' +
-      '<div class="fq__top"><span class="fq__badge">جاهزة للاستلام</span>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ل.س</span></div>' +
-      '<div class="fq__body">' +
-        '<div class="ring ring--lg">' + ringSvg(1) +
-          '<div class="ring__n"><b>5</b><small>/ 5</small></div></div>' +
-        '<div class="fq__txt"><div class="fq__t">' + ST.collect5.title + '</div>' +
-          '<div class="fq__d">' + ST.collect5.desc + '</div>' +
-          '<span class="fq__left">اكتملت — استلم مكافأتك</span></div>' +
-      '</div>' +
-      '<button class="fq__btn fq__btn--collect" data-special="collect5"><i class="fas fa-hand-holding-usd"></i> استلام ' + ST.collect5.reward + ' ل.س</button>' +
-    '</div>';
+  const c5Done = !!u.collect5RewardClaimed;
+  const c5Ready = collectCount >= ST.collect5.target && !c5Done;
+  if (c5Done){
+    html += doneRow(ST.collect5.title, ST.collect5.reward);
+  } else if (c5Ready){
+    html += readyCard('collect5', ST.collect5.title, ST.collect5.desc, ST.collect5.reward, '5', '/ 5', 1, 'اكتملت — استلم مكافأتك');
   } else {
-    html += '<div class="fq">' +
-      '<div class="fq__top"><span class="fq__badge">قيد التقدم</span>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.collect5.reward + ' ل.س</span></div>' +
-      '<div class="fq__body">' +
-        '<div class="ring ring--lg">' + ringSvg(collect5Progress / 5) +
-          '<div class="ring__n"><b>' + collect5Progress + '</b><small>/ 5</small></div></div>' +
-        '<div class="fq__txt"><div class="fq__t">' + ST.collect5.title + '</div>' +
-          '<div class="fq__d">' + ST.collect5.desc + '</div>' +
-          '<span class="fq__left">باقي ' + Math.max(0, 5 - collectCount) + ' جمع</span></div>' +
-      '</div>' +
-      '<button class="fq__btn fq__btn--go" data-go="home"><i class="fas fa-water"></i> اذهب للتعدين</button>' +
-    '</div>';
+    html += progressCard(ST.collect5.title, ST.collect5.desc, ST.collect5.reward,
+      Math.min(collectCount, 5), 5, 'باقي ' + Math.max(0, 5 - collectCount) + ' جمع', 'قيد التقدم');
   }
 
-  const firstBuyDone = !!u.firstBuyRewardClaimed;
-  const firstBuyReady = u.hasPurchasedPlan && !firstBuyDone;
-
-  if (firstBuyDone) {
-    html += '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
-      '<div class="qrow__info"><div class="qrow__t">' + ST.firstBuy.title + '</div>' +
-      '<div class="qrow__d">تم استلام المكافأة</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>';
-  } else if (firstBuyReady) {
-    html += '<div class="fq fq--ready">' +
-      '<div class="fq__top"><span class="fq__badge">جاهزة للاستلام</span>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>' +
-      '<div class="fq__body">' +
-        '<div class="ring ring--lg">' + ringSvg(1) +
-          '<div class="ring__n"><b><i class="fas fa-check"></i></b></div></div>' +
-        '<div class="fq__txt"><div class="fq__t">' + ST.firstBuy.title + '</div>' +
-          '<div class="fq__d">' + ST.firstBuy.desc + '</div>' +
-          '<span class="fq__left">اكتملت — استلم مكافأتك</span></div>' +
-      '</div>' +
-      '<button class="fq__btn fq__btn--collect" data-special="firstBuy"><i class="fas fa-hand-holding-usd"></i> استلام ' + ST.firstBuy.reward + ' ل.س</button>' +
-    '</div>';
-  } else {
-    html += '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
-      '<div class="qrow__info"><div class="qrow__t">' + ST.firstBuy.title + '</div>' +
-      '<div class="qrow__d">' + ST.firstBuy.desc + '</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>';
-  }
+  const fbDone = !!u.firstBuyRewardClaimed;
+  const fbReady = u.hasPurchasedPlan && !fbDone;
+  if (fbDone) html += doneRow(ST.firstBuy.title, ST.firstBuy.reward);
+  else if (fbReady) html += readyCard('firstBuy', ST.firstBuy.title, ST.firstBuy.desc, ST.firstBuy.reward, '<i class="fas fa-check"></i>', '', 1, 'اكتملت — استلم مكافأتك');
+  else html += '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
+    '<div class="qrow__info"><div class="qrow__t">' + ST.firstBuy.title + '</div><div class="qrow__d">' + ST.firstBuy.desc + '</div></div>' +
+    '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>';
 
   html += '<div class="grp"><span>مهمات الدعوات</span><small>' + T.filter(t => s.claimed[t.id]).length + ' / ' + N + '</small></div>';
   html += '<div class="hint"><i class="fas fa-info-circle"></i><div>المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>.</div></div>';
@@ -3084,53 +2473,65 @@ function renderTasks(){
     '</div>';
   } else {
     html += '<div class="fq fq--all"><div class="fq__ok"><i class="fas fa-check"></i></div>' +
-      '<div class="fq__t">أنهيت كل مهمات الدعوة</div><div class="fq__d">أحسنت! استمر بدعوة أصدقائك لتكسب مكافأة 10 ل.س عن كل صديق.</div></div>';
+      '<div class="fq__t">أنهيت كل مهمات الدعوة</div><div class="fq__d">أحسنت! استمر بدعوة أصدقائك لتكسب مكافأة ' + CONFIG.referral.referrerReward + ' ل.س عن كل صديق.</div></div>';
   }
 
-  const upcoming = T.map((t, i) => ({ t, i })).filter(x => !s.claimed[x.t.id] && x.i !== s.idx);
-  if (upcoming.length){
-    html += upcoming.map(x => '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
-      '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(x.t.title) + '</div>' +
-      '<div class="qrow__d">تُفتح بعد استلام مكافأة المهمة السابقة</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + x.t.reward + ' ل.س</span></div>').join('');
-  }
-
-  const done = T.filter(t => s.claimed[t.id]);
-  if (done.length){
-    html += done.map(t => '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
+  T.forEach((t, i) => {
+    if (s.claimed[t.id] || i === s.idx) return;
+    html += '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
       '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(t.title) + '</div>' +
-      '<div class="qrow__d">تم استلام المكافأة</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + t.reward + ' ل.س</span></div>').join('');
-  }
+      '<div class="qrow__d">تُفتح بعد استلام مكافأة المهمة السابقة</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + t.reward + ' ل.س</span></div>';
+  });
+  T.forEach(t => { if (s.claimed[t.id]) html += doneRow(t.title, t.reward); });
 
   container.innerHTML = html;
-  
-  container.querySelectorAll('.fq__btn--collect[data-task]').forEach(b =>
-    b.addEventListener('click', () => collectInviteReward(b.dataset.task)));
-  container.querySelectorAll('.fq__btn--collect[data-special]').forEach(b =>
-    b.addEventListener('click', () => collectSpecialReward(b.dataset.special)));
-  container.querySelectorAll('[data-go]').forEach(b =>
-    b.addEventListener('click', () => navigate(b.dataset.go)));
+  container.querySelectorAll('.fq__btn--collect[data-task]').forEach(b => b.addEventListener('click', () => collectInviteReward(b.dataset.task)));
+  container.querySelectorAll('.fq__btn--collect[data-special]').forEach(b => b.addEventListener('click', () => collectSpecialReward(b.dataset.special)));
+  container.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => navigate(b.dataset.go)));
 
   renderChannelTask();
+  updateTaskSummary(u, s);
+}
 
+function doneRow(title, reward){
+  return '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
+    '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(title) + '</div><div class="qrow__d">تم استلام المكافأة</div></div>' +
+    '<span class="rwd"><i class="fas fa-coins"></i> ' + reward + ' ل.س</span></div>';
+}
+function readyCard(id, title, desc, reward, ringText, ringSub, frac, leftText){
+  return '<div class="fq fq--ready">' +
+    '<div class="fq__top"><span class="fq__badge">جاهزة للاستلام</span><span class="rwd"><i class="fas fa-coins"></i> ' + reward + ' ل.س</span></div>' +
+    '<div class="fq__body"><div class="ring ring--lg">' + ringSvg(frac) +
+      '<div class="ring__n"><b>' + ringText + '</b><small>' + ringSub + '</small></div></div>' +
+      '<div class="fq__txt"><div class="fq__t">' + escapeHtml(title) + '</div><div class="fq__d">' + escapeHtml(desc) + '</div>' +
+      '<span class="fq__left">' + leftText + '</span></div></div>' +
+    '<button class="fq__btn fq__btn--collect" data-special="' + id + '"><i class="fas fa-hand-holding-usd"></i> استلام ' + reward + ' ل.س</button>' +
+  '</div>';
+}
+function progressCard(title, desc, reward, cur, target, leftText, badge){
+  return '<div class="fq"><div class="fq__top"><span class="fq__badge">' + badge + '</span>' +
+    '<span class="rwd"><i class="fas fa-coins"></i> ' + reward + ' ل.س</span></div>' +
+    '<div class="fq__body"><div class="ring ring--lg">' + ringSvg(cur / target) +
+      '<div class="ring__n"><b>' + cur + '</b><small>/ ' + target + '</small></div></div>' +
+      '<div class="fq__txt"><div class="fq__t">' + escapeHtml(title) + '</div><div class="fq__d">' + escapeHtml(desc) + '</div>' +
+      '<span class="fq__left">' + leftText + '</span></div></div>' +
+    '<button class="fq__btn fq__btn--go" data-go="home"><i class="fas fa-water"></i> اذهب للتعدين</button></div>';
+}
+
+function updateTaskSummary(u, s){
+  const T = CONFIG.inviteTasks, N = T.length, ST = CONFIG.specialTasks;
   const doneInvites = T.filter(t => s.claimed[t.id]).length;
   const chDone = u.channelRewardClaimed ? 1 : 0;
   const c5Done = u.collect5RewardClaimed ? 1 : 0;
   const fbDone = u.firstBuyRewardClaimed ? 1 : 0;
   const doneAll = doneInvites + chDone + c5Done + fbDone;
-  const totalAll = N + 1 + 2;
+  const totalAll = N + 3;
   const left =
     T.filter(t => !s.claimed[t.id]).reduce((a, t) => a + t.reward, 0) +
-    (chDone ? 0 : CONFIG.channelTask.reward) +
-    (c5Done ? 0 : ST.collect5.reward) +
-    (fbDone ? 0 : ST.firstBuy.reward);
-  const totalReward =
-    T.reduce((a, t) => a + t.reward, 0) +
-    CONFIG.channelTask.reward +
-    ST.collect5.reward +
-    ST.firstBuy.reward;
-    
+    (chDone ? 0 : CONFIG.channelTask.reward) + (c5Done ? 0 : ST.collect5.reward) + (fbDone ? 0 : ST.firstBuy.reward);
+  const totalReward = T.reduce((a, t) => a + t.reward, 0) + CONFIG.channelTask.reward + ST.collect5.reward + ST.firstBuy.reward;
+
   setText('qbNum', doneAll);
   setText('qbOf', '/ ' + totalAll);
   setText('questSummary', doneAll + ' من ' + totalAll + ' مهمات مكتملة');
@@ -3140,93 +2541,76 @@ function renderTasks(){
   const fg = $('qbRingFg'); if (fg) fg.style.strokeDashoffset = 213.63 * (1 - doneAll / totalAll);
 }
 
-function renderChannelTask() {
+function renderChannelTask(){
   const btn = $('taskChannelBtn');
   const status = $('taskChannelStatus');
   const card = $('taskChannel');
   if (!btn || !status || !STATE.user) return;
   const u = STATE.user;
-
-  if (u.channelRewardClaimed) {
+  if (u.channelRewardClaimed){
     status.textContent = 'تم استلام المكافأة';
     status.className = 'cq__d cq__d--ok';
-    btn.disabled = true;
-    btn.className = 'cq__btn cq__btn--done';
-    btn.innerHTML = '<i class="fas fa-check"></i> مكتملة';
-    if (card) card.classList.add('is-done');
-  } else if (u.channelJoined) {
+    btn.disabled = true; btn.className = 'cq__btn cq__btn--done';
+    btn.innerHTML = '<i class="fas fa-check"></i> مكتملة'; btn.onclick = null;
+    card.classList.add('is-done');
+  } else if (u.channelJoined){
     status.textContent = 'منضم — جاهز لاستلام المكافأة';
     status.className = 'cq__d cq__d--ok';
-    btn.disabled = false;
-    btn.className = 'cq__btn cq__btn--collect';
+    btn.disabled = false; btn.className = 'cq__btn cq__btn--collect';
     btn.innerHTML = '<i class="fas fa-hand-holding-usd"></i> استلام';
     btn.onclick = collectChannelReward;
-    if (card) card.classList.remove('is-done');
+    card.classList.remove('is-done');
   } else {
     status.textContent = 'انضم لقناتنا على تيليجرام لتبقى على اطلاع';
     status.className = 'cq__d';
-    btn.disabled = false;
-    btn.className = 'cq__btn cq__btn--join';
+    btn.disabled = false; btn.className = 'cq__btn cq__btn--join';
     btn.innerHTML = '<i class="fab fa-telegram-plane"></i> انضم';
     btn.onclick = verifyChannelJoin;
-    if (card) card.classList.remove('is-done');
+    card.classList.remove('is-done');
   }
 }
 
-/* ═══ Navigation ═══ */
+/* ═══ التنقل ═══ */
 const VIEWS = ['home','store','wallet','referral','tasks','profile'];
 function navigate(view){
   if (!VIEWS.includes(view)) view = 'home';
   const target = $('view-' + view);
   const current = document.querySelector('.view.active');
-  document.querySelectorAll('.nav__btn').forEach(b => {
-    b.classList.toggle('nav__btn--active', b.dataset.view === view);
-  });
+  document.querySelectorAll('.nav__btn').forEach(b => b.classList.toggle('nav__btn--active', b.dataset.view === view));
 
   const show = () => {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active', 'leaving'));
     if (target) target.classList.add('active');
     window.scrollTo(0, 0);
-    const ms = $('mainScroll'); if (ms) ms.scrollTop = 0;
+    $('mainScroll').scrollTop = 0;
   };
   clearTimeout(navigate._t);
   const calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (current && target && current !== target && !calm) {
+  if (current && target && current !== target && !calm){
     current.classList.add('leaving');
     navigate._t = setTimeout(show, 120);
   } else show();
 
-  if (view === 'store') { renderPlans(); renderPlansReport(); }
-  if (view === 'referral') loadLeaderboard();
-  if (view === 'profile') { updateAvatar('profAvatar'); updateSubBtn(); updateSupportBtn(); }
+  if (view === 'store') { renderPlans(); renderPlansReport(); renderVip(); }
+  if (view === 'profile') { updateAvatar('profAvatar'); updateSupportBtn(); }
   if (view === 'tasks') renderTasks();
+  if (view === 'referral' && $('refPaneTop').style.display === 'block') loadLeaderboard();
 }
 
 function bindUI(){
-  document.querySelectorAll('.nav__btn').forEach(btn => {
-    btn.addEventListener('click', () => navigate(btn.dataset.view));
-  });
+  document.querySelectorAll('.nav__btn').forEach(btn => btn.addEventListener('click', () => navigate(btn.dataset.view)));
   $('mineAction').addEventListener('click', onMineClick);
   $('profCopyId').addEventListener('click', () => copyText($('profId').textContent, 'تم نسخ المعرف'));
   $('profSupport').addEventListener('click', () => {
-    if (!isVerified()){
-      toast('ميزة الدعم المباشر للموثقين فقط', 'info');
-      openSubModal();
+    if (!isVip()){
+      toast('الدعم المباشر لأعضاء VIP فقط', 'info');
+      navigate('store');
       return;
     }
     const url = 'https://t.me/' + CONFIG.admin.telegram;
-    if (tg && tg.openTelegramLink) tg.openTelegramLink(url);
-    else window.open(url, '_blank');
+    if (tg && tg.openTelegramLink) tg.openTelegramLink(url); else window.open(url, '_blank');
   });
-
-  // ═══ زر ومودال الاشتراك ═══
-  $('pfSubBtn').addEventListener('click', openSubModal);
-  $('subClose').addEventListener('click', closeSubModal);
-  $('subPayBtn').addEventListener('click', activateSubscription);
-  $('subModal').addEventListener('click', (e) => {
-    if (e.target === $('subModal')) closeSubModal();
-  });
-
+  $('vipBtn').addEventListener('click', onVipClick);
   initWalletTabs();
   initWithdraw();
   initDeposit();
@@ -3236,63 +2620,18 @@ function bindUI(){
 async function bootstrap(){
   if (!initTelegram()) return;
   $('app').style.display = 'flex';
-  
   try{ await loadOrCreateUser(); }
   catch(e){ console.error('bootstrap', e); toast('فشل تحميل البيانات', 'err'); return; }
 
   bindUI();
-  updateUI();
-  renderMining();
-  renderPlans();
-  renderPlansReport();
-  renderTasks();
-
-  if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) {
-    startLiveTimer();
-  }
+  listenUser();
+  refreshAll();
+  if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) startLiveTimer();
   initClockMonitor();
   setInterval(updatePlanTimer, 1000);
-
-  document.addEventListener('visibilitychange', async () => {
-    if (!document.hidden && STATE.user) {
-      await syncServerTime();
-      await checkPlanExpiry();
-      try{
-        const snap = await db.collection('users').doc(STATE.tgId).get();
-        if (snap.exists) {
-          STATE.user = snap.data();
-          updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks();
-        }
-      }catch(e){}
-    }
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && STATE.user) checkPlanExpiry();
   });
-
-  setInterval(async () => {
-    if (!STATE.user || document.hidden) return;
-    try{
-      const snap = await db.collection('users').doc(STATE.tgId).get();
-      if (snap.exists) {
-        const fresh = snap.data();
-        const changed =
-          fresh.balance_sy !== STATE.user.balance_sy ||
-          fresh.miningCollectable !== STATE.user.miningCollectable ||
-          tsMs(fresh.miningStartTime) !== tsMs(STATE.user.miningStartTime) ||
-          fresh.activePlanId !== STATE.user.activePlanId ||
-          fresh.verified !== STATE.user.verified ||
-          fresh.referralCount !== STATE.user.referralCount ||
-          fresh.channelRewardClaimed !== STATE.user.channelRewardClaimed ||
-          fresh.channelJoined !== STATE.user.channelJoined ||
-          fresh.miningCollectCount !== STATE.user.miningCollectCount ||
-          fresh.hasPurchasedPlan !== STATE.user.hasPurchasedPlan ||
-          fresh.collect5RewardClaimed !== STATE.user.collect5RewardClaimed ||
-          fresh.firstBuyRewardClaimed !== STATE.user.firstBuyRewardClaimed;
-        if (changed) {
-          STATE.user = fresh;
-          updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks();
-        }
-      }
-    }catch(e){}
-  }, 30000);
 }
 
 document.addEventListener('DOMContentLoaded', bootstrap);
