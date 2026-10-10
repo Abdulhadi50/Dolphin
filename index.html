@@ -13,7 +13,7 @@
 <style>
 :root{
   --blue:#007AFF;--blue-l:#4DA3FF;--blue-d:#0062CC;--blue-dd:#003F8A;
-  --yellow:#FFD60A;--green:#30D158;--red:#FF453A;
+  --yellow:#FFD60A;--green:#30D158;--red:#FF453A;--purple:#AF52DE;
   --inset:rgba(0,0,0,.26);--hi:rgba(255,255,255,.16);
   --glass:rgba(255,255,255,.08);--glass-line:rgba(255,255,255,.12);
   --text-2:rgba(255,255,255,.8);--text-3:rgba(255,255,255,.58);
@@ -37,7 +37,6 @@ img{max-width:100%;display:block;pointer-events:none;-webkit-user-drag:none;user
 ::-webkit-scrollbar{display:none}
 .main{scrollbar-width:none}
 
-/* منع تحديد النص والنسخ */
 body,.app,.app *{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none}
 input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
 
@@ -200,6 +199,19 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .tile__d b{font-weight:800;color:var(--yellow)}
 .tile__go{position:absolute!important;top:14px;left:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;display:grid;place-items:center;font-size:11px}
 
+/* زر عجلة الحظ */
+.wheel-tile{position:relative;overflow:hidden;isolation:isolate;width:100%;margin-top:10px;border-radius:24px;padding:18px 16px;min-height:88px;
+  background:linear-gradient(135deg,#AF52DE 0%,#5A1F8A 100%);display:flex;align-items:center;gap:14px;transition:transform .15s;text-align:start}
+.wheel-tile:active{transform:scale(.98)}
+.wheel-tile::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%);pointer-events:none;z-index:0}
+.wheel-tile>*{position:relative;z-index:1}
+.wheel-tile__ic{width:56px;height:56px;border-radius:50%;background:rgba(0,0,0,.3);display:grid;place-items:center;font-size:26px;flex-shrink:0;border:2px solid rgba(255,255,255,.25)}
+.wheel-tile__body{flex:1;min-width:0}
+.wheel-tile__t{font-size:16px;font-weight:800;color:#fff;margin-bottom:3px;display:flex;align-items:center;gap:7px}
+.wheel-tile__d{font-size:12px;color:rgba(255,255,255,.85);font-weight:600;line-height:1.5}
+.wheel-tile__badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;background:rgba(255,214,10,.9);color:#3A2A00;font-size:10.5px;font-weight:800;margin-top:6px}
+.wheel-tile__arrow{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.25);color:#fff;display:grid;place-items:center;font-size:13px;flex-shrink:0}
+
 .card{background:#141414;border:1px solid #18252E;border-radius:26px;padding:16px;margin-bottom:12px}
 .card__title{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:800;margin-bottom:12px;color:#fff}
 .card__title i{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center;font-size:12px}
@@ -289,224 +301,86 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .qrow--lock .rwd{background:var(--sea-wash);color:var(--blue)}
 .qrow--lock .rwd i{color:var(--blue)}
 
-/* بطاقة VIP */
-.vip{position:relative;overflow:hidden;border-radius:28px;padding:18px 16px;margin-bottom:14px;background:linear-gradient(160deg,#4DA3FF 0%,#003F8A 100%);color:#fff}
-.vip--active{background:linear-gradient(160deg,#30D158 0%,#0A5C2A 100%)}
-.vip__head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.vip__ic{width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.28);display:grid;place-items:center;font-size:22px;color:var(--yellow);flex-shrink:0}
-.vip__t{font-size:17px;font-weight:800}
-.vip__s{font-size:11.5px;font-weight:600;color:rgba(255,255,255,.85)}
-.vip__list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
-.vip__row{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;background:rgba(0,0,0,.22);padding:9px 12px;border-radius:14px}
-.vip__row i{color:var(--yellow);width:16px;text-align:center}
-.vip__btn{width:100%;min-height:52px;border-radius:18px;font-size:14.5px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:#003F8A;transition:transform .15s}
-.vip__btn:active:not([disabled]){transform:scale(.98)}
-.vip__btn[disabled]{opacity:.7;cursor:default}
+/* 🔥 هدايا الأسبوع */
+.weekly{margin-bottom:18px;padding:22px 16px;background:linear-gradient(160deg,#AF52DE 0%,#5A1F8A 100%);border-radius:28px;position:relative;overflow:hidden}
+.weekly::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%)}
+.weekly__head{position:relative;z-index:1;margin-bottom:16px}
+.weekly__title{font-size:16px;font-weight:800;display:flex;align-items:center;gap:9px;margin-bottom:5px;color:#fff}
+.weekly__title i{color:var(--yellow)}
+.weekly__sub{font-size:12.5px;color:rgba(255,255,255,.8);font-weight:600}
+.days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:14px;position:relative;z-index:1}
+.day{aspect-ratio:1/1.35;border-radius:14px;background:rgba(0,0,0,.28);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:4px 2px;transition:all .3s;border:2px solid transparent;position:relative;overflow:hidden}
+.day__day{font-size:9px;font-weight:700;color:rgba(255,255,255,.7);white-space:nowrap}
+.day__ic{font-size:16px;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.day__amt{font-size:9.5px;font-weight:800;color:var(--yellow);direction:ltr;line-height:1}
+.day--done{background:linear-gradient(160deg,#FFD60A,#FF9F0A);color:#3A2A00;box-shadow:0 4px 12px rgba(255,214,10,.5)}
+.day--done .day__day{color:rgba(58,42,0,.75)}
+.day--done .day__amt{color:#3A2A00}
+.day--today{background:rgba(255,255,255,.15);border-color:var(--yellow);animation:todayPulse 1.8s ease-in-out infinite}
+@keyframes todayPulse{0%,100%{border-color:var(--yellow);box-shadow:0 0 0 0 rgba(255,214,10,.5)}50%{border-color:#FFF3A8;box-shadow:0 0 0 8px rgba(255,214,10,0)}}
+.day--claimable{background:linear-gradient(160deg,#30D158,#0A5C2A);border-color:#9CFFB8;animation:claimPulse 1.5s ease-in-out infinite}
+@keyframes claimPulse{0%,100%{box-shadow:0 0 0 0 rgba(48,209,88,.6)}50%{box-shadow:0 0 0 10px rgba(48,209,88,0)}}
+.day--locked{opacity:.55}
+.day--locked .day__ic{filter:grayscale(1) opacity(.6)}
+.weekly__btn{position:relative;z-index:1;width:100%;min-height:52px;border-radius:18px;font-size:14px;font-weight:800;background:linear-gradient(135deg,#FFD60A,#FF9F0A);color:#3A2A00;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .15s;overflow:hidden}
+.weekly__btn:active:not([disabled]){transform:scale(.98)}
+.weekly__btn[disabled]{background:rgba(0,0,0,.32);color:rgba(255,255,255,.6);cursor:not-allowed}
+.weekly__btn:not([disabled])::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);animation:btnShine 2.6s ease-in-out infinite}
 
-.plans-grid{display:flex;flex-direction:column;gap:12px}
-.plan{background:#141414;border:1px solid #18252E;border-radius:28px;padding:16px;position:relative;overflow:hidden}
-.plan--current{outline:2.5px solid #007AFF;outline-offset:-2.5px}
-.plan__top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.plan__icon{width:60px;height:60px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:32px;line-height:1;border:1.5px solid #007AFF !important}
-.plan__icon span{animation:planIconFloat 3s ease-in-out infinite;display:block}
-.plan__head{flex:1;min-width:0}
-.plan__name{font-size:15.5px;font-weight:800;display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px;color:#fff}
-.plan__badge{font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px}
-.plan__badge--current{background:#007AFF;color:#fff}
-.plan__badge--next{background:rgba(0,122,255,.22);color:#4DA3FF}
-.plan__badge--locked{background:#18252E;color:#fff}
-.plan__desc{font-size:12px;color:var(--text-2);font-weight:600}
-.plan__stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.plan__stat{background:#0B0B0B;border:1px solid #18252E;border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
-.plan__stat-lbl{font-size:11px;color:var(--text-2);font-weight:700;display:flex;align-items:center;gap:5px}
-.plan__stat-lbl i{font-size:10.5px}
-.plan__stat-val{font-size:15px;font-weight:800;direction:ltr;font-variant-numeric:tabular-nums;text-align:right;color:#4DA3FF}
-.plan__bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid #18252E}
-.plan__price{display:flex;flex-direction:column;gap:2px}
-.plan__price-lbl{font-size:10.5px;color:var(--text-2);font-weight:700}
-.plan__price-val{font-size:15.5px;font-weight:800;direction:ltr;font-variant-numeric:tabular-nums;color:#4DA3FF}
-.plan__btn{min-height:46px;padding:0 20px;border-radius:16px;font-size:13px;font-weight:800;display:flex;align-items:center;gap:7px;white-space:nowrap;transition:transform .15s}
-.plan__btn--buy{background:#007AFF;color:#fff}
-.plan__btn--buy:active{transform:scale(.96)}
-.plan__btn--current{background:#18252E;color:#fff;cursor:default}
-.plan__btn--locked{background:#18252E;color:rgba(255,255,255,.6);cursor:not-allowed}
-.plan__timer{background:#0B0B0B;border:1px solid #18252E;border-radius:18px;padding:12px;margin-bottom:14px}
-.plan__timer-head{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:700;color:var(--text-2);margin-bottom:10px}
-.plan__timer-head i{margin-left:4px;color:#007AFF}
-.plan__timer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.tbox{background:#18252E;border-radius:14px;padding:8px 4px;text-align:center}
-.tbox b{display:block;font-size:20px;font-weight:800;color:#4DA3FF;font-variant-numeric:tabular-nums;line-height:1.1;direction:ltr}
-.tbox small{font-size:10.5px;color:var(--text-2);font-weight:700}
-.plan__timer-bar{height:6px;background:#18252E;border-radius:6px;overflow:hidden;margin-top:10px}
-.plan__timer-bar i{display:block;height:100%;width:0;background:#007AFF;border-radius:6px;transition:width .6s}
-.plan__cancel{width:100%;margin-top:12px;min-height:46px;border-radius:16px;background:#18252E;color:#FF8A82;border:1px solid rgba(255,69,58,.5);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px}
-.plan__cancel:active{transform:scale(.98)}
-.plan__cancel-note{font-size:11px;color:var(--text-2);text-align:center;margin-top:7px;font-weight:600}
+/* عجلة الحظ - الصفحة */
+.wheel-page{display:flex;flex-direction:column;gap:0}
+.wheel-spins-card{display:flex;align-items:center;gap:14px;padding:16px;background:linear-gradient(160deg,#FFD60A 0%,#FF9F0A 100%);border-radius:24px;margin-bottom:18px;color:#3A2A00;position:relative;overflow:hidden}
+.wheel-spins-card::before{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.4),transparent 70%)}
+.wheel-spins-card__icon{width:56px;height:56px;border-radius:50%;background:rgba(0,0,0,.2);display:grid;place-items:center;font-size:26px;flex-shrink:0;position:relative;z-index:1}
+.wheel-spins-card__body{flex:1;position:relative;z-index:1}
+.wheel-spins-card__label{font-size:12px;font-weight:700;opacity:.85;margin-bottom:2px}
+.wheel-spins-card__count{font-size:26px;font-weight:800;line-height:1;direction:ltr;font-variant-numeric:tabular-nums}
+.wheel-spins-card__count small{font-size:14px;opacity:.7;font-weight:600}
+.wheel-timer-bar{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;background:rgba(255,255,255,.06);border:1px solid var(--glass-line);border-radius:18px;margin-bottom:18px;font-size:13px;font-weight:700;color:var(--text-2)}
+.wheel-timer-bar i{color:var(--yellow);font-size:14px}
+.wheel-timer-bar b{color:#fff;font-family:var(--mono);font-size:14px;direction:ltr;font-variant-numeric:tabular-nums;letter-spacing:.5px}
 
-.plans-report{margin-top:16px;background:#0B0B0B;border:1px solid #18252E;border-radius:22px;overflow:hidden}
-.plans-report__head{padding:11px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid #18252E}
-.plans-report__title{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;color:#fff}
-.plans-report__title i{width:26px;height:26px;border-radius:50%;background:rgba(0,122,255,.18);color:#4DA3FF;display:grid;place-items:center;font-size:11px}
-.plans-report__tag{font-size:9px;font-weight:800;padding:3px 8px;border-radius:20px;background:#18252E;color:#4DA3FF;letter-spacing:.5px}
-.plans-table{width:100%;border-collapse:collapse;font-size:10.5px;table-layout:fixed}
-.plans-table thead th{padding:8px 3px;font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55);text-align:center;background:#0B0B0B;border-bottom:1px solid #18252E;white-space:nowrap}
-.plans-table thead th:first-child{text-align:start;padding-inline-start:10px;width:26%}
-.plans-table tbody tr{border-bottom:1px solid #18252E}
-.plans-table tbody tr:last-child{border-bottom:none}
-.plans-table tbody tr.is-current{background:rgba(0,122,255,.09)}
-.plans-table td{padding:9px 3px;text-align:center;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;direction:ltr;white-space:nowrap;font-size:11px}
-.plans-table td:first-child{text-align:start;padding-inline-start:10px;direction:rtl}
-.pt-plan{display:flex;align-items:center;gap:6px}
-.pt-plan__icon{font-size:15px;flex-shrink:0;line-height:1}
-.pt-plan__name{font-size:11px;font-weight:800;color:#fff;display:flex;align-items:center;gap:4px;white-space:nowrap}
-.pt-plan__lvl{font-size:8px;font-weight:800;padding:1px 5px;border-radius:8px;background:#18252E;color:#4DA3FF}
-.pt-price{color:#FFD60A !important;font-size:10.5px !important}
-.pt-total{color:#30D158 !important;font-weight:800 !important;font-size:10.5px !important}
+.wheel-section{position:relative;margin-bottom:22px;padding:10px 0;display:flex;justify-content:center;align-items:center}
+.wheel-wrap{position:relative;width:100%;max-width:340px;aspect-ratio:1}
+.wheel-outer{position:absolute;inset:0;border-radius:50%;background:linear-gradient(160deg,#2A2A32,#0B0B0D);padding:10px;box-shadow:0 20px 50px rgba(0,0,0,.7),inset 0 0 0 3px rgba(255,255,255,.1),inset 0 0 40px rgba(0,0,0,.5)}
+.wheel{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;transition:transform 6s cubic-bezier(.15,.9,.25,1);will-change:transform}
+.wheel svg{width:100%;height:100%;display:block}
+.wheel__text{font-family:'IBM Plex Sans Arabic',sans-serif;font-weight:800;fill:#fff;pointer-events:none}
+.wheel-pointer{position:absolute;top:-14px;left:50%;transform:translateX(-50%);z-index:10;filter:drop-shadow(0 6px 12px rgba(0,0,0,.6))}
+.wheel-pointer svg{display:block}
+.wheel-center-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:27%;height:27%;border-radius:50%;background:radial-gradient(circle at 30% 30%,#FFF3A8,#FFD60A 45%,#FF9F0A 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(255,214,10,.5),inset 0 -4px 12px rgba(0,0,0,.25),inset 0 3px 8px rgba(255,255,255,.6);border:3px solid #fff;cursor:pointer;transition:transform .15s;z-index:5}
+.wheel-center-btn:active:not(:disabled){transform:translate(-50%,-50%) scale(.94)}
+.wheel-center-btn:disabled{cursor:not-allowed;opacity:.55}
+.wheel-center-btn__icon{font-size:30px;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));transition:transform .3s}
+.wheel-center-btn:hover:not(:disabled) .wheel-center-btn__icon{transform:rotate(30deg)}
 
-.field{margin-bottom:14px}
-.field__label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;margin-bottom:8px;color:#fff}
-.field__label i{width:24px;height:24px;border-radius:50%;background:#18252E;color:#fff;display:grid;place-items:center;font-size:10.5px}
-.field__input{width:100%;height:54px;padding:0 16px;border:1px solid #18252E;border-radius:18px;background:#0B0B0B;color:#fff;font-weight:600;outline:2px solid transparent;outline-offset:0;transition:outline-color .2s,background .2s}
-.field__input:focus{outline-color:#007AFF;background:#0B0B0B}
-.field__input::placeholder{color:rgba(255,255,255,.4);font-weight:500}
-.field__input--ltr{direction:ltr;text-align:left}
-.field__input--code{text-align:center;letter-spacing:3px;font-weight:800;font-size:17px}
-.msg{display:none;padding:10px 14px;border-radius:14px;font-size:12.5px;font-weight:700;margin-top:10px;text-align:center;background:#0B0B0B;border:1px solid #18252E}
-.msg.show{display:block}
-.msg--ok{color:#9CFFB8}
-.msg--err{color:#FFA39C}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:0 16px;min-height:54px;border-radius:20px;font-size:14.5px;font-weight:800;transition:transform .15s}
-.btn:active:not([disabled]){transform:scale(.98)}
-.btn[disabled]{opacity:.55;cursor:not-allowed}
-.btn--primary,.btn--sea{background:#007AFF;color:#fff}
-.btn--outline{background:#18252E;color:#fff}
-.alert{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:18px;font-size:12.5px;font-weight:600;line-height:1.75;margin-bottom:14px;background:var(--sea-wash);border:1px solid var(--sea-pale);color:#fff}
-.alert i{margin-top:4px;flex-shrink:0;font-size:13px;color:var(--blue)}
-.alert--warn i{color:var(--yellow)}
-.alert--danger{background:rgba(255,69,58,.12);border-color:rgba(255,69,58,.4)}
-.alert--danger i{color:var(--red)}
-.alert b{font-weight:800}
+.wheel-action{width:100%;min-height:56px;border-radius:18px;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s;position:relative;overflow:hidden;background:linear-gradient(135deg,#4DA3FF 0%,#007AFF 100%);color:#fff}
+.wheel-action:active:not([disabled]){transform:scale(.98)}
+.wheel-action[disabled]{opacity:.55;cursor:not-allowed;background:linear-gradient(135deg,#2A2A32,#141414)}
+.wheel-action::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:btnShine 2.8s ease-in-out infinite}
+.wheel-action[disabled]::before{display:none}
 
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#141414;border:1px solid #18252E;border-radius:20px;padding:4px;margin-bottom:14px}
-.tab{padding:12px 10px;border-radius:16px;font-size:13px;font-weight:800;color:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;gap:7px;transition:background .25s,color .25s}
-.tab.active{background:#007AFF;color:#fff}
-#panelWithdraw{background:#141414;border:1px solid #18252E;border-radius:28px;padding:16px}
-#panelWithdraw .sec-head{margin-bottom:12px}
-#panelWithdraw .sec-head__title i,.step .sec-head__title i{background:#18252E;color:#fff}
-.methods{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.method{position:relative;padding:12px;border:1px solid #18252E;border-radius:20px;background:#0B0B0B;cursor:pointer;display:flex;align-items:center;gap:10px;transition:background .2s,color .2s}
-.method:active{transform:scale(.98)}
-.method--active{background:#18252E;border-color:#007AFF;color:#fff}
-.method__check{position:absolute;top:8px;left:8px;width:18px;height:18px;border-radius:50%;background:var(--blue);display:none;align-items:center;justify-content:center;color:#fff;font-size:9px}
-.method--active .method__check{display:flex}
-.method__logo{width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;padding:6px;flex-shrink:0}
-.method__logo img{width:100%;height:100%;object-fit:contain}
-.method__name{font-size:12.5px;font-weight:800;direction:ltr}
-.info-rows{background:#0B0B0B;border:1px solid #18252E;border-radius:18px;padding:6px 14px;margin-bottom:16px}
-.info-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;font-size:12.5px}
-.info-row+.info-row{border-top:1px solid #18252E}
-.info-row__lbl{color:var(--text-2);font-weight:600;display:flex;align-items:center;gap:6px}
-.info-row__val{font-weight:800;direction:ltr;font-variant-numeric:tabular-nums}
-.info-row__val--sea{color:#fff}.info-row__val--amber{color:var(--yellow)}.info-row__val--muted{color:var(--text-2)}
-.step{display:flex;align-items:flex-start;gap:12px;padding:16px;background:#141414;border:1px solid #18252E;border-radius:28px;margin-bottom:12px}
-.step__num{width:34px;height:34px;border-radius:50%;background:#007AFF;color:#fff;display:grid;place-items:center;font-size:14px;font-weight:800;flex-shrink:0}
-.step__body{flex:1;min-width:0}
-.step__title{font-size:14.5px;font-weight:800;margin-bottom:4px;color:#fff}
-.step__desc{font-size:12.5px;color:var(--text-2);line-height:1.7;margin-bottom:12px;font-weight:500}
-.id-box{background:#0B0B0B;border:1.5px dashed rgba(255,255,255,.35);border-radius:16px;padding:14px;text-align:center;font-family:var(--mono);font-size:15px;font-weight:800;color:#fff;direction:ltr;letter-spacing:3px;word-break:break-all;margin-bottom:10px}
+.wheel-info{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(0,122,255,.12);border:1px solid rgba(0,122,255,.35);border-radius:20px;margin-top:16px}
+.wheel-info i{color:var(--blue);font-size:18px;flex-shrink:0}
+.wheel-info__txt{flex:1;font-size:12.5px;font-weight:600;line-height:1.65;color:rgba(255,255,255,.85)}
 
-.rf-hero{border-radius:28px;padding:20px 16px 30px;margin-bottom:12px;color:#fff;background:#141414;border:1px solid #18252E}
-.rf-hero__top{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
-.rf-hero__ic{width:48px;height:48px;border-radius:50%;background:#18252E;display:grid;place-items:center;font-size:21px;flex-shrink:0}
-.rf-hero__title{font-size:18.5px;font-weight:800;line-height:1.35;margin-bottom:4px;color:#fff}
-.rf-hero__desc{font-size:12.5px;line-height:1.75;color:var(--text-2);font-weight:500}
-.rf-hero__rewards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.rf-hero__rw{background:#0B0B0B;border:1px solid #18252E;border-radius:20px;padding:12px 10px;text-align:center}
-.rf-hero__rw .amt{font-size:26px;font-weight:800;color:var(--yellow);direction:ltr;line-height:1}
-.rf-hero__rw .lbl{font-size:11.5px;font-weight:600;margin-top:6px;color:var(--text-2)}
-.rf-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.rf-stat{display:flex;align-items:center;gap:12px;background:#141414;border:1px solid #18252E;border-radius:24px;padding:14px}
-.rf-stat__ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:17px;flex-shrink:0;background:#18252E;color:#fff}
-.rf-stat__ic--amber{color:var(--yellow)}
-.rf-stat__num{font-size:22px;font-weight:800;line-height:1.1;direction:ltr;text-align:right;font-variant-numeric:tabular-nums;color:#fff}
-.rf-stat__lbl{font-size:11.5px;color:var(--text-2);font-weight:600;margin-top:3px}
-.ref-link{background:#0B0B0B;border:1px solid #18252E;border-radius:16px;padding:12px 14px;font-family:var(--mono);font-size:12px;direction:ltr;text-align:left;word-break:break-all;margin-bottom:12px;line-height:1.6;font-weight:600;color:#fff}
-.ref-actions{display:grid;grid-template-columns:1.5fr 1fr;gap:8px}
-.code-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0B0B0B;border:1.5px dashed rgba(255,255,255,.35);border-radius:18px;padding:12px 14px}
-.code-row__lbl{font-size:11.5px;color:var(--text-2);font-weight:700;margin-bottom:2px}
-.code-row__val{font-family:var(--mono);font-size:20px;font-weight:800;direction:ltr;letter-spacing:3px;text-align:right;color:#fff}
-.how{display:flex;flex-direction:column;gap:14px}
-.how__row{display:flex;align-items:flex-start;gap:12px}
-.how__n{width:30px;height:30px;border-radius:50%;background:#007AFF;color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0}
-.how__t{font-size:13.5px;font-weight:800;line-height:1.5;color:#fff}
-.how__d{font-size:12px;color:var(--text-2);font-weight:500;line-height:1.6;margin-top:1px}
-
-.lb{background:#141414;border:1px solid #18252E;border-radius:28px;overflow:hidden;margin-bottom:12px}
-.lb__head{padding:16px 16px 0;display:flex;align-items:center;justify-content:space-between}
-.lb__title{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;color:#fff}
-.lb__title i{width:30px;height:30px;border-radius:50%;background:#18252E;color:var(--yellow);display:grid;place-items:center;font-size:12px}
-.lb__tag{font-size:10.5px;font-weight:800;padding:4px 10px;border-radius:20px;background:#18252E;color:#fff}
-.podium{display:grid;grid-template-columns:1fr 1.18fr 1fr;gap:8px;align-items:end;padding:16px 12px 0;direction:ltr;background:#0B0B0B}
-.pod{display:flex;flex-direction:column;align-items:center;min-width:0;direction:rtl;--rc:#D1D1D6}
-.pod--1{--rc:#FFD60A}.pod--2{--rc:#D1D1D6}.pod--3{--rc:#FF9F0A}
-.pod__crown{height:22px;color:var(--yellow);font-size:18px;line-height:22px}
-.pod__av{width:56px;height:56px;border-radius:50%;background:#18252E;border:3px solid var(--rc);display:grid;place-items:center;overflow:hidden;color:rgba(255,255,255,.7);font-size:18px}
-.pod--1 .pod__av{width:70px;height:70px;font-size:22px}
-.pod__av img{width:100%;height:100%;object-fit:cover}
-.pod__name{display:flex;align-items:center;justify-content:center;gap:4px;max-width:100%;margin-top:8px;font-size:12.5px;font-weight:800;color:#fff}
-.pod__name span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.pod__cnt{font-size:11.5px;color:var(--text-2);font-weight:700;margin-top:1px}
-.pod__cnt b{color:#fff;font-weight:800}
-.pod__base{width:100%;margin-top:8px;border-radius:16px 16px 0 0;display:grid;place-items:center;font-size:22px;font-weight:800;color:#1A1A1A;background:var(--rc)}
-.pod--1 .pod__base{height:72px}.pod--2 .pod__base{height:54px}.pod--3 .pod__base{height:42px}
-.pod--empty{opacity:.45}
-.lb__list{padding:10px 8px 8px;background:#0B0B0B}
-.lrow{display:flex;align-items:center;gap:12px;padding:10px;border-radius:18px}
-.lrow--me{background:rgba(0,122,255,.18)}
-.lrow__rank{width:30px;height:30px;border-radius:50%;background:#007AFF;color:#fff;display:grid;place-items:center;font-size:12.5px;font-weight:800;flex-shrink:0}
-.lrow__av{width:42px;height:42px;border-radius:50%;background:#18252E;display:grid;place-items:center;overflow:hidden;color:rgba(255,255,255,.7);font-size:14px;flex-shrink:0}
-.lrow__av img{width:100%;height:100%;object-fit:cover}
-.lrow__info{flex:1;min-width:0}
-.lrow__name{display:flex;align-items:center;gap:5px;font-size:13.5px;font-weight:700;color:#fff}
-.lrow__name span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.lrow__cnt{font-size:12px;color:#fff;font-weight:800;background:#007AFF;padding:4px 11px;border-radius:20px;white-space:nowrap}
-.me-tag{font-size:9.5px;font-weight:800;background:#fff;color:var(--blue);padding:1px 7px;border-radius:10px;flex-shrink:0;font-style:normal}
-.lb__empty{padding:28px 16px;text-align:center;color:var(--text-2)}
-.lb__empty i{font-size:38px;display:block;margin-bottom:10px;opacity:.5}
-.lb__empty p{font-size:13px;font-weight:600}
-
-/* الملف الشخصي */
-.pf-top{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:26px 16px 22px;margin-bottom:14px;
-  background:#141414;border:1px solid #18252E;border-radius:28px;overflow:hidden}
-.pf-top::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23007AFF' stroke-width='0.7' opacity='0.35'%3E%3Ccircle cx='30' cy='40' r='15'/%3E%3Ccircle cx='170' cy='60' r='20'/%3E%3Ccircle cx='100' cy='30' r='10'/%3E%3Ccircle cx='50' cy='150' r='18'/%3E%3Ccircle cx='150' cy='160' r='12'/%3E%3Ccircle cx='80' cy='110' r='8'/%3E%3Cpath d='M10 90 Q 50 70 90 90 T 190 90'/%3E%3Cpath d='M10 130 Q 60 110 110 130 T 190 130'/%3E%3Cpath d='M0 180 Q 40 165 80 180 T 160 180'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:180px 180px;background-repeat:repeat}
-.pf-top>*{position:relative;z-index:1}
-.pf-av{width:118px;height:118px;border-radius:50%;border:3px solid var(--blue);padding:5px;display:grid;place-items:center;overflow:hidden;
-  margin-bottom:14px;color:var(--blue);font-size:44px;background:rgba(0,122,255,.08)}
-.pf-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.pf-name{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-size:22px;font-weight:800;color:#fff;word-break:break-word;margin-bottom:12px}
-.pf-id{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:30px;background:rgba(255,255,255,.06);
-  border:1px solid var(--glass-line);color:#fff;font-weight:700;transition:transform .15s}
-.pf-id:active{transform:scale(.97)}
-.pf-id span{font-family:var(--mono);font-size:14.5px;font-weight:800;letter-spacing:2px;direction:ltr}
-.pf-id i{font-size:13px;color:var(--blue)}
-.pf-bal{display:flex;align-items:center;gap:14px;background:var(--blue);border-radius:28px;padding:18px 16px 26px;margin-bottom:10px}
-.pf-bal__lbl{font-size:12px;font-weight:700;color:var(--text-2)}
-.pf-bal__row{display:flex;align-items:baseline;gap:6px}
-.pf-bal__val{font-size:34px;font-weight:800;line-height:1.15;direction:ltr;font-variant-numeric:tabular-nums}
-.pf-bal__cur{font-size:13px;font-weight:800;color:var(--yellow)}
-.pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.pf-cell{position:relative;overflow:hidden;background:var(--blue);border-radius:24px;padding:14px;display:flex;flex-direction:column;gap:4px;min-height:104px}
-.pf-cell__ic{width:36px;height:36px;border-radius:50%;background:var(--inset);display:grid;place-items:center;font-size:14px;margin-bottom:6px}
-.pf-cell__lbl{font-size:11.5px;font-weight:600;color:var(--text-2)}
-.pf-cell__val{font-size:19px;font-weight:800;direction:ltr;text-align:right;font-variant-numeric:tabular-nums}
-.pf-cell__val--txt{direction:rtl;font-size:17px}
-.pf-cell__bg{position:absolute;left:-8px;bottom:-14px;font-size:70px;opacity:.12;transform:rotate(-12deg);pointer-events:none}
-.pf-row{display:flex;align-items:center;gap:12px;padding:14px;background:var(--blue);border-radius:24px;margin-bottom:12px}
-.pf-row__ic{width:38px;height:38px;border-radius:50%;background:var(--inset);display:grid;place-items:center;font-size:14px;flex-shrink:0}
-.pf-row__lbl{flex:1;font-size:13.5px;font-weight:600;color:var(--text-2)}
-.pf-row__val{font-size:14px;font-weight:800}
+/* Modal الفوز */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:24px;z-index:9000}
+.modal.show{display:flex;animation:fadeIn .3s ease-out}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal__box{background:linear-gradient(160deg,#1A1A1F,#0B0B0D);border:2px solid var(--yellow);border-radius:30px;padding:34px 24px 26px;max-width:340px;width:100%;text-align:center;position:relative;animation:pop .55s cubic-bezier(.34,1.56,.64,1);box-shadow:0 20px 60px rgba(255,214,10,.3)}
+@keyframes pop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+.modal__box--lose{border-color:#3A3A44;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.modal__icon{font-size:78px;line-height:1;margin-bottom:14px;animation:bounce 1.2s ease-in-out infinite;filter:drop-shadow(0 8px 20px rgba(255,214,10,.6))}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
+.modal__title{font-size:22px;font-weight:800;color:var(--yellow);margin-bottom:6px}
+.modal__box--lose .modal__title{color:rgba(255,255,255,.75)}
+.modal__sub{font-size:13px;color:var(--text-2);margin-bottom:16px;font-weight:600}
+.modal__amount{font-size:46px;font-weight:800;color:var(--green);line-height:1;margin-bottom:22px;direction:ltr;font-variant-numeric:tabular-nums;text-shadow:0 4px 20px rgba(48,209,88,.4)}
+.modal__amount small{font-size:20px;color:rgba(48,209,88,.7);font-weight:700;margin-right:6px}
+.modal__box--lose .modal__amount{color:rgba(255,255,255,.55);text-shadow:none;font-size:32px}
+.modal__btn{width:100%;min-height:54px;border-radius:18px;font-size:15px;font-weight:800;background:linear-gradient(135deg,#FFD60A,#FF9F0A);color:#3A2A00;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s}
+.modal__btn:active{transform:scale(.97)}
 
 .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-140%);opacity:0;background:rgba(28,28,32,.88);
   -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:#fff;border:1px solid var(--glass-line);padding:12px 18px;border-radius:30px;
@@ -521,7 +395,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 @keyframes spin{to{transform:rotate(360deg)}}
 .tamper-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px}
 .tamper-overlay.show{display:flex;animation:fadeIn .3s}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .tamper-box{background:#0B0B0D;border:1px solid var(--sea-pale);border-radius:28px;padding:28px 22px;max-width:380px;width:100%;text-align:center}
 .tamper-box__icon{width:72px;height:72px;border-radius:50%;background:rgba(255,69,58,.16);color:var(--red);font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;animation:shakeIcon 1s ease-in-out infinite}
 @keyframes shakeIcon{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
@@ -548,6 +421,8 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
   .plans-table thead th{font-size:9px;padding:7px 2px}
   .pt-plan__name{font-size:10px}
   .pf-av{width:100px;height:100px;font-size:38px}
+  .day__day{font-size:8px}
+  .day__amt{font-size:8.5px}
 }
 @media (prefers-reduced-motion:reduce){
   .view.active{animation:none}
@@ -578,6 +453,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 <div class="app" id="app" style="display:none">
   <div class="main" id="mainScroll">
 
+    <!-- الرئيسية -->
     <div class="view active" id="view-home">
       <div class="topbar">
         <div class="avatar" id="homeAvatar" onclick="navigate('profile')"><i class="fas fa-user"></i></div>
@@ -606,7 +482,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
             <div class="plan-header__meta">
               <div class="plan-header__lbl">الخطة النشطة</div>
               <div class="plan-header__name" id="planName">خطة أساسي</div>
-              <div class="plan-header__reward"><i class="fas fa-coins"></i><span id="planReward">7</span> ل.س / دورة</div>
+              <div class="plan-header__reward"><i class="fas fa-coins"></i><span id="planReward">5</span> ل.س / دورة</div>
             </div>
           </div>
           <div class="plan-header__lvl">
@@ -674,8 +550,87 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
           <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
         </button>
       </div>
+
+      <!-- 🎰 زر عجلة الحظ -->
+      <button class="wheel-tile" onclick="navigate('wheel')">
+        <span class="wheel-tile__ic">🎰</span>
+        <div class="wheel-tile__body">
+          <div class="wheel-tile__t">عجلة الحظ</div>
+          <div class="wheel-tile__d">جرّب حظك واربح جوائز فورية حتى 100 ل.س</div>
+          <span class="wheel-tile__badge"><i class="fas fa-gift"></i> لفة مجانية كل يوم</span>
+        </div>
+        <span class="wheel-tile__arrow"><i class="fas fa-chevron-left"></i></span>
+      </button>
     </div>
 
+    <!-- صفحة العجلة -->
+    <div class="view" id="view-wheel">
+      <div class="topbar">
+        <div class="topbar__meta">
+          <div class="topbar__hello">اللعبة</div>
+          <div class="topbar__name">🎰 عجلة الحظ</div>
+        </div>
+        <div class="chip">
+          <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
+          <div class="chip__body">
+            <div class="chip__num" id="wheelBalance">0</div>
+            <div class="chip__cur">ل.س</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wheel-page">
+        <div class="wheel-spins-card">
+          <div class="wheel-spins-card__icon">🎟️</div>
+          <div class="wheel-spins-card__body">
+            <div class="wheel-spins-card__label">اللفات المتاحة</div>
+            <div class="wheel-spins-card__count"><span id="wheelSpins">1</span><small> / <span id="wheelSpinsTotal">1</span></small></div>
+          </div>
+        </div>
+
+        <div class="wheel-timer-bar" id="wheelTimerBar">
+          <i class="fas fa-hourglass-half"></i>
+          <span>تجديد اللفة المجانية بعد</span>
+          <b id="wheelTimer">--:--:--</b>
+        </div>
+
+        <div class="wheel-section">
+          <div class="wheel-wrap">
+            <div class="wheel-outer">
+              <div class="wheel-pointer">
+                <svg width="48" height="60" viewBox="0 0 48 60">
+                  <defs>
+                    <linearGradient id="ptrGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#FF453A"/>
+                      <stop offset="100%" stop-color="#C41E16"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M24 60 L4 14 Q24 -8 44 14 Z" fill="url(#ptrGrad)" stroke="#fff" stroke-width="2"/>
+                  <circle cx="24" cy="14" r="7" fill="#fff"/>
+                </svg>
+              </div>
+              <div class="wheel" id="wheel">
+                <svg viewBox="0 0 200 200" id="wheelSvg"></svg>
+              </div>
+              <button class="wheel-center-btn" id="wheelCenterBtn" aria-label="لف العجلة">
+                <span class="wheel-center-btn__icon">🎰</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button class="wheel-action" id="wheelMainBtn">
+          <i class="fas fa-sync-alt"></i> <span id="wheelMainBtnText">لف العجلة الآن</span>
+        </button>
+
+        <div class="wheel-info">
+          <i class="fas fa-info-circle"></i>
+          <div class="wheel-info__txt">لديك <b>لفة واحدة مجانية</b> كل 24 ساعة. أحصل على لفات إضافية عبر <b>مهام الدعوات</b> في صفحة المهام.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- المهام -->
     <div class="view" id="view-tasks">
       <div class="topbar">
         <div class="topbar__meta">
@@ -689,6 +644,18 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
             <div class="chip__cur">ل.س</div>
           </div>
         </div>
+      </div>
+
+      <!-- 🔥 هدايا الأسبوع -->
+      <div class="weekly">
+        <div class="weekly__head">
+          <div class="weekly__title"><i class="fas fa-fire"></i> هدايا الأسبوع</div>
+          <div class="weekly__sub">سجّل دخولك يومياً واستلم هديتك — أكمل 7 أيام لتربح 200 ل.س إضافية</div>
+        </div>
+        <div class="days-grid" id="daysGrid"></div>
+        <button class="weekly__btn" id="weeklyClaimBtn">
+          <i class="fas fa-gift"></i><span id="weeklyBtnText">استلم هدية اليوم</span>
+        </button>
       </div>
 
       <div class="qb wavy">
@@ -717,6 +684,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
       <div id="inviteTasksContainer"></div>
     </div>
 
+    <!-- المتجر -->
     <div class="view" id="view-store">
       <div class="topbar">
         <div class="topbar__meta">
@@ -756,6 +724,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
       </div>
     </div>
 
+    <!-- المحفظة -->
     <div class="view" id="view-wallet">
       <div class="topbar">
         <div class="topbar__meta">
@@ -855,20 +824,14 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
             <div id="depBinanceInfo" style="display:none">
               <div class="id-box" style="font-size:18px;letter-spacing:4px;border-color:var(--yellow)">1121748571</div>
               <button class="btn btn--sea" id="depCopyBinance"><i class="fas fa-copy"></i> نسخ معرف Binance</button>
+              <div class="step__title" style="margin-top:16px">طريقة وضع معرف المستخدم في الملاحظة</div>
+              <div class="step__desc">اتبع الصورة التعليمية أدناه لوضع معرفك في خانة الملاحظات أثناء التحويل على Binance.</div>
+              <img src="https://up6.cc/2026/10/179163217003341.jpg" alt="طريقة وضع معرف المستخدم في الملاحظة" style="width:100%;border-radius:18px;border:1px solid #18252E">
             </div>
           </div>
         </div>
-        <!-- التعليمات المصورة -->
         <div class="step">
           <div class="step__num">4</div>
-          <div class="step__body">
-            <div class="step__title">طريقة وضع معرف المستخدم في الملاحظة</div>
-            <div class="step__desc">اتبع الصورة التعليمية أدناه لوضع معرفك في خانة الملاحظات أثناء التحويل.</div>
-            <img src="https://up6.cc/2026/10/179163217003341.jpg" alt="طريقة وضع معرف المستخدم في الملاحظة" style="width:100%;border-radius:18px;border:1px solid #18252E">
-          </div>
-        </div>
-        <div class="step">
-          <div class="step__num">5</div>
           <div class="step__body">
             <div class="step__title">التعليمات</div>
             <div class="alert alert--danger" style="margin-bottom:0">
@@ -880,6 +843,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
       </div>
     </div>
 
+    <!-- الإحالة -->
     <div class="view" id="view-referral">
       <div class="topbar">
         <div class="topbar__meta">
@@ -966,6 +930,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
       </div>
     </div>
 
+    <!-- الملف الشخصي -->
     <div class="view" id="view-profile">
       <div class="pf-top">
         <div class="pf-av" id="profAvatar"><i class="fas fa-user"></i></div>
@@ -1034,6 +999,17 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
   </div>
 </div>
 
+<!-- Modal الفوز -->
+<div class="modal" id="wheelModal">
+  <div class="modal__box" id="wheelModalBox">
+    <div class="modal__icon" id="wheelModalIcon">🎉</div>
+    <div class="modal__title" id="wheelModalTitle">مبروك!</div>
+    <div class="modal__sub" id="wheelModalSub">ربحت جائزة رائعة</div>
+    <div class="modal__amount" id="wheelModalAmt">+0<small>ل.س</small></div>
+    <button class="modal__btn" onclick="closeWheelModal()"><i class="fas fa-check"></i> رائع، شكراً!</button>
+  </div>
+</div>
+
 <div class="toast" id="toast">
   <div class="toast__ic" id="toastIc"><i class="fas fa-check"></i></div>
   <span id="toastMsg"></span>
@@ -1045,7 +1021,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 <script>
 'use strict';
 
-/* ═══ منع النسخ وتحديد النص والسحب (حماية واجهة فقط) ═══ */
+/* ═══ حماية الواجهة ═══ */
 (function protectContent(){
   const isField = (t) => !!(t && t.closest && t.closest('input,textarea'));
   ['copy','cut','selectstart','dragstart','contextmenu'].forEach(ev =>
@@ -1062,13 +1038,13 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 
 const CONFIG = {
   firebase: {
-  apiKey: "AIzaSyCDkO_uCCiHG3HHPDeQQ9j-v43sDhyua-w",
-  authDomain: "dolphinbot-1.firebaseapp.com",
-  projectId: "dolphinbot-1",
-  storageBucket: "dolphinbot-1.firebasestorage.app",
-  messagingSenderId: "385194736167",
-  appId: "1:385194736167:web:53987f3857f5d56343ec02"
-},
+    apiKey: "AIzaSyCDkO_uCCiHG3HHPDeQQ9j-v43sDhyua-w",
+    authDomain: "dolphinbot-1.firebaseapp.com",
+    projectId: "dolphinbot-1",
+    storageBucket: "dolphinbot-1.firebasestorage.app",
+    messagingSenderId: "385194736167",
+    appId: "1:385194736167:web:53987f3857f5d56343ec02"
+  },
   bot: { username: 'DolphinMiner_bot', appName: 'Dolphin' },
   admin: { telegram: 'qo_ij2' },
   referral: { newUserReward: 5, referrerReward: 10 },
@@ -1076,9 +1052,8 @@ const CONFIG = {
   deposit: { shamCash: '334a08ea2d1bbed05f214a7f08e37ae4', binance: '1121748571' },
   channel: 'https://t.me/DolphinMinerchannel',
 
-  // الخطط المعدلة: أقل خطة 500 بربح 7، وأعلى 15000 بربح أقل
   plans: [
-    { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:7,  cycleHours:6, planDays:0,  price:0 },
+    { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:5,  cycleHours:6, planDays:0,  price:0 },
     { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:12, cycleHours:6, planDays:7,  price:500 },
     { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:20, cycleHours:6, planDays:10, price:1500 },
     { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:30, cycleHours:6, planDays:15, price:3000 },
@@ -1089,10 +1064,10 @@ const CONFIG = {
   security: { maxClockDriftMs: 60 * 1000, syncIntervalMs: 5 * 60 * 1000, syncMinGapMs: 30 * 1000, clockCheckIntervalMs: 2000 },
 
   inviteTasks: [
-    { id: 'invite5',  count: 5,  reward: 50,  title: 'دعوة 5 أصدقاء',  desc: 'اربح 50 ل.س عند دعوة 5 أشخاص' },
-    { id: 'invite20', count: 20, reward: 300, title: 'دعوة 20 صديق',   desc: 'اربح 300 ل.س عند دعوة 20 شخص' },
-    { id: 'invite30', count: 30, reward: 500, title: 'دعوة 30 صديق',   desc: 'اربح 500 ل.س عند دعوة 30 شخص' },
-    { id: 'invite50', count: 50, reward: 700, title: 'دعوة 50 صديق',   desc: 'اربح 700 ل.س عند دعوة 50 شخص' }
+    { id: 'invite5',  count: 5,  reward: 50,  spins: 2,  title: 'دعوة 5 أصدقاء',  desc: 'اربح 50 ل.س + لفّتي عجلة مجانيتين' },
+    { id: 'invite20', count: 20, reward: 300, spins: 4,  title: 'دعوة 20 صديق',   desc: 'اربح 300 ل.س + 4 لفات عجلة' },
+    { id: 'invite30', count: 30, reward: 500, spins: 7,  title: 'دعوة 30 صديق',   desc: 'اربح 500 ل.س + 7 لفات عجلة' },
+    { id: 'invite50', count: 50, reward: 700, spins: 10, title: 'دعوة 50 صديق',   desc: 'اربح 700 ل.س + 10 لفات عجلة' }
   ],
 
   specialTasks: {
@@ -1102,7 +1077,21 @@ const CONFIG = {
 
   channelTask: { reward: 10 },
   refundPlanProfit: false,
-  freeTrialDays: 14  // مدة التجربة المجانية للأساسي
+
+  // عجلة الحظ
+  wheel: {
+    dailyFreeSpin: 1,
+    rewards: [
+      { type:'win',  value:50,  label:'50',      color:'#30D158' },
+      { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' },
+      { type:'win',  value:100, label:'100',     color:'#FFD60A' },
+      { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' },
+      { type:'win',  value:10,  label:'10',      color:'#007AFF' },
+      { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' },
+      { type:'win',  value:40,  label:'40',      color:'#AF52DE' },
+      { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' }
+    ]
+  }
 };
 
 if (!firebase.apps.length) firebase.initializeApp(CONFIG.firebase);
@@ -1133,8 +1122,8 @@ const STATE = {
   perfBase: 0,
   syncing: false,
   lastSyncAt: 0,
-  isTrialActive: false,
-  trialEndsAt: null
+  wheelSpinning: false,
+  wheelRotation: 0
 };
 const UI = { btnKey: '', bubbleMode: '' };
 
@@ -1235,7 +1224,7 @@ function evaluateClock(){
   const changed = locked !== STATE.timeLocked;
   STATE.timeLocked = locked;
   if (changed && STATE.user){
-    renderMining(); renderPlans();
+    renderMining(); renderPlans(); renderWheel();
     if (!locked && STATE.user.miningStartTime && !STATE.user.miningCollectable) startLiveTimer();
   }
 }
@@ -1278,7 +1267,7 @@ async function detectTamper(){
 }
 function closeTamperModal(){ $('tamperModal').classList.remove('show'); }
 
-/* ═══ تحميل المستخدم والمستمع ═══ */
+/* ═══ المستخدم ═══ */
 async function loadOrCreateUser(){
   await syncServerTime(true);
   const ref = db.collection('users').doc(STATE.tgId);
@@ -1304,12 +1293,6 @@ async function loadOrCreateUser(){
         name: fullName, username, photoUrl, updatedAt: SV()
       }, { merge:true }).catch(() => {});
     }
-    // بدء التجربة المجانية إذا لم تكن مفعلة
-    if (!old.trialStartedAt){
-      const trialEnd = new Date(Date.now() + CONFIG.freeTrialDays * 864e5);
-      await ref.update({ trialStartedAt: SV(), trialEndsAt: firebase.firestore.Timestamp.fromDate(trialEnd) });
-      STATE.user.trialEndsAt = firebase.firestore.Timestamp.fromDate(trialEnd);
-    }
     await checkPlanExpiry();
     return;
   }
@@ -1325,7 +1308,6 @@ async function loadOrCreateUser(){
     }
   }
 
-  const trialEnd = new Date(Date.now() + CONFIG.freeTrialDays * 864e5);
   const base = {
     telegramId: STATE.tgId, name: fullName, username, photoUrl,
     uniqueId: STATE.tgId, referralCode: STATE.tgId,
@@ -1341,8 +1323,8 @@ async function loadOrCreateUser(){
     hasPurchasedPlan: false,
     collect5RewardClaimed: false, firstBuyRewardClaimed: false,
     inviteRewardClaimed: {},
-    trialStartedAt: SV(),
-    trialEndsAt: firebase.firestore.Timestamp.fromDate(trialEnd),
+    dailyStreak: { weekKey: null, weekStart: null, claimedDays: [], lastClaimDate: null },
+    wheel: { spins: CONFIG.wheel.dailyFreeSpin, lastFreeSpinDate: null, lastSpinAt: null },
     createdAt: SV(), updatedAt: SV(), lastSeen: SV()
   };
 
@@ -1396,30 +1378,13 @@ function listenUser(){
 }
 
 function refreshAll(){
-  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks();
+  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks(); renderWheel(); renderWeeklyStreak();
 }
 
 async function checkPlanExpiry(){
   if (!STATE.user || STATE.timeLocked || !STATE.timeSynced) return;
   const plan = getPlan(STATE.user.activePlanId || 'basic');
-  if (plan.planDays === 0){
-    // الخطة الأساسية: التحقق من انتهاء التجربة المجانية
-    if (STATE.user.trialEndsAt){
-      const left = tsMs(STATE.user.trialEndsAt) - getTrustedNow();
-      if (left <= 0){
-        clearTimeout(STATE.planExpiryTimer);
-        await db.collection('users').doc(STATE.tgId).update({
-          hasStartedMining: false, miningStartTime: null, miningProgress: 0,
-          miningCollectable: false, updatedAt: SV()
-        });
-        toast('انتهت فترة التجربة المجانية. يرجى ترقية خطتك للمتابعة.', 'info');
-      } else {
-        clearTimeout(STATE.planExpiryTimer);
-        STATE.planExpiryTimer = setTimeout(checkPlanExpiry, left + 1000);
-      }
-    }
-    return;
-  }
+  if (plan.planDays === 0) return;
   if (!STATE.user.planExpiresAt) return;
   const left = tsMs(STATE.user.planExpiresAt) - getTrustedNow();
   if (left > 0){
@@ -1439,8 +1404,6 @@ async function checkPlanExpiry(){
         balance_sy: FV.increment(refund),
         activePlanId: 'basic', planStartedAt: null, planExpiresAt: null,
         planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
-        trialStartedAt: SV(),
-        trialEndsAt: firebase.firestore.Timestamp.fromDate(new Date(getTrustedNow() + CONFIG.freeTrialDays * 864e5)),
         hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
         updatedAt: SV()
       });
@@ -1460,7 +1423,7 @@ function updateUI(){
   setText('homeNameText', u.name || 'مستخدم');
   ['homeAvatar','profAvatar','navAvatar'].forEach(updateAvatar);
 
-  ['headerBalance','storeBalance','tasksBalance','walletBalance'].forEach(id => setText(id, fmt(bal)));
+  ['headerBalance','storeBalance','tasksBalance','walletBalance','wheelBalance'].forEach(id => setText(id, fmt(bal)));
 
   setText('planName', 'خطة ' + plan.name);
   setText('planLevel', plan.level);
@@ -1569,30 +1532,11 @@ function renderMining(){
   aquariumScene.classList.toggle('running', runningNow);
   $('miningCard').classList.toggle('is-ready', readyNow);
 
-  // التحقق من انتهاء التجربة للخطة الأساسية
-  if (plan.id === 'basic' && u.trialEndsAt){
-    const left = tsMs(u.trialEndsAt) - getTrustedNow();
-    if (left <= 0 && !STATE.timeLocked){
-      return renderTrialEnded();
-    }
-  }
-
   if (STATE.timeLocked) return renderLocked();
   if (!u.hasStartedMining) return renderIdle(plan);
   if (u.miningCollectable) return renderReady(plan);
   if (u.miningStartTime) return renderRunning(u, plan);
   renderIdle(plan);
-}
-
-function renderTrialEnded(){
-  stopLiveTimer();
-  setText('statusText', 'انتهت فترة التجربة المجانية — يرجى ترقية خطتك');
-  $('statusText').style.color = '#FF8A82';
-  $('statusDot').className = 'status-bar__dot';
-  setText('miningStatusMeta', 'منتهية');
-  setText('timerText', '00:00:00');
-  setText('timerLbl', 'انتهت التجربة');
-  setMineBtn('action action--stop', '<i class="fas fa-lock"></i><span>انتهت التجربة — قم بالترقية</span>', true);
 }
 
 function renderLocked(){
@@ -1699,9 +1643,6 @@ async function markMiningComplete(){
 async function startMining(){
   if (STATE.isSubmitting || !STATE.user) return;
   if (STATE.timeLocked) return toast('التعدين مجمّد', 'err');
-  const plan = getPlan(STATE.user.activePlanId || 'basic');
-  if (plan.id === 'basic' && STATE.user.trialEndsAt && tsMs(STATE.user.trialEndsAt) <= getTrustedNow())
-    return toast('انتهت فترة التجربة المجانية. يرجى ترقية خطتك.', 'err');
   if (STATE.user.miningCollectable) return toast('جمع الأرباح أولاً', 'info');
   if (STATE.user.miningStartTime) return toast('التعدين نشط حالياً', 'info');
 
@@ -1721,7 +1662,7 @@ async function startMining(){
       });
     });
     startLiveTimer();
-    toast('🚀 بدأ التعدين! سيستغرق ' + plan.cycleHours + ' ساعات', 'ok');
+    toast('🚀 بدأ التعدين! سيستغرق ' + getPlan(STATE.user.activePlanId).cycleHours + ' ساعات', 'ok');
   }catch(e){
     toast(e.message || 'فشل بدء التعدين', 'err');
   }finally{
@@ -1933,8 +1874,6 @@ async function cancelPlan(){
         activePlanId: 'basic', planStartedAt: null, planExpiresAt: null,
         planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
         hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
-        trialStartedAt: SV(),
-        trialEndsAt: firebase.firestore.Timestamp.fromDate(new Date(getTrustedNow() + CONFIG.freeTrialDays * 864e5)),
         updatedAt: SV()
       });
     });
@@ -1983,6 +1922,335 @@ async function buyPlan(planId){
   }catch(e){
     toast(e.message || 'فشل الشراء', 'err');
   }finally{ STATE.isSubmitting = false; }
+}
+
+/* ═══ 🎰 عجلة الحظ ═══ */
+let wheelTimerInterval = null;
+let wheelSvgBuilt = false;
+
+function getTodayKey(){
+  const now = new Date(getTrustedNow());
+  return now.getUTCFullYear() + '-' + String(now.getUTCMonth()+1).padStart(2,'0') + '-' + String(now.getUTCDate()).padStart(2,'0');
+}
+
+function getNextMidnight(){
+  const now = new Date(getTrustedNow());
+  const next = new Date(now);
+  next.setUTCHours(24, 0, 0, 0);
+  return next.getTime();
+}
+
+function getWheelState(){
+  const u = STATE.user || {};
+  const w = u.wheel || {};
+  const today = getTodayKey();
+  // إذا تغير اليوم، أعطِ لفة مجانية جديدة
+  if (w.lastFreeSpinDate !== today){
+    return { spins: Math.max(w.spins || 0, CONFIG.wheel.dailyFreeSpin), lastFreeSpinDate: today, lastSpinAt: w.lastSpinAt || null };
+  }
+  return { spins: w.spins || 0, lastFreeSpinDate: w.lastFreeSpinDate, lastSpinAt: w.lastSpinAt || null };
+}
+
+function buildWheelSvg(){
+  if (wheelSvgBuilt) return;
+  wheelSvgBuilt = true;
+  const segs = CONFIG.wheel.rewards;
+  const N = segs.length, ARC = 360/N, R = 100, CX = 100, CY = 100;
+  const svg = $('wheelSvg');
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const polar = (cx,cy,r,deg) => { const rad=(deg-90)*Math.PI/180; return [cx+r*Math.cos(rad), cy+r*Math.sin(rad)]; };
+
+  svg.innerHTML = '';
+  segs.forEach((seg,i) => {
+    const start = i*ARC, end = (i+1)*ARC;
+    const [x1,y1] = polar(CX,CY,R,start);
+    const [x2,y2] = polar(CX,CY,R,end);
+    const large = ARC>180?1:0;
+
+    const path = document.createElementNS(svgNS,'path');
+    path.setAttribute('d',`M ${CX} ${CY} L ${x1} ${y1} A ${R} ${R} 0 ${large} 1 ${x2} ${y2} Z`);
+    path.setAttribute('fill', seg.color);
+    path.setAttribute('stroke','#000');
+    path.setAttribute('stroke-width','1.5');
+    svg.appendChild(path);
+
+    const [gx1,gy1] = polar(CX,CY,R,start);
+    const line = document.createElementNS(svgNS,'line');
+    line.setAttribute('x1',CX); line.setAttribute('y1',CY);
+    line.setAttribute('x2',gx1); line.setAttribute('y2',gy1);
+    line.setAttribute('stroke','rgba(255,255,255,.3)');
+    line.setAttribute('stroke-width','1');
+    svg.appendChild(line);
+
+    const mid = start + ARC/2;
+    const [tx,ty] = polar(CX,CY,R*0.68,mid);
+    const text = document.createElementNS(svgNS,'text');
+    text.setAttribute('x',tx); text.setAttribute('y',ty);
+    text.setAttribute('text-anchor','middle');
+    text.setAttribute('dominant-baseline','middle');
+    text.setAttribute('font-size', seg.type==='lose' ? '9' : '15');
+    text.setAttribute('font-weight','800');
+    text.setAttribute('fill', seg.type==='lose' ? 'rgba(255,255,255,.75)' : '#fff');
+    text.setAttribute('transform',`rotate(${mid},${tx},${ty})`);
+    text.setAttribute('class','wheel__text');
+    text.style.filter = 'drop-shadow(0 1px 2px rgba(0,0,0,.7))';
+    text.textContent = seg.label;
+    svg.appendChild(text);
+  });
+}
+
+function renderWheel(){
+  if (!STATE.user) return;
+  buildWheelSvg();
+  const ws = getWheelState();
+  const spinsTotal = CONFIG.wheel.dailyFreeSpin;
+  setText('wheelSpins', ws.spins);
+  setText('wheelSpinsTotal', spinsTotal);
+
+  const centerBtn = $('wheelCenterBtn');
+  const mainBtn = $('wheelMainBtn');
+  const mainBtnText = $('wheelMainBtnText');
+  const canSpin = !STATE.wheelSpinning && ws.spins > 0 && !STATE.timeLocked;
+
+  if (centerBtn) centerBtn.disabled = !canSpin;
+  if (mainBtn) mainBtn.disabled = !canSpin;
+
+  if (mainBtnText){
+    if (STATE.wheelSpinning) mainBtnText.textContent = 'جاري السحب...';
+    else if (STATE.timeLocked) mainBtnText.textContent = 'الوقت غير موثوق';
+    else if (ws.spins > 0) mainBtnText.textContent = 'لف العجلة الآن';
+    else mainBtnText.textContent = 'عد غداً — لفة جديدة';
+  }
+}
+
+function updateWheelTimer(){
+  const timerEl = $('wheelTimer');
+  const bar = $('wheelTimerBar');
+  if (!timerEl || !bar) return;
+  const ws = getWheelState();
+  if (ws.spins > 0){
+    bar.style.display = 'none';
+    return;
+  }
+  bar.style.display = 'flex';
+  if (STATE.timeLocked || !STATE.timeSynced){
+    timerEl.textContent = '--:--:--';
+    return;
+  }
+  const left = Math.max(0, getNextMidnight() - getTrustedNow());
+  const sec = Math.floor(left/1000);
+  const p2 = n => String(n).padStart(2,'0');
+  timerEl.textContent = p2(Math.floor(sec/3600)) + ':' + p2(Math.floor((sec%3600)/60)) + ':' + p2(sec%60);
+}
+
+async function spinWheel(){
+  if (STATE.wheelSpinning || !STATE.user) return;
+  if (STATE.timeLocked) return toast('الوقت غير موثوق', 'err');
+  const ws = getWheelState();
+  if (ws.spins <= 0) return toast('لا تملك لفات — عد غداً', 'info');
+
+  STATE.wheelSpinning = true;
+  renderWheel();
+
+  // اختيار عشوائي بحت
+  const segs = CONFIG.wheel.rewards;
+  const idx = Math.floor(Math.random() * segs.length);
+  const ARC = 360 / segs.length;
+  const turns = 6 + Math.floor(Math.random() * 3);
+  const targetAngle = turns * 360 + (360 - (idx * ARC + ARC/2));
+
+  STATE.wheelRotation += targetAngle;
+  const wheelEl = $('wheel');
+  wheelEl.style.transform = 'rotate(' + STATE.wheelRotation + 'deg)';
+
+  if (navigator.vibrate) navigator.vibrate([15,40,15]);
+
+  setTimeout(async () => {
+    const seg = segs[idx];
+    // خصم لفة وتسجيل تاريخ اللفة
+    try{
+      await db.runTransaction(async (trx) => {
+        const ref = db.collection('users').doc(STATE.tgId);
+        const d = (await trx.get(ref)).data();
+        const oldW = d.wheel || {};
+        const today = getTodayKey();
+        let currentSpins = oldW.lastFreeSpinDate === today ? (oldW.spins || 0) : Math.max(oldW.spins || 0, CONFIG.wheel.dailyFreeSpin);
+        if (currentSpins <= 0) throw new Error('لا توجد لفات');
+        currentSpins -= 1;
+
+        const upd = {
+          wheel: { spins: currentSpins, lastFreeSpinDate: today, lastSpinAt: SV() },
+          updatedAt: SV()
+        };
+        if (seg.type === 'win' && seg.value > 0){
+          upd.balance_sy = FV.increment(seg.value);
+          upd.totalEarned = FV.increment(seg.value);
+        }
+        trx.update(ref, upd);
+      });
+    }catch(e){ console.warn('spin', e); }
+
+    // عرض النتيجة
+    const modalBox = $('wheelModalBox');
+    if (seg.type === 'win'){
+      modalBox.classList.remove('modal__box--lose');
+      $('wheelModalIcon').textContent = '🏆';
+      $('wheelModalTitle').textContent = 'مبروك الفوز!';
+      $('wheelModalSub').textContent = 'ربحت من عجلة الحظ';
+      $('wheelModalAmt').innerHTML = '+' + seg.value + '<small>ل.س</small>';
+      if (navigator.vibrate) navigator.vibrate([60,50,60,50,100]);
+    } else {
+      modalBox.classList.add('modal__box--lose');
+      $('wheelModalIcon').textContent = '😔';
+      $('wheelModalTitle').textContent = 'حظ أوفر';
+      $('wheelModalSub').textContent = 'لم تربح هذه المرة — عد غداً';
+      $('wheelModalAmt').innerHTML = 'حظ أوفر';
+      if (navigator.vibrate) navigator.vibrate([30,80,30]);
+    }
+    $('wheelModal').classList.add('show');
+
+    STATE.wheelSpinning = false;
+    renderWheel();
+    updateWheelTimer();
+  }, 6200);
+}
+
+function closeWheelModal(){ $('wheelModal').classList.remove('show'); }
+window.closeWheelModal = closeWheelModal;
+
+/* ═══ 🔥 هدايا الأسبوع ═══ */
+const WEEK_DAYS = ['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
+const WEEK_REWARDS = [
+  { amount: 5,  icon: '🎁' },
+  { amount: 10, icon: '🎁' },
+  { amount: 15, icon: '💰' },
+  { amount: 20, icon: '💰' },
+  { amount: 25, icon: '⭐' },
+  { amount: 35, icon: '⭐' },
+  { amount: 50, icon: '👑' }
+];
+const WEEK_BONUS = 200;
+
+function getTodayIndex(){
+  const jsDay = new Date(getTrustedNow()).getDay();
+  return (jsDay + 1) % 7;
+}
+function getWeekKey(){
+  const now = new Date(getTrustedNow());
+  const sat = new Date(now);
+  sat.setDate(now.getDate() - ((now.getDay() + 1) % 7));
+  return sat.toISOString().slice(0,10);
+}
+function getDailyState(){
+  const u = STATE.user || {};
+  const todayKey = new Date(getTrustedNow()).toISOString().slice(0,10);
+  const weekKey = getWeekKey();
+  const ds = u.dailyStreak || {};
+  if (ds.weekKey !== weekKey){
+    return { weekKey, claimedDays: [], lastClaimDate: null };
+  }
+  return {
+    weekKey,
+    claimedDays: ds.claimedDays || [],
+    lastClaimDate: ds.lastClaimDate || null
+  };
+}
+
+function renderWeeklyStreak(){
+  const grid = $('daysGrid');
+  const btn = $('weeklyClaimBtn');
+  const btnText = $('weeklyBtnText');
+  if (!grid || !STATE.user) return;
+
+  const todayIdx = getTodayIndex();
+  const ds = getDailyState();
+  const todayKey = new Date(getTrustedNow()).toISOString().slice(0,10);
+  const claimedToday = ds.lastClaimDate === todayKey;
+  const isWeekFull = ds.claimedDays.length >= 7;
+  const canClaim = !claimedToday && !isWeekFull && (ds.claimedDays.length === todayIdx || ds.claimedDays.length < todayIdx);
+
+  grid.innerHTML = WEEK_DAYS.map((name, i) => {
+    const reward = WEEK_REWARDS[i];
+    const isDone = i < ds.claimedDays.length;
+    const isToday = i === todayIdx && !isDone;
+    const isClaimable = isToday && !claimedToday;
+
+    let cls = 'day';
+    if (isDone) cls += ' day--done';
+    else if (isClaimable) cls += ' day--claimable';
+    else if (isToday) cls += ' day--today';
+    else if (i > todayIdx) cls += ' day--locked';
+
+    const icon = isDone ? '<i class="fas fa-check day__ic"></i>' : '<span class="day__ic">' + reward.icon + '</span>';
+    return '<div class="' + cls + '">' +
+      '<span class="day__day">' + name + '</span>' +
+      icon +
+      '<span class="day__amt">+' + reward.amount + '</span>' +
+    '</div>';
+  }).join('');
+
+  if (!btn || !btnText) return;
+  if (isWeekFull){
+    btn.disabled = true;
+    btnText.textContent = '🎉 أكملت كل هدايا الأسبوع';
+  } else if (claimedToday){
+    btn.disabled = true;
+    btnText.textContent = '✓ استلمت هدية اليوم — عد غداً';
+  } else if (canClaim){
+    btn.disabled = false;
+    const reward = WEEK_REWARDS[todayIdx];
+    btnText.textContent = 'استلم هدية اليوم — ' + reward.amount + ' ل.س';
+  } else {
+    btn.disabled = true;
+    btnText.textContent = 'انتظر يومك القادم';
+  }
+}
+
+async function claimDailyReward(){
+  if (!STATE.user || STATE.isSubmitting) return;
+  const todayKey = new Date(getTrustedNow()).toISOString().slice(0,10);
+  const ds = getDailyState();
+  if (ds.lastClaimDate === todayKey) return toast('استلمت هدية اليوم بالفعل', 'info');
+  if (ds.claimedDays.length >= 7) return toast('أكملت كل هدايا الأسبوع! 🎉', 'info');
+
+  const todayIdx = getTodayIndex();
+  const reward = WEEK_REWARDS[todayIdx];
+  const isFullWeek = ds.claimedDays.length + 1 === 7;
+  const totalReward = reward.amount + (isFullWeek ? WEEK_BONUS : 0);
+
+  STATE.isSubmitting = true;
+  try{
+    await db.runTransaction(async (trx) => {
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
+      const oldDs = d.dailyStreak || {};
+      const weekKey = getWeekKey();
+      const claimed = oldDs.weekKey === weekKey ? (oldDs.claimedDays || []) : [];
+      if (oldDs.lastClaimDate === todayKey) throw new Error('تم الاستلام اليوم');
+      if (claimed.length >= 7) throw new Error('أكملت الأسبوع');
+
+      const newClaimed = [...claimed, todayIdx];
+      trx.update(ref, {
+        balance_sy: FV.increment(totalReward),
+        totalEarned: FV.increment(totalReward),
+        dailyStreak: {
+          weekKey: weekKey,
+          weekStart: weekKey,
+          claimedDays: newClaimed,
+          lastClaimDate: todayKey
+        },
+        updatedAt: SV()
+      });
+    });
+    toast(isFullWeek
+      ? '👑 أكملت الأسبوع! +' + totalReward + ' ل.س (هدية + مكافأة)'
+      : '🎁 استلمت ' + reward.amount + ' ل.س', 'ok');
+  }catch(e){
+    toast(e.message || 'فشل الاستلام', 'err');
+  }finally{
+    STATE.isSubmitting = false;
+    renderWeeklyStreak();
+  }
 }
 
 /* ═══ المحفظة ═══ */
@@ -2130,6 +2398,7 @@ function initReferral(){
     const text = [
       '🐬 دولفين مينر — منصة التعدين على تيليجرام', '',
       '⛏ عدّن مجاناً كل ' + CONFIG.plans[0].cycleHours + ' ساعات واجمع أرباحك',
+      '🎰 عجلة الحظ — لفة مجانية كل يوم!',
       '🎁 هدية ترحيبية ' + CONFIG.referral.newUserReward + ' ل.س فور التسجيل',
       '💸 سحب عبر شام كاش وBinance', '',
       'سجّل الآن عبر رابط الدعوة وابدأ التعدين.'
@@ -2368,14 +2637,24 @@ async function collectInviteReward(taskId){
       if (s.claimed[taskId]) throw new Error('تم الاستلام مسبقاً');
       if (s.idx < 0 || CONFIG.inviteTasks[s.idx].id !== taskId) throw new Error('أكمل المهمة السابقة أولاً');
       if (s.progress < task.count) throw new Error('لم تكمل المهمة بعد');
+
+      // إضافة اللفات لعجلة الحظ
+      const oldW = d.wheel || {};
+      const today = getTodayKey();
+      let currentSpins = oldW.lastFreeSpinDate === today ? (oldW.spins || 0) : Math.max(oldW.spins || 0, CONFIG.wheel.dailyFreeSpin);
+      currentSpins += (task.spins || 0);
+
       trx.update(ref, {
         balance_sy: FV.increment(task.reward),
         totalEarned: FV.increment(task.reward),
         inviteRewardClaimed: { ...s.claimed, [taskId]: true, _base: s.total },
+        wheel: { spins: currentSpins, lastFreeSpinDate: today, lastSpinAt: oldW.lastSpinAt || null },
         updatedAt: SV()
       });
     });
-    toast('🎉 +' + task.reward + ' ل.س — ' + (inviteState(STATE.user).idx >= 0 ? 'المهمة التالية بدأت من 0' : 'أنهيت كل مهمات الدعوة!'), 'ok');
+
+    const bonusText = task.spins > 0 ? ' + ' + task.spins + ' لفة عجلة' : '';
+    toast('🎉 +' + task.reward + ' ل.س' + bonusText + '!', 'ok');
   }catch(e){
     toast(e.message || 'فشل استلام المكافأة', 'err');
   }finally{
@@ -2422,15 +2701,16 @@ function renderTasks(){
     '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>';
 
   html += '<div class="grp"><span>مهمات الدعوات</span><small>' + T.filter(t => s.claimed[t.id]).length + ' / ' + N + '</small></div>';
-  html += '<div class="hint"><i class="fas fa-info-circle"></i><div>المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>.</div></div>';
+  html += '<div class="hint"><i class="fas fa-info-circle"></i><div>المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>. كل مهمة تمنحك أيضاً <b>لفات عجلة حظ مجانية</b>!</div></div>';
 
   if (s.idx >= 0){
     const task = T[s.idx];
     const progress = Math.min(Math.max(s.progress, 0), task.count);
     const ready = progress >= task.count;
+    const spinsBadge = task.spins > 0 ? ' + <i class="fas fa-dharmachakra"></i> ' + task.spins + ' لفة' : '';
     html += '<div class="fq' + (ready ? ' fq--ready' : '') + '">' +
       '<div class="fq__top"><span class="fq__badge">المهمة ' + (s.idx + 1) + ' من ' + N + '</span>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + task.reward + ' ل.س</span></div>' +
+        '<span class="rwd"><i class="fas fa-coins"></i> ' + task.reward + ' ل.س' + spinsBadge + '</span></div>' +
       '<div class="fq__body">' +
         '<div class="ring ring--lg">' + ringSvg(progress / task.count) +
           '<div class="ring__n"><b>' + progress + '</b><small>/ ' + task.count + '</small></div></div>' +
@@ -2439,7 +2719,7 @@ function renderTasks(){
           '<span class="fq__left">' + (ready ? 'اكتملت — استلم مكافأتك' : 'باقي ' + (task.count - progress) + ' دعوة') + '</span></div>' +
       '</div>' +
       (ready
-        ? '<button class="fq__btn fq__btn--collect" data-task="' + task.id + '"><i class="fas fa-hand-holding-usd"></i> استلام ' + task.reward + ' ل.س</button>'
+        ? '<button class="fq__btn fq__btn--collect" data-task="' + task.id + '"><i class="fas fa-hand-holding-usd"></i> استلام ' + task.reward + ' ل.س' + (task.spins > 0 ? ' + ' + task.spins + ' لفة' : '') + '</button>'
         : '<button class="fq__btn fq__btn--go" data-go="referral"><i class="fas fa-share-alt"></i> ادعُ أصدقاءك الآن</button>') +
     '</div>';
   } else {
@@ -2449,10 +2729,11 @@ function renderTasks(){
 
   T.forEach((t, i) => {
     if (s.claimed[t.id] || i === s.idx) return;
+    const spinsBadge = t.spins > 0 ? ' + ' + t.spins + ' لفة' : '';
     html += '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
       '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(t.title) + '</div>' +
       '<div class="qrow__d">تُفتح بعد استلام مكافأة المهمة السابقة</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + t.reward + ' ل.س</span></div>';
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + t.reward + ' ل.س' + spinsBadge + '</span></div>';
   });
   T.forEach(t => { if (s.claimed[t.id]) html += doneRow(t.title, t.reward); });
 
@@ -2463,6 +2744,7 @@ function renderTasks(){
 
   renderChannelTask();
   updateTaskSummary(u, s);
+  renderWeeklyStreak();
 }
 
 function doneRow(title, reward){
@@ -2542,7 +2824,7 @@ function renderChannelTask(){
 }
 
 /* ═══ التنقل ═══ */
-const VIEWS = ['home','store','wallet','referral','tasks','profile'];
+const VIEWS = ['home','store','wallet','referral','tasks','profile','wheel'];
 function navigate(view){
   if (!VIEWS.includes(view)) view = 'home';
   const target = $('view-' + view);
@@ -2565,6 +2847,7 @@ function navigate(view){
   if (view === 'store') { renderPlans(); renderPlansReport(); }
   if (view === 'profile') { updateAvatar('profAvatar'); updateSupportBtn(); }
   if (view === 'tasks') renderTasks();
+  if (view === 'wheel') { renderWheel(); updateWheelTimer(); }
   if (view === 'referral' && $('refPaneTop').style.display === 'block') loadLeaderboard();
 }
 
@@ -2580,6 +2863,13 @@ function bindUI(){
   initWithdraw();
   initDeposit();
   initReferral();
+
+  // زر عجلة الحظ
+  $('wheelCenterBtn').addEventListener('click', spinWheel);
+  $('wheelMainBtn').addEventListener('click', spinWheel);
+
+  // زر هدايا الأسبوع
+  $('weeklyClaimBtn').addEventListener('click', claimDailyReward);
 }
 
 async function bootstrap(){
@@ -2594,6 +2884,7 @@ async function bootstrap(){
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) startLiveTimer();
   initClockMonitor();
   setInterval(updatePlanTimer, 1000);
+  setInterval(() => { if (STATE.user) updateWheelTimer(); }, 1000);
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden && STATE.user) checkPlanExpiry();
   });
