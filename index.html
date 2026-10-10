@@ -593,6 +593,18 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .modal__btn{width:100%;min-height:54px;border-radius:18px;font-size:15px;font-weight:800;background:linear-gradient(135deg,#FFD60A,#FF9F0A);color:#3A2A00;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s}
 .modal__btn:active{transform:scale(.97)}
 
+/* 🎬 هدايا المشاهدات - واجهة بحرية جديدة */
+.view-ads-card{margin:18px 0 22px;padding:18px 15px;border-radius:25px;position:relative;overflow:hidden;background:linear-gradient(145deg,#073b59 0%,#075c75 48%,#082b49 100%);border:1px solid rgba(112,231,255,.38);box-shadow:0 14px 32px rgba(0,9,28,.28),inset 0 1px rgba(255,255,255,.12)}
+.view-ads-card__glow{position:absolute;right:-55px;top:-70px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(54,224,255,.23),transparent 70%);pointer-events:none}
+.view-ads-card__top{display:flex;align-items:center;gap:11px;position:relative;z-index:1}
+.view-ads-card__icon{width:46px;height:46px;flex:0 0 46px;border-radius:15px;display:grid;place-items:center;color:#043148;font-size:19px;background:linear-gradient(145deg,#b7fbff,#38d5e8);box-shadow:0 6px 16px rgba(38,215,240,.25)}
+.view-ads-card__heading{min-width:0;flex:1}.view-ads-card__heading h3{margin:0 0 4px;font-size:15px;color:#fff;font-weight:900}.view-ads-card__heading p{margin:0;color:rgba(230,250,255,.76);font-size:11px;line-height:1.5;font-weight:600}
+.view-ads-card__tag{white-space:nowrap;border-radius:30px;padding:6px 8px;font-size:10px;font-weight:900;color:#043247;background:#8cf4f5}
+.view-ads-progress{margin:18px 0 12px;position:relative;z-index:1}.view-ads-progress__labels{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;font-size:11px;color:rgba(238,252,255,.8);font-weight:700}.view-ads-progress__labels b{color:#a9f9ff;font-size:11px}.view-ads-progress__track,.view-ads-modal__track{height:7px;background:rgba(0,13,31,.5);border-radius:20px;overflow:hidden}.view-ads-progress__track span,.view-ads-modal__track span{display:block;width:0;height:100%;border-radius:20px;background:linear-gradient(90deg,#55f4f0,#e1ffb5);box-shadow:0 0 12px rgba(85,244,240,.45);transition:width .35s}
+.view-ads-rewards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;position:relative;z-index:1;margin:13px 0 16px}.view-ads-reward{min-width:0;min-height:61px;border:1px solid rgba(151,235,255,.15);border-radius:12px;background:rgba(0,20,42,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:5px 2px}.view-ads-reward__n{font-size:9px;color:rgba(225,249,255,.65);font-weight:700}.view-ads-reward__amount{font-size:11px;font-weight:900;color:#ffe78b;white-space:nowrap}.view-ads-reward__icon{font-size:12px;line-height:1}.view-ads-reward.is-done{background:linear-gradient(145deg,#b5f8de,#4bd6b5);border-color:#b9ffe8}.view-ads-reward.is-done .view-ads-reward__n,.view-ads-reward.is-done .view-ads-reward__amount{color:#063c3b}.view-ads-reward.is-current{border-color:#8ff7ff;box-shadow:0 0 0 1px rgba(143,247,255,.18),0 0 13px rgba(63,224,255,.14)}
+.view-ads-card__bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative;z-index:1}.view-ads-card__bottom>span{font-size:10px;line-height:1.5;color:rgba(226,249,255,.78);font-weight:700;flex:1}.view-ads-start{min-height:42px;padding:0 14px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;background:linear-gradient(135deg,#d5ffab,#65e9ce);color:#063b43;font-weight:900;font-size:12px;box-shadow:0 5px 14px rgba(73,231,208,.2)}.view-ads-start:disabled{opacity:.7;cursor:not-allowed}
+.view-ads-modal{position:fixed;inset:0;z-index:9500;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,9,22,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.view-ads-modal.show{display:flex;animation:fadeIn .22s ease-out}.view-ads-modal__box{width:100%;max-width:370px;position:relative;text-align:center;border-radius:28px;padding:27px 21px 22px;background:linear-gradient(155deg,#0c4965,#071a35 80%);border:1px solid rgba(121,241,255,.45);box-shadow:0 24px 70px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.12);color:#fff}.view-ads-modal__close{position:absolute;left:13px;top:12px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:24px;line-height:1}.view-ads-modal__eyebrow{font-size:9px;letter-spacing:1.4px;color:#8cf4f5;font-weight:900}.view-ads-modal__icon{width:76px;height:76px;margin:16px auto 10px;border-radius:24px;display:grid;place-items:center;font-size:38px;background:linear-gradient(145deg,rgba(111,245,255,.24),rgba(44,151,211,.1));border:1px solid rgba(143,247,255,.28)}.view-ads-modal__step{font-size:11px;font-weight:900;color:#a8f8ff}.view-ads-modal__box h2{font-size:21px;margin:7px 0 8px;font-weight:900}.view-ads-modal__box p{font-size:12px;line-height:1.7;color:rgba(233,249,255,.75);margin:0 0 17px}.view-ads-modal__prize{padding:13px;border-radius:17px;background:rgba(0,15,35,.42);border:1px solid rgba(142,239,255,.16);margin-bottom:16px}.view-ads-modal__prize small{display:block;color:rgba(229,249,255,.7);font-size:10px;margin-bottom:5px}.view-ads-modal__prize strong{font-size:29px;line-height:1;color:#ffe98d;font-weight:1000}.view-ads-modal__prize strong span{font-size:13px}.view-ads-modal__track{margin-bottom:17px}.view-ads-modal__btn{width:100%;min-height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#caffab,#58e3cb);color:#06383e;font-size:14px;font-weight:1000;box-shadow:0 8px 20px rgba(65,223,199,.2)}.view-ads-modal__btn:disabled{opacity:.65}.view-ads-modal__note{font-size:10px;color:rgba(225,248,255,.56);margin-top:13px}
+
 /* 🔥 هدايا الأسبوع */
 .weekly{margin-bottom:18px;padding:22px 16px;background:linear-gradient(160deg,#AF52DE 0%,#5A1F8A 100%);border-radius:28px;position:relative;overflow:hidden}
 .weekly::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%)}
@@ -979,6 +991,18 @@ body{background:#03101d;color:#effaff}
         </div>
         <span class="wheel-tile__arrow"><i class="fas fa-chevron-left"></i></span>
       </button>
+
+      <section class="view-ads-card" aria-label="هدايا المشاهدات">
+        <div class="view-ads-card__glow"></div>
+        <div class="view-ads-card__top">
+          <div class="view-ads-card__icon"><i class="fas fa-play"></i></div>
+          <div class="view-ads-card__heading"><h3>🎁 هدايا المشاهدات</h3><p>شاهد 10 إعلانات متتالية واجمع مكافآتك</p></div>
+          <span class="view-ads-card__tag">10 إعلانات</span>
+        </div>
+        <div class="view-ads-progress"><div class="view-ads-progress__labels"><span id="viewAdsProgressText">0 من 10 إعلانات</span><b id="viewAdsRewardText">ابدأ واربح</b></div><div class="view-ads-progress__track"><span id="viewAdsProgressBar"></span></div></div>
+        <div class="view-ads-rewards" id="daysGrid"></div>
+        <div class="view-ads-card__bottom"><span id="viewAdsTimer"><i class="fas fa-clock"></i> تتجدد بعد إكمال 10 إعلانات</span><button class="view-ads-start" id="weeklyClaimBtn"><i class="fas fa-play"></i><span id="weeklyBtnText">ابدأ المشاهدة</span></button></div>
+      </section>
     </div>
 
     <div class="view" id="view-wheel">
@@ -1058,17 +1082,6 @@ body{background:#03101d;color:#effaff}
             <div class="chip__cur">ل.س</div>
           </div>
         </div>
-      </div>
-
-      <div class="weekly">
-        <div class="weekly__head">
-          <div class="weekly__title"><i class="fas fa-circle-play"></i> هدايا المشاهدات</div>
-          <div class="weekly__sub">شاهد إعلاناً للحصول على مكافأة. لديك 7 مكافآت، وتتجدد كل 5 ساعات.</div>
-        </div>
-        <div class="days-grid" id="daysGrid"></div>
-        <button class="weekly__btn" id="weeklyClaimBtn">
-          <i class="fas fa-play-circle"></i><span id="weeklyBtnText">احصل على المكافأة الأولى</span>
-        </button>
       </div>
 
       <div class="qb wavy">
@@ -1415,6 +1428,21 @@ body{background:#03101d;color:#effaff}
     <div class="modal__sub" id="wheelModalSub">ربحت جائزة رائعة</div>
     <div class="modal__amount" id="wheelModalAmt">+0<small>ل.س</small></div>
     <button class="modal__btn" onclick="closeWheelModal()"><i class="fas fa-check"></i> رائع، شكراً!</button>
+  </div>
+</div>
+
+<div class="view-ads-modal" id="viewAdsModal" aria-hidden="true">
+  <div class="view-ads-modal__box">
+    <button class="view-ads-modal__close" id="viewAdsClose" aria-label="إغلاق">×</button>
+    <div class="view-ads-modal__eyebrow"><i class="fas fa-water"></i> DOLPHIN MINER REWARDS</div>
+    <div class="view-ads-modal__icon" id="viewAdsModalIcon">📺</div>
+    <div class="view-ads-modal__step" id="viewAdsModalStep">الإعلان 1 من 10</div>
+    <h2 id="viewAdsModalTitle">شاهد الإعلان واربح</h2>
+    <p id="viewAdsModalSub">بعد اكتمال الإعلان ستضاف مكافأتك إلى رصيدك.</p>
+    <div class="view-ads-modal__prize"><small>مكافأة الإعلان الحالي</small><strong id="viewAdsModalPrize">+5 <span>ل.س</span></strong></div>
+    <div class="view-ads-modal__track"><span id="viewAdsModalBar"></span></div>
+    <button class="view-ads-modal__btn" id="viewAdsWatchBtn"><i class="fas fa-play-circle"></i><span>شاهد الإعلان الأول</span></button>
+    <div class="view-ads-modal__note"><i class="fas fa-shield-alt"></i> لا تغلق نافذة الإعلان حتى ينتهي العرض.</div>
   </div>
 </div>
 
@@ -2871,18 +2899,24 @@ function renderChannelTask(){
   }
 }
 
-/* ═══ 🎬 هدايا المشاهدات ═══ */
-const VIEW_REWARDS = [5, 6, 7, 8, 9, 10, 10];
-const VIEW_GIFT_COOLDOWN = 5 * 60 * 60 * 1000;
+/* ═══ 🎬 هدايا المشاهدات: 10 إعلانات كل 10 ساعات ═══ */
+const VIEW_REWARDS = [5, 6, 7, 8, 9, 10, 7, 8, 9, 10];
+const VIEW_GIFT_COOLDOWN = 10 * 60 * 60 * 1000;
+let viewAdsBusy = false;
 
 function getViewGiftState(){
   const state = (STATE.user && STATE.user.viewGifts) || {};
   const now = getTrustedNow();
   const resetAt = Number(state.resetAt || 0);
-  if (!resetAt || now >= resetAt) return { claimedCount: 0, resetAt: 0 };
-  return { claimedCount: Math.min(7, Number(state.claimedCount || 0)), resetAt };
+  if (resetAt && now >= resetAt) return { claimedCount: 0, resetAt: 0 };
+  return { claimedCount: Math.min(10, Math.max(0, Number(state.claimedCount || 0))), resetAt };
 }
-
+function formatViewGiftTime(ms){
+  const sec = Math.max(0, Math.floor(ms / 1000));
+  const p = n => String(n).padStart(2, '0');
+  const h = Math.floor(sec / 3600);
+  return p(h) + ':' + p(Math.floor((sec % 3600) / 60)) + ':' + p(sec % 60);
+}
 function renderWeeklyStreak(){
   const grid = $('daysGrid');
   const btn = $('weeklyClaimBtn');
@@ -2891,57 +2925,72 @@ function renderWeeklyStreak(){
   const gs = getViewGiftState();
   grid.innerHTML = VIEW_REWARDS.map((amount, i) => {
     const done = i < gs.claimedCount;
-    const current = i === gs.claimedCount && gs.claimedCount < 7;
-    const cls = 'day' + (done ? ' day--done' : current ? ' day--claimable' : ' day--locked');
-    return '<div class="' + cls + '">' +
-      '<span class="day__day">المكافأة ' + (i + 1) + '</span>' +
-      '<span class="day__ic">' + (done ? '✓' : '🎁') + '</span>' +
-      '<span class="day__amt">+' + amount + ' ل.س</span></div>';
+    const current = i === gs.claimedCount && gs.claimedCount < 10;
+    return '<div class="view-ads-reward ' + (done ? 'is-done' : current ? 'is-current' : '') + '">' +
+      '<span class="view-ads-reward__n">إعلان ' + (i + 1) + '</span>' +
+      '<span class="view-ads-reward__icon">' + (done ? '✓' : '🎁') + '</span>' +
+      '<span class="view-ads-reward__amount">+' + amount + ' ل.س</span></div>';
   }).join('');
-
+  const progress = Math.min(100, gs.claimedCount * 10);
+  if ($('viewAdsProgressText')) $('viewAdsProgressText').textContent = gs.claimedCount + ' من 10 إعلانات';
+  if ($('viewAdsProgressBar')) $('viewAdsProgressBar').style.width = progress + '%';
+  if ($('viewAdsRewardText')) $('viewAdsRewardText').textContent = gs.claimedCount >= 10 ? 'اكتملت المكافآت' : 'التالي: ' + VIEW_REWARDS[gs.claimedCount] + ' ل.س';
   if (!btn || !btnText) return;
-  if (gs.claimedCount >= 7) {
+  if (gs.claimedCount >= 10 && gs.resetAt > getTrustedNow()) {
     btn.disabled = true;
-    btnText.textContent = 'اكتملت المكافآت — إعادة التفعيل بعد ' + formatViewGiftTime(gs.resetAt - getTrustedNow());
-    return;
+    btnText.textContent = 'تجدد بعد ' + formatViewGiftTime(gs.resetAt - getTrustedNow());
+    if ($('viewAdsTimer')) $('viewAdsTimer').innerHTML = '<i class="fas fa-clock"></i> المتبقي ' + formatViewGiftTime(gs.resetAt - getTrustedNow());
+  } else {
+    btn.disabled = false;
+    btnText.textContent = gs.claimedCount ? 'تابع الإعلان ' + (gs.claimedCount + 1) : 'ابدأ المشاهدة';
+    if ($('viewAdsTimer')) $('viewAdsTimer').innerHTML = '<i class="fas fa-check-circle"></i> أكمل الإعلانات العشرة لتفعيل مؤقت التجديد';
   }
-  if (gs.resetAt && getTrustedNow() < gs.resetAt) {
-    btn.disabled = true;
-    btnText.textContent = 'إعادة التفعيل بعد ' + formatViewGiftTime(gs.resetAt - getTrustedNow());
-    return;
-  }
-  btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-play-circle"></i><span id="weeklyBtnText">شاهد إعلاناً واحصل على ' + VIEW_REWARDS[gs.claimedCount] + ' ل.س (' + (gs.claimedCount + 1) + '/7)</span>';
+  if ($('viewAdsModal').classList.contains('show')) renderViewAdsModal();
 }
-
-function formatViewGiftTime(ms){
-  const sec = Math.max(0, Math.floor(ms / 1000));
-  const p = n => String(n).padStart(2, '0');
-  return p(Math.floor(sec / 3600)) + ':' + p(Math.floor((sec % 3600) / 60)) + ':' + p(sec % 60);
-}
-
-async function claimDailyReward(){
-  if (!STATE.user || STATE.isSubmitting) return;
+function openViewAdsModal(){
   const gs = getViewGiftState();
-  const now = getTrustedNow();
-  if (gs.claimedCount >= 7 && gs.resetAt > now) return toast('اكتملت المكافآت، انتظر إعادة التفعيل', 'info');
+  if (gs.claimedCount >= 10 && gs.resetAt > getTrustedNow()) return toast('اكتملت الإعلانات العشرة، انتظر التجديد', 'info');
+  $('viewAdsModal').classList.add('show');
+  $('viewAdsModal').setAttribute('aria-hidden', 'false');
+  renderViewAdsModal();
+}
+function closeViewAdsModal(){
+  if (viewAdsBusy) return;
+  $('viewAdsModal').classList.remove('show');
+  $('viewAdsModal').setAttribute('aria-hidden', 'true');
+}
+function renderViewAdsModal(){
+  const gs = getViewGiftState();
+  const count = Math.min(9, gs.claimedCount);
+  const done = gs.claimedCount >= 10;
+  $('viewAdsModalStep').textContent = done ? 'اكتملت الجولة' : 'الإعلان ' + (gs.claimedCount + 1) + ' من 10';
+  $('viewAdsModalTitle').textContent = done ? 'أحسنت! أكملت الجولة' : (gs.claimedCount ? 'جاهز للمكافأة التالية؟' : 'ابدأ رحلة المكافآت');
+  $('viewAdsModalSub').textContent = done ? 'تعود الإعلانات والمكافآت بعد انتهاء مؤقت التجديد.' : 'شاهد الإعلان حتى يكتمل، وستضاف مكافأته إلى رصيدك ثم يمكنك الانتقال للتالي.';
+  $('viewAdsModalPrize').innerHTML = done ? '✓ <span>اكتمل</span>' : '+' + VIEW_REWARDS[count] + ' <span>ل.س</span>';
+  $('viewAdsModalBar').style.width = (gs.claimedCount * 10) + '%';
+  const btn = $('viewAdsWatchBtn');
+  btn.disabled = done || viewAdsBusy;
+  btn.innerHTML = done ? '<i class="fas fa-check-circle"></i><span>اكتملت الجولة</span>' : '<i class="fas fa-play-circle"></i><span>' + (gs.claimedCount ? 'شاهد الإعلان ' + (gs.claimedCount + 1) : 'شاهد الإعلان الأول') + '</span>';
+}
+async function claimDailyReward(){
+  if (!STATE.user || STATE.isSubmitting || viewAdsBusy) return;
+  const gs = getViewGiftState();
+  if (gs.claimedCount >= 10 && gs.resetAt > getTrustedNow()) return toast('اكتملت المكافآت، انتظر إعادة التفعيل', 'info');
+  openViewAdsModal();
+}
+async function watchNextRewardAd(){
+  if (!STATE.user || STATE.isSubmitting || viewAdsBusy) return;
+  const gs = getViewGiftState();
+  if (gs.claimedCount >= 10) return renderViewAdsModal();
   if (typeof window.show_12001499 !== 'function') return toast('الإعلانات غير متاحة حالياً، حاول لاحقاً', 'err');
-
-  const btn = $('weeklyClaimBtn');
-  if (btn) { btn.disabled = true; const t = $('weeklyBtnText'); if (t) t.textContent = 'جارٍ تحميل الإعلان...'; }
+  viewAdsBusy = true;
+  renderViewAdsModal();
+  $('viewAdsModalTitle').textContent = 'جارٍ تحميل الإعلان';
+  $('viewAdsModalSub').textContent = 'يرجى الانتظار حتى يكتمل عرض الإعلان.';
+  $('viewAdsModalIcon').textContent = '⏳';
   try {
     await window.show_12001499();
-  } catch (e) {
-    renderWeeklyStreak();
-    return toast('لم يكتمل عرض الإعلان. حاول مرة أخرى', 'err');
-  }
-
-  const reward = VIEW_REWARDS[gs.claimedCount];
-  const newCount = gs.claimedCount + 1;
-  const resetAt = newCount >= 7 ? getTrustedNow() + VIEW_GIFT_COOLDOWN : (gs.resetAt || 0);
-  STATE.isSubmitting = true;
-  try {
-    await db.runTransaction(async trx => {
+    const result = await db.runTransaction(async trx => {
       const ref = db.collection('users').doc(STATE.tgId);
       const snap = await trx.get(ref);
       const data = snap.data() || {};
@@ -2950,26 +2999,48 @@ async function claimDailyReward(){
       let count = Number(old.claimedCount || 0);
       let oldReset = Number(old.resetAt || 0);
       if (oldReset && txNow >= oldReset) { count = 0; oldReset = 0; }
-      if (count >= 7 && oldReset > txNow) throw new Error('المكافآت مكتملة، انتظر إعادة التفعيل');
+      if (count >= 10 && oldReset > txNow) throw new Error('اكتملت الإعلانات العشرة، انتظر إعادة التفعيل');
       const amount = VIEW_REWARDS[count];
       const nextCount = count + 1;
-      const nextReset = nextCount >= 7 ? txNow + VIEW_GIFT_COOLDOWN : 0;
+      const nextReset = nextCount >= 10 ? txNow + VIEW_GIFT_COOLDOWN : 0;
       trx.update(ref, {
         balance_sy: FV.increment(amount),
         totalEarned: FV.increment(amount),
         viewGifts: { claimedCount: nextCount, resetAt: nextReset, lastClaimAt: SV() },
         updatedAt: SV()
       });
+      return { amount, nextCount, nextReset };
     });
     await loadOrCreateUser();
     renderWeeklyStreak();
-    toast('مبروك! تمت إضافة ' + reward + ' ليرة إلى رصيدك', 'ok');
+    $('viewAdsModalIcon').textContent = '🎉';
+    $('viewAdsModalTitle').textContent = 'مبروك! حصلت على المكافأة';
+    $('viewAdsModalSub').textContent = 'تمت إضافة ' + result.amount + ' ليرة إلى رصيدك. يمكنك متابعة الإعلان التالي.';
+    $('viewAdsModalPrize').innerHTML = '+' + result.amount + ' <span>ل.س</span>';
+    $('viewAdsModalStep').textContent = 'اكتمل الإعلان ' + result.nextCount + ' من 10';
+    $('viewAdsModalBar').style.width = (result.nextCount * 10) + '%';
+    if (result.nextCount >= 10) {
+      $('viewAdsModalTitle').textContent = 'رائع! أكملت الإعلانات العشرة';
+      $('viewAdsModalSub').textContent = 'تمت إضافة آخر مكافأة. ستتجدد الجولة بعد 10 ساعات.';
+      $('viewAdsModalWatchBtn').disabled = true;
+      $('viewAdsModalWatchBtn').innerHTML = '<i class="fas fa-check-circle"></i><span>اكتملت الجولة</span>';
+    } else {
+      $('viewAdsModalWatchBtn').disabled = false;
+      $('viewAdsModalWatchBtn').innerHTML = '<i class="fas fa-forward"></i><span>انتقل للإعلان التالي</span>';
+    }
+    toast('تمت إضافة ' + result.amount + ' ليرة إلى رصيدك', 'ok');
   } catch (e) {
-    console.warn('view gift claim', e);
-    toast(e.message || 'تعذر إضافة المكافأة، حاول لاحقاً', 'err');
+    console.warn('view ad reward', e);
     renderWeeklyStreak();
+    renderViewAdsModal();
+    toast('لم يكتمل الإعلان أو تعذر تسجيل المكافأة. حاول مرة أخرى', 'err');
   } finally {
-    STATE.isSubmitting = false;
+    viewAdsBusy = false;
+    if ($('viewAdsModal').classList.contains('show')) {
+      const gs2 = getViewGiftState();
+      if (gs2.claimedCount < 10 && $('viewAdsModalTitle').textContent === 'جارٍ تحميل الإعلان') renderViewAdsModal();
+      if (gs2.claimedCount < 10 && $('viewAdsModalWatchBtn').textContent.includes('شاهد الإعلان')) $('viewAdsModalWatchBtn').disabled = false;
+    }
   }
 }
 
@@ -3186,6 +3257,9 @@ function bindUI(){
   $('wheelCenterBtn').addEventListener('click', spinWheel);
   $('wheelMainBtn').addEventListener('click', spinWheel);
   $('weeklyClaimBtn').addEventListener('click', claimDailyReward);
+  $('viewAdsWatchBtn').addEventListener('click', watchNextRewardAd);
+  $('viewAdsClose').addEventListener('click', closeViewAdsModal);
+  $('viewAdsModal').addEventListener('click', e => { if (e.target === $('viewAdsModal')) closeViewAdsModal(); });
 }
 
 async function bootstrap(){
