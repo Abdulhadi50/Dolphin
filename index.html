@@ -642,9 +642,15 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
   .fish{animation:none}
 }
 
-/* 💎 Mines 4×4 */
+/* 🔐 Mines 4×4 */
 .mines-launch{background:linear-gradient(120deg,rgba(14,165,233,.9),rgba(79,70,229,.95))!important;border-color:rgba(125,211,252,.45)!important;margin-top:12px}
 .mines-launch .wheel-tile__ic{background:rgba(7,25,55,.48)}
+
+.code-prize{margin:12px 0 15px;padding:14px;text-align:center;border:1px solid rgba(250,204,21,.55);border-radius:16px;background:linear-gradient(135deg,rgba(120,78,8,.34),rgba(250,204,21,.08));box-shadow:inset 0 0 20px rgba(250,204,21,.06)}
+.code-prize small{display:block;color:#fde68a;font-size:12px;font-weight:800}.code-prize strong{display:block;margin-top:4px;color:#facc15;font-size:clamp(25px,7vw,34px);font-weight:1000;text-shadow:0 0 16px rgba(250,204,21,.22)}
+.code-card{border:1px solid rgba(250,204,21,.42);border-radius:20px;padding:14px;background:radial-gradient(ellipse at top,#4b3915 0%,#1b1a1b 55%,#101827 100%);box-shadow:inset 0 0 24px rgba(250,204,21,.07);margin-bottom:14px}.code-card__title{text-align:center;color:#facc15;font-weight:1000;letter-spacing:2px;margin:2px 0 14px}.code-slots{display:flex;justify-content:center;gap:8px;margin:0 auto 12px}.code-slots span{width:clamp(42px,12vw,58px);height:58px;display:grid;place-items:center;border:1px solid rgba(250,204,21,.65);border-radius:11px;background:linear-gradient(145deg,#292316,#111827);color:#fde68a;font-size:29px;font-weight:1000;box-shadow:inset 0 0 12px rgba(250,204,21,.08)}.code-hint{text-align:center;min-height:22px;color:#cbd5e1;font-size:12px;margin-bottom:12px}.code-attempts{font-size:20px;font-weight:1000;color:#fde68a;text-align:center;padding:5px}.code-keypad{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;max-width:390px;margin:0 auto 12px}.code-key{height:43px;border:1px solid rgba(250,204,21,.28);border-radius:10px;background:linear-gradient(145deg,#3a3424,#1d293b);color:#fff7cc;font-size:19px;font-weight:900}.code-key:disabled{opacity:.35}.code-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.code-actions .mines-btn{min-height:44px;padding:10px 8px}.code-hint-btn{grid-column:1/-1;border:1px solid rgba(250,204,21,.4);background:linear-gradient(135deg,#6b4d0c,#42320f);color:#fde68a;border-radius:12px;font-weight:900}.code-hint-btn:disabled{opacity:.45}
+@media(max-width:380px){.code-slots{gap:5px}.code-slots span{height:48px}.code-key{height:39px}.code-actions{grid-template-columns:1fr}}
+
 .mines-shell{background:linear-gradient(160deg,#101a2d,#0a1020);border:1px solid rgba(148,163,184,.2);border-radius:24px;padding:16px;box-shadow:0 18px 40px rgba(0,0,0,.25)}
 .mines-balance{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border-radius:16px;background:linear-gradient(110deg,rgba(16,185,129,.16),rgba(14,165,233,.12));border:1px solid rgba(52,211,153,.22);margin-bottom:14px}
 .mines-balance small{display:block;color:#9fb4ce;font-size:11px;font-weight:700}.mines-balance strong{font-size:22px;color:#ecfdf5;font-variant-numeric:tabular-nums}
@@ -990,8 +996,8 @@ body{background:#03101d;color:#effaff}
       <button class="wheel-tile mines-launch" onclick="navigate('mines')">
         <span class="wheel-tile__ic">💎</span>
         <div class="wheel-tile__body">
-          <div class="wheel-tile__t">Mines Gems · 4×4</div>
-          <div class="wheel-tile__d">اكشف الجواهر وتجنب القنابل في شبكة من 16 مربعاً</div>
+          <div class="wheel-tile__t">فك الشيفرة الذهبية</div>
+          <div class="wheel-tile__d">خمن الرمز السري من 5 أرقام خلال 3 محاولات</div>
           <span class="wheel-tile__badge"><i class="fas fa-bolt"></i> جولة سريعة</span>
         </div>
         <span class="wheel-tile__arrow"><i class="fas fa-chevron-left"></i></span>
@@ -1000,19 +1006,24 @@ body{background:#03101d;color:#effaff}
 
     <div class="view" id="view-mines">
       <div class="topbar">
-        <div class="topbar__meta"><div class="topbar__hello">لعبة المهارة والحظ</div><div class="topbar__name">💎 Mines Gems</div></div>
-        <div class="chip"><div class="chip__body"><div class="chip__num">4×4</div><div class="chip__cur">16 مربعاً</div></div></div>
+        <div class="topbar__meta"><div class="topbar__hello">تحدي الأرقام</div><div class="topbar__name">🔐 فك الشيفرة الذهبية</div></div>
+        <div class="chip"><div class="chip__body"><div class="chip__num">3</div><div class="chip__cur">محاولات فقط</div></div></div>
       </div>
-      <div class="mines-shell">
-        <div class="mines-balance"><div><small>رصيدك الأساسي</small><strong><span id="minesBalance">0</span> <small style="display:inline;color:#a7f3d0">ل.س</small></strong></div><span style="font-size:27px">💎</span></div>
+      <div class="mines-shell code-shell">
+        <div class="mines-balance"><div><small>رصيدك الأساسي</small><strong><span id="minesBalance">0</span> <small style="display:inline;color:#a7f3d0">ل.س</small></strong></div><span style="font-size:27px">🔐</span></div>
+        <div class="code-prize"><small>الجائزة عند فتح الشيفرة</small><strong id="codePrize">500 ل.س</strong></div>
         <div class="mines-controls">
-          <div class="mines-control"><label for="minesBet">مبلغ الجولة (25–200)</label><input id="minesBet" class="mines-input" type="number" min="25" max="200" step="25" value="25" inputmode="numeric"><div class="mines-quick"><button type="button" data-mines-bet="25">25</button><button type="button" data-mines-bet="50">50</button><button type="button" data-mines-bet="100">100</button><button type="button" data-mines-bet="200">200</button></div></div>
-          <div class="mines-control"><label for="minesBombs">عدد القنابل 💣</label><select id="minesBombs" class="mines-select"><option value="1">1 قنبلة</option><option value="2" selected>2 قنابل</option><option value="3">3 قنابل</option><option value="4">4 قنابل</option><option value="5">5 قنابل</option><option value="6">6 قنابل</option><option value="7">7 قنابل</option><option value="8">8 قنابل</option></select></div>
+          <div class="mines-control"><label for="minesBet">اختر مبلغ الرهان</label><select id="minesBet" class="mines-select"><option value="100">100 ل.س ← جائزة 500</option><option value="300">300 ل.س ← جائزة 1,000</option><option value="500">500 ل.س ← جائزة 10,000</option></select></div>
+          <div class="mines-control"><label>المحاولات المتبقية</label><div id="codeAttempts" class="code-attempts">3 / 3</div></div>
         </div>
-        <div class="mines-meta"><span>الجواهر المكتشفة: <b id="minesFound">0</b></span><span>المكسب المحتمل: <b id="minesPotential">—</b></span></div>
-        <div class="mines-grid" id="minesGrid" aria-label="شبكة Mines من 16 مربعاً"></div>
-        <div class="mines-actions"><button class="mines-btn mines-btn--start" id="minesStart">💎 ابدأ الجولة</button><button class="mines-btn mines-btn--cash" id="minesCashout" disabled>استلام المكسب</button></div>
-        <p class="mines-note">اللعبة تستخدم رصيد حسابك الأساسي. الرهان يُخصم عند بدء الجولة والمكسب يُضاف إلى الرصيد عند استلامه. سجل آخر 5 جولات محفوظ محلياً على هذا الجهاز.</p>
+        <div class="code-card">
+          <div class="code-card__title">✦ البطاقة الذهبية ✦</div>
+          <div class="code-slots" id="codeSlots" dir="ltr"><span>_</span><span>_</span><span>_</span><span>_</span><span>_</span></div>
+          <div id="codeHintText" class="code-hint">ابدأ جولة جديدة لبدء فك الشيفرة.</div>
+          <div class="code-keypad" id="codeKeypad" dir="ltr"></div>
+          <div class="code-actions"><button class="mines-btn mines-btn--start" id="minesStart">🔑 ابدأ الرهان</button><button class="mines-btn mines-btn--cash" id="codeSubmit" disabled>تأكيد الشيفرة</button><button class="mines-btn code-hint-btn" id="codeHint" disabled>💡 كشف أول رقم</button></div>
+        </div>
+        <p class="mines-note">لكل جولة 3 محاولات. كشف أول رقم اختياري مقابل رسم: 20 ل.س لرهان 100، و60 لرهان 300، و100 لرهان 500. إذا انتهت المحاولات أو غادرت الجولة دون حل، يبقى الرهان مخصومًا. الجولة غير المنتهية محفوظة على هذا الجهاز.</p>
         <div class="mines-history"><h3>📋 آخر 5 جولات</h3><div id="minesHistory"><div class="mines-empty">لا توجد جولات محفوظة بعد</div></div></div>
       </div>
     </div>
@@ -3199,68 +3210,30 @@ async function spinWheel(){
 function closeWheelModal(){ $('wheelModal').classList.remove('show'); }
 window.closeWheelModal = closeWheelModal;
 
-/* ═══ 💎 Mines Gems 4×4 — uses the user's primary Firestore balance ═══ */
-const MINES_STORE_KEY = 'dolphin_mines_history_v2';
+/* ═══ 🔐 فك الشيفرة الذهبية — balance uses Firestore; history/active round local ═══ */
+const MINES_STORE_KEY = 'dolphin_codegame_history_v1';
+const CODE_ROUND_KEY = 'dolphin_codegame_active_v1';
+const CODE_PRIZES = {100:500,300:1000,500:10000};
+const CODE_HINT_FEES = {100:20,300:60,500:100};
 let minesRound = null;
 let minesBusy = false;
-function minesLoad(){ try { const x=JSON.parse(localStorage.getItem(MINES_STORE_KEY)||'{}'); return {history:Array.isArray(x.history)?x.history.slice(0,5):[]}; } catch(e){ return {history:[]}; } }
-function minesSave(data){ localStorage.setItem(MINES_STORE_KEY, JSON.stringify({history:(data.history||[]).slice(0,5)})); }
-function minesMoney(n){ return Math.round(n).toLocaleString('en-US'); }
-function minesGetBet(){ const input=$('minesBet'); let n=Number(input.value)||25; n=Math.max(25,Math.min(200,Math.round(n/25)*25)); input.value=n; return n; }
-function minesMultiplier(safe,bombs){ let m=1; for(let i=0;i<safe;i++) m *= (16-i)/(16-bombs-i); return m*0.96; }
-function minesPrimaryBalance(){ return Number(STATE.user && STATE.user.balance_sy || 0); }
-function minesRender(){
- const data=minesLoad(); setText('minesBalance',minesMoney(minesPrimaryBalance()));
- const grid=$('minesGrid'); if(!grid) return; grid.innerHTML='';
- const round=minesRound; const bombs=Number($('minesBombs').value)||2;
- for(let i=0;i<16;i++){
-  const b=document.createElement('button'); b.type='button'; b.className='mine-cell'; b.setAttribute('aria-label','مربع '+(i+1));
-  const shown=round && round.revealed.includes(i);
-  if(shown){ if(round.bombSet.has(i)){b.textContent='💣';b.classList.add('revealed-bomb')}else{b.textContent='💎';b.classList.add('revealed-safe')} }
-  else b.textContent=round && round.ended && round.bombSet.has(i)?'💣':'✦';
-  b.disabled=!round || round.ended || shown || minesBusy;
-  if(round && round.ended && round.bombSet.has(i)) b.classList.add('revealed-bomb');
-  b.addEventListener('click',()=>minesPick(i)); grid.appendChild(b);
- }
- setText('minesFound',round?round.safeFound:0);
- setText('minesPotential',round && !round.ended ? minesMoney(round.bet*minesMultiplier(round.safeFound,round.bombs))+' ل.س' : '—');
- $('minesStart').disabled=minesBusy || !!(round&&!round.ended) || minesPrimaryBalance()<25;
- $('minesCashout').disabled=minesBusy || !(round&&!round.ended&&round.safeFound>0);
- $('minesBet').disabled=minesBusy || !!(round&&!round.ended); $('minesBombs').disabled=minesBusy || !!(round&&!round.ended);
- minesRenderHistory(data.history||[]);
-}
-function minesRenderHistory(history){ const el=$('minesHistory'); if(!el)return; if(!history.length){el.innerHTML='<div class="mines-empty">لا توجد جولات محفوظة بعد</div>';return;} el.innerHTML=history.slice(0,5).map(h=>`<div class="mines-history-row"><span>${h.date} · ${h.bet} ل.س · ${h.bombs} 💣</span><strong class="${h.delta>=0?'mines-profit':'mines-loss'}">${h.delta>=0?'+':''}${minesMoney(h.delta)} ل.س</strong></div>`).join(''); }
-async function minesStart(){
- if(minesBusy)return;
- if(!STATE.tgId || !STATE.user || !db) return toast('تعذر تحميل حسابك؛ أعد فتح اللعبة','err');
- const bet=minesGetBet(), bombs=Number($('minesBombs').value)||2;
- if(bet<25||bet>200)return toast('اختر مبلغاً بين 25 و200','err');
- minesBusy=true; minesRender();
- try{
-  const ref=db.collection('users').doc(STATE.tgId);
-  await db.runTransaction(async trx=>{const snap=await trx.get(ref);if(!snap.exists)throw new Error('الحساب غير موجود');const bal=Number(snap.data().balance_sy||0);if(bal<bet)throw new Error('رصيدك الأساسي لا يكفي لهذا الرهان');trx.update(ref,{balance_sy:bal-bet,updatedAt:SV()});});
-  const fresh=(await ref.get()).data(); if(fresh){STATE.user=fresh;updateUI();}
-  const bombSet=new Set(); while(bombSet.size<bombs) bombSet.add(Math.floor(Math.random()*16));
-  minesRound={bet,bombs,bombSet,revealed:[],safeFound:0,ended:false};
- }catch(e){toast(e.message==='رصيدك الأساسي لا يكفي لهذا الرهان'?e.message:'تعذر خصم الرهان: '+(e.message||'خطأ اتصال'),'err');}
- finally{minesBusy=false;minesRender();}
-}
-function minesPick(i){ const r=minesRound; if(minesBusy||!r||r.ended||r.revealed.includes(i))return; r.revealed.push(i); if(r.bombSet.has(i)){ r.ended=true; minesFinish(0,'انفجرت قنبلة! خسرت مبلغ الجولة.'); } else { r.safeFound++; if(r.safeFound===16-r.bombs){ r.ended=true; minesFinish(Math.floor(r.bet*minesMultiplier(r.safeFound,r.bombs)),'اكتشفت كل الجواهر!'); } else { minesRender(); if(navigator.vibrate)navigator.vibrate(15); } } }
-async function minesFinish(payout,message){
- const r=minesRound; if(!r||r.settling)return; r.settling=true; minesBusy=true; minesRender();
- try{
-  if(payout>0){
-   const ref=db.collection('users').doc(STATE.tgId);
-   await db.runTransaction(async trx=>{const snap=await trx.get(ref);if(!snap.exists)throw new Error('الحساب غير موجود');const bal=Number(snap.data().balance_sy||0);trx.update(ref,{balance_sy:bal+payout,updatedAt:SV()});});
-   const fresh=(await ref.get()).data();if(fresh){STATE.user=fresh;updateUI();}
-  }
-  const data=minesLoad(); const delta=payout-r.bet; data.history.unshift({date:new Date().toLocaleString('ar',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}),bet:r.bet,bombs:r.bombs,delta}); data.history=data.history.slice(0,5); minesSave(data); r.ended=true;
-  if(payout>0)toast(message+' +'+minesMoney(payout)+' ل.س','ok');else toast(message,'info');
- }catch(e){r.ended=true;toast('تعذر تحديث الرصيد بعد الجولة. تواصل مع الدعم قبل بدء جولة أخرى.','err');console.error('Mines balance update failed',e);}
- finally{r.settling=false;minesBusy=false;minesRender();}
-}
-function minesCashout(){ const r=minesRound;if(minesBusy||!r||r.ended||r.safeFound<1)return; const payout=Math.floor(r.bet*minesMultiplier(r.safeFound,r.bombs)); minesFinish(payout,'تم استلام المكسب'); }
-function minesInit(){ if(!$('minesGrid')||$('minesGrid').dataset.ready)return; $('minesGrid').dataset.ready='1'; $('minesStart').addEventListener('click',minesStart); $('minesCashout').addEventListener('click',minesCashout); $('minesBet').addEventListener('change',minesRender); $('minesBombs').addEventListener('change',minesRender); document.querySelectorAll('[data-mines-bet]').forEach(b=>b.addEventListener('click',()=>{$('minesBet').value=b.dataset.minesBet;minesRender();})); minesRender(); }
+let codeDigits = '';
+function minesLoad(){try{const x=JSON.parse(localStorage.getItem(MINES_STORE_KEY)||'{}');return {history:Array.isArray(x.history)?x.history.slice(0,5):[]};}catch(e){return {history:[]};}}
+function minesSave(data){localStorage.setItem(MINES_STORE_KEY,JSON.stringify({history:(data.history||[]).slice(0,5)}));}
+function minesMoney(n){return Math.round(n).toLocaleString('en-US');}
+function minesGetBet(){const n=Number($('minesBet').value);return CODE_PRIZES[n]?n:100;}
+function minesPrimaryBalance(){return Number(STATE.user&&STATE.user.balance_sy||0);}
+function codePersist(){try{if(minesRound&&!minesRound.ended)localStorage.setItem(CODE_ROUND_KEY,JSON.stringify(minesRound));else localStorage.removeItem(CODE_ROUND_KEY);}catch(e){}}
+function codeLoadRound(){try{const r=JSON.parse(localStorage.getItem(CODE_ROUND_KEY)||'null');if(r&&CODE_PRIZES[r.bet]&&/^\d{5}$/.test(r.secret)&&Number.isInteger(r.attempts)&&r.attempts>=0&&r.attempts<=3&&!r.ended)return r;}catch(e){}return null;}
+function codeKeypadRender(){const el=$('codeKeypad');if(!el)return;el.innerHTML='';[1,2,3,4,5,6,7,8,9,'⌫',0,'مسح'].forEach(v=>{const b=document.createElement('button');b.type='button';b.className='code-key';b.textContent=v;b.disabled=!minesRound||minesRound.ended||minesBusy||codeDigits.length===0&&v==='⌫'||codeDigits.length>=5&&typeof v==='number';b.addEventListener('click',()=>{if(typeof v==='number'){if(codeDigits.length<5)codeDigits+=String(v);}else if(v==='⌫')codeDigits=codeDigits.slice(0,-1);else codeDigits='';codeRender();});el.appendChild(b);});}
+function codeRender(){const data=minesLoad();setText('minesBalance',minesMoney(minesPrimaryBalance()));setText('codePrize',minesMoney(CODE_PRIZES[minesRound?minesRound.bet:minesGetBet()])+' ل.س');setText('codeAttempts',minesRound?Math.max(0,3-minesRound.attempts)+' / 3':'3 / 3');const slots=$('codeSlots');if(slots){slots.innerHTML='';for(let i=0;i<5;i++){const x=document.createElement('span');x.textContent=codeDigits[i]||'_';slots.appendChild(x);}}const active=!!(minesRound&&!minesRound.ended);$('minesStart').disabled=minesBusy||active||minesPrimaryBalance()<minesGetBet();$('minesBet').disabled=minesBusy||active;$('codeSubmit').disabled=minesBusy||!active||codeDigits.length!==5;$('codeHint').disabled=minesBusy||!active||!!minesRound.hintUsed;$('codeKeypad').querySelectorAll('button').forEach(b=>b.disabled=!active||minesBusy);if(!active){$('codeHintText').textContent=minesRound&&minesRound.ended?(minesRound.won?'تم فتح الشيفرة بنجاح!':'انتهت الجولة.'): 'ابدأ جولة جديدة لبدء فك الشيفرة.';}else if(minesRound.hintUsed){$('codeHintText').textContent='الرقم الأول هو: '+minesRound.secret[0]+' — تم استخدام التلميح.';}else{$('codeHintText').textContent='أدخل 5 أرقام. لديك 3 محاولات.';}minesRenderHistory(data.history||[]);}
+function minesRenderHistory(history){const el=$('minesHistory');if(!el)return;if(!history.length){el.innerHTML='<div class="mines-empty">لا توجد جولات محفوظة بعد</div>';return;}el.innerHTML=history.slice(0,5).map(h=>`<div class="mines-history-row"><span>${h.date} · رهان ${h.bet} ل.س</span><strong class="${h.won?'mines-profit':'mines-loss'}">${h.won?'فوز +'+minesMoney(h.prize):'خسارة '+minesMoney(h.bet)} ل.س</strong></div>`).join('');}
+async function codeBalanceChange(delta,reason){const ref=db.collection('users').doc(STATE.tgId);await db.runTransaction(async trx=>{const snap=await trx.get(ref);if(!snap.exists)throw new Error('الحساب غير موجود');const bal=Number(snap.data().balance_sy||0);if(delta<0&&bal< -delta)throw new Error('رصيدك الأساسي لا يكفي لهذا المبلغ');trx.update(ref,{balance_sy:bal+delta,updatedAt:SV()});});const fresh=(await ref.get()).data();if(fresh){STATE.user=fresh;updateUI();}}
+async function minesStart(){if(minesBusy)return;if(!STATE.tgId||!STATE.user||!db)return toast('تعذر تحميل حسابك؛ أعد فتح اللعبة','err');if(minesRound&&!minesRound.ended)return toast('أكمل الجولة الحالية أولاً','err');const bet=minesGetBet();if(minesPrimaryBalance()<bet)return toast('رصيدك الأساسي لا يكفي لهذا الرهان','err');minesBusy=true;codeRender();try{await codeBalanceChange(-bet,'stake');minesRound={id:Date.now()+'_'+Math.random().toString(36).slice(2,8),bet,prize:CODE_PRIZES[bet],secret:String(Math.floor(Math.random()*100000)).padStart(5,'0'),attempts:0,hintUsed:false,ended:false,won:false,startedAt:Date.now()};codeDigits='';codePersist();toast('بدأت الجولة وتم خصم الرهان. بالتوفيق!','ok');}catch(e){toast(e.message||'تعذر خصم الرهان','err');}finally{minesBusy=false;codeRender();}}
+async function codeHint(){if(minesBusy||!minesRound||minesRound.ended||minesRound.hintUsed)return;const fee=CODE_HINT_FEES[minesRound.bet];if(minesPrimaryBalance()<fee)return toast('رصيدك لا يكفي لشراء التلميح','err');minesBusy=true;codeRender();try{await codeBalanceChange(-fee,'hint');minesRound.hintUsed=true;codePersist();toast('تم كشف أول رقم مقابل '+fee+' ل.س','ok');}catch(e){toast(e.message||'تعذر شراء التلميح','err');}finally{minesBusy=false;codeRender();}}
+async function codeSubmit(){if(minesBusy||!minesRound||minesRound.ended||codeDigits.length!==5)return;minesBusy=true;codeRender();const r=minesRound;try{r.attempts++;if(codeDigits===r.secret){await codeBalanceChange(r.prize,'prize');r.ended=true;r.won=true;codeSaveResult(r,true);toast('مبروك! فتحت الشيفرة وربحت '+minesMoney(r.prize)+' ل.س','ok');}else if(r.attempts>=3){r.ended=true;r.won=false;codeSaveResult(r,false);toast('انتهت المحاولات الثلاث. خسرت رهان الجولة.','err');}else{toast('الشيفرة غير صحيحة. تبقّى '+(3-r.attempts)+' محاولات','info');}codeDigits='';codePersist();}catch(e){console.error('Code game transaction error',e);toast('تعذر تحديث الرصيد. لا تبدأ جولة أخرى قبل مراجعة الرصيد.','err');}finally{minesBusy=false;codeRender();}}
+function codeSaveResult(r,won){const data=minesLoad();data.history.unshift({date:new Date().toLocaleString('ar',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}),bet:r.bet,prize:r.prize,won});data.history=data.history.slice(0,5);minesSave(data);}
+function minesInit(){if(!$('codeKeypad')||$('codeKeypad').dataset.ready)return;$('codeKeypad').dataset.ready='1';minesRound=codeLoadRound();$('minesStart').addEventListener('click',minesStart);$('codeSubmit').addEventListener('click',codeSubmit);$('codeHint').addEventListener('click',codeHint);$('minesBet').addEventListener('change',codeRender);codeKeypadRender();codeRender();}
 /* ═══ التنقل ═══ */
 const VIEWS = ['home','store','wallet','referral','tasks','profile','wheel','mines'];
 function navigate(view){
