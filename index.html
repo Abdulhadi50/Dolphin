@@ -568,7 +568,9 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .wheel-center-btn__icon{font-size:30px;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
 .wheel-action{width:100%;min-height:56px;border-radius:18px;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s;position:relative;overflow:hidden;background:linear-gradient(135deg,#4DA3FF 0%,#007AFF 100%);color:#fff}
 .wheel-action:active:not([disabled]){transform:scale(.98)}
-.wheel-action[disabled]{opacity:.55;cursor:not-allowed;background:linear-gradient(135deg,#2A2A32,#141414)}
+.wheel-action[disabled]{opacity:1;cursor:not-allowed;background:linear-gradient(135deg,#24476B 0%,#17314D 100%);color:#FFFFFF!important;border:1px solid rgba(125,185,255,.48);box-shadow:inset 0 1px rgba(255,255,255,.10)}
+.wheel-action[disabled] i,.wheel-action[disabled] span{color:#FFFFFF!important;opacity:1;text-shadow:0 1px 2px rgba(0,0,0,.28)}
+#wheelMainBtn[disabled]{filter:none}
 .wheel-action::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:btnShine 2.8s ease-in-out infinite}
 .wheel-action[disabled]::before{display:none}
 .wheel-info{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(0,122,255,.12);border:1px solid rgba(0,122,255,.35);border-radius:20px;margin-top:16px}
@@ -639,6 +641,17 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
   .view.active{animation:none}
   .fish{animation:none}
 }
+
+/* 💎 Mines 4×4 */
+.mines-launch{background:linear-gradient(120deg,rgba(14,165,233,.9),rgba(79,70,229,.95))!important;border-color:rgba(125,211,252,.45)!important;margin-top:12px}
+.mines-launch .wheel-tile__ic{background:rgba(7,25,55,.48)}
+.mines-shell{background:linear-gradient(160deg,#101a2d,#0a1020);border:1px solid rgba(148,163,184,.2);border-radius:24px;padding:16px;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.mines-balance{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border-radius:16px;background:linear-gradient(110deg,rgba(16,185,129,.16),rgba(14,165,233,.12));border:1px solid rgba(52,211,153,.22);margin-bottom:14px}
+.mines-balance small{display:block;color:#9fb4ce;font-size:11px;font-weight:700}.mines-balance strong{font-size:22px;color:#ecfdf5;font-variant-numeric:tabular-nums}
+.mines-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}.mines-control{background:rgba(255,255,255,.045);border:1px solid rgba(148,163,184,.18);border-radius:14px;padding:11px;min-width:0}.mines-control label{display:block;color:#9fb4ce;font-size:11px;font-weight:800;margin-bottom:8px}.mines-select,.mines-input{width:100%;background:#101d32;border:1px solid rgba(148,163,184,.25);border-radius:10px;padding:10px;color:#f8fafc;font:700 14px inherit;outline:none}.mines-quick{display:flex;gap:5px;margin-top:7px}.mines-quick button{flex:1;border:1px solid rgba(148,163,184,.2);background:rgba(255,255,255,.06);color:#dbeafe;border-radius:8px;padding:5px 0;font-size:10px;font-weight:800}
+.mines-meta{display:flex;align-items:center;justify-content:space-between;color:#a8bad2;font-size:11px;font-weight:700;margin:8px 2px 10px}.mines-meta b{color:#f8fafc}
+.mines-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;direction:ltr;margin:0 auto 15px;max-width:420px}.mine-cell{aspect-ratio:1;border:1px solid rgba(125,211,252,.24);border-radius:13px;background:linear-gradient(145deg,#263b5c,#172740);box-shadow:inset 0 1px rgba(255,255,255,.1),0 4px 9px rgba(0,0,0,.24);color:#e2e8f0;font-size:clamp(20px,6vw,29px);display:grid;place-items:center;cursor:pointer;transition:transform .12s,background .2s,border-color .2s;min-width:0}.mine-cell:active{transform:scale(.95)}.mine-cell:disabled{cursor:default}.mine-cell.revealed-safe{background:linear-gradient(145deg,#0b795f,#065f46);border-color:#34d399;box-shadow:0 0 18px rgba(16,185,129,.16)}.mine-cell.revealed-bomb{background:linear-gradient(145deg,#991b1b,#450a0a);border-color:#fb7185}.mine-cell.revealed-safe,.mine-cell.revealed-bomb{animation:minePop .2s ease-out}@keyframes minePop{from{transform:scale(.86)}to{transform:scale(1)}}
+.mines-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.mines-btn{border:0;border-radius:13px;padding:13px 10px;font-size:13px;font-weight:900;cursor:pointer;transition:transform .12s,opacity .2s}.mines-btn:active{transform:scale(.98)}.mines-btn:disabled{opacity:.42;cursor:not-allowed}.mines-btn--start{background:linear-gradient(135deg,#34d399,#059669);color:#052e25}.mines-btn--cash{background:linear-gradient(135deg,#fcd34d,#f59e0b);color:#422006}.mines-note{font-size:10.5px;line-height:1.65;color:#8195b2;margin:12px 2px 0}.mines-history{margin-top:16px;background:rgba(255,255,255,.035);border:1px solid rgba(148,163,184,.14);border-radius:16px;padding:13px}.mines-history h3{font-size:13px;margin:0 0 9px;color:#e2e8f0}.mines-history-row{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid rgba(148,163,184,.1);font-size:11px;color:#9fb4ce}.mines-history-row:last-child{border-bottom:0}.mines-profit{font-weight:900;color:#34d399}.mines-loss{font-weight:900;color:#fb7185}.mines-empty{font-size:11px;color:#7186a4;text-align:center;padding:10px 0}
 </style>
 
 <style id="marineRoyalTheme">
@@ -974,6 +987,34 @@ body{background:#03101d;color:#effaff}
         </div>
         <span class="wheel-tile__arrow"><i class="fas fa-chevron-left"></i></span>
       </button>
+      <button class="wheel-tile mines-launch" onclick="navigate('mines')">
+        <span class="wheel-tile__ic">💎</span>
+        <div class="wheel-tile__body">
+          <div class="wheel-tile__t">Mines Gems · 4×4</div>
+          <div class="wheel-tile__d">اكشف الجواهر وتجنب القنابل في شبكة من 16 مربعاً</div>
+          <span class="wheel-tile__badge"><i class="fas fa-bolt"></i> جولة سريعة</span>
+        </div>
+        <span class="wheel-tile__arrow"><i class="fas fa-chevron-left"></i></span>
+      </button>
+    </div>
+
+    <div class="view" id="view-mines">
+      <div class="topbar">
+        <div class="topbar__meta"><div class="topbar__hello">لعبة المهارة والحظ</div><div class="topbar__name">💎 Mines Gems</div></div>
+        <div class="chip"><div class="chip__body"><div class="chip__num">4×4</div><div class="chip__cur">16 مربعاً</div></div></div>
+      </div>
+      <div class="mines-shell">
+        <div class="mines-balance"><div><small>رصيدك الأساسي</small><strong><span id="minesBalance">0</span> <small style="display:inline;color:#a7f3d0">ل.س</small></strong></div><span style="font-size:27px">💎</span></div>
+        <div class="mines-controls">
+          <div class="mines-control"><label for="minesBet">مبلغ الجولة (25–200)</label><input id="minesBet" class="mines-input" type="number" min="25" max="200" step="25" value="25" inputmode="numeric"><div class="mines-quick"><button type="button" data-mines-bet="25">25</button><button type="button" data-mines-bet="50">50</button><button type="button" data-mines-bet="100">100</button><button type="button" data-mines-bet="200">200</button></div></div>
+          <div class="mines-control"><label for="minesBombs">عدد القنابل 💣</label><select id="minesBombs" class="mines-select"><option value="1">1 قنبلة</option><option value="2" selected>2 قنابل</option><option value="3">3 قنابل</option><option value="4">4 قنابل</option><option value="5">5 قنابل</option><option value="6">6 قنابل</option><option value="7">7 قنابل</option><option value="8">8 قنابل</option></select></div>
+        </div>
+        <div class="mines-meta"><span>الجواهر المكتشفة: <b id="minesFound">0</b></span><span>المكسب المحتمل: <b id="minesPotential">—</b></span></div>
+        <div class="mines-grid" id="minesGrid" aria-label="شبكة Mines من 16 مربعاً"></div>
+        <div class="mines-actions"><button class="mines-btn mines-btn--start" id="minesStart">💎 ابدأ الجولة</button><button class="mines-btn mines-btn--cash" id="minesCashout" disabled>استلام المكسب</button></div>
+        <p class="mines-note">اللعبة تستخدم رصيد حسابك الأساسي. الرهان يُخصم عند بدء الجولة والمكسب يُضاف إلى الرصيد عند استلامه. سجل آخر 5 جولات محفوظ محلياً على هذا الجهاز.</p>
+        <div class="mines-history"><h3>📋 آخر 5 جولات</h3><div id="minesHistory"><div class="mines-empty">لا توجد جولات محفوظة بعد</div></div></div>
+      </div>
     </div>
 
     <div class="view" id="view-wheel">
@@ -1760,7 +1801,7 @@ function listenUser(){
 }
 
 function refreshAll(){
-  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks(); renderWheel(); renderWeeklyStreak();
+  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks(); renderWheel(); renderWeeklyStreak(); if(typeof minesRender==='function' && $('minesGrid')) minesRender();
 }
 
 async function checkPlanExpiry(){
@@ -3158,8 +3199,70 @@ async function spinWheel(){
 function closeWheelModal(){ $('wheelModal').classList.remove('show'); }
 window.closeWheelModal = closeWheelModal;
 
+/* ═══ 💎 Mines Gems 4×4 — uses the user's primary Firestore balance ═══ */
+const MINES_STORE_KEY = 'dolphin_mines_history_v2';
+let minesRound = null;
+let minesBusy = false;
+function minesLoad(){ try { const x=JSON.parse(localStorage.getItem(MINES_STORE_KEY)||'{}'); return {history:Array.isArray(x.history)?x.history.slice(0,5):[]}; } catch(e){ return {history:[]}; } }
+function minesSave(data){ localStorage.setItem(MINES_STORE_KEY, JSON.stringify({history:(data.history||[]).slice(0,5)})); }
+function minesMoney(n){ return Math.round(n).toLocaleString('en-US'); }
+function minesGetBet(){ const input=$('minesBet'); let n=Number(input.value)||25; n=Math.max(25,Math.min(200,Math.round(n/25)*25)); input.value=n; return n; }
+function minesMultiplier(safe,bombs){ let m=1; for(let i=0;i<safe;i++) m *= (16-i)/(16-bombs-i); return m*0.96; }
+function minesPrimaryBalance(){ return Number(STATE.user && STATE.user.balance_sy || 0); }
+function minesRender(){
+ const data=minesLoad(); setText('minesBalance',minesMoney(minesPrimaryBalance()));
+ const grid=$('minesGrid'); if(!grid) return; grid.innerHTML='';
+ const round=minesRound; const bombs=Number($('minesBombs').value)||2;
+ for(let i=0;i<16;i++){
+  const b=document.createElement('button'); b.type='button'; b.className='mine-cell'; b.setAttribute('aria-label','مربع '+(i+1));
+  const shown=round && round.revealed.includes(i);
+  if(shown){ if(round.bombSet.has(i)){b.textContent='💣';b.classList.add('revealed-bomb')}else{b.textContent='💎';b.classList.add('revealed-safe')} }
+  else b.textContent=round && round.ended && round.bombSet.has(i)?'💣':'✦';
+  b.disabled=!round || round.ended || shown || minesBusy;
+  if(round && round.ended && round.bombSet.has(i)) b.classList.add('revealed-bomb');
+  b.addEventListener('click',()=>minesPick(i)); grid.appendChild(b);
+ }
+ setText('minesFound',round?round.safeFound:0);
+ setText('minesPotential',round && !round.ended ? minesMoney(round.bet*minesMultiplier(round.safeFound,round.bombs))+' ل.س' : '—');
+ $('minesStart').disabled=minesBusy || !!(round&&!round.ended) || minesPrimaryBalance()<25;
+ $('minesCashout').disabled=minesBusy || !(round&&!round.ended&&round.safeFound>0);
+ $('minesBet').disabled=minesBusy || !!(round&&!round.ended); $('minesBombs').disabled=minesBusy || !!(round&&!round.ended);
+ minesRenderHistory(data.history||[]);
+}
+function minesRenderHistory(history){ const el=$('minesHistory'); if(!el)return; if(!history.length){el.innerHTML='<div class="mines-empty">لا توجد جولات محفوظة بعد</div>';return;} el.innerHTML=history.slice(0,5).map(h=>`<div class="mines-history-row"><span>${h.date} · ${h.bet} ل.س · ${h.bombs} 💣</span><strong class="${h.delta>=0?'mines-profit':'mines-loss'}">${h.delta>=0?'+':''}${minesMoney(h.delta)} ل.س</strong></div>`).join(''); }
+async function minesStart(){
+ if(minesBusy)return;
+ if(!STATE.tgId || !STATE.user || !db) return toast('تعذر تحميل حسابك؛ أعد فتح اللعبة','err');
+ const bet=minesGetBet(), bombs=Number($('minesBombs').value)||2;
+ if(bet<25||bet>200)return toast('اختر مبلغاً بين 25 و200','err');
+ minesBusy=true; minesRender();
+ try{
+  const ref=db.collection('users').doc(STATE.tgId);
+  await db.runTransaction(async trx=>{const snap=await trx.get(ref);if(!snap.exists)throw new Error('الحساب غير موجود');const bal=Number(snap.data().balance_sy||0);if(bal<bet)throw new Error('رصيدك الأساسي لا يكفي لهذا الرهان');trx.update(ref,{balance_sy:bal-bet,updatedAt:SV()});});
+  const fresh=(await ref.get()).data(); if(fresh){STATE.user=fresh;updateUI();}
+  const bombSet=new Set(); while(bombSet.size<bombs) bombSet.add(Math.floor(Math.random()*16));
+  minesRound={bet,bombs,bombSet,revealed:[],safeFound:0,ended:false};
+ }catch(e){toast(e.message==='رصيدك الأساسي لا يكفي لهذا الرهان'?e.message:'تعذر خصم الرهان: '+(e.message||'خطأ اتصال'),'err');}
+ finally{minesBusy=false;minesRender();}
+}
+function minesPick(i){ const r=minesRound; if(minesBusy||!r||r.ended||r.revealed.includes(i))return; r.revealed.push(i); if(r.bombSet.has(i)){ r.ended=true; minesFinish(0,'انفجرت قنبلة! خسرت مبلغ الجولة.'); } else { r.safeFound++; if(r.safeFound===16-r.bombs){ r.ended=true; minesFinish(Math.floor(r.bet*minesMultiplier(r.safeFound,r.bombs)),'اكتشفت كل الجواهر!'); } else { minesRender(); if(navigator.vibrate)navigator.vibrate(15); } } }
+async function minesFinish(payout,message){
+ const r=minesRound; if(!r||r.settling)return; r.settling=true; minesBusy=true; minesRender();
+ try{
+  if(payout>0){
+   const ref=db.collection('users').doc(STATE.tgId);
+   await db.runTransaction(async trx=>{const snap=await trx.get(ref);if(!snap.exists)throw new Error('الحساب غير موجود');const bal=Number(snap.data().balance_sy||0);trx.update(ref,{balance_sy:bal+payout,updatedAt:SV()});});
+   const fresh=(await ref.get()).data();if(fresh){STATE.user=fresh;updateUI();}
+  }
+  const data=minesLoad(); const delta=payout-r.bet; data.history.unshift({date:new Date().toLocaleString('ar',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}),bet:r.bet,bombs:r.bombs,delta}); data.history=data.history.slice(0,5); minesSave(data); r.ended=true;
+  if(payout>0)toast(message+' +'+minesMoney(payout)+' ل.س','ok');else toast(message,'info');
+ }catch(e){r.ended=true;toast('تعذر تحديث الرصيد بعد الجولة. تواصل مع الدعم قبل بدء جولة أخرى.','err');console.error('Mines balance update failed',e);}
+ finally{r.settling=false;minesBusy=false;minesRender();}
+}
+function minesCashout(){ const r=minesRound;if(minesBusy||!r||r.ended||r.safeFound<1)return; const payout=Math.floor(r.bet*minesMultiplier(r.safeFound,r.bombs)); minesFinish(payout,'تم استلام المكسب'); }
+function minesInit(){ if(!$('minesGrid')||$('minesGrid').dataset.ready)return; $('minesGrid').dataset.ready='1'; $('minesStart').addEventListener('click',minesStart); $('minesCashout').addEventListener('click',minesCashout); $('minesBet').addEventListener('change',minesRender); $('minesBombs').addEventListener('change',minesRender); document.querySelectorAll('[data-mines-bet]').forEach(b=>b.addEventListener('click',()=>{$('minesBet').value=b.dataset.minesBet;minesRender();})); minesRender(); }
 /* ═══ التنقل ═══ */
-const VIEWS = ['home','store','wallet','referral','tasks','profile','wheel'];
+const VIEWS = ['home','store','wallet','referral','tasks','profile','wheel','mines'];
 function navigate(view){
   if (!VIEWS.includes(view)) view = 'home';
   const target = $('view-' + view);
@@ -3183,6 +3286,7 @@ function navigate(view){
   if (view === 'profile') { updateAvatar('profAvatar'); updateSupportBtn(); }
   if (view === 'tasks') renderTasks();
   if (view === 'wheel') { renderWheel(); updateWheelTimer(); }
+  if (view === 'mines') { minesInit(); minesRender(); }
   if (view === 'referral' && $('refPaneTop').style.display === 'block') loadLeaderboard();
 }
 
