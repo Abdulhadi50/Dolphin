@@ -266,13 +266,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .cq.is-done{background:rgba(0,122,255,.2);border:1px solid var(--sea-pale)}
 .cq.is-done .cq__ic{background:rgba(48,209,88,.2);color:var(--green)}
 
-/* Social tasks admin panel */
-.social-admin{margin:16px 0;padding:16px;border:1px solid var(--glass-line);border-radius:22px;background:var(--glass)}
-.social-admin__title{font-size:14px;font-weight:800;margin-bottom:12px;color:var(--yellow)}
-.social-admin input,.social-admin select{width:100%;min-height:44px;margin:0 0 9px;padding:10px 12px;border:1px solid var(--glass-line);border-radius:12px;background:rgba(0,0,0,.25);color:#fff;outline:none}
-.social-admin__add{width:100%;min-height:44px;border-radius:13px;background:var(--green);color:#05200e;font-weight:800}
-.social-admin__item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--glass-line);font-size:12px}
-.social-admin__delete{padding:7px 10px;border-radius:9px;background:rgba(255,69,58,.18);color:#ff8b84;font-weight:800;flex-shrink:0}
 .fq{position:relative;overflow:hidden;border-radius:28px;padding:16px;background:var(--blue);margin-bottom:10px}
 .fq--ready .ring{--rf:#FFD60A}
 .fq--ready::after{content:'';position:absolute;top:-70px;left:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,214,10,.35),transparent 68%);pointer-events:none}
@@ -1096,8 +1089,6 @@ body{background:#03101d;color:#effaff}
         <button class="cq__btn cq__btn--join" id="taskChannelBtn"><i class="fab fa-telegram-plane"></i> انضم</button>
       </div>
 
-      <div id="socialTasksContainer"></div>
-      <div id="socialTasksAdmin"></div>
       <div id="inviteTasksContainer"></div>
     </div>
 
@@ -2722,129 +2713,6 @@ function ringSvg(frac){
     '<circle class="ring__fg" cx="40" cy="40" r="34" style="stroke-dashoffset:' + (c * (1 - f)) + '"/></svg>';
 }
 
-const SOCIAL_PLATFORMS = {
-  telegram: { label:'تيليجرام', icon:'fab fa-telegram-plane' },
-  youtube: { label:'يوتيوب', icon:'fab fa-youtube' },
-  instagram: { label:'إنستغرام', icon:'fab fa-instagram' },
-  tiktok: { label:'تيك توك', icon:'fab fa-tiktok' },
-  facebook: { label:'فيسبوك', icon:'fab fa-facebook-f' },
-  x: { label:'X', icon:'fab fa-x-twitter' },
-  other: { label:'مهمة تواصل', icon:'fas fa-link' }
-};
-function isSocialAdmin(){
-  return !!(STATE.tgUser && String(STATE.tgUser.username || '').toLowerCase() === String(CONFIG.admin.telegram || '').toLowerCase());
-}
-async function renderSocialTasks(){
-  const container = $('socialTasksContainer');
-  const admin = $('socialTasksAdmin');
-  if (!container || !STATE.user || !STATE.tgId) return;
-  try{
-    const snap = await db.collection('socialTasks').get();
-    const tasks = snap.docs.map(d => ({ id:d.id, ...d.data() })).sort((a,b) => (Number(a.createdAtMs)||0) - (Number(b.createdAtMs)||0));
-    const joined = STATE.user.socialTasksJoined || {};
-    const claimed = STATE.user.socialTasksClaimed || {};
-    // Deliberately keep this area completely empty when there are no social tasks.
-    container.innerHTML = tasks.map(task => {
-      const platform = SOCIAL_PLATFORMS[task.platform] || SOCIAL_PLATFORMS.other;
-      const isClaimed = !!claimed[task.id];
-      const hasJoined = !!joined[task.id];
-      let button = '';
-      let status = 'أكمل المهمة للحصول على المكافأة';
-      let cls = '';
-      if (isClaimed){ button = '<button class="cq__btn cq__btn--done" disabled><i class="fas fa-check"></i> مكتملة</button>'; status = 'تم استلام المكافأة'; cls = ' is-done'; }
-      else if (hasJoined){ button = '<button class="cq__btn cq__btn--collect" data-social-claim="'+escapeHtml(task.id)+'"><i class="fas fa-hand-holding-usd"></i> استلام المكافأة</button>'; status = 'تم الانضمام — يمكنك استلام المكافأة'; }
-      else { button = '<button class="cq__btn cq__btn--join" data-social-join="'+escapeHtml(task.id)+'"><i class="fas fa-arrow-up-right-from-square"></i> انضم</button>'; }
-      return '<div class="cq'+cls+'" style="margin-bottom:10px">' +
-        '<div class="cq__ic"><i class="'+platform.icon+'"></i></div>' +
-        '<div class="cq__info"><div class="cq__t">'+escapeHtml(task.title || platform.label)+'</div>' +
-        '<div class="cq__d'+(isClaimed?' cq__d--ok':'')+'">'+status+'</div>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> '+fmt(task.reward || 0)+' ل.س</span></div>' + button + '</div>';
-    }).join('');
-    container.querySelectorAll('[data-social-join]').forEach(btn => btn.addEventListener('click', () => joinSocialTask(btn.dataset.socialJoin, tasks)));
-    container.querySelectorAll('[data-social-claim]').forEach(btn => btn.addEventListener('click', () => claimSocialTask(btn.dataset.socialClaim)));
-    if (admin){
-      if (!isSocialAdmin()) { admin.innerHTML = ''; }
-      else {
-        admin.innerHTML = '<div class="social-admin"><div class="social-admin__title"><i class="fas fa-sliders"></i> إدارة مهمات التواصل</div>' +
-          '<input id="socialTaskTitle" maxlength="90" placeholder="اسم المهمة — مثال: انضم إلى القناة واحصل على 10 ل.س">' +
-          '<select id="socialTaskPlatform"><option value="telegram">تيليجرام</option><option value="youtube">يوتيوب</option><option value="instagram">إنستغرام</option><option value="tiktok">تيك توك</option><option value="facebook">فيسبوك</option><option value="x">X</option><option value="other">أخرى</option></select>' +
-          '<input id="socialTaskUrl" type="url" inputmode="url" placeholder="رابط المهمة https://...">' +
-          '<input id="socialTaskReward" type="number" min="1" step="1" placeholder="المكافأة بالليرة السورية">' +
-          '<button class="social-admin__add" id="socialTaskAdd"><i class="fas fa-plus"></i> إضافة المهمة</button>' +
-          (tasks.length ? '<div class="social-admin__title" style="margin-top:15px">المهمات الحالية</div>'+tasks.map(t=>'<div class="social-admin__item"><span>'+escapeHtml(t.title||'مهمة')+' — '+fmt(t.reward||0)+' ل.س</span><button class="social-admin__delete" data-social-delete="'+escapeHtml(t.id)+'">حذف</button></div>').join('') : '') + '</div>';
-        const add = $('socialTaskAdd');
-        if (add) add.addEventListener('click', createSocialTask);
-        admin.querySelectorAll('[data-social-delete]').forEach(btn => btn.addEventListener('click', () => deleteSocialTask(btn.dataset.socialDelete)));
-      }
-    }
-  }catch(err){
-    console.warn('renderSocialTasks', err);
-    // Do not show an empty-state message in the public task area.
-    if (admin && !isSocialAdmin()) admin.innerHTML = '';
-  }
-}
-async function joinSocialTask(taskId, tasks){
-  const task = tasks.find(t => t.id === taskId);
-  if (!task || !STATE.user || STATE.isSubmitting) return;
-  const url = safeUrl(task.url);
-  if (!url || !/^https?:\/\//i.test(url)) return toast('رابط المهمة غير صالح', 'err');
-  window.open(url, '_blank', 'noopener');
-  try{
-    const userRef = db.collection('users').doc(STATE.tgId);
-    const snap = await userRef.get();
-    const data = snap.data() || {};
-    const joined = { ...(data.socialTasksJoined || {}), [taskId]: true };
-    await userRef.update({ socialTasksJoined: joined, updatedAt: SV() });
-    STATE.user = { ...STATE.user, socialTasksJoined: joined };
-    renderSocialTasks();
-  }catch(e){ toast('تعذر تسجيل الانضمام، حاول مجدداً', 'err'); }
-}
-async function claimSocialTask(taskId){
-  if (!STATE.user || STATE.isSubmitting) return;
-  STATE.isSubmitting = true;
-  try{
-    await db.runTransaction(async trx => {
-      const userRef = db.collection('users').doc(STATE.tgId);
-      const taskRef = db.collection('socialTasks').doc(taskId);
-      const userSnap = await trx.get(userRef);
-      const taskSnap = await trx.get(taskRef);
-      if (!userSnap.exists || !taskSnap.exists) throw new Error('المهمة غير متاحة');
-      const user = userSnap.data(), task = taskSnap.data();
-      if (!(user.socialTasksJoined || {})[taskId]) throw new Error('اضغط انضم أولاً');
-      if ((user.socialTasksClaimed || {})[taskId]) throw new Error('تم استلام المكافأة مسبقاً');
-      const reward = Math.max(0, Math.floor(Number(task.reward) || 0));
-      if (!reward) throw new Error('مكافأة المهمة غير صالحة');
-      trx.update(userRef, {
-        balance_sy: FV.increment(reward), totalEarned: FV.increment(reward),
-        socialTasksClaimed: { ...(user.socialTasksClaimed || {}), [taskId]: true }, updatedAt: SV()
-      });
-    });
-    toast('🎉 تم استلام مكافأة المهمة!', 'ok');
-  }catch(e){ toast(e.message || 'تعذر استلام المكافأة', 'err'); }
-  finally{ STATE.isSubmitting = false; renderSocialTasks(); }
-}
-async function createSocialTask(){
-  if (!isSocialAdmin()) return toast('غير مصرح لك بإضافة المهمات', 'err');
-  const title = ($('socialTaskTitle')?.value || '').trim();
-  const platform = $('socialTaskPlatform')?.value || 'other';
-  const url = safeUrl(($('socialTaskUrl')?.value || '').trim());
-  const reward = Math.floor(Number($('socialTaskReward')?.value));
-  if (!title) return toast('اكتب اسم المهمة', 'err');
-  if (!url || !/^https?:\/\//i.test(url)) return toast('أدخل رابطاً صحيحاً يبدأ بـ https://', 'err');
-  if (!Number.isFinite(reward) || reward < 1 || reward > 100000000) return toast('أدخل مكافأة صحيحة', 'err');
-  try{
-    await db.collection('socialTasks').add({ title, platform, url, reward, createdAtMs: Date.now(), createdAt: SV(), createdBy: STATE.tgId });
-    toast('تمت إضافة المهمة', 'ok');
-    renderSocialTasks();
-  }catch(e){ toast('تعذرت إضافة المهمة — تحقق من صلاحيات قاعدة البيانات', 'err'); }
-}
-async function deleteSocialTask(taskId){
-  if (!isSocialAdmin()) return toast('غير مصرح لك بحذف المهمات', 'err');
-  if (!confirm('هل تريد حذف هذه المهمة؟')) return;
-  try{ await db.collection('socialTasks').doc(taskId).delete(); toast('تم حذف المهمة', 'ok'); renderSocialTasks(); }
-  catch(e){ toast('تعذر حذف المهمة', 'err'); }
-}
-
 function renderTasks(){
   const container = $('inviteTasksContainer');
   if (!container || !STATE.user) return;
@@ -2919,7 +2787,6 @@ function renderTasks(){
   container.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => navigate(b.dataset.go)));
 
   renderChannelTask();
-  renderSocialTasks();
   updateTaskSummary(u, s);
 }
 
