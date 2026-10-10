@@ -266,6 +266,13 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .cq.is-done{background:rgba(0,122,255,.2);border:1px solid var(--sea-pale)}
 .cq.is-done .cq__ic{background:rgba(48,209,88,.2);color:var(--green)}
 
+/* Social tasks admin panel */
+.social-admin{margin:16px 0;padding:16px;border:1px solid var(--glass-line);border-radius:22px;background:var(--glass)}
+.social-admin__title{font-size:14px;font-weight:800;margin-bottom:12px;color:var(--yellow)}
+.social-admin input,.social-admin select{width:100%;min-height:44px;margin:0 0 9px;padding:10px 12px;border:1px solid var(--glass-line);border-radius:12px;background:rgba(0,0,0,.25);color:#fff;outline:none}
+.social-admin__add{width:100%;min-height:44px;border-radius:13px;background:var(--green);color:#05200e;font-weight:800}
+.social-admin__item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--glass-line);font-size:12px}
+.social-admin__delete{padding:7px 10px;border-radius:9px;background:rgba(255,69,58,.18);color:#ff8b84;font-weight:800;flex-shrink:0}
 .fq{position:relative;overflow:hidden;border-radius:28px;padding:16px;background:var(--blue);margin-bottom:10px}
 .fq--ready .ring{--rf:#FFD60A}
 .fq--ready::after{content:'';position:absolute;top:-70px;left:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,214,10,.35),transparent 68%);pointer-events:none}
@@ -639,13 +646,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
   .view.active{animation:none}
   .fish{animation:none}
 }
-
-.social-task-card{background:#141414;border:1px solid #18252E;border-radius:22px;padding:14px;margin-bottom:10px}
-.social-task-head{display:flex;align-items:center;gap:11px}.social-task-icon{width:44px;height:44px;flex-shrink:0;border-radius:15px;background:#18252E;display:grid;place-items:center;font-size:20px;color:#4DA3FF}
-.social-task-info{flex:1;min-width:0}.social-task-title{font-weight:800;font-size:14px}.social-task-platform{font-size:11px;color:var(--text-3);margin-top:3px}
-.social-task-actions{display:flex;gap:8px;margin-top:12px}.social-task-actions button,.social-task-actions a{flex:1;min-height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:800;text-decoration:none}
-.social-task-go{background:#18252E;color:#fff}.social-task-claim{background:#007AFF;color:#fff}.social-task-claim:disabled{opacity:.6}.social-task-delete{background:rgba(255,69,58,.14);color:#FF8A82;padding:0 12px}
-
 </style>
 
 <style id="marineRoyalTheme">
@@ -1096,20 +1096,8 @@ body{background:#03101d;color:#effaff}
         <button class="cq__btn cq__btn--join" id="taskChannelBtn"><i class="fab fa-telegram-plane"></i> انضم</button>
       </div>
 
-
-      <div class="card" id="socialTaskAdmin" style="display:none">
-        <div class="card__title"><i class="fas fa-sliders-h"></i> إدارة مهمات التواصل الاجتماعي</div>
-        <div class="field"><label class="field__label" for="socialTaskTitle">اسم المهمة</label><input class="field__input" id="socialTaskTitle" placeholder="مثال: انضم إلى البوت واحصل على 10"></div>
-        <div class="field"><label class="field__label" for="socialTaskPlatform">المنصة</label><select class="field__input" id="socialTaskPlatform"><option value="telegram">تيليجرام</option><option value="youtube">يوتيوب</option><option value="instagram">إنستغرام</option><option value="tiktok">تيك توك</option><option value="facebook">فيسبوك</option><option value="x">X</option><option value="other">أخرى</option></select></div>
-        <div class="field"><label class="field__label" for="socialTaskUrl">رابط المهمة</label><input class="field__input field__input--ltr" id="socialTaskUrl" type="url" placeholder="https://t.me/..." inputmode="url"></div>
-        <div class="field"><label class="field__label" for="socialTaskReward">المكافأة (ل.س)</label><input class="field__input" id="socialTaskReward" type="number" min="1" step="1" placeholder="10"></div>
-        <button class="btn btn--primary" id="socialTaskSave"><i class="fas fa-plus"></i> إضافة المهمة</button>
-        <div class="msg" id="socialTaskAdminMsg"></div>
-        <div class="card__sep"></div><div class="card__title">المهمات المضافة</div><div id="socialTaskAdminList"></div>
-      </div>
-      <div class="grp"><span>مهمات التواصل الاجتماعي</span><small>أكمل المهمة لتحصل على مكافأتها</small></div>
       <div id="socialTasksContainer"></div>
-
+      <div id="socialTasksAdmin"></div>
       <div id="inviteTasksContainer"></div>
     </div>
 
@@ -2734,111 +2722,127 @@ function ringSvg(frac){
     '<circle class="ring__fg" cx="40" cy="40" r="34" style="stroke-dashoffset:' + (c * (1 - f)) + '"/></svg>';
 }
 
-
 const SOCIAL_PLATFORMS = {
-  telegram:{label:'تيليجرام',icon:'fab fa-telegram-plane'},
-  youtube:{label:'يوتيوب',icon:'fab fa-youtube'},
-  instagram:{label:'إنستغرام',icon:'fab fa-instagram'},
-  tiktok:{label:'تيك توك',icon:'fab fa-tiktok'},
-  facebook:{label:'فيسبوك',icon:'fab fa-facebook'},
-  x:{label:'X',icon:'fab fa-x-twitter'},
-  other:{label:'أخرى',icon:'fas fa-globe'}
+  telegram: { label:'تيليجرام', icon:'fab fa-telegram-plane' },
+  youtube: { label:'يوتيوب', icon:'fab fa-youtube' },
+  instagram: { label:'إنستغرام', icon:'fab fa-instagram' },
+  tiktok: { label:'تيك توك', icon:'fab fa-tiktok' },
+  facebook: { label:'فيسبوك', icon:'fab fa-facebook-f' },
+  x: { label:'X', icon:'fab fa-x-twitter' },
+  other: { label:'مهمة تواصل', icon:'fas fa-link' }
 };
-function isSocialTaskAdmin(){
-  const tu = (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) || {};
-  return String(tu.username || '').toLowerCase() === String(CONFIG.admin.telegram || '').replace(/^@/,'').toLowerCase();
+function isSocialAdmin(){
+  return !!(STATE.tgUser && String(STATE.tgUser.username || '').toLowerCase() === String(CONFIG.admin.telegram || '').toLowerCase());
 }
-function socialTasksCollection(){ return db.collection('socialTasks'); }
-async function loadSocialTasks(){
-  const list = $('socialTasksContainer');
-  if (!list) return;
-  list.innerHTML = '<div class="hint"><i class="fas fa-spinner fa-spin"></i><div>جاري تحميل مهمات التواصل...</div></div>';
+async function renderSocialTasks(){
+  const container = $('socialTasksContainer');
+  const admin = $('socialTasksAdmin');
+  if (!container || !STATE.user || !STATE.tgId) return;
   try{
-    const snap = await socialTasksCollection().get();
-    const tasks = snap.docs.map(d => ({id:d.id,...d.data()})).filter(t => t.active !== false);
-    renderSocialTasks(tasks);
-    if (isSocialTaskAdmin()) renderSocialTaskAdminList(tasks);
-  }catch(e){
-    console.error('load social tasks',e);
-    list.innerHTML = '<div class="hint"><i class="fas fa-info-circle"></i><div>تعذر تحميل المهمات. تحقق من اتصال قاعدة البيانات وصلاحيات Firestore.</div></div>';
+    const snap = await db.collection('socialTasks').get();
+    const tasks = snap.docs.map(d => ({ id:d.id, ...d.data() })).sort((a,b) => (Number(a.createdAtMs)||0) - (Number(b.createdAtMs)||0));
+    const joined = STATE.user.socialTasksJoined || {};
+    const claimed = STATE.user.socialTasksClaimed || {};
+    // Deliberately keep this area completely empty when there are no social tasks.
+    container.innerHTML = tasks.map(task => {
+      const platform = SOCIAL_PLATFORMS[task.platform] || SOCIAL_PLATFORMS.other;
+      const isClaimed = !!claimed[task.id];
+      const hasJoined = !!joined[task.id];
+      let button = '';
+      let status = 'أكمل المهمة للحصول على المكافأة';
+      let cls = '';
+      if (isClaimed){ button = '<button class="cq__btn cq__btn--done" disabled><i class="fas fa-check"></i> مكتملة</button>'; status = 'تم استلام المكافأة'; cls = ' is-done'; }
+      else if (hasJoined){ button = '<button class="cq__btn cq__btn--collect" data-social-claim="'+escapeHtml(task.id)+'"><i class="fas fa-hand-holding-usd"></i> استلام المكافأة</button>'; status = 'تم الانضمام — يمكنك استلام المكافأة'; }
+      else { button = '<button class="cq__btn cq__btn--join" data-social-join="'+escapeHtml(task.id)+'"><i class="fas fa-arrow-up-right-from-square"></i> انضم</button>'; }
+      return '<div class="cq'+cls+'" style="margin-bottom:10px">' +
+        '<div class="cq__ic"><i class="'+platform.icon+'"></i></div>' +
+        '<div class="cq__info"><div class="cq__t">'+escapeHtml(task.title || platform.label)+'</div>' +
+        '<div class="cq__d'+(isClaimed?' cq__d--ok':'')+'">'+status+'</div>' +
+        '<span class="rwd"><i class="fas fa-coins"></i> '+fmt(task.reward || 0)+' ل.س</span></div>' + button + '</div>';
+    }).join('');
+    container.querySelectorAll('[data-social-join]').forEach(btn => btn.addEventListener('click', () => joinSocialTask(btn.dataset.socialJoin, tasks)));
+    container.querySelectorAll('[data-social-claim]').forEach(btn => btn.addEventListener('click', () => claimSocialTask(btn.dataset.socialClaim)));
+    if (admin){
+      if (!isSocialAdmin()) { admin.innerHTML = ''; }
+      else {
+        admin.innerHTML = '<div class="social-admin"><div class="social-admin__title"><i class="fas fa-sliders"></i> إدارة مهمات التواصل</div>' +
+          '<input id="socialTaskTitle" maxlength="90" placeholder="اسم المهمة — مثال: انضم إلى القناة واحصل على 10 ل.س">' +
+          '<select id="socialTaskPlatform"><option value="telegram">تيليجرام</option><option value="youtube">يوتيوب</option><option value="instagram">إنستغرام</option><option value="tiktok">تيك توك</option><option value="facebook">فيسبوك</option><option value="x">X</option><option value="other">أخرى</option></select>' +
+          '<input id="socialTaskUrl" type="url" inputmode="url" placeholder="رابط المهمة https://...">' +
+          '<input id="socialTaskReward" type="number" min="1" step="1" placeholder="المكافأة بالليرة السورية">' +
+          '<button class="social-admin__add" id="socialTaskAdd"><i class="fas fa-plus"></i> إضافة المهمة</button>' +
+          (tasks.length ? '<div class="social-admin__title" style="margin-top:15px">المهمات الحالية</div>'+tasks.map(t=>'<div class="social-admin__item"><span>'+escapeHtml(t.title||'مهمة')+' — '+fmt(t.reward||0)+' ل.س</span><button class="social-admin__delete" data-social-delete="'+escapeHtml(t.id)+'">حذف</button></div>').join('') : '') + '</div>';
+        const add = $('socialTaskAdd');
+        if (add) add.addEventListener('click', createSocialTask);
+        admin.querySelectorAll('[data-social-delete]').forEach(btn => btn.addEventListener('click', () => deleteSocialTask(btn.dataset.socialDelete)));
+      }
+    }
+  }catch(err){
+    console.warn('renderSocialTasks', err);
+    // Do not show an empty-state message in the public task area.
+    if (admin && !isSocialAdmin()) admin.innerHTML = '';
   }
 }
-function renderSocialTasks(tasks){
-  const el = $('socialTasksContainer'); if(!el) return;
-  const claimed = (STATE.user && STATE.user.socialTasksClaimed) || {};
-  if(!tasks.length){ el.innerHTML='<div class="card" style="text-align:center;color:var(--text-3)">لا توجد مهمات تواصل اجتماعي حالياً.</div>'; return; }
-  el.innerHTML = tasks.map(t=>{
-    const p = SOCIAL_PLATFORMS[t.platform] || SOCIAL_PLATFORMS.other;
-    const done = !!claimed[t.id];
-    return '<div class="social-task-card"><div class="social-task-head"><div class="social-task-icon"><i class="'+p.icon+'"></i></div><div class="social-task-info"><div class="social-task-title">'+escapeHtml(t.title||'مهمة تواصل')+'</div><div class="social-task-platform">'+p.label+'</div></div><span class="rwd"><i class="fas fa-coins"></i> '+Math.max(0,Number(t.reward)||0)+' ل.س</span></div><div class="social-task-actions"><button class="social-task-go" onclick="openSocialTaskLink(\''+encodeURIComponent(t.url||'')+'\')"><i class="fas fa-external-link-alt"></i> فتح الرابط</button><button class="social-task-claim" '+(done?'disabled':'')+' onclick="claimSocialTask(\''+t.id+'\')">'+(done?'<i class="fas fa-check"></i> مكتملة':'<i class="fas fa-gift"></i> استلام المكافأة')+'</button></div></div>';
-  }).join('');
-}
-window.openSocialTaskLink = function(encoded){
-  let url=''; try{url=decodeURIComponent(encoded)}catch(e){}
-  if(!/^https:\/\/\S+/i.test(url)) return toast('رابط المهمة غير صالح','err');
-  if(tg && tg.openTelegramLink && /t\.me\//i.test(url)) tg.openTelegramLink(url); else window.open(url,'_blank','noopener');
-};
-window.claimSocialTask = async function(taskId){
-  if(!STATE.user || STATE.isSubmitting) return;
-  STATE.isSubmitting=true;
+async function joinSocialTask(taskId, tasks){
+  const task = tasks.find(t => t.id === taskId);
+  if (!task || !STATE.user || STATE.isSubmitting) return;
+  const url = safeUrl(task.url);
+  if (!url || !/^https?:\/\//i.test(url)) return toast('رابط المهمة غير صالح', 'err');
+  window.open(url, '_blank', 'noopener');
   try{
-    await db.runTransaction(async trx=>{
-      const userRef=db.collection('users').doc(STATE.tgId);
-      const taskRef=socialTasksCollection().doc(taskId);
-      const ud=(await trx.get(userRef)).data();
-      const td=(await trx.get(taskRef)).data();
-      if(!ud || !td || td.active===false) throw new Error('المهمة غير متاحة');
-      if(ud.socialTasksClaimed && ud.socialTasksClaimed[taskId]) throw new Error('استلمت مكافأة هذه المهمة مسبقاً');
-      const reward=Math.floor(Number(td.reward)||0);
-      if(reward<1) throw new Error('قيمة المكافأة غير صالحة');
-      trx.update(userRef,{
-        balance_sy:FV.increment(reward),
-        totalEarned:FV.increment(reward),
-        ['socialTasksClaimed.'+taskId]:true,
-        updatedAt:SV()
+    const userRef = db.collection('users').doc(STATE.tgId);
+    const snap = await userRef.get();
+    const data = snap.data() || {};
+    const joined = { ...(data.socialTasksJoined || {}), [taskId]: true };
+    await userRef.update({ socialTasksJoined: joined, updatedAt: SV() });
+    STATE.user = { ...STATE.user, socialTasksJoined: joined };
+    renderSocialTasks();
+  }catch(e){ toast('تعذر تسجيل الانضمام، حاول مجدداً', 'err'); }
+}
+async function claimSocialTask(taskId){
+  if (!STATE.user || STATE.isSubmitting) return;
+  STATE.isSubmitting = true;
+  try{
+    await db.runTransaction(async trx => {
+      const userRef = db.collection('users').doc(STATE.tgId);
+      const taskRef = db.collection('socialTasks').doc(taskId);
+      const userSnap = await trx.get(userRef);
+      const taskSnap = await trx.get(taskRef);
+      if (!userSnap.exists || !taskSnap.exists) throw new Error('المهمة غير متاحة');
+      const user = userSnap.data(), task = taskSnap.data();
+      if (!(user.socialTasksJoined || {})[taskId]) throw new Error('اضغط انضم أولاً');
+      if ((user.socialTasksClaimed || {})[taskId]) throw new Error('تم استلام المكافأة مسبقاً');
+      const reward = Math.max(0, Math.floor(Number(task.reward) || 0));
+      if (!reward) throw new Error('مكافأة المهمة غير صالحة');
+      trx.update(userRef, {
+        balance_sy: FV.increment(reward), totalEarned: FV.increment(reward),
+        socialTasksClaimed: { ...(user.socialTasksClaimed || {}), [taskId]: true }, updatedAt: SV()
       });
     });
-    toast('تمت إضافة مكافأة المهمة إلى رصيدك','ok');
-  }catch(e){toast(e.message||'تعذر استلام المكافأة','err');}
-  finally{STATE.isSubmitting=false;loadSocialTasks();}
-};
-function showSocialTaskAdminMsg(message,ok){
-  const el=$('socialTaskAdminMsg'); if(!el)return;
-  el.textContent=message;el.className='msg show '+(ok?'msg--ok':'msg--err');
+    toast('🎉 تم استلام مكافأة المهمة!', 'ok');
+  }catch(e){ toast(e.message || 'تعذر استلام المكافأة', 'err'); }
+  finally{ STATE.isSubmitting = false; renderSocialTasks(); }
 }
-function renderSocialTaskAdminList(tasks){
-  const el=$('socialTaskAdminList'); if(!el)return;
-  if(!tasks.length){el.innerHTML='<div style="color:var(--text-3);font-size:12px">لا توجد مهمات مضافة.</div>';return;}
-  el.innerHTML=tasks.map(t=>'<div class="qrow"><div class="qrow__ic"><i class="fas fa-tasks"></i></div><div class="qrow__info"><div class="qrow__t">'+escapeHtml(t.title||'مهمة')+'</div><div class="qrow__d">'+escapeHtml((SOCIAL_PLATFORMS[t.platform]||SOCIAL_PLATFORMS.other).label)+' · '+(Number(t.reward)||0)+' ل.س</div></div><button class="social-task-delete" onclick="deleteSocialTask(\''+t.id+'\')"><i class="fas fa-trash"></i></button></div>').join('');
-}
-window.deleteSocialTask=async function(id){
-  if(!isSocialTaskAdmin())return toast('غير مصرح','err');
-  if(!confirm('هل تريد حذف هذه المهمة؟'))return;
-  try{await socialTasksCollection().doc(id).delete();toast('تم حذف المهمة','ok');loadSocialTasks();}
-  catch(e){toast('تعذر حذف المهمة: تحقق من صلاحيات Firestore','err');}
-};
-async function addSocialTask(){
-  if(!isSocialTaskAdmin())return toast('هذه الصفحة مخصصة للإدارة','err');
-  const title=$('socialTaskTitle').value.trim(), platform=$('socialTaskPlatform').value;
-  const url=$('socialTaskUrl').value.trim(), reward=Math.floor(Number($('socialTaskReward').value));
-  if(title.length<3)return showSocialTaskAdminMsg('اكتب اسم المهمة (3 أحرف على الأقل).',false);
-  if(!/^https:\/\/\S+/i.test(url))return showSocialTaskAdminMsg('أدخل رابطاً صحيحاً يبدأ بـ https://',false);
-  if(!Number.isFinite(reward)||reward<1||reward>1000000)return showSocialTaskAdminMsg('أدخل مكافأة بين 1 و 1000000 ل.س.',false);
-  const btn=$('socialTaskSave');btn.disabled=true;
+async function createSocialTask(){
+  if (!isSocialAdmin()) return toast('غير مصرح لك بإضافة المهمات', 'err');
+  const title = ($('socialTaskTitle')?.value || '').trim();
+  const platform = $('socialTaskPlatform')?.value || 'other';
+  const url = safeUrl(($('socialTaskUrl')?.value || '').trim());
+  const reward = Math.floor(Number($('socialTaskReward')?.value));
+  if (!title) return toast('اكتب اسم المهمة', 'err');
+  if (!url || !/^https?:\/\//i.test(url)) return toast('أدخل رابطاً صحيحاً يبدأ بـ https://', 'err');
+  if (!Number.isFinite(reward) || reward < 1 || reward > 100000000) return toast('أدخل مكافأة صحيحة', 'err');
   try{
-    await socialTasksCollection().add({title,platform,url,reward,active:true,createdAt:SV(),createdBy:String(STATE.tgId)});
-    $('socialTaskTitle').value='';$('socialTaskUrl').value='';$('socialTaskReward').value='';
-    showSocialTaskAdminMsg('تمت إضافة المهمة بنجاح وستظهر للمستخدمين في المهمات السريعة.',true);
-    await loadSocialTasks();
-  }catch(e){console.error(e);showSocialTaskAdminMsg('فشل الحفظ. تحقق من صلاحيات Firestore وقواعد الأمان.',false);}
-  finally{btn.disabled=false;}
+    await db.collection('socialTasks').add({ title, platform, url, reward, createdAtMs: Date.now(), createdAt: SV(), createdBy: STATE.tgId });
+    toast('تمت إضافة المهمة', 'ok');
+    renderSocialTasks();
+  }catch(e){ toast('تعذرت إضافة المهمة — تحقق من صلاحيات قاعدة البيانات', 'err'); }
 }
-function initSocialTaskAdmin(){
-  const panel=$('socialTaskAdmin'); if(!panel)return;
-  if(isSocialTaskAdmin()){
-    panel.style.display='block';
-    const btn=$('socialTaskSave'); if(btn)btn.addEventListener('click',addSocialTask);
-  }
+async function deleteSocialTask(taskId){
+  if (!isSocialAdmin()) return toast('غير مصرح لك بحذف المهمات', 'err');
+  if (!confirm('هل تريد حذف هذه المهمة؟')) return;
+  try{ await db.collection('socialTasks').doc(taskId).delete(); toast('تم حذف المهمة', 'ok'); renderSocialTasks(); }
+  catch(e){ toast('تعذر حذف المهمة', 'err'); }
 }
 
 function renderTasks(){
@@ -2915,6 +2919,7 @@ function renderTasks(){
   container.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => navigate(b.dataset.go)));
 
   renderChannelTask();
+  renderSocialTasks();
   updateTaskSummary(u, s);
 }
 
@@ -3309,7 +3314,7 @@ function navigate(view){
 
   if (view === 'store') { renderPlans(); renderPlansReport(); }
   if (view === 'profile') { updateAvatar('profAvatar'); updateSupportBtn(); }
-  if (view === 'tasks') { renderTasks(); loadSocialTasks(); }
+  if (view === 'tasks') renderTasks();
   if (view === 'wheel') { renderWheel(); updateWheelTimer(); }
   if (view === 'referral' && $('refPaneTop').style.display === 'block') loadLeaderboard();
 }
@@ -3339,7 +3344,6 @@ async function bootstrap(){
   catch(e){ console.error('bootstrap', e); toast('فشل تحميل البيانات', 'err'); return; }
 
   bindUI();
-  initSocialTaskAdmin();
   listenUser();
   refreshAll();
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) startLiveTimer();
