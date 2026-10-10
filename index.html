@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<script src="//libtl.com/sdk.js" data-zone="12001499" data-sdk="show_12001499"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#041a2b">
@@ -568,7 +569,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .wheel-center-btn__icon{font-size:30px;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
 .wheel-action{width:100%;min-height:56px;border-radius:18px;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s;position:relative;overflow:hidden;background:linear-gradient(135deg,#4DA3FF 0%,#007AFF 100%);color:#fff}
 .wheel-action:active:not([disabled]){transform:scale(.98)}
-.wheel-action[disabled]{opacity:.55;cursor:not-allowed;background:linear-gradient(135deg,#2A2A32,#141414)}
+.wheel-action[disabled]{opacity:1;cursor:not-allowed;background:linear-gradient(135deg,#303744,#171C24);color:#FFFFFF!important;text-shadow:0 1px 2px rgba(0,0,0,.9);border:1px solid rgba(255,255,255,.28)}
 .wheel-action::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:btnShine 2.8s ease-in-out infinite}
 .wheel-action[disabled]::before{display:none}
 .wheel-info{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(0,122,255,.12);border:1px solid rgba(0,122,255,.35);border-radius:20px;margin-top:16px}
@@ -617,6 +618,10 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .weekly__btn:active:not([disabled]){transform:scale(.98)}
 .weekly__btn[disabled]{background:rgba(0,0,0,.32);color:rgba(255,255,255,.6);cursor:not-allowed}
 .weekly__btn:not([disabled])::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);animation:btnShine 2.6s ease-in-out infinite}
+
+
+.weekly__btn[disabled]{background:rgba(255,255,255,.16)!important;color:#FFFFFF!important;opacity:1;text-shadow:0 1px 2px rgba(0,0,0,.85);border:1px solid rgba(255,255,255,.35)}
+.weekly__btn[disabled] span{color:#FFFFFF!important}
 
 @media (max-width:360px){
   .nav .nav__btn span{font-size:9.5px}
@@ -1057,12 +1062,12 @@ body{background:#03101d;color:#effaff}
 
       <div class="weekly">
         <div class="weekly__head">
-          <div class="weekly__title"><i class="fas fa-fire"></i> هدايا الأسبوع</div>
-          <div class="weekly__sub">سجّل دخولك يومياً واستلم هديتك — أكمل 7 أيام لتربح 200 ل.س إضافية</div>
+          <div class="weekly__title"><i class="fas fa-circle-play"></i> هدايا المشاهدات</div>
+          <div class="weekly__sub">شاهد إعلاناً للحصول على مكافأة. لديك 7 مكافآت، وتتجدد كل 5 ساعات.</div>
         </div>
         <div class="days-grid" id="daysGrid"></div>
         <button class="weekly__btn" id="weeklyClaimBtn">
-          <i class="fas fa-gift"></i><span id="weeklyBtnText">استلم هدية اليوم</span>
+          <i class="fas fa-play-circle"></i><span id="weeklyBtnText">احصل على المكافأة الأولى</span>
         </button>
       </div>
 
@@ -2866,38 +2871,16 @@ function renderChannelTask(){
   }
 }
 
-/* ═══ 🔥 هدايا الأسبوع ═══ */
-const WEEK_DAYS = ['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
-const WEEK_REWARDS = [
-  { amount: 5,  icon: '🎁' },
-  { amount: 10, icon: '🎁' },
-  { amount: 15, icon: '💰' },
-  { amount: 20, icon: '💰' },
-  { amount: 25, icon: '⭐' },
-  { amount: 35, icon: '⭐' },
-  { amount: 50, icon: '👑' }
-];
-const WEEK_BONUS = 200;
+/* ═══ 🎬 هدايا المشاهدات ═══ */
+const VIEW_REWARDS = [5, 6, 7, 8, 9, 10, 10];
+const VIEW_GIFT_COOLDOWN = 5 * 60 * 60 * 1000;
 
-function getTodayIndex(){
-  const jsDay = new Date(getTrustedNow()).getDay();
-  return (jsDay + 1) % 7;
-}
-function getWeekKey(){
-  const now = new Date(getTrustedNow());
-  const sat = new Date(now);
-  sat.setDate(now.getDate() - ((now.getDay() + 1) % 7));
-  return sat.toISOString().slice(0,10);
-}
-function getDailyState(){
-  const u = STATE.user || {};
-  const todayKey = new Date(getTrustedNow()).toISOString().slice(0,10);
-  const weekKey = getWeekKey();
-  const ds = u.dailyStreak || {};
-  if (ds.weekKey !== weekKey){
-    return { weekKey, claimedDays: [], lastClaimDate: null };
-  }
-  return { weekKey, claimedDays: ds.claimedDays || [], lastClaimDate: ds.lastClaimDate || null };
+function getViewGiftState(){
+  const state = (STATE.user && STATE.user.viewGifts) || {};
+  const now = getTrustedNow();
+  const resetAt = Number(state.resetAt || 0);
+  if (!resetAt || now >= resetAt) return { claimedCount: 0, resetAt: 0 };
+  return { claimedCount: Math.min(7, Number(state.claimedCount || 0)), resetAt };
 }
 
 function renderWeeklyStreak(){
@@ -2905,87 +2888,88 @@ function renderWeeklyStreak(){
   const btn = $('weeklyClaimBtn');
   const btnText = $('weeklyBtnText');
   if (!grid || !STATE.user) return;
-
-  const todayIdx = getTodayIndex();
-  const ds = getDailyState();
-  const todayKey = new Date(getTrustedNow()).toISOString().slice(0,10);
-  const claimedToday = ds.lastClaimDate === todayKey;
-  const isWeekFull = ds.claimedDays.length >= 7;
-  const canClaim = !claimedToday && !isWeekFull && (ds.claimedDays.length === todayIdx || ds.claimedDays.length < todayIdx);
-
-  grid.innerHTML = WEEK_DAYS.map((name, i) => {
-    const reward = WEEK_REWARDS[i];
-    const isDone = i < ds.claimedDays.length;
-    const isToday = i === todayIdx && !isDone;
-    const isClaimable = isToday && !claimedToday;
-    let cls = 'day';
-    if (isDone) cls += ' day--done';
-    else if (isClaimable) cls += ' day--claimable';
-    else if (isToday) cls += ' day--today';
-    else if (i > todayIdx) cls += ' day--locked';
-    const icon = isDone ? '<i class="fas fa-check day__ic"></i>' : '<span class="day__ic">' + reward.icon + '</span>';
+  const gs = getViewGiftState();
+  grid.innerHTML = VIEW_REWARDS.map((amount, i) => {
+    const done = i < gs.claimedCount;
+    const current = i === gs.claimedCount && gs.claimedCount < 7;
+    const cls = 'day' + (done ? ' day--done' : current ? ' day--claimable' : ' day--locked');
     return '<div class="' + cls + '">' +
-      '<span class="day__day">' + name + '</span>' +
-      icon +
-      '<span class="day__amt">+' + reward.amount + '</span>' +
-    '</div>';
+      '<span class="day__day">المكافأة ' + (i + 1) + '</span>' +
+      '<span class="day__ic">' + (done ? '✓' : '🎁') + '</span>' +
+      '<span class="day__amt">+' + amount + ' ل.س</span></div>';
   }).join('');
 
   if (!btn || !btnText) return;
-  if (isWeekFull){
+  if (gs.claimedCount >= 7) {
     btn.disabled = true;
-    btnText.textContent = '🎉 أكملت كل هدايا الأسبوع';
-  } else if (claimedToday){
-    btn.disabled = true;
-    btnText.textContent = '✓ استلمت هدية اليوم — عد غداً';
-  } else if (canClaim){
-    btn.disabled = false;
-    const reward = WEEK_REWARDS[todayIdx];
-    btnText.textContent = 'استلم هدية اليوم — ' + reward.amount + ' ل.س';
-  } else {
-    btn.disabled = true;
-    btnText.textContent = 'انتظر يومك القادم';
+    btnText.textContent = 'اكتملت المكافآت — إعادة التفعيل بعد ' + formatViewGiftTime(gs.resetAt - getTrustedNow());
+    return;
   }
+  if (gs.resetAt && getTrustedNow() < gs.resetAt) {
+    btn.disabled = true;
+    btnText.textContent = 'إعادة التفعيل بعد ' + formatViewGiftTime(gs.resetAt - getTrustedNow());
+    return;
+  }
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-play-circle"></i><span id="weeklyBtnText">شاهد إعلاناً واحصل على ' + VIEW_REWARDS[gs.claimedCount] + ' ل.س (' + (gs.claimedCount + 1) + '/7)</span>';
+}
+
+function formatViewGiftTime(ms){
+  const sec = Math.max(0, Math.floor(ms / 1000));
+  const p = n => String(n).padStart(2, '0');
+  return p(Math.floor(sec / 3600)) + ':' + p(Math.floor((sec % 3600) / 60)) + ':' + p(sec % 60);
 }
 
 async function claimDailyReward(){
   if (!STATE.user || STATE.isSubmitting) return;
-  const todayKey = new Date(getTrustedNow()).toISOString().slice(0,10);
-  const ds = getDailyState();
-  if (ds.lastClaimDate === todayKey) return toast('استلمت هدية اليوم بالفعل', 'info');
-  if (ds.claimedDays.length >= 7) return toast('أكملت كل هدايا الأسبوع! 🎉', 'info');
+  const gs = getViewGiftState();
+  const now = getTrustedNow();
+  if (gs.claimedCount >= 7 && gs.resetAt > now) return toast('اكتملت المكافآت، انتظر إعادة التفعيل', 'info');
+  if (typeof window.show_12001499 !== 'function') return toast('الإعلانات غير متاحة حالياً، حاول لاحقاً', 'err');
 
-  const todayIdx = getTodayIndex();
-  const reward = WEEK_REWARDS[todayIdx];
-  const isFullWeek = ds.claimedDays.length + 1 === 7;
-  const totalReward = reward.amount + (isFullWeek ? WEEK_BONUS : 0);
+  const btn = $('weeklyClaimBtn');
+  if (btn) { btn.disabled = true; const t = $('weeklyBtnText'); if (t) t.textContent = 'جارٍ تحميل الإعلان...'; }
+  try {
+    await window.show_12001499();
+  } catch (e) {
+    renderWeeklyStreak();
+    return toast('لم يكتمل عرض الإعلان. حاول مرة أخرى', 'err');
+  }
 
+  const reward = VIEW_REWARDS[gs.claimedCount];
+  const newCount = gs.claimedCount + 1;
+  const resetAt = newCount >= 7 ? getTrustedNow() + VIEW_GIFT_COOLDOWN : (gs.resetAt || 0);
   STATE.isSubmitting = true;
-  try{
-    await db.runTransaction(async (trx) => {
+  try {
+    await db.runTransaction(async trx => {
       const ref = db.collection('users').doc(STATE.tgId);
-      const d = (await trx.get(ref)).data();
-      const oldDs = d.dailyStreak || {};
-      const weekKey = getWeekKey();
-      const claimed = oldDs.weekKey === weekKey ? (oldDs.claimedDays || []) : [];
-      if (oldDs.lastClaimDate === todayKey) throw new Error('تم الاستلام اليوم');
-      if (claimed.length >= 7) throw new Error('أكملت الأسبوع');
-      const newClaimed = [...claimed, todayIdx];
+      const snap = await trx.get(ref);
+      const data = snap.data() || {};
+      const old = data.viewGifts || {};
+      const txNow = getTrustedNow();
+      let count = Number(old.claimedCount || 0);
+      let oldReset = Number(old.resetAt || 0);
+      if (oldReset && txNow >= oldReset) { count = 0; oldReset = 0; }
+      if (count >= 7 && oldReset > txNow) throw new Error('المكافآت مكتملة، انتظر إعادة التفعيل');
+      const amount = VIEW_REWARDS[count];
+      const nextCount = count + 1;
+      const nextReset = nextCount >= 7 ? txNow + VIEW_GIFT_COOLDOWN : 0;
       trx.update(ref, {
-        balance_sy: FV.increment(totalReward),
-        totalEarned: FV.increment(totalReward),
-        dailyStreak: { weekKey, weekStart: weekKey, claimedDays: newClaimed, lastClaimDate: todayKey },
+        balance_sy: FV.increment(amount),
+        totalEarned: FV.increment(amount),
+        viewGifts: { claimedCount: nextCount, resetAt: nextReset, lastClaimAt: SV() },
         updatedAt: SV()
       });
     });
-    toast(isFullWeek
-      ? '👑 أكملت الأسبوع! +' + totalReward + ' ل.س (هدية + مكافأة)'
-      : '🎁 استلمت ' + reward.amount + ' ل.س', 'ok');
-  }catch(e){
-    toast(e.message || 'فشل الاستلام', 'err');
-  }finally{
-    STATE.isSubmitting = false;
+    await loadOrCreateUser();
     renderWeeklyStreak();
+    toast('مبروك! تمت إضافة ' + reward + ' ليرة إلى رصيدك', 'ok');
+  } catch (e) {
+    console.warn('view gift claim', e);
+    toast(e.message || 'تعذر إضافة المكافأة، حاول لاحقاً', 'err');
+    renderWeeklyStreak();
+  } finally {
+    STATE.isSubmitting = false;
   }
 }
 
