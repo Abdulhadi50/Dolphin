@@ -606,7 +606,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
             <div class="plan-header__meta">
               <div class="plan-header__lbl">الخطة النشطة</div>
               <div class="plan-header__name" id="planName">خطة أساسي</div>
-              <div class="plan-header__reward"><i class="fas fa-coins"></i><span id="planReward">6</span> ل.س / دورة</div>
+              <div class="plan-header__reward"><i class="fas fa-coins"></i><span id="planReward">7</span> ل.س / دورة</div>
             </div>
           </div>
           <div class="plan-header__lvl">
@@ -730,23 +730,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
             <div class="chip__cur">ل.س</div>
           </div>
         </div>
-      </div>
-
-      <div class="vip" id="vipCard">
-        <div class="vip__head">
-          <div class="vip__ic"><i class="fas fa-gem"></i></div>
-          <div>
-            <div class="vip__t">عضوية VIP</div>
-            <div class="vip__s" id="vipSub">دفعة واحدة · مدى الحياة</div>
-          </div>
-        </div>
-        <div class="vip__list">
-          <div class="vip__row"><i class="fas fa-hand-holding-usd"></i> حد أدنى للسحب 400 ل.س بدل 500</div>
-          <div class="vip__row"><i class="fas fa-percent"></i> عمولة سحب 0% بدل 1.5%</div>
-          <div class="vip__row"><i class="fas fa-user-plus"></i> +5 ل.س إضافية عن كل دعوة</div>
-          <div class="vip__row"><i class="fab fa-telegram-plane"></i> دعم فني مباشر</div>
-        </div>
-        <button class="vip__btn" id="vipBtn"></button>
       </div>
 
       <div class="sec-head">
@@ -875,8 +858,17 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
             </div>
           </div>
         </div>
+        <!-- التعليمات المصورة -->
         <div class="step">
           <div class="step__num">4</div>
+          <div class="step__body">
+            <div class="step__title">طريقة وضع معرف المستخدم في الملاحظة</div>
+            <div class="step__desc">اتبع الصورة التعليمية أدناه لوضع معرفك في خانة الملاحظات أثناء التحويل.</div>
+            <img src="https://up6.cc/2026/10/179163217003341.jpg" alt="طريقة وضع معرف المستخدم في الملاحظة" style="width:100%;border-radius:18px;border:1px solid #18252E">
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">5</div>
           <div class="step__body">
             <div class="step__title">التعليمات</div>
             <div class="alert alert--danger" style="margin-bottom:0">
@@ -1019,12 +1011,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
       </div>
 
       <div class="pf-row">
-        <div class="pf-row__ic"><i class="fas fa-gem"></i></div>
-        <div class="pf-row__lbl">العضوية</div>
-        <div class="pf-row__val" id="pVip">عادية</div>
-      </div>
-
-      <div class="pf-row">
         <div class="pf-row__ic"><i class="fas fa-calendar"></i></div>
         <div class="pf-row__lbl">تاريخ الانضمام</div>
         <div class="pf-row__val" id="pJoined">-</div>
@@ -1087,17 +1073,17 @@ const CONFIG = {
   admin: { telegram: 'qo_ij2' },
   referral: { newUserReward: 5, referrerReward: 10 },
   withdraw: { minAmount: 500, feeRate: 0.015, usdRate: 140 },
-  vip: { price: 299, minWithdraw: 400, feeRate: 0, referralBonus: 5 },
   deposit: { shamCash: '334a08ea2d1bbed05f214a7f08e37ae4', binance: '1121748571' },
   channel: 'https://t.me/DolphinMinerchannel',
 
+  // الخطط المعدلة: أقل خطة 500 بربح 7، وأعلى 15000 بربح أقل
   plans: [
-    { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:6,  cycleHours:6, planDays:0,  price:0 },
-    { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:10, cycleHours:6, planDays:7,  price:700 },
-    { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:22, cycleHours:6, planDays:10, price:2500 },
-    { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:36, cycleHours:6, planDays:15, price:5000 },
-    { id:'whale',  name:'حوت',    emoji:'🐋', level:5, reward:50, cycleHours:6, planDays:21, price:10000 },
-    { id:'dolphin',name:'دولفين', emoji:'🐬', level:6, reward:72, cycleHours:6, planDays:30, price:20000 }
+    { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:7,  cycleHours:6, planDays:0,  price:0 },
+    { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:12, cycleHours:6, planDays:7,  price:500 },
+    { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:20, cycleHours:6, planDays:10, price:1500 },
+    { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:30, cycleHours:6, planDays:15, price:3000 },
+    { id:'whale',  name:'حوت',    emoji:'🐋', level:5, reward:45, cycleHours:6, planDays:21, price:6000 },
+    { id:'dolphin',name:'دولفين', emoji:'🐬', level:6, reward:65, cycleHours:6, planDays:30, price:15000 }
   ],
 
   security: { maxClockDriftMs: 60 * 1000, syncIntervalMs: 5 * 60 * 1000, syncMinGapMs: 30 * 1000, clockCheckIntervalMs: 2000 },
@@ -1115,7 +1101,8 @@ const CONFIG = {
   },
 
   channelTask: { reward: 10 },
-  refundPlanProfit: false
+  refundPlanProfit: false,
+  freeTrialDays: 14  // مدة التجربة المجانية للأساسي
 };
 
 if (!firebase.apps.length) firebase.initializeApp(CONFIG.firebase);
@@ -1145,7 +1132,9 @@ const STATE = {
   serverBase: 0,
   perfBase: 0,
   syncing: false,
-  lastSyncAt: 0
+  lastSyncAt: 0,
+  isTrialActive: false,
+  trialEndsAt: null
 };
 const UI = { btnKey: '', bubbleMode: '' };
 
@@ -1161,12 +1150,8 @@ function escapeHtml(s){
 }
 function getPlan(id){ return CONFIG.plans.find(p => p.id === id) || CONFIG.plans[0]; }
 function getPlanIndex(id){ return CONFIG.plans.findIndex(p => p.id === id); }
-function isVip(){
-  // يُبقي العضوية للمستخدمين الذين دفعوا قبل إزالة النظام القديم
-  return !!(STATE.user && (STATE.user.vip === true || STATE.user.verified === true));
-}
-function getWithdrawMin(){ return isVip() ? CONFIG.vip.minWithdraw : CONFIG.withdraw.minAmount; }
-function getFeeRate(){ return isVip() ? CONFIG.vip.feeRate : CONFIG.withdraw.feeRate; }
+function getWithdrawMin(){ return CONFIG.withdraw.minAmount; }
+function getFeeRate(){ return CONFIG.withdraw.feeRate; }
 function tsMs(t){ return !t ? 0 : t.toMillis ? t.toMillis() : new Date(t).getTime(); }
 
 function toast(msg, type = 'ok'){
@@ -1319,6 +1304,12 @@ async function loadOrCreateUser(){
         name: fullName, username, photoUrl, updatedAt: SV()
       }, { merge:true }).catch(() => {});
     }
+    // بدء التجربة المجانية إذا لم تكن مفعلة
+    if (!old.trialStartedAt){
+      const trialEnd = new Date(Date.now() + CONFIG.freeTrialDays * 864e5);
+      await ref.update({ trialStartedAt: SV(), trialEndsAt: firebase.firestore.Timestamp.fromDate(trialEnd) });
+      STATE.user.trialEndsAt = firebase.firestore.Timestamp.fromDate(trialEnd);
+    }
     await checkPlanExpiry();
     return;
   }
@@ -1334,6 +1325,7 @@ async function loadOrCreateUser(){
     }
   }
 
+  const trialEnd = new Date(Date.now() + CONFIG.freeTrialDays * 864e5);
   const base = {
     telegramId: STATE.tgId, name: fullName, username, photoUrl,
     uniqueId: STATE.tgId, referralCode: STATE.tgId,
@@ -1344,11 +1336,13 @@ async function loadOrCreateUser(){
     planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
     hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
     miningCollectCount: 0,
-    tamperFlag: false, vip: false, vipAt: null,
+    tamperFlag: false,
     channelJoined: false, channelRewardClaimed: false,
     hasPurchasedPlan: false,
     collect5RewardClaimed: false, firstBuyRewardClaimed: false,
     inviteRewardClaimed: {},
+    trialStartedAt: SV(),
+    trialEndsAt: firebase.firestore.Timestamp.fromDate(trialEnd),
     createdAt: SV(), updatedAt: SV(), lastSeen: SV()
   };
 
@@ -1364,8 +1358,7 @@ async function loadOrCreateUser(){
     if (rSnap && rSnap.exists){
       const R = CONFIG.referral;
       const rd = rSnap.data();
-      const bonus = (rd.vip === true || rd.verified === true) ? CONFIG.vip.referralBonus : 0;
-      const payout = R.referrerReward + bonus;
+      const payout = R.referrerReward;
       Object.assign(data, { referralUsed:true, referralCodeUsed:referrerId, referredBy:referrerId,
         balance_sy:R.newUserReward, totalEarned:R.newUserReward });
       trx.update(db.collection('users').doc(referrerId), {
@@ -1403,13 +1396,31 @@ function listenUser(){
 }
 
 function refreshAll(){
-  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderVip(); renderTasks();
+  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks();
 }
 
 async function checkPlanExpiry(){
   if (!STATE.user || STATE.timeLocked || !STATE.timeSynced) return;
   const plan = getPlan(STATE.user.activePlanId || 'basic');
-  if (plan.planDays === 0 || !STATE.user.planExpiresAt) return;
+  if (plan.planDays === 0){
+    // الخطة الأساسية: التحقق من انتهاء التجربة المجانية
+    if (STATE.user.trialEndsAt){
+      const left = tsMs(STATE.user.trialEndsAt) - getTrustedNow();
+      if (left <= 0){
+        clearTimeout(STATE.planExpiryTimer);
+        await db.collection('users').doc(STATE.tgId).update({
+          hasStartedMining: false, miningStartTime: null, miningProgress: 0,
+          miningCollectable: false, updatedAt: SV()
+        });
+        toast('انتهت فترة التجربة المجانية. يرجى ترقية خطتك للمتابعة.', 'info');
+      } else {
+        clearTimeout(STATE.planExpiryTimer);
+        STATE.planExpiryTimer = setTimeout(checkPlanExpiry, left + 1000);
+      }
+    }
+    return;
+  }
+  if (!STATE.user.planExpiresAt) return;
   const left = tsMs(STATE.user.planExpiresAt) - getTrustedNow();
   if (left > 0){
     clearTimeout(STATE.planExpiryTimer);
@@ -1423,12 +1434,14 @@ async function checkPlanExpiry(){
       const d = (await trx.get(userRef)).data();
       if (!d || !d.planExpiresAt || getPlan(d.activePlanId).planDays === 0) return;
       if (getTrustedNow() < tsMs(d.planExpiresAt)) return;
-      refund = (d.planPurchaseAmount || 0) + (CONFIG.refundPlanProfit ? (d.planTotalEarned || 0) : 0);
+      refund = d.planPurchaseAmount || 0;
       trx.update(userRef, {
         balance_sy: FV.increment(refund),
         activePlanId: 'basic', planStartedAt: null, planExpiresAt: null,
         planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
-        ...(d.miningCollectable ? {} : { hasStartedMining: false, miningStartTime: null, miningProgress: 0 }),
+        trialStartedAt: SV(),
+        trialEndsAt: firebase.firestore.Timestamp.fromDate(new Date(getTrustedNow() + CONFIG.freeTrialDays * 864e5)),
+        hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
         updatedAt: SV()
       });
     });
@@ -1471,7 +1484,6 @@ function updateUI(){
   setText('pRefEarn', fmt(u.referralEarnings || 0));
   setText('pTotalWithdrawn', fmt(u.totalWithdrawn || 0));
   setText('pPlan', plan.name);
-  setText('pVip', isVip() ? 'VIP ✓' : 'عادية');
   if (u.createdAt) {
     const dt = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
     setText('pJoined', dt.toLocaleDateString('ar-EG', { year:'numeric', month:'short', day:'numeric' }));
@@ -1498,15 +1510,12 @@ function updateAvatar(elId){
 function updateSupportBtn(){
   const btn = $('profSupport');
   if (!btn) return;
-  btn.innerHTML = isVip()
-    ? '<i class="fab fa-telegram-plane" style="color:#4DA3FF"></i> تواصل مع الدعم المباشر'
-    : '<i class="fas fa-lock" style="color:#FF8A82"></i> الدعم المباشر لأعضاء VIP';
+  btn.innerHTML = '<i class="fab fa-telegram-plane"></i> تواصل مع الدعم الفني';
 }
 
 function updateWithdrawFeeLabels(){
-  const vip = isVip();
   setText('wdMinLbl', fmt(getWithdrawMin()) + ' ل.س');
-  setText('wdFeeRateLbl', vip ? '(0%)' : '(1.5%)');
+  setText('wdFeeRateLbl', '(1.5%)');
   const wa = $('wdAmount');
   if (wa) wa.placeholder = 'الحد الأدنى ' + fmt(getWithdrawMin());
   updateWithdrawFee();
@@ -1519,7 +1528,6 @@ const fish6 = $('fish6');
 const treasure = $('treasure');
 const tank = $('tank');
 
-/* إنشاء الفقاعات مرة واحدة عند تغيّر الحالة فقط */
 function setBubbles(mode, count){
   if (UI.bubbleMode === mode) return;
   UI.bubbleMode = mode;
@@ -1538,7 +1546,6 @@ function setBubbles(mode, count){
   }
 }
 
-/* تحديث زر التعدين فقط عند تغيّر محتواه */
 function setMineBtn(cls, html, disabled){
   const key = cls + '|' + html + '|' + !!disabled;
   if (UI.btnKey === key) return;
@@ -1562,11 +1569,30 @@ function renderMining(){
   aquariumScene.classList.toggle('running', runningNow);
   $('miningCard').classList.toggle('is-ready', readyNow);
 
+  // التحقق من انتهاء التجربة للخطة الأساسية
+  if (plan.id === 'basic' && u.trialEndsAt){
+    const left = tsMs(u.trialEndsAt) - getTrustedNow();
+    if (left <= 0 && !STATE.timeLocked){
+      return renderTrialEnded();
+    }
+  }
+
   if (STATE.timeLocked) return renderLocked();
   if (!u.hasStartedMining) return renderIdle(plan);
   if (u.miningCollectable) return renderReady(plan);
   if (u.miningStartTime) return renderRunning(u, plan);
   renderIdle(plan);
+}
+
+function renderTrialEnded(){
+  stopLiveTimer();
+  setText('statusText', 'انتهت فترة التجربة المجانية — يرجى ترقية خطتك');
+  $('statusText').style.color = '#FF8A82';
+  $('statusDot').className = 'status-bar__dot';
+  setText('miningStatusMeta', 'منتهية');
+  setText('timerText', '00:00:00');
+  setText('timerLbl', 'انتهت التجربة');
+  setMineBtn('action action--stop', '<i class="fas fa-lock"></i><span>انتهت التجربة — قم بالترقية</span>', true);
 }
 
 function renderLocked(){
@@ -1673,6 +1699,9 @@ async function markMiningComplete(){
 async function startMining(){
   if (STATE.isSubmitting || !STATE.user) return;
   if (STATE.timeLocked) return toast('التعدين مجمّد', 'err');
+  const plan = getPlan(STATE.user.activePlanId || 'basic');
+  if (plan.id === 'basic' && STATE.user.trialEndsAt && tsMs(STATE.user.trialEndsAt) <= getTrustedNow())
+    return toast('انتهت فترة التجربة المجانية. يرجى ترقية خطتك.', 'err');
   if (STATE.user.miningCollectable) return toast('جمع الأرباح أولاً', 'info');
   if (STATE.user.miningStartTime) return toast('التعدين نشط حالياً', 'info');
 
@@ -1692,7 +1721,7 @@ async function startMining(){
       });
     });
     startLiveTimer();
-    toast('🚀 بدأ التعدين! سيستغرق ' + getPlan(STATE.user.activePlanId).cycleHours + ' ساعات', 'ok');
+    toast('🚀 بدأ التعدين! سيستغرق ' + plan.cycleHours + ' ساعات', 'ok');
   }catch(e){
     toast(e.message || 'فشل بدء التعدين', 'err');
   }finally{
@@ -1904,6 +1933,8 @@ async function cancelPlan(){
         activePlanId: 'basic', planStartedAt: null, planExpiresAt: null,
         planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
         hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
+        trialStartedAt: SV(),
+        trialEndsAt: firebase.firestore.Timestamp.fromDate(new Date(getTrustedNow() + CONFIG.freeTrialDays * 864e5)),
         updatedAt: SV()
       });
     });
@@ -1952,65 +1983,6 @@ async function buyPlan(planId){
   }catch(e){
     toast(e.message || 'فشل الشراء', 'err');
   }finally{ STATE.isSubmitting = false; }
-}
-
-/* ═══ عضوية VIP ═══ */
-function renderVip(){
-  const card = $('vipCard');
-  const btn = $('vipBtn');
-  if (!card || !btn || !STATE.user) return;
-  const vip = isVip();
-  card.classList.toggle('vip--active', vip);
-  if (vip){
-    setText('vipSub', 'العضوية مفعّلة مدى الحياة ✓');
-    btn.disabled = true;
-    btn.dataset.act = '';
-    btn.innerHTML = '<i class="fas fa-check"></i> أنت عضو VIP';
-    return;
-  }
-  setText('vipSub', 'دفعة واحدة · مدى الحياة');
-  const bal = STATE.user.balance_sy || 0;
-  const price = CONFIG.vip.price;
-  btn.disabled = false;
-  if (bal < price){
-    btn.dataset.act = 'wallet';
-    btn.innerHTML = '<i class="fas fa-wallet"></i> اشحن رصيدك (تحتاج ' + fmt(price - bal) + ' ل.س)';
-  } else {
-    btn.dataset.act = 'buy';
-    btn.innerHTML = '<i class="fas fa-crown"></i> اشترك الآن — ' + fmt(price) + ' ل.س';
-  }
-}
-
-async function buyVip(){
-  if (STATE.isSubmitting || !STATE.user || isVip()) return;
-  const price = CONFIG.vip.price;
-  if (!confirm('تأكيد الاشتراك في عضوية VIP بـ ' + fmt(price) + ' ل.س؟ (دفعة واحدة، مدى الحياة)')) return;
-
-  STATE.isSubmitting = true;
-  try{
-    await db.runTransaction(async (trx) => {
-      const ref = db.collection('users').doc(STATE.tgId);
-      const d = (await trx.get(ref)).data();
-      if (!d) throw new Error('المستخدم غير موجود');
-      if (d.vip === true || d.verified === true) throw new Error('أنت عضو VIP بالفعل');
-      if ((d.balance_sy || 0) < price) throw new Error('رصيد غير كافٍ');
-      trx.update(ref, {
-        balance_sy: FV.increment(-price),
-        vip: true,
-        vipAt: SV(),
-        updatedAt: SV()
-      });
-    });
-    toast('🎉 تم تفعيل عضوية VIP! استمتع بالمزايا', 'ok');
-  }catch(e){
-    toast(e.message || 'فشل الاشتراك', 'err');
-  }finally{ STATE.isSubmitting = false; }
-}
-
-function onVipClick(){
-  const act = $('vipBtn').dataset.act;
-  if (act === 'wallet') { navigate('wallet'); return; }
-  if (act === 'buy') buyVip();
 }
 
 /* ═══ المحفظة ═══ */
@@ -2104,7 +2076,6 @@ async function submitWithdraw(){
         exchangeRate: STATE.withdrawMethod === 'binance' ? CONFIG.withdraw.usdRate : null,
         phone: phone || null, accountId: account,
         method: STATE.withdrawMethod, status: 'pending',
-        isVip: isVip(),
         createdAt: SV(), updatedAt: SV()
       });
     });
@@ -2201,7 +2172,7 @@ async function submitReferral(){
       if ((me.referredUsers || []).includes(referrerId)) throw new Error('هذا المستخدم من دعواتك');
       const rd = (await trx.get(referrerRef)).data();
       if (!rd) throw new Error('صاحب الدعوة غير موجود');
-      const payout = R.referrerReward + ((rd.vip === true || rd.verified === true) ? CONFIG.vip.referralBonus : 0);
+      const payout = R.referrerReward;
 
       trx.update(userRef, {
         balance_sy: FV.increment(R.newUserReward),
@@ -2591,7 +2562,7 @@ function navigate(view){
     navigate._t = setTimeout(show, 120);
   } else show();
 
-  if (view === 'store') { renderPlans(); renderPlansReport(); renderVip(); }
+  if (view === 'store') { renderPlans(); renderPlansReport(); }
   if (view === 'profile') { updateAvatar('profAvatar'); updateSupportBtn(); }
   if (view === 'tasks') renderTasks();
   if (view === 'referral' && $('refPaneTop').style.display === 'block') loadLeaderboard();
@@ -2602,15 +2573,9 @@ function bindUI(){
   $('mineAction').addEventListener('click', onMineClick);
   $('profCopyId').addEventListener('click', () => copyText($('profId').textContent, 'تم نسخ المعرف'));
   $('profSupport').addEventListener('click', () => {
-    if (!isVip()){
-      toast('الدعم المباشر لأعضاء VIP فقط', 'info');
-      navigate('store');
-      return;
-    }
     const url = 'https://t.me/' + CONFIG.admin.telegram;
     if (tg && tg.openTelegramLink) tg.openTelegramLink(url); else window.open(url, '_blank');
   });
-  $('vipBtn').addEventListener('click', onVipClick);
   initWalletTabs();
   initWithdraw();
   initDeposit();
