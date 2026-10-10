@@ -568,9 +568,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .wheel-center-btn__icon{font-size:30px;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
 .wheel-action{width:100%;min-height:56px;border-radius:18px;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s;position:relative;overflow:hidden;background:linear-gradient(135deg,#4DA3FF 0%,#007AFF 100%);color:#fff}
 .wheel-action:active:not([disabled]){transform:scale(.98)}
-.wheel-action[disabled]{opacity:1;cursor:not-allowed;background:linear-gradient(135deg,#24476B 0%,#17314D 100%);color:#FFFFFF!important;border:1px solid rgba(125,185,255,.48);box-shadow:inset 0 1px rgba(255,255,255,.10)}
-.wheel-action[disabled] i,.wheel-action[disabled] span{color:#FFFFFF!important;opacity:1;text-shadow:0 1px 2px rgba(0,0,0,.28)}
-#wheelMainBtn[disabled]{filter:none}
+.wheel-action[disabled]{opacity:.55;cursor:not-allowed;background:linear-gradient(135deg,#2A2A32,#141414)}
 .wheel-action::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:btnShine 2.8s ease-in-out infinite}
 .wheel-action[disabled]::before{display:none}
 .wheel-info{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(0,122,255,.12);border:1px solid rgba(0,122,255,.35);border-radius:20px;margin-top:16px}
@@ -642,22 +640,12 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
   .fish{animation:none}
 }
 
-/* 🔐 Mines 4×4 */
-.mines-launch{background:linear-gradient(120deg,rgba(14,165,233,.9),rgba(79,70,229,.95))!important;border-color:rgba(125,211,252,.45)!important;margin-top:12px}
-.mines-launch .wheel-tile__ic{background:rgba(7,25,55,.48)}
+.social-task-card{background:#141414;border:1px solid #18252E;border-radius:22px;padding:14px;margin-bottom:10px}
+.social-task-head{display:flex;align-items:center;gap:11px}.social-task-icon{width:44px;height:44px;flex-shrink:0;border-radius:15px;background:#18252E;display:grid;place-items:center;font-size:20px;color:#4DA3FF}
+.social-task-info{flex:1;min-width:0}.social-task-title{font-weight:800;font-size:14px}.social-task-platform{font-size:11px;color:var(--text-3);margin-top:3px}
+.social-task-actions{display:flex;gap:8px;margin-top:12px}.social-task-actions button,.social-task-actions a{flex:1;min-height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:800;text-decoration:none}
+.social-task-go{background:#18252E;color:#fff}.social-task-claim{background:#007AFF;color:#fff}.social-task-claim:disabled{opacity:.6}.social-task-delete{background:rgba(255,69,58,.14);color:#FF8A82;padding:0 12px}
 
-.code-prize{margin:12px 0 15px;padding:14px;text-align:center;border:1px solid rgba(250,204,21,.55);border-radius:16px;background:linear-gradient(135deg,rgba(120,78,8,.34),rgba(250,204,21,.08));box-shadow:inset 0 0 20px rgba(250,204,21,.06)}
-.code-prize small{display:block;color:#fde68a;font-size:12px;font-weight:800}.code-prize strong{display:block;margin-top:4px;color:#facc15;font-size:clamp(25px,7vw,34px);font-weight:1000;text-shadow:0 0 16px rgba(250,204,21,.22)}
-.code-card{border:1px solid rgba(250,204,21,.42);border-radius:20px;padding:14px;background:radial-gradient(ellipse at top,#4b3915 0%,#1b1a1b 55%,#101827 100%);box-shadow:inset 0 0 24px rgba(250,204,21,.07);margin-bottom:14px}.code-card__title{text-align:center;color:#facc15;font-weight:1000;letter-spacing:2px;margin:2px 0 14px}.code-slots{display:flex;justify-content:center;gap:8px;margin:0 auto 12px}.code-slots span{width:clamp(42px,12vw,58px);height:58px;display:grid;place-items:center;border:1px solid rgba(250,204,21,.65);border-radius:11px;background:linear-gradient(145deg,#292316,#111827);color:#fde68a;font-size:29px;font-weight:1000;box-shadow:inset 0 0 12px rgba(250,204,21,.08)}.code-hint{text-align:center;min-height:22px;color:#cbd5e1;font-size:12px;margin-bottom:12px}.code-attempts{font-size:20px;font-weight:1000;color:#fde68a;text-align:center;padding:5px}.code-keypad{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;max-width:390px;margin:0 auto 12px}.code-key{height:43px;border:1px solid rgba(250,204,21,.28);border-radius:10px;background:linear-gradient(145deg,#3a3424,#1d293b);color:#fff7cc;font-size:19px;font-weight:900}.code-key:disabled{opacity:.35}.code-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.code-actions .mines-btn{min-height:44px;padding:10px 8px}.code-hint-btn{grid-column:1/-1;border:1px solid rgba(250,204,21,.4);background:linear-gradient(135deg,#6b4d0c,#42320f);color:#fde68a;border-radius:12px;font-weight:900}.code-hint-btn:disabled{opacity:.45}
-@media(max-width:380px){.code-slots{gap:5px}.code-slots span{height:48px}.code-key{height:39px}.code-actions{grid-template-columns:1fr}}
-
-.mines-shell{background:linear-gradient(160deg,#101a2d,#0a1020);border:1px solid rgba(148,163,184,.2);border-radius:24px;padding:16px;box-shadow:0 18px 40px rgba(0,0,0,.25)}
-.mines-balance{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border-radius:16px;background:linear-gradient(110deg,rgba(16,185,129,.16),rgba(14,165,233,.12));border:1px solid rgba(52,211,153,.22);margin-bottom:14px}
-.mines-balance small{display:block;color:#9fb4ce;font-size:11px;font-weight:700}.mines-balance strong{font-size:22px;color:#ecfdf5;font-variant-numeric:tabular-nums}
-.mines-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}.mines-control{background:rgba(255,255,255,.045);border:1px solid rgba(148,163,184,.18);border-radius:14px;padding:11px;min-width:0}.mines-control label{display:block;color:#9fb4ce;font-size:11px;font-weight:800;margin-bottom:8px}.mines-select,.mines-input{width:100%;background:#101d32;border:1px solid rgba(148,163,184,.25);border-radius:10px;padding:10px;color:#f8fafc;font:700 14px inherit;outline:none}.mines-quick{display:flex;gap:5px;margin-top:7px}.mines-quick button{flex:1;border:1px solid rgba(148,163,184,.2);background:rgba(255,255,255,.06);color:#dbeafe;border-radius:8px;padding:5px 0;font-size:10px;font-weight:800}
-.mines-meta{display:flex;align-items:center;justify-content:space-between;color:#a8bad2;font-size:11px;font-weight:700;margin:8px 2px 10px}.mines-meta b{color:#f8fafc}
-.mines-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;direction:ltr;margin:0 auto 15px;max-width:420px}.mine-cell{aspect-ratio:1;border:1px solid rgba(125,211,252,.24);border-radius:13px;background:linear-gradient(145deg,#263b5c,#172740);box-shadow:inset 0 1px rgba(255,255,255,.1),0 4px 9px rgba(0,0,0,.24);color:#e2e8f0;font-size:clamp(20px,6vw,29px);display:grid;place-items:center;cursor:pointer;transition:transform .12s,background .2s,border-color .2s;min-width:0}.mine-cell:active{transform:scale(.95)}.mine-cell:disabled{cursor:default}.mine-cell.revealed-safe{background:linear-gradient(145deg,#0b795f,#065f46);border-color:#34d399;box-shadow:0 0 18px rgba(16,185,129,.16)}.mine-cell.revealed-bomb{background:linear-gradient(145deg,#991b1b,#450a0a);border-color:#fb7185}.mine-cell.revealed-safe,.mine-cell.revealed-bomb{animation:minePop .2s ease-out}@keyframes minePop{from{transform:scale(.86)}to{transform:scale(1)}}
-.mines-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.mines-btn{border:0;border-radius:13px;padding:13px 10px;font-size:13px;font-weight:900;cursor:pointer;transition:transform .12s,opacity .2s}.mines-btn:active{transform:scale(.98)}.mines-btn:disabled{opacity:.42;cursor:not-allowed}.mines-btn--start{background:linear-gradient(135deg,#34d399,#059669);color:#052e25}.mines-btn--cash{background:linear-gradient(135deg,#fcd34d,#f59e0b);color:#422006}.mines-note{font-size:10.5px;line-height:1.65;color:#8195b2;margin:12px 2px 0}.mines-history{margin-top:16px;background:rgba(255,255,255,.035);border:1px solid rgba(148,163,184,.14);border-radius:16px;padding:13px}.mines-history h3{font-size:13px;margin:0 0 9px;color:#e2e8f0}.mines-history-row{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid rgba(148,163,184,.1);font-size:11px;color:#9fb4ce}.mines-history-row:last-child{border-bottom:0}.mines-profit{font-weight:900;color:#34d399}.mines-loss{font-weight:900;color:#fb7185}.mines-empty{font-size:11px;color:#7186a4;text-align:center;padding:10px 0}
 </style>
 
 <style id="marineRoyalTheme">
@@ -993,39 +981,6 @@ body{background:#03101d;color:#effaff}
         </div>
         <span class="wheel-tile__arrow"><i class="fas fa-chevron-left"></i></span>
       </button>
-      <button class="wheel-tile mines-launch" onclick="navigate('mines')">
-        <span class="wheel-tile__ic">💎</span>
-        <div class="wheel-tile__body">
-          <div class="wheel-tile__t">فك الشيفرة الذهبية</div>
-          <div class="wheel-tile__d">خمن الرمز السري من 5 أرقام خلال 3 محاولات</div>
-          <span class="wheel-tile__badge"><i class="fas fa-bolt"></i> جولة سريعة</span>
-        </div>
-        <span class="wheel-tile__arrow"><i class="fas fa-chevron-left"></i></span>
-      </button>
-    </div>
-
-    <div class="view" id="view-mines">
-      <div class="topbar">
-        <div class="topbar__meta"><div class="topbar__hello">تحدي الأرقام</div><div class="topbar__name">🔐 فك الشيفرة الذهبية</div></div>
-        <div class="chip"><div class="chip__body"><div class="chip__num">3</div><div class="chip__cur">محاولات فقط</div></div></div>
-      </div>
-      <div class="mines-shell code-shell">
-        <div class="mines-balance"><div><small>رصيدك الأساسي</small><strong><span id="minesBalance">0</span> <small style="display:inline;color:#a7f3d0">ل.س</small></strong></div><span style="font-size:27px">🔐</span></div>
-        <div class="code-prize"><small>الجائزة عند فتح الشيفرة</small><strong id="codePrize">500 ل.س</strong></div>
-        <div class="mines-controls">
-          <div class="mines-control"><label for="minesBet">اختر مبلغ الرهان</label><select id="minesBet" class="mines-select"><option value="100">100 ل.س ← جائزة 500</option><option value="300">300 ل.س ← جائزة 1,000</option><option value="500">500 ل.س ← جائزة 10,000</option></select></div>
-          <div class="mines-control"><label>المحاولات المتبقية</label><div id="codeAttempts" class="code-attempts">3 / 3</div></div>
-        </div>
-        <div class="code-card">
-          <div class="code-card__title">✦ البطاقة الذهبية ✦</div>
-          <div class="code-slots" id="codeSlots" dir="ltr"><span>_</span><span>_</span><span>_</span><span>_</span><span>_</span></div>
-          <div id="codeHintText" class="code-hint">ابدأ جولة جديدة لبدء فك الشيفرة.</div>
-          <div class="code-keypad" id="codeKeypad" dir="ltr"></div>
-          <div class="code-actions"><button class="mines-btn mines-btn--start" id="minesStart">🔑 ابدأ الرهان</button><button class="mines-btn mines-btn--cash" id="codeSubmit" disabled>تأكيد الشيفرة</button><button class="mines-btn code-hint-btn" id="codeHint" disabled>💡 كشف أول رقم</button></div>
-        </div>
-        <p class="mines-note">لكل جولة 3 محاولات. كشف أول رقم اختياري مقابل رسم: 20 ل.س لرهان 100، و60 لرهان 300، و100 لرهان 500. إذا انتهت المحاولات أو غادرت الجولة دون حل، يبقى الرهان مخصومًا. الجولة غير المنتهية محفوظة على هذا الجهاز.</p>
-        <div class="mines-history"><h3>📋 آخر 5 جولات</h3><div id="minesHistory"><div class="mines-empty">لا توجد جولات محفوظة بعد</div></div></div>
-      </div>
     </div>
 
     <div class="view" id="view-wheel">
@@ -1140,6 +1095,20 @@ body{background:#03101d;color:#effaff}
         </div>
         <button class="cq__btn cq__btn--join" id="taskChannelBtn"><i class="fab fa-telegram-plane"></i> انضم</button>
       </div>
+
+
+      <div class="card" id="socialTaskAdmin" style="display:none">
+        <div class="card__title"><i class="fas fa-sliders-h"></i> إدارة مهمات التواصل الاجتماعي</div>
+        <div class="field"><label class="field__label" for="socialTaskTitle">اسم المهمة</label><input class="field__input" id="socialTaskTitle" placeholder="مثال: انضم إلى البوت واحصل على 10"></div>
+        <div class="field"><label class="field__label" for="socialTaskPlatform">المنصة</label><select class="field__input" id="socialTaskPlatform"><option value="telegram">تيليجرام</option><option value="youtube">يوتيوب</option><option value="instagram">إنستغرام</option><option value="tiktok">تيك توك</option><option value="facebook">فيسبوك</option><option value="x">X</option><option value="other">أخرى</option></select></div>
+        <div class="field"><label class="field__label" for="socialTaskUrl">رابط المهمة</label><input class="field__input field__input--ltr" id="socialTaskUrl" type="url" placeholder="https://t.me/..." inputmode="url"></div>
+        <div class="field"><label class="field__label" for="socialTaskReward">المكافأة (ل.س)</label><input class="field__input" id="socialTaskReward" type="number" min="1" step="1" placeholder="10"></div>
+        <button class="btn btn--primary" id="socialTaskSave"><i class="fas fa-plus"></i> إضافة المهمة</button>
+        <div class="msg" id="socialTaskAdminMsg"></div>
+        <div class="card__sep"></div><div class="card__title">المهمات المضافة</div><div id="socialTaskAdminList"></div>
+      </div>
+      <div class="grp"><span>مهمات التواصل الاجتماعي</span><small>أكمل المهمة لتحصل على مكافأتها</small></div>
+      <div id="socialTasksContainer"></div>
 
       <div id="inviteTasksContainer"></div>
     </div>
@@ -1812,7 +1781,7 @@ function listenUser(){
 }
 
 function refreshAll(){
-  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks(); renderWheel(); renderWeeklyStreak(); if(typeof minesRender==='function' && $('minesGrid')) minesRender();
+  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks(); renderWheel(); renderWeeklyStreak();
 }
 
 async function checkPlanExpiry(){
@@ -2765,6 +2734,113 @@ function ringSvg(frac){
     '<circle class="ring__fg" cx="40" cy="40" r="34" style="stroke-dashoffset:' + (c * (1 - f)) + '"/></svg>';
 }
 
+
+const SOCIAL_PLATFORMS = {
+  telegram:{label:'تيليجرام',icon:'fab fa-telegram-plane'},
+  youtube:{label:'يوتيوب',icon:'fab fa-youtube'},
+  instagram:{label:'إنستغرام',icon:'fab fa-instagram'},
+  tiktok:{label:'تيك توك',icon:'fab fa-tiktok'},
+  facebook:{label:'فيسبوك',icon:'fab fa-facebook'},
+  x:{label:'X',icon:'fab fa-x-twitter'},
+  other:{label:'أخرى',icon:'fas fa-globe'}
+};
+function isSocialTaskAdmin(){
+  const tu = (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) || {};
+  return String(tu.username || '').toLowerCase() === String(CONFIG.admin.telegram || '').replace(/^@/,'').toLowerCase();
+}
+function socialTasksCollection(){ return db.collection('socialTasks'); }
+async function loadSocialTasks(){
+  const list = $('socialTasksContainer');
+  if (!list) return;
+  list.innerHTML = '<div class="hint"><i class="fas fa-spinner fa-spin"></i><div>جاري تحميل مهمات التواصل...</div></div>';
+  try{
+    const snap = await socialTasksCollection().get();
+    const tasks = snap.docs.map(d => ({id:d.id,...d.data()})).filter(t => t.active !== false);
+    renderSocialTasks(tasks);
+    if (isSocialTaskAdmin()) renderSocialTaskAdminList(tasks);
+  }catch(e){
+    console.error('load social tasks',e);
+    list.innerHTML = '<div class="hint"><i class="fas fa-info-circle"></i><div>تعذر تحميل المهمات. تحقق من اتصال قاعدة البيانات وصلاحيات Firestore.</div></div>';
+  }
+}
+function renderSocialTasks(tasks){
+  const el = $('socialTasksContainer'); if(!el) return;
+  const claimed = (STATE.user && STATE.user.socialTasksClaimed) || {};
+  if(!tasks.length){ el.innerHTML='<div class="card" style="text-align:center;color:var(--text-3)">لا توجد مهمات تواصل اجتماعي حالياً.</div>'; return; }
+  el.innerHTML = tasks.map(t=>{
+    const p = SOCIAL_PLATFORMS[t.platform] || SOCIAL_PLATFORMS.other;
+    const done = !!claimed[t.id];
+    return '<div class="social-task-card"><div class="social-task-head"><div class="social-task-icon"><i class="'+p.icon+'"></i></div><div class="social-task-info"><div class="social-task-title">'+escapeHtml(t.title||'مهمة تواصل')+'</div><div class="social-task-platform">'+p.label+'</div></div><span class="rwd"><i class="fas fa-coins"></i> '+Math.max(0,Number(t.reward)||0)+' ل.س</span></div><div class="social-task-actions"><button class="social-task-go" onclick="openSocialTaskLink(\''+encodeURIComponent(t.url||'')+'\')"><i class="fas fa-external-link-alt"></i> فتح الرابط</button><button class="social-task-claim" '+(done?'disabled':'')+' onclick="claimSocialTask(\''+t.id+'\')">'+(done?'<i class="fas fa-check"></i> مكتملة':'<i class="fas fa-gift"></i> استلام المكافأة')+'</button></div></div>';
+  }).join('');
+}
+window.openSocialTaskLink = function(encoded){
+  let url=''; try{url=decodeURIComponent(encoded)}catch(e){}
+  if(!/^https:\/\/\S+/i.test(url)) return toast('رابط المهمة غير صالح','err');
+  if(tg && tg.openTelegramLink && /t\.me\//i.test(url)) tg.openTelegramLink(url); else window.open(url,'_blank','noopener');
+};
+window.claimSocialTask = async function(taskId){
+  if(!STATE.user || STATE.isSubmitting) return;
+  STATE.isSubmitting=true;
+  try{
+    await db.runTransaction(async trx=>{
+      const userRef=db.collection('users').doc(STATE.tgId);
+      const taskRef=socialTasksCollection().doc(taskId);
+      const ud=(await trx.get(userRef)).data();
+      const td=(await trx.get(taskRef)).data();
+      if(!ud || !td || td.active===false) throw new Error('المهمة غير متاحة');
+      if(ud.socialTasksClaimed && ud.socialTasksClaimed[taskId]) throw new Error('استلمت مكافأة هذه المهمة مسبقاً');
+      const reward=Math.floor(Number(td.reward)||0);
+      if(reward<1) throw new Error('قيمة المكافأة غير صالحة');
+      trx.update(userRef,{
+        balance_sy:FV.increment(reward),
+        totalEarned:FV.increment(reward),
+        ['socialTasksClaimed.'+taskId]:true,
+        updatedAt:SV()
+      });
+    });
+    toast('تمت إضافة مكافأة المهمة إلى رصيدك','ok');
+  }catch(e){toast(e.message||'تعذر استلام المكافأة','err');}
+  finally{STATE.isSubmitting=false;loadSocialTasks();}
+};
+function showSocialTaskAdminMsg(message,ok){
+  const el=$('socialTaskAdminMsg'); if(!el)return;
+  el.textContent=message;el.className='msg show '+(ok?'msg--ok':'msg--err');
+}
+function renderSocialTaskAdminList(tasks){
+  const el=$('socialTaskAdminList'); if(!el)return;
+  if(!tasks.length){el.innerHTML='<div style="color:var(--text-3);font-size:12px">لا توجد مهمات مضافة.</div>';return;}
+  el.innerHTML=tasks.map(t=>'<div class="qrow"><div class="qrow__ic"><i class="fas fa-tasks"></i></div><div class="qrow__info"><div class="qrow__t">'+escapeHtml(t.title||'مهمة')+'</div><div class="qrow__d">'+escapeHtml((SOCIAL_PLATFORMS[t.platform]||SOCIAL_PLATFORMS.other).label)+' · '+(Number(t.reward)||0)+' ل.س</div></div><button class="social-task-delete" onclick="deleteSocialTask(\''+t.id+'\')"><i class="fas fa-trash"></i></button></div>').join('');
+}
+window.deleteSocialTask=async function(id){
+  if(!isSocialTaskAdmin())return toast('غير مصرح','err');
+  if(!confirm('هل تريد حذف هذه المهمة؟'))return;
+  try{await socialTasksCollection().doc(id).delete();toast('تم حذف المهمة','ok');loadSocialTasks();}
+  catch(e){toast('تعذر حذف المهمة: تحقق من صلاحيات Firestore','err');}
+};
+async function addSocialTask(){
+  if(!isSocialTaskAdmin())return toast('هذه الصفحة مخصصة للإدارة','err');
+  const title=$('socialTaskTitle').value.trim(), platform=$('socialTaskPlatform').value;
+  const url=$('socialTaskUrl').value.trim(), reward=Math.floor(Number($('socialTaskReward').value));
+  if(title.length<3)return showSocialTaskAdminMsg('اكتب اسم المهمة (3 أحرف على الأقل).',false);
+  if(!/^https:\/\/\S+/i.test(url))return showSocialTaskAdminMsg('أدخل رابطاً صحيحاً يبدأ بـ https://',false);
+  if(!Number.isFinite(reward)||reward<1||reward>1000000)return showSocialTaskAdminMsg('أدخل مكافأة بين 1 و 1000000 ل.س.',false);
+  const btn=$('socialTaskSave');btn.disabled=true;
+  try{
+    await socialTasksCollection().add({title,platform,url,reward,active:true,createdAt:SV(),createdBy:String(STATE.tgId)});
+    $('socialTaskTitle').value='';$('socialTaskUrl').value='';$('socialTaskReward').value='';
+    showSocialTaskAdminMsg('تمت إضافة المهمة بنجاح وستظهر للمستخدمين في المهمات السريعة.',true);
+    await loadSocialTasks();
+  }catch(e){console.error(e);showSocialTaskAdminMsg('فشل الحفظ. تحقق من صلاحيات Firestore وقواعد الأمان.',false);}
+  finally{btn.disabled=false;}
+}
+function initSocialTaskAdmin(){
+  const panel=$('socialTaskAdmin'); if(!panel)return;
+  if(isSocialTaskAdmin()){
+    panel.style.display='block';
+    const btn=$('socialTaskSave'); if(btn)btn.addEventListener('click',addSocialTask);
+  }
+}
+
 function renderTasks(){
   const container = $('inviteTasksContainer');
   if (!container || !STATE.user) return;
@@ -3210,32 +3286,8 @@ async function spinWheel(){
 function closeWheelModal(){ $('wheelModal').classList.remove('show'); }
 window.closeWheelModal = closeWheelModal;
 
-/* ═══ 🔐 فك الشيفرة الذهبية — balance uses Firestore; history/active round local ═══ */
-const MINES_STORE_KEY = 'dolphin_codegame_history_v1';
-const CODE_ROUND_KEY = 'dolphin_codegame_active_v1';
-const CODE_PRIZES = {100:500,300:1000,500:10000};
-const CODE_HINT_FEES = {100:20,300:60,500:100};
-let minesRound = null;
-let minesBusy = false;
-let codeDigits = '';
-function minesLoad(){try{const x=JSON.parse(localStorage.getItem(MINES_STORE_KEY)||'{}');return {history:Array.isArray(x.history)?x.history.slice(0,5):[]};}catch(e){return {history:[]};}}
-function minesSave(data){localStorage.setItem(MINES_STORE_KEY,JSON.stringify({history:(data.history||[]).slice(0,5)}));}
-function minesMoney(n){return Math.round(n).toLocaleString('en-US');}
-function minesGetBet(){const n=Number($('minesBet').value);return CODE_PRIZES[n]?n:100;}
-function minesPrimaryBalance(){return Number(STATE.user&&STATE.user.balance_sy||0);}
-function codePersist(){try{if(minesRound&&!minesRound.ended)localStorage.setItem(CODE_ROUND_KEY,JSON.stringify(minesRound));else localStorage.removeItem(CODE_ROUND_KEY);}catch(e){}}
-function codeLoadRound(){try{const r=JSON.parse(localStorage.getItem(CODE_ROUND_KEY)||'null');if(r&&CODE_PRIZES[r.bet]&&/^\d{5}$/.test(r.secret)&&Number.isInteger(r.attempts)&&r.attempts>=0&&r.attempts<=3&&!r.ended)return r;}catch(e){}return null;}
-function codeKeypadRender(){const el=$('codeKeypad');if(!el)return;el.innerHTML='';[1,2,3,4,5,6,7,8,9,'⌫',0,'مسح'].forEach(v=>{const b=document.createElement('button');b.type='button';b.className='code-key';b.textContent=v;b.disabled=!minesRound||minesRound.ended||minesBusy||codeDigits.length===0&&v==='⌫'||codeDigits.length>=5&&typeof v==='number';b.addEventListener('click',()=>{if(typeof v==='number'){if(codeDigits.length<5)codeDigits+=String(v);}else if(v==='⌫')codeDigits=codeDigits.slice(0,-1);else codeDigits='';codeRender();});el.appendChild(b);});}
-function codeRender(){const data=minesLoad();setText('minesBalance',minesMoney(minesPrimaryBalance()));setText('codePrize',minesMoney(CODE_PRIZES[minesRound?minesRound.bet:minesGetBet()])+' ل.س');setText('codeAttempts',minesRound?Math.max(0,3-minesRound.attempts)+' / 3':'3 / 3');const slots=$('codeSlots');if(slots){slots.innerHTML='';for(let i=0;i<5;i++){const x=document.createElement('span');x.textContent=codeDigits[i]||'_';slots.appendChild(x);}}const active=!!(minesRound&&!minesRound.ended);$('minesStart').disabled=minesBusy||active||minesPrimaryBalance()<minesGetBet();$('minesBet').disabled=minesBusy||active;$('codeSubmit').disabled=minesBusy||!active||codeDigits.length!==5;$('codeHint').disabled=minesBusy||!active||!!minesRound.hintUsed;$('codeKeypad').querySelectorAll('button').forEach(b=>b.disabled=!active||minesBusy);if(!active){$('codeHintText').textContent=minesRound&&minesRound.ended?(minesRound.won?'تم فتح الشيفرة بنجاح!':'انتهت الجولة.'): 'ابدأ جولة جديدة لبدء فك الشيفرة.';}else if(minesRound.hintUsed){$('codeHintText').textContent='الرقم الأول هو: '+minesRound.secret[0]+' — تم استخدام التلميح.';}else{$('codeHintText').textContent='أدخل 5 أرقام. لديك 3 محاولات.';}minesRenderHistory(data.history||[]);}
-function minesRenderHistory(history){const el=$('minesHistory');if(!el)return;if(!history.length){el.innerHTML='<div class="mines-empty">لا توجد جولات محفوظة بعد</div>';return;}el.innerHTML=history.slice(0,5).map(h=>`<div class="mines-history-row"><span>${h.date} · رهان ${h.bet} ل.س</span><strong class="${h.won?'mines-profit':'mines-loss'}">${h.won?'فوز +'+minesMoney(h.prize):'خسارة '+minesMoney(h.bet)} ل.س</strong></div>`).join('');}
-async function codeBalanceChange(delta,reason){const ref=db.collection('users').doc(STATE.tgId);await db.runTransaction(async trx=>{const snap=await trx.get(ref);if(!snap.exists)throw new Error('الحساب غير موجود');const bal=Number(snap.data().balance_sy||0);if(delta<0&&bal< -delta)throw new Error('رصيدك الأساسي لا يكفي لهذا المبلغ');trx.update(ref,{balance_sy:bal+delta,updatedAt:SV()});});const fresh=(await ref.get()).data();if(fresh){STATE.user=fresh;updateUI();}}
-async function minesStart(){if(minesBusy)return;if(!STATE.tgId||!STATE.user||!db)return toast('تعذر تحميل حسابك؛ أعد فتح اللعبة','err');if(minesRound&&!minesRound.ended)return toast('أكمل الجولة الحالية أولاً','err');const bet=minesGetBet();if(minesPrimaryBalance()<bet)return toast('رصيدك الأساسي لا يكفي لهذا الرهان','err');minesBusy=true;codeRender();try{await codeBalanceChange(-bet,'stake');minesRound={id:Date.now()+'_'+Math.random().toString(36).slice(2,8),bet,prize:CODE_PRIZES[bet],secret:String(Math.floor(Math.random()*100000)).padStart(5,'0'),attempts:0,hintUsed:false,ended:false,won:false,startedAt:Date.now()};codeDigits='';codePersist();toast('بدأت الجولة وتم خصم الرهان. بالتوفيق!','ok');}catch(e){toast(e.message||'تعذر خصم الرهان','err');}finally{minesBusy=false;codeRender();}}
-async function codeHint(){if(minesBusy||!minesRound||minesRound.ended||minesRound.hintUsed)return;const fee=CODE_HINT_FEES[minesRound.bet];if(minesPrimaryBalance()<fee)return toast('رصيدك لا يكفي لشراء التلميح','err');minesBusy=true;codeRender();try{await codeBalanceChange(-fee,'hint');minesRound.hintUsed=true;codePersist();toast('تم كشف أول رقم مقابل '+fee+' ل.س','ok');}catch(e){toast(e.message||'تعذر شراء التلميح','err');}finally{minesBusy=false;codeRender();}}
-async function codeSubmit(){if(minesBusy||!minesRound||minesRound.ended||codeDigits.length!==5)return;minesBusy=true;codeRender();const r=minesRound;try{r.attempts++;if(codeDigits===r.secret){await codeBalanceChange(r.prize,'prize');r.ended=true;r.won=true;codeSaveResult(r,true);toast('مبروك! فتحت الشيفرة وربحت '+minesMoney(r.prize)+' ل.س','ok');}else if(r.attempts>=3){r.ended=true;r.won=false;codeSaveResult(r,false);toast('انتهت المحاولات الثلاث. خسرت رهان الجولة.','err');}else{toast('الشيفرة غير صحيحة. تبقّى '+(3-r.attempts)+' محاولات','info');}codeDigits='';codePersist();}catch(e){console.error('Code game transaction error',e);toast('تعذر تحديث الرصيد. لا تبدأ جولة أخرى قبل مراجعة الرصيد.','err');}finally{minesBusy=false;codeRender();}}
-function codeSaveResult(r,won){const data=minesLoad();data.history.unshift({date:new Date().toLocaleString('ar',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}),bet:r.bet,prize:r.prize,won});data.history=data.history.slice(0,5);minesSave(data);}
-function minesInit(){if(!$('codeKeypad')||$('codeKeypad').dataset.ready)return;$('codeKeypad').dataset.ready='1';minesRound=codeLoadRound();$('minesStart').addEventListener('click',minesStart);$('codeSubmit').addEventListener('click',codeSubmit);$('codeHint').addEventListener('click',codeHint);$('minesBet').addEventListener('change',codeRender);codeKeypadRender();codeRender();}
 /* ═══ التنقل ═══ */
-const VIEWS = ['home','store','wallet','referral','tasks','profile','wheel','mines'];
+const VIEWS = ['home','store','wallet','referral','tasks','profile','wheel'];
 function navigate(view){
   if (!VIEWS.includes(view)) view = 'home';
   const target = $('view-' + view);
@@ -3257,9 +3309,8 @@ function navigate(view){
 
   if (view === 'store') { renderPlans(); renderPlansReport(); }
   if (view === 'profile') { updateAvatar('profAvatar'); updateSupportBtn(); }
-  if (view === 'tasks') renderTasks();
+  if (view === 'tasks') { renderTasks(); loadSocialTasks(); }
   if (view === 'wheel') { renderWheel(); updateWheelTimer(); }
-  if (view === 'mines') { minesInit(); minesRender(); }
   if (view === 'referral' && $('refPaneTop').style.display === 'block') loadLeaderboard();
 }
 
@@ -3288,6 +3339,7 @@ async function bootstrap(){
   catch(e){ console.error('bootstrap', e); toast('فشل تحميل البيانات', 'err'); return; }
 
   bindUI();
+  initSocialTaskAdmin();
   listenUser();
   refreshAll();
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) startLiveTimer();
