@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#041a2b">
 <title>دولفين مينر</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -640,6 +640,199 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
   .fish{animation:none}
 }
 </style>
+
+<style id="marineRoyalTheme">
+:root{
+  --blue:#25C7F4;--blue-l:#83EEFF;--blue-d:#087DAA;--blue-dd:#073653;
+  --yellow:#F8D78A;--green:#54E6BC;--red:#FF7F91;--purple:#8E7BFF;
+  --inset:rgba(1,17,37,.42);--hi:rgba(226,250,255,.2);
+  --glass:rgba(118,213,244,.085);--glass-line:rgba(137,225,255,.2);
+  --text-2:rgba(231,248,255,.8);--text-3:rgba(192,224,239,.58);
+  --sea-wash:rgba(19,184,233,.12);--sea-pale:rgba(67,215,255,.28);
+  --r-xl:28px;
+}
+html{background:#03101d;color-scheme:dark}
+body{background:#03101d;color:#effaff}
+.app{background:
+  radial-gradient(ellipse at 50% -12%,rgba(16,142,195,.24),transparent 38%),
+  radial-gradient(ellipse at 0% 55%,rgba(14,104,151,.13),transparent 35%),
+  radial-gradient(ellipse at 100% 84%,rgba(14,75,127,.15),transparent 32%),
+  linear-gradient(180deg,#061a2c 0%,#041321 48%,#061a2b 100%);}
+.app::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.3;
+  background-image:radial-gradient(circle at 12% 13%,rgba(136,238,255,.6) 0 1px,transparent 2px),radial-gradient(circle at 83% 28%,rgba(136,238,255,.5) 0 1px,transparent 2px),radial-gradient(circle at 28% 77%,rgba(136,238,255,.5) 0 1px,transparent 2px),radial-gradient(circle at 72% 88%,rgba(136,238,255,.4) 0 1px,transparent 2px);
+  background-size:150px 180px,210px 230px,190px 220px,240px 260px;}
+.main{position:relative;z-index:1;padding-top:18px;scroll-behavior:smooth}
+.view{position:relative}
+.topbar{padding-bottom:20px}
+.topbar__hello,.chip__cur,.grp{color:#67dcff}
+.topbar__name{letter-spacing:-.15px;text-shadow:0 2px 18px rgba(64,208,255,.1)}
+.avatar{background:linear-gradient(145deg,#38d7ff,#087dbb 55%,#174c94);border:2px solid rgba(166,245,255,.7);box-shadow:0 0 0 4px rgba(23,186,229,.08),0 7px 22px rgba(0,0,0,.25)}
+.chip{background:linear-gradient(135deg,rgba(166,231,255,.13),rgba(10,43,73,.5));border-color:rgba(128,224,255,.25);box-shadow:inset 0 1px rgba(255,255,255,.09),0 8px 24px rgba(0,0,0,.12);backdrop-filter:blur(14px)}
+.star3d{background:linear-gradient(155deg,#fff0b5 0%,#e6b952 30%,#9e661e 72%,#4d310d 100%);border-color:rgba(255,239,185,.7);border-bottom-color:#583a14;box-shadow:0 5px 14px rgba(215,164,56,.19)}
+.star3d img,.star3d i{color:#fff5c5;filter:drop-shadow(0 2px 3px rgba(93,48,0,.5))}
+.sec-head{margin-bottom:14px}
+.sec-head__title i{background:rgba(26,190,236,.16);color:#7de6ff;border:1px solid rgba(95,223,255,.16)}
+.sec-head__meta{background:rgba(65,205,238,.1);border-color:rgba(102,225,255,.2);color:#bdf4ff}
+/* Royal glass mining panel */
+.mining-card{background:linear-gradient(145deg,rgba(16,119,159,.56),rgba(7,48,87,.9) 48%,rgba(8,26,61,.94));border:1px solid rgba(115,231,255,.36);border-radius:30px;padding:20px 16px 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 38px rgba(43,191,247,.09),0 18px 42px rgba(0,0,0,.25);backdrop-filter:blur(18px)}
+.mining-card::before{top:-90px;right:-75px;width:245px;height:245px;background:radial-gradient(circle,rgba(113,238,255,.25),rgba(39,164,224,.08) 38%,transparent 69%)}
+.mining-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.08),transparent 32%,transparent 68%,rgba(47,174,255,.06));box-shadow:inset 0 0 0 1px rgba(183,248,255,.06)}
+.plan-header{margin-bottom:16px}
+.plan-header__icon{background:linear-gradient(145deg,rgba(92,215,255,.22),rgba(8,45,87,.58));border:1px solid rgba(148,235,255,.55);box-shadow:inset 0 0 17px rgba(74,209,255,.17),0 0 20px rgba(37,199,244,.12)}
+.plan-header__reward{background:rgba(0,18,42,.48);border:1px solid rgba(248,215,138,.15);color:#ffe29e}
+.plan-header__lvl{background:linear-gradient(145deg,rgba(4,24,49,.72),rgba(6,56,91,.6));border:1px solid rgba(130,229,255,.2)}
+.plan-header__lvl-num{color:#ffe09a}
+/* The aquarium becomes an illuminated royal reef */
+.aquarium{margin:17px auto 16px;aspect-ratio:1.06/1;filter:drop-shadow(0 18px 26px rgba(0,0,0,.3))}
+.tank{isolation:isolate;border-radius:28px;border:3px solid rgba(149,239,255,.88);transform:rotateX(3deg);background:linear-gradient(180deg,#0a5b80 0%,#053557 35%,#031a32 72%,#03101f 100%);box-shadow:inset 0 0 0 1px rgba(245,255,255,.35),inset 0 0 58px rgba(37,199,244,.3),inset 0 -28px 55px rgba(0,0,0,.62),0 0 0 5px rgba(25,168,213,.09),0 15px 35px rgba(0,0,0,.32)}
+.tank::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(174,249,255,.26),transparent 36%),linear-gradient(115deg,transparent 20%,rgba(96,227,255,.06) 42%,transparent 63%),radial-gradient(ellipse at 50% 65%,transparent 18%,rgba(0,13,33,.18) 100%)}
+.tank::after{content:"";position:absolute;inset:0;z-index:9;pointer-events:none;border-radius:inherit;background:linear-gradient(115deg,rgba(255,255,255,.22),transparent 14%,transparent 74%,rgba(111,229,255,.12));box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.caustics{position:absolute;inset:-20% -10%;z-index:1;pointer-events:none;opacity:.25;background:repeating-radial-gradient(ellipse at 36% 15%,transparent 0 17px,rgba(146,244,255,.16) 18px 20px,transparent 21px 38px);filter:blur(1.5px);animation:causticDrift 13s ease-in-out infinite alternate}
+@keyframes causticDrift{from{transform:translate(-2%,-1%) rotate(-4deg);opacity:.14}to{transform:translate(3%,3%) rotate(4deg);opacity:.3}}
+.water-surface{height:10px;z-index:2;background:linear-gradient(180deg,rgba(232,255,255,.92),rgba(87,221,255,.4) 40%,transparent);box-shadow:0 2px 18px rgba(83,223,255,.46)}
+.sun-rays{z-index:1;top:-18%;left:23%;width:54%;height:92%;background:linear-gradient(180deg,rgba(197,250,255,.38),rgba(48,192,255,.1) 34%,transparent 78%);filter:blur(17px);animation:sunMove 8s ease-in-out infinite}
+.reef-arch{position:absolute;z-index:2;left:13%;right:13%;bottom:9%;height:27%;border:6px solid rgba(33,95,132,.8);border-bottom:0;border-radius:60% 60% 0 0;box-shadow:0 -4px 15px rgba(75,216,255,.12),inset 0 8px 15px rgba(0,11,34,.5);opacity:.55}
+.reef-coral{position:absolute;z-index:4;bottom:13%;font-size:40px;filter:drop-shadow(0 0 9px rgba(48,202,235,.23));animation:coralGlow 4s ease-in-out infinite alternate}
+.reef-coral--left{left:1%;transform:rotate(-10deg) scale(.92)}
+.reef-coral--right{right:1%;transform:rotate(9deg) scale(1.05);animation-delay:1.4s}
+@keyframes coralGlow{from{filter:drop-shadow(0 0 4px rgba(48,202,235,.16));}to{filter:drop-shadow(0 0 14px rgba(48,202,235,.48));}}
+.ruin{position:absolute;z-index:2;bottom:20%;font-size:72px;line-height:1;color:rgba(95,177,200,.16);text-shadow:0 0 20px rgba(63,184,230,.11);transform:scaleY(1.3)}
+.ruin--left{left:12%}.ruin--right{right:12%;transform:scaleY(1.3) rotateY(180deg)}
+.sand{z-index:3;height:20%;background:linear-gradient(180deg,#d2b274 0%,#9b7843 44%,#59482f 100%);border-radius:52% 48% 0 0 / 24% 17% 0 0;box-shadow:0 -5px 12px rgba(255,220,148,.17),inset 0 8px 13px rgba(255,240,198,.17)}
+.sand::before{content:"";position:absolute;left:-2%;right:-2%;top:0;height:12px;border-radius:50%;background:rgba(255,230,171,.32);filter:blur(4px)}
+.rock{z-index:4;background:linear-gradient(145deg,#6c9ca8 0%,#315d73 38%,#183349 75%,#0d253a 100%);border:1px solid rgba(152,229,244,.33);box-shadow:inset 3px 3px 8px rgba(202,250,255,.2),inset -5px -8px 12px rgba(0,7,22,.45),0 6px 11px rgba(0,0,0,.24);filter:none}
+.rock--1{width:48px;height:32px;right:14%;bottom:8%}.rock--2{width:35px;height:25px;left:20%;bottom:8%}.rock--3{width:30px;height:20px;left:46%;bottom:6%}.rock--4{width:23px;height:17px;right:40%;bottom:12%;opacity:.7}
+.plant{z-index:5;width:7px;background:linear-gradient(180deg,#8cf6c7 0%,#27c7a1 40%,#087d7e 100%);box-shadow:0 0 10px rgba(31,232,184,.16);border-radius:60% 60% 2px 2px}
+.plant::before,.plant::after{background:linear-gradient(180deg,#85f8c3,#109a8e)}
+.plant--1{right:27%;height:57px}.plant--2{right:30%;height:44px}.plant--3{left:16%;height:50px}.plant--4{left:19%;height:39px}.plant--5{left:23%;height:29px;animation-delay:.7s}
+.fish{z-index:6;text-shadow:0 4px 8px rgba(0,0,0,.35);filter:drop-shadow(0 0 8px rgba(88,226,255,.32));font-size:28px}
+.fish--1{top:27%;font-size:39px;animation-duration:16s;filter:drop-shadow(0 0 12px rgba(65,217,255,.4))}
+.fish--2{top:44%;font-size:24px;animation-duration:18s}
+.fish--3{top:61%;font-size:22px;animation-duration:22s}
+.fish--4{top:35%;font-size:20px;animation-duration:17s}
+.fish--5{top:48%;font-size:27px;filter:drop-shadow(0 0 12px rgba(135,163,255,.65))}
+.fish--6{top:72%;font-size:24px}
+.pearl{position:absolute;z-index:6;color:#b7f9ff;font-size:19px;text-shadow:0 0 12px rgba(99,227,255,.9);animation:pearlTwinkle 2.7s ease-in-out infinite}
+.pearl--1{top:24%;left:24%}.pearl--2{top:51%;right:21%;animation-delay:.8s}.pearl--3{top:66%;left:68%;animation-delay:1.3s}
+@keyframes pearlTwinkle{0%,100%{opacity:.35;transform:scale(.8) rotate(0)}50%{opacity:1;transform:scale(1.22) rotate(18deg)}}
+.treasure{bottom:7%;z-index:8;font-size:52px;text-shadow:0 0 20px rgba(255,211,95,.72);filter:drop-shadow(0 0 18px rgba(255,204,89,.8))}
+.gem{z-index:7;color:#9af3ff;text-shadow:0 0 12px rgba(60,215,255,.86);filter:drop-shadow(0 0 8px rgba(100,220,255,.8))}
+.pct{top:13px;z-index:11;background:rgba(3,22,43,.68);border:1px solid rgba(172,244,255,.4);box-shadow:inset 0 1px rgba(255,255,255,.12),0 8px 18px rgba(0,0,0,.22);backdrop-filter:blur(15px);padding:7px 16px;color:#e9fcff}
+.pct.ready{background:linear-gradient(135deg,#e9c77a,#fff0b2);color:#35270b;border-color:rgba(255,255,255,.75);box-shadow:0 0 25px rgba(255,207,106,.35)}
+.status-bar{background:rgba(4,26,51,.54);border:1px solid rgba(117,219,250,.15);box-shadow:inset 0 1px rgba(255,255,255,.05);backdrop-filter:blur(14px);border-radius:17px;color:#dff8ff}
+.status-bar__dot.active{background:#6bf2ca;box-shadow:0 0 12px rgba(107,242,202,.7)}
+.status-bar__dot.ready{background:#ffe099;box-shadow:0 0 12px rgba(255,224,153,.75)}
+.timer-bar{background:rgba(4,23,46,.55);border:1px solid rgba(117,219,250,.15);box-shadow:inset 0 1px rgba(255,255,255,.05);backdrop-filter:blur(14px);border-radius:18px}
+.timer-bar::before{--wc:rgba(52,192,232,.11)}.timer-bar::after{--wc:rgba(132,229,255,.08)}
+.timer-bar__ic{background:rgba(44,183,223,.15);border:1px solid rgba(117,227,255,.2);color:#95ecff}
+.timer-bar__text{color:#fff}
+.timer-bar__lbl{color:#bceef9}
+.action{border-radius:18px;min-height:58px;letter-spacing:.1px}
+.action--start{background:linear-gradient(135deg,#a8f4ff 0%,#38cee9 45%,#168bc6 100%);color:#03233c;box-shadow:0 8px 22px rgba(21,186,229,.18),inset 0 1px rgba(255,255,255,.75);border:1px solid rgba(195,252,255,.7)}
+.action--start::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent)}
+.action--stop{background:rgba(49,23,41,.45);color:#ff9ba7;border:1px solid rgba(255,122,145,.48);box-shadow:inset 0 1px rgba(255,255,255,.05)}
+.action--collect{background:linear-gradient(135deg,#fff0b7 0%,#f4cf77 44%,#d69b3d 100%);color:#33230a;border:1px solid rgba(255,245,201,.8);box-shadow:0 10px 24px rgba(214,161,68,.22),inset 0 1px rgba(255,255,255,.8)}
+.mining-card.is-ready .status-bar{background:rgba(245,198,104,.12);color:#ffe3a2;border-color:rgba(248,215,138,.25)}
+.mining-card.is-ready .timer-bar{background:rgba(237,192,96,.1);border-color:rgba(248,215,138,.24)}
+.mining-card.is-ready .timer-bar__ic,.mining-card.is-ready .timer-bar__lbl{color:#ffe09a}
+.mining-card.is-ready .plan-header__lvl{background:rgba(248,215,138,.15)}.mining-card.is-ready .plan-header__lvl-num{color:#ffe09a}
+/* Shared glass surfaces: dashboard, tasks, referrals, store and wallet */
+.card,.plan,.plans-report,.plans-report__head,.plans-table,.pf-top,.rf-hero,.rf-stat,.lb,.lb__list,.lb__empty,.step,#panelWithdraw,.weekly,.wheel-info,.wheel-timer-bar,.field__input,.info-rows,.method,.seg,.tabs,.code-row,.ref-link,.plan__stat,.plan__timer,.tbox,.plans-report,.qrow--lock{
+  background:linear-gradient(145deg,rgba(117,202,232,.105),rgba(4,25,49,.55));border-color:rgba(128,218,244,.18);box-shadow:inset 0 1px rgba(255,255,255,.035)}
+.card,.plan,.rf-hero,.lb,.pf-top,#panelWithdraw,.weekly{backdrop-filter:blur(14px)}
+.card__title i,.field__label i,.method__logo,.wheel-info i{background:rgba(54,196,232,.13);color:#8beaff;border:1px solid rgba(122,223,246,.15)}
+.tile,.qb,.fq,.cq,.qrow,.vip,.pf-bal,.pf-cell,.pf-row,.wheel-spins-card,.wheel-tile{border:1px solid rgba(133,225,248,.24);box-shadow:inset 0 1px rgba(255,255,255,.2),0 12px 25px rgba(0,0,0,.14);backdrop-filter:blur(12px)}
+.tile{background:linear-gradient(145deg,rgba(31,156,208,.65),rgba(5,49,91,.92));border-radius:24px}
+.tile--amber{background:linear-gradient(145deg,rgba(143,117,48,.54),rgba(56,43,34,.88))}
+.tile__ic{background:rgba(4,33,59,.52);border:1px solid rgba(130,225,247,.2)}
+.tile__bg{opacity:.1;color:#a9f4ff}
+.tile__go{background:rgba(130,230,255,.15);border:1px solid rgba(130,230,255,.14)}
+.wheel-tile{background:linear-gradient(120deg,rgba(111,85,195,.73),rgba(26,50,112,.92));border-color:rgba(175,169,255,.3)}
+.wheel-tile__ic{background:rgba(8,25,54,.48);border-color:rgba(205,194,255,.28)}
+.wheel-tile__badge{background:linear-gradient(135deg,#fff0b8,#e5b859);color:#3a2909}
+.weekly{position:relative;overflow:hidden;border-radius:27px;padding:18px 14px;background:linear-gradient(145deg,rgba(108,70,170,.42),rgba(5,33,71,.85));border:1px solid rgba(190,163,255,.25)}
+.weekly::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 100% 0,rgba(181,143,255,.18),transparent 38%),linear-gradient(115deg,rgba(255,255,255,.04),transparent 52%)}
+.weekly>*{position:relative;z-index:1}
+.weekly__title{color:#f2e8ff}.weekly__title i{color:#ffe09a}
+.days-grid{gap:7px}
+.day,.days-grid>div{border-radius:15px}
+.weekly__btn{background:linear-gradient(135deg,#e9c779,#fff0bd);color:#34240a;border:1px solid rgba(255,248,210,.65);box-shadow:0 8px 20px rgba(221,180,91,.12)}
+.qb{background:linear-gradient(135deg,rgba(25,143,197,.78),rgba(5,42,81,.88));border-radius:25px}
+.qb__left{background:rgba(2,25,48,.42);border:1px solid rgba(120,218,245,.14)}
+.cq{background:linear-gradient(145deg,rgba(19,105,155,.45),rgba(4,27,52,.75));border-color:rgba(113,221,246,.18);border-radius:22px}
+.cq__ic{background:rgba(37,199,244,.12);color:#75e6ff;border:1px solid rgba(113,221,246,.18)}
+.cq__btn--join{background:linear-gradient(135deg,#a9f4ff,#38cce9);color:#02243c}
+.cq__btn--collect{background:linear-gradient(135deg,#fff0b6,#e5b85e);color:#352609}
+.fq{background:linear-gradient(145deg,rgba(18,98,154,.65),rgba(4,27,58,.92));border-color:rgba(111,219,247,.24)}
+.fq--ready{background:linear-gradient(145deg,rgba(109,86,177,.6),rgba(30,35,77,.9))}
+.fq__badge,.fq__left{background:rgba(2,24,48,.45)}
+.fq__btn--go{background:linear-gradient(135deg,#a8f4ff,#38cce9);color:#05233b}
+.fq__btn--collect{background:linear-gradient(135deg,#fff0b6,#e5b85e);color:#352609}
+.qrow{background:linear-gradient(145deg,rgba(13,81,133,.55),rgba(4,28,56,.8));border:1px solid rgba(109,217,247,.16)}
+.qrow--done{background:rgba(19,142,134,.15);border-color:rgba(84,230,188,.25)}
+.qrow--done .qrow__ic{color:#7df3cb;background:rgba(84,230,188,.12)}
+.qrow--lock{border-color:rgba(109,217,247,.21)}
+.vip{background:linear-gradient(145deg,rgba(23,143,202,.68),rgba(5,37,77,.95));border-radius:26px}
+.vip--active{background:linear-gradient(145deg,rgba(32,169,139,.58),rgba(4,67,69,.9))}
+.vip__btn{background:linear-gradient(135deg,#c2f8ff,#44cde7);color:#032740}
+.plan--current{outline-color:#58dfff;box-shadow:inset 0 0 0 1px rgba(102,229,255,.14),0 0 22px rgba(44,193,237,.06)}
+.plan__icon{background:linear-gradient(145deg,rgba(46,197,232,.17),rgba(5,44,79,.72));border-color:rgba(106,225,255,.45)!important}
+.plan__badge--current{background:linear-gradient(135deg,#42dbf5,#167fae);color:#00243b}
+.plan__badge--next{background:rgba(37,199,244,.14);color:#8cecff}
+.plan__stat{background:rgba(2,21,42,.4);border-color:rgba(109,216,245,.13)}
+.plan__stat-val,.plan__price-val,.tbox b{color:#80e7ff}
+.plan__timer-bar{background:rgba(1,17,35,.5)}.plan__timer-bar i{background:linear-gradient(90deg,#2bbfdf,#a9f7ff)}
+.plan__btn--buy{background:linear-gradient(135deg,#8cefff,#22b8de);color:#03243c}
+.plan__btn--current,.plan__btn--locked{background:rgba(96,156,181,.12);color:#d6f4ff}
+.pf-top::before{opacity:.42;background-image:radial-gradient(circle,rgba(114,223,255,.14) 1px,transparent 1.5px);background-size:32px 32px}
+.pf-bal{background:linear-gradient(120deg,rgba(16,139,196,.88),rgba(4,47,93,.94));border-radius:26px}
+.pf-cell{background:linear-gradient(145deg,rgba(21,134,189,.75),rgba(5,43,81,.91));border-radius:22px}
+.pf-row{background:linear-gradient(145deg,rgba(15,107,158,.62),rgba(4,33,63,.82));border-radius:21px}
+.pf-cell__ic,.pf-row__ic{background:rgba(2,22,45,.4);border:1px solid rgba(143,230,255,.15)}
+.rf-hero{background:linear-gradient(145deg,rgba(19,96,143,.46),rgba(3,25,49,.86));border-radius:26px}
+.rf-hero__ic,.rf-hero__rw,.rf-stat__ic{background:rgba(31,174,214,.12);border-color:rgba(117,221,248,.14)}
+.rf-hero__rw .amt{color:#ffdf95}
+.ref-link{background:rgba(1,17,36,.5);border-color:rgba(117,221,248,.22)}
+.how__n{background:linear-gradient(145deg,#53dcf4,#1389b8);color:#04263a}
+.icon-btn,.btn--primary,.btn--sea,.tab.active,.seg__b.active{background:linear-gradient(135deg,#76e8fa,#149cc9);color:#03263d}
+.btn--outline{background:rgba(95,175,199,.13);border:1px solid rgba(121,219,244,.22)}
+.field__input{background:rgba(2,18,37,.64);border:1px solid rgba(115,216,244,.19)}
+.field__input:focus{outline-color:#4fd7f5;background:rgba(2,24,46,.8)}
+.field__label i{background:rgba(36,179,215,.12);color:#7ce8ff}
+.tabs{background:rgba(4,25,48,.62);border-color:rgba(117,216,242,.18)}
+.tab.active{box-shadow:0 5px 16px rgba(26,173,214,.16)}
+#panelWithdraw{background:linear-gradient(145deg,rgba(18,51,78,.58),rgba(3,21,42,.82));border:1px solid rgba(116,215,243,.18)}
+.method{background:rgba(2,20,40,.46)}.method--active{background:rgba(27,158,198,.16);border-color:#55d9f6}
+.method__check{background:#2cbfdf;color:#00283c}
+.info-rows,.step,.code-row{background:rgba(2,20,40,.42)}
+.step__num{background:linear-gradient(135deg,#77eafb,#1593bd);color:#03243a}
+.wheel-spins-card{background:linear-gradient(135deg,rgba(190,149,58,.94),rgba(105,66,25,.95));color:#fff0b9;border-color:rgba(255,225,146,.34)}
+.wheel-outer{background:linear-gradient(145deg,rgba(110,214,240,.42),rgba(4,31,58,.95));box-shadow:0 18px 48px rgba(0,0,0,.5),inset 0 0 0 2px rgba(148,235,255,.28),inset 0 0 30px rgba(22,166,214,.12)}
+.wheel-center-btn{background:radial-gradient(circle at 30% 25%,#fff6d0,#f5d274 48%,#b67b2f);border-color:#fff4c6;box-shadow:0 6px 24px rgba(241,191,85,.28),inset 0 -4px 12px rgba(0,0,0,.2),inset 0 3px 8px rgba(255,255,255,.55)}
+.wheel-action{background:linear-gradient(135deg,#94f0ff,#15a9d3);color:#03253b}
+.wheel-info{background:rgba(14,106,145,.16);border-color:rgba(74,207,237,.2)}
+.wheel-info i{background:none;border:0;color:#7de8ff}
+.nav{background:rgba(3,20,39,.72);border:1px solid rgba(123,222,248,.22);box-shadow:0 12px 35px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.1);backdrop-filter:blur(24px) saturate(1.4)}
+.nav .nav__btn{color:rgba(218,243,252,.62)}
+.nav .nav__btn--active{background:linear-gradient(145deg,#56d8f2,#087fb6);color:#01243b;box-shadow:0 5px 16px rgba(15,178,223,.22),inset 0 1px rgba(255,255,255,.42)}
+.nav .nav__btn--active i{filter:drop-shadow(0 2px 2px rgba(0,0,0,.12))}
+.nav__profile{background:rgba(4,28,49,.82);border-color:rgba(123,222,248,.23)}
+.nav__profile.nav__btn--active{border-color:#61e5ff;box-shadow:0 0 0 3px rgba(37,199,244,.12)}
+.toast{background:rgba(3,24,44,.9);border-color:rgba(127,226,250,.25);box-shadow:0 10px 32px rgba(0,0,0,.25);backdrop-filter:blur(22px)}
+.tamper-box,.modal__box{background:linear-gradient(145deg,rgba(13,57,83,.97),rgba(3,20,41,.98));border-color:rgba(111,223,249,.4);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.tamper-box button{background:linear-gradient(135deg,#8eefff,#22a8d0);color:#03243a}
+.outside-tg{background:radial-gradient(ellipse at 50% 20%,#0c4f72,#041a2d 56%,#020b15)}
+.outside-tg__ic{background:linear-gradient(145deg,#4eddf8,#086ea5);border:1px solid rgba(167,245,255,.48);box-shadow:0 0 40px rgba(37,199,244,.18)}
+.outside-tg a{background:linear-gradient(135deg,#8eefff,#22a8d0);color:#03243a}
+@media(max-width:360px){
+  .mining-card{padding:16px 12px}.plan-header__lvl{min-width:58px;padding:7px 10px}.plan-header__icon{width:52px;height:52px}
+  .fish--1{font-size:31px}.reef-coral{font-size:32px}.nav .nav__btn i{font-size:20px}.nav .nav__btn span{font-size:9.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .caustics,.reef-coral,.pearl,.fish,.plant,.gem,.bubble,.sun-rays,.water-surface{animation-duration:.001ms!important;animation-iteration-count:1!important}
+}
+</style>
+
 </head>
 <body>
 
@@ -704,33 +897,44 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
         <div class="aquarium scene" id="aquariumScene">
           <div class="tank" id="tank">
             <div class="sun-rays"></div>
+            <div class="caustics" aria-hidden="true"></div>
             <div class="water-surface"></div>
+            <div class="reef-arch" aria-hidden="true"></div>
+            <div class="reef-coral reef-coral--left" aria-hidden="true">🪸</div>
+            <div class="reef-coral reef-coral--right" aria-hidden="true">🪸</div>
+            <div class="ruin ruin--left" aria-hidden="true">⌁</div>
+            <div class="ruin ruin--right" aria-hidden="true">⌁</div>
             <div class="sand"></div>
             <div class="rock rock--1"></div>
             <div class="rock rock--2"></div>
             <div class="rock rock--3"></div>
+            <div class="rock rock--4"></div>
             <div class="plant plant--1"></div>
             <div class="plant plant--2"></div>
             <div class="plant plant--3"></div>
             <div class="plant plant--4"></div>
-            <div class="fish fish--1">🐟</div>
+            <div class="plant plant--5"></div>
+            <div class="fish fish--1">🐬</div>
             <div class="fish fish--2">🐠</div>
-            <div class="fish fish--3">🐡</div>
-            <div class="fish fish--4">🐟</div>
+            <div class="fish fish--3">🐟</div>
+            <div class="fish fish--4">🐡</div>
             <div class="fish fish--5" id="fish5">🪼</div>
             <div class="fish fish--6" id="fish6">🐠</div>
-            <div class="treasure" id="treasure">💰</div>
-            <div class="gem" style="--x:-40px;--d:0s">💎</div>
-            <div class="gem" style="--x:20px;--d:.6s">💎</div>
-            <div class="gem" style="--x:-10px;--d:1.2s">💎</div>
-            <div class="gem" style="--x:40px;--d:1.8s">💎</div>
+            <div class="pearl pearl--1" aria-hidden="true">✦</div>
+            <div class="pearl pearl--2" aria-hidden="true">✧</div>
+            <div class="pearl pearl--3" aria-hidden="true">✦</div>
+            <div class="treasure" id="treasure">💎</div>
+            <div class="gem" style="--x:-54px;--d:0s">💎</div>
+            <div class="gem" style="--x:36px;--d:.6s">✧</div>
+            <div class="gem" style="--x:-18px;--d:1.2s">💠</div>
+            <div class="gem" style="--x:58px;--d:1.8s">💎</div>
             <div class="pct" id="stagePct">0%</div>
           </div>
         </div>
 
         <div class="status-bar">
           <span class="status-bar__dot" id="statusDot"></span>
-          <span id="statusText">الحوض هادئ — ابدأ التعدين!</span>
+          <span id="statusText">الشعاب بانتظارك — ابدأ رحلة الأعماق!</span>
         </div>
 
         <div class="timer-bar">
@@ -1729,7 +1933,7 @@ function renderLocked(){
 }
 
 function renderIdle(plan){
-  setText('statusText', 'الحوض هادئ — ابدأ التعدين!');
+  setText('statusText', 'الشعاب بانتظارك — ابدأ رحلة الأعماق!');
   $('statusText').style.color = '';
   $('statusDot').className = 'status-bar__dot';
   setText('stagePct', '0%');
@@ -1751,7 +1955,7 @@ function renderRunning(u, plan){
   const remaining = Math.max(0, durMs - elapsed);
   if (remaining <= 0) { markMiningComplete(); return; }
 
-  setText('statusText', 'الأسماك تسبح وتعمل...');
+  setText('statusText', 'الدلافين تجمع كنوز الأعماق...');
   $('statusText').style.color = '';
   $('statusDot').className = 'status-bar__dot active';
   setText('miningStatusMeta', 'نشط');
@@ -1774,7 +1978,7 @@ function renderRunning(u, plan){
 
 function renderReady(plan){
   const amount = (STATE.user.miningProgress > 0 && STATE.user.miningProgress <= 500) ? STATE.user.miningProgress : plan.reward;
-  setText('statusText', 'اكتمل التعدين — الحوض مليء بالكنوز!');
+  setText('statusText', 'اكتملت الرحلة — كنوز الأعماق بانتظارك!');
   $('statusText').style.color = '#7DB9FF';
   $('statusDot').className = 'status-bar__dot ready';
   setText('miningStatusMeta', 'جاهز');
