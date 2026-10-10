@@ -3228,3 +3228,48 @@ window.closeTamperModal = closeTamperModal;
 </script>
 </body>
 </html>
+
+<style id="performancePatch">
+/* Mobile performance patch: keep the marine look while reducing expensive compositing. */
+html { scroll-behavior: auto !important; }
+.main { scroll-behavior: auto !important; }
+.view.active { animation: none !important; }
+.view.leaving { animation: none !important; }
+.mining-card, .chip, .pct, .status-bar, .timer-bar,
+.card, .plan, .plans-report, .plans-report__head, .plans-table,
+.pf-top, .rf-hero, .rf-stat, .lb, .lb__list, .lb__empty, .step,
+#panelWithdraw, .weekly, .wheel-info, .wheel-timer-bar, .field__input,
+.info-rows, .method, .seg, .tabs, .code-row, .ref-link, .plan__stat,
+.plan__timer, .tbox, .tile, .qb, .fq, .cq, .qrow, .vip, .pf-bal,
+.pf-cell, .pf-row, .wheel-spins-card, .wheel-tile, .nav, .nav__profile {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+.mining-card { box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 8px 20px rgba(0,0,0,.2) !important; }
+.tank { transform: none !important; box-shadow: inset 0 0 0 1px rgba(245,255,255,.22), inset 0 -18px 32px rgba(0,0,0,.42) !important; }
+.aquarium { filter: none !important; }
+.sun-rays { filter: none !important; opacity: .55; }
+.caustics { filter: none !important; opacity: .12 !important; animation: none !important; }
+.sand::before { filter: none !important; }
+.reef-coral { animation: none !important; filter: none !important; }
+.pearl { animation: none !important; opacity: .75; }
+.fish, .plant { will-change: auto !important; }
+@media (max-width: 600px) {
+  .fish--5, .fish--6, .pearl--3, .rock--4, .reef-arch, .ruin { display: none !important; }
+  .fish { filter: none !important; text-shadow: none !important; }
+  .plant { box-shadow: none !important; }
+  .main { padding-top: 12px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* Restrained motion only; avoids many simultaneous GPU-heavy effects. */
+  .fish--1 { animation-duration: 24s !important; }
+  .fish--2 { animation-duration: 28s !important; }
+  .fish--3, .fish--4 { animation-duration: 32s !important; }
+  .water-surface { animation: none !important; }
+  .timer-bar::before, .timer-bar::after { animation: none !important; }
+  .action::before, .weekly__btn::before, .wheel-action::before { animation: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+</style>
