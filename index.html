@@ -1282,7 +1282,7 @@ body{background:#03101d;color:#effaff}
             <div class="step__title">التعليمات</div>
             <div class="alert alert--danger" style="margin-bottom:0">
               <i class="fas fa-exclamation-triangle"></i>
-              <div id="depInstructions"><b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل دائماً. الحد الأدنى للإيداع 500 ل.س.</div>
+              <div id="depInstructions"><b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل دائماً. الحد الأدنى للإيداع 500 ل.س. <b>ملاحظة:</b> إذا تم إيداع مبلغ أقل من المبلغ المطلوب فلا يتم إضافته ولن يسترد.</div>
             </div>
           </div>
         </div>
@@ -1424,8 +1424,6 @@ body{background:#03101d;color:#effaff}
         <div class="pf-row__lbl">تاريخ الانضمام</div>
         <div class="pf-row__val" id="pJoined">-</div>
       </div>
-
-      <button class="btn btn--outline" id="profSupport" style="margin-top:10px"></button>
     </div>
   </div>
 
@@ -1472,7 +1470,6 @@ body{background:#03101d;color:#effaff}
   <div class="toast__ic" id="toastIc"><i class="fas fa-check"></i></div>
   <span id="toastMsg"></span>
 </div>
-
 <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore-compat.js"></script>
 
@@ -1520,15 +1517,15 @@ const CONFIG = {
   security: { maxClockDriftMs: 60 * 1000, syncIntervalMs: 5 * 60 * 1000, syncMinGapMs: 30 * 1000, clockCheckIntervalMs: 2000 },
 
   inviteTasks: [
-    { id: 'invite5',  count: 5,  reward: 20,  spins: 2,  title: 'دعوة 5 أصدقاء',  desc: 'اربح 20 ل.س + لفّتي عجلة مجانيتين' },
-    { id: 'invite20', count: 20, reward: 100, spins: 4,  title: 'دعوة 20 صديق',   desc: 'اربح 100 ل.س + 4 لفات عجلة' },
-    { id: 'invite30', count: 30, reward: 250, spins: 7,  title: 'دعوة 30 صديق',   desc: 'اربح 250 ل.س + 7 لفات عجلة' },
-    { id: 'invite50', count: 50, reward: 500, spins: 10, title: 'دعوة 50 صديق',   desc: 'اربح 500 ل.س + 10 لفات عجلة' }
+    { id: 'invite5',  count: 5,  reward: 20,  spins: 1,  title: 'دعوة 5 أصدقاء',  desc: 'اربح 20 ل.س + لفة عجلة مجانية' },
+    { id: 'invite20', count: 20, reward: 50,  spins: 2,  title: 'دعوة 20 صديق',   desc: 'اربح 50 ل.س + لفتي عجلة' },
+    { id: 'invite30', count: 30, reward: 200, spins: 3,  title: 'دعوة 30 صديق',   desc: 'اربح 200 ل.س + 3 لفات عجلة' },
+    { id: 'invite50', count: 50, reward: 300, spins: 5,  title: 'دعوة 50 صديق',   desc: 'اربح 300 ل.س + 5 لفات عجلة' }
   ],
 
   specialTasks: {
     collect5: { id:'collect5', target:5, reward:30, title:'اجمع التعدين 5 مرات', desc:'اربح 30 ل.س عند جمع التعدين 5 مرات بأي خطة' },
-    firstBuy: { id:'firstBuy', reward:100, title:'اشترِ أول خطة مدفوعة', desc:'اربح 100 ل.س عند شراء أول خطة مدفوعة' }
+    firstBuy: { id:'firstBuy', reward:50, title:'اشترِ أول خطة مدفوعة', desc:'اربح 50 ل.س عند شراء أول خطة مدفوعة' }
   },
 
   socialWaitMs: 5000,
@@ -1538,13 +1535,13 @@ const CONFIG = {
   wheel: {
     dailyFreeSpin: 1,
     rewards: [
-      { type:'win',  value:10,  label:'10',      color:'#30D158' },
+      { type:'win',  value:5,  label:'5',      color:'#30D158' },
       { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' },
-      { type:'win',  value:30, label:'30',     color:'#FFD60A' },
+      { type:'win',  value:10, label:'10',     color:'#FFD60A' },
       { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' },
-      { type:'win',  value:15,  label:'15',      color:'#007AFF' },
+      { type:'win',  value:20, label:'20',      color:'#007AFF' },
       { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' },
-      { type:'win',  value:40,  label:'40',      color:'#AF52DE' },
+      { type:'win',  value:30, label:'30',      color:'#AF52DE' },
       { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' }
     ]
   }
@@ -1918,7 +1915,6 @@ function updateUI(){
   }
 
   updateWithdrawFeeLabels();
-  updateSupportBtn();
 }
 
 function updateAvatar(elId){
@@ -1933,12 +1929,6 @@ function updateAvatar(elId){
   img.onload = () => { el.textContent = ''; el.appendChild(img); };
   img.onerror = () => { el.innerHTML = '<i class="fas fa-user"></i>'; };
   img.src = url;
-}
-
-function updateSupportBtn(){
-  const btn = $('profSupport');
-  if (!btn) return;
-  btn.innerHTML = '<i class="fab fa-telegram-plane"></i> تواصل مع الدعم الفني';
 }
 
 function updateWithdrawFeeLabels(){
@@ -2499,8 +2489,8 @@ function initDeposit(){
       $('depBinanceInfo').style.display = isBinance ? 'block' : 'none';
       setText('depDesc', isBinance ? 'أرسل USDT إلى معرف Binance أدناه.' : 'انسخ معرف شام كاش وقم بالتحويل.');
       $('depInstructions').innerHTML = isBinance
-        ? '<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 5$.'
-        : '<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 500 ل.س.';
+        ? '<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 5$. <b>ملاحظة:</b> إذا تم إيداع مبلغ أقل من المبلغ المطلوب فلا يتم إضافته ولن يسترد.'
+        : '<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 500 ل.س. <b>ملاحظة:</b> إذا تم إيداع مبلغ أقل من المبلغ المطلوب فلا يتم إضافته ولن يسترد.';
     });
   });
   $('depCopyId').addEventListener('click', () => copyText($('depUserId').textContent, 'تم نسخ المعرف'));
@@ -2602,8 +2592,7 @@ async function submitReferral(){
     btn.innerHTML = '<i class="fas fa-check"></i> تفعيل الكود';
   }
 }
-
-async function loadLeaderboard(){
+  async function loadLeaderboard(){
   const list = $('lbList');
   if (!list) return;
   const empty = (msg) => '<div class="lb__empty"><i class="fas fa-crown"></i><p>' + msg + '</p></div>';
@@ -3372,7 +3361,7 @@ function navigate(view){
   } else show();
 
   if (view === 'store') { renderPlans(); renderPlansReport(); }
-  if (view === 'profile') { updateAvatar('profAvatar'); updateSupportBtn(); }
+  if (view === 'profile') { updateAvatar('profAvatar'); }
   if (view === 'tasks') renderTasks();
   if (view === 'wheel') { renderWheel(); updateWheelTimer(); }
   if (view === 'referral' && $('refPaneTop').style.display === 'block') loadLeaderboard();
@@ -3382,10 +3371,6 @@ function bindUI(){
   document.querySelectorAll('.nav__btn').forEach(btn => btn.addEventListener('click', () => navigate(btn.dataset.view)));
   $('mineAction').addEventListener('click', onMineClick);
   $('profCopyId').addEventListener('click', () => copyText($('profId').textContent, 'تم نسخ المعرف'));
-  $('profSupport').addEventListener('click', () => {
-    const url = 'https://t.me/' + CONFIG.admin.telegram;
-    if (tg && tg.openTelegramLink) tg.openTelegramLink(url); else window.open(url, '_blank');
-  });
   initWalletTabs();
   initWithdraw();
   initDeposit();
