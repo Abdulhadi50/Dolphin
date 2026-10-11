@@ -594,7 +594,8 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .modal__btn:active{transform:scale(.97)}
 
 /* 🎬 هدايا المشاهدات - واجهة بحرية جديدة */
-.view-ads-card{margin:18px 0 22px;padding:18px 15px;border-radius:25px;position:relative;overflow:hidden;background:linear-gradient(145deg,#073b59 0%,#075c75 48%,#082b49 100%);border:1px solid rgba(112,231,255,.38);box-shadow:0 14px 32px rgba(0,9,28,.28),inset 0 1px rgba(255,255,255,.12)}
+.view-ads-progress,.view-ads-rewards{display:none!important}
+.view-ads-card{cursor:default;margin:18px 0 22px;padding:18px 15px;border-radius:25px;position:relative;overflow:hidden;background:linear-gradient(145deg,#073b59 0%,#075c75 48%,#082b49 100%);border:1px solid rgba(112,231,255,.38);box-shadow:0 14px 32px rgba(0,9,28,.28),inset 0 1px rgba(255,255,255,.12)}
 .view-ads-card__glow{position:absolute;right:-55px;top:-70px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(54,224,255,.23),transparent 70%);pointer-events:none}
 .view-ads-card__top{display:flex;align-items:center;gap:11px;position:relative;z-index:1}
 .view-ads-card__icon{width:46px;height:46px;flex:0 0 46px;border-radius:15px;display:grid;place-items:center;color:#043148;font-size:19px;background:linear-gradient(145deg,#b7fbff,#38d5e8);box-shadow:0 6px 16px rgba(38,215,240,.25)}
@@ -996,12 +997,12 @@ body{background:#03101d;color:#effaff}
         <div class="view-ads-card__glow"></div>
         <div class="view-ads-card__top">
           <div class="view-ads-card__icon"><i class="fas fa-play"></i></div>
-          <div class="view-ads-card__heading"><h3>🎁 هدايا المشاهدات</h3><p>شاهد 10 إعلانات متتالية واجمع مكافآتك</p></div>
-          <span class="view-ads-card__tag">10 إعلانات</span>
+          <div class="view-ads-card__heading"><h3>🎁 هدايا المشاهدات</h3><p>افتح الواجهة لمشاهدة الإعلانات وجمع 5 مكافآت</p></div>
+          <span class="view-ads-card__tag">5 × 5 ل.س</span>
         </div>
         <div class="view-ads-progress"><div class="view-ads-progress__labels"><span id="viewAdsProgressText">0 من 10 إعلانات</span><b id="viewAdsRewardText">ابدأ واربح</b></div><div class="view-ads-progress__track"><span id="viewAdsProgressBar"></span></div></div>
         <div class="view-ads-rewards" id="daysGrid"></div>
-        <div class="view-ads-card__bottom"><span id="viewAdsTimer"><i class="fas fa-clock"></i> تتجدد بعد إكمال 10 إعلانات</span><button class="view-ads-start" id="weeklyClaimBtn"><i class="fas fa-play"></i><span id="weeklyBtnText">ابدأ المشاهدة</span></button></div>
+        <div class="view-ads-card__bottom"><span id="viewAdsTimer"><i class="fas fa-clock"></i> 5 مكافآت، تتجدد كل 10 ساعات</span><button class="view-ads-start" id="weeklyClaimBtn"><i class="fas fa-gift"></i><span id="weeklyBtnText">عرض المكافآت</span></button></div>
       </section>
     </div>
 
@@ -1436,13 +1437,13 @@ body{background:#03101d;color:#effaff}
     <button class="view-ads-modal__close" id="viewAdsClose" aria-label="إغلاق">×</button>
     <div class="view-ads-modal__eyebrow"><i class="fas fa-water"></i> DOLPHIN MINER REWARDS</div>
     <div class="view-ads-modal__icon" id="viewAdsModalIcon">📺</div>
-    <div class="view-ads-modal__step" id="viewAdsModalStep">الإعلان 1 من 10</div>
+    <div class="view-ads-modal__step" id="viewAdsModalStep">الإعلان 1 من 5</div>
     <h2 id="viewAdsModalTitle">شاهد الإعلان واربح</h2>
-    <p id="viewAdsModalSub">بعد اكتمال الإعلان ستضاف مكافأتك إلى رصيدك.</p>
+    <p id="viewAdsModalSub">يجب مشاهدة الإعلان لمدة 15 ثانية على الأقل؛ لا تُضاف المكافأة إذا أغلقت الإعلان مبكراً.</p>
     <div class="view-ads-modal__prize"><small>مكافأة الإعلان الحالي</small><strong id="viewAdsModalPrize">+5 <span>ل.س</span></strong></div>
     <div class="view-ads-modal__track"><span id="viewAdsModalBar"></span></div>
     <button class="view-ads-modal__btn" id="viewAdsWatchBtn"><i class="fas fa-play-circle"></i><span>شاهد الإعلان الأول</span></button>
-    <div class="view-ads-modal__note"><i class="fas fa-shield-alt"></i> لا تغلق نافذة الإعلان حتى ينتهي العرض.</div>
+    <div class="view-ads-modal__note"><i class="fas fa-shield-alt"></i> شاهد الإعلان لمدة 15 ثانية على الأقل. الإغلاق المبكر لا يمنح مكافأة.</div>
   </div>
 </div>
 
@@ -2899,8 +2900,9 @@ function renderChannelTask(){
   }
 }
 
-/* ═══ 🎬 هدايا المشاهدات: 10 إعلانات كل 10 ساعات ═══ */
-const VIEW_REWARDS = [5, 6, 7, 8, 9, 10, 7, 8, 9, 10];
+/* ═══ 🎬 هدايا المشاهدات: 5 إعلانات، 5 ليرات لكل إعلان، كل 10 ساعات ═══ */
+const VIEW_REWARDS = [5, 5, 5, 5, 5];
+const VIEW_MIN_WATCH_MS = 15000;
 const VIEW_GIFT_COOLDOWN = 10 * 60 * 60 * 1000;
 let viewAdsBusy = false;
 
@@ -2909,7 +2911,9 @@ function getViewGiftState(){
   const now = getTrustedNow();
   const resetAt = Number(state.resetAt || 0);
   if (resetAt && now >= resetAt) return { claimedCount: 0, resetAt: 0 };
-  return { claimedCount: Math.min(10, Math.max(0, Number(state.claimedCount || 0))), resetAt };
+  let claimedCount = Math.min(VIEW_REWARDS.length, Math.max(0, Number(state.claimedCount || 0)));
+  if (claimedCount >= VIEW_REWARDS.length && !resetAt) claimedCount = 0; // migrate older reward records safely
+  return { claimedCount, resetAt };
 }
 function formatViewGiftTime(ms){
   const sec = Math.max(0, Math.floor(ms / 1000));
@@ -2925,18 +2929,18 @@ function renderWeeklyStreak(){
   const gs = getViewGiftState();
   grid.innerHTML = VIEW_REWARDS.map((amount, i) => {
     const done = i < gs.claimedCount;
-    const current = i === gs.claimedCount && gs.claimedCount < 10;
+    const current = i === gs.claimedCount && gs.claimedCount < VIEW_REWARDS.length;
     return '<div class="view-ads-reward ' + (done ? 'is-done' : current ? 'is-current' : '') + '">' +
       '<span class="view-ads-reward__n">إعلان ' + (i + 1) + '</span>' +
       '<span class="view-ads-reward__icon">' + (done ? '✓' : '🎁') + '</span>' +
       '<span class="view-ads-reward__amount">+' + amount + ' ل.س</span></div>';
   }).join('');
-  const progress = Math.min(100, gs.claimedCount * 10);
-  if ($('viewAdsProgressText')) $('viewAdsProgressText').textContent = gs.claimedCount + ' من 10 إعلانات';
+  const progress = Math.min(100, gs.claimedCount * 20);
+  if ($('viewAdsProgressText')) $('viewAdsProgressText').textContent = gs.claimedCount + ' من 5 إعلانات';
   if ($('viewAdsProgressBar')) $('viewAdsProgressBar').style.width = progress + '%';
-  if ($('viewAdsRewardText')) $('viewAdsRewardText').textContent = gs.claimedCount >= 10 ? 'اكتملت المكافآت' : 'التالي: ' + VIEW_REWARDS[gs.claimedCount] + ' ل.س';
+  if ($('viewAdsRewardText')) $('viewAdsRewardText').textContent = gs.claimedCount >= VIEW_REWARDS.length ? 'اكتملت المكافآت' : 'التالي: ' + VIEW_REWARDS[gs.claimedCount] + ' ل.س';
   if (!btn || !btnText) return;
-  if (gs.claimedCount >= 10 && gs.resetAt > getTrustedNow()) {
+  if (gs.claimedCount >= VIEW_REWARDS.length && gs.resetAt > getTrustedNow()) {
     btn.disabled = true;
     btnText.textContent = 'تجدد بعد ' + formatViewGiftTime(gs.resetAt - getTrustedNow());
     if ($('viewAdsTimer')) $('viewAdsTimer').innerHTML = '<i class="fas fa-clock"></i> المتبقي ' + formatViewGiftTime(gs.resetAt - getTrustedNow());
@@ -2949,7 +2953,7 @@ function renderWeeklyStreak(){
 }
 function openViewAdsModal(){
   const gs = getViewGiftState();
-  if (gs.claimedCount >= 10 && gs.resetAt > getTrustedNow()) return toast('اكتملت الإعلانات العشرة، انتظر التجديد', 'info');
+  if (gs.claimedCount >= VIEW_REWARDS.length && gs.resetAt > getTrustedNow()) return toast('اكتملت المكافآت الخمس، انتظر التجديد', 'info');
   $('viewAdsModal').classList.add('show');
   $('viewAdsModal').setAttribute('aria-hidden', 'false');
   renderViewAdsModal();
@@ -2961,9 +2965,9 @@ function closeViewAdsModal(){
 }
 function renderViewAdsModal(){
   const gs = getViewGiftState();
-  const count = Math.min(9, gs.claimedCount);
-  const done = gs.claimedCount >= 10;
-  $('viewAdsModalStep').textContent = done ? 'اكتملت الجولة' : 'الإعلان ' + (gs.claimedCount + 1) + ' من 10';
+  const count = Math.min(VIEW_REWARDS.length - 1, gs.claimedCount);
+  const done = gs.claimedCount >= VIEW_REWARDS.length;
+  $('viewAdsModalStep').textContent = done ? 'اكتملت الجولة' : 'الإعلان ' + (gs.claimedCount + 1) + ' من 5';
   $('viewAdsModalTitle').textContent = done ? 'أحسنت! أكملت الجولة' : (gs.claimedCount ? 'جاهز للمكافأة التالية؟' : 'ابدأ رحلة المكافآت');
   $('viewAdsModalSub').textContent = done ? 'تعود الإعلانات والمكافآت بعد انتهاء مؤقت التجديد.' : 'شاهد الإعلان حتى يكتمل، وستضاف مكافأته إلى رصيدك ثم يمكنك الانتقال للتالي.';
   $('viewAdsModalPrize').innerHTML = done ? '✓ <span>اكتمل</span>' : '+' + VIEW_REWARDS[count] + ' <span>ل.س</span>';
@@ -2975,34 +2979,42 @@ function renderViewAdsModal(){
 async function claimDailyReward(){
   if (!STATE.user || STATE.isSubmitting || viewAdsBusy) return;
   const gs = getViewGiftState();
-  if (gs.claimedCount >= 10 && gs.resetAt > getTrustedNow()) return toast('اكتملت المكافآت، انتظر إعادة التفعيل', 'info');
+  if (gs.claimedCount >= VIEW_REWARDS.length && gs.resetAt > getTrustedNow()) return toast('اكتملت المكافآت، انتظر إعادة التفعيل', 'info');
   openViewAdsModal();
 }
 async function watchNextRewardAd(){
   if (!STATE.user || STATE.isSubmitting || viewAdsBusy) return;
   const gs = getViewGiftState();
-  if (gs.claimedCount >= 10) return renderViewAdsModal();
+  if (gs.claimedCount >= VIEW_REWARDS.length) return renderViewAdsModal();
   if (typeof window.show_12001499 !== 'function') return toast('الإعلانات غير متاحة حالياً، حاول لاحقاً', 'err');
   viewAdsBusy = true;
+  const adStartedAt = Date.now();
   renderViewAdsModal();
   $('viewAdsModalTitle').textContent = 'جارٍ تحميل الإعلان';
   $('viewAdsModalSub').textContent = 'يرجى الانتظار حتى يكتمل عرض الإعلان.';
   $('viewAdsModalIcon').textContent = '⏳';
   try {
     await window.show_12001499();
+    const watchedMs = Date.now() - adStartedAt;
+    if (watchedMs < VIEW_MIN_WATCH_MS) {
+      $('viewAdsModalIcon').textContent = '⏱️';
+      $('viewAdsModalTitle').textContent = 'لم تكتمل مدة المشاهدة';
+      $('viewAdsModalSub').textContent = 'شاهد الإعلان لمدة 15 ثانية كاملة على الأقل، ثم حاول مجدداً. لم تتم إضافة أي رصيد.';
+      throw new Error('مدة المشاهدة أقل من 15 ثانية');
+    }
     const result = await db.runTransaction(async trx => {
       const ref = db.collection('users').doc(STATE.tgId);
       const snap = await trx.get(ref);
       const data = snap.data() || {};
       const old = data.viewGifts || {};
       const txNow = getTrustedNow();
-      let count = Number(old.claimedCount || 0);
+      let count = Math.min(VIEW_REWARDS.length, Math.max(0, Number(old.claimedCount || 0)));
       let oldReset = Number(old.resetAt || 0);
-      if (oldReset && txNow >= oldReset) { count = 0; oldReset = 0; }
-      if (count >= 10 && oldReset > txNow) throw new Error('اكتملت الإعلانات العشرة، انتظر إعادة التفعيل');
+      if ((oldReset && txNow >= oldReset) || (count >= VIEW_REWARDS.length && !oldReset)) { count = 0; oldReset = 0; }
+      if (count >= VIEW_REWARDS.length && oldReset > txNow) throw new Error('اكتملت المكافآت الخمس، انتظر إعادة التفعيل');
       const amount = VIEW_REWARDS[count];
       const nextCount = count + 1;
-      const nextReset = nextCount >= 10 ? txNow + VIEW_GIFT_COOLDOWN : 0;
+      const nextReset = nextCount >= VIEW_REWARDS.length ? txNow + VIEW_GIFT_COOLDOWN : 0;
       trx.update(ref, {
         balance_sy: FV.increment(amount),
         totalEarned: FV.increment(amount),
@@ -3017,10 +3029,10 @@ async function watchNextRewardAd(){
     $('viewAdsModalTitle').textContent = 'مبروك! حصلت على المكافأة';
     $('viewAdsModalSub').textContent = 'تمت إضافة ' + result.amount + ' ليرة إلى رصيدك. يمكنك متابعة الإعلان التالي.';
     $('viewAdsModalPrize').innerHTML = '+' + result.amount + ' <span>ل.س</span>';
-    $('viewAdsModalStep').textContent = 'اكتمل الإعلان ' + result.nextCount + ' من 10';
+    $('viewAdsModalStep').textContent = 'اكتمل الإعلان ' + result.nextCount + ' من 5';
     $('viewAdsModalBar').style.width = (result.nextCount * 10) + '%';
-    if (result.nextCount >= 10) {
-      $('viewAdsModalTitle').textContent = 'رائع! أكملت الإعلانات العشرة';
+    if (result.nextCount >= VIEW_REWARDS.length) {
+      $('viewAdsModalTitle').textContent = 'رائع! أكملت المكافآت الخمس';
       $('viewAdsModalSub').textContent = 'تمت إضافة آخر مكافأة. ستتجدد الجولة بعد 10 ساعات.';
       $('viewAdsModalWatchBtn').disabled = true;
       $('viewAdsModalWatchBtn').innerHTML = '<i class="fas fa-check-circle"></i><span>اكتملت الجولة</span>';
@@ -3038,8 +3050,8 @@ async function watchNextRewardAd(){
     viewAdsBusy = false;
     if ($('viewAdsModal').classList.contains('show')) {
       const gs2 = getViewGiftState();
-      if (gs2.claimedCount < 10 && $('viewAdsModalTitle').textContent === 'جارٍ تحميل الإعلان') renderViewAdsModal();
-      if (gs2.claimedCount < 10 && $('viewAdsModalWatchBtn').textContent.includes('شاهد الإعلان')) $('viewAdsModalWatchBtn').disabled = false;
+      if (gs2.claimedCount < VIEW_REWARDS.length && $('viewAdsModalTitle').textContent === 'جارٍ تحميل الإعلان') renderViewAdsModal();
+      if (gs2.claimedCount < VIEW_REWARDS.length && $('viewAdsModalWatchBtn').textContent.includes('شاهد الإعلان')) $('viewAdsModalWatchBtn').disabled = false;
     }
   }
 }
