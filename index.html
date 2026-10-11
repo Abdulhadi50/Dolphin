@@ -2940,7 +2940,7 @@ function renderWeeklyStreak(){
     btnText.textContent = gs.claimedCount ? 'تابع الإعلان ' + (gs.claimedCount + 1) : 'ابدأ المشاهدة';
     if ($('viewAdsTimer')) $('viewAdsTimer').innerHTML = '<i class="fas fa-check-circle"></i> المكافآت تتجدد كل ساعة';
   }
-  if ($('viewAdsModal').classList.contains('show')) renderViewAdsModal();
+  if ($('viewAdsModal') && $('viewAdsModal').classList.contains('show')) renderViewAdsModal();
 }
 function openViewAdsModal(){
   const gs = getViewGiftState();
@@ -3259,7 +3259,7 @@ function bindUI(){
 
   $('wheelCenterBtn').addEventListener('click', spinWheel);
   $('wheelMainBtn').addEventListener('click', spinWheel);
-  $('weeklyClaimBtn').addEventListener('click', claimDailyReward);
+  if ($('weeklyClaimBtn')) $('weeklyClaimBtn').addEventListener('click', claimDailyReward);
   $('viewAdsWatchBtn').addEventListener('click', watchNextRewardAd);
   $('viewAdsClose').addEventListener('click', closeViewAdsModal);
   $('viewAdsModal').addEventListener('click', e => { if (e.target === $('viewAdsModal')) closeViewAdsModal(); });
