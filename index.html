@@ -998,11 +998,11 @@ body{background:#03101d;color:#effaff}
         <div class="view-ads-card__top">
           <div class="view-ads-card__icon"><i class="fas fa-play"></i></div>
           <div class="view-ads-card__heading"><h3> هدايا المشاهدات</h3><p>افتح الواجهة لمشاهدة الإعلانات وجمع 5 مكافآت</p></div>
-          <span class="view-ads-card__tag">5 × 5 ل.س</span>
+          <span class="view-ads-card__tag">5 × 2 ل.س</span>
         </div>
         <div class="view-ads-progress"><div class="view-ads-progress__labels"><span id="viewAdsProgressText">0 من 5 إعلانات</span><b id="viewAdsRewardText">ابدأ واربح</b></div><div class="view-ads-progress__track"><span id="viewAdsProgressBar"></span></div></div>
         <div class="view-ads-rewards" id="daysGrid"></div>
-        <div class="view-ads-card__bottom"><span id="viewAdsTimer"><i class="fas fa-clock"></i> 5 مكافآت بقيمة 2 ل.س لكل إعلان، تتجدد كل 3 ساعات</span><button class="view-ads-start" id="weeklyClaimBtn"><i class="fas fa-gift"></i><span id="weeklyBtnText">عرض المكافآت</span></button></div>
+        <div class="view-ads-card__bottom"><span id="viewAdsTimer"><i class="fas fa-clock"></i> 5 مكافآت بقيمة 2 ل.س لكل إعلان، تتجدد كل ساعة</span><button class="view-ads-start" id="weeklyClaimBtn"><i class="fas fa-gift"></i><span id="weeklyBtnText">عرض المكافآت</span></button></div>
       </section>
     </div>
 
@@ -1066,13 +1066,9 @@ body{background:#03101d;color:#effaff}
 
       <div class="wheel-info">
         <i class="fas fa-info-circle"></i>
-        <div class="wheel-info__txt">لديك لفة مجانية يومياً. يمكنك الحصول على لفة إضافية بمشاهدة 3 إعلانات، مرة واحدة كل 24 ساعة، ويتجدد المؤقت مع العجلة.</div>
+        <div class="wheel-info__txt">لديك لفة مجانية يومياً. عد عندما يتجدد مؤقت عجلة الحظ للحصول على لفتك التالية.</div>
       </div>
-      <div class="wheel-adspin-card">
-        <div class="wheel-adspin-head"><i class="fas fa-play-circle"></i><div><strong>لفة إضافية عبر الإعلانات</strong><small id="wheelAdSpinStatus">شاهد 3 إعلانات للحصول على لفة</small></div></div>
-        <div class="wheel-adspin-progress"><span id="wheelAdSpinProgress"></span></div>
-        <button class="wheel-action wheel-adspin-btn" id="wheelAdSpinBtn" onclick="watchWheelBonusAd()"><i class="fas fa-video"></i><span id="wheelAdSpinBtnText">شاهد الإعلان 1 من 3</span></button>
-      </div>
+
     </div>
 
     <div class="view" id="view-tasks">
@@ -2908,7 +2904,7 @@ function renderChannelTask(){
 /* ═══  هدايا المشاهدات: 5 إعلانات، 5 ليرات لكل إعلان، كل 10 ساعات ═══ */
 const VIEW_REWARDS = [2, 2, 2, 2, 2];
 const VIEW_MIN_WATCH_MS = 15000;
-const VIEW_GIFT_COOLDOWN = 3 * 60 * 60 * 1000;
+const VIEW_GIFT_COOLDOWN = 60 * 60 * 1000;
 let viewAdsBusy = false;
 
 function getViewGiftState(){
@@ -2952,7 +2948,7 @@ function renderWeeklyStreak(){
   } else {
     btn.disabled = false;
     btnText.textContent = gs.claimedCount ? 'تابع الإعلان ' + (gs.claimedCount + 1) : 'ابدأ المشاهدة';
-    if ($('viewAdsTimer')) $('viewAdsTimer').innerHTML = '<i class="fas fa-check-circle"></i> تتجدد المكافآت بعد إكمال الخمسة كل 3 ساعات';
+    if ($('viewAdsTimer')) $('viewAdsTimer').innerHTML = '<i class="fas fa-check-circle"></i> تتجدد المكافآت بعد إكمال الخمسة كل ساعة';
   }
   if ($('viewAdsModal').classList.contains('show')) renderViewAdsModal();
 }
@@ -3055,7 +3051,7 @@ async function watchNextRewardAd(){
     $('viewAdsModalBar').style.width = (result.nextCount * 20) + '%';
     if (result.nextCount >= VIEW_REWARDS.length) {
       $('viewAdsModalTitle').textContent = 'رائع! أكملت المكافآت الخمس';
-      $('viewAdsModalSub').textContent = 'تمت إضافة آخر مكافأة. ستتجدد الجولة بعد 3 ساعات.';
+      $('viewAdsModalSub').textContent = 'تمت إضافة آخر مكافأة. ستتجدد الجولة بعد ساعة واحدة.';
       $('viewAdsModalWatchBtn').disabled = true;
       $('viewAdsModalWatchBtn').innerHTML = '<i class="fas fa-check-circle"></i><span>اكتملت الجولة</span>';
     } else {
@@ -3149,7 +3145,6 @@ function renderWheel(){
   const ws = getWheelState();
   setText('wheelSpins', ws.spins);
   setText('wheelSpinsTotal', Math.max(CONFIG.wheel.dailyFreeSpin, ws.spins));
-  renderWheelAdBonus();
   const centerBtn = $('wheelCenterBtn');
   const mainBtn = $('wheelMainBtn');
   const mainBtnText = $('wheelMainBtnText');
@@ -3245,66 +3240,6 @@ async function spinWheel(){
   }, 6200);
 }
 
-const WHEEL_ADS_REQUIRED = 3;
-const WHEEL_AD_MIN_WATCH_MS = 15000;
-let wheelBonusAdBusy = false;
-function getWheelAdBonusState(){
-  const w = (STATE.user && STATE.user.wheel) || {};
-  const today = getTodayKey();
-  return { date: w.adBonusDate || '', progress: w.adBonusDate === today ? Math.max(0, Math.min(WHEEL_ADS_REQUIRED, Number(w.adBonusProgress || 0))) : 0, claimed: w.adBonusDate === today && !!w.adBonusClaimed };
-}
-function renderWheelAdBonus(){
-  const st = getWheelAdBonusState();
-  const btn = $('wheelAdSpinBtn');
-  const label = $('wheelAdSpinBtnText');
-  if (!btn || !label) return;
-  const bar = $('wheelAdSpinProgress');
-  if (bar) bar.style.width = (st.progress / WHEEL_ADS_REQUIRED * 100) + '%';
-  if (st.claimed){
-    btn.disabled = true; label.textContent = 'اكتملت اللفة الإضافية اليوم';
-    if ($('wheelAdSpinStatus')) $('wheelAdSpinStatus').textContent = 'يتجدد بعد ' + formatViewGiftTime(Math.max(0, getNextMidnight() - getTrustedNow()));
-  } else {
-    btn.disabled = wheelBonusAdBusy || STATE.timeLocked;
-    label.textContent = wheelBonusAdBusy ? 'جارٍ التحقق...' : 'شاهد الإعلان ' + (st.progress + 1) + ' من 3';
-    if ($('wheelAdSpinStatus')) $('wheelAdSpinStatus').textContent = 'تم إكمال ' + st.progress + ' من 3 إعلانات';
-  }
-}
-async function watchWheelBonusAd(){
-  if (!STATE.user || wheelBonusAdBusy || STATE.isSubmitting) return;
-  if (STATE.timeLocked) return toast('الوقت غير موثوق، حاول لاحقاً', 'err');
-  const st = getWheelAdBonusState();
-  if (st.claimed) return toast('حصلت على اللفة الإضافية اليوم، انتظر تجديد العجلة', 'info');
-  if (typeof window.show_12001499 !== 'function') return toast('الإعلانات غير متاحة حالياً، حاول لاحقاً', 'err');
-  wheelBonusAdBusy = true; renderWheelAdBonus();
-  const startedAt = Date.now();
-  try{
-    await window.show_12001499();
-    if (Date.now() - startedAt < WHEEL_AD_MIN_WATCH_MS) throw new Error('مدة المشاهدة أقل من 15 ثانية');
-    const result = await db.runTransaction(async trx => {
-      const ref = db.collection('users').doc(STATE.tgId);
-      const snap = await trx.get(ref);
-      const d = snap.data() || {};
-      const w = d.wheel || {};
-      const today = getTodayKey();
-      if (w.adBonusDate === today && w.adBonusClaimed) throw new Error('تم استلام اللفة الإضافية اليوم');
-      const progress = w.adBonusDate === today ? Math.max(0, Math.min(WHEEL_ADS_REQUIRED, Number(w.adBonusProgress || 0))) : 0;
-      const next = Math.min(WHEEL_ADS_REQUIRED, progress + 1);
-      const currentSpins = w.lastFreeSpinDate === today ? Math.max(0, Number(w.spins || 0)) : Math.max(Number(w.spins || 0), CONFIG.wheel.dailyFreeSpin);
-      const updWheel = { ...w, spins: currentSpins + (next === WHEEL_ADS_REQUIRED ? 1 : 0), lastFreeSpinDate: today, adBonusDate: today, adBonusProgress: next, adBonusClaimed: next === WHEEL_ADS_REQUIRED, lastAdBonusAt: SV() };
-      trx.update(ref, { wheel: updWheel, updatedAt: SV() });
-      return { next, granted: next === WHEEL_ADS_REQUIRED };
-    });
-    await loadOrCreateUser();
-    renderWheel(); updateWheelTimer(); renderWheelAdBonus();
-    if (result.granted) toast('تمت إضافة لفة مجانية إلى العجلة', 'ok');
-    else toast('تم التحقق من الإعلان ' + result.next + ' من 3', 'ok');
-  }catch(e){
-    console.warn('wheel bonus ad', e);
-    toast('لم يتم احتساب الإعلان. يجب أن تستمر المشاهدة 15 ثانية على الأقل.', 'err');
-  }finally{ wheelBonusAdBusy = false; renderWheelAdBonus(); }
-}
-window.watchWheelBonusAd = watchWheelBonusAd;
-
 function closeWheelModal(){ $('wheelModal').classList.remove('show'); }
 window.closeWheelModal = closeWheelModal;
 
@@ -3369,7 +3304,7 @@ async function bootstrap(){
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) startLiveTimer();
   initClockMonitor();
   setInterval(updatePlanTimer, 1000);
-  setInterval(() => { if (STATE.user) { updateWheelTimer(); renderWheelAdBonus(); updateViewGiftTimer(); } }, 1000);
+  setInterval(() => { if (STATE.user) { updateWheelTimer(); updateViewGiftTimer(); } }, 1000);
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden && STATE.user) checkPlanExpiry();
   });
@@ -3429,7 +3364,5 @@ html { scroll-behavior: auto !important; }
 
 
 <style id="wheelAdSpinAndLeaderboardPatch">
-.wheel-adspin-card{margin-top:14px;padding:16px;border-radius:22px;background:linear-gradient(145deg,rgba(10,63,83,.86),rgba(7,29,53,.94));border:1px solid rgba(111,224,244,.25);box-shadow:inset 0 1px rgba(255,255,255,.08),0 12px 24px rgba(0,0,0,.14)}
-.wheel-adspin-head{display:flex;align-items:center;gap:12px;margin-bottom:13px;color:#fff}.wheel-adspin-head>i{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:rgba(94,220,240,.13);color:#8cf0ff;font-size:18px}.wheel-adspin-head strong{display:block;font-size:13px;font-weight:900}.wheel-adspin-head small{display:block;margin-top:4px;color:rgba(230,249,255,.7);font-size:11px;line-height:1.5}.wheel-adspin-progress{height:7px;border-radius:20px;background:rgba(255,255,255,.1);overflow:hidden;margin-bottom:13px}.wheel-adspin-progress span{display:block;width:0;height:100%;border-radius:20px;background:linear-gradient(90deg,#72e8ff,#d4f7ff);transition:width .2s}.wheel-adspin-btn{min-height:48px;font-size:13px}.wheel-adspin-btn:disabled{opacity:.65}
 .lb__list{background:linear-gradient(145deg,rgba(10,50,70,.72),rgba(7,25,48,.88))!important}.lb{background:linear-gradient(145deg,rgba(13,58,76,.82),rgba(6,26,47,.95))!important;border-color:rgba(133,225,248,.22)!important}
 </style>
