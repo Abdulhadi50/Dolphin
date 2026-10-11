@@ -33,7 +33,7 @@ html,body{height:100%}
 body{font-family:'IBM Plex Sans Arabic',-apple-system,sans-serif;background:#000;color:#fff;font-size:var(--f-base);line-height:1.5;
   overflow:hidden;direction:rtl;-webkit-font-smoothing:antialiased;overscroll-behavior:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;font-size:inherit}
-input{font-family:inherit;color:inherit;font-size:inherit}
+input,select{font-family:inherit;color:inherit;font-size:inherit}
 img{max-width:100%;display:block;pointer-events:none;-webkit-user-drag:none;user-drag:none}
 ::-webkit-scrollbar{display:none}
 .main{scrollbar-width:none}
@@ -253,10 +253,10 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .hint i{margin-top:3px;font-size:12px;color:var(--blue)}
 .hint b{color:var(--blue)}
 
-.cq{display:flex;align-items:center;gap:12px;background:var(--blue);border-radius:24px;padding:14px}
+.cq{display:flex;align-items:center;gap:12px;background:var(--blue);border-radius:24px;padding:14px;margin-bottom:10px}
 .cq__ic{width:48px;height:48px;border-radius:50%;background:var(--inset);color:#fff;display:grid;place-items:center;font-size:22px;flex-shrink:0}
 .cq__info{flex:1;min-width:0}
-.cq__t{font-size:14.5px;font-weight:800;line-height:1.4}
+.cq__t{font-size:14.5px;font-weight:800;line-height:1.4;word-break:break-word}
 .cq__d{font-size:12px;color:var(--text-2);font-weight:600;margin:2px 0 7px;line-height:1.5}
 .cq__d--ok{color:#9CFFB8}
 .cq__btn{flex-shrink:0;min-height:44px;padding:0 18px;border-radius:16px;font-size:13px;font-weight:800;display:inline-flex;align-items:center;gap:7px;transition:transform .15s}
@@ -290,7 +290,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .qrow__ic{width:40px;height:40px;border-radius:50%;background:var(--inset);color:#fff;display:grid;place-items:center;font-size:15px;flex-shrink:0}
 .qrow__info{flex:1;min-width:0}
 .qrow__t{font-size:14px;font-weight:800}
-.qrow__d{font-size:11.5px;color:var(--text-2);font-weight:600;margin-top:1px}
+.qrow__d{font-size:11.5px;color:var(--text-2);font-weight:600;margin-top:1px;word-break:break-all}
 .qrow--done{background:rgba(0,122,255,.2);border:1px solid var(--sea-pale)}
 .qrow--done .qrow__ic{background:rgba(48,209,88,.2);color:var(--green)}
 .qrow--done .qrow__t{color:var(--text-2)}
@@ -382,6 +382,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .field__input::placeholder{color:rgba(255,255,255,.4);font-weight:500}
 .field__input--ltr{direction:ltr;text-align:left}
 .field__input--code{text-align:center;letter-spacing:3px;font-weight:800;font-size:17px}
+select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .msg{display:none;padding:10px 14px;border-radius:14px;font-size:12.5px;font-weight:700;margin-top:10px;text-align:center;background:#0B0B0B;border:1px solid #18252E}
 .msg.show{display:block}
 .msg--ok{color:#9CFFB8}
@@ -593,7 +594,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .modal__btn{width:100%;min-height:54px;border-radius:18px;font-size:15px;font-weight:800;background:linear-gradient(135deg,#FFD60A,#FF9F0A);color:#3A2A00;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s}
 .modal__btn:active{transform:scale(.97)}
 
-/* 🎬 هدايا المشاهدات - واجهة بحرية جديدة */
+/* 🎬 هدايا المشاهدات */
 .view-ads-progress,.view-ads-rewards{display:none!important}
 .view-ads-card{cursor:default;margin:18px 0 22px;padding:18px 15px;border-radius:25px;position:relative;overflow:hidden;background:linear-gradient(145deg,#073b59 0%,#075c75 48%,#082b49 100%);border:1px solid rgba(112,231,255,.38);box-shadow:0 14px 32px rgba(0,9,28,.28),inset 0 1px rgba(255,255,255,.12)}
 .view-ads-card__glow{position:absolute;right:-55px;top:-70px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(54,224,255,.23),transparent 70%);pointer-events:none}
@@ -632,9 +633,13 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .weekly__btn[disabled]{background:rgba(0,0,0,.32);color:rgba(255,255,255,.6);cursor:not-allowed}
 .weekly__btn:not([disabled])::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);animation:btnShine 2.6s ease-in-out infinite}
 
-
 .weekly__btn[disabled]{background:rgba(255,255,255,.16)!important;color:#FFFFFF!important;opacity:1;text-shadow:0 1px 2px rgba(0,0,0,.85);border:1px solid rgba(255,255,255,.35)}
 .weekly__btn[disabled] span{color:#FFFFFF!important}
+
+/* 🛡️ إدارة مهمات التواصل */
+.adm-note{font-size:11.5px;color:var(--text-2);font-weight:600;margin:-4px 0 12px;line-height:1.6}
+.adm-del{width:36px;height:36px;border-radius:50%;background:rgba(255,69,58,.2);color:#FF8A82;display:grid;place-items:center;font-size:13px;flex-shrink:0;transition:transform .15s}
+.adm-del:active{transform:scale(.92)}
 
 @media (max-width:360px){
   .nav .nav__btn span{font-size:9.5px}
@@ -754,7 +759,7 @@ body{background:#03101d;color:#effaff}
 .mining-card.is-ready .timer-bar{background:rgba(237,192,96,.1);border-color:rgba(248,215,138,.24)}
 .mining-card.is-ready .timer-bar__ic,.mining-card.is-ready .timer-bar__lbl{color:#ffe09a}
 .mining-card.is-ready .plan-header__lvl{background:rgba(248,215,138,.15)}.mining-card.is-ready .plan-header__lvl-num{color:#ffe09a}
-/* Shared glass surfaces: dashboard, tasks, referrals, store and wallet */
+/* Shared glass surfaces */
 .card,.plan,.plans-report,.plans-report__head,.plans-table,.pf-top,.rf-hero,.rf-stat,.lb,.lb__list,.lb__empty,.step,#panelWithdraw,.weekly,.wheel-info,.wheel-timer-bar,.field__input,.info-rows,.method,.seg,.tabs,.code-row,.ref-link,.plan__stat,.plan__timer,.tbox,.plans-report,.qrow--lock{
   background:linear-gradient(145deg,rgba(117,202,232,.105),rgba(4,25,49,.55));border-color:rgba(128,218,244,.18);box-shadow:inset 0 1px rgba(255,255,255,.035)}
 .card,.plan,.rf-hero,.lb,.pf-top,#panelWithdraw,.weekly{backdrop-filter:blur(14px)}
@@ -1087,18 +1092,44 @@ body{background:#03101d;color:#effaff}
         </div>
       </div>
 
-      <div class="grp"><span>مهمة سريعة</span></div>
-      <div class="cq" id="taskChannel">
-        <div class="cq__ic"><i class="fab fa-telegram-plane"></i></div>
-        <div class="cq__info">
-          <div class="cq__t">انضم لقناة دولفين مينر</div>
-          <div class="cq__d" id="taskChannelStatus">انضم لقناتنا على تيليجرام لتبقى على اطلاع</div>
-          <span class="rwd"><i class="fas fa-coins"></i> <span id="chReward">10</span> ل.س</span>
-        </div>
-        <button class="cq__btn cq__btn--join" id="taskChannelBtn"><i class="fab fa-telegram-plane"></i> انضم</button>
-      </div>
+      <div id="tasksContainer"></div>
 
       <div id="inviteTasksContainer"></div>
+
+      <div class="card" id="adminTaskCard" style="display:none;margin-top:16px">
+        <div class="card__title"><i class="fas fa-user-shield"></i> إدارة مهمات التواصل</div>
+        <div class="adm-note">تظهر هذه الأداة لك فقط. المهمة تعرض أيقونة المنصة المختارة ويُكافأ المستخدم بعد 5 ثوانٍ من الضغط على "انضم".</div>
+        <div class="field">
+          <label class="field__label"><i class="fas fa-share-alt"></i> المنصة</label>
+          <select class="field__input" id="adTaskPlatform">
+            <option value="telegram">Telegram</option>
+            <option value="instagram">Instagram</option>
+            <option value="youtube">YouTube</option>
+            <option value="tiktok">TikTok</option>
+            <option value="facebook">Facebook</option>
+            <option value="x">X (Twitter)</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="snapchat">Snapchat</option>
+            <option value="other">رابط آخر</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field__label"><i class="fas fa-robot"></i> اسم البوت / الحساب</label>
+          <input type="text" class="field__input" id="adTaskName" placeholder="مثال: @DolphinMinerchannel" maxlength="40">
+        </div>
+        <div class="field">
+          <label class="field__label"><i class="fas fa-link"></i> الرابط (https)</label>
+          <input type="url" class="field__input field__input--ltr" id="adTaskUrl" placeholder="https://t.me/...">
+        </div>
+        <div class="field">
+          <label class="field__label"><i class="fas fa-coins"></i> المكافأة (ل.س)</label>
+          <input type="text" inputmode="numeric" class="field__input field__input--ltr" id="adTaskReward" placeholder="10">
+        </div>
+        <button class="btn btn--primary" id="adTaskAdd"><i class="fas fa-plus"></i> إضافة المهمة</button>
+        <div class="card__sep"></div>
+        <div class="card__title"><i class="fas fa-list"></i> المهمات الحالية</div>
+        <div id="adTaskList"></div>
+      </div>
     </div>
 
     <div class="view" id="view-store">
@@ -1449,7 +1480,7 @@ body{background:#03101d;color:#effaff}
 'use strict';
 
 (function protectContent(){
-  const isField = (t) => !!(t && t.closest && t.closest('input,textarea'));
+  const isField = (t) => !!(t && t.closest && t.closest('input,textarea,select'));
   ['copy','cut','selectstart','dragstart','contextmenu'].forEach(ev =>
     document.addEventListener(ev, e => { if (!isField(e.target)) e.preventDefault(); }, { capture:true }));
   document.addEventListener('keydown', e => {
@@ -1476,7 +1507,6 @@ const CONFIG = {
   referral: { newUserReward: 5, referrerReward: 10 },
   withdraw: { minAmount: 500, binanceMinAmount: 1000, feeRate: 0.015, usdRate: 140 },
   deposit: { shamCash: '334a08ea2d1bbed05f214a7f08e37ae4', binance: '1121748571' },
-  channel: 'https://t.me/DolphinMinerchannel',
 
   plans: [
     { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:5,  cycleHours:6, planDays:0,  price:0 },
@@ -1501,7 +1531,8 @@ const CONFIG = {
     firstBuy: { id:'firstBuy', reward:100, title:'اشترِ أول خطة مدفوعة', desc:'اربح 100 ل.س عند شراء أول خطة مدفوعة' }
   },
 
-  channelTask: { reward: 10 },
+  socialWaitMs: 5000,
+
   refundPlanProfit: false,
 
   wheel: {
@@ -1519,6 +1550,20 @@ const CONFIG = {
   }
 };
 
+/* منصات مهمات التواصل: الأيقونة واللون حسب المنصة */
+const SOCIAL_PLATFORMS = {
+  telegram: { label:'Telegram',  icon:'fab fa-telegram-plane', color:'#229ED9' },
+  instagram:{ label:'Instagram', icon:'fab fa-instagram',      color:'#E1306C' },
+  youtube:  { label:'YouTube',   icon:'fab fa-youtube',        color:'#FF3B30' },
+  tiktok:   { label:'TikTok',    icon:'fab fa-tiktok',         color:'#FFFFFF' },
+  facebook: { label:'Facebook',  icon:'fab fa-facebook-f',     color:'#1877F2' },
+  x:        { label:'X',         icon:'fab fa-x-twitter',      color:'#FFFFFF' },
+  whatsapp: { label:'WhatsApp',  icon:'fab fa-whatsapp',       color:'#25D366' },
+  snapchat: { label:'Snapchat',  icon:'fab fa-snapchat',       color:'#FFFC00' },
+  other:    { label:'رابط',      icon:'fas fa-link',           color:'#8beaff' }
+};
+function platformOf(id){ return SOCIAL_PLATFORMS[id] || SOCIAL_PLATFORMS.other; }
+
 if (!firebase.apps.length) firebase.initializeApp(CONFIG.firebase);
 const db = firebase.firestore();
 db.enablePersistence({ synchronizeTabs: true }).catch(() => {});
@@ -1526,14 +1571,15 @@ const FV = firebase.firestore.FieldValue;
 const SV = () => FV.serverTimestamp();
 
 const STATE = {
-  user: null, tgUser: null, tgId: null, startParam: null,
+  user: null, tgUser: null, tgId: null, startParam: null, isAdmin: false,
   isSubmitting: false, liveTimer: null,
   withdrawMethod: 'sham_cash', depositMethod: 'sham_cash',
   planExpiryTimer: null, expiring: false, completing: false,
   userUnsub: null, lbCache: null, lbCacheAt: 0,
   timeSynced: false, timeLocked: true, tamperHold: false,
   serverBase: 0, perfBase: 0, syncing: false, lastSyncAt: 0,
-  wheelSpinning: false, wheelRotation: 0
+  wheelSpinning: false, wheelRotation: 0,
+  socialTasks: [], socialPending: {}
 };
 const UI = { btnKey: '', bubbleMode: '' };
 
@@ -1594,6 +1640,8 @@ function initTelegram(){
   STATE.tgUser = tg.initDataUnsafe.user;
   STATE.tgId = String(tg.initDataUnsafe.user.id);
   STATE.startParam = tg.initDataUnsafe.start_param || null;
+  const un = (STATE.tgUser.username || '').toLowerCase();
+  STATE.isAdmin = !!un && un === CONFIG.admin.telegram.toLowerCase();
   return true;
 }
 
@@ -1725,10 +1773,10 @@ async function loadOrCreateUser(){
     hasStartedMining: false, miningStartTime: null, miningProgress: 0, miningCollectable: false,
     miningCollectCount: 0,
     tamperFlag: false,
-    channelJoined: false, channelRewardClaimed: false,
     hasPurchasedPlan: false,
     collect5RewardClaimed: false, firstBuyRewardClaimed: false,
     inviteRewardClaimed: {},
+    socialClaimed: {},
     dailyStreak: { weekKey: null, weekStart: null, claimedDays: [], lastClaimDate: null },
     wheel: { spins: CONFIG.wheel.dailyFreeSpin, lastFreeSpinDate: null, lastSpinAt: null },
     createdAt: SV(), updatedAt: SV(), lastSeen: SV()
@@ -1781,6 +1829,19 @@ function listenUser(){
     refreshAll();
     if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime && !STATE.liveTimer) startLiveTimer();
   }, err => console.warn('listenUser', err));
+}
+
+/* مهمات التواصل: تُقرأ من قاعدة البيانات ويديرها الأدمن فقط */
+function listenSocialTasks(){
+  db.collection('socialTasks').onSnapshot(snap => {
+    STATE.socialTasks = snap.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => tsMs(a.createdAt) - tsMs(b.createdAt));
+    renderTasks();
+  }, err => console.warn('socialTasks', err));
+}
+function activeSocialTasks(){
+  return STATE.socialTasks.filter(t => t.active !== false);
 }
 
 function refreshAll(){
@@ -2604,78 +2665,139 @@ function wireLbImages(list){
   });
 }
 
-async function verifyChannelJoin(){
-  if (!STATE.user || STATE.isSubmitting) return;
-  const btn = $('taskChannelBtn');
-  STATE.isSubmitting = true;
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> تحقق...';
-  try{
-    if (tg && tg.openTelegramLink) tg.openTelegramLink(CONFIG.channel); else window.open(CONFIG.channel, '_blank');
-    await new Promise(r => setTimeout(r, 6000));
-    await db.collection('users').doc(STATE.tgId).update({ channelJoined: true, updatedAt: SV() });
-    toast('✅ تم التحقق من انضمامك للقناة!', 'ok');
-  }catch(e){
-    toast('لم يتم التحقق من الانضمام، انضم ثم حاول مجدداً', 'err');
-  }finally{
-    STATE.isSubmitting = false;
-    renderChannelTask();
-  }
+/* ═══ 🔗 مهمات التواصل الاجتماعي ═══ */
+function startSocialTask(id){
+  if (STATE.isSubmitting || !STATE.user) return;
+  if (STATE.timeLocked && false) return;
+  const t = STATE.socialTasks.find(x => x.id === id);
+  if (!t) return toast('المهمة لم تعد متاحة', 'err');
+  if ((STATE.user.socialClaimed || {})[id]) return;
+  if (STATE.socialPending[id]) return;
+  const url = safeUrl(t.url);
+  if (!url) return toast('رابط المهمة غير صالح', 'err');
+
+  const isTgLink = /^https:\/\/t\.me\//i.test(url);
+  if (tg){
+    if (isTgLink && tg.openTelegramLink) tg.openTelegramLink(url);
+    else if (tg.openLink) tg.openLink(url);
+    else window.open(url, '_blank');
+  } else window.open(url, '_blank');
+
+  STATE.socialPending[id] = true;
+  renderTasks();
+  setTimeout(() => claimSocialReward(id), CONFIG.socialWaitMs);
 }
 
-async function collectChannelReward(){
-  if (!STATE.user || STATE.isSubmitting) return;
-  if (!STATE.user.channelJoined) return toast('يجب الانضمام للقناة أولاً', 'err');
-  if (STATE.user.channelRewardClaimed) return toast('تم استلام المكافأة مسبقاً', 'info');
-
-  STATE.isSubmitting = true;
+async function claimSocialReward(id){
   try{
-    await db.runTransaction(async (trx) => {
+    const reward = await db.runTransaction(async (trx) => {
       const ref = db.collection('users').doc(STATE.tgId);
-      const d = (await trx.get(ref)).data();
-      if (d.channelRewardClaimed) throw new Error('تم الاستلام مسبقاً');
+      const taskRef = db.collection('socialTasks').doc(id);
+      const d = (await trx.get(ref)).data() || {};
+      const claimed = d.socialClaimed || {};
+      if (claimed[id]) throw new Error('تم استلام المكافأة مسبقاً');
+      const task = await trx.get(taskRef);
+      if (!task.exists) throw new Error('المهمة لم تعد متاحة');
+      const r = Number(task.data().reward) || 0;
+      if (r <= 0) throw new Error('مكافأة المهمة غير صحيحة');
       trx.update(ref, {
-        balance_sy: FV.increment(CONFIG.channelTask.reward),
-        totalEarned: FV.increment(CONFIG.channelTask.reward),
-        channelRewardClaimed: true,
+        balance_sy: FV.increment(r),
+        totalEarned: FV.increment(r),
+        socialClaimed: { ...claimed, [id]: true },
         updatedAt: SV()
       });
+      return r;
     });
-    toast('🎉 +' + CONFIG.channelTask.reward + ' ل.س من مهمة القناة!', 'ok');
+    toast('🎉 +' + reward + ' ل.س من مهمة التواصل!', 'ok');
   }catch(e){
     toast(e.message || 'فشل استلام المكافأة', 'err');
   }finally{
-    STATE.isSubmitting = false;
+    delete STATE.socialPending[id];
+    renderTasks();
   }
 }
 
-async function collectSpecialReward(taskId){
-  if (!STATE.user || STATE.isSubmitting) return;
-  const task = CONFIG.specialTasks[taskId];
-  if (!task) return;
-  const flagKey = taskId === 'collect5' ? 'collect5RewardClaimed' : 'firstBuyRewardClaimed';
+function socialCardHtml(t, claimed, pending){
+  const p = platformOf(t.platform);
+  const icon = '<div class="cq__ic"><i class="' + p.icon + '" style="color:' + p.color + '"></i></div>';
+  const desc = claimed ? 'تم استلام المكافأة' : (pending ? 'انتظر 5 ثوانٍ لاستلام المكافأة' : 'انضم ثم انتظر 5 ثوانٍ لاستلام المكافأة');
+  const info = '<div class="cq__info"><div class="cq__t">' + escapeHtml(t.name || p.label) + '</div>' +
+    '<div class="cq__d">' + desc + '</div>' +
+    '<span class="rwd"><i class="fas fa-coins"></i> ' + fmt(t.reward) + ' ل.س</span></div>';
+  let btn;
+  if (claimed) btn = '<button class="cq__btn cq__btn--done" disabled><i class="fas fa-check"></i> مكتملة</button>';
+  else if (pending) btn = '<button class="cq__btn cq__btn--done" disabled><span class="spinner"></span> 5 ث</button>';
+  else btn = '<button class="cq__btn cq__btn--join" data-social="' + t.id + '"><i class="fas fa-external-link-alt"></i> انضم</button>';
+  return '<div class="cq' + (claimed ? ' is-done' : '') + '">' + icon + info + btn + '</div>';
+}
 
-  STATE.isSubmitting = true;
+function socialSectionHtml(u){
+  const soc = activeSocialTasks();
+  const sc = u.socialClaimed || {};
+  const doneCount = soc.filter(t => sc[t.id]).length;
+  let h = '<div class="grp"><span>مهمات التواصل الاجتماعي</span><small>' + doneCount + ' / ' + soc.length + '</small></div>';
+  if (!soc.length) {
+    h += '<div class="hint"><i class="fas fa-info-circle"></i><div>لا توجد مهمات تواصل متاحة حالياً.</div></div>';
+  } else {
+    h += soc.map(t => socialCardHtml(t, !!sc[t.id], !!STATE.socialPending[t.id])).join('');
+  }
+  return h;
+}
+
+function renderAdminTasks(){
+  const el = $('adTaskList');
+  if (!el || !STATE.isAdmin) return;
+  const list = STATE.socialTasks;
+  el.innerHTML = list.length
+    ? list.map(t => {
+        const p = platformOf(t.platform);
+        return '<div class="qrow">' +
+          '<div class="qrow__ic"><i class="' + p.icon + '" style="color:' + p.color + '"></i></div>' +
+          '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(t.name || p.label) + '</div>' +
+          '<div class="qrow__d">' + escapeHtml(t.url) + '</div></div>' +
+          '<span class="rwd"><i class="fas fa-coins"></i> ' + fmt(t.reward) + '</span>' +
+          '<button class="adm-del" data-del="' + t.id + '" aria-label="حذف"><i class="fas fa-trash"></i></button>' +
+        '</div>';
+      }).join('')
+    : '<div class="lb__empty"><p>لا توجد مهمات تواصل بعد</p></div>';
+  el.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', () => deleteSocialTask(b.dataset.del)));
+}
+
+async function addSocialTask(){
+  if (!STATE.isAdmin) return;
+  const platform = $('adTaskPlatform').value;
+  const name = $('adTaskName').value.trim();
+  const url = safeUrl($('adTaskUrl').value.trim());
+  const reward = Math.floor(Number($('adTaskReward').value));
+  if (name.length < 2 || name.length > 40) return toast('اكتب اسم البوت أو الحساب (2 إلى 40 حرفاً)', 'err');
+  if (!url) return toast('الرابط يجب أن يبدأ بـ https://', 'err');
+  if (!(reward > 0 && reward <= 100000)) return toast('أدخل مكافأة صحيحة', 'err');
+
+  const btn = $('adTaskAdd');
+  btn.disabled = true;
   try{
-    await db.runTransaction(async (trx) => {
-      const ref = db.collection('users').doc(STATE.tgId);
-      const d = (await trx.get(ref)).data();
-      if (!d) throw new Error('المستخدم غير موجود');
-      if (d[flagKey]) throw new Error('تم الاستلام مسبقاً');
-      if (taskId === 'collect5' && (d.miningCollectCount || 0) < task.target) throw new Error('لم تجمع 5 مرات بعد');
-      if (taskId === 'firstBuy' && !d.hasPurchasedPlan) throw new Error('لم تشترِ خطة مدفوعة بعد');
-      trx.update(ref, {
-        balance_sy: FV.increment(task.reward),
-        totalEarned: FV.increment(task.reward),
-        [flagKey]: true,
-        updatedAt: SV()
-      });
+    await db.collection('socialTasks').add({
+      platform: SOCIAL_PLATFORMS[platform] ? platform : 'other',
+      name, url, reward, active: true,
+      createdAt: SV(), createdBy: STATE.tgId
     });
-    toast('🎉 +' + task.reward + ' ل.س من ' + task.title + '!', 'ok');
+    $('adTaskName').value = ''; $('adTaskUrl').value = ''; $('adTaskReward').value = '';
+    toast('✅ تمت إضافة المهمة', 'ok');
   }catch(e){
-    toast(e.message || 'فشل الاستلام', 'err');
+    toast('فشلت الإضافة، تحقق من صلاحيات قاعدة البيانات', 'err');
   }finally{
-    STATE.isSubmitting = false;
+    btn.disabled = false;
+  }
+}
+
+async function deleteSocialTask(id){
+  if (!STATE.isAdmin) return;
+  if (!confirm('حذف هذه المهمة؟')) return;
+  try{
+    await db.collection('socialTasks').doc(id).delete();
+    toast('تم حذف المهمة', 'info');
+  }catch(e){
+    toast('فشل الحذف، تحقق من صلاحيات قاعدة البيانات', 'err');
   }
 }
 
@@ -2731,6 +2853,36 @@ async function collectInviteReward(taskId){
   }
 }
 
+async function collectSpecialReward(taskId){
+  if (!STATE.user || STATE.isSubmitting) return;
+  const task = CONFIG.specialTasks[taskId];
+  if (!task) return;
+  const flagKey = taskId === 'collect5' ? 'collect5RewardClaimed' : 'firstBuyRewardClaimed';
+
+  STATE.isSubmitting = true;
+  try{
+    await db.runTransaction(async (trx) => {
+      const ref = db.collection('users').doc(STATE.tgId);
+      const d = (await trx.get(ref)).data();
+      if (!d) throw new Error('المستخدم غير موجود');
+      if (d[flagKey]) throw new Error('تم الاستلام مسبقاً');
+      if (taskId === 'collect5' && (d.miningCollectCount || 0) < task.target) throw new Error('لم تجمع 5 مرات بعد');
+      if (taskId === 'firstBuy' && !d.hasPurchasedPlan) throw new Error('لم تشترِ خطة مدفوعة بعد');
+      trx.update(ref, {
+        balance_sy: FV.increment(task.reward),
+        totalEarned: FV.increment(task.reward),
+        [flagKey]: true,
+        updatedAt: SV()
+      });
+    });
+    toast('🎉 +' + task.reward + ' ل.س من ' + task.title + '!', 'ok');
+  }catch(e){
+    toast(e.message || 'فشل الاستلام', 'err');
+  }finally{
+    STATE.isSubmitting = false;
+  }
+}
+
 function ringSvg(frac){
   const c = 213.63;
   const f = Math.max(0, Math.min(1, frac));
@@ -2768,6 +2920,8 @@ function renderTasks(){
   else html += '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
     '<div class="qrow__info"><div class="qrow__t">' + ST.firstBuy.title + '</div><div class="qrow__d">' + ST.firstBuy.desc + '</div></div>' +
     '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' ل.س</span></div>';
+
+  html += socialSectionHtml(u);
 
   html += '<div class="grp"><span>مهمات الدعوات</span><small>' + T.filter(t => s.claimed[t.id]).length + ' / ' + N + '</small></div>';
   html += '<div class="hint"><i class="fas fa-info-circle"></i><div>المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>. كل مهمة تمنحك أيضاً <b>لفات عجلة حظ مجانية</b>!</div></div>';
@@ -2810,8 +2964,13 @@ function renderTasks(){
   container.querySelectorAll('.fq__btn--collect[data-task]').forEach(b => b.addEventListener('click', () => collectInviteReward(b.dataset.task)));
   container.querySelectorAll('.fq__btn--collect[data-special]').forEach(b => b.addEventListener('click', () => collectSpecialReward(b.dataset.special)));
   container.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => navigate(b.dataset.go)));
+  container.querySelectorAll('[data-social]').forEach(b => b.addEventListener('click', () => startSocialTask(b.dataset.social)));
 
-  renderChannelTask();
+  if (STATE.isAdmin){
+    const card = $('adminTaskCard');
+    if (card) card.style.display = 'block';
+    renderAdminTasks();
+  }
   updateTaskSummary(u, s);
 }
 
@@ -2842,56 +3001,31 @@ function progressCard(title, desc, reward, cur, target, leftText, badge){
 
 function updateTaskSummary(u, s){
   const T = CONFIG.inviteTasks, N = T.length, ST = CONFIG.specialTasks;
+  const soc = activeSocialTasks();
+  const sc = u.socialClaimed || {};
   const doneInvites = T.filter(t => s.claimed[t.id]).length;
-  const chDone = u.channelRewardClaimed ? 1 : 0;
   const c5Done = u.collect5RewardClaimed ? 1 : 0;
   const fbDone = u.firstBuyRewardClaimed ? 1 : 0;
-  const doneAll = doneInvites + chDone + c5Done + fbDone;
-  const totalAll = N + 3;
+  const socDone = soc.filter(t => sc[t.id]).length;
+  const doneAll = doneInvites + c5Done + fbDone + socDone;
+  const totalAll = N + 2 + soc.length;
   const left =
     T.filter(t => !s.claimed[t.id]).reduce((a, t) => a + t.reward, 0) +
-    (chDone ? 0 : CONFIG.channelTask.reward) + (c5Done ? 0 : ST.collect5.reward) + (fbDone ? 0 : ST.firstBuy.reward);
-  const totalReward = T.reduce((a, t) => a + t.reward, 0) + CONFIG.channelTask.reward + ST.collect5.reward + ST.firstBuy.reward;
+    (c5Done ? 0 : ST.collect5.reward) + (fbDone ? 0 : ST.firstBuy.reward) +
+    soc.filter(t => !sc[t.id]).reduce((a, t) => a + (Number(t.reward) || 0), 0);
+  const totalReward =
+    T.reduce((a, t) => a + t.reward, 0) + ST.collect5.reward + ST.firstBuy.reward +
+    soc.reduce((a, t) => a + (Number(t.reward) || 0), 0);
 
   setText('qbNum', doneAll);
   setText('qbOf', '/ ' + totalAll);
   setText('questSummary', doneAll + ' من ' + totalAll + ' مهمات مكتملة');
   setText('questLeft', fmt(left));
   setText('tileTaskTotal', fmt(totalReward));
-  setText('chReward', CONFIG.channelTask.reward);
-  const fg = $('qbRingFg'); if (fg) fg.style.strokeDashoffset = 213.63 * (1 - doneAll / totalAll);
+  const fg = $('qbRingFg'); if (fg) fg.style.strokeDashoffset = 213.63 * (1 - (totalAll ? doneAll / totalAll : 0));
 }
 
-function renderChannelTask(){
-  const btn = $('taskChannelBtn');
-  const status = $('taskChannelStatus');
-  const card = $('taskChannel');
-  if (!btn || !status || !STATE.user) return;
-  const u = STATE.user;
-  if (u.channelRewardClaimed){
-    status.textContent = 'تم استلام المكافأة';
-    status.className = 'cq__d cq__d--ok';
-    btn.disabled = true; btn.className = 'cq__btn cq__btn--done';
-    btn.innerHTML = '<i class="fas fa-check"></i> مكتملة'; btn.onclick = null;
-    card.classList.add('is-done');
-  } else if (u.channelJoined){
-    status.textContent = 'منضم — جاهز لاستلام المكافأة';
-    status.className = 'cq__d cq__d--ok';
-    btn.disabled = false; btn.className = 'cq__btn cq__btn--collect';
-    btn.innerHTML = '<i class="fas fa-hand-holding-usd"></i> استلام';
-    btn.onclick = collectChannelReward;
-    card.classList.remove('is-done');
-  } else {
-    status.textContent = 'انضم لقناتنا على تيليجرام لتبقى على اطلاع';
-    status.className = 'cq__d';
-    btn.disabled = false; btn.className = 'cq__btn cq__btn--join';
-    btn.innerHTML = '<i class="fab fa-telegram-plane"></i> انضم';
-    btn.onclick = verifyChannelJoin;
-    card.classList.remove('is-done');
-  }
-}
-
-/* ═══ 🎬 هدايا المشاهدات: 5 إعلانات، 5 ليرات لكل إعلان، كل 10 ساعات ═══ */
+/* ═══ 🎬 هدايا المشاهدات: 5 إعلانات، 2 ليرة لكل إعلان، كل ساعة ═══ */
 const VIEW_REWARDS = [2, 2, 2, 2, 2];
 const VIEW_MIN_WATCH_MS = 15000;
 const VIEW_GIFT_COOLDOWN = 1 * 60 * 60 * 1000;
@@ -2903,7 +3037,7 @@ function getViewGiftState(){
   const resetAt = Number(state.resetAt || 0);
   if (resetAt && now >= resetAt) return { claimedCount: 0, resetAt: 0 };
   let claimedCount = Math.min(VIEW_REWARDS.length, Math.max(0, Number(state.claimedCount || 0)));
-  if (claimedCount >= VIEW_REWARDS.length && !resetAt) claimedCount = 0; // migrate older reward records safely
+  if (claimedCount >= VIEW_REWARDS.length && !resetAt) claimedCount = 0;
   return { claimedCount, resetAt };
 }
 function formatViewGiftTime(ms){
@@ -3025,11 +3159,11 @@ async function watchNextRewardAd(){
     if (result.nextCount >= VIEW_REWARDS.length) {
       $('viewAdsModalTitle').textContent = 'رائع! أكملت المكافآت الخمس';
       $('viewAdsModalSub').textContent = 'تمت إضافة آخر مكافأة. ستتجدد الجولة بعد ساعة واحدة.';
-      $('viewAdsModalWatchBtn').disabled = true;
-      $('viewAdsModalWatchBtn').innerHTML = '<i class="fas fa-check-circle"></i><span>اكتملت الجولة</span>';
+      $('viewAdsWatchBtn').disabled = true;
+      $('viewAdsWatchBtn').innerHTML = '<i class="fas fa-check-circle"></i><span>اكتملت الجولة</span>';
     } else {
-      $('viewAdsModalWatchBtn').disabled = false;
-      $('viewAdsModalWatchBtn').innerHTML = '<i class="fas fa-forward"></i><span>انتقل للإعلان التالي</span>';
+      $('viewAdsWatchBtn').disabled = false;
+      $('viewAdsWatchBtn').innerHTML = '<i class="fas fa-forward"></i><span>انتقل للإعلان التالي</span>';
     }
     toast('تمت إضافة ' + result.amount + ' ليرة إلى رصيدك', 'ok');
   } catch (e) {
@@ -3042,7 +3176,7 @@ async function watchNextRewardAd(){
     if ($('viewAdsModal').classList.contains('show')) {
       const gs2 = getViewGiftState();
       if (gs2.claimedCount < VIEW_REWARDS.length && $('viewAdsModalTitle').textContent === 'جارٍ تحميل الإعلان') renderViewAdsModal();
-      if (gs2.claimedCount < VIEW_REWARDS.length && $('viewAdsModalWatchBtn').textContent.includes('شاهد الإعلان')) $('viewAdsModalWatchBtn').disabled = false;
+      if (gs2.claimedCount < VIEW_REWARDS.length && $('viewAdsWatchBtn').textContent.includes('شاهد الإعلان')) $('viewAdsWatchBtn').disabled = false;
     }
   }
 }
@@ -3263,6 +3397,7 @@ function bindUI(){
   $('viewAdsWatchBtn').addEventListener('click', watchNextRewardAd);
   $('viewAdsClose').addEventListener('click', closeViewAdsModal);
   $('viewAdsModal').addEventListener('click', e => { if (e.target === $('viewAdsModal')) closeViewAdsModal(); });
+  $('adTaskAdd').addEventListener('click', addSocialTask);
 }
 
 async function bootstrap(){
@@ -3273,6 +3408,7 @@ async function bootstrap(){
 
   bindUI();
   listenUser();
+  listenSocialTasks();
   refreshAll();
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) startLiveTimer();
   initClockMonitor();
@@ -3322,7 +3458,6 @@ html { scroll-behavior: auto !important; }
   .main { padding-top: 12px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  /* Restrained motion only; avoids many simultaneous GPU-heavy effects. */
   .fish--1 { animation-duration: 24s !important; }
   .fish--2 { animation-duration: 28s !important; }
   .fish--3, .fish--4 { animation-duration: 32s !important; }
