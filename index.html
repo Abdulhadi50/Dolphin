@@ -3334,3 +3334,26 @@ html { scroll-behavior: auto !important; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
 }
 </style>
+<style id="pageBlurTransition">
+/* تأثير ضبابي سلس وسريع عند التنقل بين الصفحات */
+.view.active{
+  display:block;
+  animation:pageBlurIn .28s cubic-bezier(.2,.8,.2,1) both !important;
+}
+.view.leaving{
+  display:block;
+  animation:pageBlurOut .12s ease-in both !important;
+  pointer-events:none;
+}
+@keyframes pageBlurIn{
+  from{opacity:0;filter:blur(12px)}
+  to{opacity:1;filter:blur(0)}
+}
+@keyframes pageBlurOut{
+  from{opacity:1;filter:blur(0)}
+  to{opacity:0;filter:blur(10px)}
+}
+@media (prefers-reduced-motion: reduce){
+  .view.active,.view.leaving{animation:none !important}
+}
+</style>
