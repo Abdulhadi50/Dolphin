@@ -1224,7 +1224,7 @@ body{background:#03101d;color:#effaff}
         </div>
         <div class="alert alert--warn">
           <i class="fas fa-info-circle"></i>
-          <div>الحد الأدنى للسحب <b id="wdMinLbl">500 coin = 100 ليرة سورية</b>.</div>
+          <div>الحد الأدنى للسحب <b id="wdMinLbl">1000 coin = 100 ليرة سورية</b>.</div>
         </div>
         <button class="btn btn--primary" id="wdSubmit"><i class="fas fa-paper-plane"></i><span>تقديم طلب السحب</span></button>
       </div>
@@ -1505,7 +1505,7 @@ const CONFIG = {
   bot: { username: 'DolphinMiner_bot', appName: 'Dolphin' },
   admin: { telegram: 'qo_ij2' },
   referral: { newUserReward: 5, referrerReward: 10 },
-  withdraw: { minAmount: 500, binanceMinAmount: 1000, feeRate: 0.015, usdRate: 250 },
+  withdraw: { minAmount: 1000, binanceMinAmount: 1000, feeRate: 0.015, usdRate: 500 },
   deposit: { shamCash: '334a08ea2d1bbed05f214a7f08e37ae4', binance: '1121748571' },
 
   plans: [
@@ -1943,10 +1943,10 @@ function updateSupportBtn(){
 
 function updateWithdrawFeeLabels(){
   const isBinance = STATE.withdrawMethod === 'binance';
-  setText('wdMinLbl', isBinance ? '1000 coin = 4 دولار' : '500 coin = 100 ليرة سورية');
+  setText('wdMinLbl', isBinance ? '1000 coin = 2 دولار' : '1000 coin = 100 ليرة سورية');
   setText('wdFeeRateLbl', '(1.5% من coin)');
   const wa = $('wdAmount');
-  if (wa) wa.placeholder = isBinance ? 'الحد الأدنى 1000 coin' : 'الحد الأدنى 500 coin';
+  if (wa) wa.placeholder = 'الحد الأدنى 1000 coin';
   updateWithdrawFee();
 }
 function getWithdrawMin(){ return STATE.withdrawMethod === 'binance' ? CONFIG.withdraw.binanceMinAmount : CONFIG.withdraw.minAmount; }
@@ -2432,7 +2432,7 @@ function updateWithdrawFee(){
     setText('wdNet', '$' + (net / CONFIG.withdraw.usdRate).toFixed(2));
     setText('wdUsdt', (net / CONFIG.withdraw.usdRate).toFixed(4) + ' USDT');
   } else {
-    setText('wdNet', fmt(net / 5) + ' ليرة سورية');
+    setText('wdNet', fmt(net / 10) + ' ليرة سورية');
   }
 }
 
@@ -2442,7 +2442,7 @@ async function submitWithdraw(){
   const feeRate = getFeeRate();
   const amount = parseFloat($('wdAmount').value);
   if (!isFinite(amount) || Math.round(amount * 100) / 100 !== amount || amount > 10000000 || amount < minAmount)
-    return toast('الحد الأدنى ' + fmt(minAmount) + ' coin' + (STATE.withdrawMethod === 'binance' ? ' (4 دولار كحد أدنى)' : ' (100 ليرة سورية كحد أدنى)'), 'err');
+    return toast('الحد الأدنى ' + fmt(minAmount) + ' coin' + (STATE.withdrawMethod === 'binance' ? ' (2 دولار كحد أدنى)' : ' (100 ليرة سورية كحد أدنى)'), 'err');
   if (amount > (STATE.user.balance_sy || 0)) return toast('الرصيد غير كافٍ', 'err');
   const account = $('wdAccount').value.trim();
   if (!/^[A-Za-z0-9_\-]{4,64}$/.test(account)) return toast('معرف الحساب غير صحيح', 'err');
@@ -2475,7 +2475,7 @@ async function submitWithdraw(){
         userName: STATE.user.name || '',
         username: STATE.user.username || null,
         amount, fee, netAmount: net, usdtAmount: usdt,
-        exchangeRate: STATE.withdrawMethod === 'binance' ? CONFIG.withdraw.usdRate : 5,
+        exchangeRate: STATE.withdrawMethod === 'binance' ? CONFIG.withdraw.usdRate : 10,
         phone: phone || null, accountId: account,
         method: STATE.withdrawMethod, status: 'pending',
         createdAt: SV(), updatedAt: SV()
