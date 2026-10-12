@@ -1425,7 +1425,6 @@ body{background:#03101d;color:#effaff}
         <div class="pf-row__val" id="pJoined">-</div>
       </div>
 
-      <button class="btn btn--outline" id="profSupport" style="margin-top:10px"></button>
     </div>
   </div>
 
@@ -1918,7 +1917,6 @@ function updateUI(){
   }
 
   updateWithdrawFeeLabels();
-  updateSupportBtn();
 }
 
 function updateAvatar(elId){
@@ -1933,12 +1931,6 @@ function updateAvatar(elId){
   img.onload = () => { el.textContent = ''; el.appendChild(img); };
   img.onerror = () => { el.innerHTML = '<i class="fas fa-user"></i>'; };
   img.src = url;
-}
-
-function updateSupportBtn(){
-  const btn = $('profSupport');
-  if (!btn) return;
-  btn.innerHTML = '<i class="fab fa-telegram-plane"></i> تواصل مع الدعم الفني';
 }
 
 function updateWithdrawFeeLabels(){
@@ -3377,7 +3369,7 @@ function navigate(view){
   } else show();
 
   if (view === 'store') { renderPlans(); renderPlansReport(); }
-  if (view === 'profile') { updateAvatar('profAvatar'); updateSupportBtn(); }
+  if (view === 'profile') { updateAvatar('profAvatar'); }
   if (view === 'tasks') renderTasks();
   if (view === 'wheel') { renderWheel(); updateWheelTimer(); }
   if (view === 'referral' && $('refPaneTop').style.display === 'block') loadLeaderboard();
@@ -3387,10 +3379,6 @@ function bindUI(){
   document.querySelectorAll('.nav__btn').forEach(btn => btn.addEventListener('click', () => navigate(btn.dataset.view)));
   $('mineAction').addEventListener('click', onMineClick);
   $('profCopyId').addEventListener('click', () => copyText($('profId').textContent, 'تم نسخ المعرف'));
-  $('profSupport').addEventListener('click', () => {
-    const url = 'https://t.me/' + CONFIG.admin.telegram;
-    if (tg && tg.openTelegramLink) tg.openTelegramLink(url); else window.open(url, '_blank');
-  });
   initWalletTabs();
   initWithdraw();
   initDeposit();
