@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root{
-  --blue:#007AFF;--blue-l:#4DA3FF;--blue-d:#0062CC;--blue-dd:#003F8A;
+  --blue:#007AFF;--blue-l:#4DA3FF;--blue-r:#0062CC;--blue-d:#003F8A;
   --yellow:#FFD60A;--green:#30D158;--red:#FF453A;--purple:#AF52DE;
   --inset:rgba(0,0,0,.26);--hi:rgba(255,255,255,.16);
   --glass:rgba(255,255,255,.08);--glass-line:rgba(255,255,255,.12);
@@ -37,17 +37,14 @@ input,select{font-family:inherit;color:inherit;font-size:inherit}
 img{max-width:100%;display:block;pointer-events:none;-webkit-user-drag:none;user-drag:none}
 ::-webkit-scrollbar{display:none}
 .main{scrollbar-width:none}
-
-body,.app,.app *{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none}
+body,.app,.app *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
-
 .app{position:relative;max-width:480px;margin:0 auto;height:100vh;height:100dvh;background:#000;overflow:hidden;display:flex;flex-direction:column}
 .main{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
   padding:16px 16px calc(var(--dock-h) + var(--dock-gap) + var(--safe) + 30px)}
-
 .dock{position:absolute;left:12px;right:12px;bottom:calc(var(--dock-gap) + var(--safe));z-index:50;display:flex;align-items:center;gap:10px;pointer-events:none}
 .nav{pointer-events:auto;flex:1;min-width:0;height:var(--dock-h);border-radius:36px;padding:6px;
-  background:rgba(28,28,32,.42);-webkit-backdrop-filter:blur(16px) saturate(1.7);backdrop-filter:blur(16px) saturate(1.7);
+  background:rgba(28,28,32,.42);backdrop-filter:blur(16px) saturate(1.7);-webkit-backdrop-filter:blur(16px) saturate(1.7);
   border:1px solid var(--glass-line)}
 .nav__inner{display:flex;align-items:stretch;height:100%;gap:2px}
 .nav .nav__btn{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:30px;
@@ -57,19 +54,17 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .nav .nav__btn:active{transform:scale(.94)}
 .nav .nav__btn--active{background:var(--blue);color:#fff}
 .nav__profile{pointer-events:auto;flex-shrink:0;width:var(--dock-h);height:var(--dock-h);border-radius:50%;padding:5px;overflow:hidden;
-  background:rgba(28,28,32,.42);-webkit-backdrop-filter:blur(16px) saturate(1.7);backdrop-filter:blur(16px) saturate(1.7);
+  background:rgba(28,28,32,.42);backdrop-filter:blur(16px) saturate(1.7);-webkit-backdrop-filter:blur(16px) saturate(1.7);
   border:1px solid var(--glass-line);transition:border-color .25s,transform .15s;display:grid;place-items:center}
 .nav__profile:active{transform:scale(.94)}
 .nav__profile.nav__btn--active{border:2.5px solid var(--blue)}
 .nav__av{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;overflow:hidden;color:#fff;font-size:24px;background:rgba(255,255,255,.1)}
 .nav__av img{width:100%;height:100%;object-fit:cover}
-
 .view{display:none}
 .view.active{display:block;animation:viewIn .3s cubic-bezier(.2,.8,.2,1) both}
 .view.leaving{display:block;animation:viewOut .13s ease-in both;pointer-events:none}
 @keyframes viewIn{from{opacity:0;filter:blur(14px);transform:scale(.985)}to{opacity:1;filter:none;transform:none}}
 @keyframes viewOut{from{opacity:1;filter:none}to{opacity:0;filter:blur(10px)}}
-
 .avatar{width:46px;height:46px;border-radius:50%;background:var(--blue);border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;
   overflow:hidden;flex-shrink:0;color:#fff;font-size:var(--f-lg);cursor:pointer;transition:transform .15s}
 .avatar:active{transform:scale(.94)}
@@ -82,7 +77,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .chip__body{display:flex;flex-direction:column;line-height:1.1}
 .chip__num{font-size:14.5px;font-weight:800;font-variant-numeric:tabular-nums;color:#fff}
 .chip__cur{font-size:10px;color:var(--blue);font-weight:800;margin-top:2px}
-
 .star3d{position:relative;flex-shrink:0;width:34px;height:34px;border-radius:12px;display:grid;place-items:center;overflow:hidden;
   background:linear-gradient(160deg,#6B53F2 0%,#3A24AD 52%,#2A1783 100%);
   border:1px solid rgba(255,255,255,.3);border-top-color:rgba(255,255,255,.5);border-bottom:3px solid #1E0E6A}
@@ -90,12 +84,10 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .star3d img,.star3d i{position:relative;z-index:1;width:21px;height:21px;color:var(--yellow);font-size:17px;display:grid;place-items:center}
 .star3d--lg{width:52px;height:52px;border-radius:17px;border-bottom-width:4px}
 .star3d--lg img,.star3d--lg i{width:32px;height:32px;font-size:26px}
-
 .sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px}
 .sec-head__title{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;color:#fff}
 .sec-head__title i{width:30px;height:30px;border-radius:50%;background:var(--sea-wash);color:var(--blue);display:grid;place-items:center;font-size:12.5px}
 .sec-head__meta{background:var(--glass);border:1px solid var(--glass-line);padding:4px 12px;border-radius:20px;font-size:11.5px;color:#fff;font-weight:700}
-
 .mining-card{position:relative;overflow:hidden;background:linear-gradient(160deg,#7769D8 0%,#311D96 100%);
   border:0;border-radius:var(--r-xl);padding:var(--sp-5) var(--sp-4);margin-bottom:14px}
 .mining-card::before{content:'';position:absolute;top:-90px;right:-90px;width:240px;height:240px;border-radius:50%;
@@ -114,7 +106,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .plan-header__lvl{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 14px;border-radius:18px;background:rgba(0,0,0,.28);flex-shrink:0;min-width:70px}
 .plan-header__lvl-num{font-size:var(--f-xl);font-weight:800;line-height:1;color:var(--yellow);direction:ltr;font-variant-numeric:tabular-nums}
 .plan-header__lvl-lbl{font-size:9px;color:rgba(255,255,255,.75);font-weight:700}
-
 .aquarium{position:relative;width:100%;aspect-ratio:1.1/1;margin:14px auto;perspective:800px;z-index:1}
 .tank{position:absolute;inset:0;border-radius:24px;overflow:hidden;transform:rotateX(6deg);
   background:linear-gradient(180deg,#0a3d5c 0%,#001d33 60%,#000a14 100%);
@@ -153,7 +144,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .pct{position:absolute;top:14px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.6);backdrop-filter:blur(8px);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,.2);z-index:10;color:#fff;font-variant-numeric:tabular-nums}
 .pct.ready{background:#007AFF;border-color:#4DA3FF;display:flex;align-items:center;gap:6px}
 .pct.ready::before{content:'\f51e';font-family:'Font Awesome 6 Free';font-weight:900;font-size:11px}
-
 .status-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;background:rgba(0,0,0,.28);border-radius:16px;margin-bottom:var(--sp-3);font-size:var(--f-sm);font-weight:700;color:#fff;position:relative;z-index:2}
 .status-bar__dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);flex-shrink:0}
 .status-bar__dot.active{background:#fff;animation:dotPulse 1.5s ease-in-out infinite}
@@ -168,7 +158,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .timer-bar__ic{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
 .timer-bar__text{font-size:var(--f-xl);font-weight:800;font-variant-numeric:tabular-nums;direction:ltr}
 .timer-bar__lbl{font-size:var(--f-xs);color:rgba(255,255,255,.75);font-weight:600;margin-right:2px}
-
 .action{width:100%;padding:16px;border-radius:20px;font-size:var(--f-md);font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;min-height:60px;transition:transform .15s,background .2s;position:relative;overflow:hidden;z-index:2}
 .action:active:not([disabled]){transform:scale(.98)}
 .action[disabled]{cursor:not-allowed;opacity:.7}
@@ -187,7 +176,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .mining-card.is-ready .timer-bar__lbl{color:#7DB9FF}
 .mining-card.is-ready .plan-header__lvl{background:rgba(0,122,255,.28)}
 .mining-card.is-ready .plan-header__lvl-num{color:#7DB9FF}
-
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tile{position:relative;overflow:hidden;isolation:isolate;text-align:start;border-radius:24px;padding:14px;min-height:140px;background:var(--blue);display:flex;flex-direction:column;gap:3px;transition:transform .15s}
 .tile:active{transform:scale(.98)}
@@ -199,7 +187,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .tile__d{font-size:12px;color:var(--text-2);font-weight:600;line-height:1.55}
 .tile__d b{font-weight:800;color:var(--yellow)}
 .tile__go{position:absolute!important;top:14px;left:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;display:grid;place-items:center;font-size:11px}
-
 .wheel-tile{position:relative;overflow:hidden;isolation:isolate;width:100%;margin-top:10px;border-radius:24px;padding:18px 16px;min-height:88px;
   background:linear-gradient(135deg,#AF52DE 0%,#5A1F8A 100%);display:flex;align-items:center;gap:14px;transition:transform .15s;text-align:start}
 .wheel-tile:active{transform:scale(.98)}
@@ -211,7 +198,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .wheel-tile__d{font-size:12px;color:rgba(255,255,255,.85);font-weight:600;line-height:1.5}
 .wheel-tile__badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;background:rgba(255,214,10,.9);color:#3A2A00;font-size:10.5px;font-weight:800;margin-top:6px}
 .wheel-tile__arrow{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.25);color:#fff;display:grid;place-items:center;font-size:13px;flex-shrink:0}
-
 .card{background:#141414;border:1px solid #18252E;border-radius:26px;padding:16px;margin-bottom:12px}
 .card__title{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:800;margin-bottom:12px;color:#fff}
 .card__title i{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center;font-size:12px}
@@ -228,7 +214,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .wavy::before,.wavy::after{content:'';position:absolute;left:0;right:0;pointer-events:none;z-index:1;-webkit-mask-repeat:repeat-x;mask-repeat:repeat-x}
 .wavy::after{bottom:-14px;height:54px;background:rgba(255,255,255,.08);-webkit-mask-image:var(--mkA);mask-image:var(--mkA);-webkit-mask-size:380px 100%;mask-size:380px 100%}
 .wavy::before{bottom:-26px;height:54px;background:rgba(255,255,255,.05);-webkit-mask-image:var(--mkB);mask-image:var(--mkB);-webkit-mask-size:280px 100%;mask-size:280px 100%}
-
 .ring{position:relative;width:76px;height:76px;flex-shrink:0;--rb:rgba(255,255,255,.25);--rf:#FFD60A;color:#fff}
 .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
 .ring circle{fill:none;stroke-width:8;stroke-linecap:round}
@@ -239,7 +224,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .ring__n small{font-size:10.5px;font-weight:700;opacity:.75}
 .ring--lg{width:96px;height:96px}
 .ring--lg .ring__n b{font-size:26px}
-
 .qb{display:flex;align-items:center;gap:16px;padding:18px 16px 26px;border-radius:28px;color:#fff;margin-bottom:18px;background:var(--blue)}
 .qb__t{font-size:16px;font-weight:800}
 .qb__s{font-size:12.5px;font-weight:600;color:var(--text-2);margin:3px 0 10px}
@@ -252,7 +236,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .hint{display:flex;align-items:flex-start;gap:8px;padding:11px 13px;border-radius:16px;background:var(--sea-wash);border:1px solid var(--sea-pale);color:#fff;font-size:12px;font-weight:600;line-height:1.65;margin-bottom:12px}
 .hint i{margin-top:3px;font-size:12px;color:var(--blue)}
 .hint b{color:var(--blue)}
-
 .cq{display:flex;align-items:center;gap:12px;background:var(--blue);border-radius:24px;padding:14px;margin-bottom:10px}
 .cq__ic{width:48px;height:48px;border-radius:50%;background:var(--inset);color:#fff;display:grid;place-items:center;font-size:22px;flex-shrink:0}
 .cq__info{flex:1;min-width:0}
@@ -266,7 +249,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .cq__btn--done{background:var(--inset);color:rgba(255,255,255,.7);cursor:default}
 .cq.is-done{background:rgba(0,122,255,.2);border:1px solid var(--sea-pale)}
 .cq.is-done .cq__ic{background:rgba(48,209,88,.2);color:var(--green)}
-
 .fq{position:relative;overflow:hidden;border-radius:28px;padding:16px;background:var(--blue);margin-bottom:10px}
 .fq--ready .ring{--rf:#FFD60A}
 .fq--ready::after{content:'';position:absolute;top:-70px;left:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,214,10,.35),transparent 68%);pointer-events:none}
@@ -285,7 +267,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .fq__btn--go{background:#fff;color:var(--blue)}
 .fq__btn--collect{background:var(--yellow);color:#3A2A00;animation:collectPulse 1.6s ease-in-out infinite}
 .fq__ok{width:58px;height:58px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:24px;margin:0 auto 12px}
-
 .qrow{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--blue);border-radius:20px;margin-bottom:8px}
 .qrow__ic{width:40px;height:40px;border-radius:50%;background:var(--inset);color:#fff;display:grid;place-items:center;font-size:15px;flex-shrink:0}
 .qrow__info{flex:1;min-width:0}
@@ -300,7 +281,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .qrow--lock .qrow__d{color:var(--text-3)}
 .qrow--lock .rwd{background:var(--sea-wash);color:var(--blue)}
 .qrow--lock .rwd i{color:var(--blue)}
-
 .vip{position:relative;overflow:hidden;border-radius:28px;padding:18px 16px;margin-bottom:14px;background:linear-gradient(160deg,#4DA3FF 0%,#003F8A 100%);color:#fff}
 .vip--active{background:linear-gradient(160deg,#30D158 0%,#0A5C2A 100%)}
 .vip__head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
@@ -313,7 +293,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .vip__btn{width:100%;min-height:52px;border-radius:18px;font-size:14.5px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:#003F8A;transition:transform .15s}
 .vip__btn:active:not([disabled]){transform:scale(.98)}
 .vip__btn[disabled]{opacity:.7;cursor:default}
-
 .plans-grid{display:flex;flex-direction:column;gap:12px}
 .plan{background:#141414;border:1px solid #18252E;border-radius:28px;padding:16px;position:relative;overflow:hidden}
 .plan--current{outline:2.5px solid #007AFF;outline-offset:-2.5px}
@@ -353,7 +332,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .plan__cancel{width:100%;margin-top:12px;min-height:46px;border-radius:16px;background:#18252E;color:#FF8A82;border:1px solid rgba(255,69,58,.5);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px}
 .plan__cancel:active{transform:scale(.98)}
 .plan__cancel-note{font-size:11px;color:var(--text-2);text-align:center;margin-top:7px;font-weight:600}
-
 .plans-report{margin-top:16px;background:#0B0B0B;border:1px solid #18252E;border-radius:22px;overflow:hidden}
 .plans-report__head{padding:11px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid #18252E}
 .plans-report__title{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;color:#fff}
@@ -373,7 +351,6 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 .pt-plan__lvl{font-size:8px;font-weight:800;padding:1px 5px;border-radius:8px;background:#18252E;color:#4DA3FF}
 .pt-price{color:#FFD60A !important;font-size:10.5px !important}
 .pt-total{color:#30D158 !important;font-weight:800 !important;font-size:10.5px !important}
-
 .field{margin-bottom:14px}
 .field__label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;margin-bottom:8px;color:#fff}
 .field__label i{width:24px;height:24px;border-radius:50%;background:#18252E;color:#fff;display:grid;place-items:center;font-size:10.5px}
@@ -398,7 +375,6 @@ select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .alert--danger{background:rgba(255,69,58,.12);border-color:rgba(255,69,58,.4)}
 .alert--danger i{color:var(--red)}
 .alert b{font-weight:800}
-
 .tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#141414;border:1px solid #18252E;border-radius:20px;padding:4px;margin-bottom:14px}
 .tab{padding:12px 10px;border-radius:16px;font-size:13px;font-weight:800;color:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;gap:7px;transition:background .25s,color .25s}
 .tab.active{background:#007AFF;color:#fff}
@@ -426,7 +402,6 @@ select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .step__title{font-size:14.5px;font-weight:800;margin-bottom:4px;color:#fff}
 .step__desc{font-size:12.5px;color:var(--text-2);line-height:1.7;margin-bottom:12px;font-weight:500}
 .id-box{background:#0B0B0B;border:1.5px dashed rgba(255,255,255,.35);border-radius:16px;padding:14px;text-align:center;font-family:var(--mono);font-size:15px;font-weight:800;color:#fff;direction:ltr;letter-spacing:3px;word-break:break-all;margin-bottom:10px}
-
 .rf-hero{border-radius:28px;padding:20px 16px 30px;margin-bottom:12px;color:#fff;background:#141414;border:1px solid #18252E}
 .rf-hero__top{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
 .rf-hero__ic{width:48px;height:48px;border-radius:50%;background:#18252E;display:grid;place-items:center;font-size:21px;flex-shrink:0}
@@ -452,7 +427,6 @@ select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .how__n{width:30px;height:30px;border-radius:50%;background:#007AFF;color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0}
 .how__t{font-size:13.5px;font-weight:800;line-height:1.5;color:#fff}
 .how__d{font-size:12px;color:var(--text-2);font-weight:500;line-height:1.6;margin-top:1px}
-
 .lb{background:#141414;border:1px solid #18252E;border-radius:28px;overflow:hidden;margin-bottom:12px}
 .lb__head{padding:16px 16px 0;display:flex;align-items:center;justify-content:space-between}
 .lb__title{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;color:#fff}
@@ -486,7 +460,6 @@ select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .lb__empty{padding:28px 16px;text-align:center;color:var(--text-2)}
 .lb__empty i{font-size:38px;display:block;margin-bottom:10px;opacity:.5}
 .lb__empty p{font-size:13px;font-weight:600}
-
 .pf-top{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:26px 16px 22px;margin-bottom:14px;
   background:#141414;border:1px solid #18252E;border-radius:28px;overflow:hidden}
 .pf-top::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
@@ -518,7 +491,6 @@ select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .pf-row__ic{width:38px;height:38px;border-radius:50%;background:var(--inset);display:grid;place-items:center;font-size:14px;flex-shrink:0}
 .pf-row__lbl{flex:1;font-size:13.5px;font-weight:600;color:var(--text-2)}
 .pf-row__val{font-size:14px;font-weight:800}
-
 .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-140%);opacity:0;background:rgba(28,28,32,.88);
   -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:#fff;border:1px solid var(--glass-line);padding:12px 18px;border-radius:30px;
   font-size:var(--f-sm);font-weight:700;z-index:9000;max-width:92%;display:flex;align-items:center;gap:10px;
@@ -544,8 +516,6 @@ select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .outside-tg h1{font-size:var(--f-xl);font-weight:800;color:#fff;margin-bottom:10px}
 .outside-tg p{font-size:var(--f-sm);color:var(--text-2);line-height:1.75;margin-bottom:var(--sp-6);max-width:300px}
 .outside-tg a{padding:15px 34px;border-radius:30px;text-decoration:none;font-weight:700;font-size:var(--f-md);display:inline-flex;align-items:center;gap:9px;background:var(--blue);color:#fff}
-
-/* 🎰 عجلة الحظ */
 .wheel-spins-card{display:flex;align-items:center;gap:14px;padding:16px;background:linear-gradient(160deg,#FFD60A 0%,#FF9F0A 100%);border-radius:24px;margin-bottom:14px;color:#3A2A00;position:relative;overflow:hidden}
 .wheel-spins-card::before{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.4),transparent 70%)}
 .wheel-spins-card__icon{width:56px;height:56px;border-radius:50%;background:rgba(0,0,0,.2);display:grid;place-items:center;font-size:26px;flex-shrink:0;position:relative;z-index:1}
@@ -576,8 +546,6 @@ select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .wheel-info{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(0,122,255,.12);border:1px solid rgba(0,122,255,.35);border-radius:20px;margin-top:16px}
 .wheel-info i{color:var(--blue);font-size:18px;flex-shrink:0}
 .wheel-info__txt{flex:1;font-size:12.5px;font-weight:600;line-height:1.65;color:rgba(255,255,255,.85)}
-
-/* Modal الفوز */
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:24px;z-index:9000}
 .modal.show{display:flex;animation:fadeIn .3s ease-out}
 .modal__box{background:linear-gradient(160deg,#1A1A1F,#0B0B0D);border:2px solid var(--yellow);border-radius:30px;padding:34px 24px 26px;max-width:340px;width:100%;text-align:center;position:relative;animation:pop .55s cubic-bezier(.34,1.56,.64,1);box-shadow:0 20px 60px rgba(255,214,10,.3)}
@@ -593,8 +561,6 @@ select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .modal__box--lose .modal__amount{color:rgba(255,255,255,.55);text-shadow:none;font-size:32px}
 .modal__btn{width:100%;min-height:54px;border-radius:18px;font-size:15px;font-weight:800;background:linear-gradient(135deg,#FFD60A,#FF9F0A);color:#3A2A00;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s}
 .modal__btn:active{transform:scale(.97)}
-
-/* 🎬 هدايا المشاهدات */
 .view-ads-progress,.view-ads-rewards{display:none!important}
 .view-ads-card{cursor:default;margin:18px 0 22px;padding:18px 15px;border-radius:25px;position:relative;overflow:hidden;background:linear-gradient(145deg,#073b59 0%,#075c75 48%,#082b49 100%);border:1px solid rgba(112,231,255,.38);box-shadow:0 14px 32px rgba(0,9,28,.28),inset 0 1px rgba(255,255,255,.12)}
 .view-ads-card__glow{position:absolute;right:-55px;top:-70px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(54,224,255,.23),transparent 70%);pointer-events:none}
@@ -606,8 +572,6 @@ select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .view-ads-rewards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;position:relative;z-index:1;margin:13px 0 16px}.view-ads-reward{min-width:0;min-height:61px;border:1px solid rgba(151,235,255,.15);border-radius:12px;background:rgba(0,20,42,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:5px 2px}.view-ads-reward__n{font-size:9px;color:rgba(225,249,255,.65);font-weight:700}.view-ads-reward__amount{font-size:11px;font-weight:900;color:#ffe78b;white-space:nowrap}.view-ads-reward__icon{font-size:12px;line-height:1}.view-ads-reward.is-done{background:linear-gradient(145deg,#b5f8de,#4bd6b5);border-color:#b9ffe8}.view-ads-reward.is-done .view-ads-reward__n,.view-ads-reward.is-done .view-ads-reward__amount{color:#063c3b}.view-ads-reward.is-current{border-color:#8ff7ff;box-shadow:0 0 0 1px rgba(143,247,255,.18),0 0 13px rgba(63,224,255,.14)}
 .view-ads-card__bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative;z-index:1}.view-ads-card__bottom>span{font-size:10px;line-height:1.5;color:rgba(226,249,255,.78);font-weight:700;flex:1}.view-ads-start{min-height:42px;padding:0 14px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;background:linear-gradient(135deg,#d5ffab,#65e9ce);color:#063b43;font-weight:900;font-size:12px;box-shadow:0 5px 14px rgba(73,231,208,.2)}.view-ads-start:disabled{opacity:.7;cursor:not-allowed}
 .view-ads-modal{position:fixed;inset:0;z-index:9500;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,9,22,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.view-ads-modal.show{display:flex;animation:fadeIn .22s ease-out}.view-ads-modal__box{width:100%;max-width:370px;position:relative;text-align:center;border-radius:28px;padding:27px 21px 22px;background:linear-gradient(155deg,#0c4965,#071a35 80%);border:1px solid rgba(121,241,255,.45);box-shadow:0 24px 70px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.12);color:#fff}.view-ads-modal__close{position:absolute;left:13px;top:12px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:24px;line-height:1}.view-ads-modal__eyebrow{font-size:9px;letter-spacing:1.4px;color:#8cf4f5;font-weight:900}.view-ads-modal__icon{width:76px;height:76px;margin:16px auto 10px;border-radius:24px;display:grid;place-items:center;font-size:38px;background:linear-gradient(145deg,rgba(111,245,255,.24),rgba(44,151,211,.1));border:1px solid rgba(143,247,255,.28)}.view-ads-modal__step{font-size:11px;font-weight:900;color:#a8f8ff}.view-ads-modal__box h2{font-size:21px;margin:7px 0 8px;font-weight:900}.view-ads-modal__box p{font-size:12px;line-height:1.7;color:rgba(233,249,255,.75);margin:0 0 17px}.view-ads-modal__prize{padding:13px;border-radius:17px;background:rgba(0,15,35,.42);border:1px solid rgba(142,239,255,.16);margin-bottom:16px}.view-ads-modal__prize small{display:block;color:rgba(229,249,255,.7);font-size:10px;margin-bottom:5px}.view-ads-modal__prize strong{font-size:29px;line-height:1;color:#ffe98d;font-weight:1000}.view-ads-modal__prize strong span{font-size:13px}.view-ads-modal__track{margin-bottom:17px}.view-ads-modal__btn{width:100%;min-height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#caffab,#58e3cb);color:#06383e;font-size:14px;font-weight:1000;box-shadow:0 8px 20px rgba(65,223,199,.2)}.view-ads-modal__btn:disabled{opacity:.65}.view-ads-modal__note{font-size:10px;color:rgba(225,248,255,.56);margin-top:13px}
-
-/* 🔥 هدايا الأسبوع */
 .weekly{margin-bottom:18px;padding:22px 16px;background:linear-gradient(160deg,#AF52DE 0%,#5A1F8A 100%);border-radius:28px;position:relative;overflow:hidden}
 .weekly::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%)}
 .weekly__head{position:relative;z-index:1;margin-bottom:16px}
@@ -632,15 +596,11 @@ select.field__input{-webkit-appearance:none;appearance:none;cursor:pointer}
 .weekly__btn:active:not([disabled]){transform:scale(.98)}
 .weekly__btn[disabled]{background:rgba(0,0,0,.32);color:rgba(255,255,255,.6);cursor:not-allowed}
 .weekly__btn:not([disabled])::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);animation:btnShine 2.6s ease-in-out infinite}
-
 .weekly__btn[disabled]{background:rgba(255,255,255,.16)!important;color:#FFFFFF!important;opacity:1;text-shadow:0 1px 2px rgba(0,0,0,.85);border:1px solid rgba(255,255,255,.35)}
 .weekly__btn[disabled] span{color:#FFFFFF!important}
-
-/* 🛡️ إدارة مهمات التواصل */
 .adm-note{font-size:11.5px;color:var(--text-2);font-weight:600;margin:-4px 0 12px;line-height:1.6}
 .adm-del{width:36px;height:36px;border-radius:50%;background:rgba(255,69,58,.2);color:#FF8A82;display:grid;place-items:center;font-size:13px;flex-shrink:0;transition:transform .15s}
 .adm-del:active{transform:scale(.92)}
-
 @media (max-width:360px){
   .nav .nav__btn span{font-size:9.5px}
   .nav .nav__btn i{font-size:21px}
@@ -683,7 +643,7 @@ body{background:#03101d;color:#effaff}
   linear-gradient(180deg,#061a2c 0%,#041321 48%,#061a2b 100%);}
 .app::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.3;
   background-image:radial-gradient(circle at 12% 13%,rgba(136,238,255,.6) 0 1px,transparent 2px),radial-gradient(circle at 83% 28%,rgba(136,238,255,.5) 0 1px,transparent 2px),radial-gradient(circle at 28% 77%,rgba(136,238,255,.5) 0 1px,transparent 2px),radial-gradient(circle at 72% 88%,rgba(136,238,255,.4) 0 1px,transparent 2px);
-  background-size:150px 180px,210px 230px,190px 220px,240px 260px;}
+  background-size:150px,180px,210px,230px,190px,220px,240px,260px;}
 .main{position:relative;z-index:1;padding-top:18px;scroll-behavior:smooth}
 .view{position:relative}
 .topbar{padding-bottom:20px}
@@ -696,7 +656,6 @@ body{background:#03101d;color:#effaff}
 .sec-head{margin-bottom:14px}
 .sec-head__title i{background:rgba(26,190,236,.16);color:#7de6ff;border:1px solid rgba(95,223,255,.16)}
 .sec-head__meta{background:rgba(65,205,238,.1);border-color:rgba(102,225,255,.2);color:#bdf4ff}
-/* Royal glass mining panel */
 .mining-card{background:linear-gradient(145deg,rgba(16,119,159,.56),rgba(7,48,87,.9) 48%,rgba(8,26,61,.94));border:1px solid rgba(115,231,255,.36);border-radius:30px;padding:20px 16px 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 38px rgba(43,191,247,.09),0 18px 42px rgba(0,0,0,.25);backdrop-filter:blur(18px)}
 .mining-card::before{top:-90px;right:-75px;width:245px;height:245px;background:radial-gradient(circle,rgba(113,238,255,.25),rgba(39,164,224,.08) 38%,transparent 69%)}
 .mining-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.08),transparent 32%,transparent 68%,rgba(47,174,255,.06));box-shadow:inset 0 0 0 1px rgba(183,248,255,.06)}
@@ -705,7 +664,6 @@ body{background:#03101d;color:#effaff}
 .plan-header__reward{background:rgba(0,18,42,.48);border:1px solid rgba(248,215,138,.15);color:#ffe29e}
 .plan-header__lvl{background:linear-gradient(145deg,rgba(4,24,49,.72),rgba(6,56,91,.6));border:1px solid rgba(130,229,255,.2)}
 .plan-header__lvl-num{color:#ffe09a}
-/* The aquarium becomes an illuminated royal reef */
 .aquarium{margin:17px auto 16px;aspect-ratio:1.06/1;filter:drop-shadow(0 18px 26px rgba(0,0,0,.3))}
 .tank{isolation:isolate;border-radius:28px;border:3px solid rgba(149,239,255,.88);transform:rotateX(3deg);background:linear-gradient(180deg,#0a5b80 0%,#053557 35%,#031a32 72%,#03101f 100%);box-shadow:inset 0 0 0 1px rgba(245,255,255,.35),inset 0 0 58px rgba(37,199,244,.3),inset 0 -28px 55px rgba(0,0,0,.62),0 0 0 5px rgba(25,168,213,.09),0 15px 35px rgba(0,0,0,.32)}
 .tank::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(174,249,255,.26),transparent 36%),linear-gradient(115deg,transparent 20%,rgba(96,227,255,.06) 42%,transparent 63%),radial-gradient(ellipse at 50% 65%,transparent 18%,rgba(0,13,33,.18) 100%)}
@@ -759,8 +717,7 @@ body{background:#03101d;color:#effaff}
 .mining-card.is-ready .timer-bar{background:rgba(237,192,96,.1);border-color:rgba(248,215,138,.24)}
 .mining-card.is-ready .timer-bar__ic,.mining-card.is-ready .timer-bar__lbl{color:#ffe09a}
 .mining-card.is-ready .plan-header__lvl{background:rgba(248,215,138,.15)}.mining-card.is-ready .plan-header__lvl-num{color:#ffe09a}
-/* Shared glass surfaces */
-.card,.plan,.plans-report,.plans-report__head,.plans-table,.pf-top,.rf-hero,.rf-stat,.lb,.lb__list,.lb__empty,.step,#panelWithdraw,.weekly,.wheel-info,.wheel-timer-bar,.field__input,.info-rows,.method,.seg,.tabs,.code-row,.ref-link,.plan__stat,.plan__timer,.tbox,.plans-report,.qrow--lock{
+.card,.plan,.plans-report,.plans-report__head,.plans-table,.pf-top,.rf-hero,.rf-stat,.lb,.lb__list,.lb__empty,.step,#panelWithdraw,.weekly,.wheel-info,.wheel-timer-bar,.field__input,.info-rows,.method,.seg,.tabs,.code-row,.ref-link,.plan__stat,.plan__timer,.tbox,.qrow--lock{
   background:linear-gradient(145deg,rgba(117,202,232,.105),rgba(4,25,49,.55));border-color:rgba(128,218,244,.18);box-shadow:inset 0 1px rgba(255,255,255,.035)}
 .card,.plan,.rf-hero,.lb,.pf-top,#panelWithdraw,.weekly{backdrop-filter:blur(14px)}
 .card__title i,.field__label i,.method__logo,.wheel-info i{background:rgba(54,196,232,.13);color:#8beaff;border:1px solid rgba(122,223,246,.15)}
@@ -855,24 +812,23 @@ body{background:#03101d;color:#effaff}
   .caustics,.reef-coral,.pearl,.fish,.plant,.gem,.bubble,.sun-rays,.water-surface{animation-duration:.001ms!important;animation-iteration-count:1!important}
 }
 </style>
-
 </head>
 <body>
 
 <div class="outside-tg" id="outsideTg" style="display:none">
   <div class="outside-tg__ic">🐬</div>
   <h1>دولفين مينر</h1>
-  <p>هذا التطبيق يعمل فقط داخل تطبيق Telegram. افتح البوت من الأسفل للبدء.</p>
+  <p>هذا التطبيق يعمل فقط داخل تطبيق تيليجرام. تم تسجيل الدخول إلى البوت من الأسفل.</p>
   <a href="https://t.me/DolphinMiner_bot/Dolphin">
-    <i class="fab fa-telegram-plane"></i> افتح البوت
+    <i class="fab fa-telegram-plane"></i> حساب البوت
   </a>
 </div>
 
 <div class="tamper-overlay" id="tamperModal">
   <div class="tamper-box">
     <div class="tamper-box__icon"><i class="fas fa-exclamation-triangle"></i></div>
-    <h3>تم إيقاف التعدين</h3>
-    <p>تم اكتشاف تغيير في وقت الجهاز. للحفاظ على نزاهة التعدين، تم إيقاف جلستك الحالية. يرجى إعادة ضبط وقت الجهاز والمحاولة مرة أخرى.</p>
+    <h3>تم التجريب</h3>
+    <p>تم اكتشاف التغيير في وقت الجهاز. إنها نزيهة التسامح، تم قمع الحركة الحالية. برجاء إعادة ضبط وقت الجهاز ومحاولة مرة أخرى.</p>
     <button onclick="closeTamperModal()">حسناً، فهمت</button>
   </div>
 </div>
@@ -891,13 +847,13 @@ body{background:#03101d;color:#effaff}
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
           <div class="chip__body">
             <div class="chip__num" id="headerBalance">0</div>
-            <div class="chip__cur">coin</div>
+            <div class="chip__cur">عملة</div>
           </div>
         </div>
       </div>
 
       <div class="sec-head">
-        <div class="sec-head__title"><i class="fas fa-water"></i> التعدين</div>
+        <div class="sec-head__title"><i class="fas fa-water"></i> التجريف</div>
         <div class="sec-head__meta" id="miningStatusMeta">جاهز</div>
       </div>
 
@@ -906,14 +862,14 @@ body{background:#03101d;color:#effaff}
           <div class="plan-header__left">
             <div class="plan-header__icon" id="planIcon"><span>🐟</span></div>
             <div class="plan-header__meta">
-              <div class="plan-header__lbl">الخطة النشطة</div>
-              <div class="plan-header__name" id="planName">خطة أساسي</div>
-              <div class="plan-header__reward"><i class="fas fa-coins"></i><span id="planReward">5</span> coin / دورة</div>
+              <div class="plan-header__lbl">الخطة العضوية</div>
+              <div class="plan-header__name" id="planName">خطة أساسية</div>
+              <div class="plan-header__reward"><i class="fas fa-coins"></i><span id="planReward">5</span> عملة / دورة</div>
             </div>
           </div>
           <div class="plan-header__lvl">
             <div class="plan-header__lvl-num" id="planLevel">1</div>
-            <div class="plan-header__lvl-lbl">LEVEL</div>
+            <div class="plan-header__lvl-lbl">المستوى</div>
           </div>
         </div>
 
@@ -963,11 +919,11 @@ body{background:#03101d;color:#effaff}
         <div class="timer-bar">
           <div class="timer-bar__ic"><i class="fas fa-hourglass-half"></i></div>
           <div class="timer-bar__text" id="timerText">06:00:00</div>
-          <div class="timer-bar__lbl" id="timerLbl">متبقي</div>
+          <div class="timer-bar__lbl" id="timerLbl">المؤقت</div>
         </div>
 
         <button class="action action--start" id="mineAction">
-          <i class="fas fa-play"></i><span>ابدأ التعدين</span>
+          <i class="fas fa-play"></i><span>ابدأ بالتجريب</span>
         </button>
       </div>
 
@@ -976,14 +932,14 @@ body{background:#03101d;color:#effaff}
           <i class="fas fa-users tile__bg"></i>
           <span class="tile__ic"><i class="fas fa-user-plus"></i></span>
           <span class="tile__t">دعوة الأصدقاء</span>
-          <span class="tile__d">اربح <b>10 coin</b> عن كل صديق ينضم عبر رابطك</span>
+          <span class="tile__d">اربح <b>10 عملات</b> عن كل صديق ينضم عبر رابطك</span>
           <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
         </button>
         <button class="tile tile--amber" onclick="navigate('tasks')">
           <i class="fas fa-trophy tile__bg"></i>
           <span class="tile__ic"><i class="fas fa-tasks"></i></span>
           <span class="tile__t">المهمات</span>
-          <span class="tile__d">اربح حتى <b id="tileTaskTotal">0</b> coin من إكمال المهمات</span>
+          <span class="tile__d">اربح حتى <b id="tileTaskTotal">0</b> عملة من المهمات</span>
           <span class="tile__go"><i class="fas fa-chevron-left"></i></span>
         </button>
       </div>
@@ -992,13 +948,11 @@ body{background:#03101d;color:#effaff}
         <span class="wheel-tile__ic">🎰</span>
         <div class="wheel-tile__body">
           <div class="wheel-tile__t">عجلة الحظ</div>
-          <div class="wheel-tile__d">جرّب حظك واربح جوائز فورية حتى 100 coin</div>
+          <div class="wheel-tile__d">جرّب حظك واربح جوائز فورية حتى 100 عملة</div>
           <span class="wheel-tile__badge"><i class="fas fa-gift"></i> لفة مجانية كل يوم</span>
         </div>
         <span class="wheel-tile__arrow"><i class="fas fa-chevron-left"></i></span>
       </button>
-
-
     </div>
 
     <div class="view" id="view-wheel">
@@ -1011,7 +965,7 @@ body{background:#03101d;color:#effaff}
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
           <div class="chip__body">
             <div class="chip__num" id="wheelBalance">0</div>
-            <div class="chip__cur">coin</div>
+            <div class="chip__cur">عملة</div>
           </div>
         </div>
       </div>
@@ -1026,7 +980,7 @@ body{background:#03101d;color:#effaff}
 
       <div class="wheel-timer-bar" id="wheelTimerBar" style="display:none">
         <i class="fas fa-hourglass-half"></i>
-        <span>تجديد اللفة المجانية بعد</span>
+        <span>تجديد اللفة بعد</span>
         <b id="wheelTimer">--:--:--</b>
       </div>
 
@@ -1048,7 +1002,7 @@ body{background:#03101d;color:#effaff}
             <div class="wheel" id="wheel">
               <svg viewBox="0 0 200 200" id="wheelSvg"></svg>
             </div>
-            <button class="wheel-center-btn" id="wheelCenterBtn" aria-label="لف العجلة">
+            <button class="wheel-center-btn" id="wheelCenterBtn" aria-label="لف عجلة القيادة">
               <span class="wheel-center-btn__icon">🎰</span>
             </button>
           </div>
@@ -1056,12 +1010,12 @@ body{background:#03101d;color:#effaff}
       </div>
 
       <button class="wheel-action" id="wheelMainBtn">
-        <i class="fas fa-sync-alt"></i> <span id="wheelMainBtnText">لف العجلة الآن</span>
+        <i class="fas fa-sync-alt"></i> <span id="wheelMainBtnText">لف الآن</span>
       </button>
 
       <div class="wheel-info">
         <i class="fas fa-info-circle"></i>
-        <div class="wheel-info__txt">لديك <b>لفة واحدة مجانية</b> كل 24 ساعة. احصل على لفات إضافية عبر <b>مهام الدعوات</b> في صفحة المهام.</div>
+        <div class="wheel-info__txt">لديك <b>لفة مجانية واحدة</b> كل 24 ساعة. احصل على لفات إضافية عبر <b>مهام الدعوات</b> في صفحة المهام.</div>
       </div>
     </div>
 
@@ -1075,7 +1029,7 @@ body{background:#03101d;color:#effaff}
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
           <div class="chip__body">
             <div class="chip__num" id="tasksBalance">0</div>
-            <div class="chip__cur">coin</div>
+            <div class="chip__cur">عملة</div>
           </div>
         </div>
       </div>
@@ -1086,30 +1040,29 @@ body{background:#03101d;color:#effaff}
           <div class="ring__n"><b id="qbNum">0</b><small id="qbOf">/ 7</small></div>
         </div>
         <div>
-          <div class="qb__t">لوحة المهمات</div>
+          <div class="qb__t">لوحة المهام</div>
           <div class="qb__s" id="questSummary">0 من 7 مهمات مكتملة</div>
-          <div class="qb__left"><i class="fas fa-coins"></i> متبقي لك <b id="questLeft">0</b> coin</div>
+          <div class="qb__left"><i class="fas fa-coins"></i> متبقي لك <b id="questLeft">0</b> عملة</div>
         </div>
       </div>
 
       <div id="tasksContainer"></div>
-
       <div id="inviteTasksContainer"></div>
 
       <div class="card" id="adminTaskCard" style="display:none;margin-top:16px">
         <div class="card__title"><i class="fas fa-user-shield"></i> إدارة مهمات التواصل</div>
-        <div class="adm-note">تظهر هذه الأداة لك فقط. المهمة تعرض أيقونة المنصة المختارة ويُكافأ المستخدم بعد 5 ثوانٍ من الضغط على "انضم".</div>
+        <div class="adm-note">تظهر هذه الأداة لك فقط. يتم منح المستخدم المكافأة بعد 5 ثواني من الضغط على "انضم".</div>
         <div class="field">
           <label class="field__label"><i class="fas fa-share-alt"></i> المنصة</label>
           <select class="field__input" id="adTaskPlatform">
-            <option value="telegram">Telegram</option>
-            <option value="instagram">Instagram</option>
-            <option value="youtube">YouTube</option>
-            <option value="tiktok">TikTok</option>
-            <option value="facebook">Facebook</option>
-            <option value="x">X (Twitter)</option>
-            <option value="whatsapp">WhatsApp</option>
-            <option value="snapchat">Snapchat</option>
+            <option value="telegram">تيليجرام</option>
+            <option value="instagram">إنستغرام</option>
+            <option value="youtube">يوتيوب</option>
+            <option value="tiktok">تيك توك</option>
+            <option value="facebook">فيسبوك</option>
+            <option value="x">X (تويتر)</option>
+            <option value="whatsapp">واتساب</option>
+            <option value="snapchat">سناب شات</option>
             <option value="other">رابط آخر</option>
           </select>
         </div>
@@ -1122,10 +1075,10 @@ body{background:#03101d;color:#effaff}
           <input type="url" class="field__input field__input--ltr" id="adTaskUrl" placeholder="https://t.me/...">
         </div>
         <div class="field">
-          <label class="field__label"><i class="fas fa-coins"></i> المكافأة (coin)</label>
+          <label class="field__label"><i class="fas fa-coins"></i> المكافأة (عملة معدنية)</label>
           <input type="text" inputmode="numeric" class="field__input field__input--ltr" id="adTaskReward" placeholder="10">
         </div>
-        <button class="btn btn--primary" id="adTaskAdd"><i class="fas fa-plus"></i> إضافة المهمة</button>
+        <button class="btn btn--primary" id="adTaskAdd"><i class="fas fa-plus"></i> إضافة مهمة</button>
         <div class="card__sep"></div>
         <div class="card__title"><i class="fas fa-list"></i> المهمات الحالية</div>
         <div id="adTaskList"></div>
@@ -1135,14 +1088,14 @@ body{background:#03101d;color:#effaff}
     <div class="view" id="view-store">
       <div class="topbar">
         <div class="topbar__meta">
-          <div class="topbar__hello">متجر الخطط</div>
-          <div class="topbar__name">ترقية الخطة</div>
+          <div class="topbar__hello">متجر الترقية</div>
+          <div class="topbar__name"> ترقية البناء</div>
         </div>
         <div class="chip">
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
           <div class="chip__body">
             <div class="chip__num" id="storeBalance">0</div>
-            <div class="chip__cur">coin</div>
+            <div class="chip__cur">عملة</div>
           </div>
         </div>
       </div>
@@ -1156,8 +1109,8 @@ body{background:#03101d;color:#effaff}
 
       <div class="plans-report" id="plansReport">
         <div class="plans-report__head">
-          <div class="plans-report__title"><i class="fas fa-chart-line"></i> تقرير الخطط</div>
-          <span class="plans-report__tag">REPORT</span>
+          <div class="plans-report__title"><i class="fas fa-chart-line"></i> تقرير الأرباح</div>
+          <span class="plans-report__tag">تقرير</span>
         </div>
         <table class="plans-table">
           <thead><tr><th>الخطة</th><th>السعر</th><th>الأرباح</th><th>الإجمالي</th></tr></thead>
@@ -1167,7 +1120,7 @@ body{background:#03101d;color:#effaff}
 
       <div class="alert" style="margin-top:var(--sp-4)">
         <i class="fas fa-info-circle"></i>
-        <div>عند انتهاء الخطة يُرد <b>مبلغ الشراء فقط</b>، والأرباح تجمعها <b>يدوياً</b> من التعدين. إذا ألغيت الخطة <b>لا يتم رد أي مبلغ</b>.</div>
+        <div>عند بدء البناء يتم <b>خصم مبلغ الشراء فقط</b>، والإرباح تُجمع <b>يدويًا</b> من التعدين. إذا ألغيت البناء <b>لا يتم رد أي مبلغ</b>.</div>
       </div>
     </div>
 
@@ -1175,13 +1128,13 @@ body{background:#03101d;color:#effaff}
       <div class="topbar">
         <div class="topbar__meta">
           <div class="topbar__hello">المحفظة</div>
-          <div class="topbar__name">إيداع وسحب</div>
+          <div class="topbar__name"> الإيداع والسحب</div>
         </div>
         <div class="chip">
           <span class="star3d" aria-hidden="true"><img src="https://img.icons8.com/liquid-glass-color/999/star.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><i class="fas fa-star" style="display:none"></i></span>
           <div class="chip__body">
             <div class="chip__num" id="walletBalance">0</div>
-            <div class="chip__cur">coin</div>
+            <div class="chip__cur">عملة</div>
           </div>
         </div>
       </div>
@@ -1197,7 +1150,7 @@ body{background:#03101d;color:#effaff}
           <div class="method method--active" data-method="sham_cash">
             <div class="method__check"><i class="fas fa-check"></i></div>
             <div class="method__logo"><img src="https://up6.cc/2026/09/178975725154411.png" onerror="this.src='https://up6.ca/2026/09/178975725154411.png'" alt=""></div>
-            <div class="method__name">SHAM CASH</div>
+            <div class="method__name">شام كاش</div>
           </div>
           <div class="method" data-method="binance">
             <div class="method__check"><i class="fas fa-check"></i></div>
@@ -1206,13 +1159,13 @@ body{background:#03101d;color:#effaff}
           </div>
         </div>
         <div class="field">
-          <label class="field__label"><i class="fas fa-coins"></i> عدد coin للسحب</label>
-          <input type="text" inputmode="decimal" class="field__input field__input--ltr" id="wdAmount" placeholder="الحد الأدنى 500">
+          <label class="field__label"><i class="fas fa-coins"></i> عدد العملات للسحب</label>
+          <input type="text" inputmode="decimal" class="field__input field__input--ltr" id="wdAmount" placeholder="الحد 1000">
         </div>
         <div class="info-rows">
-          <div class="info-row"><div class="info-row__lbl">العمولة <span id="wdFeeRateLbl">(1.5%)</span></div><div class="info-row__val info-row__val--muted" id="wdFee">0.00 coin</div></div>
-          <div class="info-row"><div class="info-row__lbl">المبلغ المستلم</div><div class="info-row__val info-row__val--sea" id="wdNet">0.00 coin</div></div>
-          <div class="info-row" id="wdUsdtRow" style="display:none"><div class="info-row__lbl"><i class="fab fa-bitcoin" style="color:#F0B90B"></i> يعادل USDT</div><div class="info-row__val info-row__val--amber" id="wdUsdt">0.00</div></div>
+          <div class="info-row"><div class="info-row__lbl">العمولة <span id="wdFeeRateLbl">(1.5%)</span></div><div class="info-row__val info-row__val--muted" id="wdFee">0.00 عملة</div></div>
+          <div class="info-row"><div class="info-row__lbl">المبلغ المستلم</div><div class="info-row__val info-row__val--sea" id="wdNet">0.00 عملة معدنية</div></div>
+          <div class="info-row" id="wdUsdtRow" style="display:none"><div class="info-row__lbl"><i class="fab fa-bitcoin" style="color:#F0B90B"></i> ما يعادل USDT</div><div class="info-row__val info-row__val--amber" id="wdUsdt">0.00</div></div>
         </div>
         <div class="field" id="wdPhoneGroup">
           <label class="field__label"><i class="fas fa-phone"></i> رقم الهاتف</label>
@@ -1224,7 +1177,7 @@ body{background:#03101d;color:#effaff}
         </div>
         <div class="alert alert--warn">
           <i class="fas fa-info-circle"></i>
-          <div>الحد الأدنى للسحب <b id="wdMinLbl">1000 coin = 100 ليرة سورية</b>.</div>
+          <div>الحد الأدنى للسحب <b id="wdMinLbl">1000 عملة = 100 ليرة سورية</b>.</div>
         </div>
         <button class="btn btn--primary" id="wdSubmit"><i class="fas fa-paper-plane"></i><span>تقديم طلب السحب</span></button>
       </div>
@@ -1234,7 +1187,7 @@ body{background:#03101d;color:#effaff}
           <div class="step__num">1</div>
           <div class="step__body">
             <div class="step__title">معرفك الشخصي</div>
-            <div class="step__desc">انسخ هذا المعرف وضعه في ملاحظات التحويل لتفعيل الإيداع تلقائياً.</div>
+            <div class="step__desc">انسخ هذا المعرف واكتبه في الملاحظات لتفعيل الإيداع التلقائي.</div>
             <div class="id-box" id="depUserId">--------</div>
             <button class="btn btn--outline" id="depCopyId"><i class="fas fa-copy"></i> نسخ المعرف</button>
           </div>
@@ -1248,7 +1201,7 @@ body{background:#03101d;color:#effaff}
               <div class="method method--active" data-method="sham_cash">
                 <div class="method__check"><i class="fas fa-check"></i></div>
                 <div class="method__logo"><img src="https://up6.cc/2026/09/178975725154411.png" onerror="this.src='https://up6.ca/2026/09/178975725154411.png'" alt=""></div>
-                <div class="method__name">SHAM CASH</div>
+                <div class="method__name">شام كاش</div>
               </div>
               <div class="method" data-method="binance">
                 <div class="method__check"><i class="fas fa-check"></i></div>
@@ -1270,9 +1223,9 @@ body{background:#03101d;color:#effaff}
             <div id="depBinanceInfo" style="display:none">
               <div class="id-box" style="font-size:18px;letter-spacing:4px;border-color:var(--yellow)">1121748571</div>
               <button class="btn btn--sea" id="depCopyBinance"><i class="fas fa-copy"></i> نسخ معرف Binance</button>
-              <div class="step__title" style="margin-top:16px">طريقة وضع معرف المستخدم في الملاحظة</div>
+              <div class="step__title" style="margin-top:16px">طريقة وضع معرف المستخدم في التحويل</div>
               <div class="step__desc">اتبع الصورة التعليمية أدناه لوضع معرفك في خانة الملاحظات أثناء التحويل على Binance.</div>
-              <img src="https://up6.cc/2026/10/179163217003341.jpg" alt="طريقة وضع معرف المستخدم في الملاحظة" style="width:100%;border-radius:18px;border:1px solid #18252E">
+              <img src="https://up6.cc/2026/10/179163217003341.jpg" alt="طريقة وضع معرف المستخدم في التحويل" style="width:100%;border-radius:18px;border:1px solid #18252E">
             </div>
           </div>
         </div>
@@ -1282,7 +1235,7 @@ body{background:#03101d;color:#effaff}
             <div class="step__title">التعليمات</div>
             <div class="alert alert--danger" style="margin-bottom:0">
               <i class="fas fa-exclamation-triangle"></i>
-              <div id="depInstructions"><b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل دائماً. الحد الأدنى للإيداع 500 coin.</div>
+              <div id="depInstructions"><b>مهم:</b> ضع معرفك الشخصي في ملاحظات التحويل. الحد الأقصى للإيداع 500 عملة معدنية.</div>
             </div>
           </div>
         </div>
@@ -1308,12 +1261,12 @@ body{background:#03101d;color:#effaff}
             <div class="rf-hero__ic"><i class="fas fa-gift"></i></div>
             <div>
               <div class="rf-hero__title">ادعُ أصدقاءك واربح معهم</div>
-              <div class="rf-hero__desc">عند انضمام صديق عبر رابطك تحصل على مكافأة فورية، ويحصل صديقك على هدية ترحيبية.</div>
+              <div class="rf-hero__desc">عند حصول صديقك عبر رابطك على مكافأة فورية، ويحصل صديقك على هدية ترحيبية.</div>
             </div>
           </div>
           <div class="rf-hero__rewards">
-            <div class="rf-hero__rw"><div class="amt">+10</div><div class="lbl">coin لك</div></div>
-            <div class="rf-hero__rw"><div class="amt">+5</div><div class="lbl">coin لصديقك</div></div>
+            <div class="rf-hero__rw"><div class="amt">+10</div><div class="lbl">عملة لك</div></div>
+            <div class="rf-hero__rw"><div class="amt">+5</div><div class="lbl">عملة لصديقك</div></div>
           </div>
         </div>
 
@@ -1324,12 +1277,12 @@ body{background:#03101d;color:#effaff}
           </div>
           <div class="rf-stat">
             <div class="rf-stat__ic rf-stat__ic--amber"><i class="fas fa-coins"></i></div>
-            <div><div class="rf-stat__num" id="refEarn">0</div><div class="rf-stat__lbl">coin أرباح</div></div>
+            <div><div class="rf-stat__num" id="refEarn">0</div><div class="rf-stat__lbl">عملة مكتسبة</div></div>
           </div>
         </div>
 
         <div class="card">
-          <div class="card__title"><i class="fas fa-link"></i> رابط الدعوة</div>
+          <div class="card__title"><i class="fas fa-link"></i> رابط الإحالة</div>
           <div class="ref-link" id="refLink">...</div>
           <div class="ref-actions">
             <button class="btn btn--primary" id="refShare"><i class="fas fa-paper-plane"></i> مشاركة الرابط</button>
@@ -1338,24 +1291,24 @@ body{background:#03101d;color:#effaff}
           <div class="card__sep"></div>
           <div class="code-row">
             <div>
-              <div class="code-row__lbl">كود الدعوة (Telegram ID)</div>
+              <div class="code-row__lbl">كود الإحالة (معرف Telegram)</div>
               <div class="code-row__val" id="refCode">------</div>
             </div>
-            <button class="icon-btn" id="refCopyCode" aria-label="نسخ الكود"><i class="fas fa-copy"></i></button>
+            <button class="icon-btn" id="refCopyCode" aria-label="نسخ الرمز"><i class="fas fa-copy"></i></button>
           </div>
         </div>
 
         <div class="card">
-          <div class="card__title"><i class="fas fa-route"></i> كيف تعمل الدعوة</div>
+          <div class="card__title"><i class="fas fa-route"></i> كيف تعمل الإحالة</div>
           <div class="how">
             <div class="how__row"><div class="how__n">1</div><div><div class="how__t">شارك رابطك</div><div class="how__d">أرسله لأصدقائك عبر تيليجرام.</div></div></div>
-            <div class="how__row"><div class="how__n">2</div><div><div class="how__t">ينضم صديقك</div><div class="how__d">يفتح التطبيق من الرابط ويسجّل حسابه.</div></div></div>
+            <div class="how__row"><div class="how__n">2</div><div><div class="how__t">ينضم صديقك</div><div class="how__d">يفتح التطبيق من الرابط ويسجل حسابه.</div></div></div>
             <div class="how__row"><div class="how__n">3</div><div><div class="how__t">تصل المكافأة للطرفين</div><div class="how__d">تُضاف إلى رصيدك ورصيد صديقك فوراً.</div></div></div>
           </div>
         </div>
 
         <div class="card" id="refInputBlock">
-          <div class="card__title"><i class="fas fa-ticket-alt"></i> هل دعاك أحد؟ أدخل كوده</div>
+          <div class="card__title"><i class="fas fa-ticket-alt"></i> هل دعاك أحد؟ أدخل الكود</div>
           <div class="field" style="margin-bottom:0">
             <input type="text" inputmode="numeric" class="field__input field__input--ltr field__input--code" id="refInputCode" placeholder="123456789" maxlength="12">
           </div>
@@ -1367,8 +1320,8 @@ body{background:#03101d;color:#effaff}
       <div id="refPaneTop" style="display:none">
         <div class="lb">
           <div class="lb__head">
-            <div class="lb__title"><i class="fas fa-crown"></i> أعلى 10 مستخدمين دعوةً</div>
-            <span class="lb__tag">TOP 10</span>
+            <div class="lb__title"><i class="fas fa-crown"></i> أعلى 10 مستخدمين للدعوة</div>
+            <span class="lb__tag">أفضل 10</span>
           </div>
           <div id="lbList"><div class="lb__empty"><i class="fas fa-crown"></i><p>جاري التحميل...</p></div></div>
         </div>
@@ -1415,7 +1368,7 @@ body{background:#03101d;color:#effaff}
           <i class="fas fa-fish pf-cell__bg"></i>
           <div class="pf-cell__ic"><i class="fas fa-fish"></i></div>
           <div class="pf-cell__lbl">الخطة الحالية</div>
-          <div class="pf-cell__val pf-cell__val--txt" id="pPlan">أساسي</div>
+          <div class="pf-cell__val pf-cell__val--txt" id="pPlan"> أساسي</div>
         </div>
       </div>
 
@@ -1424,7 +1377,6 @@ body{background:#03101d;color:#effaff}
         <div class="pf-row__lbl">تاريخ الانضمام</div>
         <div class="pf-row__val" id="pJoined">-</div>
       </div>
-
     </div>
   </div>
 
@@ -1433,9 +1385,9 @@ body{background:#03101d;color:#effaff}
       <div class="nav__inner">
         <button class="nav__btn nav__btn--active" data-view="home"><i class="fas fa-home"></i><span>الرئيسية</span></button>
         <button class="nav__btn" data-view="tasks"><i class="fas fa-tasks"></i><span>المهام</span></button>
-        <button class="nav__btn" data-view="store"><i class="fas fa-layer-group"></i><span>الخطط</span></button>
+        <button class="nav__btn" data-view="store"><i class="fas fa-layer-group"></i><span>الترقية</span></button>
         <button class="nav__btn" data-view="wallet"><i class="fas fa-wallet"></i><span>المحفظة</span></button>
-        <button class="nav__btn" data-view="referral"><i class="fas fa-users"></i><span>إحالة</span></button>
+        <button class="nav__btn" data-view="referral"><i class="fas fa-users"></i><span>الإحالة</span></button>
       </div>
     </nav>
     <button class="nav__btn nav__profile" data-view="profile" aria-label="حسابي"><span class="nav__av" id="navAvatar"><i class="fas fa-user"></i></span></button>
@@ -1448,22 +1400,22 @@ body{background:#03101d;color:#effaff}
     <div class="modal__title" id="wheelModalTitle">مبروك!</div>
     <div class="modal__sub" id="wheelModalSub">ربحت جائزة رائعة</div>
     <div class="modal__amount" id="wheelModalAmt">+0<small>coin</small></div>
-    <button class="modal__btn" onclick="closeWheelModal()"><i class="fas fa-check"></i> رائع، شكراً!</button>
+    <button class="modal__btn" onclick="closeWheelModal()"><i class="fas fa-check"></i> رائع، شكرًا!</button>
   </div>
 </div>
 
 <div class="view-ads-modal" id="viewAdsModal" aria-hidden="true">
   <div class="view-ads-modal__box">
     <button class="view-ads-modal__close" id="viewAdsClose" aria-label="إغلاق">×</button>
-    <div class="view-ads-modal__eyebrow"><i class="fas fa-water"></i> DOLPHIN MINER REWARDS</div>
+    <div class="view-ads-modal__eyebrow"><i class="fas fa-water"></i> مكافآت دولفين مينر</div>
     <div class="view-ads-modal__icon" id="viewAdsModalIcon">📺</div>
     <div class="view-ads-modal__step" id="viewAdsModalStep">الإعلان 1 من 5</div>
     <h2 id="viewAdsModalTitle">شاهد الإعلان واربح</h2>
-    <p id="viewAdsModalSub">يجب مشاهدة الإعلان لمدة 15 ثانية على الأقل؛ لا تُضاف المكافأة إذا أغلقت الإعلان مبكراً.</p>
-    <div class="view-ads-modal__prize"><small>مكافأة الإعلان الحالي</small><strong id="viewAdsModalPrize">+5 <span>coin</span></strong></div>
+    <p id="viewAdsModalSub">يجب مشاهدة الإعلان لمدة 15 ثانية على الأقل؛ لن تُضاف المكافأة إذا أغلقت الإعلان مبكراً.</p>
+    <div class="view-ads-modal__prize"><small> مكافأة الإعلان الحالي</small><strong id="viewAdsModalPrize">+2 <span>عملة</span></strong></div>
     <div class="view-ads-modal__track"><span id="viewAdsModalBar"></span></div>
     <button class="view-ads-modal__btn" id="viewAdsWatchBtn"><i class="fas fa-play-circle"></i><span>شاهد الإعلان الأول</span></button>
-    <div class="view-ads-modal__note"><i class="fas fa-shield-alt"></i> شاهد الإعلان لمدة 15 ثانية على الأقل. الإغلاق المبكر لا يمنح مكافأة.</div>
+    <div class="view-ads-modal__note"><i class="fas fa-shield-alt"></i> شاهد الإعلان لمدة 15 ثانية على الأقل. لا تمنح مكافأة في وقت مبكر.</div>
   </div>
 </div>
 
@@ -1478,6 +1430,9 @@ body{background:#03101d;color:#effaff}
 <script>
 'use strict';
 
+/* ============================================================
+   🛡️ Content Protection
+   ============================================================ */
 (function protectContent(){
   const isField = (t) => !!(t && t.closest && t.closest('input,textarea,select'));
   ['copy','cut','selectstart','dragstart','contextmenu'].forEach(ev =>
@@ -1492,6 +1447,9 @@ body{background:#03101d;color:#effaff}
   });
 })();
 
+/* ============================================================
+   ⚙️ CONFIG
+   ============================================================ */
 const CONFIG = {
   firebase: {
     apiKey: "AIzaSyCDkO_uCCiHG3HHPDeQQ9j-v43sDhyua-w",
@@ -1506,69 +1464,98 @@ const CONFIG = {
   referral: { newUserReward: 5, referrerReward: 10 },
   withdraw: { minAmount: 1000, binanceMinAmount: 1000, feeRate: 0.015, usdRate: 500 },
   deposit: { shamCash: '334a08ea2d1bbed05f214a7f08e37ae4', binance: '1121748571' },
-
   plans: [
     { id:'basic',  name:'أساسي',  emoji:'🐟', level:1, reward:5,  cycleHours:6, planDays:0,  price:0 },
     { id:'silver', name:'فضي',    emoji:'🐠', level:2, reward:13, cycleHours:6, planDays:7,  price:700 },
     { id:'gold',   name:'ذهبي',   emoji:'🐡', level:3, reward:20, cycleHours:6, planDays:10, price:1500 },
-    { id:'jelly',  name:'جيلي',   emoji:'🪼', level:4, reward:30, cycleHours:6, planDays:15, price:3000 },
+    { id:'jelly',  name:'jelly',  emoji:'🪼', level:4, reward:30, cycleHours:6, planDays:15, price:3000 },
     { id:'whale',  name:'حوت',    emoji:'🐋', level:5, reward:45, cycleHours:6, planDays:21, price:6000 },
     { id:'dolphin',name:'دولفين', emoji:'🐬', level:6, reward:65, cycleHours:6, planDays:30, price:15000 }
   ],
-
   security: { maxClockDriftMs: 60 * 1000, syncIntervalMs: 5 * 60 * 1000, syncMinGapMs: 30 * 1000, clockCheckIntervalMs: 2000 },
-
   inviteTasks: [
-    { id: 'invite5',  count: 5,  reward: 20,  spins: 2,  title: 'دعوة 5 أصدقاء',  desc: 'اربح 20 coin + لفّتي عجلة مجانيتين' },
-    { id: 'invite20', count: 20, reward: 100, spins: 4,  title: 'دعوة 20 صديق',   desc: 'اربح 100 coin + 4 لفات عجلة' },
-    { id: 'invite30', count: 30, reward: 250, spins: 7,  title: 'دعوة 30 صديق',   desc: 'اربح 250 coin + 7 لفات عجلة' },
-    { id: 'invite50', count: 50, reward: 500, spins: 10, title: 'دعوة 50 صديق',   desc: 'اربح 500 coin + 10 لفات عجلة' }
+    { id:'invite5',  count:5,  reward:20,  spins:2,  title:'دعوة 5 أصدقاء',  desc:'اربح 20 عملة + لفتي عجلة مجانيتين' },
+    { id:'invite20', count:20, reward:100, spins:4,  title:'دعوة 20 صديق',   desc:'اربح 100 عملة + 4 لفات عجلة' },
+    { id:'invite30', count:30, reward:250, spins:7,  title:'دعوة 30 صديق',   desc:'اربح 250 عملة + 7 لفات عجلة' },
+    { id:'invite50', count:50, reward:500, spins:10, title:'دعوة 50 صديق',   desc:'اربح 500 عملة + 10 لفات عجلة' }
   ],
-
   specialTasks: {
-    collect5: { id:'collect5', target:5, reward:30, title:'اجمع التعدين 5 مرات', desc:'اربح 30 coin عند جمع التعدين 5 مرات بأي خطة' },
-    firstBuy: { id:'firstBuy', reward:100, title:'اشترِ أول خطة مدفوعة', desc:'اربح 100 coin عند شراء أول خطة مدفوعة' }
+    collect5: { id:'collect5', target:5, reward:30, title:'اجمع التعدين 5 مرات', desc:'اربح 30 عملة عند جمع التعدين 5 مرات بأي خطة' },
+    firstBuy: { id:'firstBuy', reward:100, title:'اشترِ أول خطة مدفوعة', desc:'اربح 100 عملة عند شراء أول خطة مدفوعة' }
   },
-
   socialWaitMs: 5000,
-
   refundPlanProfit: false,
-
   wheel: {
     dailyFreeSpin: 1,
     rewards: [
-      { type:'win',  value:10,  label:'10',      color:'#30D158' },
-      { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' },
-      { type:'win',  value:30, label:'30',     color:'#FFD60A' },
-      { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' },
-      { type:'win',  value:15,  label:'15',      color:'#007AFF' },
-      { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' },
-      { type:'win',  value:40,  label:'40',      color:'#AF52DE' },
-      { type:'lose', value:0,   label:'حظ أوفر', color:'#2A2A32' }
+      { type:'win',  value:10, label:'10',       color:'#30D158' },
+      { type:'lose', value:0,  label:'حظ أوفر',  color:'#2A2A32' },
+      { type:'win',  value:30, label:'30',       color:'#FFD60A' },
+      { type:'lose', value:0,  label:'حظ أوفر',  color:'#2A2A32' },
+      { type:'win',  value:15, label:'15',       color:'#007AFF' },
+      { type:'lose', value:0,  label:'حظ أوفر',  color:'#2A2A32' },
+      { type:'win',  value:40, label:'40',       color:'#AF52DE' },
+      { type:'lose', value:0,  label:'حظ أوفر',  color:'#2A2A32' }
     ]
   }
 };
 
-/* منصات مهمات التواصل: الأيقونة واللون حسب المنصة */
-const SOCIAL_PLATFORMS = {
-  telegram: { label:'Telegram',  icon:'fab fa-telegram-plane', color:'#229ED9' },
-  instagram:{ label:'Instagram', icon:'fab fa-instagram',      color:'#E1306C' },
-  youtube:  { label:'YouTube',   icon:'fab fa-youtube',        color:'#FF3B30' },
-  tiktok:   { label:'TikTok',    icon:'fab fa-tiktok',         color:'#FFFFFF' },
-  facebook: { label:'Facebook',  icon:'fab fa-facebook-f',     color:'#1877F2' },
-  x:        { label:'X',         icon:'fab fa-x-twitter',      color:'#FFFFFF' },
-  whatsapp: { label:'WhatsApp',  icon:'fab fa-whatsapp',       color:'#25D366' },
-  snapchat: { label:'Snapchat',  icon:'fab fa-snapchat',       color:'#FFFC00' },
-  other:    { label:'رابط',      icon:'fas fa-link',           color:'#8beaff' }
+/* ============================================================
+   🎬 ADS — Dolphin Miner
+   ============================================================ */
+const ADS = {
+  ready: () => typeof window.show_12001499 === 'function',
+  inAppOn: false
 };
-function platformOf(id){ return SOCIAL_PLATFORMS[id] || SOCIAL_PLATFORMS.other; }
 
+/* إعلان إجباري — يُرجع false إذا فشل أو أُغلق مبكرًا */
+async function showForcedAd(){
+  if (!ADS.ready()) return true;
+  try {
+    await window.show_12001499();
+    return true;
+  } catch(e){
+    console.warn('forcedAd', e);
+    return false;
+  }
+}
+
+/* إعلان اختياري — fire & forget */
+function showOptionalAd(){
+  if (!ADS.ready()) return;
+  try { window.show_12001499('pop').catch(() => {}); } catch(e){}
+}
+
+/* تهيئة الإعلانات التلقائية عند التنقل */
+function initInAppAds(){
+  if (!ADS.ready() || ADS.inAppOn) return;
+  ADS.inAppOn = true;
+  try {
+    window.show_12001499({
+      type: 'inApp',
+      inAppSettings: {
+        frequency: 2,
+        capping: 0.15,
+        interval: 45,
+        timeout: 8,
+        everyPage: false
+      }
+    });
+  } catch(e){ console.warn('inAppAds', e); }
+}
+
+/* ============================================================
+   🔌 Firebase
+   ============================================================ */
 if (!firebase.apps.length) firebase.initializeApp(CONFIG.firebase);
 const db = firebase.firestore();
 db.enablePersistence({ synchronizeTabs: true }).catch(() => {});
 const FV = firebase.firestore.FieldValue;
 const SV = () => FV.serverTimestamp();
 
+/* ============================================================
+   🧩 STATE
+   ============================================================ */
 const STATE = {
   user: null, tgUser: null, tgId: null, startParam: null, isAdmin: false,
   isSubmitting: false, liveTimer: null,
@@ -1594,7 +1581,7 @@ function escapeHtml(s){
 }
 function getPlan(id){ return CONFIG.plans.find(p => p.id === id) || CONFIG.plans[0]; }
 function getPlanIndex(id){ return CONFIG.plans.findIndex(p => p.id === id); }
-function tsMs(t){ return !t ? 0 : t.toMillis ? t.toMillis() : new Date(t).getTime(); }
+function tsMs(t) { return !t ? 0 : t.toMillis ? t.toMillis() : new Date(t).getTime(); }
 
 function toast(msg, type = 'ok'){
   const el = $('toast'), ic = $('toastIc');
@@ -1626,15 +1613,13 @@ function fallbackCopy(text, done){
 const tg = window.Telegram && window.Telegram.WebApp;
 
 function initTelegram(){
-  if (!tg || !tg.initDataUnsafe || !tg.initDataUnsafe.user) {
+  if (!tg || !tg.initDataUnsafe || !tg.initDataUnsafe.user){
     $('outsideTg').style.display = 'flex';
     return false;
   }
   tg.ready();
   tg.expand();
-  [tg.setHeaderColor, tg.setBackgroundColor, tg.setBottomBarColor].forEach((fn, i) => {
-    if (fn) fn.call(tg, '#000000');
-  });
+  [tg.setHeaderColor, tg.setBackgroundColor, tg.setBottomBarColor].forEach(fn => { if (fn) fn.call(tg, '#000000'); });
   if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
   STATE.tgUser = tg.initDataUnsafe.user;
   STATE.tgId = String(tg.initDataUnsafe.user.id);
@@ -1653,7 +1638,7 @@ async function syncServerTime(force){
   if (!force && Date.now() - STATE.lastSyncAt < CONFIG.security.syncMinGapMs) return;
   STATE.lastSyncAt = Date.now();
   STATE.syncing = true;
-  try{
+  try {
     const ref = db.collection('_system').doc('t_' + STATE.tgId);
     const t0 = performance.now();
     await ref.set({ ping: SV() }, { merge:true });
@@ -1665,8 +1650,8 @@ async function syncServerTime(force){
       STATE.perfBase = t1;
       STATE.timeSynced = true;
     }
-  }catch(e){}
-  finally{ STATE.syncing = false; evaluateClock(); }
+  } catch(e){}
+  finally { STATE.syncing = false; evaluateClock(); }
 }
 function getTrustedNow(){ return STATE.serverBase + (performance.now() - STATE.perfBase); }
 
@@ -1679,12 +1664,12 @@ function evaluateClock(){
   STATE.timeLocked = locked;
   if (changed && STATE.user){
     renderMining(); renderPlans(); renderWheel();
-    if (!locked && STATE.user.miningStartTime && !STATE.user.miningCollectable) startLiveTimer();
+    if (!locked && STATE.user.miningStartTime && !STATE.user.miningCollectable && !STATE.liveTimer) startLiveTimer();
   }
 }
 
 let perfBaseline = 0, clockBaseline = 0, clockTick = 0, skipClock = false;
-function rebaseClock(){ perfBaseline = performance.now(); clockBaseline = Date.now(); }
+function rebaseClock() { perfBaseline = performance.now(); clockBaseline = Date.now(); }
 function initClockMonitor(){
   rebaseClock();
   setInterval(() => {
@@ -1699,7 +1684,7 @@ function initClockMonitor(){
   }, CONFIG.security.clockCheckIntervalMs);
   setInterval(() => { if (!document.hidden) syncServerTime(false); }, CONFIG.security.syncIntervalMs);
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden){ skipClock = true; syncServerTime(true); }
+    if (!document.hidden) { skipClock = true; syncServerTime(true); }
   });
 }
 async function detectTamper(){
@@ -1711,13 +1696,13 @@ async function detectTamper(){
   const now = Date.now();
   if (now - (detectTamper._last || 0) < 600000) return;
   detectTamper._last = now;
-  try{
+  try {
     await db.collection('users').doc(STATE.tgId).update({
       tamperFlag: true,
       tamperCount: FV.increment(1),
       updatedAt: SV()
     });
-  }catch(e){}
+  } catch(e){}
 }
 function closeTamperModal(){ $('tamperModal').classList.remove('show'); }
 
@@ -1754,10 +1739,10 @@ async function loadOrCreateUser(){
   if (STATE.startParam && STATE.startParam.startsWith('ref_')){
     const code = STATE.startParam.slice(4).trim();
     if (/^\d{6,12}$/.test(code) && code !== STATE.tgId){
-      try{
+      try {
         const q = await db.collection('users').where('referralCode', '==', code).limit(1).get();
         if (!q.empty) referrerId = q.docs[0].id;
-      }catch(e){}
+      } catch(e){}
     }
   }
 
@@ -1776,7 +1761,7 @@ async function loadOrCreateUser(){
     collect5RewardClaimed: false, firstBuyRewardClaimed: false,
     inviteRewardClaimed: {},
     socialClaimed: {},
-    dailyStreak: { weekKey: null, weekStart: null, claimedDays: [], lastClaimDate: null },
+    dailyStreak: { weekKey: null, weekStart: null, claimsDays: [], lastClaimDate: null },
     wheel: { spins: CONFIG.wheel.dailyFreeSpin, lastFreeSpinDate: null, lastSpinAt: null },
     createdAt: SV(), updatedAt: SV(), lastSeen: SV()
   };
@@ -1794,8 +1779,10 @@ async function loadOrCreateUser(){
       const R = CONFIG.referral;
       const rd = rSnap.data();
       const payout = R.referrerReward;
-      Object.assign(data, { referralUsed:true, referralCodeUsed:referrerId, referredBy:referrerId,
-        balance_sy:R.newUserReward, totalEarned:R.newUserReward });
+      Object.assign(data, {
+        referralUsed:true, referralCodeUsed:referrerId, referredBy:referrerId,
+        balance_sy: R.newUserReward, totalEarned: R.newUserReward
+      });
       trx.update(db.collection('users').doc(referrerId), {
         balance_sy: FV.increment(payout),
         totalEarned: FV.increment(payout),
@@ -1817,7 +1804,7 @@ async function loadOrCreateUser(){
   });
 
   STATE.user = (await ref.get()).data();
-  toast(rewarded ? '🎉 مرحباً! ربحت ' + CONFIG.referral.newUserReward + ' coin' : '🎉 مرحباً بك!', 'ok');
+  toast(rewarded ? '🎉 مرحباً! حصلت على ' + CONFIG.referral.newUserReward + ' عملة' : '🎉 مرحباً بك!', 'ok');
 }
 
 function listenUser(){
@@ -1825,12 +1812,11 @@ function listenUser(){
   STATE.userUnsub = db.collection('users').doc(STATE.tgId).onSnapshot(snap => {
     if (!snap.exists) return;
     STATE.user = snap.data();
-    refreshAll();
+    updateAll();
     if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime && !STATE.liveTimer) startLiveTimer();
   }, err => console.warn('listenUser', err));
 }
 
-/* مهمات التواصل: تُقرأ من قاعدة البيانات ويديرها الأدمن فقط */
 function listenSocialTasks(){
   db.collection('socialTasks').onSnapshot(snap => {
     STATE.socialTasks = snap.docs
@@ -1843,8 +1829,8 @@ function activeSocialTasks(){
   return STATE.socialTasks.filter(t => t.active !== false);
 }
 
-function refreshAll(){
-  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks(); renderWheel(); renderWeeklyStreak();
+function updateAll(){
+  updateUI(); renderMining(); renderPlans(); renderPlansReport(); renderTasks(); renderWheel();
 }
 
 async function checkPlanExpiry(){
@@ -1859,12 +1845,12 @@ async function checkPlanExpiry(){
   }
   const userRef = db.collection('users').doc(STATE.tgId);
   let refund = 0;
-  try{
+  try {
     await db.runTransaction(async (trx) => {
       const d = (await trx.get(userRef)).data();
       if (!d || !d.planExpiresAt || getPlan(d.activePlanId).planDays === 0) return;
       if (getTrustedNow() < tsMs(d.planExpiresAt)) return;
-      refund = d.planPurchaseAmount || 0;
+      refund = CONFIG.refundPlanProfit ? (d.planPurchaseAmount || 0) : 0;
       trx.update(userRef, {
         balance_sy: FV.increment(refund),
         activePlanId: 'basic', planStartedAt: null, planExpiresAt: null,
@@ -1873,8 +1859,8 @@ async function checkPlanExpiry(){
         updatedAt: SV()
       });
     });
-    if (refund > 0) toast('⏰ انتهت خطتك! تم إرجاع ' + fmt(refund) + ' coin للرصيد', 'ok');
-  }catch(e){ console.warn(e); }
+    if (refund > 0) toast('⏰ انتهت خطتك! تم إرجاع ' + fmt(refund) + ' عملة', 'ok');
+  } catch(e){ console.warn(e); }
 }
 
 function updateUI(){
@@ -1915,8 +1901,7 @@ function updateUI(){
     const dt = u.createdAt.toDate ? u.createdAt.toDate() : new Date(u.createdAt);
     setText('pJoined', dt.toLocaleDateString('ar-EG', { year:'numeric', month:'short', day:'numeric' }));
   }
-
-  updateWithdrawFeeLabels();
+  updateWithdrawLabels();
 }
 
 function updateAvatar(elId){
@@ -1933,12 +1918,12 @@ function updateAvatar(elId){
   img.src = url;
 }
 
-function updateWithdrawFeeLabels(){
+function updateWithdrawLabels(){
   const isBinance = STATE.withdrawMethod === 'binance';
-  setText('wdMinLbl', isBinance ? '1000 coin = 2 دولار' : '1000 coin = 100 ليرة سورية');
-  setText('wdFeeRateLbl', '(1.5% من coin)');
+  setText('wdMinLbl', isBinance ? '1000 عملة = 2 دولار' : '1000 عملة = 100 ليرة سورية');
+  setText('wdFeeRateLbl', '(1.5% من العملة)');
   const wa = $('wdAmount');
-  if (wa) wa.placeholder = 'الحد الأدنى 1000 coin';
+  if (wa) wa.placeholder = 'الحد الأدنى 1000 عملة';
   updateWithdrawFee();
 }
 function getWithdrawMin(){ return STATE.withdrawMethod === 'binance' ? CONFIG.withdraw.binanceMinAmount : CONFIG.withdraw.minAmount; }
@@ -2002,7 +1987,7 @@ function renderLocked(){
   stopLiveTimer();
   setText('statusText', STATE.timeSynced
     ? 'التعدين مجمّد — وقت الجهاز غير صحيح، فعّل الوقت التلقائي'
-    : 'تعذّر التحقق من الوقت — التعدين مجمّد');
+    : 'تعذّر التحقق من الوقت — التعدين المجمّد');
   $('statusDot').className = 'status-bar__dot';
   setText('miningStatusMeta', 'مجمّد');
   setText('timerText', '--:--:--');
@@ -2046,7 +2031,7 @@ function renderRunning(u, plan){
   if (pct > 40 && fish5) fish5.style.opacity = '1';
   if (pct > 70 && fish6) fish6.style.opacity = '1';
 
-  setMineBtn('action action--stop', '<i class="fas fa-stop-circle"></i><span>إيقاف التعدين</span>', false);
+  setMineBtn('action action--stop', '<i class="fas fa-stop-circle"></i><span> إلغاء التعدين</span>', false);
 
   const sec = Math.floor(remaining / 1000);
   const p2 = n => String(n).padStart(2, '0');
@@ -2056,19 +2041,19 @@ function renderRunning(u, plan){
 
 function renderReady(plan){
   const amount = (STATE.user.miningProgress > 0 && STATE.user.miningProgress <= 500) ? STATE.user.miningProgress : plan.reward;
-  setText('statusText', 'اكتملت الرحلة — كنوز الأعماق بانتظارك!');
+  setText('statusText', 'اكتمل التعدين — كنوز الأعماق بانتظارك!');
   $('statusText').style.color = '#7DB9FF';
   $('statusDot').className = 'status-bar__dot ready';
   setText('miningStatusMeta', 'جاهز');
   $('stagePct').className = 'pct ready';
-  $('stagePct').innerHTML = '<bdi dir="ltr">+' + fmt(amount) + '</bdi> coin';
+  $('stagePct').innerHTML = '<bdi dir="ltr">+' + fmt(amount) + '</bdi> عملة';
   treasure.classList.add('show');
   setBubbles('ready', 35);
   if (fish5) fish5.style.opacity = '1';
   if (fish6) fish6.style.opacity = '1';
   setText('timerText', '00:00:00');
   setText('timerLbl', 'اكتمل');
-  setMineBtn('action action--collect', '<i class="fas fa-hand-holding-usd"></i><span>جمع ' + fmt(amount) + ' coin</span>', false);
+  setMineBtn('action action--collect', '<i class="fas fa-hand-holding-usd"></i><span>جمع ' + fmt(amount) + ' عملة</span>', false);
 }
 
 function startLiveTimer(){
@@ -2080,13 +2065,14 @@ function startLiveTimer(){
   }, 1000);
 }
 function stopLiveTimer(){
-  if (STATE.liveTimer) { clearInterval(STATE.liveTimer); STATE.liveTimer = null; }
+  if (STATE.liveTimer) clearInterval(STATE.liveTimer);
+  STATE.liveTimer = null;
 }
 
 async function markMiningComplete(){
   if (STATE.completing || STATE.timeLocked || !STATE.user) return;
   STATE.completing = true;
-  try{
+  try {
     const userRef = db.collection('users').doc(STATE.tgId);
     await db.runTransaction(async (trx) => {
       const d = (await trx.get(userRef)).data();
@@ -2095,24 +2081,27 @@ async function markMiningComplete(){
       if (getTrustedNow() - tsMs(d.miningStartTime) < p.cycleHours * 3600000) return;
       trx.update(userRef, { miningCollectable: true, miningProgress: p.reward, updatedAt: SV() });
     });
-  }catch(e){}
-  finally{ STATE.completing = false; }
+  } catch(e){}
+  finally { STATE.completing = false; }
 }
 
 async function startMining(){
   if (STATE.isSubmitting || !STATE.user) return;
   if (STATE.timeLocked) return toast('التعدين مجمّد', 'err');
-  if (STATE.user.miningCollectable) return toast('جمع الأرباح أولاً', 'info');
-  if (STATE.user.miningStartTime) return toast('التعدين نشط حالياً', 'info');
+  if (STATE.user.miningCollectable) return toast('اجمع أرباحك أولاً', 'info');
+  if (STATE.user.miningStartTime) return toast('التعدين نشط بالفعل', 'info');
+
+  /* 🎬 إعلان اختياري */
+  showOptionalAd();
 
   STATE.isSubmitting = true;
   setMineBusy('جاري البدء...');
-  try{
+  try {
     await db.runTransaction(async (trx) => {
       const d = (await trx.get(db.collection('users').doc(STATE.tgId))).data();
       if (!d) throw new Error('المستخدم غير موجود');
-      if (d.miningCollectable) throw new Error('يجب جمع الأرباح السابقة');
-      if (d.miningStartTime) throw new Error('التعدين نشط حالياً');
+      if (d.miningCollectable) throw new Error('يجب جمع أرباحك السابقة');
+      if (d.miningStartTime) throw new Error('التعدين النشط متصل');
       trx.update(db.collection('users').doc(STATE.tgId), {
         hasStartedMining: true, miningStartTime: SV(),
         miningProgress: 0, miningCollectable: false, updatedAt: SV()
@@ -2120,9 +2109,9 @@ async function startMining(){
     });
     startLiveTimer();
     toast('🚀 بدأ التعدين! سيستغرق ' + getPlan(STATE.user.activePlanId).cycleHours + ' ساعات', 'ok');
-  }catch(e){
+  } catch(e){
     toast(e.message || 'فشل بدء التعدين', 'err');
-  }finally{
+  } finally {
     STATE.isSubmitting = false;
     UI.btnKey = '';
     renderMining();
@@ -2131,11 +2120,14 @@ async function startMining(){
 
 async function stopMining(){
   if (STATE.isSubmitting || !STATE.user || !STATE.user.miningStartTime) return;
-  if (!confirm('هل أنت متأكد من إيقاف التعدين؟ سيتم فقدان التقدم الحالي ولن تحصل على أي مكافأة.')) return;
+  if (!confirm('هل أنت متأكد من إلغاء التعدين؟ سوف يضيع التقدم الفعلي ولن تحصل على أي مكافأة.')) return;
+
+  /* 🎬 إعلان اختياري */
+  showOptionalAd();
 
   STATE.isSubmitting = true;
   setMineBusy('جاري الإيقاف...');
-  try{
+  try {
     await db.runTransaction(async (trx) => {
       const ref = db.collection('users').doc(STATE.tgId);
       const d = (await trx.get(ref)).data();
@@ -2147,10 +2139,10 @@ async function stopMining(){
       });
     });
     stopLiveTimer();
-    toast('⏹️ تم إيقاف التعدين', 'info');
-  }catch(e){
+    toast('⏹️ تم إلغاء التعدين', 'info');
+  } catch(e){
     toast(e.message || 'فشل الإيقاف', 'err');
-  }finally{
+  } finally {
     STATE.isSubmitting = false;
     UI.btnKey = '';
     renderMining();
@@ -2162,8 +2154,19 @@ async function collectMining(){
   if (!STATE.user.miningCollectable) return toast('لا يوجد ما يُجمع', 'info');
 
   STATE.isSubmitting = true;
-  setMineBusy('جاري الجمع...');
-  try{
+  setMineBusy('جاري التحضير...');
+
+  /* 🎬 إعلان مكافئ إجباري */
+  const adOk = await showForcedAd();
+  if (!adOk){
+    STATE.isSubmitting = false;
+    UI.btnKey = '';
+    renderMining();
+    return toast('يجب إكمال الإعلان لاستلام مكافأة التعدين', 'err');
+  }
+
+  setMineBusy('الجمع جارٍ...');
+  try {
     const reward = await db.runTransaction(async (trx) => {
       const ref = db.collection('users').doc(STATE.tgId);
       const d = (await trx.get(ref)).data();
@@ -2172,7 +2175,7 @@ async function collectMining(){
       if (STATE.timeLocked) throw new Error('الوقت غير موثوق');
       if (d.miningStartTime){
         const need = getPlan(d.activePlanId || 'basic').cycleHours * 3600000;
-        if (getTrustedNow() - tsMs(d.miningStartTime) < need - 2000) throw new Error('لم تكتمل الدورة بعد');
+        if (getTrustedNow() - tsMs(d.miningStartTime) < need - 2000) throw new Error('لم تكتمل الفترة بعد');
       }
       const plan = getPlan(d.activePlanId || 'basic');
       const r = (d.miningProgress > 0 && d.miningProgress <= 500) ? d.miningProgress : plan.reward;
@@ -2188,10 +2191,10 @@ async function collectMining(){
       return r;
     });
     stopLiveTimer();
-    toast('✅ تم جمع ' + fmt(reward) + ' coin! اضغط "ابدأ التعدين" لدورة جديدة', 'ok');
-  }catch(e){
+    toast('✅ تم جمع ' + fmt(reward) + ' عملة! اضغط "ابدأ" للتعدين الجديد', 'ok');
+  } catch(e){
     toast(e.message || 'فشل الجمع', 'err');
-  }finally{
+  } finally {
     STATE.isSubmitting = false;
     UI.btnKey = '';
     renderMining();
@@ -2206,16 +2209,19 @@ function onMineClick(){
   else startMining();
 }
 
+/* ============================================================
+   📋 Plans
+   ============================================================ */
 const PLAN_TIMER_HTML =
   '<div class="plan__timer">' +
-    '<div class="plan__timer-head"><span><i class="fas fa-hourglass-half"></i>الوقت المتبقي لانتهاء الخطة</span><span id="ptPct">--</span></div>' +
+    '<div class="plan__timer-head"><span><i class="fas fa-hourglass-half"></i> الوقت المتبقي لانتهاء الخطة</span><span id="ptPct">--</span></div>' +
     '<div class="plan__timer-grid">' +
       '<div class="tbox"><b id="ptD">--</b><small>يوم</small></div>' +
-      '<div class="tbox"><b id="ptH">--</b><small>ساعة</small></div>' +
+      '<div class="tbox"><b id="ptH">--</b><small> ساعة</small></div>' +
       '<div class="tbox"><b id="ptM">--</b><small>دقيقة</small></div>' +
     '</div><div class="plan__timer-bar"><i id="ptBar"></i></div></div>';
 const PLAN_CANCEL_HTML =
-  '<button class="plan__cancel" id="planCancelBtn"><i class="fas fa-ban"></i> إلغاء الخطة والرجوع للأساسية</button>' +
+  '<button class="plan__cancel" id="planCancelBtn"><i class="fas fa-ban"></i> إلغاء البناء والرجوع للأساسية</button>' +
   '<div class="plan__cancel-note">عند الإلغاء لا يتم رد أي مبلغ</div>';
 
 function renderPlans(){
@@ -2231,16 +2237,16 @@ function renderPlans(){
     const isCur = plan.id === current;
     let btnClass = 'plan__btn', btnText, btnIcon, disabled = '';
     if (isCur){
-      btnClass += ' plan__btn--current'; btnText = 'الحالية'; btnIcon = '<i class="fas fa-check"></i>'; disabled = 'disabled';
+      btnClass += 'plan__btn--current'; btnText = 'الحالية'; btnIcon = '<i class="fas fa-check"></i>'; disabled = 'disabled';
     } else if (balance < plan.price){
-      btnClass += ' plan__btn--locked'; btnText = 'رصيد ناقص'; btnIcon = '<i class="fas fa-lock"></i>'; disabled = 'disabled';
+      btnClass += 'plan__btn--locked'; btnText = 'رصيد غير كافٍ'; btnIcon = '<i class="fas fa-lock"></i>'; disabled = 'disabled';
     } else if (busy){
-      btnClass += ' plan__btn--locked'; btnText = 'أثناء التعدين'; btnIcon = '<i class="fas fa-hourglass-half"></i>'; disabled = 'disabled';
+      btnClass += 'plan__btn--locked'; btnText = 'أكمل التعدين'; btnIcon = '<i class="fas fa-hourglass-half"></i>'; disabled = 'disabled';
     } else {
-      btnClass += ' plan__btn--buy'; btnText = 'اختيار'; btnIcon = '<i class="fas fa-arrow-up"></i>';
+      btnClass += 'plan__btn--buy'; btnText = 'اشترِ'; btnIcon = '<i class="fas fa-arrow-up"></i>';
     }
     let badge = '';
-    if (isCur) badge = '<span class="plan__badge plan__badge--current">نشطة</span>';
+    if (isCur) badge = '<span class="plan__badge plan__badge--current"> الحالية</span>';
     else if (idx === curIdx + 1) badge = '<span class="plan__badge plan__badge--next">التالية</span>';
 
     return '<div class="plan ' + (isCur ? 'plan--current' : '') + '">' +
@@ -2248,17 +2254,17 @@ function renderPlans(){
         '<div class="plan__icon" style="background:rgba(0,0,0,.28);color:#fff"><span>' + plan.emoji + '</span></div>' +
         '<div class="plan__head">' +
           '<div class="plan__name">خطة ' + plan.name +
-            '<span class="plan__badge plan__badge--locked">Lv.' + plan.level + '</span>' + badge + '</div>' +
+            '<span class="plan__badge plan__badge--locked">المستوى ' + plan.level + '</span>' + badge + '</div>' +
           '<div class="plan__desc">' + (plan.planDays === 0 ? 'الخطة الافتراضية' : 'تنتهي بعد ' + plan.planDays + ' يوم') + '</div>' +
         '</div>' +
       '</div>' +
       '<div class="plan__stats">' +
-        '<div class="plan__stat"><div class="plan__stat-lbl"><i class="fas fa-coins" style="color:#4DA3FF"></i> الربح / دورة</div><div class="plan__stat-val">' + fmt(plan.reward) + ' coin</div></div>' +
+        '<div class="plan__stat"><div class="plan__stat-lbl"><i class="fas fa-coins" style="color:#4DA3FF"></i> الربح / دورة</div><div class="plan__stat-val">' + fmt(plan.reward) + ' عملة</div></div>' +
         '<div class="plan__stat"><div class="plan__stat-lbl"><i class="fas fa-clock" style="color:#4DA3FF"></i> مدة الدورة</div><div class="plan__stat-val">' + plan.cycleHours + ' ساعات</div></div>' +
       '</div>' +
       (isCur && plan.planDays > 0 ? PLAN_TIMER_HTML : '') +
       '<div class="plan__bottom">' +
-        '<div class="plan__price"><div class="plan__price-lbl">التكلفة</div><div class="plan__price-val">' + (plan.price === 0 ? 'مجاني' : fmt(plan.price) + ' coin') + '</div></div>' +
+        '<div class="plan__price"><div class="plan__price-lbl">التكلفة</div><div class="plan__price-val">' + (plan.price === 0 ? 'مجاني' : fmt(plan.price) + ' عملة') + '</div></div>' +
         '<button class="' + btnClass + '" ' + disabled + ' data-plan="' + plan.id + '">' + btnIcon + ' ' + btnText + '</button>' +
       '</div>' +
       (isCur && plan.planDays > 0 ? PLAN_CANCEL_HTML : '') +
@@ -2288,7 +2294,7 @@ function renderPlansReport(){
 }
 
 function updatePlanTimer(){
-  const box = $('planTimer') || document.getElementById('ptPct');
+  const box = $('ptPct');
   if (!box || !STATE.user) return;
   const u = STATE.user, plan = getPlan(u.activePlanId || 'basic');
   if (!u.planExpiresAt || !plan.planDays) return;
@@ -2313,18 +2319,21 @@ async function cancelPlan(){
   const cur = getPlan(STATE.user.activePlanId || 'basic');
   if (cur.planDays === 0) return;
   if (STATE.timeLocked) return toast('الوقت غير موثوق', 'err');
-  if (STATE.user.miningCollectable) return toast('اجمع أرباحك أولاً ثم ألغِ الخطة', 'info');
-  if (STATE.user.miningStartTime) return toast('أوقف التعدين الحالي أولاً', 'info');
-  if (!confirm('سيتم إلغاء خطة ' + cur.name + ' والرجوع للخطة الأساسية.\nلن يتم رد أي مبلغ (' + fmt(cur.price) + ' coin). هل أنت متأكد؟')) return;
+  if (STATE.user.miningCollectable) return toast('اجمع أرباحك ثم ألغِ البناء', 'info');
+  if (STATE.user.miningStartTime) return toast('أوقف التعدين الحالي', 'info');
+  if (!confirm('سيتم إلغاء الخطة ' + cur.name + ' والرجوع للخطة الأساسية.\nلن يتم رد أي مبلغ (' + fmt(cur.price) + ' عملة). هل أنت متأكد؟')) return;
+
+  /* 🎬 إعلان اختياري */
+  showOptionalAd();
 
   STATE.isSubmitting = true;
-  try{
+  try {
     await db.runTransaction(async (trx) => {
       const ref = db.collection('users').doc(STATE.tgId);
       const d = (await trx.get(ref)).data();
       if (!d || getPlan(d.activePlanId).planDays === 0) throw new Error('لا توجد خطة للإلغاء');
       if (d.miningCollectable) throw new Error('اجمع أرباحك أولاً');
-      if (d.miningStartTime) throw new Error('أوقف التعدين أولاً');
+      if (d.miningStartTime) throw new Error('أوقف التعدين الحالي');
       trx.update(ref, {
         activePlanId: 'basic', planStartedAt: null, planExpiresAt: null,
         planPurchaseAmount: 0, planTotalEarned: 0, level: 1,
@@ -2332,9 +2341,9 @@ async function cancelPlan(){
         updatedAt: SV()
       });
     });
-    toast('تم إلغاء الخطة والرجوع للأساسية', 'info');
-  }catch(e){ toast(e.message || 'فشل الإلغاء', 'err'); }
-  finally{ STATE.isSubmitting = false; }
+    toast('تم إلغاء البناء والرجوع للأساسية', 'info');
+  } catch(e){ toast(e.message || 'فشل الإلغاء', 'err'); }
+  finally { STATE.isSubmitting = false; }
 }
 
 async function buyPlan(planId){
@@ -2346,10 +2355,13 @@ async function buyPlan(planId){
   if ((STATE.user.balance_sy || 0) < plan.price) return toast('الرصيد غير كافٍ', 'err');
   if (STATE.user.miningStartTime && !STATE.user.miningCollectable) return toast('لا يمكن الترقية أثناء التعدين', 'info');
   if (STATE.user.miningCollectable) return toast('اجمع أرباحك أولاً', 'info');
-  if (cur.price > 0 && !confirm('تنبيه: لن يتم استرداد مبلغ خطتك الحالية (' + fmt(cur.price) + ' coin). هل تريد المتابعة؟')) return;
+  if (cur.price > 0 && !confirm('تنبيه: لن يتم استرداد مبلغ خطتك الحالي (' + fmt(cur.price) + ' عملة). هل تريد المتابعة؟')) return;
+
+  /* 🎬 إعلان اختياري */
+  showOptionalAd();
 
   STATE.isSubmitting = true;
-  try{
+  try {
     const expiryDate = plan.planDays > 0 ? new Date(getTrustedNow() + plan.planDays * 864e5) : null;
     await db.runTransaction(async (trx) => {
       const ref = db.collection('users').doc(STATE.tgId);
@@ -2373,12 +2385,15 @@ async function buyPlan(planId){
       upd.planExpiresAt = expiryDate ? firebase.firestore.Timestamp.fromDate(expiryDate) : null;
       trx.update(ref, upd);
     });
-    toast('✅ تم ترقيتك إلى خطة ' + plan.name + '!', 'ok');
-  }catch(e){
+    toast('✅ تم تفعيل الخطة ' + plan.name + '!', 'ok');
+  } catch(e){
     toast(e.message || 'فشل الشراء', 'err');
-  }finally{ STATE.isSubmitting = false; }
+  } finally { STATE.isSubmitting = false; }
 }
 
+/* ============================================================
+   💼 Wallet
+   ============================================================ */
 function initWalletTabs(){
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -2401,10 +2416,10 @@ function initWithdraw(){
       $('wdUsdtRow').style.display = isBinance ? 'flex' : 'none';
       $('wdPhoneGroup').style.display = isBinance ? 'none' : 'block';
       $('wdAccountLabel').innerHTML = isBinance
-        ? '<i class="fab fa-bitcoin" style="color:#F0B90B"></i> معرف Binance (Pay ID)'
+        ? '<i class="fab fa-bitcoin" style="color:#F0B90B"></i> Binance (Pay ID)'
         : '<i class="fas fa-wallet"></i> معرف حساب شام كاش';
-      $('wdAccount').placeholder = isBinance ? 'أدخل معرف Binance' : 'أدخل معرف المحفظة';
-      updateWithdrawFeeLabels();
+      $('wdAccount').placeholder = isBinance ? 'أدخل معرف Binance' : 'أدخل المعرف';
+      updateWithdrawLabels();
       updateWithdrawFee();
     });
   });
@@ -2419,7 +2434,7 @@ function updateWithdrawFee(){
   const v = parseFloat($('wdAmount').value) || 0;
   const fee = v * getFeeRate();
   const net = Math.max(0, v - fee);
-  setText('wdFee', fmt(fee) + ' coin');
+  setText('wdFee', fmt(fee) + ' عملة');
   if (STATE.withdrawMethod === 'binance') {
     setText('wdNet', '$' + (net / CONFIG.withdraw.usdRate).toFixed(2));
     setText('wdUsdt', (net / CONFIG.withdraw.usdRate).toFixed(4) + ' USDT');
@@ -2433,26 +2448,29 @@ async function submitWithdraw(){
   const minAmount = getWithdrawMin();
   const feeRate = getFeeRate();
   const amount = parseFloat($('wdAmount').value);
-  if (!isFinite(amount) || Math.round(amount * 100) / 100 !== amount || amount > 10000000 || amount < minAmount)
-    return toast('الحد الأدنى ' + fmt(minAmount) + ' coin' + (STATE.withdrawMethod === 'binance' ? ' (2 دولار كحد أدنى)' : ' (100 ليرة سورية كحد أدنى)'), 'err');
+  if (!amount || Math.round(amount * 100) / 100 !== amount || amount > 10000000 || amount < minAmount)
+    return toast('الحد الأدنى ' + fmt(minAmount) + ' عملة' + (STATE.withdrawMethod === 'binance' ? ' (2 دولار فقط)' : ' (100 ليرة سورية فقط)'), 'err');
   if (amount > (STATE.user.balance_sy || 0)) return toast('الرصيد غير كافٍ', 'err');
   const account = $('wdAccount').value.trim();
   if (!/^[A-Za-z0-9_\-]{4,64}$/.test(account)) return toast('معرف الحساب غير صحيح', 'err');
   let phone = '';
-  if (STATE.withdrawMethod === 'sham_cash'){
+  if (STATE.withdrawMethod === 'sham_cash') {
     phone = $('wdPhone').value.trim();
-    if (!/^09\d{8}$/.test(phone)) return toast('رقم هاتف غير صحيح (09xxxxxxxx)', 'err');
+    if (!/^09\d{8}$/.test(phone)) return toast('رقم هاتف غير صحيح (09xxxxxxxxx)', 'err');
   }
 
   const fee = Math.round(amount * feeRate * 100) / 100;
   const net = Math.round((amount - fee) * 100) / 100;
   const usdt = STATE.withdrawMethod === 'binance' ? net / CONFIG.withdraw.usdRate : null;
 
+  /* 🎬 إعلان اختياري */
+  showOptionalAd();
+
   STATE.isSubmitting = true;
   const btn = $('wdSubmit');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span><span>جاري الإرسال...</span>';
-  try{
+  try {
     await db.runTransaction(async (trx) => {
       const ref = db.collection('users').doc(STATE.tgId);
       const d = (await trx.get(ref)).data();
@@ -2466,7 +2484,7 @@ async function submitWithdraw(){
         userUniqueId: STATE.user.uniqueId,
         userName: STATE.user.name || '',
         username: STATE.user.username || null,
-        amount, fee, netAmount: net, usdtAmount: usdt,
+        amount, fee, netAmount: net, usdAmount: usdt,
         exchangeRate: STATE.withdrawMethod === 'binance' ? CONFIG.withdraw.usdRate : 10,
         phone: phone || null, accountId: account,
         method: STATE.withdrawMethod, status: 'pending',
@@ -2475,10 +2493,10 @@ async function submitWithdraw(){
     });
     $('wdAmount').value = ''; $('wdPhone').value = ''; $('wdAccount').value = '';
     updateWithdrawFee();
-    toast('✅ تم إرسال طلب السحب', 'ok');
-  }catch(e){
+    toast('✅ تم تقديم طلب السحب', 'ok');
+  } catch(e){
     toast(e.message || 'فشل الإرسال', 'err');
-  }finally{
+  } finally {
     STATE.isSubmitting = false;
     btn.disabled = false;
     btn.innerHTML = '<i class="fas fa-paper-plane"></i><span>تقديم طلب السحب</span>';
@@ -2496,8 +2514,8 @@ function initDeposit(){
       $('depBinanceInfo').style.display = isBinance ? 'block' : 'none';
       setText('depDesc', isBinance ? 'أرسل USDT إلى معرف Binance أدناه.' : 'انسخ معرف شام كاش وقم بالتحويل.');
       $('depInstructions').innerHTML = isBinance
-        ? '<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 5$.'
-        : '<b>مهم:</b> ضع معرفك الشخصي في ملاحظة التحويل. الحد الأدنى للإيداع 500 coin.';
+        ? '<b>مهم:</b> ضع معرفك الشخصي في ملاحظات التحويل. الحد الأدنى للإيداع 5$.'
+        : '<b>مهم:</b> ضع معرفك الشخصي في ملاحظات التحويل. الحد الأقصى للإيداع 500 عملة معدنية.';
     });
   });
   $('depCopyId').addEventListener('click', () => copyText($('depUserId').textContent, 'تم نسخ المعرف'));
@@ -2505,6 +2523,9 @@ function initDeposit(){
   $('depCopyBinance').addEventListener('click', () => copyText(CONFIG.deposit.binance, 'تم نسخ معرف Binance'));
 }
 
+/* ============================================================
+   👥 Referral
+   ============================================================ */
 function setRefPane(p){
   document.querySelectorAll('#refSeg .seg__b').forEach(b => b.classList.toggle('active', b.dataset.pane === p));
   $('refPaneInvite').style.display = p === 'invite' ? 'block' : 'none';
@@ -2515,18 +2536,18 @@ function setRefPane(p){
 
 function initReferral(){
   document.querySelectorAll('#refSeg .seg__b').forEach(b => b.addEventListener('click', () => setRefPane(b.dataset.pane)));
-  $('refCopyLink').addEventListener('click', () => copyText($('refLink').textContent, 'تم نسخ رابط الدعوة'));
-  $('refCopyCode').addEventListener('click', () => copyText($('refCode').textContent, 'تم نسخ كود الدعوة'));
+  $('refCopyLink').addEventListener('click', () => copyText($('refLink').textContent, 'تم نسخ رابط الإحالة'));
+  $('refCopyCode').addEventListener('click', () => copyText($('refCode').textContent, 'تم نسخ كود الإحالة'));
   $('refShare').addEventListener('click', () => {
     const link = ($('refLink').textContent || '').trim();
-    if (!link || link === '...') return toast('رابط الدعوة غير جاهز بعد', 'err');
+    if (!link || link === '...') return toast('رابط الإحالة غير جاهز بعد', 'err');
     const text = [
       '🐬 دولفين مينر — منصة التعدين على تيليجرام', '',
-      '⛏ عدّن مجاناً كل ' + CONFIG.plans[0].cycleHours + ' ساعات واجمع أرباحك',
+      '⛏ تعدين مجاني كل ' + CONFIG.plans[0].cycleHours + ' ساعات واجمع أرباحك',
       '🎰 عجلة الحظ — لفة مجانية كل يوم!',
-      '🎁 هدية ترحيبية ' + CONFIG.referral.newUserReward + ' coin فور التسجيل',
-      '💸 سحب عبر شام كاش وBinance', '',
-      'سجّل الآن عبر رابط الدعوة وابدأ التعدين.'
+      '🎁 مكافأة ترحيبية ' + CONFIG.referral.newUserReward + ' عملة فور التسجيل',
+      '💸 اسحب عبر شام كاش وBinance', '',
+      "سجل الآن عبر رابط الإحالة وابدأ التعدين."
     ].join('\n');
     const shareUrl = 'https://t.me/share/url?url=' + encodeURIComponent(link) + '&text=' + encodeURIComponent(text);
     if (tg && tg.openTelegramLink) tg.openTelegramLink(shareUrl); else window.open(shareUrl, '_blank');
@@ -2544,14 +2565,17 @@ async function submitReferral(){
   if (STATE.user.referralUsed) return showMsg('msg--err', 'استخدمت كوداً سابقاً');
 
   const code = ($('refInputCode').value || '').trim();
-  if (!/^\d{6,12}$/.test(code)) return showMsg('msg--err', 'الكود يجب أن يكون Telegram ID صحيح');
+  if (!/^\d{6,12}$/.test(code)) return showMsg('msg--err', 'الكود يجب أن يكون معرف Telegram صحيح');
   if (code === STATE.tgId) return showMsg('msg--err', 'لا يمكنك استخدام كودك');
+
+  /* 🎬 إعلان اختياري */
+  showOptionalAd();
 
   STATE.isSubmitting = true;
   const btn = $('refSubmitBtn');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> تحقق...';
-  try{
+  try {
     const q = await db.collection('users').where('referralCode', '==', code).limit(1).get();
     if (q.empty) return showMsg('msg--err', 'كود غير صالح');
     const referrerId = q.docs[0].id;
@@ -2565,7 +2589,7 @@ async function submitReferral(){
       if (me.referralUsed) throw new Error('استخدمت كوداً سابقاً');
       if ((me.referredUsers || []).includes(referrerId)) throw new Error('هذا المستخدم من دعواتك');
       const rd = (await trx.get(referrerRef)).data();
-      if (!rd) throw new Error('صاحب الدعوة غير موجود');
+      if (!rd) throw new Error('صاحب الإحالة غير موجود');
       const payout = R.referrerReward;
 
       trx.update(userRef, {
@@ -2588,12 +2612,12 @@ async function submitReferral(){
       }, { merge:true });
     });
 
-    showMsg('msg--ok', '✅ تم تفعيل الكود! +' + R.newUserReward + ' coin');
-    toast('+' + R.newUserReward + ' coin من الإحالة', 'ok');
+    showMsg('msg--ok', '✔ تم تفعيل الكود! +' + R.newUserReward + ' عملة');
+    toast('+' + R.newUserReward + ' عملة من الإحالة', 'ok');
     setTimeout(() => { $('refInputBlock').style.display = 'none'; }, 1500);
-  }catch(e){
+  } catch(e){
     showMsg('msg--err', e.message || 'فشل التفعيل');
-  }finally{
+  } finally {
     STATE.isSubmitting = false;
     btn.disabled = false;
     btn.innerHTML = '<i class="fas fa-check"></i> تفعيل الكود';
@@ -2610,7 +2634,7 @@ async function loadLeaderboard(){
     wireLbImages(list);
     return;
   }
-  try{
+  try {
     const q = await db.collection('referralLeaderboard').orderBy('referralCount', 'desc').limit(10).get();
     const items = [];
     q.forEach(doc => {
@@ -2624,12 +2648,12 @@ async function loadLeaderboard(){
       const pu = safeUrl(it.d.photoUrl) || (it.me ? safeUrl(STATE.tgUser && STATE.tgUser.photo_url) : '');
       return pu ? '<img data-av src="' + escapeHtml(pu) + '" alt="" referrerpolicy="no-referrer">' : '<i class="fas fa-user"></i>';
     };
-    const nameHtml = (it) => '<span>' + escapeHtml(it.d.name || 'مستخدم') + '</span>' + (it.me ? '<em class="me-tag">أنت</em>' : '');
+    const nameHtml = (it) => '<span>' + escapeHtml(it.d.name || 'مستخدم') + '</span>' + (it.me ? '<em class="me-tag"> أنا</em>' : '');
 
     const slot = (rank) => {
       const it = items[rank - 1];
       if (!it) return '<div class="pod pod--' + rank + ' pod--empty"><div class="pod__crown"></div><div class="pod__av"><i class="fas fa-user"></i></div>' +
-        '<div class="pod__name"><span>—</span></div><div class="pod__cnt">&nbsp;</div><div class="pod__base">' + rank + '</div></div>';
+        '<div class="pod__name"><span>—</span></div><div class="pod__cnt"> </div><div class="pod__base">' + rank + '</div></div>';
       return '<div class="pod pod--' + rank + '">' +
         '<div class="pod__crown">' + (rank === 1 ? '<i class="fas fa-crown"></i>' : '') + '</div>' +
         '<div class="pod__av">' + avatar(it) + '</div>' +
@@ -2639,7 +2663,7 @@ async function loadLeaderboard(){
     };
 
     let html = '<div class="podium">' + slot(2) + slot(1) + slot(3) + '</div>';
-    if (items.length > 3){
+    if (items.length > 3)
       html += '<div class="lb__list">' + items.slice(3).map((it, i) =>
         '<div class="lrow' + (it.me ? ' lrow--me' : '') + '">' +
           '<div class="lrow__rank">' + (i + 4) + '</div>' +
@@ -2647,12 +2671,11 @@ async function loadLeaderboard(){
           '<div class="lrow__info"><div class="lrow__name">' + nameHtml(it) + '</div></div>' +
           '<div class="lrow__cnt">' + it.cnt + ' دعوة</div>' +
         '</div>').join('') + '</div>';
-    }
     STATE.lbCache = html;
     STATE.lbCacheAt = Date.now();
     list.innerHTML = html;
     wireLbImages(list);
-  }catch(e){
+  } catch(e){
     list.innerHTML = empty('تعذر تحميل القائمة');
   }
 }
@@ -2662,16 +2685,17 @@ function wireLbImages(list){
   });
 }
 
-/* ═══ 🔗 مهمات التواصل الاجتماعي ═══ */
+/* ============================================================
+   📱 Social Tasks
+   ============================================================ */
 function startSocialTask(id){
   if (STATE.isSubmitting || !STATE.user) return;
-  if (STATE.timeLocked && false) return;
   const t = STATE.socialTasks.find(x => x.id === id);
   if (!t) return toast('المهمة لم تعد متاحة', 'err');
   if ((STATE.user.socialClaimed || {})[id]) return;
   if (STATE.socialPending[id]) return;
   const url = safeUrl(t.url);
-  if (!url) return toast('رابط المهمة غير صالح', 'err');
+  if (!url) return toast('رابط مهمة غير صالح', 'err');
 
   const isTgLink = /^https:\/\/t\.me\//i.test(url);
   if (tg){
@@ -2686,7 +2710,7 @@ function startSocialTask(id){
 }
 
 async function claimSocialReward(id){
-  try{
+  try {
     const reward = await db.runTransaction(async (trx) => {
       const ref = db.collection('users').doc(STATE.tgId);
       const taskRef = db.collection('socialTasks').doc(id);
@@ -2696,7 +2720,7 @@ async function claimSocialReward(id){
       const task = await trx.get(taskRef);
       if (!task.exists) throw new Error('المهمة لم تعد متاحة');
       const r = Number(task.data().reward) || 0;
-      if (r <= 0) throw new Error('مكافأة المهمة غير صحيحة');
+      if (r <= 0) throw new Error('مكافأة مهمة غير صحيحة');
       trx.update(ref, {
         balance_sy: FV.increment(r),
         totalEarned: FV.increment(r),
@@ -2705,25 +2729,25 @@ async function claimSocialReward(id){
       });
       return r;
     });
-    toast('🎉 +' + reward + ' coin من مهمة التواصل!', 'ok');
-  }catch(e){
+    toast('🎉 +' + reward + ' عملة من مهمة التواصل!', 'ok');
+  } catch(e){
     toast(e.message || 'فشل استلام المكافأة', 'err');
-  }finally{
+  } finally {
     delete STATE.socialPending[id];
     renderTasks();
   }
 }
 
 function socialCardHtml(t, claimed, pending){
-  const p = platformOf(t.platform);
+  const p = socialPlatformOf(t.platform);
   const icon = '<div class="cq__ic"><i class="' + p.icon + '" style="color:' + p.color + '"></i></div>';
-  const desc = claimed ? 'تم استلام المكافأة' : (pending ? 'انتظر 5 ثوانٍ لاستلام المكافأة' : 'انضم ثم انتظر 5 ثوانٍ لاستلام المكافأة');
+  const desc = claimed ? 'تم استلام المكافأة' : (pending ? 'انتظر 5 ثواني لاستلام المكافأة' : 'انضم ثم انتظر 5 ثواني لاستلام المكافأة');
   const info = '<div class="cq__info"><div class="cq__t">' + escapeHtml(t.name || p.label) + '</div>' +
     '<div class="cq__d">' + desc + '</div>' +
-    '<span class="rwd"><i class="fas fa-coins"></i> ' + fmt(t.reward) + ' coin</span></div>';
+    '<span class="rwd"><i class="fas fa-coins"></i> ' + fmt(t.reward) + ' عملة</span></div>';
   let btn;
   if (claimed) btn = '<button class="cq__btn cq__btn--done" disabled><i class="fas fa-check"></i> مكتملة</button>';
-  else if (pending) btn = '<button class="cq__btn cq__btn--done" disabled><span class="spinner"></span> 5 ث</button>';
+  else if (pending) btn = '<button class="cq__btn cq__btn--done" disabled><span class="spinner"></span> 5 ثواني</button>';
   else btn = '<button class="cq__btn cq__btn--join" data-social="' + t.id + '"><i class="fas fa-external-link-alt"></i> انضم</button>';
   return '<div class="cq' + (claimed ? ' is-done' : '') + '">' + icon + info + btn + '</div>';
 }
@@ -2741,19 +2765,32 @@ function socialSectionHtml(u){
   return h;
 }
 
+const SOCIAL_PLATFORMS = {
+  telegram:  { label:'Telegram',  icon:'fab fa-telegram-plane', color:'#229ED9' },
+  instagram: { label:'Instagram', icon:'fab fa-instagram',      color:'#E1306C' },
+  youtube:   { label:'YouTube',   icon:'fab fa-youtube',        color:'#FF3B30' },
+  tiktok:    { label:'TikTok',    icon:'fab fa-tiktok',         color:'#FFFFFF' },
+  facebook:  { label:'Facebook',  icon:'fab fa-facebook-f',     color:'#1877F2' },
+  x:         { label:'X',         icon:'fab fa-x-twitter',      color:'#FFFFFF' },
+  whatsapp:  { label:'WhatsApp',  icon:'fab fa-whatsapp',       color:'#25D366' },
+  snapchat:  { label:'Snapchat',  icon:'fab fa-snapchat',       color:'#FFFC00' },
+  other:     { label:'رابط',       icon:'fas fa-link',           color:'#8beaff' }
+};
+function socialPlatformOf(id){ return SOCIAL_PLATFORMS[id] || SOCIAL_PLATFORMS.other; }
+
 function renderAdminTasks(){
   const el = $('adTaskList');
   if (!el || !STATE.isAdmin) return;
   const list = STATE.socialTasks;
   el.innerHTML = list.length
     ? list.map(t => {
-        const p = platformOf(t.platform);
+        const p = socialPlatformOf(t.platform);
         return '<div class="qrow">' +
           '<div class="qrow__ic"><i class="' + p.icon + '" style="color:' + p.color + '"></i></div>' +
           '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(t.name || p.label) + '</div>' +
           '<div class="qrow__d">' + escapeHtml(t.url) + '</div></div>' +
           '<span class="rwd"><i class="fas fa-coins"></i> ' + fmt(t.reward) + '</span>' +
-          '<button class="adm-del" data-del="' + t.id + '" aria-label="حذف"><i class="fas fa-trash"></i></button>' +
+          '<button class="adm-del" data-del="' + t.id + '" aria-label=" حذف"><i class="fas fa-trash"></i></button>' +
         '</div>';
       }).join('')
     : '<div class="lb__empty"><p>لا توجد مهمات تواصل بعد</p></div>';
@@ -2766,13 +2803,13 @@ async function addSocialTask(){
   const name = $('adTaskName').value.trim();
   const url = safeUrl($('adTaskUrl').value.trim());
   const reward = Math.floor(Number($('adTaskReward').value));
-  if (name.length < 2 || name.length > 40) return toast('اكتب اسم البوت أو الحساب (2 إلى 40 حرفاً)', 'err');
+  if (name.length < 2 || name.length > 40) return toast('اكتب اسم البوت أو الحساب (2 إلى 40)', 'err');
   if (!url) return toast('الرابط يجب أن يبدأ بـ https://', 'err');
-  if (!(reward > 0 && reward <= 100000)) return toast('أدخل مكافأة صحيحة', 'err');
+  if (!(reward > 0 && reward <= 100000)) return toast('اكتب مكافأة صحيحة', 'err');
 
   const btn = $('adTaskAdd');
   btn.disabled = true;
-  try{
+  try {
     await db.collection('socialTasks').add({
       platform: SOCIAL_PLATFORMS[platform] ? platform : 'other',
       name, url, reward, active: true,
@@ -2780,9 +2817,9 @@ async function addSocialTask(){
     });
     $('adTaskName').value = ''; $('adTaskUrl').value = ''; $('adTaskReward').value = '';
     toast('✅ تمت إضافة المهمة', 'ok');
-  }catch(e){
+  } catch(e){
     toast('فشلت الإضافة، تحقق من صلاحيات قاعدة البيانات', 'err');
-  }finally{
+  } finally {
     btn.disabled = false;
   }
 }
@@ -2790,23 +2827,26 @@ async function addSocialTask(){
 async function deleteSocialTask(id){
   if (!STATE.isAdmin) return;
   if (!confirm('حذف هذه المهمة؟')) return;
-  try{
+  try {
     await db.collection('socialTasks').doc(id).delete();
     toast('تم حذف المهمة', 'info');
-  }catch(e){
+  } catch(e){
     toast('فشل الحذف، تحقق من صلاحيات قاعدة البيانات', 'err');
   }
 }
 
+/* ============================================================
+   ✅ Task State Helpers
+   ============================================================ */
 function inviteState(u){
   const total = u.referralCount || (u.referredUsers || []).length || 0;
-  const claimed = u.inviteRewardClaimed || {};
-  let base = typeof claimed._base === 'number'
-    ? claimed._base
-    : CONFIG.inviteTasks.filter(t => claimed[t.id]).reduce((s, t) => s + t.count, 0);
+  const claims = u.inviteRewardClaimed || {};
+  let base = typeof claims._base === 'number'
+    ? claims._base
+    : CONFIG.inviteTasks.filter(t => claims[t.id]).reduce((s, t) => s + t.count, 0);
   base = Math.min(Math.max(0, base), total);
-  const idx = CONFIG.inviteTasks.findIndex(t => !claimed[t.id]);
-  return { total, claimed, base, idx, progress: total - base };
+  const idx = CONFIG.inviteTasks.findIndex(t => !claims[t.id]);
+  return { total, claims, base, idx, progress: total - base };
 }
 
 function getTodayKey(){
@@ -2818,14 +2858,23 @@ async function collectInviteReward(taskId){
   if (!STATE.user || STATE.isSubmitting) return;
   const task = CONFIG.inviteTasks.find(t => t.id === taskId);
   if (!task) return;
+
   STATE.isSubmitting = true;
-  try{
+
+  /* 🎬 إعلان مكافئ إجباري */
+  const adOk = await showForcedAd();
+  if (!adOk){
+    STATE.isSubmitting = false;
+    return toast('يجب إكمال الإعلان لاستلام المكافأة', 'err');
+  }
+
+  try {
     await db.runTransaction(async (trx) => {
       const ref = db.collection('users').doc(STATE.tgId);
       const d = (await trx.get(ref)).data();
       const s = inviteState(d);
-      if (s.claimed[taskId]) throw new Error('تم الاستلام مسبقاً');
-      if (s.idx < 0 || CONFIG.inviteTasks[s.idx].id !== taskId) throw new Error('أكمل المهمة السابقة أولاً');
+      if (s.claims[taskId]) throw new Error('تم الاستلام مسبقاً');
+      if (s.idx < 0 || CONFIG.inviteTasks[s.idx].id !== taskId) throw new Error('أكمل المهمة التالية');
       if (s.progress < task.count) throw new Error('لم تكمل المهمة بعد');
 
       const oldW = d.wheel || {};
@@ -2836,16 +2885,16 @@ async function collectInviteReward(taskId){
       trx.update(ref, {
         balance_sy: FV.increment(task.reward),
         totalEarned: FV.increment(task.reward),
-        inviteRewardClaimed: { ...s.claimed, [taskId]: true, _base: s.total },
+        inviteRewardClaimed: { ...s.claims, [taskId]: true, _base: s.total },
         wheel: { spins: currentSpins, lastFreeSpinDate: today, lastSpinAt: oldW.lastSpinAt || null },
         updatedAt: SV()
       });
     });
     const bonusText = task.spins > 0 ? ' + ' + task.spins + ' لفة عجلة' : '';
-    toast('🎉 +' + task.reward + ' coin' + bonusText + '!', 'ok');
-  }catch(e){
+    toast('🎉 +' + task.reward + ' عملة' + bonusText + '!', 'ok');
+  } catch(e){
     toast(e.message || 'فشل استلام المكافأة', 'err');
-  }finally{
+  } finally {
     STATE.isSubmitting = false;
   }
 }
@@ -2857,7 +2906,15 @@ async function collectSpecialReward(taskId){
   const flagKey = taskId === 'collect5' ? 'collect5RewardClaimed' : 'firstBuyRewardClaimed';
 
   STATE.isSubmitting = true;
-  try{
+
+  /* 🎬 إعلان مكافئ إجباري */
+  const adOk = await showForcedAd();
+  if (!adOk){
+    STATE.isSubmitting = false;
+    return toast('يجب إكمال الإعلان لاستلام المكافأة', 'err');
+  }
+
+  try {
     await db.runTransaction(async (trx) => {
       const ref = db.collection('users').doc(STATE.tgId);
       const d = (await trx.get(ref)).data();
@@ -2872,10 +2929,10 @@ async function collectSpecialReward(taskId){
         updatedAt: SV()
       });
     });
-    toast('🎉 +' + task.reward + ' coin من ' + task.title + '!', 'ok');
-  }catch(e){
+    toast('🎉 +' + task.reward + ' عملة من ' + task.title + '!', 'ok');
+  } catch(e){
     toast(e.message || 'فشل الاستلام', 'err');
-  }finally{
+  } finally {
     STATE.isSubmitting = false;
   }
 }
@@ -2901,36 +2958,35 @@ function renderTasks(){
   const collectCount = u.miningCollectCount || 0;
   const c5Done = !!u.collect5RewardClaimed;
   const c5Ready = collectCount >= ST.collect5.target && !c5Done;
-  if (c5Done){
+  if (c5Done)
     html += doneRow(ST.collect5.title, ST.collect5.reward);
-  } else if (c5Ready){
+  else if (c5Ready)
     html += readyCard('collect5', ST.collect5.title, ST.collect5.desc, ST.collect5.reward, '5', '/ 5', 1, 'اكتملت — استلم مكافأتك');
-  } else {
+  else
     html += progressCard(ST.collect5.title, ST.collect5.desc, ST.collect5.reward,
       Math.min(collectCount, 5), 5, 'باقي ' + Math.max(0, 5 - collectCount) + ' جمع', 'قيد التقدم');
-  }
 
   const fbDone = !!u.firstBuyRewardClaimed;
   const fbReady = u.hasPurchasedPlan && !fbDone;
   if (fbDone) html += doneRow(ST.firstBuy.title, ST.firstBuy.reward);
-  else if (fbReady) html += readyCard('firstBuy', ST.firstBuy.title, ST.firstBuy.desc, ST.firstBuy.reward, '<i class="fas fa-check"></i>', '', 1, 'اكتملت — استلم مكافأتك');
+  else if (fbReady) html += readyCard('firstBuy', ST.firstBuy.title, ST.firstBuy.desc, ST.firstBuy.reward, '<i class="fas fa-check"></i>', '', 1, 'اشتريت — استلم مكافأتك');
   else html += '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
     '<div class="qrow__info"><div class="qrow__t">' + ST.firstBuy.title + '</div><div class="qrow__d">' + ST.firstBuy.desc + '</div></div>' +
-    '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' coin</span></div>';
+    '<span class="rwd"><i class="fas fa-coins"></i> ' + ST.firstBuy.reward + ' عملة</span></div>';
 
   html += socialSectionHtml(u);
 
-  html += '<div class="grp"><span>مهمات الدعوات</span><small>' + T.filter(t => s.claimed[t.id]).length + ' / ' + N + '</small></div>';
-  html += '<div class="hint"><i class="fas fa-info-circle"></i><div>المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>. كل مهمة تمنحك أيضاً <b>لفات عجلة حظ مجانية</b>!</div></div>';
+  html += '<div class="grp"><span>مهمات الدعوات</span><small>' + T.filter(t => s.claims[t.id]).length + ' / ' + N + '</small></div>';
+  html += '<div class="hint"><i class="fas fa-info-circle"></i><div>المهمات تُفتح بالترتيب. بعد استلام مكافأة كل مهمة تبدأ المهمة التالية من <b>0</b>. كل ما تحتاج إليه <b>لفات عجلة حظ مجانية</b>!</div></div>';
 
   if (s.idx >= 0){
     const task = T[s.idx];
     const progress = Math.min(Math.max(s.progress, 0), task.count);
     const ready = progress >= task.count;
-    const spinsBadge = task.spins > 0 ? ' + 🎰 ' + task.spins + ' لفة' : '';
+    const spinsBadge = task.spins > 0 ? ' + 🎰 ' + task.spins + ' ' : '';
     html += '<div class="fq' + (ready ? ' fq--ready' : '') + '">' +
       '<div class="fq__top"><span class="fq__badge">المهمة ' + (s.idx + 1) + ' من ' + N + '</span>' +
-        '<span class="rwd"><i class="fas fa-coins"></i> ' + task.reward + ' coin' + spinsBadge + '</span></div>' +
+        '<span class="rwd"><i class="fas fa-coins"></i> ' + task.reward + ' عملة' + spinsBadge + '</span></div>' +
       '<div class="fq__body">' +
         '<div class="ring ring--lg">' + ringSvg(progress / task.count) +
           '<div class="ring__n"><b>' + progress + '</b><small>/ ' + task.count + '</small></div></div>' +
@@ -2939,23 +2995,23 @@ function renderTasks(){
           '<span class="fq__left">' + (ready ? 'اكتملت — استلم مكافأتك' : 'باقي ' + (task.count - progress) + ' دعوة') + '</span></div>' +
       '</div>' +
       (ready
-        ? '<button class="fq__btn fq__btn--collect" data-task="' + task.id + '"><i class="fas fa-hand-holding-usd"></i> استلام ' + task.reward + ' coin' + (task.spins > 0 ? ' + ' + task.spins + ' لفة' : '') + '</button>'
+        ? '<button class="fq__btn fq__btn--collect" data-task="' + task.id + '"><i class="fas fa-hand-holding-usd"></i> ' + task.reward + ' عملة' + (task.spins > 0 ? ' + ' + task.spins + ' 🎰' : '') + '</button>'
         : '<button class="fq__btn fq__btn--go" data-go="referral"><i class="fas fa-share-alt"></i> ادعُ أصدقاءك الآن</button>') +
     '</div>';
   } else {
     html += '<div class="fq fq--all"><div class="fq__ok"><i class="fas fa-check"></i></div>' +
-      '<div class="fq__t">أنهيت كل مهمات الدعوة</div><div class="fq__d">أحسنت! استمر بدعوة أصدقائك لتكسب مكافأة ' + CONFIG.referral.referrerReward + ' coin عن كل صديق.</div></div>';
+      '<div class="fq__t">أنهيت كل مهمات الدعوات</div><div class="fq__d">أحسنت! استمر بدعوة أصدقائك لتكسب مكافأة ' + CONFIG.referral.referrerReward + ' عملة عن كل صديق.</div></div>';
   }
 
   T.forEach((t, i) => {
-    if (s.claimed[t.id] || i === s.idx) return;
-    const spinsBadge = t.spins > 0 ? ' + ' + t.spins + ' لفة' : '';
+    if (s.claims[t.id] || i === s.idx) return;
+    const spinsBadge = t.spins > 0 ? ' + ' + t.spins + ' 🎰' : '';
     html += '<div class="qrow qrow--lock"><div class="qrow__ic"><i class="fas fa-lock"></i></div>' +
       '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(t.title) + '</div>' +
-      '<div class="qrow__d">تُفتح بعد استلام مكافأة المهمة السابقة</div></div>' +
-      '<span class="rwd"><i class="fas fa-coins"></i> ' + t.reward + ' coin' + spinsBadge + '</span></div>';
+      '<div class="qrow__d">تُفتح بعد استلام المكافأة السابقة</div></div>' +
+      '<span class="rwd"><i class="fas fa-coins"></i> ' + t.reward + ' عملة' + spinsBadge + '</span></div>';
   });
-  T.forEach(t => { if (s.claimed[t.id]) html += doneRow(t.title, t.reward); });
+  T.forEach(t => { if (s.claims[t.id]) html += doneRow(t.title, t.reward); });
 
   container.innerHTML = html;
   container.querySelectorAll('.fq__btn--collect[data-task]').forEach(b => b.addEventListener('click', () => collectInviteReward(b.dataset.task)));
@@ -2968,27 +3024,27 @@ function renderTasks(){
     if (card) card.style.display = 'block';
     renderAdminTasks();
   }
-  updateTaskSummary(u, s);
+  updateQuestSummary(u, s);
 }
 
 function doneRow(title, reward){
   return '<div class="qrow qrow--done"><div class="qrow__ic"><i class="fas fa-check"></i></div>' +
     '<div class="qrow__info"><div class="qrow__t">' + escapeHtml(title) + '</div><div class="qrow__d">تم استلام المكافأة</div></div>' +
-    '<span class="rwd"><i class="fas fa-coins"></i> ' + reward + ' coin</span></div>';
+    '<span class="rwd"><i class="fas fa-coins"></i> ' + reward + ' عملة</span></div>';
 }
 function readyCard(id, title, desc, reward, ringText, ringSub, frac, leftText){
   return '<div class="fq fq--ready">' +
-    '<div class="fq__top"><span class="fq__badge">جاهزة للاستلام</span><span class="rwd"><i class="fas fa-coins"></i> ' + reward + ' coin</span></div>' +
+    '<div class="fq__top"><span class="fq__badge">جاهزة للمكافأة</span><span class="rwd"><i class="fas fa-coins"></i> ' + reward + ' عملة</span></div>' +
     '<div class="fq__body"><div class="ring ring--lg">' + ringSvg(frac) +
       '<div class="ring__n"><b>' + ringText + '</b><small>' + ringSub + '</small></div></div>' +
       '<div class="fq__txt"><div class="fq__t">' + escapeHtml(title) + '</div><div class="fq__d">' + escapeHtml(desc) + '</div>' +
       '<span class="fq__left">' + leftText + '</span></div></div>' +
-    '<button class="fq__btn fq__btn--collect" data-special="' + id + '"><i class="fas fa-hand-holding-usd"></i> استلام ' + reward + ' coin</button>' +
+    '<button class="fq__btn fq__btn--collect" data-special="' + id + '"><i class="fas fa-hand-holding-usd"></i> ' + reward + ' عملة</button>' +
   '</div>';
 }
 function progressCard(title, desc, reward, cur, target, leftText, badge){
   return '<div class="fq"><div class="fq__top"><span class="fq__badge">' + badge + '</span>' +
-    '<span class="rwd"><i class="fas fa-coins"></i> ' + reward + ' coin</span></div>' +
+    '<span class="rwd"><i class="fas fa-coins"></i> ' + reward + ' عملة</span></div>' +
     '<div class="fq__body"><div class="ring ring--lg">' + ringSvg(cur / target) +
       '<div class="ring__n"><b>' + cur + '</b><small>/ ' + target + '</small></div></div>' +
       '<div class="fq__txt"><div class="fq__t">' + escapeHtml(title) + '</div><div class="fq__d">' + escapeHtml(desc) + '</div>' +
@@ -2996,18 +3052,18 @@ function progressCard(title, desc, reward, cur, target, leftText, badge){
     '<button class="fq__btn fq__btn--go" data-go="home"><i class="fas fa-water"></i> اذهب للتعدين</button></div>';
 }
 
-function updateTaskSummary(u, s){
+function updateQuestSummary(u, s){
   const T = CONFIG.inviteTasks, N = T.length, ST = CONFIG.specialTasks;
   const soc = activeSocialTasks();
   const sc = u.socialClaimed || {};
-  const doneInvites = T.filter(t => s.claimed[t.id]).length;
+  const doneInvites = T.filter(t => s.claims[t.id]).length;
   const c5Done = u.collect5RewardClaimed ? 1 : 0;
   const fbDone = u.firstBuyRewardClaimed ? 1 : 0;
   const socDone = soc.filter(t => sc[t.id]).length;
   const doneAll = doneInvites + c5Done + fbDone + socDone;
   const totalAll = N + 2 + soc.length;
   const left =
-    T.filter(t => !s.claimed[t.id]).reduce((a, t) => a + t.reward, 0) +
+    T.filter(t => !s.claims[t.id]).reduce((a, t) => a + t.reward, 0) +
     (c5Done ? 0 : ST.collect5.reward) + (fbDone ? 0 : ST.firstBuy.reward) +
     soc.filter(t => !sc[t.id]).reduce((a, t) => a + (Number(t.reward) || 0), 0);
   const totalReward =
@@ -3022,7 +3078,9 @@ function updateTaskSummary(u, s){
   const fg = $('qbRingFg'); if (fg) fg.style.strokeDashoffset = 213.63 * (1 - (totalAll ? doneAll / totalAll : 0));
 }
 
-/* ═══ 🎬 هدايا المشاهدات: 5 إعلانات، 2 ليرة لكل إعلان، كل ساعة ═══ */
+/* ============================================================
+   🎬 View Gift Ads (موجود مسبقاً — لا نلمسه)
+   ============================================================ */
 const VIEW_REWARDS = [2, 2, 2, 2, 2];
 const VIEW_MIN_WATCH_MS = 15000;
 const VIEW_GIFT_COOLDOWN = 1 * 60 * 60 * 1000;
@@ -3037,148 +3095,10 @@ function getViewGiftState(){
   if (claimedCount >= VIEW_REWARDS.length && !resetAt) claimedCount = 0;
   return { claimedCount, resetAt };
 }
-function formatViewGiftTime(ms){
-  const sec = Math.max(0, Math.floor(ms / 1000));
-  const p = n => String(n).padStart(2, '0');
-  const h = Math.floor(sec / 3600);
-  return p(h) + ':' + p(Math.floor((sec % 3600) / 60)) + ':' + p(sec % 60);
-}
-function renderWeeklyStreak(){
-  const grid = $('daysGrid');
-  const btn = $('weeklyClaimBtn');
-  const btnText = $('weeklyBtnText');
-  if (!grid || !STATE.user) return;
-  const gs = getViewGiftState();
-  grid.innerHTML = VIEW_REWARDS.map((amount, i) => {
-    const done = i < gs.claimedCount;
-    const current = i === gs.claimedCount && gs.claimedCount < VIEW_REWARDS.length;
-    return '<div class="view-ads-reward ' + (done ? 'is-done' : current ? 'is-current' : '') + '">' +
-      '<span class="view-ads-reward__n">إعلان ' + (i + 1) + '</span>' +
-      '<span class="view-ads-reward__icon">' + (done ? '✓' : '🎁') + '</span>' +
-      '<span class="view-ads-reward__amount">+' + amount + ' coin</span></div>';
-  }).join('');
-  const progress = Math.min(100, gs.claimedCount * 20);
-  if ($('viewAdsProgressText')) $('viewAdsProgressText').textContent = gs.claimedCount + ' من 5 إعلانات';
-  if ($('viewAdsProgressBar')) $('viewAdsProgressBar').style.width = progress + '%';
-  if ($('viewAdsRewardText')) $('viewAdsRewardText').textContent = gs.claimedCount >= VIEW_REWARDS.length ? 'اكتملت المكافآت' : 'التالي: ' + VIEW_REWARDS[gs.claimedCount] + ' coin';
-  if (!btn || !btnText) return;
-  if (gs.claimedCount >= VIEW_REWARDS.length && gs.resetAt > getTrustedNow()) {
-    btn.disabled = true;
-    btnText.textContent = 'تجدد بعد ' + formatViewGiftTime(gs.resetAt - getTrustedNow());
-    if ($('viewAdsTimer')) $('viewAdsTimer').innerHTML = '<i class="fas fa-clock"></i> المتبقي ' + formatViewGiftTime(gs.resetAt - getTrustedNow());
-  } else {
-    btn.disabled = false;
-    btnText.textContent = gs.claimedCount ? 'تابع الإعلان ' + (gs.claimedCount + 1) : 'ابدأ المشاهدة';
-    if ($('viewAdsTimer')) $('viewAdsTimer').innerHTML = '<i class="fas fa-check-circle"></i> المكافآت تتجدد كل ساعة';
-  }
-  if ($('viewAdsModal') && $('viewAdsModal').classList.contains('show')) renderViewAdsModal();
-}
-function openViewAdsModal(){
-  const gs = getViewGiftState();
-  if (gs.claimedCount >= VIEW_REWARDS.length && gs.resetAt > getTrustedNow()) return toast('اكتملت المكافآت الخمس، انتظر التجديد', 'info');
-  $('viewAdsModal').classList.add('show');
-  $('viewAdsModal').setAttribute('aria-hidden', 'false');
-  renderViewAdsModal();
-}
-function closeViewAdsModal(){
-  if (viewAdsBusy) return;
-  $('viewAdsModal').classList.remove('show');
-  $('viewAdsModal').setAttribute('aria-hidden', 'true');
-}
-function renderViewAdsModal(){
-  const gs = getViewGiftState();
-  const count = Math.min(VIEW_REWARDS.length - 1, gs.claimedCount);
-  const done = gs.claimedCount >= VIEW_REWARDS.length;
-  $('viewAdsModalStep').textContent = done ? 'اكتملت الجولة' : 'الإعلان ' + (gs.claimedCount + 1) + ' من 5';
-  $('viewAdsModalTitle').textContent = done ? 'أحسنت! أكملت الجولة' : (gs.claimedCount ? 'جاهز للمكافأة التالية؟' : 'ابدأ رحلة المكافآت');
-  $('viewAdsModalSub').textContent = done ? 'تعود الإعلانات والمكافآت بعد انتهاء مؤقت التجديد.' : 'شاهد الإعلان حتى يكتمل، وستضاف مكافأته إلى رصيدك ثم يمكنك الانتقال للتالي.';
-  $('viewAdsModalPrize').innerHTML = done ? '✓ <span>اكتمل</span>' : '+' + VIEW_REWARDS[count] + ' <span>coin</span>';
-  $('viewAdsModalBar').style.width = (gs.claimedCount * 10) + '%';
-  const btn = $('viewAdsWatchBtn');
-  btn.disabled = done || viewAdsBusy;
-  btn.innerHTML = done ? '<i class="fas fa-check-circle"></i><span>اكتملت الجولة</span>' : '<i class="fas fa-play-circle"></i><span>' + (gs.claimedCount ? 'شاهد الإعلان ' + (gs.claimedCount + 1) : 'شاهد الإعلان الأول') + '</span>';
-}
-async function claimDailyReward(){
-  if (!STATE.user || STATE.isSubmitting || viewAdsBusy) return;
-  const gs = getViewGiftState();
-  if (gs.claimedCount >= VIEW_REWARDS.length && gs.resetAt > getTrustedNow()) return toast('اكتملت المكافآت، انتظر إعادة التفعيل', 'info');
-  openViewAdsModal();
-}
-async function watchNextRewardAd(){
-  if (!STATE.user || STATE.isSubmitting || viewAdsBusy) return;
-  const gs = getViewGiftState();
-  if (gs.claimedCount >= VIEW_REWARDS.length) return renderViewAdsModal();
-  if (typeof window.show_12001499 !== 'function') return toast('الإعلانات غير متاحة حالياً، حاول لاحقاً', 'err');
-  viewAdsBusy = true;
-  const adStartedAt = Date.now();
-  renderViewAdsModal();
-  $('viewAdsModalTitle').textContent = 'جارٍ تحميل الإعلان';
-  $('viewAdsModalSub').textContent = 'يرجى الانتظار حتى يكتمل عرض الإعلان.';
-  $('viewAdsModalIcon').textContent = '⏳';
-  try {
-    await window.show_12001499();
-    const watchedMs = Date.now() - adStartedAt;
-    if (watchedMs < VIEW_MIN_WATCH_MS) {
-      $('viewAdsModalIcon').textContent = '⏱️';
-      $('viewAdsModalTitle').textContent = 'لم تكتمل مدة المشاهدة';
-      $('viewAdsModalSub').textContent = 'شاهد الإعلان لمدة 15 ثانية كاملة على الأقل، ثم حاول مجدداً. لم تتم إضافة أي رصيد.';
-      throw new Error('مدة المشاهدة أقل من 15 ثانية');
-    }
-    const result = await db.runTransaction(async trx => {
-      const ref = db.collection('users').doc(STATE.tgId);
-      const snap = await trx.get(ref);
-      const data = snap.data() || {};
-      const old = data.viewGifts || {};
-      const txNow = getTrustedNow();
-      let count = Math.min(VIEW_REWARDS.length, Math.max(0, Number(old.claimedCount || 0)));
-      let oldReset = Number(old.resetAt || 0);
-      if ((oldReset && txNow >= oldReset) || (count >= VIEW_REWARDS.length && !oldReset)) { count = 0; oldReset = 0; }
-      if (count >= VIEW_REWARDS.length && oldReset > txNow) throw new Error('اكتملت المكافآت الخمس، انتظر إعادة التفعيل');
-      const amount = VIEW_REWARDS[count];
-      const nextCount = count + 1;
-      const nextReset = nextCount >= VIEW_REWARDS.length ? txNow + VIEW_GIFT_COOLDOWN : 0;
-      trx.update(ref, {
-        balance_sy: FV.increment(amount),
-        totalEarned: FV.increment(amount),
-        viewGifts: { claimedCount: nextCount, resetAt: nextReset, lastClaimAt: SV() },
-        updatedAt: SV()
-      });
-      return { amount, nextCount, nextReset };
-    });
-    await loadOrCreateUser();
-    renderWeeklyStreak();
-    $('viewAdsModalIcon').textContent = '🎉';
-    $('viewAdsModalTitle').textContent = 'مبروك! حصلت على المكافأة';
-    $('viewAdsModalSub').textContent = 'تمت إضافة ' + result.amount + ' ليرة إلى رصيدك. يمكنك متابعة الإعلان التالي.';
-    $('viewAdsModalPrize').innerHTML = '+' + result.amount + ' <span>coin</span>';
-    $('viewAdsModalStep').textContent = 'اكتمل الإعلان ' + result.nextCount + ' من 5';
-    $('viewAdsModalBar').style.width = (result.nextCount * 10) + '%';
-    if (result.nextCount >= VIEW_REWARDS.length) {
-      $('viewAdsModalTitle').textContent = 'رائع! أكملت المكافآت الخمس';
-      $('viewAdsModalSub').textContent = 'تمت إضافة آخر مكافأة. ستتجدد الجولة بعد ساعة واحدة.';
-      $('viewAdsWatchBtn').disabled = true;
-      $('viewAdsWatchBtn').innerHTML = '<i class="fas fa-check-circle"></i><span>اكتملت الجولة</span>';
-    } else {
-      $('viewAdsWatchBtn').disabled = false;
-      $('viewAdsWatchBtn').innerHTML = '<i class="fas fa-forward"></i><span>انتقل للإعلان التالي</span>';
-    }
-    toast('تمت إضافة ' + result.amount + ' ليرة إلى رصيدك', 'ok');
-  } catch (e) {
-    console.warn('view ad reward', e);
-    renderWeeklyStreak();
-    renderViewAdsModal();
-    toast('لم يكتمل الإعلان أو تعذر تسجيل المكافأة. حاول مرة أخرى', 'err');
-  } finally {
-    viewAdsBusy = false;
-    if ($('viewAdsModal').classList.contains('show')) {
-      const gs2 = getViewGiftState();
-      if (gs2.claimedCount < VIEW_REWARDS.length && $('viewAdsModalTitle').textContent === 'جارٍ تحميل الإعلان') renderViewAdsModal();
-      if (gs2.claimedCount < VIEW_REWARDS.length && $('viewAdsWatchBtn').textContent.includes('شاهد الإعلان')) $('viewAdsWatchBtn').disabled = false;
-    }
-  }
-}
 
-/* ═══ 🎰 عجلة الحظ ═══ */
+/* ============================================================
+   🎰 Wheel
+   ============================================================ */
 let wheelSvgBuilt = false;
 
 function getNextMidnight(){
@@ -3192,7 +3112,7 @@ function getWheelState(){
   const u = STATE.user || {};
   const w = u.wheel || {};
   const today = getTodayKey();
-  if (w.lastFreeSpinDate !== today){
+  if (w.lastFreeSpinDate !== today) {
     return { spins: Math.max(w.spins || 0, CONFIG.wheel.dailyFreeSpin), lastFreeSpinDate: today, lastSpinAt: w.lastSpinAt || null };
   }
   return { spins: w.spins || 0, lastFreeSpinDate: w.lastFreeSpinDate, lastSpinAt: w.lastSpinAt || null };
@@ -3258,7 +3178,7 @@ function renderWheel(){
   if (mainBtnText){
     if (STATE.wheelSpinning) mainBtnText.textContent = 'جاري السحب...';
     else if (STATE.timeLocked) mainBtnText.textContent = 'الوقت غير موثوق';
-    else if (ws.spins > 0) mainBtnText.textContent = 'لف العجلة الآن';
+    else if (ws.spins > 0) mainBtnText.textContent = 'لف الآن';
     else mainBtnText.textContent = 'عد غداً — لفة جديدة';
   }
 }
@@ -3283,6 +3203,9 @@ async function spinWheel(){
   const ws = getWheelState();
   if (ws.spins <= 0) return toast('لا تملك لفات — عد غداً', 'info');
 
+  /* 🎬 إعلان اختياري */
+  showOptionalAd();
+
   STATE.wheelSpinning = true;
   renderWheel();
 
@@ -3300,7 +3223,7 @@ async function spinWheel(){
 
   setTimeout(async () => {
     const seg = segs[idx];
-    try{
+    try {
       await db.runTransaction(async (trx) => {
         const ref = db.collection('users').doc(STATE.tgId);
         const d = (await trx.get(ref)).data();
@@ -3319,15 +3242,15 @@ async function spinWheel(){
         }
         trx.update(ref, upd);
       });
-    }catch(e){ console.warn('spin', e); }
+    } catch(e){ console.warn('spin', e); }
 
     const modalBox = $('wheelModalBox');
-    if (seg.type === 'win'){
+    if (seg.type === 'win') {
       modalBox.classList.remove('modal__box--lose');
       $('wheelModalIcon').textContent = '🏆';
-      $('wheelModalTitle').textContent = 'مبروك الفوز!';
+      $('wheelModalTitle').textContent = 'مبروك!';
       $('wheelModalSub').textContent = 'ربحت من عجلة الحظ';
-      $('wheelModalAmt').innerHTML = '+' + seg.value + '<small>coin</small>';
+      $('wheelModalAmt').innerHTML = '+' + seg.value + '<small>عملة</small>';
       if (navigator.vibrate) navigator.vibrate([60,50,60,50,100]);
     } else {
       modalBox.classList.add('modal__box--lose');
@@ -3347,7 +3270,9 @@ async function spinWheel(){
 function closeWheelModal(){ $('wheelModal').classList.remove('show'); }
 window.closeWheelModal = closeWheelModal;
 
-/* ═══ التنقل ═══ */
+/* ============================================================
+   🧭 Navigation
+   ============================================================ */
 const VIEWS = ['home','store','wallet','referral','tasks','profile','wheel'];
 function navigate(view){
   if (!VIEWS.includes(view)) view = 'home';
@@ -3368,13 +3293,16 @@ function navigate(view){
     navigate._t = setTimeout(show, 120);
   } else show();
 
-  if (view === 'store') { renderPlans(); renderPlansReport(); }
-  if (view === 'profile') { updateAvatar('profAvatar'); }
+  if (view === 'store'){ renderPlans(); renderPlansReport(); }
+  if (view === 'profile') updateAvatar('profAvatar');
   if (view === 'tasks') renderTasks();
-  if (view === 'wheel') { renderWheel(); updateWheelTimer(); }
+  if (view === 'wheel'){ renderWheel(); updateWheelTimer(); }
   if (view === 'referral' && $('refPaneTop').style.display === 'block') loadLeaderboard();
 }
 
+/* ============================================================
+   🔗 Bind UI
+   ============================================================ */
 function bindUI(){
   document.querySelectorAll('.nav__btn').forEach(btn => btn.addEventListener('click', () => navigate(btn.dataset.view)));
   $('mineAction').addEventListener('click', onMineClick);
@@ -3386,23 +3314,29 @@ function bindUI(){
 
   $('wheelCenterBtn').addEventListener('click', spinWheel);
   $('wheelMainBtn').addEventListener('click', spinWheel);
-  if ($('weeklyClaimBtn')) $('weeklyClaimBtn').addEventListener('click', claimDailyReward);
-  $('viewAdsWatchBtn').addEventListener('click', watchNextRewardAd);
-  $('viewAdsClose').addEventListener('click', closeViewAdsModal);
-  $('viewAdsModal').addEventListener('click', e => { if (e.target === $('viewAdsModal')) closeViewAdsModal(); });
+  $('viewAdsClose').addEventListener('click', () => {
+    if (viewAdsBusy) return;
+    $('viewAdsModal').classList.remove('show');
+    $('viewAdsModal').setAttribute('aria-hidden', 'true');
+  });
   $('adTaskAdd').addEventListener('click', addSocialTask);
 }
 
+/* ============================================================
+   🚀 Bootstrap
+   ============================================================ */
 async function bootstrap(){
   if (!initTelegram()) return;
   $('app').style.display = 'flex';
-  try{ await loadOrCreateUser(); }
+  try { await loadOrCreateUser(); }
   catch(e){ console.error('bootstrap', e); toast('فشل تحميل البيانات', 'err'); return; }
 
   bindUI();
+  initInAppAds();  /* 🎬 إعلانات التنقل التلقائية */
+
   listenUser();
   listenSocialTasks();
-  refreshAll();
+  updateAll();
   if (STATE.user.hasStartedMining && !STATE.user.miningCollectable && STATE.user.miningStartTime) startLiveTimer();
   initClockMonitor();
   setInterval(updatePlanTimer, 1000);
@@ -3416,11 +3350,8 @@ document.addEventListener('DOMContentLoaded', bootstrap);
 window.navigate = navigate;
 window.closeTamperModal = closeTamperModal;
 </script>
-</body>
-</html>
 
 <style id="performancePatch">
-/* Mobile performance patch: keep the marine look while reducing expensive compositing. */
 html { scroll-behavior: auto !important; }
 .main { scroll-behavior: auto !important; }
 .view.active { animation: none !important; }
@@ -3459,29 +3390,8 @@ html { scroll-behavior: auto !important; }
   .action::before, .weekly__btn::before, .wheel-action::before { animation: none !important; }
 }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
 }
 </style>
-<style id="pageBlurTransition">
-/* تأثير ضبابي سلس وسريع عند التنقل بين الصفحات */
-.view.active{
-  display:block;
-  animation:pageBlurIn .28s cubic-bezier(.2,.8,.2,1) both !important;
-}
-.view.leaving{
-  display:block;
-  animation:pageBlurOut .12s ease-in both !important;
-  pointer-events:none;
-}
-@keyframes pageBlurIn{
-  from{opacity:0;filter:blur(12px)}
-  to{opacity:1;filter:blur(0)}
-}
-@keyframes pageBlurOut{
-  from{opacity:1;filter:blur(0)}
-  to{opacity:0;filter:blur(10px)}
-}
-@media (prefers-reduced-motion: reduce){
-  .view.active,.view.leaving{animation:none !important}
-}
-</style>
+</body>
+</html>
